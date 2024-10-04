@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import HeroSection from "@/components/pages/home/sections/heroSection";
 import SocialProofSection from "@/components/pages/home/sections/socialProofSection";

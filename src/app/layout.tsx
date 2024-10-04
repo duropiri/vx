@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`antialiased`}>
-        {/* <PreloaderProvider> */}
+        <PreloaderProvider>
           <PageAnimatePresence>{children}</PageAnimatePresence>
-        {/* </PreloaderProvider> */}
+        </PreloaderProvider>
       </body>
     </html>
   );
