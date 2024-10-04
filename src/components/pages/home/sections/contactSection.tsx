@@ -23,11 +23,10 @@ function ContactSection({ className }: SectionProps) {
           </h2>
         </div>
         <iframe
-          src="https://api.leadconnectorhq.com/widget/group/zIDoL2aZcFRCtxiFBaoP"
+          src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
           style={{ width: "100%", border: "none", overflow: "hidden" }}
           scrolling="no"
-          id="zIDoL2aZcFRCtxiFBaoP_1727910490437"
-          className="cursor-none-hover bg-transparent rounded-[1.5rem]"
+          id="zIDoL2aZcFRCtxiFBaoP_1728040058508"
         ></iframe>
         <br />
         <script
