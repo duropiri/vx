@@ -27,6 +27,7 @@ function ContactSection({ className }: SectionProps) {
           style={{ width: "100%", border: "none", overflow: "hidden" }}
           scrolling="no"
           id="zIDoL2aZcFRCtxiFBaoP_1728040058508"
+          className="cursor-none-hover bg-transparent rounded-[1.5rem]"
         ></iframe>
         <br />
         <script
