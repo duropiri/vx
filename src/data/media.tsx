@@ -4,7 +4,7 @@ export const media = [
     alt: "image",
     type: "image",
     top: null,
-    left: "15vw",
+    left: "-20vw",
     width: "25vw",
     height: "25vh",
     text: [
@@ -17,7 +17,7 @@ export const media = [
     alt: "image",
     type: "image",
     top: null,
-    left: "-15vw",
+    left: "20vw",
     width: "25vw",
     height: "25vh",
     text: [
@@ -30,7 +30,7 @@ export const media = [
     alt: "image",
     type: "image",
     top: null,
-    left: "15vw",
+    left: "-20vw",
     width: "25vw",
     height: "25vh",
     text: [
@@ -43,7 +43,7 @@ export const media = [
     alt: "image",
     type: "image",
     top: null,
-    left: "-15vw",
+    left: "20vw",
     width: "25vw",
     height: "25vh",
     text: [
@@ -56,7 +56,7 @@ export const media = [
     alt: "image",
     type: "image",
     top: null,
-    left: "15vw",
+    left: "-20vw",
     width: "25vw",
     height: "25vh",
     text: [

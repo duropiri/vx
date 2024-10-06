@@ -45,11 +45,11 @@ export default function ZoomParallax({
   // Function to calculate the translation growth rate based on the viewport width
   const getTranslationGrowthRate = () => {
     if (window.innerWidth >= 2560) {
-      return 700; // 700 works well for larger screens
+      return 1000; // 700 works well for larger screens
     } else if (window.innerWidth >= 1920) {
-      return 500; // 500 works well for 1920p screens
+      return 750; // 500 works well for 1920p screens
     } else {
-      return 300; // Smaller value for smaller screens
+      return 400; // Smaller value for smaller screens
     }
   };
 
@@ -64,8 +64,8 @@ export default function ZoomParallax({
       const translationGrowthRate = getTranslationGrowthRate(); // Get dynamic growth rate
 
       // Calculate initial values for smooth entry
-      const initialScale = 0.5;
-      const initialX = direction * -50; // Start slightly off-screen in the opposite direction
+      const initialScale = 0.2;
+      const initialX = direction * 50; // Start slightly off-screen in the opposite direction
 
       const tl = gsap.timeline({
         scrollTrigger: {

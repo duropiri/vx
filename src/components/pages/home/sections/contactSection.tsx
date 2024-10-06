@@ -22,18 +22,20 @@ function ContactSection({ className }: SectionProps) {
             Consultation With Us Today!
           </h2>
         </div>
-        <iframe
-          src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
-          style={{ width: "100%", border: "none", overflow: "hidden" }}
-          scrolling="no"
-          id="zIDoL2aZcFRCtxiFBaoP_1728040058508"
-          className="cursor-none-hover bg-transparent rounded-[1.5rem]"
-        ></iframe>
-        <br />
-        <script
-          src="https://link.msgsndr.com/js/form_embed.js"
-          type="text/javascript"
-        ></script>
+        <div className="cursor-none-hover w-full h-[44rem] overflow-hidden">
+          <iframe
+            src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
+            style={{ width: "100%", border: "none", overflow: "visible" }}
+            scrolling="no"
+            id="zIDoL2aZcFRCtxiFBaoP_1728040058508"
+          className="cursor-none-hover bg-transparent h-[43.75rem] rounded-[1.5rem] -mt-[4rem]"
+          ></iframe>
+          <br />
+          <script
+            src="https://link.msgsndr.com/js/form_embed.js"
+            type="text/javascript"
+          ></script>
+        </div>
       </div>
     </div>
   );

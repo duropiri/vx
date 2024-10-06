@@ -15,18 +15,11 @@ function ProblemSection({ className = "" }: SectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeStep, setActiveStep] = useState(1);
   const progressBarRef = useRef<HTMLDivElement>(null);
-  const textRef = useRef<HTMLDivElement>(null); // Ref for the text container
+  const textContainerRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLSpanElement>(null);
+  const bodyRef = useRef<HTMLParagraphElement>(null);
   const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
-
-  const stepTexts = [
-    "Step 1: Introduction",
-    "Step 2: Exploration",
-    "Step 3: Development",
-    "Step 4: Testing",
-    "Step 5: Delivery",
-    "Step 6: Feedback",
-    "Step 7: Completion",
-  ];
 
   useEffect(() => {
     if (!progressBarRef.current || !textRef.current) return;
@@ -46,21 +39,21 @@ function ProblemSection({ className = "" }: SectionProps) {
       duration: 0.3,
     });
 
-    // Animate lines forward (keep them visible as we move forward)
+    // Animate lines forward (reveal them from top to bottom)
     if (activeStep > 1) {
       for (let i = 0; i < activeStep - 1; i++) {
         gsap.to(progressLines[i], {
-          scaleY: 1, // Keep the lines visible
+          clipPath: "inset(0 0 0% 0)", // Fully reveal the line
           duration: 0.3,
         });
       }
     }
 
-    // When moving backward, hide the lines starting from the end
+    // When moving backward, hide the lines starting from the end (hide from bottom to top)
     if (activeStep < media.length) {
       for (let i = activeStep - 1; i < progressLines.length; i++) {
         gsap.to(progressLines[i], {
-          scaleY: 0, // Hide the lines when moving backward
+          clipPath: "inset(0 0 100% 0)", // Fully hide the line
           duration: 0.3,
         });
       }
@@ -77,18 +70,57 @@ function ProblemSection({ className = "" }: SectionProps) {
 
     // Set the text translation based on the step (odd/even index)
     const isEven = (activeStep - 1) % 2 === 0;
-    const translateX = isEven ? "-translate-x-[10%]" : "translate-x-[10%]";
+    // const translateX = isEven ? "translate-x-[100%]" : "-translate-x-[100%]";
 
-    textRef.current.classList.remove("-translate-x-[10%]", "translate-x-[10%]");
-    textRef.current.classList.add(translateX);
-
+    // First animate the text out
     gsap.to(textRef.current, {
       opacity: 0,
-      y: 50,
-      duration: 0.3,
+      x: isEven ? "-100%" : "100%", // Move based on isEven
+      duration: 0.25, // Adjust duration as needed
       onComplete: () => {
-        textRef.current!.innerText = stepTexts[activeStep - 1];
-        gsap.to(textRef.current, { opacity: 1, y: 0, duration: 0.3 });
+        // Once hidden, update text content
+        const [header, body] = media[activeStep - 1].text;
+        headerRef.current!.textContent = header;
+        bodyRef.current!.textContent = body;
+
+        // Update alignment classes
+        textContainerRef.current!.classList.remove(
+          "justify-start",
+          "justify-end"
+        );
+        textContainerRef.current!.classList.add(
+          isEven ? "justify-end" : "justify-start"
+        );
+
+        // Add/remove alignment classes to textRef
+        if (textRef.current) {
+          textRef.current.classList.remove(
+            "text-start",
+            "justify-start",
+            "text-end",
+            "justify-end"
+          );
+          textRef.current.classList.add(
+            isEven ? "text-end" : "text-start",
+            isEven ? "justify-end" : "justify-start"
+          );
+        }
+
+        // Update alignment classes
+        headerRef.current!.classList.remove(
+          "self-start",
+          "self-end"
+        );
+        headerRef.current!.classList.add(
+          isEven ? "self-end" : "self-start"
+        );
+
+        // Animate the text back in
+        gsap.fromTo(
+          textRef.current,
+          { x: isEven ? "100%" : "-100%", opacity: 0 }, // Start offscreen
+          { x: "0%", opacity: 1, duration: 0.5 } // Bring it back
+        );
       },
     });
 
@@ -176,10 +208,23 @@ function ProblemSection({ className = "" }: SectionProps) {
 
         {/* Centered Text for Steps */}
         <div
-          ref={textRef}
-          className="sticky top-1/2 left-1/2 transform -translate-y-1/2 text-4xl font-bold text-ash opacity-0 z-10 transition-transform"
-        >
-          {stepTexts[0]}
+          ref={textContainerRef}
+          className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100dvh] h-[100dvh] flex items-center self-center"
+          >
+          <div
+            ref={textRef}
+            className="flex flex-col max-w-[46.875rem] gap-y-[1.5rem] items-center"
+            >
+            <span
+              ref={headerRef}
+              className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]"
+            >
+              {media[0].text[0]}
+            </span>
+            <p ref={bodyRef} className="pn-regular-32">
+              {media[0].text[1]}
+            </p>
+          </div>
         </div>
 
         {/* ZoomParallax with images */}

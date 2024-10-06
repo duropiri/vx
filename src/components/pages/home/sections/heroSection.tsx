@@ -158,7 +158,7 @@ function HeroSection() {
       </div>
       <div
         data-speed={1.3}
-        className="cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border border-ash"
+        className="cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash"
       >
         {/* Circular Text */}
         <svg

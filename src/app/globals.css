@@ -83,7 +83,7 @@ body {
 /* Font Styles */
 .pn-regular-96 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 6rem; /* 96px */
   letter-spacing: 0;
   line-height: 6rem; /* 96px */
@@ -91,7 +91,7 @@ body {
 
 .pn-regular-60 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 3.75rem; /* 96px */
   letter-spacing: 0;
   line-height: 6rem; /* 96px */
@@ -139,7 +139,7 @@ body {
 
 .pn-regular-16 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 1rem; /* 16px */
   letter-spacing: 0;
   line-height: 1.4rem; /* 22.4px */
@@ -155,7 +155,7 @@ body {
 
 .pn-regular-32 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 2rem; /* 32px */
   letter-spacing: 0;
   line-height: 2.4rem; /* 38.4px */
@@ -163,7 +163,7 @@ body {
 
 .pn-regular-28 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 1.75rem; /* 28px */
   letter-spacing: 0;
   line-height: 2.625rem; /* 42px */
@@ -171,7 +171,7 @@ body {
 
 .pn-regular-22 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 1.375rem; /* 22px */
   letter-spacing: 0;
   line-height: 2.25rem; /* 36px */
@@ -195,7 +195,7 @@ body {
 
 .pn-regular-14 {
   font-family: "Proxima Nova", sans-serif;
-  font-weight: 400;
+  font-weight: normal;
   font-size: 0.875rem; /* 14px */
   letter-spacing: 0.03125rem; /* 0.5px */
   line-height: 1.25rem; /* 20px */
@@ -215,6 +215,54 @@ body {
   font-size: 1.375rem; /* 22px */
   letter-spacing: 0;
   line-height: 2.25rem; /* 36px */
+}
+
+.nu-regular-12 {
+  font-family: "Nunito", sans-serif;
+  font-weight: normal;
+  font-size: 0.75rem; /* 12px */
+  letter-spacing: 0;
+  line-height: 1.125rem; /* 18px */
+}
+
+.nu-regular-14 {
+  font-family: "Nunito", sans-serif;
+  font-weight: normal;
+  font-size: 0.875rem; /* 14px */
+  letter-spacing: 0;
+  line-height: 1.25rem; /* 20px */
+}
+
+.nu-semibold-12 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem; /* 12px */
+  letter-spacing: 0;
+  line-height: 1.125rem; /* 18px */
+}
+
+.nu-semibold-14 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem; /* 14px */
+  letter-spacing: 0;
+  line-height: 1.25rem; /* 20px */
+}
+
+.nu-bold-20 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px */
+  letter-spacing: -0.013rem; /* -0.2px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.nu-bold-24 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 12px */
+  letter-spacing: -0.013rem; /* -0.2px */
+  line-height: 1.875rem; /* 30px */
 }
 
 /* End Font Styles */
