@@ -289,7 +289,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                   end={89}
                   duration={2}
                   start={start89 ? undefined : 0}
-                  ref={countUpRef89}
+                  // ref={countUpRef89}
                 />
                 %
               </h1>
@@ -307,7 +307,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                   end={58}
                   duration={2}
                   start={start58 ? undefined : 0}
-                  ref={countUpRef58}
+                  // ref={countUpRef58}
                 />
                 %
               </h1>
@@ -327,7 +327,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                   end={47}
                   duration={2}
                   start={start47 ? undefined : 0}
-                  ref={countUpRef47}
+                  // ref={countUpRef47}
                 />
                 %
               </h1>
@@ -345,7 +345,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                   end={24}
                   duration={2}
                   start={start24 ? undefined : 0}
-                  ref={countUpRef24}
+                  // ref={countUpRef24}
                 />
                 %
               </h1>

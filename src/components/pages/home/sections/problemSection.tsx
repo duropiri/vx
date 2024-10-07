@@ -121,27 +121,27 @@ function ProblemSection({ className = "" }: SectionProps) {
     });
 
     // Update background image with animation
-    const currentMedia = media[activeStep - 1];
-    if (bgRef.current && currentMedia) {
-      // Fade out the current image
-      gsap.to(bgRef.current, {
-        opacity: 0,
-        duration: 0.3,
-        onComplete: () => {
-          // Change the background image immediately (before fade-in)
-          bgRef.current.style.backgroundImage = `url(${encodeURIComponent(
-            currentMedia.src
-          )})`;
+    // const currentMedia = media[activeStep - 1];
+    // if (bgRef.current && currentMedia) {
+    //   // Fade out the current image
+    //   gsap.to(bgRef.current, {
+    //     opacity: 0,
+    //     duration: 0.3,
+    //     onComplete: () => {
+    //       // Change the background image immediately (before fade-in)
+    //       bgRef.current.style.backgroundImage = `url(${encodeURIComponent(
+    //         currentMedia.src
+    //       )})`;
 
-          // Fade in the new image without waiting for fade out to finish
-          gsap.to(bgRef.current, {
-            opacity: 1,
-            duration: 0.3,
-          });
-        },
-      });
-      console.log(encodeURIComponent(currentMedia.src));
-    }
+    //       // Fade in the new image without waiting for fade out to finish
+    //       gsap.to(bgRef.current, {
+    //         opacity: 1,
+    //         duration: 0.3,
+    //       });
+    //     },
+    //   });
+    //   console.log(encodeURIComponent(currentMedia.src));
+    // }
   }, [activeStep, media.length]); // Re-run the effect when activeStep or media length changes
 
   return (
@@ -221,25 +221,6 @@ function ProblemSection({ className = "" }: SectionProps) {
             subheadingRef={bodyRef}
           />
         </div>
-        {/* <div
-          ref={textContainerRef}
-          className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100dvh] h-[100dvh] flex items-center self-center"
-        >
-          <div
-            ref={textRef}
-            className="flex flex-col max-w-[46.875rem] gap-y-[1.5rem] items-center"
-          >
-            <span
-              ref={headerRef}
-              className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]"
-            >
-              {media[0].text[0]}
-            </span>
-            <p ref={bodyRef} className="pn-regular-32">
-              {media[0].text[1]}
-            </p>
-          </div>
-        </div> */}
 
         {/* ZoomParallax with images */}
         <ZoomParallax

@@ -1,13 +1,24 @@
-import { useEffect, useRef, useState } from 'react';
-import CountUp from 'react-countup';
+import { useEffect, useRef, useState } from "react";
+import { CountUpProps } from "react-countup";
+
+interface CountUpRef {
+  start: () => void;
+  reset: () => void;
+  update: (newEnd: number) => void;
+}
+
+interface UseScrollTriggeredCountUpReturn {
+  start: boolean;
+  countUpRef: React.RefObject<CountUpRef>;
+}
 
 const useScrollTriggeredCountUp = (
   ref: React.RefObject<HTMLElement>,
   end: number,
   duration = 2000
-) => {
+): UseScrollTriggeredCountUpReturn => {
   const [start, setStart] = useState(false);
-  const countUpRef = useRef<CountUp | null>(null);
+  const countUpRef = useRef<CountUpRef | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
