@@ -56,9 +56,9 @@ export default function Footer({ className = "" }: ComponentProps) {
       style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
     >
       <footer
-        className={`${className} section-container !pb-0 bg-ash text-white relative h-[calc(100dvh+37.5rem)] -top-[100dvh]`}
+        className={`${className} section-container !pb-0 bg-ash text-white relative h-[calc(100vh+37.5rem)] -top-[100vh]`}
       >
-        <div className="h-[37.5rem] sticky top-[calc(100dvh-37.5rem)] flex flex-col size-full items-center justify-center pt-[9.375rem] pb-[3.125rem] gap-[3.125rem]">
+        <div className="h-[37.5rem] sticky top-[calc(100vh-37.5rem)] flex flex-col size-full items-center justify-center pt-[9.375rem] pb-[3.125rem] gap-[3.125rem]">
           <div className="flex flex-row items-start justify-between size-full">
             <div className="flex flex-col items-start justify-start gap-[2rem]">
               <nav className="flex flex-row items-center gap-[0.5rem]">

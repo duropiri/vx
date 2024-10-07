@@ -62,7 +62,7 @@ function HeroSection({ className = "" }: SectionProps) {
     <div
       className={`section-container hero-container ${className} overflow-hidden`}
     >
-      <div className="flex flex-col items-center my-auto max-w-[100dvw]">
+      <div className="flex flex-col items-center my-auto max-w-[100vw]">
         {/* <LetterRevealOnScroll className=""> */}
         <h1 className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem]">
           Meet the{"  "}

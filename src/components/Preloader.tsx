@@ -164,7 +164,7 @@ const Preloader: React.FC<PreloaderProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 overflow-hidden z-[99999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100dvw]">
+    <div className="fixed inset-0 overflow-hidden z-[99999] flex flex-col items-center justify-center h-[100vh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]">
       <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
         <div
           className="champagne-limos relative text-lg sm:text-2xl uppercase overflow-hidden"

@@ -17,7 +17,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
       {/* Background Text Parallax */}
-      <div className="absolute pointer-events-none top-0 flex flex-col h-full w-[100dvw] text-goldenbrown gap-y-[10.625rem] max-w-[100dvw] overflow-hidden">
+      <div className="absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
         <ScrollingBanner
           baseVelocity={25}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"

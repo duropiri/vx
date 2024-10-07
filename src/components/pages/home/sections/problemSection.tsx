@@ -160,7 +160,7 @@ function ProblemSection({ className = "" }: SectionProps) {
         /> */}
 
         {/* Progress Bar */}
-        <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100dvh] mr-[5rem]">
+        <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[5rem]">
           <div ref={progressBarRef} className="absolute w-[2.875rem]">
             <div className="inset-0 flex flex-col items-center text-ash">
               <svg
@@ -210,7 +210,7 @@ function ProblemSection({ className = "" }: SectionProps) {
         {/* Centered Text for Steps */}
         <div
           ref={textContainerRef}
-          className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100dvh] h-[100dvh] flex items-center self-center"
+          className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100vh] h-[100vh] flex items-center self-center"
         >
           <SectionHeader
             ref={textRef}
@@ -224,7 +224,7 @@ function ProblemSection({ className = "" }: SectionProps) {
 
         {/* ZoomParallax with images */}
         <ZoomParallax
-          className="pointer-events-none -mt-[100dvh]"
+          className="pointer-events-none -mt-[100vh]"
           media={media}
           onStepChange={setActiveStep}
         />

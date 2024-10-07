@@ -27,9 +27,9 @@ function body() {
 
   return (
     <>
-      <HeroSection className="bg-white z-10 min-w-[100dvw]"/>
-      <SocialProofSection className="bg-white z-10 min-w-[100dvw]"/>
-      <CopySection className="bg-white z-10 min-w-[100dvw]"
+      <HeroSection className="bg-white z-10 min-w-[100vw]"/>
+      <SocialProofSection className="bg-white z-10 min-w-[100vw]"/>
+      <CopySection className="bg-white z-10 min-w-[100vw]"
         copy={
           <>
             We now live in an <br />
@@ -37,8 +37,8 @@ function body() {
           </>
         }
       />
-      {/* <ProblemSection className="bg-white z-0 min-w-[100dvw]"/> */}
-      <CopySection className="bg-white z-10 min-w-[100dvw]"
+      {/* <ProblemSection className="bg-white z-0 min-w-[100vw]"/> */}
+      <CopySection className="bg-white z-10 min-w-[100vw]"
         copy={
           <>
             A shift from person-to-person transactions to a place where almost{" "}
@@ -47,7 +47,7 @@ function body() {
           </>
         }
       />
-      <div ref={container} className="relative h-full bg-white min-w-[100dvw]">
+      <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         <StatsSection className="" scrollYProgress={scrollYProgress} />
         <CopySection
           scrollYProgress={scrollYProgress}

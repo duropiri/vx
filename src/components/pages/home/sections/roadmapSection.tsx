@@ -32,7 +32,7 @@ function RoadmapSection({ className }: SectionProps) {
         />
 
         {/* Content */}
-        <div className="relative flex flex-col size-full items-center justify-center min-h-[400dvh] overflow-hidden">
+        <div className="relative flex flex-col size-full items-center justify-center min-h-[400vh] overflow-hidden">
           {/* Gradient Top */}
           <div className="pointer-events-none absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b from-white to-transparent" />
           {/* Gradient Bottom */}
@@ -54,7 +54,7 @@ function RoadmapSection({ className }: SectionProps) {
                 viewBox="0 0 1730 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[100dvw] h-[400dvh]"
+                className="w-[100vw] h-[400vh]"
               >
                 <defs>
                   <linearGradient
@@ -91,9 +91,9 @@ function RoadmapSection({ className }: SectionProps) {
           </div>
 
           {/* Steps Copy */}
-          <div className="flex flex-col size-full min-h-[400dvh] max-w-[87.5rem] items-start justify-between z-10">
+          <div className="flex flex-col size-full min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10">
             {/* Step 1 */}
-            <div className="flex flex-row size-full h-[100dvh] items-center justify-between pl-[2.5rem] gap-[6.25rem] pt-[7.5rem] pb-[1.875rem]">
+            <div className="flex flex-row size-full h-[100vh] items-center justify-between pl-[2.5rem] gap-[6.25rem] pt-[7.5rem] pb-[1.875rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -149,7 +149,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 2 */}
-            <div className="flex flex-row-reverse size-full h-[100dvh] items-center justify-between pr-[2.5rem] gap-[6.25rem] py-[1.875rem]">
+            <div className="flex flex-row-reverse size-full h-[100vh] items-center justify-between pr-[2.5rem] gap-[6.25rem] py-[1.875rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -205,7 +205,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 3 */}
-            <div className="flex flex-row size-full h-[100dvh] items-center justify-between pl-[2.5rem] gap-[6.25rem] py-[1.875rem]">
+            <div className="flex flex-row size-full h-[100vh] items-center justify-between pl-[2.5rem] gap-[6.25rem] py-[1.875rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -261,7 +261,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 4 */}
-            <div className="flex flex-row-reverse size-full h-[100dvh] items-center justify-between pr-[2.5rem] gap-[6.25rem] pt-[1.875rem] pb-[7.5rem]">
+            <div className="flex flex-row-reverse size-full h-[100vh] items-center justify-between pr-[2.5rem] gap-[6.25rem] pt-[1.875rem] pb-[7.5rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"

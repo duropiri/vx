@@ -170,7 +170,7 @@ export default function ZoomParallax({
     <div
       ref={containerRef}
       className={`${className} ${styles.container}`}
-      style={{ height: `${media.length * 100 - media.length * 10}dvh` }}
+      style={{ height: `${media.length * 100 - media.length * 10}vh` }}
     >
       <div className={styles.sticky}>
         {media.map((item, index) => (

@@ -389,7 +389,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       </div>
 
       {/* Navdock */}
-      <div className="fixed flex flex-row items-center justify-center top-[2.5rem] w-[100dvw] h-[3.5rem] z-[1000]">
+      <div className="fixed flex flex-row items-center justify-center top-[2.5rem] w-[100vw] h-[3.5rem] z-[1000]">
         <motion.div
           className={`flex flex-row items-center justify-center top-[2.5rem] bg-ash text-white rounded-[1.5rem] border-[0.5rem] border-ash overflow-hidden ${
             isScrolled ? "" : "hidden"

@@ -35,7 +35,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
       style={{ scale, rotate }}
       className={`sticky top-0 section-container !flex-row ${className} bg-ash relative overflow-hidden`}
     >
-      <div className="absolute pointer-events-none top-1/2 -translate-y-1/2 flex flex-col w-[100dvw] text-goldenbrown/5 gap-y-[6.25rem] py-[6.25rem]">
+      <div className="absolute pointer-events-none top-1/2 -translate-y-1/2 flex flex-col w-[100vw] text-goldenbrown/5 gap-y-[6.25rem] py-[6.25rem]">
         <ScrollingBanner
           baseVelocity={2.5}
           child="flex flex-row items-center gap-x-[6.25rem]"

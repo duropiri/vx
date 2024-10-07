@@ -273,7 +273,7 @@ body {
   padding-top: 6.25rem;
   padding-bottom: 6.25rem;
   margin: 0;
-  width: 100dvw;
+  width: 100vw;
   box-sizing: border-box;
 }
 
@@ -289,7 +289,7 @@ body {
 .hero-container {
   padding-top: 2.5rem /* 40px */;
   padding-bottom: 2.5rem /* 40px */;
-  min-height: 100dvh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
