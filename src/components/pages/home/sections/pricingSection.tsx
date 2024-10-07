@@ -1,5 +1,6 @@
 "use client";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
+import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
 import React, { useState } from "react";
 
@@ -73,21 +74,16 @@ function PricingSection({ className }: SectionProps) {
   return (
     <div id="pricing" className={`section-container !flex-row ${className}`}>
       <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3.75rem]">
-        <div
-          className={`flex flex-col items-center justify-center w-full gap-y-[0.75rem]`}
-        >
-          <span className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
-            Pricing
-          </span>
-          <h2 className="pn-semibold-48 capitalize text-ash">
-            Find The Right Plan
-          </h2>
-          <p className="pn-regular-16 max-w-[43.75rem] text-center">
-            To ensure we deliver top-tier quality designs on time, we work with
-            a limited number of clients.
-          </p>
-        </div>
+        {/* Header */}
+        <SectionHeader
+          center
+          heading="Pricing"
+          subheading="Find The Right Plan"
+          body="To ensure we deliver top-tier quality designs on time, we work with
+            a limited number of clients."
+        />
 
+        {/* Plan Switch */}
         <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto">
           <span className="text-ash pn-regular-16 py-[0.75rem] px-[1.375rem]">
             Monthly
@@ -114,8 +110,10 @@ function PricingSection({ className }: SectionProps) {
           </div>
         </div>
 
-        <div className="relative flex flex-row h-[62.5rem] size-full justify-start items-start gap-[2rem]">
-          <div className="flex flex-col h-full size-full items-start justify-between px-[2.5rem] pb-[2.5rem] pt-[4.5rem] bg-white shadow-customShadow rounded-[1.4rem]">
+        {/* Pricing Plans */}
+        <div className="relative flex flex-col lg:flex-row h-full w-full justify-start items-start gap-[2rem]">
+          {/* Basic Plan */}
+          <div className="pricing-box self-stretch bg-white shadow-customShadow">
             <div className="flex flex-col w-full items-center justify-start gap-[3rem] text-ash">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
@@ -204,7 +202,7 @@ function PricingSection({ className }: SectionProps) {
                 </li>
               </ul>
             </div>
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full mt-[3rem]">
               <HoverWrapper
                 href="/"
                 className="button cursor-select-hover !w-[18.75rem] !py-[1.25rem] !bg-white !border-ash shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
@@ -216,7 +214,8 @@ function PricingSection({ className }: SectionProps) {
             </div>
           </div>
 
-          <div className="relative flex flex-col size-full items-start justify-between px-[2.5rem] pb-[2.5rem] pt-[4.5rem] bg-white shadow-customShadow rounded-[1.4rem]">
+          {/* Advanced Plan */}
+          <div className="pricing-box self-stretch bg-white shadow-customShadow">
             <div className="absolute top-[1.5rem] right-[1.5rem] flex px-[0.75rem] py-[0.5rem] bg-ash rounded-[2rem] border border-goldenbrown justify-center items-center gap-[0.25rem]">
               <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
                 <svg
@@ -338,7 +337,7 @@ function PricingSection({ className }: SectionProps) {
                 </li>
               </ul>
             </div>
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full mt-[3rem]">
               <HoverWrapper
                 href="/"
                 className="button cursor-select-hover !w-[18.75rem] !py-[1.25rem] !bg-ash !border-ash shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
@@ -350,7 +349,8 @@ function PricingSection({ className }: SectionProps) {
             </div>
           </div>
 
-          <div className="flex flex-col size-full items-start justify-between px-[2.5rem] pb-[2.5rem] pt-[4.5rem] bg-ash shadow-customShadow rounded-[1.4rem]">
+          {/* Ultimate Plan */}
+          <div className="pricing-box self-stretch bg-ash shadow-customShadow">
             <div className="flex w-full flex-col justify-start items-center gap-12">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
@@ -463,7 +463,7 @@ function PricingSection({ className }: SectionProps) {
                 </li>
               </ul>
             </div>
-            <div className="flex items-center justify-center w-full">
+            <div className="flex items-center justify-center w-full mt-[3rem]">
               <HoverWrapper
                 href="/"
                 className="button cursor-select-hover !w-[18.75rem] !py-[1.25rem] !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"

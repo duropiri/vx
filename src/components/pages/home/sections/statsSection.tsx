@@ -1,19 +1,39 @@
 "use client";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import React, { useRef } from "react";
+import CountUp from "react-countup";
 import useScrollTriggeredCountUp from "@/components/animations/useScrollTriggeredCountUp";
+import { motion, MotionValue, useTransform } from "framer-motion";
 
 interface SectionProps {
   className?: string;
+  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
 }
 
-function StatsSection({ className }: SectionProps) {
+function StatsSection({ className, scrollYProgress }: SectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
+  const { start: start89, countUpRef: countUpRef89 } =
+    useScrollTriggeredCountUp(ref, 89);
+  const { start: start58, countUpRef: countUpRef58 } =
+    useScrollTriggeredCountUp(ref, 58);
+  const { start: start47, countUpRef: countUpRef47 } =
+    useScrollTriggeredCountUp(ref, 47);
+  const { start: start24, countUpRef: countUpRef24 } =
+    useScrollTriggeredCountUp(ref, 24);
+
+  const scale = scrollYProgress
+    ? useTransform(scrollYProgress, [0, 1], [1, 0.8])
+    : undefined;
+  const rotate = scrollYProgress
+    ? useTransform(scrollYProgress, [0, 1], [0, -5])
+    : undefined;
+
   return (
-    <div
+    <motion.div
       ref={ref}
-      className={`section-container !flex-row ${className} bg-ash relative overflow-hidden`}
+      style={{ scale, rotate }}
+      className={`sticky top-0 section-container !flex-row ${className} bg-ash relative overflow-hidden`}
     >
       <div className="absolute pointer-events-none top-1/2 -translate-y-1/2 flex flex-col w-[100dvw] text-goldenbrown/5 gap-y-[6.25rem] py-[6.25rem]">
         <ScrollingBanner
@@ -265,7 +285,13 @@ function StatsSection({ className }: SectionProps) {
           <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
-                {useScrollTriggeredCountUp(ref, 89)}%
+                <CountUp
+                  end={89}
+                  duration={2}
+                  start={start89 ? undefined : 0}
+                  ref={countUpRef89}
+                />
+                %
               </h1>
               <p className="pn-regular-18">
                 of new home shoppers use a mobile search engine throughout their
@@ -276,7 +302,15 @@ function StatsSection({ className }: SectionProps) {
           </div>
           <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-              <h1 className="pn-regular-60">{useScrollTriggeredCountUp(ref, 58)}%</h1>
+              <h1 className="pn-regular-60">
+                <CountUp
+                  end={58}
+                  duration={2}
+                  start={start58 ? undefined : 0}
+                  ref={countUpRef58}
+                />
+                %
+              </h1>
               <p className="pn-regular-18">
                 of all website visits to real estate websites are from mobile
                 devices.
@@ -288,7 +322,15 @@ function StatsSection({ className }: SectionProps) {
         <div className="flex flex-row size-full h-[14.563rem] items-start justify-between gap-x-[3.125rem]">
           <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-              <h1 className="pn-regular-60">{useScrollTriggeredCountUp(ref, 47)}%</h1>
+              <h1 className="pn-regular-60">
+                <CountUp
+                  end={47}
+                  duration={2}
+                  start={start47 ? undefined : 0}
+                  ref={countUpRef47}
+                />
+                %
+              </h1>
               <p className="pn-regular-18">
                 of homebuyers in the past two years made an offer without
                 physically touring a home.
@@ -298,7 +340,15 @@ function StatsSection({ className }: SectionProps) {
           </div>
           <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-              <h1 className="pn-regular-60">{useScrollTriggeredCountUp(ref, 24)}%</h1>
+              <h1 className="pn-regular-60">
+                <CountUp
+                  end={24}
+                  duration={2}
+                  start={start24 ? undefined : 0}
+                  ref={countUpRef24}
+                />
+                %
+              </h1>
               <p className="pn-regular-18">
                 of current homebuyers report they bought a home sight unseen.
               </p>
@@ -307,7 +357,7 @@ function StatsSection({ className }: SectionProps) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

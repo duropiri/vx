@@ -1,4 +1,5 @@
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
+import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React from "react";
 
@@ -68,18 +69,13 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
   return (
     <div className={`section-container lg:!flex-row ${className}`}>
       <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[2rem]">
-        <div
-          className={`${
-            full ? "hidden" : "flex"
-          } flex-col items-center lg:items-start gap-y-[0.75rem] lg:max-w-[50%]`}
-        >
-          <span className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
-            Our Partners
-          </span>
-          <h2 className="text-center lg:text-start pn-semibold-48 text-ash leading-snug max-w-[15ch]">
-            A Few Of Our Clients In The Real Estate Industry
-          </h2>
-        </div>
+        {/* Header */}
+        <SectionHeader
+          small
+          className={`${full ? "!hidden" : ""}`}
+          heading="Our Partners"
+          subheading="A Few Of Our Clients In The Real Estate Industry"
+        />
 
         <div
           className={`relative flex size-full flex-row items-center gap-[2.5rem] max-h-[22.5rem] overflow-hidden ${
@@ -145,7 +141,11 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
               ))}
             </ScrollingBanner>
           </div>
-          <div className={`${full ? "flex" : "hidden"} flex-col w-[11.25rem]`}>
+          <div
+            className={`${
+              full ? "hidden lg:flex" : "hidden"
+            } flex-col w-[11.25rem]`}
+          >
             <ScrollingBanner
               direction="vertical"
               baseVelocity={-25}
@@ -164,7 +164,11 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
               ))}
             </ScrollingBanner>
           </div>
-          <div className={`${full ? "flex" : "hidden"} flex-col w-[11.25rem]`}>
+          <div
+            className={`${
+              full ? "hidden lg:flex" : "hidden"
+            } flex-col w-[11.25rem]`}
+          >
             <ScrollingBanner
               direction="vertical"
               baseVelocity={25}
@@ -183,7 +187,11 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
               ))}
             </ScrollingBanner>
           </div>
-          <div className={`${full ? "flex" : "hidden"} flex-col w-[11.25rem]`}>
+          <div
+            className={`${
+              full ? "hidden lg:flex" : "hidden"
+            } flex-col w-[11.25rem]`}
+          >
             <ScrollingBanner
               direction="vertical"
               baseVelocity={-25}

@@ -4,7 +4,12 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import React, { useEffect } from "react";
 
-function HeroSection() {
+interface SectionProps {
+  className?: string;
+  full?: boolean;
+}
+
+function HeroSection({ className = "" }: SectionProps) {
   // GSAP Animations
   useEffect(() => {
     const loadGSAP = async () => {
@@ -54,26 +59,36 @@ function HeroSection() {
   }, []);
 
   return (
-    <div className="section-container hero-container">
-      <div className="flex flex-col items-center my-auto">
+    <div
+      className={`section-container hero-container ${className} overflow-hidden`}
+    >
+      <div className="flex flex-col items-center my-auto max-w-[100dvw]">
         {/* <LetterRevealOnScroll className=""> */}
-          <h1 className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem]">
-            <span className="flex justify-center gap-[1.5rem] max-h-[6rem]">
-              <span>Meet the</span>{" "}
-              <span className="text-goldenbrown font-bold">
-                {getChars("Gold")}
-              </span>{" "}
+        <h1 className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem]">
+          Meet the{"  "}
+          <span className="text-goldenbrown font-bold">Gold Standard</span> in
+          Real Estate Marketing
+        </h1>
+
+        {/* <h1 className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem]">
+          <span className="flex justify-center gap-[1.5rem] max-h-[6rem]">
+            <span>Meet the</span>{" "}
+            <span className="text-goldenbrown font-bold">
+              {getChars("Gold")}
             </span>{" "}
-            <span className="flex justify-center gap-[1.5rem] max-h-[6rem]">
-              <span className="text-goldenbrown font-bold">{getChars("Standard")}</span> in
-              Real
+          </span>{" "}
+          <span className="flex justify-center gap-[1.5rem] max-h-[6rem]">
+            <span className="text-goldenbrown font-bold">
+              {getChars("Standard")}
             </span>{" "}
-            <span className="flex justify-center gap-[1.5rem] max-h-[6rem]">
-              Estate Marketing
-            </span>
-          </h1>
+            in Real
+          </span>{" "}
+          <span className="flex justify-center gap-[1.5rem] max-h-[6rem]">
+            Estate Marketing
+          </span>
+        </h1> */}
         {/* </LetterRevealOnScroll> */}
-        <div className="flex items-row gap-[1rem] my-[0.625rem]">
+        <div className="flex flex-col lg:flex-row gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
             className="button cursor-select-hover shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5"

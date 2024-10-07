@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/data/media";
+import SectionHeader from "@/components/ui/sectionHeader";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -95,25 +96,20 @@ function ProblemSection({ className = "" }: SectionProps) {
         // Add/remove alignment classes to textRef
         if (textRef.current) {
           textRef.current.classList.remove(
-            "text-start",
+            "!text-start",
             "justify-start",
-            "text-end",
+            "!text-end",
             "justify-end"
           );
           textRef.current.classList.add(
-            isEven ? "text-end" : "text-start",
+            isEven ? "!text-end" : "!text-start",
             isEven ? "justify-end" : "justify-start"
           );
         }
 
         // Update alignment classes
-        headerRef.current!.classList.remove(
-          "self-start",
-          "self-end"
-        );
-        headerRef.current!.classList.add(
-          isEven ? "self-end" : "self-start"
-        );
+        headerRef.current!.classList.remove("self-start", "self-end");
+        headerRef.current!.classList.add(isEven ? "self-end" : "self-start");
 
         // Animate the text back in
         gsap.fromTo(
@@ -127,17 +123,24 @@ function ProblemSection({ className = "" }: SectionProps) {
     // Update background image with animation
     const currentMedia = media[activeStep - 1];
     if (bgRef.current && currentMedia) {
+      // Fade out the current image
       gsap.to(bgRef.current, {
         opacity: 0,
         duration: 0.3,
         onComplete: () => {
-          bgRef.current!.style.backgroundImage = `url(${currentMedia.src})`;
+          // Change the background image immediately (before fade-in)
+          bgRef.current.style.backgroundImage = `url(${encodeURIComponent(
+            currentMedia.src
+          )})`;
+
+          // Fade in the new image without waiting for fade out to finish
           gsap.to(bgRef.current, {
             opacity: 1,
             duration: 0.3,
           });
         },
       });
+      console.log(encodeURIComponent(currentMedia.src));
     }
   }, [activeStep, media.length]); // Re-run the effect when activeStep or media length changes
 
@@ -150,14 +153,12 @@ function ProblemSection({ className = "" }: SectionProps) {
         {/* Background Container */}
         {/* <div
           ref={bgRef}
-          className="absolute top-0 left-0 w-full h-[100dvh] z-0 bg-goldenrod"
+          className="fixed inset-0 w-[100vw] h-[100vh] bg-cover bg-center transition-opacity duration-300 blur-[10rem] brightness-50"
           style={{
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            filter: "blur(20px)",
-            transition: "opacity 0.3s ease-in-out",
+            backgroundImage: `url(${encodeURIComponent(media[0].src)})`,
           }}
-        ></div> */}
+        /> */}
+
         {/* Progress Bar */}
         <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100dvh] mr-[5rem]">
           <div ref={progressBarRef} className="absolute w-[2.875rem]">
@@ -210,11 +211,24 @@ function ProblemSection({ className = "" }: SectionProps) {
         <div
           ref={textContainerRef}
           className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100dvh] h-[100dvh] flex items-center self-center"
-          >
+        >
+          <SectionHeader
+            ref={textRef}
+            medium
+            heading={media[0].text[0]}
+            subheading={media[0].text[1]}
+            headingRef={headerRef}
+            subheadingRef={bodyRef}
+          />
+        </div>
+        {/* <div
+          ref={textContainerRef}
+          className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100dvh] h-[100dvh] flex items-center self-center"
+        >
           <div
             ref={textRef}
             className="flex flex-col max-w-[46.875rem] gap-y-[1.5rem] items-center"
-            >
+          >
             <span
               ref={headerRef}
               className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]"
@@ -225,7 +239,7 @@ function ProblemSection({ className = "" }: SectionProps) {
               {media[0].text[1]}
             </p>
           </div>
-        </div>
+        </div> */}
 
         {/* ZoomParallax with images */}
         <ZoomParallax

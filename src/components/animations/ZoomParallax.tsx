@@ -45,11 +45,11 @@ export default function ZoomParallax({
   // Function to calculate the translation growth rate based on the viewport width
   const getTranslationGrowthRate = () => {
     if (window.innerWidth >= 2560) {
-      return 1000; // 700 works well for larger screens
+      return 700; // 700 works well for larger screens
     } else if (window.innerWidth >= 1920) {
-      return 750; // 500 works well for 1920p screens
+      return 500; // 500 works well for 1920p screens
     } else {
-      return 400; // Smaller value for smaller screens
+      return 200; // Smaller value for smaller screens
     }
   };
 
@@ -60,6 +60,7 @@ export default function ZoomParallax({
     if (!container) return;
 
     elements.forEach((el, index) => {
+      const isLastElement = index === media.length - 1;
       const direction = index % 2 === 0 ? 1 : -1;
       const translationGrowthRate = getTranslationGrowthRate(); // Get dynamic growth rate
 
@@ -118,19 +119,36 @@ export default function ZoomParallax({
       });
 
       // Scale and horizontal translation
-      tl.to(
-        el,
-        {
-          scale: scaleGrowthRate,
-          x: direction * translationGrowthRate,
-          duration: animationDuration,
-          ease: CustomEase.create(
-            "custom",
-            "M0,0 C0.46,0 0.756,0.021 0.835,0.14 0.909,0.252 0.884,0.4 1,1 "
-          ),
-        },
-        0 // Start at the same time as opacity
-      );
+      if (isLastElement) {
+        // Special animation for the last element
+        tl.to(
+          el,
+          {
+            scale: 1, // Scale to normal size
+            x: 0, // Center the element
+            duration: animationDuration,
+            ease: CustomEase.create(
+              "custom",
+              "M0,0 C0.46,0 0.756,0.021 0.835,0.14 0.909,0.252 0.884,0.4 1,1 "
+            ),
+          },
+          0
+        );
+      } else {
+        tl.to(
+          el,
+          {
+            scale: scaleGrowthRate,
+            x: direction * translationGrowthRate,
+            duration: animationDuration,
+            ease: CustomEase.create(
+              "custom",
+              "M0,0 C0.46,0 0.756,0.021 0.835,0.14 0.909,0.252 0.884,0.4 1,1 "
+            ),
+          },
+          0 // Start at the same time as opacity
+        );
+      }
     });
 
     return () => {
@@ -152,7 +170,7 @@ export default function ZoomParallax({
     <div
       ref={containerRef}
       className={`${className} ${styles.container}`}
-      style={{ height: `${(media.length * 100) - (media.length * 10)}dvh` }}
+      style={{ height: `${media.length * 100 - media.length * 10}dvh` }}
     >
       <div className={styles.sticky}>
         {media.map((item, index) => (

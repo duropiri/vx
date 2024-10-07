@@ -71,7 +71,7 @@ export default function ScrollingBanner({
   const styles = {
     banner: isVertical
       ? "relative m-0 flex flex-col flex-nowrap items-center whitespace-nowrap min-h-[100vh]"
-      : "relative m-0 flex flex-nowrap items-center whitespace-nowrap",
+      : "relative m-0 flex flex-nowrap items-center whitespace-nowrap h-full",
     child: isVertical
       ? "flex flex-col flex-nowrap items-center whitespace-nowrap"
       : "flex flex-row flex-nowrap items-center whitespace-nowrap",

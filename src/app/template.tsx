@@ -96,7 +96,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
         > */}
       {!isAdminPage ? (
         <>
-          <motion.div
+          {/* <motion.div
             className="w-full h-full fixed left-0 top-0 bg-ash z-[9999999] cursor-wait"
             variants={exitSlide}
             initial={exitSlide.initial}
@@ -106,7 +106,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
               duration: 1,
               ease: [0.76, 0, 0.24, 1],
             }}
-          />
+          /> */}
 
           <div className="hidden md:block z-[99999999]">
             <CustomCursor />

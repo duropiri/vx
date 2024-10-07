@@ -3,10 +3,15 @@ import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import React from "react";
 
-function CTASection() {
+interface SectionProps {
+  className?: string;
+  full?: boolean;
+}
+
+function CTASection({ className = "" }: SectionProps) {
   return (
-    <div className="section-container">
-      <div className="flex flex-col items-center justify-center w-full bg-ash rounded-[1rem] px-[12.5rem] py-[5rem] gap-y-[2rem] text-white">
+    <div className={`section-container ${className}`}>
+      <div className="flex flex-col items-center justify-center w-full bg-ash rounded-[1rem] px-[1rem] lg:px-[12.5rem] py-[1rem] lg:py-[5rem] gap-y-[2rem] text-white text-center">
         <LetterRevealOnScroll className="relative">
           <h1 className="pn-regular-96">2X Money Back Guarantee</h1>
         </LetterRevealOnScroll>
@@ -19,7 +24,7 @@ function CTASection() {
             your initial investment in our services.
           </p>
         </OpacityOnScroll>
-        <div className="flex items-row gap-[1rem] my-[0.625rem]">
+        <div className="flex flex-col lg:flex-row gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
             className="button cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
