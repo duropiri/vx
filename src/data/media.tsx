@@ -13,7 +13,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/VirtualXposure-ExteriorImage.png",
+    src: "/images/logo5.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -26,7 +26,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/team.png",
+    src: "/images/logo5.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -39,7 +39,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/VirtualXposure-ExteriorImage.png",
+    src: "/images/logo5.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -52,7 +52,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/team_1.png",
+    src: "/images/logo5.webp",
     alt: "image",
     type: "image",
     top: null,
