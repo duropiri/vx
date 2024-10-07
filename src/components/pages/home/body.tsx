@@ -37,7 +37,7 @@ function body() {
           </>
         }
       />
-      {/* <ProblemSection className="bg-white z-0 min-w-[100vw]"/> */}
+      <ProblemSection className="bg-white z-0 min-w-[100vw]"/>
       <CopySection className="bg-white z-10 min-w-[100vw]"
         copy={
           <>
