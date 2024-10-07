@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, ReactElement } from "react";
+import React, { useEffect, useRef, ReactElement, RefCallback } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 interface SVGScrollProps {
-  children: ReactElement<SVGElement>;
+  children: ReactElement;
 }
 
 const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
@@ -25,11 +25,10 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
       strokeDashoffset: 0, // Animate the stroke from start to end
       ease: "none",
       scrollTrigger: {
-        trigger: svgRef.current, // Trigger animation when the SVG is in view
-        start: "top center", // Start animation when top of the SVG reaches the center of the viewport
-        end: "bottom center", // End when the bottom of the SVG reaches the center of the viewport
-        scrub: true, // Link the animation to the scrollbar's progress
-        // markers: true,
+        trigger: svgRef.current,
+        start: "top center",
+        end: "bottom center",
+        scrub: true,
       },
     });
 
@@ -39,14 +38,18 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
     };
   }, []);
 
-  const childrenWithRef = React.cloneElement(children, {
-    ref: (node: SVGSVGElement) => {
+  const refCallback: RefCallback<SVGSVGElement> = (node) => {
+    if (node) {
       svgRef.current = node;
-      const path = node?.querySelector("path");
+      const path = node.querySelector("path");
       if (path) {
         pathRef.current = path as SVGPathElement;
       }
-    },
+    }
+  };
+
+  const childrenWithRef = React.cloneElement(children, {
+    ref: refCallback,
     className: `${children.props.className || ""} squiggle`.trim(),
   });
 
