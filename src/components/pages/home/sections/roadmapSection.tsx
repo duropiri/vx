@@ -14,7 +14,7 @@ interface SectionProps {
 function RoadmapSection({ className }: SectionProps) {
   return (
     <div className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full flex-col items-start justify-between gap-[3.75rem]">
+      <div className="relative flex size-full flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
           center
@@ -49,19 +49,25 @@ function RoadmapSection({ className }: SectionProps) {
           <div className="pointer-events-none absolute top-0 scrollPath">
             <SVGScroll>
               <svg
-                // width="1730"
+                // width="1572"
                 // height="4394"
-                viewBox="0 0 1730 4394"
+                viewBox="0 0 1572 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[100vw] h-[400vh]"
+                className="w-[100dvw] h-[400dvh]"
               >
+                <path
+                  d="M757 20.5C757 20.5 679.5 834.501 1189.5 856.5C1688.5 837.904 1644 400 1223.5 400C803 400 322.5 803 488.5 1297.5C654.5 1792 1503.65 1066 1518 1629.5C1532.35 2193 372.999 1884.79 160 2085.64C-53 2286.5 176 2474.5 607.5 2502.5C1039 2530.5 1158 2396 882.5 2305C607 2214 -21 2620.5 22.5 2902.5C66 3184.5 494 3337 757 3118C1020 2899 795.5 3406.5 1155 3206C1514.5 3005.5 1603 3415 1223.5 3522C844 3629 107 4165 43 3914C-21 3663 245 3571 469 3600C693 3629 757 4374 757 4374"
+                  stroke="url(#paint0_linear_207_668)"
+                  stroke-width="40"
+                  stroke-linecap="round"
+                />
                 <defs>
                   <linearGradient
-                    id="paint0_linear_207_662"
-                    x1="865.231"
+                    id="paint0_linear_207_668"
+                    x1="784.231"
                     y1="20.5"
-                    x2="865.231"
+                    x2="784.231"
                     y2="4374"
                     gradientUnits="userSpaceOnUse"
                   >
@@ -70,22 +76,7 @@ function RoadmapSection({ className }: SectionProps) {
                     <stop offset="0.85" stop-color="#FDD98A" />
                     <stop offset="1" stop-color="#FFFDF9" />
                   </linearGradient>
-                  <mask id="mask" maskUnits="userSpaceOnUse"></mask>
                 </defs>
-                <path
-                  d="M152.5 20.5C152.5 20.5 44.0001 333.501 554 355.5C1064 377.499 896.5 887.744 1395.5 869.148C1894.5 850.551 1744.5 478 1324 478C903.5 478 470.041 847.929 726 1338.7C854.106 1584.33 1707 1183.22 1678 1682.73C1649 2182.24 497 1682.73 241 2085.64C-15.0003 2488.56 280 2510.77 759 2484.94C1238 2459.12 1147 2159.51 820.5 2130.07C494 2100.62 55.5 2385.25 55.5 2806.76C55.5 3228.27 751.5 3084.15 1309.5 3043.34C1867.5 3002.54 1529.61 2551.58 842.609 2806.76C155.609 3061.94 1342 3742.25 726 4126.57C110 4510.89 -290 3971.88 336 3695C962 3418.12 838 4374 838 4374"
-                  stroke="url(#paint0_linear_207_662)"
-                  stroke-width="40"
-                  stroke-linecap="round"
-                />
-                <path
-                  d="M152.5 20.5C152.5 20.5 44.0001 333.501 554 355.5C1064 377.499 896.5 887.744 1395.5 869.148C1894.5 850.551 1744.5 478 1324 478C903.5 478 470.041 847.929 726 1338.7C854.106 1584.33 1707 1183.22 1678 1682.73C1649 2182.24 497 1682.73 241 2085.64C-15.0003 2488.56 280 2510.77 759 2484.94C1238 2459.12 1147 2159.51 820.5 2130.07C494 2100.62 55.5 2385.25 55.5 2806.76C55.5 3228.27 751.5 3084.15 1309.5 3043.34C1867.5 3002.54 1529.61 2551.58 842.609 2806.76C155.609 3061.94 1342 3742.25 726 4126.57C110 4510.89 -290 3971.88 336 3695C962 3418.12 838 4374 838 4374"
-                  stroke="black"
-                  stroke-width="3"
-                  stroke-linecap="round"
-                  stroke-dasharray="80 80"
-                  mask="url(#mask)"
-                />
               </svg>
             </SVGScroll>
           </div>
@@ -139,10 +130,12 @@ function RoadmapSection({ className }: SectionProps) {
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash rounded-r-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-r-[2.5rem]">
                 <Image
-                  src=""
-                  alt=""
+                  src="/images/logo5.webp"
+                  alt="vx"
+                  width={500}
+                  height={190}
                   className="pointer-events-none size-full object-cover"
                 />
               </div>
@@ -195,10 +188,12 @@ function RoadmapSection({ className }: SectionProps) {
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash rounded-l-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-l-[2.5rem]">
                 <Image
-                  src=""
-                  alt=""
+                  src="/images/logo5.webp"
+                  alt="vx"
+                  width={500}
+                  height={190}
                   className="pointer-events-none size-full object-cover"
                 />
               </div>
@@ -251,10 +246,12 @@ function RoadmapSection({ className }: SectionProps) {
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash rounded-r-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-r-[2.5rem]">
                 <Image
-                  src=""
-                  alt=""
+                  src="/images/logo5.webp"
+                  alt="vx"
+                  width={500}
+                  height={190}
                   className="pointer-events-none size-full object-cover"
                 />
               </div>
@@ -307,10 +304,12 @@ function RoadmapSection({ className }: SectionProps) {
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash rounded-l-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-l-[2.5rem]">
                 <Image
-                  src=""
-                  alt=""
+                  src="/images/logo5.webp"
+                  alt="vx"
+                  width={500}
+                  height={190}
                   className="pointer-events-none size-full object-cover"
                 />
               </div>

@@ -281,8 +281,8 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
         </ScrollingBanner>
       </div>
       <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[1.5rem] text-white">
-        <div className="flex flex-row size-full h-[14.563rem] items-start justify-between gap-x-[3.125rem]">
-          <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
+        <div className="flex flex-row size-full h-full items-start justify-between gap-x-[3.125rem]">
+          <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
                 <CountUp
@@ -300,7 +300,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
             </div>
             <p className="pn-regular-14">NAR</p>
           </div>
-          <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
+          <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
                 <CountUp
@@ -319,8 +319,8 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
             <p className="pn-regular-14">NAR</p>
           </div>
         </div>
-        <div className="flex flex-row size-full h-[14.563rem] items-start justify-between gap-x-[3.125rem]">
-          <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
+        <div className="relative flex flex-row size-full h-full items-start justify-between gap-x-[3.125rem]">
+          <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
                 <CountUp
@@ -338,7 +338,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
             </div>
             <p className="pn-regular-14">Landing Tree</p>
           </div>
-          <div className="flex flex-col size-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
+          <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
                 <CountUp

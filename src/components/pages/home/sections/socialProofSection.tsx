@@ -68,7 +68,7 @@ const logos = [
 function SocialProofSection({ className = "", full = false }: SectionProps) {
   return (
     <div className={`section-container lg:!flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[2rem]">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[1rem] lg:gap-y-[2rem]">
         {/* Header */}
         <SectionHeader
           small

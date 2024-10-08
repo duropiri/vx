@@ -11,7 +11,7 @@ interface SectionProps {
 function CTASection({ className = "" }: SectionProps) {
   return (
     <div className={`section-container ${className}`}>
-      <div className="flex flex-col items-center justify-center w-full bg-ash rounded-[1rem] px-[1rem] lg:px-[12.5rem] py-[1rem] lg:py-[5rem] gap-y-[2rem] text-white text-center">
+      <div className="flex flex-col items-center justify-center w-full bg-ash rounded-[1rem] px-[2.5rem] lg:px-[12.5rem] py-[2.5rem] lg:py-[5rem] gap-y-[1rem] lg:gap-y-[2rem] text-white text-center">
         <LetterRevealOnScroll className="relative">
           <h1 className="pn-regular-96">2X Money Back Guarantee</h1>
         </LetterRevealOnScroll>

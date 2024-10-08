@@ -73,7 +73,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
       </div>
 
       {/* Content */}
-      <div className="flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[8rem] z-10">
+      <div className="flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[4rem] lg:gap-y-[8rem] z-10">
         {/* Header */}
         <SectionHeader
           dark
@@ -93,7 +93,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
         />
 
         {/* Bentos */}
-        <div className="flex flex-col size-full items-start justify-center gap-y-[2rem]">
+        <div className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[2rem]">
           {/* Top Row */}
           <div className="flex flex-row size-full items-start justify-start gap-[2rem]">
             <div className="flex flex-col size-full items-start justify-start p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal">

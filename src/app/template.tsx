@@ -18,6 +18,7 @@ import {
   // opacity,
   exitSlide,
 } from "@/components/layout/transitions/transitions";
+import Image from "next/image";
 
 const MOBILE_BREAKPOINT = 1024;
 
@@ -115,6 +116,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           <SmoothScrolling>{children}</SmoothScrolling>
           {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
           <Footer />
+          
           {/* </StickyFooter> */}
         </>
       ) : (

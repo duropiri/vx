@@ -17,7 +17,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
 
   return (
     <div className={`section-container !flex-row ${className} bg-white`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
           center
@@ -116,7 +116,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                         </div>
                       </div>
                     </div>
-                    <div className="w-[0.063rem] mx-[.5rem] h-full bg-ash/10" />
+                    <div className="w-[1px] mx-[.5rem] h-full bg-ash/10" />
                     {/* Facebook Stats */}
                     <div className="w-1/2 flex-col justify-start items-center gap-[1.125rem] flex">
                       <div className="justify-start items-center gap-2 flex h-[1.125rem]">
@@ -236,7 +236,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                         </div>
                       </div>
                     </div>
-                    <div className="w-[0.063rem] mx-[.5rem] h-full bg-ash/10" />
+                    <div className="w-[1px] mx-[.5rem] h-full bg-ash/10" />
                     {/* Facebook Stats */}
                     <div className="w-1/2 flex-col justify-start items-center gap-[1.125rem] flex">
                       <div className="justify-start items-center gap-2 flex h-[1.125rem]">
@@ -306,7 +306,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
             {/* Bento 2 */}
             <div className="group relative flex flex-col w-full h-full max-h-[31.25rem] px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden">
               {/* Content */}
-              <div className="h-full flex-col justify-start items-start gap-[1.125rem] flex relative">
+              <div className="h-full w-full flex-col justify-start items-start gap-[1.125rem] flex relative">
                 {/* Header */}
                 <div className="flex flex-col justify-center items-center gap-[0.625rem]">
                   <div className="text-center text-ash pn-bold-28">
@@ -785,7 +785,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                   </p>
                 </div>
                 {/* Graphic */}
-                <div className="select-none blur-[0.031rem] transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex w-full">
+                <div className="select-none blur-[0.031rem] transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                   <div className="w-full justify-between items-center flex">
                     <div className="text-ash nu-bold-20">Followers</div>
                     <div className="w-[150px] flex-col justify-start items-start flex">
@@ -817,7 +817,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                     </div>
                   </div>
                   <div className="justify-start items-start gap-4 flex w-full">
-                    <div className="flex-col justify-start items-start gap-px flex">
+                    <div className="flex flex-col justify-start items-start gap-px">
                       <div className="text-ash nu-semibold-16">Net Growth</div>
                       <div className="text-charcoal nu-regular-12">
                         Jun 2025 - Dec 2025
@@ -1077,6 +1077,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                     Optimized
                   </span>{" "}
                   for{" "}
+                  <br/>
                   <span className="group-hover:text-goldenbrown transition-all duration-500 group-hover:text-[3.25rem]">
                     Scalability
                   </span>

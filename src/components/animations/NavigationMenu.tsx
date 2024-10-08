@@ -205,45 +205,73 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   //   index: 0,
   // });
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isBottom, setIsBottom] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
     };
 
+    // Check if the user is at the bottom of the page
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+
+      // Detect when user reaches the bottom of the page
+      setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
+
+      // Set isScrolled for animation purposes
+      setIsScrolled(
+        scrollTop > 50 && scrollTop + windowHeight < documentHeight
+      );
+    };
+
+    // Initial setup
+    handleResize();
+    handleScroll();
+
+    // Event listeners for scroll and resize
+    window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    // Cleanup event listeners
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   // Define animation variants
-  const navdockVariants = {
+  const navdockVariants = (isMobile: any) => ({
     hidden: {
-      width: "3.5rem", // Just enough to fit the logo
+      width: isMobile ? "auto" : "3.5rem", // No width animation on mobile, "3.5rem" on desktop
       opacity: 0,
       transition: { duration: 0 },
     },
     expanded: {
-      width: "auto",
+      width: isMobile ? "100%" : "auto", // Keep auto width but remove width animation on mobile
       opacity: 1,
       transition: {
-        duration: 0.5,
+        duration: isMobile ? 0 : 0.5, // No animation on mobile
         when: "beforeChildren",
         staggerChildren: 0,
       },
     },
-  };
+  });
 
-  const logoVariants = {
+  const logoVariants = (isMobile: any) => ({
     hidden: {
-      x: 150, // Centered
+      x: isMobile ? 0 : 150, // No x animation on mobile
       width: "2.25rem",
       transition: { duration: 0 },
     },
     expanded: {
-      x: 0, // Move to the left
-      transition: { duration: 0.5 },
+      x: isMobile ? 0 : 0, // No x animation on mobile
+      transition: { duration: isMobile ? 0 : 0.5 },
     },
-  };
+  });
 
   const itemVariants = {
     hidden: { opacity: 0, y: 0, transition: { duration: 0 } },
@@ -254,17 +282,17 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     <>
       <div
         id="header"
-        className={`transition-all duration-500 ${className} z-[999] flex flex-col size-full h-auto p-[0.438rem] pl-[1.5rem] ${
+        className={`transition-all duration-500 ${className} z-[999] flex flex-col size-full h-auto p-[2rem] lg:p-[0.438rem] lg:pl-[1.5rem] ${
           isActive ? "" : "mix-blend-differences"
         } ${isScrolled ? "opacity-0 pointer-events-none" : ""}`}
       >
         {/* Original Header */}
-        <div className="relative flex size-full items-center justify-between gap-10">
+        <div className="relative flex size-full items-center justify-center lg:justify-between gap-10">
           {/* Logo */}
-          <div className="cursor-select-hover relative max-w-[10vw] ">
+          <div className="cursor-select-hover relative lg:max-w-[10vw] ">
             <Link
               href={"/"}
-              className="flex size-full h-[1.375rem] overflow-hidden"
+              className="flex size-full lg:h-[1.375rem] overflow-hidden"
               passHref
             >
               {/* <img src="/images/logo5.webp" alt="Loading" className="" /> */}
@@ -273,7 +301,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 alt="logo"
                 width={36}
                 height={22}
-                className=""
+                className="size-full"
               />
             </Link>
           </div>
@@ -342,7 +370,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </nav>
 
           {/* Mobile Menu */}
-          <div
+          {/* <div
             onClick={() => setIsActive(!isActive)}
             className="group flex md:hidden items-center justify-end gap-2 cursor-pointer"
           >
@@ -374,7 +402,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 Close
               </motion.p>
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* <motion.div
@@ -389,22 +417,22 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       </div>
 
       {/* Navdock */}
-      <div className="fixed flex flex-row items-center justify-center top-[2.5rem] w-[100vw] h-[3.5rem] z-[1000]">
+      <div className="fixed flex flex-row items-center justify-center bottom-0 lg:top-[2.5rem] w-[100vw] h-[3.5rem] z-[1000] max-w-[100vw]">
         <motion.div
-          className={`flex flex-row items-center justify-center top-[2.5rem] bg-ash text-white rounded-[1.5rem] border-[0.5rem] border-ash overflow-hidden ${
+          className={`flex flex-row items-center justify-center bg-ash text-white sm:rounded-[1.5rem] border-[0.5rem] border-ash overflow-hidden ${
             isScrolled ? "" : "hidden"
           }`}
           initial="hidden"
-          animate={isScrolled ? "expanded" : "hidden"}
-          variants={navdockVariants}
+          animate={isScrolled && !isBottom ? "expanded" : "hidden"}
+          variants={navdockVariants(isMobile)}
         >
           {/* Logo always visible */}
-          <div className="gap-[1.25rem] mx-auto flex justify-between items-center">
+          <div className="gap-[1.25rem] w-full lg:mx-auto flex flex-row justify-between items-center">
             <motion.div
-              className="bg-ash z-10 w-[2.25rem] h-[1.375rem] ml-[1.5rem]"
+              className="bg-ash z-10 w-[2.25rem] h-[1.375rem] lg:ml-[1.5rem]"
               initial="hidden"
-              animate={isScrolled ? "expanded" : "hidden"}
-              variants={logoVariants}
+              animate={isScrolled && !isBottom ? "expanded" : "hidden"}
+              variants={logoVariants(isMobile)}
             >
               <Link
                 href="/"
@@ -422,7 +450,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             </motion.div>
             {/* Navigation items and CTA (hidden at first, revealed later) */}
             <motion.nav
-              className="flex flex-row gap-[1.25rem]"
+              className="contents lg:flex flex-row gap-[1.25rem]"
               variants={itemVariants}
               initial="hidden"
               animate={isScrolled ? "visible" : "hidden"}

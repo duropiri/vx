@@ -73,7 +73,7 @@ function PricingSection({ className }: SectionProps) {
 
   return (
     <div id="pricing" className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem] text-ash">
         {/* Header */}
         <SectionHeader
           center
@@ -84,10 +84,8 @@ function PricingSection({ className }: SectionProps) {
         />
 
         {/* Plan Switch */}
-        <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto">
-          <span className="text-ash pn-regular-16 py-[0.75rem] px-[1.375rem]">
-            Monthly
-          </span>
+        <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16 !text-[12px]">
+          <span className="py-[0.75rem] px-[1.375rem]">Monthly</span>
 
           <Switch
             id="toggle-pricing"
@@ -95,16 +93,14 @@ function PricingSection({ className }: SectionProps) {
             className="cursor-select-hover"
           />
 
-          <span className="text-ash pn-regular-16 py-[0.75rem] px-[1.375rem]">
-            Yearly
-          </span>
+          <span className="py-[0.75rem] px-[1.375rem]">Yearly</span>
 
           <div
             className={`${
               isYearly
                 ? "bg-goldenbrown text-white"
                 : "bg-ash text-white line-through"
-            } pn-regular-16  py-[0.75rem] px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+            } py-[0.5rem] px-[1rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
           >
             17% Discount
           </div>
@@ -112,12 +108,12 @@ function PricingSection({ className }: SectionProps) {
 
         {/* Pricing Plans */}
         <div className="relative flex flex-col lg:flex-row h-full w-full justify-start items-start gap-[2rem]">
-          {/* Basic Plan */}
+          {/* Strategic Growth */}
           <div className="pricing-box self-stretch bg-white shadow-customShadow">
-            <div className="flex flex-col w-full items-center justify-start gap-[3rem] text-ash">
+            <div className="flex flex-col w-full items-center justify-start gap-[1.5rem] text-ash">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
-                <h1 className="text-center pn-regular-32">Basic Plan</h1>
+                <h1 className="text-center pn-regular-32">Strategic Growth</h1>
                 <p className="text-center pn-regular-16">
                   No Contracts. Cancel Anytime.
                 </p>
@@ -125,83 +121,112 @@ function PricingSection({ className }: SectionProps) {
               <div className="flex w-full h-[1px] bg-ash" />
               {/* Price */}
               <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-                <h2 className="text-center text-ash pn-semibold-40">$1000</h2>
+                <h2 className="text-center pn-semibold-40">$1,295</h2>
                 <p className="text-center text-goldenbrown pn-semibold-16">
-                  /month
+                  monthly
                 </p>
               </div>
               {/* Features */}
-              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] leading-[1rem] text-ash pn-regular-16">
+              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1rem] pn-regular-16">
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">(4x)</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Social Media Short-Form Videos
-                    </span>
+                    <span className="pn-bold-16">(4x)</span> Social Media
+                    Short-Form Videos
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">(4x)</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Custom Social Media Thumbnails
-                    </span>
+                    <span className="pn-bold-16">(4x)</span> Custom Social Media
+                    Thumbnails
                   </p>
                 </li>
                 <li>
                   <p>
                     All-inclusive social media management including content
                     creation, moderation & scheduling
-                  </p>{" "}
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($2000 value)
+                    </span>
+                  </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-regular-16">Includes </span>
-                    <span className="text-ash pn-bold-16">
+                    Includes
+                    <span className="pn-bold-16">
                       Instagram, Facebook & TikTok
                     </span>
                   </p>
                 </li>
-                <li>
-                  <p>Daily Communication</p>
-                </li>
-                <li>
-                  <p>Topic Research & Script Writing</p>
-                </li>
-                <li>
-                  <p>Copywriting & Ideation</p>
-                </li>
                 <li className="w-72 flex-col justify-start items-start inline-flex">
-                  <p className="text-ash pn-regular-16">
+                  <p className="pn-regular-16">
                     Monthly Strategy Plan
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
+                    </span>
                   </p>
                 </li>
+
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">FREE BONUS</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Instagram Verification
+                    Topic Research & Script Writing
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">FREE BONUS</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Social Media Account Optimization Audit{" "}
+                    Copywriting & Ideation
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
                     </span>
-                    <span className="text-ash pn-bold-16">($500 VALUE)</span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Hashtag Research and Analytics
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span className="pn-bold-16">FREE BONUS</span> Instagram
+                    Verification
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span className="pn-bold-16">FREE BONUS</span> Social Media
+                    Account Optimization Audit <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
+                    </span>
                   </p>
                 </li>
                 <li className="w-72 flex-col justify-start items-start inline-flex">
-                  <p className="text-ash pn-bold-16">2X Money Back Guarantee</p>
+                  <p className="pn-bold-16">
+                    2X Money Back Guarantee
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px] !h-0">
+                      ($250 value)
+                    </span>
+                  </p>
                 </li>
               </ul>
             </div>
+
+            {/* CTA */}
             <div className="flex items-center justify-center w-full mt-[3rem]">
               <HoverWrapper
                 href="/"
@@ -214,7 +239,7 @@ function PricingSection({ className }: SectionProps) {
             </div>
           </div>
 
-          {/* Advanced Plan */}
+          {/* Scaling Maestro */}
           <div className="pricing-box self-stretch bg-white shadow-customShadow">
             <div className="absolute top-[1.5rem] right-[1.5rem] flex px-[0.75rem] py-[0.5rem] bg-ash rounded-[2rem] border border-goldenbrown justify-center items-center gap-[0.25rem]">
               <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
@@ -237,106 +262,127 @@ function PricingSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-full items-center justify-start gap-[3rem] text-ash">
+            <div className="flex flex-col w-full items-center justify-start gap-[1.5rem] text-ash">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
                 <h1 className="text-center pn-regular-32 text-goldenbrown">
-                  Advanced Plan
+                  Scaling Maestro
                 </h1>
                 <p className="text-center pn-regular-16">3 Month Commitment.</p>
               </div>
               <div className="flex w-full h-[1px] bg-ash" />
               {/* Price */}
               <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-                <h2 className="text-center text-ash pn-semibold-40">$2,000</h2>
+                <h2 className="text-center pn-semibold-40">$2,495</h2>
                 <p className="text-center text-goldenbrown pn-semibold-16">
-                  /month
+                  monthly
                 </p>
               </div>
               {/* Features */}
-              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] leading-[1rem]">
-                <div className="flex w-full text-ash pn-semibold-22">
-                  Everything in Basic Plan Plus:
+              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1rem] pn-regular-16">
+                <div className="flex w-full pn-bold-20 !leading-[2.25rem]">
+                  Everything in&nbsp;
+                  <span className="underline">Strategic Growth Plan</span>
+                  &nbsp;+
                 </div>
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">(8x)</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Social Media Short-Form Videos
+                    <span className="pn-bold-16">(12x)</span> Social Media
+                    Short-Form Videos
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      (3x value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">(8x)</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Custom Social Media Thumbnails
+                    <span className="pn-bold-16">(12x)</span> Custom Social
+                    Media Thumbnails
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      (3x value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">(12x)</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Social Media Carousel Posts
+                    <span className="pn-bold-16">(12x)</span> Social Media
+                    Carousel Posts
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1200 value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-regular-16">
-                      Includes Instagram, Facebook & TikTok
-                    </span>
-                    <span className="text-ash pn-bold-16"> & LinkedIn</span>
+                    Includes Instagram, Facebook & TikTok
+                    <span className="pn-bold-16"> & LinkedIn</span>
                   </p>
                 </li>
                 <li>
-                  <p>Hashtag Research and Analytics</p>
-                </li>
-                <li>
-                  <p>Unlimited Revisions</p>
-                </li>
-                <li>
                   <p>
-                    <span className="text-ash pn-regular-16">
-                      Weekly Analytics Report{" "}
-                    </span>
-                    <span className="text-ash pn-bold-16">
-                      (Up to 1 Year of Data)
+                    Follow-Up Automations & Lead Capture
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($500 value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-regular-16">
+                    Offer Creation & Marketing Consulting
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1000 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    Weekly Analytics Report - Up to 1 Year of Data
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($250 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span className="">
                       FREE BONUS Professional Headshots & Lifestyle Photos{" "}
                     </span>
-                    <span className="text-ash pn-bold-16">($1500 VALUE)</span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <span className="text-ash pn-bold-16">FREE BONUS</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Customizable LinkinBio URL
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($750 value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-ash pn-bold-16">FREE BONUS</span>
-                    <span className="text-ash pn-regular-16">
-                      {" "}
-                      Members-Only VX Merch
+                    <span className="pn-bold-16">FREE BONUS</span> Custom Lead
+                    Capture Clickfunnel
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1000 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span className="pn-bold-16">FREE BONUS</span> Propietary
+                    Lead Magnet
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1000 value)
                     </span>
                   </p>
                 </li>
               </ul>
             </div>
+
+            {/* CTA */}
             <div className="flex items-center justify-center w-full mt-[3rem]">
               <HoverWrapper
                 href="/"
@@ -349,13 +395,13 @@ function PricingSection({ className }: SectionProps) {
             </div>
           </div>
 
-          {/* Ultimate Plan */}
+          {/* Absolute Domination */}
           <div className="pricing-box self-stretch bg-ash shadow-customShadow">
-            <div className="flex w-full flex-col justify-start items-center gap-12">
+            <div className="flex w-full flex-col justify-start items-center gap-[1.5rem]">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
                 <h1 className="text-center pn-regular-32 text-white">
-                  Ultimate Plan
+                  Absolute Domination
                 </h1>
                 <p className="text-center pn-regular-16 text-white">
                   3 Month Commitment.
@@ -365,104 +411,132 @@ function PricingSection({ className }: SectionProps) {
               {/* Price */}
               <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
                 <h2 className="text-center text-white pn-semibold-40">
-                  $6,000
+                  $5,995
                 </h2>
                 <p className="text-center text-goldenbrown pn-semibold-16">
-                  /month
+                  monthly
                 </p>
               </div>
               {/* Features */}
-              <ul className="custom-bullet-list light flex flex-col w-full items-start justify-start gap-[0.625rem] text-white leading-[1rem]">
-                <div className="flex w-full text-white pn-semibold-22">
-                  Everything in Advanced Plan Plus:
+              <ul className="custom-bullet-list light flex flex-col w-full items-start justify-start gap-[0.625rem] text-white pn-regular-16 !leading-[1rem]">
+                <div className="flex w-full text-white pn-bold-20 !leading-[2.25rem]">
+                  Everything in&nbsp;
+                  <span className="underline">Scaling Maestro Plan</span>&nbsp;+
                 </div>
                 <li>
                   <p>
                     <span className="text-white pn-bold-16">(30x)</span>
-                    <span className="text-white pn-regular-16">
+                    <span className="text-white">
                       {" "}
                       Social Media Short-Form Videos
+                      <br />{" "}
+                      <span className="uppercase font-bold !text-[12px]">
+                        (2.5x value)
+                      </span>
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-white pn-bold-16">(30x)</span>
-                    <span className="text-white pn-regular-16">
-                      {" "}
-                      Custom Social Media Thumbnails
+                    <span className="text-white pn-bold-16">(30x)</span> Custom
+                    Social Media Thumbnails
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      (2.5x value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-white pn-bold-16">(60x)</span>
-                    <span className="text-white pn-regular-16">
-                      {" "}
-                      Social Media Carousel Posts
+                    <span className="text-white pn-bold-16">(60x)</span> Social
+                    Media Carousel Posts
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      (5x value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-white pn-bold-16">Daily</span>
-                    <span className="text-white pn-regular-16">
-                      {" "}
-                      Photo/Video Story Posts
+                    <span className="text-white pn-bold-16">Daily</span>{" "}
+                    Photo/Video Story Posts
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1000 value)
                     </span>
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-white pn-bold-16">Priority</span>
-                    <span className="text-white pn-regular-16">
-                      {" "}
-                      Listing Appointment Booking
-                    </span>{" "}
-                    <span className="text-white pn-bold-16">(EXCLUSIVE)</span>
+                    <span className="text-white pn-bold-16">Unlimited</span>{" "}
+                    Social Media Account(s) - ALL Social Media Platforms
+                    including Instagram, Facebook, TikTok, LinkedIn, Twitter
+                    (X), and Pinterest
                   </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-white pn-bold-16">Unlimited</span>
-                    <span className="text-white pn-regular-16">
-                      {" "}
-                      Social Media Account(s) - ALL Social Media Platforms
-                      including Instagram, Facebook, TikTok, LinkedIn, Twitter
-                      (X), and Pinterest
+                    {" "}
+                    Media Buying & Advertising
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($3000 value)
                     </span>
                   </p>
                 </li>
                 <li>
-                  <p> Media Buying & Advertising</p>
-                </li>
-                <li>
-                  <span className="text-white pn-bold-16">
-                    <p>FREE BONUS</p>
-                  </span>
-                  <span className="text-white pn-regular-16">
-                    <p>
-                      {" "}
-                      Exclusive Get-Comfortable-On-Camera-In-3-Days Training
-                      Program{" "}
-                    </p>
-                  </span>
-                  <span className="text-white pn-bold-16">
-                    <p>($1000 VALUE)</p>
-                  </span>
+                  <p>
+                    {" "}
+                    Lead Generation & CRM Pipeline Management
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($3000 value)
+                    </span>
+                  </p>
                 </li>
                 <li>
                   <p>
-                    <span className="text-white pn-bold-16">FREE BONUS</span>
-                    <span className="text-white pn-regular-16">
-                      {" "}
-                      Custom Logo Design{" "}
+                    {" "}
+                    Personalized Email & Text Automation System
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1000 value)
                     </span>
-                    <span className="text-white pn-bold-16">($2000 VALUE)</span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    {" "}
+                    Branding Development & Logo Design
+                    <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($2000 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span className="text-white pn-bold-16">FREE BONUS</span>{" "}
+                    Exclusive Get-Comfortable-On-Camera-In-3-Days Training
+                    Program <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($1000 value)
+                    </span>
+                  </p>
+                </li>
+                <li>
+                  <p>
+                    <span className="text-white pn-bold-16">FREE BONUS</span>{" "}
+                    Get-Ready-To-Go-Viral-Prep-Checklist <br />{" "}
+                    <span className="uppercase font-bold !text-[12px]">
+                      ($100 value)
+                    </span>
                   </p>
                 </li>
               </ul>
             </div>
+
+            {/* CTA */}
             <div className="flex items-center justify-center w-full mt-[3rem]">
               <HoverWrapper
                 href="/"

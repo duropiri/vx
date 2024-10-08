@@ -9,7 +9,7 @@ interface SectionProps {
 function ContactSection({ className }: SectionProps) {
   return (
     <div id="contact" className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
           center
@@ -25,7 +25,7 @@ function ContactSection({ className }: SectionProps) {
           }
         />
 
-        <div className="cursor-none-hover w-full h-[100rem] 2xl:h-[44rem] overflow-hidden">
+        <div className="cursor-none-hover w-full 2xl:h-[44rem] overflow-hidden">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
             style={{ width: "100%", border: "none", overflow: "visible" }}

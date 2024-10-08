@@ -19,15 +19,25 @@ const FAQ = [
     answer:
       "Virtual Xposure helps real estate professionals build their online presence by managing social media accounts, creating high-quality content, and driving engagement, allowing you to focus on closing deals.",
   },
-  { question: "How does Virtual Xposure improve my social media?", answer: "" },
-  { question: "What kind of content does Virtual Xposure create?", answer: "" },
+  {
+    question: "How does Virtual Xposure improve my social media?",
+    answer:
+      "We improve your social media by developing a tailored strategy that resonates with your target audience. From crafting compelling posts to engaging visuals, we ensure your content stands out and attracts attention, helping you grow a loyal following and generate leads.",
+  },
+  {
+    question: "What kind of content does Virtual Xposure create?",
+    answer:
+      "Virtual Xposure specializes in creating visually stunning and informative content, including property showcases, client testimonials, market insights, and lifestyle-related posts. Our content not only showcases your listings but also builds your brand's credibility and trust with your audience.",
+  },
   {
     question: "How quickly can I see results with Virtual Xposure?",
-    answer: "",
+    answer:
+      "While every market and audience is different, most clients start seeing increased engagement and improved social media metrics within the first 30-60 days. Long-term growth, including lead generation and brand recognition, typically follows as the strategy takes hold.",
   },
   {
     question: "How does Virtual Xposure collaborate with clients?",
-    answer: "",
+    answer:
+      "We take a collaborative approach by maintaining regular communication through meetings, feedback sessions, and progress updates. This ensures our strategy aligns with your business goals and that we're consistently adjusting to meet your needs.",
   },
 ];
 
