@@ -32,7 +32,7 @@ function RoadmapSection({ className }: SectionProps) {
         />
 
         {/* Content */}
-        <div className="relative flex flex-col size-full items-center justify-center min-h-[400vh] overflow-hidden">
+        <div className="relative flex flex-col size-full items-center justify-center lg:min-h-[400vh]">
           {/* Gradient Top */}
           <div className="pointer-events-none absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b from-white to-transparent" />
           {/* Gradient Bottom */}
@@ -54,7 +54,7 @@ function RoadmapSection({ className }: SectionProps) {
                 viewBox="0 0 1572 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[100dvw] h-[400dvh]"
+                className="w-[100dvw] h-[200dvh] lg:h-[400dvh]"
               >
                 <path
                   d="M757 20.5C757 20.5 679.5 834.501 1189.5 856.5C1688.5 837.904 1644 400 1223.5 400C803 400 322.5 803 488.5 1297.5C654.5 1792 1503.65 1066 1518 1629.5C1532.35 2193 372.999 1884.79 160 2085.64C-53 2286.5 176 2474.5 607.5 2502.5C1039 2530.5 1158 2396 882.5 2305C607 2214 -21 2620.5 22.5 2902.5C66 3184.5 494 3337 757 3118C1020 2899 795.5 3406.5 1155 3206C1514.5 3005.5 1603 3415 1223.5 3522C844 3629 107 4165 43 3914C-21 3663 245 3571 469 3600C693 3629 757 4374 757 4374"
@@ -71,10 +71,11 @@ function RoadmapSection({ className }: SectionProps) {
                     y2="4374"
                     gradientUnits="userSpaceOnUse"
                   >
-                    <stop stop-color="#C5A05E" />
-                    <stop offset="0.15" stop-color="#FDD98A" />
-                    <stop offset="0.85" stop-color="#FDD98A" />
-                    <stop offset="1" stop-color="#FFFDF9" />
+                    <stop stop-color="white" stop-opacity="0" />
+                    <stop offset="0.0501897" stop-color="#C5A05E" />
+                    <stop offset="0.500104" stop-color="#FDD98A" />
+                    <stop offset="0.945896" stop-color="#FDD98A" />
+                    <stop offset="1" stop-color="white" stop-opacity="0" />
                   </linearGradient>
                 </defs>
               </svg>
@@ -82,9 +83,9 @@ function RoadmapSection({ className }: SectionProps) {
           </div>
 
           {/* Steps Copy */}
-          <div className="flex flex-col size-full min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10">
+          <div className="flex flex-col size-full lg:min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10">
             {/* Step 1 */}
-            <div className="flex flex-row size-full h-[100vh] items-center justify-between pl-[2.5rem] gap-[6.25rem] pt-[7.5rem] pb-[1.875rem]">
+            <div className="flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[1.875rem] lg:gap-[6.25rem] lg:pt-[7.5rem] py-[1.875rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -98,18 +99,19 @@ function RoadmapSection({ className }: SectionProps) {
                 >
                   Step 1
                 </CharByCharOnScroll>
-                <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
+                <div className="flex self-stretch justify-start items-start gap-2.5">
                   <LetterRevealOnScroll end="bottom 60%">
                     <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={60}>
-                    <div className="flex p-[0.625rem] justify-start items-center">
+                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
                         viewBox="0 0 23 23"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        className="flex size-full"
                       >
                         <path
                           fill-rule="evenodd"
@@ -130,7 +132,7 @@ function RoadmapSection({ className }: SectionProps) {
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-r-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]">
                 <Image
                   src="/images/logo5.webp"
                   alt="vx"
@@ -142,7 +144,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 2 */}
-            <div className="flex flex-row-reverse size-full h-[100vh] items-center justify-between pr-[2.5rem] gap-[6.25rem] py-[1.875rem]">
+            <div className="flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[1.875rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -158,16 +160,17 @@ function RoadmapSection({ className }: SectionProps) {
                 </CharByCharOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
+                    <h2 className="text-ash pn-bold-28">The Power Upload</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={60}>
-                    <div className="flex p-[0.625rem] justify-start items-center">
+                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
                         viewBox="0 0 23 23"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        className="flex size-full"
                       >
                         <path
                           fill-rule="evenodd"
@@ -181,14 +184,15 @@ function RoadmapSection({ className }: SectionProps) {
                 </div>
                 <OpacityOnScroll end={50}>
                   <p className="text-ash pn-regular-16">
-                    We kick things off immediately. Your invoice is sent, and
-                    you&apos;ll get a streamlined welcome email laying out your
-                    next moves, so you can hit the ground running with a clear
-                    plan in place.
+                    Provide your business insights and marketing materials, and
+                    you&apos;re one step closer to success. Once payment is
+                    secured, we&apos;ll schedule your onboarding call, setting
+                    the stage for a strategy that&apos;s built to deliver
+                    results.
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-l-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]">
                 <Image
                   src="/images/logo5.webp"
                   alt="vx"
@@ -200,7 +204,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 3 */}
-            <div className="flex flex-row size-full h-[100vh] items-center justify-between pl-[2.5rem] gap-[6.25rem] py-[1.875rem]">
+            <div className="flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[1.875rem] lg:gap-[6.25rem] py-[1.875rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -216,16 +220,17 @@ function RoadmapSection({ className }: SectionProps) {
                 </CharByCharOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
+                    <h2 className="text-ash pn-bold-28">The Strategy Surge</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={60}>
-                    <div className="flex p-[0.625rem] justify-start items-center">
+                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
                         viewBox="0 0 23 23"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        className="flex size-full"
                       >
                         <path
                           fill-rule="evenodd"
@@ -239,14 +244,14 @@ function RoadmapSection({ className }: SectionProps) {
                 </div>
                 <OpacityOnScroll end={50}>
                   <p className="text-ash pn-regular-16">
-                    We kick things off immediately. Your invoice is sent, and
-                    you&apos;ll get a streamlined welcome email laying out your
-                    next moves, so you can hit the ground running with a clear
-                    plan in place.
+                    This is where your brand takes off. We audit and optimize
+                    your social media accounts, then create a customized
+                    strategy designed to drive engagement, boost visibility, and
+                    get you real growth fast.
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-r-[2.5rem]">
+              <div className="flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]">
                 <Image
                   src="/images/logo5.webp"
                   alt="vx"
@@ -258,7 +263,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 4 */}
-            <div className="flex flex-row-reverse size-full h-[100vh] items-center justify-between pr-[2.5rem] gap-[6.25rem] pt-[1.875rem] pb-[7.5rem]">
+            <div className="flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[1.875rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem] lg:pb-[7.5rem]">
               <div className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]">
                 <CharByCharOnScroll
                   className="text-ash pn-regular-16 uppercase leading-normal"
@@ -274,16 +279,17 @@ function RoadmapSection({ className }: SectionProps) {
                 </CharByCharOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
+                    <h2 className="text-ash pn-bold-28">The Content Machine</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={60}>
-                    <div className="flex p-[0.625rem] justify-start items-center">
+                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
                         viewBox="0 0 23 23"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
+                        className="flex size-full"
                       >
                         <path
                           fill-rule="evenodd"
@@ -297,14 +303,14 @@ function RoadmapSection({ className }: SectionProps) {
                 </div>
                 <OpacityOnScroll end={50}>
                   <p className="text-ash pn-regular-16">
-                    We kick things off immediately. Your invoice is sent, and
-                    you&apos;ll get a streamlined welcome email laying out your
-                    next moves, so you can hit the ground running with a clear
-                    plan in place.
+                    Our team produces premium content tailored to your
+                    brand&apos;s voice. Once you approve, we start posting and
+                    get your content live—billing only begins once your
+                    brand&apos;s online presence is in action!
                   </p>
                 </OpacityOnScroll>
               </div>
-              <div className="flex flex-col items-center justify-center w-[31.25rem] h-[11.875rem] overflow-hidden rounded-l-[2.5rem]">
+              <div className="fflex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]">
                 <Image
                   src="/images/logo5.webp"
                   alt="vx"

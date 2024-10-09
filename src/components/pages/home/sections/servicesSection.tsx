@@ -91,7 +91,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             Followers
                           </div>
                           <div className=" h-[1.125rem] justify-start items-center gap-[3px] flex">
-                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex group-hover:animate-bounce">
+                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                               <Image
                                 alt="arrow"
                                 src="/svgs/arrow-up-right.svg"
@@ -103,9 +103,10 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                               {firstBentoHovered ? (
                                 <CountUp
                                   start={0}
-                                  end={20}
+                                  end={2.0}
                                   duration={1.5}
-                                  separator=","
+                                  decimals={1}
+                                  decimal=""
                                 />
                               ) : (
                                 "20"
@@ -149,7 +150,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             Followers
                           </div>
                           <div className=" h-[1.125rem] justify-start items-center gap-[3px] flex">
-                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex group-hover:animate-bounce">
+                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                               <Image
                                 alt="arrow"
                                 src="/svgs/arrow-up-right.svg"
@@ -161,9 +162,10 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                               {firstBentoHovered ? (
                                 <CountUp
                                   start={0}
-                                  end={53}
+                                  end={5.3}
                                   duration={1.5}
-                                  separator=","
+                                  decimals={1}
+                                  decimal=""
                                 />
                               ) : (
                                 "53"
@@ -211,7 +213,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             Followers
                           </div>
                           <div className=" h-[1.125rem] justify-start items-center gap-[3px] flex">
-                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex group-hover:animate-bounce">
+                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                               <Image
                                 alt="arrow"
                                 src="/svgs/arrow-up-right.svg"
@@ -223,9 +225,10 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                               {firstBentoHovered ? (
                                 <CountUp
                                   start={0}
-                                  end={12}
+                                  end={1.2}
                                   duration={1.5}
-                                  separator=","
+                                  decimals={1}
+                                  decimal=""
                                 />
                               ) : (
                                 "12"
@@ -271,7 +274,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             Connections
                           </div>
                           <div className="justify-start items-center gap-[3px] flex">
-                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex group-hover:animate-bounce">
+                            <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                               <Image
                                 alt="arrow"
                                 src="/svgs/arrow-up-right.svg"
@@ -283,9 +286,10 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                               {firstBentoHovered ? (
                                 <CountUp
                                   start={0}
-                                  end={25}
+                                  end={2.5}
                                   duration={1.5}
-                                  separator=","
+                                  decimals={1}
+                                  decimal=""
                                 />
                               ) : (
                                 "25"
@@ -788,9 +792,9 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                 <div className="select-none blur-[0.031rem] transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                   <div className="w-full justify-between items-center flex">
                     <div className="text-ash nu-bold-20">Followers</div>
-                    <div className="w-[150px] flex-col justify-start items-start flex">
+                    <div className="flex-col justify-start items-start flex">
                       <div className="w-full h-10 flex-col justify-start items-start gap-0.5 flex">
-                        <div className="w-full px-3 py-2 bg-white rounded-lg border border-ash/10 justify-start items-center gap-2 flex">
+                        <div className="size-full px-3 py-2 bg-white rounded-lg border border-ash/10 justify-start items-center gap-2 flex">
                           <div className="w-6 h-6 justify-center items-center flex">
                             <Image
                               alt="instagram"
@@ -816,14 +820,14 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="justify-start items-start gap-4 flex w-full">
-                    <div className="flex flex-col justify-start items-start gap-px">
+                  <div className="flex flex-row w-full justify-start items-start gap-4">
+                    <div className="flex flex-col w-full justify-start items-start gap-px">
                       <div className="text-ash nu-semibold-16">Net Growth</div>
                       <div className="text-charcoal nu-regular-12">
                         Jun 2025 - Dec 2025
                       </div>
                     </div>
-                    <div className="size-full justify-center items-start gap-4 flex">
+                    <div className="flex size-full justify-center items-start gap-2 lg:gap-4">
                       <div className="p-3 bg-ash rounded-lg justify-start items-start gap-2 flex min-w-[30%]">
                         <div className="flex-col justify-center items-start gap-1 flex">
                           <div className="transition-all duration-500 group-hover:scale-125 w-6 h-6 relative">
@@ -1076,8 +1080,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                   <span className="group-hover:text-charcoalNavy transition-all duration-500">
                     Optimized
                   </span>{" "}
-                  for{" "}
-                  <br/>
+                  for <br />
                   <span className="group-hover:text-goldenbrown transition-all duration-500 group-hover:text-[3.25rem]">
                     Scalability
                   </span>

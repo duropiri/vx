@@ -15,6 +15,7 @@ import ContactSection from "@/components/pages/home/sections/contactSection";
 import { useScroll, MotionValue } from "framer-motion";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import Image from "next/image";
+import { NavLinks } from "@/data/navLinks";
 
 function body() {
   const container = useRef<HTMLDivElement>(null);
@@ -27,9 +28,13 @@ function body() {
 
   return (
     <>
-      <HeroSection className="bg-white z-10 min-w-[100vw]"/>
-      <SocialProofSection className="bg-white z-10 min-w-[100vw]"/>
-      <CopySection className="bg-white z-10 min-w-[100vw]"
+      <HeroSection
+        className="bg-white z-10 min-w-[100vw]"
+        navigation={NavLinks}
+      />
+      <SocialProofSection className="bg-white z-10 min-w-[100vw]" />
+      <CopySection
+        className="bg-white z-10 min-w-[100vw]"
         copy={
           <>
             We now live in an <br />
@@ -37,8 +42,9 @@ function body() {
           </>
         }
       />
-      <ProblemSection className="bg-white z-0 min-w-[100vw]"/>
-      <CopySection className="bg-white z-10 min-w-[100vw]"
+      <ProblemSection className="bg-white z-0 min-w-[100vw]" />
+      <CopySection
+        className="bg-white z-10 min-w-[100vw]"
         copy={
           <>
             A shift from person-to-person transactions to a place where almost{" "}
@@ -67,15 +73,15 @@ function body() {
       </div>
       <SocialProofSection full className="bg-white z-10" />
 
-      <SolutionSection className="bg-ash z-10"/>
-      <ServicesSection className="bg-white z-10"/>
+      <SolutionSection className="bg-ash z-10" />
+      <ServicesSection className="bg-white z-10" />
 
-      <RoadmapSection className="bg-white z-10"/>
-      <SocialProofSection full className="bg-white z-10"/>
-      <PricingSection className="bg-white z-10"/>
-      <CTASection className="bg-white z-10"/>
-      <FAQSection className="bg-white z-10"/>
-      <ContactSection className="bg-white z-10"/>
+      <RoadmapSection className="bg-white z-10" />
+      <SocialProofSection full className="bg-white z-10" />
+      <PricingSection className="bg-white z-10" />
+      <CTASection className="bg-white z-10" />
+      <FAQSection className="bg-white z-10" />
+      <ContactSection className="bg-white z-10" />
     </>
   );
 }

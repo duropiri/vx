@@ -200,10 +200,6 @@ const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
 
 const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const [isActive, setIsActive] = useState(false);
-  // const [selectedLink, setSelectedLink] = useState({
-  //   isActive: false,
-  //   index: 0,
-  // });
   const [isScrolled, setIsScrolled] = useState(false);
   const [isBottom, setIsBottom] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -295,7 +291,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               className="flex size-full lg:h-[1.375rem] overflow-hidden"
               passHref
             >
-              {/* <img src="/images/logo5.webp" alt="Loading" className="" /> */}
               <Image
                 src="/images/logo5.webp"
                 alt="logo"
@@ -368,165 +363,15 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               </Link>
             </HoverWrapper>
           </nav>
-
-          {/* Mobile Menu */}
-          {/* <div
-            onClick={() => setIsActive(!isActive)}
-            className="group flex md:hidden items-center justify-end gap-2 cursor-pointer"
-          >
-            <div className="relative flex flex-col items-center justify-center">
-              <div
-                className={`w-6 h-0.5 bg-white transform transition duration-300 ease-in-out ${
-                  isActive ? "rotate-45 translate-y-[0.175rem]" : ""
-                }`}
-              />
-              <div
-                className={`w-6 h-0.5 bg-white transform transition duration-300 ease-in-out mt-1 ${
-                  isActive ? "-rotate-45 -translate-y-[0.175rem]" : ""
-                }`}
-              />
-            </div>
-            <div className="group-hover:translate-x-1 duration-300 relative flex flex-col items-start justify-center size-full small-text">
-              <motion.p
-                variants={opacity}
-                animate={!isActive ? "open" : "closed"}
-                className="absolute m-0"
-              >
-                Menu
-              </motion.p>
-              <motion.p
-                variants={opacity}
-                animate={isActive ? "open" : "closed"}
-                className=" m-0"
-              >
-                Close
-              </motion.p>
-            </div>
-          </div> */}
         </div>
 
-        {/* <motion.div
-        variants={background}
-        initial="initial"
-        animate={isActive ? "open" : "closed"}
-        className="absolute bg-transparent backdrop-blur-lg opacity-50 size-full top-full left-0"
-      /> */}
         <AnimatePresence>
           {isActive && <Nav links={navigation} />}
         </AnimatePresence>
       </div>
 
       {/* Navdock */}
-      <div className="fixed flex flex-row items-center justify-center bottom-0 lg:top-[2.5rem] w-[100vw] h-[3.5rem] z-[1000] max-w-[100vw]">
-        <motion.div
-          className={`flex flex-row items-center justify-center bg-ash text-white sm:rounded-[1.5rem] border-[0.5rem] border-ash overflow-hidden ${
-            isScrolled ? "" : "hidden"
-          }`}
-          initial="hidden"
-          animate={isScrolled && !isBottom ? "expanded" : "hidden"}
-          variants={navdockVariants(isMobile)}
-        >
-          {/* Logo always visible */}
-          <div className="gap-[1.25rem] w-full lg:mx-auto flex flex-row justify-between items-center">
-            <motion.div
-              className="bg-ash z-10 w-[2.25rem] h-[1.375rem] lg:ml-[1.5rem]"
-              initial="hidden"
-              animate={isScrolled && !isBottom ? "expanded" : "hidden"}
-              variants={logoVariants(isMobile)}
-            >
-              <Link
-                href="/"
-                passHref
-                className="cursor-select-hover flex size-full h-[1.375rem] overflow-hidden"
-              >
-                <Image
-                  src="/images/logo2.png"
-                  alt="logo"
-                  width={36}
-                  height={22}
-                  className=""
-                />
-              </Link>
-            </motion.div>
-            {/* Navigation items and CTA (hidden at first, revealed later) */}
-            <motion.nav
-              className="contents lg:flex flex-row gap-[1.25rem]"
-              variants={itemVariants}
-              initial="hidden"
-              animate={isScrolled ? "visible" : "hidden"}
-            >
-              {navigation.map((nav, index) => (
-                <HoverWrapper
-                  key={index}
-                  className="cursor-select-hover text-nowrap transition-all duration-300"
-                  // variants={itemVariants}
-                >
-                  <motion.div
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate={isScrolled ? "visible" : "hidden"}
-                  >
-                    <Link key={`l_${index}`} href={nav.href} passHref>
-                      <FlipLink>{getChars(nav.title)}</FlipLink>
-                    </Link>
-                  </motion.div>
-                </HoverWrapper>
-              ))}
-            </motion.nav>
 
-            {/* CTA */}
-            <HoverWrapper className="cursor-select-hover">
-              <motion.div
-                variants={itemVariants}
-                initial="hidden"
-                animate={isScrolled ? "visible" : "hidden"}
-              >
-                <Link
-                  href={"/#contact"}
-                  className="pn-regular-16 relative group hidden md:flex button !border-none !bg-goldenbrown text-ash shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 !rounded-[0.938rem] !py-[0.688rem] !px-[1.25rem]"
-                  passHref
-                >
-                  <FlipLink>{getChars("Contact Us")}</FlipLink>
-                  <svg
-                    width="21"
-                    height="21"
-                    viewBox="0 0 21 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_73_5969)">
-                      <path
-                        d="M14.6665 6.33398L6.33319 14.6673"
-                        stroke="#1B1A17"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M7.16656 6.33398H14.6666V13.834"
-                        stroke="#1B1A17"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_73_5969">
-                        <rect
-                          width="20"
-                          height="20"
-                          fill="white"
-                          transform="translate(0.499878 0.5)"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </Link>
-              </motion.div>
-            </HoverWrapper>
-          </div>
-        </motion.div>
-      </div>
     </>
   );
 };

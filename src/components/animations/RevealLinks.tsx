@@ -8,13 +8,14 @@ interface FlipLinkProps {
   href?: string;
   outside?: string;
   inside?: string;
+  id?: string;
 }
 
 // Create a context for hover state
 const HoverContext = createContext(false);
 
 // HoverWrapper component
-export const HoverWrapper = ({ children, className, href }: FlipLinkProps) => {
+export const HoverWrapper = ({ children, className, href, id }: FlipLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const content = (
@@ -25,6 +26,7 @@ export const HoverWrapper = ({ children, className, href }: FlipLinkProps) => {
 
   const commonProps = {
     className,
+    id,
     onMouseEnter: () => setIsHovered(true),
     onMouseLeave: () => setIsHovered(false),
   };
