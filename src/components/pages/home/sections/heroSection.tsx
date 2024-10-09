@@ -28,23 +28,25 @@ function HeroSection({ className = "", navigation }: SectionProps) {
   const [isMobile, setIsMobile] = useState(false);
   const [hasPassedHero, setHasPassedHero] = useState(false);
   const [isTransforming, setIsTransforming] = useState(false);
+  const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
 
   // Screen Size checking
   useEffect(() => {
+    console.log("Is Mobile:", isMobile);
+  }, [isMobile]); // This will run whenever isMobile changes
+
+  // Screen Size checking (previous useEffect remains the same)
+  useEffect(() => {
     const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
+      setIsMobile(window.innerWidth <= 768);
     };
 
-    // Check if the user is at the bottom of the page
     const handleScroll = () => {
       const scrollTop = window.scrollY;
       const windowHeight = window.innerHeight;
       const documentHeight = document.documentElement.scrollHeight;
 
-      // Detect when user reaches the bottom of the page
       setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
-
-      // Set isScrolled for animation purposes
       setIsScrolled(
         scrollTop > 50 && scrollTop + windowHeight < documentHeight
       );
@@ -54,11 +56,9 @@ function HeroSection({ className = "", navigation }: SectionProps) {
     handleResize();
     handleScroll();
 
-    // Event listeners for scroll and resize
     window.addEventListener("resize", handleResize);
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listeners
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("scroll", handleScroll);
@@ -107,7 +107,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
       });
 
       // Hero CTA to Navdock transition
-      if (heroCTARef.current && navdockRef.current) {
+      if (!isMobile && heroCTARef.current && navdockRef.current) {
         const heroCTA = heroCTARef.current;
         const navdock = navdockRef.current;
 
@@ -116,11 +116,11 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         // Set navdock initial state
         gsap.set(navdock, {
           // width: heroBounds.width,
-          width: "11rem",
+          width: isMobile ? "100%" : "11rem",
           height: "3.313rem",
-          background: "#c5a05e",
+          background: isMobile ? "#1b1a17" : "#c5a05e",
           opacity: 0,
-          borderRadius: "9999px", // Matches the heroCTA's border radius
+          borderRadius: isMobile ? "0px" : "9999px", // Matches the heroCTA's border radius
           display: "none", // Ensure it's hidden initially
         });
 
@@ -139,7 +139,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
         ScrollTrigger.create({
           trigger: heroCTA,
-          start: "top 40px", // When heroCTA reaches navdock position
+          start: isMobile ? "top -10vh" : "top 40px", // When heroCTA reaches navdock position
           end: "+=50",
           // markers: true,
           onEnter: () => {
@@ -174,14 +174,15 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             // Animate the navdock
             gsap.to(navdock, {
               background: "#1b1a17",
-              width: "auto",
+              width: isMobile ? "100%" : "auto",
               height: "3.313rem",
+              paddingLeft: isMobile ? "0px" : "1.5rem",
               paddingRight: "0px",
               paddingTop: "0px",
               paddingBottom: "0px",
               gap: "1.313rem",
               border: "0.125rem solid #1b1a17",
-              borderRadius: "9999px",
+              borderRadius: isMobile ? "0px" : "9999px",
 
               duration: 0.2,
               onComplete: () => {
@@ -191,7 +192,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
                 // Animate the logo (from hidden to expanded)
                 gsap.fromTo(
-                  "#logo", // Ensure your logo has this ID
+                  "#logo",
                   {
                     x: isMobile ? 0 : 150,
                     width: "2.25rem",
@@ -207,9 +208,9 @@ function HeroSection({ className = "", navigation }: SectionProps) {
                   } // Expanded state
                 );
 
-                // Animate nav items (from hidden to visible with staggered effect)
+                // Animate nav items (from hidden to visible with no staggered effect)
                 gsap.fromTo(
-                  ".nav-item", // Ensure your nav items have this class
+                  ".nav-item",
                   { opacity: 0, y: 0, width: "0px", display: "none" }, // Hidden state
                   {
                     opacity: 1,
@@ -225,7 +226,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
                 gsap.fromTo(
                   "#navdock-cta", // Ensure your logo has this ID
                   {
-                    dislay: "contents",
+                    // dislay: "contents",
                     width: "11rem",
                     padding: "none",
                     backgroundColor: "transparent",
@@ -273,9 +274,9 @@ function HeroSection({ className = "", navigation }: SectionProps) {
               duration: 0,
             });
 
-            // Hide nav items (reset to default state
+            // Reset navdock cta (reset to default state, identical to hero cta)
             gsap.to("#navdock-cta", {
-              dislay: "contents",
+              // dislay: "contents",
               width: "100%",
               background: "transparent",
               border: "none",
@@ -286,51 +287,44 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         });
       }
 
+      // Add new ScrollTrigger for mobile navdock fade out
+      if (navdockRef.current) {
+        ScrollTrigger.create({
+          trigger: document.documentElement, // Use the entire document as trigger
+          start: "bottom bottom+=100vh", // Start trigger 100vh before document bottom
+          end: "bottom bottom",
+          onUpdate: (self) => {
+            if (isMobile) {
+              // Calculate opacity based on scroll position
+              const progress = self.progress;
+              gsap.to(navdockRef.current, {
+                opacity: 1 - progress,
+                duration: 0.2,
+                onComplete: () => {
+                  setShouldHideNavdock(progress === 1);
+                },
+              });
+            } else {
+              // Ensure navdock is visible on desktop
+              gsap.to(navdockRef.current, {
+                opacity: 1,
+                duration: 0.2,
+                onComplete: () => {
+                  setShouldHideNavdock(false);
+                },
+              });
+            }
+          },
+        });
+      }
+
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
     };
 
     loadGSAP();
-  }, []);
-
-  // const logoVariants = (isMobile: any) => ({
-  //   hidden: {
-  //     x: isMobile ? 0 : 150, // No x animation on mobile
-  //     width: "2.25rem",
-  //     transition: { duration: 0 },
-  //   },
-  //   expanded: {
-  //     x: isMobile ? 0 : 0, // No x animation on mobile
-  //     transition: { duration: isMobile ? 0 : 0.5 },
-  //   },
-  // });
-
-  // const itemVariants = {
-  //   hidden: {
-  //     opacity: 0,
-  //     y: 0,
-  //     width: "0px",
-  //     transition: { duration: 0 },
-  //   },
-  //   visible: { opacity: 1, y: 0, transition: { delay: 0, duration: 0.5 } },
-  // };
-
-  // // Update navdock variants to consider hasPassedHero
-  // const navdockVariants = (isMobile: boolean) => ({
-  //   hidden: {
-  //     width: isMobile ? "auto" : "auto",
-  //     transition: { duration: 0 },
-  //   },
-  //   expanded: {
-  //     width: isMobile ? "100%" : "auto",
-  //     transition: {
-  //       duration: isMobile ? 0 : 0.5,
-  //       when: "beforeChildren",
-  //       staggerChildren: 0.1,
-  //     },
-  //   },
-  // });
+  }, [isMobile]);
 
   return (
     <>
@@ -451,13 +445,18 @@ function HeroSection({ className = "", navigation }: SectionProps) {
       </div>
 
       {/* Navdock */}
-      <div className="fixed flex flex-row items-center justify-center bottom-0 lg:top-[2.5rem] w-[100vw] h-[3.313rem] z-[1000] max-w-[100vw]">
+      <div
+        className={`fixed flex flex-row items-center justify-center bottom-0 lg:top-[2.5rem] w-[100vw] h-[3.313rem] z-[1000] max-w-[100vw] ${
+          shouldHideNavdock ? "hidden" : ""
+        }`}
+      >
         <div
           ref={navdockRef}
           className={`flex flex-row items-center justify-between px-[1.5rem] py-[0.875rem] border-[0.125rem] border-ash transition-all rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem] overflow-hidden
             ${!isTransforming ? "" : ""}
             ${hasPassedHero ? "" : "pointer-events-none"}`}
         >
+          {/* Navdock Final Form */}
           <div id="logo" className="">
             <Link
               href="/"
@@ -532,112 +531,6 @@ function HeroSection({ className = "", navigation }: SectionProps) {
               </defs>
             </svg>
           </HoverWrapper>
-
-          {/* Logo always visible */}
-          {/* <motion.div
-            className="gap-[1.25rem] w-full lg:mx-auto flex flex-row justify-between items-center"
-            initial="hidden"
-            animate={
-              isScrolled && hasPassedHero && !isBottom ? "expanded" : "hidden"
-            }
-            variants={navdockVariants(isMobile)}
-          >
-            <motion.div
-              className="bg-ash z-10 w-[2.25rem] h-[1.375rem] lg:ml-[1.5rem]"
-              initial="hidden"
-              animate={isScrolled && !isBottom ? "expanded" : "hidden"}
-              variants={logoVariants(isMobile)}
-            >
-              <Link
-                href="/"
-                passHref
-                className="cursor-select-hover flex size-full h-[1.375rem] overflow-hidden"
-              >
-                <Image
-                  src="/images/logo2.png"
-                  alt="logo"
-                  width={36}
-                  height={22}
-                  className=""
-                />
-              </Link>
-            </motion.div>
-
-            <motion.nav
-              className="contents lg:flex flex-row gap-[1.25rem]"
-              variants={itemVariants}
-              initial="hidden"
-              animate={isScrolled ? "visible" : "hidden"}
-            >
-              {navigation.map((nav, index) => (
-                <HoverWrapper
-                  key={index}
-                  className="cursor-select-hover text-nowrap transition-all duration-300"
-                  // variants={itemVariants}
-                >
-                  <motion.div
-                    variants={itemVariants}
-                    initial="hidden"
-                    animate={isScrolled ? "visible" : "hidden"}
-                  >
-                    <Link key={`l_${index}`} href={nav.href} passHref>
-                      <FlipLink>{getChars(nav.title)}</FlipLink>
-                    </Link>
-                  </motion.div>
-                </HoverWrapper>
-              ))}
-            </motion.nav>
-
-            <HoverWrapper className="cursor-select-hover">
-              <motion.div
-                variants={itemVariants}
-                initial="hidden"
-                animate={isScrolled ? "visible" : "hidden"}
-              >
-                <Link
-                  href={"/#contact"}
-                  className="pn-regular-16 relative group hidden md:flex button !border-none !bg-goldenbrown text-ash shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 !rounded-full !py-[0.688rem] !px-[1.25rem]"
-                  passHref
-                >
-                  <FlipLink>{getChars("Contact Us")}</FlipLink>
-                  <svg
-                    width="21"
-                    height="21"
-                    viewBox="0 0 21 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <g clip-path="url(#clip0_73_5969)">
-                      <path
-                        d="M14.6665 6.33398L6.33319 14.6673"
-                        stroke="#1B1A17"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M7.16656 6.33398H14.6666V13.834"
-                        stroke="#1B1A17"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </g>
-                    <defs>
-                      <clipPath id="clip0_73_5969">
-                        <rect
-                          width="20"
-                          height="20"
-                          fill="white"
-                          transform="translate(0.499878 0.5)"
-                        />
-                      </clipPath>
-                    </defs>
-                  </svg>
-                </Link>
-              </motion.div>
-            </HoverWrapper>
-          </motion.div> */}
         </div>
       </div>
     </>

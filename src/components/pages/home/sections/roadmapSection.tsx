@@ -13,8 +13,8 @@ interface SectionProps {
 
 function RoadmapSection({ className }: SectionProps) {
   return (
-    <div className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
+    <div className={`section-container !flex-row ${className} overflow-hidden`}>
+      <div className="relative flex size-full flex-col items-start justify-between">
         {/* Header */}
         <SectionHeader
           center
@@ -29,14 +29,15 @@ function RoadmapSection({ className }: SectionProps) {
             competitive online marketplace. Our services cover everything from
             content creation to full-scale social media management, all backed
             by data-driven strategies to ensure results that matter."
+          className="bg-white z-10 pb-[1.5rem] lg:pb-[3.75rem]"
         />
 
         {/* Content */}
         <div className="relative flex flex-col size-full items-center justify-center lg:min-h-[400vh]">
           {/* Gradient Top */}
-          <div className="pointer-events-none absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b from-white to-transparent" />
+          <div className="pointer-events-none absolute z-10 top-0 w-[100dvw] h-[7.5rem] bg-gradient-to-b from-white to-transparent" />
           {/* Gradient Bottom */}
-          <div className="pointer-events-none absolute z-10 bottom-0 w-full h-[7.5rem] bg-gradient-to-t from-white to-transparent" />
+          <div className="pointer-events-none absolute z-10 bottom-0 w-[100dvw] h-[7.5rem] bg-gradient-to-t from-white to-transparent" />
 
           {/* Road SVG */}
           {/* <Image
@@ -46,7 +47,7 @@ function RoadmapSection({ className }: SectionProps) {
             height={4370}
             width={1420}
           /> */}
-          <div className="pointer-events-none absolute top-0 scrollPath">
+          <div className="pointer-events-none absolute -top-[10rem] scrollPath">
             <SVGScroll>
               <svg
                 // width="1572"
@@ -54,10 +55,10 @@ function RoadmapSection({ className }: SectionProps) {
                 viewBox="0 0 1572 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[100dvw] h-[200dvh] lg:h-[400dvh]"
+                className="w-[150dvw] lg:w-[100dvw] h-[200dvh] lg:h-[420dvh]"
               >
                 <path
-                  d="M757 20.5C757 20.5 679.5 834.501 1189.5 856.5C1688.5 837.904 1644 400 1223.5 400C803 400 322.5 803 488.5 1297.5C654.5 1792 1503.65 1066 1518 1629.5C1532.35 2193 372.999 1884.79 160 2085.64C-53 2286.5 176 2474.5 607.5 2502.5C1039 2530.5 1158 2396 882.5 2305C607 2214 -21 2620.5 22.5 2902.5C66 3184.5 494 3337 757 3118C1020 2899 795.5 3406.5 1155 3206C1514.5 3005.5 1603 3415 1223.5 3522C844 3629 107 4165 43 3914C-21 3663 245 3571 469 3600C693 3629 757 4374 757 4374"
+                  d="M750 20.5C750 20.5 679.5 997.501 1189.5 1019.5C1688.5 1000.9 1644 563 1223.5 563C803 563 322.5 966 488.5 1460.5C654.5 1955 1503.65 1229 1518 1792.5C1532.35 2356 372.999 2047.79 160 2248.64C-53 2449.5 176 2637.5 607.5 2665.5C1039 2693.5 1158 2559 882.5 2468C607 2377 -21 2783.5 22.5 3065.5C66 3347.5 494 3500 757 3281C1020 3062 795.5 3569.5 1155 3369C1514.5 3168.5 1603 3578 1223.5 3685C844 3792 107 4328 43 4077C-21 3826 245 3734 469 3763C693 3792 790 4812 790 4812"
                   stroke="url(#paint0_linear_207_668)"
                   stroke-width="40"
                   stroke-linecap="round"
@@ -66,9 +67,9 @@ function RoadmapSection({ className }: SectionProps) {
                   <linearGradient
                     id="paint0_linear_207_668"
                     x1="784.231"
-                    y1="20.5"
+                    y1="183.5"
                     x2="784.231"
-                    y2="4374"
+                    y2="4537"
                     gradientUnits="userSpaceOnUse"
                   >
                     <stop stop-color="white" stop-opacity="0" />
