@@ -1,9 +1,10 @@
-import React from 'react'
+import Page from "@/components/layout/page";
+import Body from "@/components/pages/pricing/body";
 
-function page() {
+export default function Home() {
   return (
-    <div>page</div>
-  )
+    <Page>
+      <Body />
+    </Page>
+  );
 }
-
-export default page

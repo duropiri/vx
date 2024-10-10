@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
+import SplineWrapper from "@/components/SplineWrapper";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -14,6 +15,7 @@ interface SectionProps {
 
 function ProblemSection({ className = "" }: SectionProps) {
   const sectionRef = useRef<HTMLDivElement>(null);
+
   const [activeStep, setActiveStep] = useState(1);
   const progressBarRef = useRef<HTMLDivElement>(null);
   const textContainerRef = useRef<HTMLDivElement>(null);
@@ -147,7 +149,7 @@ function ProblemSection({ className = "" }: SectionProps) {
   return (
     <div
       ref={sectionRef}
-      className={`section-container !px-0 !flex-row ${className}`}
+      className={`section-container !px-0 !flex-row ${className} relative`}
     >
       <div className="relative flex flex-col w-full items-end justify-start">
         {/* Background Container */}
@@ -158,6 +160,10 @@ function ProblemSection({ className = "" }: SectionProps) {
             backgroundImage: `url(${encodeURIComponent(media[0].src)})`,
           }}
         /> */}
+        {/* Spline Animation Layer */}
+        {/* <div className="sticky top-0 left-0 w-full h-[100vh] -mt-[100vh] z-0">
+          <SplineWrapper />
+        </div> */}
 
         {/* Progress Bar */}
         <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[1rem] lg:mr-[5rem]">

@@ -5,6 +5,6 @@ export const NavLinks = [
     },
     {
       title: "Pricing",
-      href: "/#pricing",
+      href: "/pricing",
     },
   ];

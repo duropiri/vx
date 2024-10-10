@@ -3,6 +3,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
 import React, { useState } from "react";
+import { Tilt } from "react-tilt";
 
 interface SectionProps {
   className?: string;
@@ -109,7 +110,10 @@ function PricingSection({ className }: SectionProps) {
         {/* Pricing Plans */}
         <div className="relative flex flex-col lg:flex-row h-full w-full justify-start items-start gap-[2rem]">
           {/* Strategic Growth */}
-          <div className="pricing-box self-stretch bg-white shadow-customShadow">
+          <Tilt
+            options={{ axis: "x", scale: 1, max: 8, reverse: true }}
+            className="pricing-box bg-white shadow-customShadow"
+          >
             <div className="flex flex-col w-full items-center justify-start gap-[1.5rem] text-ash">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
@@ -204,10 +208,13 @@ function PricingSection({ className }: SectionProps) {
                 </FlipLink>
               </HoverWrapper>
             </div>
-          </div>
+          </Tilt>
 
           {/* Scaling Maestro */}
-          <div className="pricing-box self-stretch bg-white shadow-customShadow">
+          <Tilt
+            options={{ axis: "x", scale: 1, max: 8, reverse: true }}
+            className="pricing-box bg-white shadow-customShadow"
+          >
             <div className="relative self-center lg:absolute lg:top-[1.5rem] lg:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] lg:mt-0 lg:mb-0 bg-ash rounded-b-[1rem] lg:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
               <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
                 <svg
@@ -326,10 +333,13 @@ function PricingSection({ className }: SectionProps) {
                 </FlipLink>
               </HoverWrapper>
             </div>
-          </div>
+          </Tilt>
 
           {/* Absolute Domination */}
-          <div className="pricing-box self-stretch bg-ash shadow-customShadow">
+          <Tilt
+            options={{ axis: "x", scale: 1, max: 8, reverse: true }}
+            className="pricing-box bg-ash shadow-customShadow"
+          >
             <div className="flex w-full flex-col justify-start items-center gap-[1.5rem]">
               {/* Heading */}
               <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
@@ -435,7 +445,7 @@ function PricingSection({ className }: SectionProps) {
                 </FlipLink>
               </HoverWrapper>
             </div>
-          </div>
+          </Tilt>
         </div>
       </div>
     </div>

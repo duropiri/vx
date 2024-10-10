@@ -39,6 +39,8 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
     pathRef.current.style.strokeDasharray = `${pathLength}`;
     pathRef.current.style.strokeDashoffset = `${pathLength}`;
 
+    gsap.set(rocketRef.current, { visibility: "hidden" }); // Initially hide the rocket
+
     // Create a timeline for synchronized animations
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -59,6 +61,7 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
     tl.to(
       rocketRef.current,
       {
+        visibility: "visible", // Make the rocket visible before moving
         motionPath: {
           path: pathRef.current,
           align: pathRef.current,

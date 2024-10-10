@@ -29,10 +29,10 @@ function body() {
   return (
     <>
       <HeroSection
-        className="bg-white z-10 min-w-[100vw]"
+        className="z-10 min-w-[100vw]"
         navigation={NavLinks}
       />
-      <SocialProofSection className="bg-white z-10 min-w-[100vw]" />
+      <SocialProofSection className="bg-white z-10 min-w-[100vw] bg-gradient-to-t from-transparent from-70% to-goldenrod to-90% saturate-50" />
       <CopySection
         className="bg-white z-10 min-w-[100vw]"
         copy={

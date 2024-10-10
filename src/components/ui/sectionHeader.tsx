@@ -1,4 +1,6 @@
 import React, { forwardRef, RefObject } from "react";
+import CharByCharOnScroll from "../animations/CharByCharOnScroll";
+import OpacityOnScroll from "../animations/OpacityOnScroll";
 
 interface SectionProps {
   className?: string;
@@ -42,7 +44,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       >
         <span
           ref={headingRef}
-          className={`flex pn-semibold-16 uppercase px-[0.625rem] py-[0.5rem] rounded-[0.75rem] ${
+          className={`subheading pn-semibold-16 ${
             dark ? "bg-charcoal text-goldenbrown" : "bg-goldenbrown/25"
           }`}
         >
@@ -55,9 +57,11 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
           {subheading}
         </h2>
         {body && (
-          <p ref={bodyRef} className="pn-regular-16 max-w-[43.75rem]">
-            {body}
-          </p>
+          <OpacityOnScroll end={80}>
+            <p ref={bodyRef} className="pn-regular-16 max-w-[43.75rem]">
+              {body}
+            </p>
+          </OpacityOnScroll>
         )}
       </div>
     );

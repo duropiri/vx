@@ -1,7 +1,12 @@
 "use client";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import {
+  motion,
+  AnimatePresence,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { getChars } from "@/components/animations/GetChars";
@@ -19,6 +24,26 @@ interface SectionProps {
 }
 
 function HeroSection({ className = "", navigation }: SectionProps) {
+  const { scrollY } = useScroll();
+
+  const floatingAnimation = {
+    y: [0, -15, 0],
+    transition: {
+      duration: 3,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
+
+  const rotationAnimation = {
+    rotate: [-3, 3, -3],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
+  };
+
   const heroCTARef = useRef<HTMLDivElement>(null);
   const navdockRef = useRef<HTMLDivElement>(null);
   const heroSectionRef = useRef<HTMLDivElement>(null);
@@ -132,7 +157,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
         ScrollTrigger.create({
           trigger: heroCTA,
-          start: isMobile ? "top -10vh" : "top 40px", // When heroCTA reaches navdock position
+          start: isMobile ? `top -10vh` : `top 2.5rem`, // When heroCTA reaches navdock position
           // end: "+=50",
           // markers: true,
           onEnter: () => {
@@ -295,7 +320,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         ref={heroSectionRef}
         className={`section-container hero-container ${className} overflow-hidden`}
       >
-        <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw]">
+        <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw] z-10">
           {/* Main Copy */}
           <h1
             // data-speed={1.1}
@@ -498,6 +523,360 @@ function HeroSection({ className = "", navigation }: SectionProps) {
               </defs>
             </svg>
           </HoverWrapper>
+        </div>
+      </div>
+
+      {/* Assemble Icons */}
+      <div className="absolute flex-none h-[100dvh] w-[100vw] !p-0 overflow-hidden saturate-50">
+        {/* Light Rays */}
+        <div className="absolute inset-0 w-full h-full overflow-hidden">
+          {/* Ray 1 */}
+          <motion.div
+            className="absolute left-[15%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-b from-transparent to-goldenrod animate-pulse"
+            style={{
+              rotate: -25,
+            }}
+            animate={{
+              rotate: [-25, -20, -25],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Ray 2 */}
+          <motion.div
+            className="absolute left-[30%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-b from-transparent to-goldenrod animate-pulse"
+            style={{
+              rotate: -15,
+            }}
+            animate={{
+              rotate: [-15, -10, -15],
+            }}
+            transition={{
+              duration: 7,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Ray 3 */}
+          <motion.div
+            className="absolute left-[45%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-b from-transparent to-goldenrod animate-pulse"
+            style={{
+              rotate: 0,
+            }}
+            animate={{
+              rotate: [0, 7, 0],
+            }}
+            transition={{
+              duration: 6,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Ray 4 */}
+          <motion.div
+            className="absolute left-[55%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-b from-transparent to-goldenrod animate-pulse"
+            style={{
+              rotate: 15,
+            }}
+            animate={{
+              rotate: [15, 20, 15],
+            }}
+            transition={{
+              duration: 8,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+
+          {/* Ray 5 */}
+          <motion.div
+            className="absolute left-[75%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-b from-transparent to-goldenrod animate-pulse"
+            style={{
+              rotate: 25,
+            }}
+            animate={{
+              rotate: [25, 30, 25],
+            }}
+            transition={{
+              duration: 6.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
+        </div>
+
+        {/* Icons */}
+        <div className="relative">
+          <div className="absolute flex h-[100dvh] w-[100vw] bg-gradient-to-b from-transparent from-70% to-goldenrod to-90% z-10" />
+          {/* Top Left */}
+          <motion.div
+            className="size-[5rem] absolute flex left-[40%] top-[60vh] lg:left-[10rem] lg:top-[8rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, 300]),
+              y: useTransform(scrollY, [0, 500], [0, 1200]),
+              rotate: useTransform(scrollY, [0, 500], [-15, -45]),
+            }}
+          >
+            <motion.div className="size-full" animate={floatingAnimation}>
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/Instagram.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Repeat the same structure for other icons with different positions and delays */}
+          {/* Top Right */}
+          <motion.div
+            className="size-[5rem] absolute flex right-[20%] top-[45vh] lg:right-[10rem] lg:top-[8rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, -300]),
+              y: useTransform(scrollY, [0, 500], [0, 1200]),
+              rotate: useTransform(scrollY, [0, 500], [15, 45]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 0.5,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/Twitter.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Mid-Left Upper */}
+          <motion.div
+            className="size-[5rem] absolute flex left-[10%] top-[50vh] lg:left-[15rem] lg:top-[16rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, 400]),
+              y: useTransform(scrollY, [0, 500], [0, 1000]),
+              rotate: useTransform(scrollY, [0, 500], [-20, -40]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 1.0,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/Facebook.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Mid-Right Upper */}
+          <motion.div
+            className="size-[5rem] absolute flex right-[10%] top-[60vh] lg:right-[15rem] lg:top-[16rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, -400]),
+              y: useTransform(scrollY, [0, 500], [0, 1000]),
+              rotate: useTransform(scrollY, [0, 500], [20, 40]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 1.5,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/TikTok.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Mid-Left Lower */}
+          <motion.div
+            className="size-[5rem] absolute flex left-[5%] top-[65vh] lg:left-[5rem] lg:top-[24rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, 400]),
+              y: useTransform(scrollY, [0, 500], [0, 800]),
+              rotate: useTransform(scrollY, [0, 500], [-30, -60]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 2.0,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/LinkedIn.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Mid-Right Lower */}
+          <motion.div
+            className="size-[5rem] absolute flex right-[5%] top-[80vh] lg:right-[5rem] lg:top-[24rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, -400]),
+              y: useTransform(scrollY, [0, 500], [0, 800]),
+              rotate: useTransform(scrollY, [0, 500], [30, 60]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 2.5,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/Pinterest.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom Left */}
+          <motion.div
+            className="size-[5rem] absolute hidden lg:flex left-[20rem] top-[32rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, 300]),
+              y: useTransform(scrollY, [0, 500], [0, 600]),
+              rotate: useTransform(scrollY, [0, 500], [-25, -50]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 3.0,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/Youtube.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Bottom Right */}
+          <motion.div
+            className="size-[5rem] absolute hidden lg:flex right-[20rem] top-[32rem]"
+            style={{
+              x: useTransform(scrollY, [0, 500], [0, -300]),
+              y: useTransform(scrollY, [0, 500], [0, 600]),
+              rotate: useTransform(scrollY, [0, 500], [25, 50]),
+            }}
+          >
+            <motion.div
+              className="size-full"
+              animate={{
+                ...floatingAnimation,
+                transition: {
+                  ...floatingAnimation.transition,
+                  delay: 3.5,
+                },
+              }}
+            >
+              <motion.div
+                className="size-full rounded-[1rem] shadow-inner"
+                animate={rotationAnimation}
+              >
+                <Image
+                  alt="icon"
+                  src="/svgs/hero-svgs/WhatsApp.svg"
+                  height={16}
+                  width={23}
+                  className="size-full shadow-2xl rounded-[1rem]"
+                />
+              </motion.div>
+            </motion.div>
+          </motion.div>
         </div>
       </div>
     </>

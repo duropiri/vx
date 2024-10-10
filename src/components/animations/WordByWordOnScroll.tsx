@@ -6,24 +6,24 @@ interface AnimationProps {
   children: React.ReactNode;
   className?: string;
   shadow?: boolean;
-  lineStyles?: lineStyles;
+  lineStyles?: LineStyles;
   start?: number; // Percentage of the viewport where the animation should start
   end?: number; // Percentage of the viewport where the animation should end
 }
 
-interface lineStyles {
+interface LineStyles {
   marginTop?: string | number;
   marginRight?: string | number;
-  height?: string | number;
-  width?: string | number;
   marginBottom?: string | number;
   marginLeft?: string | number;
-  marginBetween?: string | number;
+  gap?: string | number; // Renamed for more intuitive meaning
+  height?: string | number;
+  width?: string | number;
 }
 
 export default function WordByWordOnScroll({
   children,
-  className,
+  className = "",
   shadow,
   lineStyles,
   start = 90,
@@ -43,7 +43,7 @@ export default function WordByWordOnScroll({
   //   scrollYProgress.on("change", (e) => console.log(e));
   // }, []);
 
-  const words = typeof children === "string" ? children.split(" ") : [];
+  const words = typeof children === "string" ? children.split(" ") : [children];
   return (
     <p className={className + " flex flex-wrap leading-4"} ref={element}>
       {words.map((word, i) => {
@@ -81,19 +81,17 @@ const Word = ({
   if (shadow) {
     return (
       <span
-        className={!lineStyles ? styles.word : ""}
+        className={lineStyles ? "" : styles.word} // Simplified conditional class application
         style={{
-          marginTop: lineStyles?.marginTop,
-          marginBottom: lineStyles?.marginBottom,
-          marginRight: lineStyles?.marginRight,
+          marginTop: lineStyles?.marginTop ?? "0", // Default values for margins
+          marginBottom: lineStyles?.marginBottom ?? "0",
+          marginRight: lineStyles?.marginRight ?? "0",
           marginLeft:
-            lineStyles?.marginBetween !== undefined
-              ? isFirst || isLast
-                ? lineStyles?.marginLeft
-                : lineStyles?.marginBetween
-              : lineStyles?.marginLeft,
-          height: lineStyles?.height,
-          width: lineStyles?.width,
+            lineStyles?.marginBetween && !(isFirst || isLast) // Check for marginBetween and first/last item
+              ? lineStyles.marginBetween
+              : lineStyles?.marginLeft ?? "0", // Fallback to marginLeft or 0
+          height: lineStyles?.height ?? "auto", // Default to "auto" if height is undefined
+          width: lineStyles?.width ?? "auto", // Default to "auto" for width
         }}
       >
         <span className={styles.shadow}>{children}</span>

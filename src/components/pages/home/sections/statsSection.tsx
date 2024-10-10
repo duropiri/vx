@@ -37,7 +37,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
     >
       <div className="absolute pointer-events-none top-1/2 -translate-y-1/2 flex flex-col w-[100vw] text-goldenbrown/5 gap-y-[6.25rem] py-[6.25rem]">
         <ScrollingBanner
-          baseVelocity={2.5}
+          baseVelocity={25}
           child="flex flex-row items-center gap-x-[6.25rem]"
         >
           <svg
@@ -118,7 +118,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
           </svg>
         </ScrollingBanner>
         <ScrollingBanner
-          baseVelocity={-2.5}
+          baseVelocity={-25}
           child="flex flex-row items-center gap-x-[6.25rem]"
         >
           <svg
@@ -199,7 +199,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
           </svg>
         </ScrollingBanner>
         <ScrollingBanner
-          baseVelocity={2.5}
+          baseVelocity={25}
           child="flex flex-row items-center gap-x-[6.25rem]"
         >
           <svg

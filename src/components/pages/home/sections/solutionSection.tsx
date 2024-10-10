@@ -4,7 +4,7 @@ import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 interface SectionProps {
   className?: string;
@@ -12,14 +12,43 @@ interface SectionProps {
 }
 
 function SolutionSection({ className, scrollYProgress }: SectionProps) {
+  const bentosRef = useRef<HTMLDivElement>(null);
+  const bentoRefs = useRef<(HTMLDivElement | null)[]>([]);
+
+  useEffect(() => {
+    const handleOnMouseMove = (e: MouseEvent) => {
+      bentoRefs.current.forEach((card) => {
+        if (!card) return;
+
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+
+        card.style.setProperty("--mouse-x", `${x}px`);
+        card.style.setProperty("--mouse-y", `${y}px`);
+      });
+    };
+
+    const bentosContainer = bentosRef.current;
+    if (bentosContainer) {
+      bentosContainer.addEventListener("mousemove", handleOnMouseMove);
+    }
+
+    return () => {
+      if (bentosContainer) {
+        bentosContainer.removeEventListener("mousemove", handleOnMouseMove);
+      }
+    };
+  }, []);
+
   return (
     <motion.div
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
       {/* Background Text Parallax */}
-      <div className="absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
+      <div className="blur-[0.125rem] absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
         <ScrollingBanner
-          baseVelocity={25}
+          baseVelocity={10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
           innerChild="size-max"
         >
@@ -32,7 +61,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
           />
         </ScrollingBanner>
         <ScrollingBanner
-          baseVelocity={-25}
+          baseVelocity={-10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
           innerChild="size-max"
         >
@@ -45,7 +74,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
           />
         </ScrollingBanner>
         <ScrollingBanner
-          baseVelocity={25}
+          baseVelocity={10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
           innerChild="size-max"
         >
@@ -58,7 +87,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
           />
         </ScrollingBanner>
         <ScrollingBanner
-          baseVelocity={-25}
+          baseVelocity={-10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
           innerChild="size-max"
         >
@@ -93,13 +122,23 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
         />
 
         {/* Bentos */}
-        <div className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[2rem]">
+        <div
+          id="bentos"
+          ref={bentosRef}
+          className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[0.5rem]"
+        >
           {/* Top Row */}
-          <div className="flex flex-row size-full items-start justify-start gap-[2rem]">
-            <div className="flex flex-col size-full items-start justify-start p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal">
-              <div className="flex flex-col lg:flex-row items-center justify-start gap-[2rem]">
+          <div className="bento-row">
+            <div
+              className="solution-bento"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[0] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content">
                 <div className="flex flex-col justify-center lg:justify-start items-start gap-[1.5rem] text-white lg:max-w-[42%]">
-                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem] text-center lg:text-start">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
                     Your Complete Digital Marketing Solution
                   </span>
                   <h1 className="pn-regular-28">
@@ -125,12 +164,18 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
           </div>
 
           {/* Middle Row */}
-          <div className="flex flex-col lg:flex-row h-full items-stretch justify-start gap-[2rem]">
+          <div className="bento-row">
             {/* First Bento */}
-            <div className="flex flex-col items-center justify-center p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal lg:max-w-[29%]">
-              <div className="flex flex-col lg:flex-row items-center justify-start gap-[2rem] h-full">
+            <div
+              className="solution-bento bento-center lg:max-w-[29%]"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[1] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content h-full">
                 <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     Social Media Managed by Experts
                   </span>
                   <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
@@ -150,10 +195,16 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
             </div>
 
             {/* Second Bento */}
-            <div className="flex flex-col size-full items-start justify-start p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal">
-              <div className="flex flex-col lg:flex-row items-center justify-start gap-[2rem]">
+            <div
+              className="solution-bento"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[2] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content">
                 <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
-                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     High-Quality Content Creation
                   </span>
                   <h1 className="pn-regular-28">
@@ -177,12 +228,18 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
           </div>
 
           {/* Bottom Row */}
-          <div className="flex flex-col lg:flex-row size-full items-stretch justify-start gap-[2rem]">
+          <div className="bento-row">
             {/* First Bento */}
-            <div className="flex flex-col size-full items-start justify-start p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal">
-              <div className="flex flex-col lg:flex-row items-center justify-start gap-[2rem]">
+            <div
+              className="solution-bento"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[3] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content">
                 <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
-                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     Strategic Growth for Realtors{" "}
                   </span>
                   <h1 className="pn-regular-28">
@@ -199,10 +256,16 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
               </div>
             </div>
             {/* Second Bento */}
-            <div className="flex flex-col items-center justify-center p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal lg:max-w-[28%]">
-              <div className="flex flex-col lg:flex-row items-center justify-start gap-[2rem] h-full">
+            <div
+              className="solution-bento bento-center lg:max-w-[28%]"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[4] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content h-full">
                 <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     Data-Driven Results & Reporting
                   </span>
                   <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">

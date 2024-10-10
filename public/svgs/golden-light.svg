@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000">
+    <defs>
+        <radialGradient id="rayGradient" cx="50%" cy="100%" r="100%" fx="50%" fy="100%">
+            <stop offset="0%" style="stop-color: #ffd700; stop-opacity: 0.3">
+                <animate attributeName="stop-opacity"
+                    values="0.3; 0.1; 0.3"
+                    dur="3s"
+                    repeatCount="indefinite" />
+            </stop>
+            <stop offset="100%" style="stop-color: #ffd700; stop-opacity: 0">
+                <animate attributeName="stop-opacity"
+                    values="0; 0.05; 0"
+                    dur="3s"
+                    repeatCount="indefinite" />
+            </stop>
+        </radialGradient>
+
+        <mask id="rayMask">
+            <path d="M0 1000 L500 0 L1000 1000 Z" fill="url(#rayGradient)">
+                <animateTransform
+                    attributeName="transform"
+                    type="rotate"
+                    from="0 500 1000"
+                    to="360 500 1000"
+                    dur="30s"
+                    repeatCount="indefinite" />
+            </path>
+        </mask>
+    </defs>
+
+    <rect x="0" y="0" width="1000" height="1000" fill="url(#rayGradient)" mask="url(#rayMask)">
+        <animate
+            attributeName="opacity"
+            values="0.8;0.4;0.8"
+            dur="4s"
+            repeatCount="indefinite" />
+    </rect>
+</svg>

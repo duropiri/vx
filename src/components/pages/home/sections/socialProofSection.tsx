@@ -87,7 +87,7 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
           <div className="relative flex w-[11.25rem]">
             <ScrollingBanner
               direction="vertical"
-              baseVelocity={25}
+              baseVelocity={250}
               className="flex flex-col"
               innerChild="flex flex-col gap-[1.5rem]"
             >
@@ -106,7 +106,7 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
           <div className="flex flex-col w-[11.25rem]">
             <ScrollingBanner
               direction="vertical"
-              baseVelocity={-25}
+              baseVelocity={-250}
               className="flex flex-col"
               innerChild="flex flex-col gap-[1.5rem]"
             >
@@ -125,7 +125,7 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
           <div className="flex flex-col w-[11.25rem]">
             <ScrollingBanner
               direction="vertical"
-              baseVelocity={25}
+              baseVelocity={250}
               className="flex flex-col"
               innerChild="flex flex-col gap-[1.5rem]"
             >
@@ -148,7 +148,7 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
           >
             <ScrollingBanner
               direction="vertical"
-              baseVelocity={-25}
+              baseVelocity={-250}
               className="flex flex-col"
               innerChild="flex flex-col gap-[1.5rem]"
             >
@@ -171,7 +171,7 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
           >
             <ScrollingBanner
               direction="vertical"
-              baseVelocity={25}
+              baseVelocity={250}
               className="flex flex-col"
               innerChild="flex flex-col gap-[1.5rem]"
             >
@@ -194,7 +194,7 @@ function SocialProofSection({ className = "", full = false }: SectionProps) {
           >
             <ScrollingBanner
               direction="vertical"
-              baseVelocity={-25}
+              baseVelocity={-250}
               className="flex flex-col"
               innerChild="flex flex-col gap-[1.5rem]"
             >

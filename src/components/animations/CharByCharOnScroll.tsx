@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useScroll, motion, useTransform } from "framer-motion";
 
 interface AnimationProps {
   children: React.ReactNode;
   className?: string;
+  ref?: React.RefObject<HTMLParagraphElement>;
   shadow?: boolean;
   lineStyles?: lineStyles;
   start?: number; // Percentage of the viewport where the animation should start
@@ -23,12 +24,13 @@ interface lineStyles {
 export default function CharByCharOnScroll({
   children,
   className,
+  ref,
   shadow,
   lineStyles,
   start = 90,
   end = 25,
 }: AnimationProps) {
-  const element = useRef<HTMLParagraphElement>(null);
+  const element = useRef<HTMLDivElement>(null);
   // Convert start and end to a percentage string format required by Framer Motion
   const offsetStart: any = `start ${start}%`;
   const offsetEnd: any = `start ${end}%`;
@@ -42,26 +44,46 @@ export default function CharByCharOnScroll({
   //   scrollYProgress.on("change", (e) => console.log(e));
   // }, []);
 
-  const words = typeof children === "string" ? children.split(" ") : [];
+  const extractTextFromChildren = (children: React.ReactNode): string => {
+    let text = "";
+
+    React.Children.forEach(children, (child) => {
+      if (typeof child === "string") {
+        text += child;
+      } else if (typeof child === "number") {
+        text += child.toString();
+      } else if (React.isValidElement(child)) {
+        text += extractTextFromChildren(child.props.children);
+      }
+    });
+
+    return text;
+  };
+  const text = extractTextFromChildren(children);
+  // Split the text into words
+  const words = text.split(" ");
+
   return (
-    <p className={className + " flex flex-wrap leading-4"} ref={element}>
-      {words.map((word, i) => {
-        const start = i / words.length;
-        const end = start + 1 / words.length;
-        // console.log([start, end]);
-        return (
-          <Word
-            key={"word:" + i}
-            range={[start, end]}
-            progress={scrollYProgress}
-            shadow={shadow}
-            lineStyles={lineStyles}
-          >
-            {word}
-          </Word>
-        );
-      })}
-    </p>
+    <div ref={ref} className={className}>
+      <div ref={element} className={"flex flex-wrap leading-4"}>
+        {words.map((word, i) => {
+          const start = i / words.length;
+          const end = start + 1 / words.length;
+          // console.log([start, end]);
+          return (
+            <Word
+              key={"word:" + i}
+              range={[start, end]}
+              progress={scrollYProgress}
+              shadow={shadow}
+              lineStyles={lineStyles}
+            >
+              {word}
+            </Word>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

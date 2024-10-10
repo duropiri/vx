@@ -17,6 +17,8 @@ import {
   // perspective,
   // opacity,
   exitSlide,
+  opacity,
+  perspective,
 } from "@/components/layout/transitions/transitions";
 import Image from "next/image";
 
@@ -85,8 +87,8 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           ease: [0.76, 0, 0.24, 1],
         }}
       > */}
-      {/* <motion.div
-          className="relative"
+        {/* <motion.div
+          className=""
           variants={opacity}
           initial={opacity.initial}
           exit={opacity.exit}
@@ -95,34 +97,34 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
             duration: 0.2,
           }}
         > */}
-      {!isAdminPage ? (
-        <>
-          {/* <motion.div
-            className="w-full h-full fixed left-0 top-0 bg-ash z-[9999999] cursor-wait"
-            variants={exitSlide}
-            initial={exitSlide.initial}
-            exit={exitSlide.exit}
-            animate={exitSlide.enter}
-            transition={{
-              duration: 1,
-              ease: [0.76, 0, 0.24, 1],
-            }}
-          /> */}
+          {!isAdminPage ? (
+            <>
+              {/* <motion.div
+                className="w-full h-full fixed left-0 top-0 bg-ash z-[9999999] cursor-wait"
+                variants={exitSlide}
+                initial={exitSlide.initial}
+                exit={exitSlide.exit}
+                animate={exitSlide.enter}
+                transition={{
+                  duration: 1,
+                  ease: [0.76, 0, 0.24, 1],
+                }}
+              /> */}
 
-          <div className="hidden md:block z-[99999999]">
-            <CustomCursor />
-          </div>
-          <Header className="absolute" navigation={NavLinks} />
-          <SmoothScrolling>{children}</SmoothScrolling>
-          {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
-          <Footer />
-          
-          {/* </StickyFooter> */}
-        </>
-      ) : (
-        <>{children}</>
-      )}
-      {/* </motion.div> */}
+              <div className="hidden md:block z-[99999999]">
+                <CustomCursor />
+              </div>
+              <Header className="absolute" navigation={NavLinks} />
+              <SmoothScrolling>{children}</SmoothScrolling>
+              {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
+              <Footer />
+
+              {/* </StickyFooter> */}
+            </>
+          ) : (
+            <>{children}</>
+          )}
+        {/* </motion.div> */}
       {/* </motion.div> */}
     </div>
   );
