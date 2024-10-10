@@ -616,7 +616,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
           <div className="absolute flex h-[100dvh] w-[100vw] bg-gradient-to-b from-transparent from-70% to-goldenrod to-90% z-10" />
           {/* Top Left */}
           <motion.div
-            className="size-[5rem] absolute flex left-[40%] top-[60vh] lg:left-[10rem] lg:top-[8rem]"
+            className="size-[5rem] absolute flex left-[40%] top-[60vh] lg:left-[30%] lg:top-[8rem]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, 300]),
               y: useTransform(scrollY, [0, 500], [0, 1200]),
@@ -642,7 +642,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
           {/* Repeat the same structure for other icons with different positions and delays */}
           {/* Top Right */}
           <motion.div
-            className="size-[5rem] absolute flex right-[20%] top-[45vh] lg:right-[10rem] lg:top-[8rem]"
+            className="size-[5rem] absolute flex right-[20%] top-[45vh] lg:right-[40%] lg:top-[20vh]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, -300]),
               y: useTransform(scrollY, [0, 500], [0, 1200]),
@@ -676,7 +676,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
           {/* Mid-Left Upper */}
           <motion.div
-            className="size-[5rem] absolute flex left-[10%] top-[50vh] lg:left-[15rem] lg:top-[16rem]"
+            className="size-[5rem] absolute flex left-[10%] top-[50vh] lg:left-[20%] lg:top-[30vh]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, 400]),
               y: useTransform(scrollY, [0, 500], [0, 1000]),
@@ -778,7 +778,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
           {/* Mid-Right Lower */}
           <motion.div
-            className="size-[5rem] absolute flex right-[5%] top-[80vh] lg:right-[5rem] lg:top-[24rem]"
+            className="size-[5rem] absolute flex right-[5%] top-[80vh] lg:right-[5rem] lg:top-[40vh]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, -400]),
               y: useTransform(scrollY, [0, 500], [0, 800]),
@@ -812,7 +812,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
           {/* Bottom Left */}
           <motion.div
-            className="size-[5rem] absolute hidden lg:flex left-[20rem] top-[32rem]"
+            className="size-[5rem] absolute hidden lg:flex left-[20rem] top-[55vh]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, 300]),
               y: useTransform(scrollY, [0, 500], [0, 600]),
@@ -846,7 +846,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
           {/* Bottom Right */}
           <motion.div
-            className="size-[5rem] absolute hidden lg:flex right-[20rem] top-[32rem]"
+            className="size-[5rem] absolute hidden lg:flex right-[20rem] top-[60vh]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, -300]),
               y: useTransform(scrollY, [0, 500], [0, 600]),
