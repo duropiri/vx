@@ -113,52 +113,35 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
         // const heroBounds = heroCTA.getBoundingClientRect();
 
-        // Set navdock initial state
+        // Set navdock initial state (SIZE AND COLOR)
         gsap.set(navdock, {
-          // width: heroBounds.width,
+          display: "flex",
+          padding: 0,
           width: isMobile ? "100%" : "11rem",
           height: "3.313rem",
           background: isMobile ? "#1b1a17" : "#c5a05e",
+          borderRadius: "9999px",
           opacity: 0,
-          borderRadius: isMobile ? "0px" : "9999px", // Matches the heroCTA's border radius
-          display: "none", // Ensure it's hidden initially
         });
 
-        gsap.set("#logo", {
-          display: "none", // Ensure it's hidden initially
-        });
-
-        gsap.set(".nav-item", {
-          display: "none", // Ensure it's hidden initially
-        });
-
-        gsap.set("#navdock-cta", {
-          display: "contents", // Ensure it's hidden initially
+        // Hide elements initially (HIDDEN)
+        gsap.set(["#logo", ".nav-item"], {
+          display: "none",
         });
 
         // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
         ScrollTrigger.create({
           trigger: heroCTA,
           start: isMobile ? "top -10vh" : "top 40px", // When heroCTA reaches navdock position
-          end: "+=50",
+          // end: "+=50",
           // markers: true,
           onEnter: () => {
-            gsap.set(heroCTA, { display: "none" }); // Hide heroCTA completely
-            gsap.set(navdock, { display: "flex" }); // Show navdock
-            gsap.to(navdock, {
-              opacity: 1,
-              duration: 0,
-              ease: "none", // No easing, instant transition
-            });
+            gsap.set(heroCTA, { opacity: isMobile ? 1 : 0 }); // Hide heroCTA
+            gsap.set(navdock, { opacity: 1 }); // Show navdock
           },
           onLeaveBack: () => {
-            gsap.set(navdock, { display: "none", background: "#c5a05e" }); // Hide navdock
-            gsap.set(heroCTA, { display: "flex" }); // Show heroCTA
-            gsap.to(heroCTA, {
-              opacity: 1,
-              duration: 0,
-              ease: "none", // No easing, instant transition
-            });
+            gsap.set(navdock, { opacity: 0 }); // Hide navdock
+            gsap.set(heroCTA, { opacity: 1 }); // Show heroCTA
           },
         });
 
@@ -166,12 +149,12 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         ScrollTrigger.create({
           trigger: heroCTA,
           start: "200px 40px", // Slightly after the first trigger
-          end: "+=50vh",
+          // end: "+=50vh",
           // markers: true,
           onEnter: () => {
             setIsTransforming(true);
 
-            // Animate the navdock
+            // Animate the navdock (to navdock final style)
             gsap.to(navdock, {
               background: "#1b1a17",
               width: isMobile ? "100%" : "auto",
@@ -211,33 +194,24 @@ function HeroSection({ className = "", navigation }: SectionProps) {
                 // Animate nav items (from hidden to visible with no staggered effect)
                 gsap.fromTo(
                   ".nav-item",
-                  { opacity: 0, y: 0, width: "0px", display: "none" }, // Hidden state
+                  { opacity: 0, y: 1, display: "none" }, // Hidden state
                   {
                     opacity: 1,
                     y: 0,
-                    width: "auto",
                     display: "flex",
                     duration: 0.2,
                     stagger: 0,
                   } // Visible state
                 );
 
-                // Animate the navdock cta (from no styles to identical to hero cta styles)
+                // Animate the navdock cta (from transparent to goldenbrown)
                 gsap.fromTo(
-                  "#navdock-cta", // Ensure your logo has this ID
+                  "#navdock-cta",
                   {
-                    // dislay: "contents",
-                    width: "11rem",
-                    padding: "none",
                     backgroundColor: "transparent",
-                  },
+                  }, // HEROCTA STYLE
                   {
-                    display: "flex",
-                    width: "11rem",
-                    height: "3.313rem",
-                    padding: "0.875rem 1.5rem",
                     backgroundColor: "#c5a05e",
-                    borderRadius: "9999px",
                   }
                 );
               },
@@ -249,39 +223,27 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
             // Animate the navdock back to its default state
             gsap.to(navdock, {
-              width: "11rem",
+              display: "flex",
+              padding: 0,
+              width: isMobile ? "100%" : "11rem",
               height: "3.313rem",
-              padding: "0.875rem 1.5rem",
-              background: "#c5a05e",
-              borderRadius: "9999px",
-              duration: 0,
+              background: isMobile ? "#1b1a17" : "#c5a05e",
             });
 
             // Hide the logo (reset to hidden state)
             gsap.to("#logo", {
               x: isMobile ? 0 : 150,
               display: "none",
-              width: "2.25rem",
-              opacity: 0,
-              duration: 0,
             });
 
             // Hide nav items (reset to hidden state)
             gsap.to(".nav-item", {
               display: "none",
-              width: "0px",
-              opacity: 0,
-              duration: 0,
             });
 
-            // Reset navdock cta (reset to default state, identical to hero cta)
+            // Reset navdock cta (reset to default state, HEROCTA STYLES)
             gsap.to("#navdock-cta", {
-              // dislay: "contents",
-              width: "100%",
               background: "transparent",
-              border: "none",
-              padding: "0",
-              duration: 0,
             });
           },
         });
@@ -328,11 +290,12 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
   return (
     <>
+      {/* Hero */}
       <div
         ref={heroSectionRef}
         className={`section-container hero-container ${className} overflow-hidden`}
       >
-        <div className="flex flex-col items-center my-auto max-w-[100vw]">
+        <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw]">
           {/* Main Copy */}
           <h1
             // data-speed={1.1}
@@ -349,46 +312,52 @@ function HeroSection({ className = "", navigation }: SectionProps) {
               ref={heroCTARef}
               className="flex flex-col lg:flex-row gap-[1rem]"
             >
-              <HoverWrapper
-                href="/"
-                className="button cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem] !gap-0 !justify-between"
+              <div
+                className={`flex flex-row items-center justify-center w-[100vw] h-[3.313rem]`}
               >
-                <FlipLink className="">Get In Touch</FlipLink>
-                <svg
-                  width="21"
-                  height="21"
-                  viewBox="0 0 21 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+                <HoverWrapper
+                  href="/"
+                  className="button h-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]"
                 >
-                  <g clip-path="url(#clip0_73_5969)">
-                    <path
-                      d="M14.6665 6.33398L6.33319 14.6673"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M7.16656 6.33398H14.6666V13.834"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_73_5969">
-                      <rect
-                        width="20"
-                        height="20"
-                        fill="white"
-                        transform="translate(0.499878 0.5)"
+                  <FlipLink className={`flex items-center w-full`}>
+                    Get In Touch
+                  </FlipLink>
+                  <svg
+                    width="21"
+                    height="21"
+                    viewBox="0 0 21 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_73_5969)">
+                      <path
+                        d="M14.6665 6.33398L6.33319 14.6673"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
                       />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </HoverWrapper>
+                      <path
+                        d="M7.16656 6.33398H14.6666V13.834"
+                        stroke="currentColor"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_73_5969">
+                        <rect
+                          width="20"
+                          height="20"
+                          fill="white"
+                          transform="translate(0.499878 0.5)"
+                        />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                </HoverWrapper>
+              </div>
             </div>
           </div>
         </div>
@@ -446,15 +415,11 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
       {/* Navdock */}
       <div
-        className={`fixed flex flex-row items-center justify-center bottom-0 lg:top-[2.5rem] w-[100vw] h-[3.313rem] z-[1000] max-w-[100vw] ${
-          shouldHideNavdock ? "hidden" : ""
-        }`}
+        className={`fixed flex flex-row items-center justify-center bottom-[0.75rem] lg:top-[2.5rem] w-[100vw] h-[3.313rem] z-[1000] max-w-[100vw]`}
       >
         <div
           ref={navdockRef}
-          className={`flex flex-row items-center justify-between px-[1.5rem] py-[0.875rem] border-[0.125rem] border-ash transition-all rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem] overflow-hidden
-            ${!isTransforming ? "" : ""}
-            ${hasPassedHero ? "" : "pointer-events-none"}`}
+          className={`flex flex-row items-center justify-between border-[0.125rem] border-ash lg:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
         >
           {/* Navdock Final Form */}
           <div id="logo" className="">
@@ -492,9 +457,11 @@ function HeroSection({ className = "", navigation }: SectionProps) {
           <HoverWrapper
             href="/"
             id="navdock-cta"
-            className="cursor-select-hover flex flex-row items-center justify-center gap-[0.625rem]"
+            className="button !border-none h-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]"
           >
-            <FlipLink className={``}>Get In Touch</FlipLink>
+            <FlipLink className={`flex items-center w-full`}>
+              Get In Touch
+            </FlipLink>
             <svg
               width="21"
               height="21"

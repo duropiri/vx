@@ -13,7 +13,9 @@ interface SectionProps {
 
 function RoadmapSection({ className }: SectionProps) {
   return (
-    <div className={`section-container !flex-row ${className} overflow-hidden`}>
+    <div
+      className={`section-container !flex-row ${className} overflow-hidden !pb-0 mb-[3.125rem] lg:mb-[6.25rem]`}
+    >
       <div className="relative flex size-full flex-col items-start justify-between">
         {/* Header */}
         <SectionHeader
@@ -55,10 +57,10 @@ function RoadmapSection({ className }: SectionProps) {
                 viewBox="0 0 1572 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[150dvw] lg:w-[100dvw] h-[200dvh] lg:h-[420dvh]"
+                className="w-[200dvw] lg:w-[100dvw] h-[200vh] lg:h-[420vh]"
               >
                 <path
-                  d="M750 20.5C750 20.5 679.5 997.501 1189.5 1019.5C1688.5 1000.9 1644 563 1223.5 563C803 563 322.5 966 488.5 1460.5C654.5 1955 1503.65 1229 1518 1792.5C1532.35 2356 372.999 2047.79 160 2248.64C-53 2449.5 176 2637.5 607.5 2665.5C1039 2693.5 1158 2559 882.5 2468C607 2377 -21 2783.5 22.5 3065.5C66 3347.5 494 3500 757 3281C1020 3062 795.5 3569.5 1155 3369C1514.5 3168.5 1603 3578 1223.5 3685C844 3792 107 4328 43 4077C-21 3826 245 3734 469 3763C693 3792 790 4812 790 4812"
+                  d="M811 20.5C811 20.5 740.499 997.501 1250.5 1019.5C1749.5 1000.9 1705 563 1284.5 563C863.999 563 383.5 966 549.5 1460.5C715.5 1955 1564.64 1229 1579 1792.5C1593.35 2356 433.999 2047.79 221 2248.64C8.00008 2449.5 237 2637.5 668.5 2665.5C1100 2693.5 1164.5 2337 934 2379C703.5 2421 -21.5 2811.5 22 3093.5C65.5 3375.5 287 3435.5 550 3216.5C813 2997.5 772 3514.5 1131.5 3314C1491 3113.5 1664 3578 1284.5 3685C904.999 3792 -149.5 4406 155.5 3834.5C460.5 3263 884.5 4873.5 884.5 4873.5"
                   stroke="url(#paint0_linear_207_668)"
                   stroke-width="40"
                   stroke-linecap="round"
@@ -66,9 +68,9 @@ function RoadmapSection({ className }: SectionProps) {
                 <defs>
                   <linearGradient
                     id="paint0_linear_207_668"
-                    x1="784.231"
+                    x1="845.231"
                     y1="183.5"
-                    x2="784.231"
+                    x2="845.231"
                     y2="4537"
                     gradientUnits="userSpaceOnUse"
                   >

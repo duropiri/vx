@@ -112,7 +112,7 @@ function PricingSection({ className }: SectionProps) {
           <div className="pricing-box self-stretch bg-white shadow-customShadow">
             <div className="flex flex-col w-full items-center justify-start gap-[1.5rem] text-ash">
               {/* Heading */}
-              <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
+              <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
                 <h1 className="text-center pn-regular-32">Strategic Growth</h1>
                 <p className="text-center pn-regular-16">
                   No Contracts. Cancel Anytime.
@@ -127,101 +127,68 @@ function PricingSection({ className }: SectionProps) {
                 </p>
               </div>
               {/* Features */}
-              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1rem] pn-regular-16">
-                <li>
+              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1.5rem] pn-regular-16">
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">(4x)</span> Social Media
                     Short-Form Videos
                   </p>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">(4x)</span> Custom Social Media
                     Thumbnails
                   </p>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     All-inclusive social media management including content
                     creation, moderation & scheduling
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($2000 value)
-                    </span>
                   </p>
+                  <span className="li-subtext">($2000 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    Includes
+                    Includes{" "}
                     <span className="pn-bold-16">
                       Instagram, Facebook & TikTok
                     </span>
                   </p>
                 </li>
-                <li className="w-72 flex-col justify-start items-start inline-flex">
-                  <p className="pn-regular-16">
-                    Monthly Strategy Plan
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p className="pn-regular-16">Monthly Strategy Plan</p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
 
-                <li>
-                  <p>
-                    Topic Research & Script Writing
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>Topic Research & Script Writing</p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
-                <li>
-                  <p>
-                    Copywriting & Ideation
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>Copywriting & Ideation</p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
-                <li>
-                  <p>
-                    Hashtag Research and Analytics
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>Hashtag Research and Analytics</p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">FREE BONUS</span> Instagram
                     Verification
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
                   </p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">FREE BONUS</span> Social Media
-                    Account Optimization Audit <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
+                    Account Optimization Audit
                   </p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
-                <li className="w-72 flex-col justify-start items-start inline-flex">
-                  <p className="pn-bold-16">
-                    2X Money Back Guarantee
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px] !h-0">
-                      ($250 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p className="pn-bold-16">2X Money Back Guarantee</p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
               </ul>
             </div>
@@ -241,7 +208,7 @@ function PricingSection({ className }: SectionProps) {
 
           {/* Scaling Maestro */}
           <div className="pricing-box self-stretch bg-white shadow-customShadow">
-            <div className="absolute top-[1.5rem] right-[1.5rem] flex px-[0.75rem] py-[0.5rem] bg-ash rounded-[2rem] border border-goldenbrown justify-center items-center gap-[0.25rem]">
+            <div className="relative self-center lg:absolute lg:top-[1.5rem] lg:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] lg:mt-0 lg:mb-0 bg-ash rounded-b-[1rem] lg:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
               <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
                 <svg
                   width="15"
@@ -264,7 +231,7 @@ function PricingSection({ className }: SectionProps) {
             </div>
             <div className="flex flex-col w-full items-center justify-start gap-[1.5rem] text-ash">
               {/* Heading */}
-              <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
+              <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
                 <h1 className="text-center pn-regular-32 text-goldenbrown">
                   Scaling Maestro
                 </h1>
@@ -279,105 +246,71 @@ function PricingSection({ className }: SectionProps) {
                 </p>
               </div>
               {/* Features */}
-              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1rem] pn-regular-16">
-                <div className="flex w-full pn-bold-20 !leading-[2.25rem]">
+              <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1.5rem] pn-regular-16">
+                <div className="flex flex-wrap w-full pn-bold-20 !leading-[2.25rem]">
                   Everything in&nbsp;
                   <span className="underline">Strategic Growth Plan</span>
                   &nbsp;+
                 </div>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">(12x)</span> Social Media
                     Short-Form Videos
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      (3x value)
-                    </span>
                   </p>
+                  <span className="li-subtext">(3x value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">(12x)</span> Custom Social
                     Media Thumbnails
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      (3x value)
-                    </span>
                   </p>
+                  <span className="li-subtext">(3x value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">(12x)</span> Social Media
                     Carousel Posts
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1200 value)
-                    </span>
                   </p>
+                  <span className="li-subtext">($1200 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     Includes Instagram, Facebook & TikTok
                     <span className="pn-bold-16"> & LinkedIn</span>
                   </p>
                 </li>
-                <li>
-                  <p>
-                    Follow-Up Automations & Lead Capture
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($500 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>Follow-Up Automations & Lead Capture</p>
+                  <span className="li-subtext">($500 value)</span>
                 </li>
-                <li>
-                  <p>
-                    Offer Creation & Marketing Consulting
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1000 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>Offer Creation & Marketing Consulting</p>
+                  <span className="li-subtext">($1000 value)</span>
                 </li>
-                <li>
-                  <p>
-                    Weekly Analytics Report - Up to 1 Year of Data
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($250 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>Weekly Analytics Report - Up to 1 Year of Data</p>
+                  <span className="li-subtext">($250 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="">
-                      FREE BONUS Professional Headshots & Lifestyle Photos{" "}
-                    </span>
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($750 value)
-                    </span>
+                    <span className="pn-bold-16">FREE BONUS</span> Professional
+                    Headshots & Lifestyle Photos
                   </p>
+                  <span className="li-subtext">($750 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">FREE BONUS</span> Custom Lead
                     Capture Clickfunnel
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1000 value)
-                    </span>
                   </p>
+                  <span className="li-subtext">($1000 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     <span className="pn-bold-16">FREE BONUS</span> Propietary
                     Lead Magnet
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1000 value)
-                    </span>
                   </p>
+                  <span className="li-subtext">($1000 value)</span>
                 </li>
               </ul>
             </div>
@@ -399,7 +332,7 @@ function PricingSection({ className }: SectionProps) {
           <div className="pricing-box self-stretch bg-ash shadow-customShadow">
             <div className="flex w-full flex-col justify-start items-center gap-[1.5rem]">
               {/* Heading */}
-              <div className="flex flex-col w-full items-center justify-start gap-[1.5rem]">
+              <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
                 <h1 className="text-center pn-regular-32 text-white">
                   Absolute Domination
                 </h1>
@@ -418,120 +351,75 @@ function PricingSection({ className }: SectionProps) {
                 </p>
               </div>
               {/* Features */}
-              <ul className="custom-bullet-list light flex flex-col w-full items-start justify-start gap-[0.625rem] text-white pn-regular-16 !leading-[1rem]">
-                <div className="flex w-full text-white pn-bold-20 !leading-[2.25rem]">
+              <ul className="custom-bullet-list light flex flex-col w-full items-start justify-start gap-[0.625rem] text-white pn-regular-16 !leading-[1.5rem]">
+                <div className="flex flex-wrap w-full text-white pn-bold-20 !leading-[2.25rem]">
                   Everything in&nbsp;
                   <span className="underline">Scaling Maestro Plan</span>&nbsp;+
                 </div>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="text-white pn-bold-16">(30x)</span>
-                    <span className="text-white">
-                      {" "}
-                      Social Media Short-Form Videos
-                      <br />{" "}
-                      <span className="uppercase font-bold !text-[12px]">
-                        (2.5x value)
-                      </span>
-                    </span>
+                    <span className="pn-bold-16">(30x)</span> Social Media
+                    Short-Form Videos
+                  </p>
+                  <span className="li-subtext">(2.5x value)</span>
+                </li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>
+                    <span className="pn-bold-16">(30x)</span> Custom Social
+                    Media Thumbnails
+                  </p>
+                  <span className="li-subtext">(2.5x value)</span>
+                </li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>
+                    <span className="pn-bold-16">(60x)</span> Social Media
+                    Carousel Posts
+                  </p>
+                  <span className="li-subtext">(5x value)</span>
+                </li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>
+                    <span className="pn-bold-16">Daily</span> Photo/Video Story
+                    Posts
+                  </p>
+                  <span className="li-subtext">($1000 value)</span>
+                </li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p>
+                    <span className="pn-bold-16">Unlimited</span> Social Media
+                    Account(s) - ALL Social Media Platforms including Instagram,
+                    Facebook, TikTok, LinkedIn, Twitter (X), and Pinterest
                   </p>
                 </li>
-                <li>
-                  <p>
-                    <span className="text-white pn-bold-16">(30x)</span> Custom
-                    Social Media Thumbnails
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      (2.5x value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p> Media Buying & Advertising</p>
+                  <span className="li-subtext">($3000 value)</span>
                 </li>
-                <li>
-                  <p>
-                    <span className="text-white pn-bold-16">(60x)</span> Social
-                    Media Carousel Posts
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      (5x value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p> Lead Generation & CRM Pipeline Management</p>
+                  <span className="li-subtext">($3000 value)</span>
                 </li>
-                <li>
-                  <p>
-                    <span className="text-white pn-bold-16">Daily</span>{" "}
-                    Photo/Video Story Posts
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1000 value)
-                    </span>
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p> Personalized Email & Text Automation System</p>
+                  <span className="li-subtext">($1000 value)</span>
                 </li>
-                <li>
-                  <p>
-                    <span className="text-white pn-bold-16">Unlimited</span>{" "}
-                    Social Media Account(s) - ALL Social Media Platforms
-                    including Instagram, Facebook, TikTok, LinkedIn, Twitter
-                    (X), and Pinterest
-                  </p>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                  <p> Branding Development & Logo Design</p>
+                  <span className="li-subtext">($2000 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    {" "}
-                    Media Buying & Advertising
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($3000 value)
-                    </span>
+                    <span className="pn-bold-16">FREE BONUS</span> Exclusive
+                    Get-Comfortable-On-Camera-In-3-Days Training Program
                   </p>
+                  <span className="li-subtext">($1000 value)</span>
                 </li>
-                <li>
+                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    {" "}
-                    Lead Generation & CRM Pipeline Management
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($3000 value)
-                    </span>
+                    <span className="pn-bold-16">FREE BONUS</span>{" "}
+                    Get-Ready-To-Go-Viral-Prep-Checklist
                   </p>
-                </li>
-                <li>
-                  <p>
-                    {" "}
-                    Personalized Email & Text Automation System
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1000 value)
-                    </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    {" "}
-                    Branding Development & Logo Design
-                    <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($2000 value)
-                    </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <span className="text-white pn-bold-16">FREE BONUS</span>{" "}
-                    Exclusive Get-Comfortable-On-Camera-In-3-Days Training
-                    Program <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($1000 value)
-                    </span>
-                  </p>
-                </li>
-                <li>
-                  <p>
-                    <span className="text-white pn-bold-16">FREE BONUS</span>{" "}
-                    Get-Ready-To-Go-Viral-Prep-Checklist <br />{" "}
-                    <span className="uppercase font-bold !text-[12px]">
-                      ($100 value)
-                    </span>
-                  </p>
+                  <span className="li-subtext">($100 value)</span>
                 </li>
               </ul>
             </div>

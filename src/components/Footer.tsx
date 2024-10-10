@@ -188,7 +188,7 @@ export default function Footer({ className = "" }: ComponentProps) {
                 <div className="flex lg:hidden h-[1px] w-full bg-charcoal" />
 
                 {/* Newsletter Form */}
-                <div className="flex flex-col items-start justify-start gap-[2rem] w-full lg:w-auto">
+                <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[2rem] w-full lg:w-auto">
                   <h2 className="pn-bold-20">Subscribe to Newsletter</h2>
                   <form
                     onSubmit={handleSubmit}

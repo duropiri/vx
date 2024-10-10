@@ -35,13 +35,14 @@
 
 @media (min-width: 1024px) {
   :root {
-    --root-size: 120;
+    --root-size: 90;
   }
 }
 
 /* Ensure font size doesn't exceed 16px on large screens */
 @media (min-width: 1920px) {
   :root {
+    --root-size: 120;
     font-size: var(--max-font-size);
   }
 }
@@ -135,8 +136,8 @@ body {
 .pn-regular-32 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: normal;
-  font-size: 1.286rem; /* 24px */
-  line-height: 1.714rem; /* 22.4px */
+  font-size: 2.286rem; /* 24px */
+  line-height: 2.286rem; /* 22.4px */
 }
 
 .pn-regular-28 {
@@ -292,28 +293,24 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-left: 5rem;
-  padding-right: 5rem;
-  padding-top: 6.25rem;
-  padding-bottom: 6.25rem;
-  margin: 0;
+  padding: 6.25rem 5rem;
+  /* margin: 6.25rem 0; */
   width: 100vw;
   box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
   .section-container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    padding-top: 3.125rem;
-    padding-bottom: 3.125rem;
+    padding: 3.125rem 2rem;
+    /* margin: 3.125rem 0; */
   }
 }
 
 .hero-container {
   padding-top: 2.5rem /* 40px */;
   padding-bottom: 2.5rem /* 40px */;
-  min-height: 100vh;
+  height: 100dvh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -357,6 +354,12 @@ body {
   justify-content: space-between;
   padding: 4.5rem 2.5rem 2.5rem;
   border-radius: 1.4rem;
+}
+
+@media (max-width: 768px) {
+  .pricing-box {
+    padding: 2rem 1.5rem 1.5rem;
+  }
 }
 
 .section-header {
@@ -416,6 +419,13 @@ body {
   background-image: url('data:image/svg+xml,%3Csvg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12.7826 1.5313L4.78255 9.5313C4.71287 9.60122 4.63008 9.6567 4.53891 9.69455C4.44775 9.73241 4.35001 9.75189 4.2513 9.75189C4.15259 9.75189 4.05485 9.73241 3.96369 9.69455C3.87252 9.6567 3.78973 9.60122 3.72005 9.5313L0.220051 6.0313C0.150286 5.96154 0.0949458 5.87871 0.0571893 5.78756C0.0194329 5.69641 1.03963e-09 5.59871 0 5.50005C-1.03952e-09 5.40139 0.0194329 5.30369 0.0571893 5.21254C0.0949458 5.12139 0.150286 5.03857 0.220051 4.9688C0.289816 4.89904 0.372638 4.8437 0.46379 4.80594C0.554942 4.76818 0.652639 4.74875 0.751301 4.74875C0.849963 4.74875 0.947659 4.76818 1.03881 4.80594C1.12996 4.8437 1.21279 4.89904 1.28255 4.9688L4.25193 7.93818L11.7213 0.470051C11.8622 0.329155 12.0533 0.25 12.2526 0.25C12.4518 0.25 12.6429 0.329155 12.7838 0.470051C12.9247 0.610947 13.0039 0.802044 13.0039 1.0013C13.0039 1.20056 12.9247 1.39165 12.7838 1.53255L12.7826 1.5313Z" fill="%23C5A05E"/%3E%3C/svg%3E');
   background-size: contain;
   background-repeat: no-repeat;
+}
+
+.li-subtext {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px !important;
+  margin-top: -4px;
 }
 
 /* End Component Styles */

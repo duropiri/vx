@@ -99,7 +99,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
             <div className="flex flex-col size-full items-start justify-start p-[2.5rem] rounded-[1rem] border border-goldenbrown bg-charcoal">
               <div className="flex flex-col lg:flex-row items-center justify-start gap-[2rem]">
                 <div className="flex flex-col justify-center lg:justify-start items-start gap-[1.5rem] text-white lg:max-w-[42%]">
-                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
+                  <span className="flex items-start pn-semibold-16 uppercase bg-ash text-goldenbrown px-[0.625rem] py-[0.5rem] rounded-[0.75rem] text-center lg:text-start">
                     Your Complete Digital Marketing Solution
                   </span>
                   <h1 className="pn-regular-28">

@@ -731,7 +731,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                   <div className="h-full aspect-square left-[1.125rem] bg-ash/5 rounded-full justify-center items-center flex">
                     <div className="flex flex-col items-center justify-center h-full aspect-square rounded-full border border-ash/10">
                       <div className="w-52 h-52 bg-goldenrod/25 rounded-full justify-center items-center flex">
-                        <span className="group-hover:animate-ping absolute flex h-full w-full rounded-full group-hover:bg-indigo-300/25 bg-transparent" />
+                        <span className="group-hover:animate-ping absolute flex size-52 lg:size-full rounded-full group-hover:bg-indigo-300/25 bg-transparent" />
                         <div className="relative flex flex-col items-center justify-center w-52 h-52 rounded-full border border-ash/10">
                           <div className="justify-center items-center flex flex-row space-x-[-1.5rem]">
                             <img
@@ -821,7 +821,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                     </div>
                   </div>
                   <div className="flex flex-row w-full justify-start items-start gap-4">
-                    <div className="flex flex-col w-full justify-start items-start gap-px">
+                    <div className="flex flex-col w-[10ch] lg:w-full justify-start items-start gap-px">
                       <div className="text-ash nu-semibold-16">Net Growth</div>
                       <div className="text-charcoal nu-regular-12">
                         Jun 2025 - Dec 2025

@@ -110,7 +110,7 @@ function FAQSection({ className }: SectionProps) {
                 value={`item-${index}`}
                 className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow py-[1.5rem] px-[2rem]"
               >
-                <AccordionTrigger className="pn-regular-32 hover:no-underline">
+                <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline">
                   {_.question}
                 </AccordionTrigger>
                 <AccordionContent className="pn-regular-16">

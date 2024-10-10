@@ -49,7 +49,7 @@ export default function ZoomParallax({
     } else if (window.innerWidth >= 1920) {
       return 500; // 500 works well for 1920p screens
     } else {
-      return 200; // Smaller value for smaller screens
+      return 50; // Smaller value for smaller screens
     }
   };
 

@@ -160,7 +160,7 @@ function ProblemSection({ className = "" }: SectionProps) {
         /> */}
 
         {/* Progress Bar */}
-        <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[5rem]">
+        <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[1rem] lg:mr-[5rem]">
           <div ref={progressBarRef} className="absolute w-[2.875rem]">
             <div className="inset-0 flex flex-col items-center text-ash">
               <svg
@@ -210,7 +210,7 @@ function ProblemSection({ className = "" }: SectionProps) {
         {/* Centered Text for Steps */}
         <div
           ref={textContainerRef}
-          className="sticky top-0 left-0 w-full max-w-[100rem] -mt-[100vh] h-[100vh] flex items-center self-center"
+          className="sticky top-0 left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex py-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
         >
           <SectionHeader
             ref={textRef}
@@ -219,6 +219,7 @@ function ProblemSection({ className = "" }: SectionProps) {
             subheading={media[0].text[1]}
             headingRef={headerRef}
             subheadingRef={bodyRef}
+            className="ml-[1rem] mr-[5rem] lg:ml-0 lg:mr-0"
           />
         </div>
 
