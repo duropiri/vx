@@ -6,6 +6,7 @@ import {
   AnimatePresence,
   useScroll,
   useTransform,
+  easeInOut,
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -25,6 +26,7 @@ interface SectionProps {
 
 function HeroSection({ className = "", navigation }: SectionProps) {
   const { scrollY } = useScroll();
+  const opacity = useTransform(scrollY, [0, 500], [1, 0], { ease: easeInOut });
 
   const floatingAnimation = {
     y: [0, -15, 0],
@@ -390,7 +392,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
         {/* Circle CTA */}
         <div
           data-speed={1.3}
-          className="cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash"
+          className="cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 lg:opacity-50 hover:opacity-100 transition-opacity duration-500" 
         >
           {/* Circular Text */}
           <svg
@@ -405,13 +407,13 @@ function HeroSection({ className = "", navigation }: SectionProps) {
               />
             </defs>
             <text
-              className="pn-regular-16 !text-[12px]"
+              className="pn-regular-16 !text-[1.125rem] 2xl:!text-[1rem]"
               fontSize="4.5"
               fill="currentColor"
               letterSpacing="0.1"
             >
               <textPath href="#circlePath" startOffset="0%">
-                • GET IN TOUCH • GET IN TOUCH
+                • SEE MORE • SEE MORE
               </textPath>
             </text>
           </svg>
@@ -529,7 +531,8 @@ function HeroSection({ className = "", navigation }: SectionProps) {
       {/* Assemble Icons */}
       <div className="absolute flex-none h-[100dvh] w-[100vw] !p-0 overflow-hidden saturate-50">
         {/* Light Rays */}
-        <div className="absolute inset-0 w-full h-full overflow-hidden">
+        <div className="absolute inset-0 w-full h-full overflow-hidden opacity-30">
+          <div className="absolute flex h-[100dvh] w-[100vw] bg-gradient-to-b from-transparent from-70% to-goldenrod to-90% z-10" />
           {/* Ray 1 */}
           <motion.div
             className="absolute left-[15%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-b from-transparent to-goldenrod animate-pulse"
@@ -613,13 +616,13 @@ function HeroSection({ className = "", navigation }: SectionProps) {
 
         {/* Icons */}
         <div className="relative">
-          <div className="absolute flex h-[100dvh] w-[100vw] bg-gradient-to-b from-transparent from-70% to-goldenrod to-90% z-10" />
           {/* Top Left */}
           <motion.div
             className="size-[5rem] absolute flex left-[40%] top-[60vh] lg:left-[30%] lg:top-[8rem]"
             style={{
               x: useTransform(scrollY, [0, 500], [0, 300]),
               y: useTransform(scrollY, [0, 500], [0, 1200]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [-15, -45]),
             }}
           >
@@ -646,6 +649,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, -300]),
               y: useTransform(scrollY, [0, 500], [0, 1200]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [15, 45]),
             }}
           >
@@ -680,6 +684,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, 400]),
               y: useTransform(scrollY, [0, 500], [0, 1000]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [-20, -40]),
             }}
           >
@@ -714,6 +719,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, -400]),
               y: useTransform(scrollY, [0, 500], [0, 1000]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [20, 40]),
             }}
           >
@@ -748,6 +754,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, 400]),
               y: useTransform(scrollY, [0, 500], [0, 800]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [-30, -60]),
             }}
           >
@@ -782,6 +789,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, -400]),
               y: useTransform(scrollY, [0, 500], [0, 800]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [30, 60]),
             }}
           >
@@ -816,6 +824,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, 300]),
               y: useTransform(scrollY, [0, 500], [0, 600]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [-25, -50]),
             }}
           >
@@ -850,6 +859,7 @@ function HeroSection({ className = "", navigation }: SectionProps) {
             style={{
               x: useTransform(scrollY, [0, 500], [0, -300]),
               y: useTransform(scrollY, [0, 500], [0, 600]),
+              opacity,
               rotate: useTransform(scrollY, [0, 500], [25, 50]),
             }}
           >

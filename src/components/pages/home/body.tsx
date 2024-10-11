@@ -32,7 +32,7 @@ function body() {
         className="z-10 min-w-[100vw]"
         navigation={NavLinks}
       />
-      <SocialProofSection className="bg-white z-10 min-w-[100vw] bg-gradient-to-t from-transparent from-90% to-goldenrod/20" />
+      <SocialProofSection className="bg-white z-10 min-w-[100vw]" />
       <CopySection
         className="bg-white z-10 min-w-[100vw]"
         copy={

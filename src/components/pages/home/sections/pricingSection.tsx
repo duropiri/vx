@@ -15,8 +15,8 @@ const Prices = [
     description: "No Contracts. Cancel Anytime.",
     price: 1000,
     features: [
-      "(4x) Social Media Short Form Videos",
-      "(4x) Custom Social Media Thumbnails",
+      "(10x) Social Media Short Form Videos",
+      "(10x) Custom Social Media Thumbnails",
       "All-inclusive social media management including content creation, moderation & scheduling",
       "Includes Instagram, Facebook & TikTok",
       "Daily Communication",
@@ -36,7 +36,7 @@ const Prices = [
     features: [
       "(8x) Social Media Short-Form Videos",
       "(8x) Custom Social Media Thumbnails",
-      "(12x) Social Media Carousel Posts",
+      "(20x) Social Media Carousel Posts",
       "Includes Instagram, Facebook, TikTok & LinkedIn",
       "Hashtag Research and Analytics",
       "Unlimited Revisions",
@@ -54,7 +54,7 @@ const Prices = [
     features: [
       "(30x) Social Media Short-Form Videos",
       "(30x) Custom Social Media Thumbnails",
-      "(60x) Social Media Carousel Posts",
+      "(30x) Social Media Carousel Posts",
       "Daily Photo/Video Story Posts",
       "Priority Listing Appointment Booking (EXCLUSIVE)",
       "Unlimited Social Media Account(s) - ALL Social Media Platforms including Instagram, Facebook, TikTok, LinkedIn, Twitter (X), and Pinterest",
@@ -125,7 +125,7 @@ function PricingSection({ className }: SectionProps) {
               <div className="flex w-full h-[1px] bg-ash" />
               {/* Price */}
               <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-                <h2 className="text-center pn-semibold-40">$1,295</h2>
+                <h2 className="text-center pn-semibold-40">$1,795</h2>
                 <p className="text-center text-goldenbrown pn-semibold-16">
                   monthly
                 </p>
@@ -134,13 +134,13 @@ function PricingSection({ className }: SectionProps) {
               <ul className="custom-bullet-list flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1.5rem] pn-regular-16">
                 <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="pn-bold-16">(4x)</span> Social Media
+                    <span className="pn-bold-16">(10x)</span> Social Media
                     Short-Form Videos
                   </p>
                 </li>
                 <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="pn-bold-16">(4x)</span> Custom Social Media
+                    <span className="pn-bold-16">(10x)</span> Custom Social Media
                     Thumbnails
                   </p>
                 </li>
@@ -247,7 +247,7 @@ function PricingSection({ className }: SectionProps) {
               <div className="flex w-full h-[1px] bg-ash" />
               {/* Price */}
               <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-                <h2 className="text-center pn-semibold-40">$2,495</h2>
+                <h2 className="text-center pn-semibold-40">$3,495</h2>
                 <p className="text-center text-goldenbrown pn-semibold-16">
                   monthly
                 </p>
@@ -261,22 +261,22 @@ function PricingSection({ className }: SectionProps) {
                 </div>
                 <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="pn-bold-16">(12x)</span> Social Media
+                    <span className="pn-bold-16">(20x)</span> Social Media
                     Short-Form Videos
                   </p>
                   <span className="li-subtext">(3x value)</span>
                 </li>
                 <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="pn-bold-16">(12x)</span> Custom Social
+                    <span className="pn-bold-16">(20x)</span> Custom Social
                     Media Thumbnails
                   </p>
                   <span className="li-subtext">(3x value)</span>
                 </li>
                 <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="pn-bold-16">(12x)</span> Social Media
-                    Carousel Posts
+                    <span className="pn-bold-16">(15x)</span> Social Media
+                    Feed Posts
                   </p>
                   <span className="li-subtext">($1200 value)</span>
                 </li>
@@ -354,7 +354,7 @@ function PricingSection({ className }: SectionProps) {
               {/* Price */}
               <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
                 <h2 className="text-center text-white pn-semibold-40">
-                  $5,995
+                  $6,995
                 </h2>
                 <p className="text-center text-goldenbrown pn-semibold-16">
                   monthly
@@ -382,8 +382,8 @@ function PricingSection({ className }: SectionProps) {
                 </li>
                 <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
-                    <span className="pn-bold-16">(60x)</span> Social Media
-                    Carousel Posts
+                    <span className="pn-bold-16">(30x)</span> Social Media
+                    Feed Posts
                   </p>
                   <span className="li-subtext">(5x value)</span>
                 </li>
