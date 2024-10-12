@@ -194,7 +194,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="sticky top-0 flex flex-col h-[100vh] w-[100dvw] items-center justify-end">
             <div
               ref={roadRef}
-              className="relative flex justify-center w-[100dvw] lg:w-[40dvw] text-ash blur-sm"
+              className="relative  flex justify-center min-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash blur-sm"
             >
               <div
                 className="absolute top-0 w-full h-[5rem] bg-gradient-to-b to-transparent z-10"

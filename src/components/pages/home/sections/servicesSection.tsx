@@ -422,7 +422,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             </div>
                             <img
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                              src="/images/VirtualXposure-ExteriorImage.png"
+                              src="/images/VirtualXposure-ExteriorImage.webp"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -499,7 +499,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             </div>
                             <img
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                              src="/images/VirtualXposure-ExteriorImage.png"
+                              src="/images/VirtualXposure-ExteriorImage.webp"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -576,7 +576,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             </div>
                             <img
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                              src="/images/VirtualXposure-ExteriorImage.png"
+                              src="/images/VirtualXposure-ExteriorImage.webp"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -653,7 +653,7 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                             </div>
                             <img
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                              src="/images/VirtualXposure-ExteriorImage.png"
+                              src="/images/VirtualXposure-ExteriorImage.webp"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -740,23 +740,23 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                           <div className="justify-center items-center flex flex-row space-x-[-1.5rem]">
                             <img
                               className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[-50%] group-hover:-rotate-45"
-                              src="/images/team.png"
+                              src="/images/team.webp"
                             />
                             <img
                               className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[-25%] group-hover:-rotate-12 group-hover:translate-y-[-25%]"
-                              src="/images/team_1.png"
+                              src="/images/team_1.webp"
                             />
                             <img
                               className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-y-[-35%]"
-                              src="/images/team_2.png"
+                              src="/images/team_2.webp"
                             />
                             <img
                               className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[25%] group-hover:rotate-12 group-hover:translate-y-[-25%]"
-                              src="/images/team_3.png"
+                              src="/images/team_3.webp"
                             />
                             <img
                               className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[50%] group-hover:rotate-45"
-                              src="/images/team_4.png"
+                              src="/images/team_4.webp"
                             />
                           </div>
                         </div>

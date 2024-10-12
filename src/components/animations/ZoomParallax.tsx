@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/all";
@@ -30,6 +30,25 @@ export default function ZoomParallax({
   media,
   onStepChange, // Pass this as a prop
 }: AnimationProps) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
+    };
+
+    // Initial setup
+    handleResize();
+
+    // Event listeners for scroll and resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup event listeners
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const containerRef = useRef(null);
   const elementsRef = useRef<HTMLDivElement[]>([]);
 
@@ -44,13 +63,14 @@ export default function ZoomParallax({
 
   // Function to calculate the translation growth rate based on the viewport width
   const getTranslationGrowthRate = () => {
-    if (window.innerWidth >= 2560) {
-      return 700; // 700 works well for larger screens
-    } else if (window.innerWidth >= 1920) {
-      return 500; // 500 works well for 1920p screens
-    } else {
-      return 50; // Smaller value for smaller screens
-    }
+    // if (window.innerWidth >= 2560) {
+    //   return 500; // 700 works well for larger screens
+    // } else if (window.innerWidth >= 1920) {
+    //   return 250; // 500 works well for 1920p screens
+    // } else {
+    //   return 50; // Smaller value for smaller screens
+    // }
+    return 0;
   };
 
   useEffect(() => {
@@ -79,21 +99,21 @@ export default function ZoomParallax({
             // Only use onEnter for the first image
             if (index === 0) {
               onStepChange(index + 1);
-              console.log(`Animation started at Image ${index + 1}`);
+              // console.log(`Animation started at Image ${index + 1}`);
             }
           },
           onEnterBack: () => {
             // onEnterBack always sets the step as the current image
             onStepChange(index + 1);
-            console.log(`Image ${index + 1} entered backwards`);
+            // console.log(`Image ${index + 1} entered backwards`);
           },
           onLeave: () => {
             // Use onLeave to set the step for subsequent images
             if (index !== media.length - 1) {
               onStepChange(index + 2); // Trigger the next step
-              console.log(`Image ${index + 2} entered`);
+              // console.log(`Image ${index + 2} entered`);
             } else {
-              console.log(`Animation stopped at Image ${media.length}`);
+              // console.log(`Animation stopped at Image ${media.length}`);
             }
           },
         },
@@ -124,7 +144,7 @@ export default function ZoomParallax({
         tl.to(
           el,
           {
-            scale: 1, // Scale to normal size
+            scale: isMobile ? 2 : 1, // Scale to normal size
             x: 0, // Center the element
             duration: animationDuration,
             ease: CustomEase.create(
@@ -185,17 +205,20 @@ export default function ZoomParallax({
               <div
                 style={{
                   top: item.top || "0%",
-                  left: item.left || "0%",
-                  width: item.width || "25vw",
-                  height: item.height || "25vh",
+                  left:
+                    isMobile && index === media.length - 1
+                      ? "0%"
+                      : item.left || "0%",
+                  // width: "25vw",
                 }}
-                className={styles.imageContainer}
+                className={`${styles.imageContainer} aspect-square w-[30vw] lg:w-[25vw]`}
               >
                 <Image
                   src={item.src}
                   fill
                   alt={item.alt}
-                  objectFit={item.fit || "cover"}
+                  objectFit={item.fit || "contain"}
+                  sizes="(max-width: 640px) 600px, (max-width: 1024px) 600px, 600px" // Adjust these sizes based on your layout
                 />
               </div>
             )}

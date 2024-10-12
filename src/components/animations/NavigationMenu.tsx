@@ -283,7 +283,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
         } ${isScrolled ? "opacity-0 pointer-events-none" : ""}`}
       >
         {/* Original Header */}
-        <div className="relative flex size-full items-center justify-center lg:justify-between gap-10">
+        <div className="relative flex size-full items-center justify-center sm:justify-between gap-10">
           {/* Logo */}
           <div className="cursor-select-hover relative lg:max-w-[10vw] ">
             <Link
@@ -296,7 +296,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 alt="logo"
                 width={36}
                 height={22}
-                sizes="(max-width: 640px) 18px, (max-width: 1024px) 24px, 36px" // Adjust these sizes based on your layout
+                sizes="(max-width: 640px) 36px, (max-width: 1024px) 36px, 36px" // Adjust these sizes based on your layout
                 className="size-full"
               />
             </Link>

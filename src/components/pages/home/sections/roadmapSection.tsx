@@ -61,7 +61,7 @@ function RoadmapSection({ className }: SectionProps) {
     <div
       className={`section-container !flex-row ${className} overflow-hidden !pb-0 mb-[3.125rem] lg:mb-[6.25rem]`}
     >
-      <div className="relative flex size-full flex-col items-start justify-between">
+      <div className="relative flex size-full flex-col items-start justify-between lg:gap-0">
         {/* Header */}
         <SectionHeader
           center
@@ -76,7 +76,7 @@ function RoadmapSection({ className }: SectionProps) {
             competitive online marketplace. Our services cover everything from
             content creation to full-scale social media management, all backed
             by data-driven strategies to ensure results that matter."
-          className="bg-white z-10 pb-[1.5rem] lg:pb-[3.75rem]"
+          className="bg-white z-10 pb-[10rem] lg:pb-[3.75rem]"
         />
 
         {/* Content */}
@@ -133,7 +133,7 @@ function RoadmapSection({ className }: SectionProps) {
           {/* Steps Copy */}
           <div className="flex flex-col size-full lg:min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10">
             {/* Step 1 */}
-            <div className="flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[1.875rem] lg:gap-[6.25rem] lg:pt-[7.5rem] py-[1.875rem]">
+            <div className="flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[8rem] lg:gap-[6.25rem] lg:pt-[7.5rem] py-[1.875rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -185,21 +185,25 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]"
               >
+                <div
+                  data-speed={0.9}
+                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
+                />
                 <Image
-                  src="/images/logo5.webp"
+                  src="/images/instant-launch.webp"
                   alt="vx"
                   width={500}
                   height={190}
-                  sizes="(max-width: 640px) 125px, (max-width: 1024px) 250px, 500px" // Adjust these sizes based on your layout
-                  className="pointer-events-none size-full object-cover"
+                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
+                  className="pointer-events-none size-full object-cover z-10"
                 />
               </div>
             </div>
 
             {/* Step 2 */}
-            <div className="flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[1.875rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem]">
+            <div className="flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[8rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -252,21 +256,25 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]"
               >
+                <div
+                  data-speed={0.9}
+                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
+                />
                 <Image
-                  src="/images/logo5.webp"
+                  src="/images/power-upload.webp"
                   alt="vx"
                   width={500}
                   height={190}
-                  sizes="(max-width: 640px) 125px, (max-width: 1024px) 250px, 500px" // Adjust these sizes based on your layout
-                  className="pointer-events-none size-full object-cover"
+                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
+                  className="pointer-events-none size-full object-cover z-10"
                 />
               </div>
             </div>
 
             {/* Step 3 */}
-            <div className="flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[1.875rem] lg:gap-[6.25rem] py-[1.875rem]">
+            <div className="flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[8rem] lg:gap-[6.25rem] py-[1.875rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -318,21 +326,25 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]"
               >
+                <div
+                  data-speed={0.9}
+                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
+                />
                 <Image
-                  src="/images/logo5.webp"
+                  src="/images/strategy-surge.webp"
                   alt="vx"
                   width={500}
                   height={190}
-                  sizes="(max-width: 640px) 125px, (max-width: 1024px) 250px, 500px" // Adjust these sizes based on your layout
-                  className="pointer-events-none size-full object-cover"
+                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
+                  className="pointer-events-none size-full object-cover z-10"
                 />
               </div>
             </div>
 
             {/* Step 4 */}
-            <div className="flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[1.875rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem] lg:pb-[7.5rem]">
+            <div className="flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[8rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem] lg:pb-[7.5rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -384,15 +396,19 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] h-[11.875rem] overflow-hidden bg-ash translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]"
               >
+                <div
+                  data-speed={0.9}
+                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
+                />
                 <Image
-                  src="/images/logo5.webp"
+                  src="/images/content-machine.webp"
                   alt="vx"
                   width={500}
                   height={190}
-                  sizes="(max-width: 640px) 125px, (max-width: 1024px) 250px, 500px" // Adjust these sizes based on your layout
-                  className="pointer-events-none size-full object-cover"
+                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
+                  className="pointer-events-none size-full object-cover z-10"
                 />
               </div>
             </div>
