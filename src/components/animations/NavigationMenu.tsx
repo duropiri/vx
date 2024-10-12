@@ -278,7 +278,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     <>
       <div
         id="header"
-        className={`transition-all duration-500 ${className} z-[999] flex flex-col size-full h-auto p-[2rem] lg:p-[0.438rem] lg:pl-[1.5rem] ${
+        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[2rem] lg:p-[0.438rem] lg:pl-[1.5rem] ${
           isActive ? "" : "mix-blend-differences"
         } ${isScrolled ? "opacity-0 pointer-events-none" : ""}`}
       >
@@ -296,6 +296,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 alt="logo"
                 width={36}
                 height={22}
+                sizes="(max-width: 640px) 18px, (max-width: 1024px) 24px, 36px" // Adjust these sizes based on your layout
                 className="size-full"
               />
             </Link>
@@ -371,7 +372,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       </div>
 
       {/* Navdock */}
-
     </>
   );
 };

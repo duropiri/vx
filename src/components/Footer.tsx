@@ -28,7 +28,7 @@ export default function Footer({ className = "" }: ComponentProps) {
   return (
     <>
       <div
-        className="relative h-[40rem] md:h-[50rem] lg:h-[25rem]"
+        className="relative h-[40rem] md:h-[50rem] lg:h-[25rem] select-none"
         style={{ clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)" }}
       >
         <div className="relative h-[calc(100vh+40rem)] md:h-[calc(100vh+50rem)]  lg:h-[calc(100vh+25rem)] -top-[100vh]">
@@ -221,7 +221,7 @@ export default function Footer({ className = "" }: ComponentProps) {
         </div>
       </div>
       {/* Footer bottom - always visible */}
-      <div className="flex flex-col lg:flex-row w-full !justify-between items-center gap-y-[1rem] lg:gap-y-[2rem] section-container bg-ash text-white !py-[2rem]">
+      <div className="flex flex-col lg:flex-row w-full !justify-between items-center gap-y-[1rem] lg:gap-y-[2rem] section-container bg-ash text-white !py-[2rem] select-none">
         <p className="pn-regular-14">
           © Copyright 2024, All Rights Reserved by VirtualXposure
         </p>

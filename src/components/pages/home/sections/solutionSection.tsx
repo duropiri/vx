@@ -46,7 +46,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
       {/* Background Text Parallax */}
-      <div className="blur-[0.125rem] absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
+      <div className="select-none blur-[0.125rem] absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
         <ScrollingBanner
           baseVelocity={10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
@@ -329,7 +329,7 @@ function SolutionSection({ className, scrollYProgress }: SectionProps) {
             </svg>
           </HoverWrapper>
           <HoverWrapper
-            href="/"
+            href="/#contact"
             className="button cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="">Get In Touch</FlipLink>

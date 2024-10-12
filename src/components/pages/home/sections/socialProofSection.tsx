@@ -1,12 +1,7 @@
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import React from "react";
-
-interface SectionProps {
-  className?: string;
-  full?: boolean;
-}
+import React, { forwardRef, RefObject, useState } from "react";
 
 const logos = [
   [
@@ -65,155 +60,208 @@ const logos = [
   ],
 ];
 
-function SocialProofSection({ className = "", full = false }: SectionProps) {
-  return (
-    <div className={`section-container lg:!flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[1rem] lg:gap-y-[2rem]">
-        {/* Header */}
-        <SectionHeader
-          small
-          className={`${full ? "!hidden" : ""}`}
-          heading="Our Partners"
-          subheading="A Few Of Our Clients In The Real Estate Industry"
-        />
+interface SectionProps {
+  className?: string;
+  full?: boolean;
+  originalColor?: string;
+  transitionColor?: string;
+  ref?: RefObject<HTMLDivElement>;
+  id?: string;
+}
 
-        <div
-          className={`relative flex size-full flex-row items-center gap-[2.5rem] max-h-[22.5rem] overflow-hidden ${
-            full ? "justify-center" : "justify-end lg:max-w-[50%]"
-          }`}
-        >
-          <div className="absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b from-white to-transparent" />
-          <div className="absolute z-10 bottom-0 w-full h-[7.5rem] bg-gradient-to-t from-white to-transparent" />
-          <div className="relative flex w-[11.25rem]">
-            <ScrollingBanner
-              direction="vertical"
-              baseVelocity={250}
-              className="flex flex-col"
-              innerChild="flex flex-col gap-[1.5rem]"
-            >
-              {logos[0].map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={200}
-                  height={48}
-                  className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
-                />
-              ))}
-            </ScrollingBanner>
-          </div>
-          <div className="flex flex-col w-[11.25rem]">
-            <ScrollingBanner
-              direction="vertical"
-              baseVelocity={-250}
-              className="flex flex-col"
-              innerChild="flex flex-col gap-[1.5rem]"
-            >
-              {logos[1].map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={200}
-                  height={48}
-                  className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
-                />
-              ))}
-            </ScrollingBanner>
-          </div>
-          <div className="flex flex-col w-[11.25rem]">
-            <ScrollingBanner
-              direction="vertical"
-              baseVelocity={250}
-              className="flex flex-col"
-              innerChild="flex flex-col gap-[1.5rem]"
-            >
-              {logos[2].map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={200}
-                  height={48}
-                  className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
-                />
-              ))}
-            </ScrollingBanner>
-          </div>
+const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
+  (
+    {
+      className = "",
+      full = false,
+      originalColor = "#FFFFFF",
+      transitionColor = "#FFFFFF",
+      id,
+    },
+    ref
+  ) => {
+    const [color, setColor] = useState(originalColor);
+
+    const commonProps = {
+      id,
+    };
+
+    return (
+      <div
+        {...commonProps}
+        ref={ref}
+        className={`section-container lg:!flex-row ${className}`}
+        style={{ backgroundColor: color }} // Use the passed color
+        data-original-color={originalColor}
+        data-transition-color={transitionColor}
+      >
+        <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[1rem] lg:gap-y-[2rem]">
+          {/* Header */}
+          <SectionHeader
+            small
+            className={`${full ? "!hidden" : ""}`}
+            heading="Our Partners"
+            subheading="A Few Of Our Clients In The Real Estate Industry"
+          />
+
           <div
-            className={`${
-              full ? "hidden lg:flex" : "hidden"
-            } flex-col w-[11.25rem]`}
+            className={`select-none relative flex size-full flex-row items-center gap-[2.5rem] max-h-[22.5rem] overflow-hidden ${
+              full ? "justify-center" : "justify-end lg:max-w-[50%]"
+            }`}
           >
-            <ScrollingBanner
-              direction="vertical"
-              baseVelocity={-250}
-              className="flex flex-col"
-              innerChild="flex flex-col gap-[1.5rem]"
+            <div
+              className={`absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b to-transparent transition-all duration-500`}
+              style={
+                {
+                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
+                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
+                  "--tw-gradient-stops":
+                    "var(--tw-gradient-from), var(--tw-gradient-to)",
+                } as React.CSSProperties
+              }
+            />
+            <div
+              className={`absolute z-10 bottom-0 w-full h-[7.5rem] bg-gradient-to-t to-transparent transition-all duration-500`}
+              style={
+                {
+                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
+                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
+                  "--tw-gradient-stops":
+                    "var(--tw-gradient-from), var(--tw-gradient-to)",
+                } as React.CSSProperties
+              }
+            />
+            <div className="relative flex w-[11.25rem]">
+              <ScrollingBanner
+                direction="vertical"
+                baseVelocity={250}
+                className="flex flex-col"
+                innerChild="flex flex-col gap-[1.5rem]"
+              >
+                {logos[0].map((logo, index) => (
+                  <Image
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={48}
+                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                  />
+                ))}
+              </ScrollingBanner>
+            </div>
+            <div className="flex flex-col w-[11.25rem]">
+              <ScrollingBanner
+                direction="vertical"
+                baseVelocity={-250}
+                className="flex flex-col"
+                innerChild="flex flex-col gap-[1.5rem]"
+              >
+                {logos[1].map((logo, index) => (
+                  <Image
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={48}
+                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                  />
+                ))}
+              </ScrollingBanner>
+            </div>
+            <div className="flex flex-col w-[11.25rem]">
+              <ScrollingBanner
+                direction="vertical"
+                baseVelocity={250}
+                className="flex flex-col"
+                innerChild="flex flex-col gap-[1.5rem]"
+              >
+                {logos[2].map((logo, index) => (
+                  <Image
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={48}
+                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                  />
+                ))}
+              </ScrollingBanner>
+            </div>
+            <div
+              className={`${
+                full ? "hidden lg:flex" : "hidden"
+              } flex-col w-[11.25rem]`}
             >
-              {logos[0].map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={200}
-                  height={48}
-                  className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
-                />
-              ))}
-            </ScrollingBanner>
-          </div>
-          <div
-            className={`${
-              full ? "hidden lg:flex" : "hidden"
-            } flex-col w-[11.25rem]`}
-          >
-            <ScrollingBanner
-              direction="vertical"
-              baseVelocity={250}
-              className="flex flex-col"
-              innerChild="flex flex-col gap-[1.5rem]"
+              <ScrollingBanner
+                direction="vertical"
+                baseVelocity={-250}
+                className="flex flex-col"
+                innerChild="flex flex-col gap-[1.5rem]"
+              >
+                {logos[0].map((logo, index) => (
+                  <Image
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={48}
+                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                  />
+                ))}
+              </ScrollingBanner>
+            </div>
+            <div
+              className={`${
+                full ? "hidden lg:flex" : "hidden"
+              } flex-col w-[11.25rem]`}
             >
-              {logos[1].map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={200}
-                  height={48}
-                  className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
-                />
-              ))}
-            </ScrollingBanner>
-          </div>
-          <div
-            className={`${
-              full ? "hidden lg:flex" : "hidden"
-            } flex-col w-[11.25rem]`}
-          >
-            <ScrollingBanner
-              direction="vertical"
-              baseVelocity={-250}
-              className="flex flex-col"
-              innerChild="flex flex-col gap-[1.5rem]"
+              <ScrollingBanner
+                direction="vertical"
+                baseVelocity={250}
+                className="flex flex-col"
+                innerChild="flex flex-col gap-[1.5rem]"
+              >
+                {logos[1].map((logo, index) => (
+                  <Image
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={48}
+                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                  />
+                ))}
+              </ScrollingBanner>
+            </div>
+            <div
+              className={`${
+                full ? "hidden lg:flex" : "hidden"
+              } flex-col w-[11.25rem]`}
             >
-              {logos[2].map((logo, index) => (
-                <Image
-                  key={index}
-                  src={logo.src}
-                  alt={logo.alt}
-                  width={200}
-                  height={48}
-                  className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
-                />
-              ))}
-            </ScrollingBanner>
+              <ScrollingBanner
+                direction="vertical"
+                baseVelocity={-250}
+                className="flex flex-col"
+                innerChild="flex flex-col gap-[1.5rem]"
+              >
+                {logos[2].map((logo, index) => (
+                  <Image
+                    key={index}
+                    src={logo.src}
+                    alt={logo.alt}
+                    width={200}
+                    height={48}
+                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                  />
+                ))}
+              </ScrollingBanner>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
 
 export default SocialProofSection;

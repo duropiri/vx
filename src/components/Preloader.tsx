@@ -198,6 +198,7 @@ const Preloader: React.FC<PreloaderProps> = ({
             alt="Loading"
             width={150}
             height={150}
+            sizes="(max-width: 640px) 50px, (max-width: 1024px) 100px, 150px" // Adjust these sizes based on your layout
             className="w-[9.375rem] mix-blend-difference"
           />
         </div>

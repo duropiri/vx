@@ -1,4 +1,5 @@
 "use client";
+import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { MotionValue } from "framer-motion";
@@ -16,7 +17,10 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
   const [fourthBentoHovered, setFourthBentoHovered] = useState(false);
 
   return (
-    <div className={`section-container !flex-row ${className} bg-white`}>
+    <div
+      id="services"
+      className={`section-container !flex-row ${className} bg-white`}
+    >
       <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
@@ -1096,16 +1100,18 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                 </div>
               </div>
               {/* CTA */}
-              <div className="h-[60px] flex-col justify-center items-center flex">
-                <HoverWrapper
-                  href="/"
-                  className="button cursor-select-hover !rounded-full !w-[18.75rem] !py-[1.25rem] !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown"
-                >
-                  <FlipLink className="pn-semibold-16 leading-[1rem]">
-                    Get Started
-                  </FlipLink>
-                </HoverWrapper>
-              </div>
+              <GsapMagnetic speed={0.5}>
+                <div className="h-[60px] flex-col justify-center items-center flex">
+                  <HoverWrapper
+                    href="/"
+                    className="button cursor-select-hover !rounded-full !w-[18.75rem] !py-[1.25rem] !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown"
+                  >
+                    <FlipLink className="pn-semibold-16 leading-[1rem]">
+                      Get Started
+                    </FlipLink>
+                  </HoverWrapper>
+                </div>
+              </GsapMagnetic>
             </div>
           </div>
         </div>
