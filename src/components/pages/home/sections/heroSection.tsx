@@ -812,7 +812,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   className={`flex flex-row items-center justify-center w-[100vw] h-[3.313rem]`}
                 >
                   <HoverWrapper
-                    href="/#contact"
+                    href="#contact"
                     className="button h-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]"
                   >
                     <FlipLink className={`flex items-center w-full`}>
@@ -958,7 +958,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
             {/* Initial state content (matches heroCTA exactly) */}
             <HoverWrapper
-              href="/#contact"
+              href="#contact"
               id="navdock-cta"
               className="button self-end !border-none size-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 max-w-[11rem] "
             >

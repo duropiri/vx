@@ -329,7 +329,7 @@ function SolutionSection({ className }: SectionProps) {
             </svg>
           </HoverWrapper>
           <HoverWrapper
-            href="/#contact"
+            href="#contact"
             className="button cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="">Get In Touch</FlipLink>

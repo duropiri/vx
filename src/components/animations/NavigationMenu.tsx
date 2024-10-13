@@ -329,7 +329,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             {/* CTA */}
             <HoverWrapper className="cursor-select-hover">
               <Link
-                href={"/#contact"}
+                href={"#contact"}
                 className="pn-regular-16 relative group hidden md:flex button !bg-goldenbrown text-ash shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 mix-blend-normal"
                 passHref
               >
