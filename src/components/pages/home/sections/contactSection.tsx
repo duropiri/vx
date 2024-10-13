@@ -27,6 +27,7 @@ function ContactSection({ className }: SectionProps) {
 
         <div className="cursor-none-hover w-full h-full 2xl:min-h-[44rem] overflow-hidden">
           <iframe
+            title="calendar booking"
             src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
             style={{
               width: "100%",
