@@ -14,7 +14,7 @@ import CustomCursor from "@/components/animations/CustomCursor";
 import SmoothScrolling from "@/components/animations/SmoothScrolling";
 import {
   slide,
-  perspective,
+  // perspective,
   // opacity,
   exitSlide,
 } from "@/components/layout/transitions/transitions";
