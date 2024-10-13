@@ -917,7 +917,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Navdock */}
         <div
           id="navdock"
-          className={`fixed flex flex-row items-center justify-center bottom-[0.75rem] lg:top-[2.5rem] w-[100vw] h-[3.313rem] z-[1000] max-w-[100vw]`}
+          className={`fixed flex flex-row items-center justify-center bottom-[0.75rem] lg:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
         >
           <div
             ref={navdockRef}

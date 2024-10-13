@@ -70,6 +70,13 @@ body {
   font-family: Proxima Nova, sans-serif;
 }
 
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

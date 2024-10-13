@@ -53,7 +53,7 @@ export default function ScrollingBanner({
   const position = useTransform(basePosition, (v) => `${wrap(-20, -45, v)}%`);
 
   const directionFactor = useRef(1);
-  useAnimationFrame((delta) => {
+  useAnimationFrame((t, delta) => {
     let moveBy =
       directionFactor.current * (adjustedBaseVelocity / 1000) * (delta / 1000);
 

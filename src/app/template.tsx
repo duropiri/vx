@@ -84,7 +84,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           ease: [0.76, 0, 0.24, 1],
         }}
       />
-      <motion.div
+      {/* <motion.div
         variants={perspective}
         initial={perspective.initial}
         exit={perspective.exit}
@@ -93,7 +93,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           duration: 1.2,
           ease: [0.76, 0, 0.24, 1],
         }}
-      >
+      > */}
         {/* <motion.div
           className=""
           variants={opacity}
@@ -132,7 +132,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           <>{children}</>
         )}
         {/* </motion.div> */}
-      </motion.div>
+      {/* </motion.div> */}
     </div>
   );
 };

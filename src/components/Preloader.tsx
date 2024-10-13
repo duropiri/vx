@@ -164,11 +164,6 @@ const Preloader: React.FC<PreloaderProps> = ({
     loadGSAP();
   }, [loadingPercentage, finishAnimation, duration]);
 
-  if (!isAnimating) {
-    // console.log("Splash screen animation complete, removing splash screen");
-    return null;
-  }
-
   return (
     <div className="fixed inset-0 overflow-hidden z-[99999999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]">
       <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
