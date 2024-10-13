@@ -156,7 +156,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           // START
           // Set navdock initial state (SIZE AND COLOR)
           gsap.set(navdock, {
-            display: "flex",
+            display: "none",
             padding: 0,
             width:
               // isMobile ? "100%" :
@@ -171,7 +171,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
           // Hide elements on desktop, visible on mobile
           gsap.set(["#logo", ".nav"], {
-            display: isMobile ? "flex" : "none",
+            display: "none",
           });
 
           // Set initial position for the CTA
@@ -191,10 +191,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               gsap.set(heroCTA, {
                 opacity: isMobile ? 1 : 0,
               }); // Hide heroCTA
-              gsap.set(navdock, { opacity: 1 }); // Show navdock
+              gsap.set(navdock, { opacity: 1, display: "flex" }); // Show navdock
             },
             onLeaveBack: () => {
-              gsap.set(navdock, { opacity: 0 }); // Hide navdock
+              gsap.set(navdock, { opacity: 0, display: "none" }); // Hide navdock
               gsap.set(heroCTA, { opacity: 1 }); // Show heroCTA
             },
           });
