@@ -10,7 +10,7 @@ interface AnimationProps {
 
 export default function InfiniteTextOnScroll({
   children,
-  className,
+  className = "",
 }: AnimationProps) {
   const firstText = useRef<HTMLParagraphElement>(null);
   const secondText = useRef<HTMLParagraphElement>(null);
@@ -58,7 +58,7 @@ export default function InfiniteTextOnScroll({
   };
 
   return (
-    <main className={styles.main}>
+    <main className={`${className} ${styles.main}`}>
       <div style={styles.sliderContainer}>
         <div ref={slider} className={styles.slider}>
           <p ref={firstText} className={"relative " + styles.sliderP} />

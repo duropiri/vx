@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useScroll, motion, useTransform } from "framer-motion";
 
 interface AnimationProps {
@@ -10,6 +10,8 @@ interface AnimationProps {
   lineStyles?: lineStyles;
   start?: number; // Percentage of the viewport where the animation should start
   end?: number; // Percentage of the viewport where the animation should end
+  // range: number[];
+  // progress: MotionValue<number>;
 }
 
 interface lineStyles {
@@ -32,12 +34,12 @@ export default function CharByCharOnScroll({
 }: AnimationProps) {
   const element = useRef<HTMLDivElement>(null);
   // Convert start and end to a percentage string format required by Framer Motion
-  const offsetStart: any = `start ${start}%`;
-  const offsetEnd: any = `start ${end}%`;
+  // const offsetStart: any = `start ${start}%`;
+  // const offsetEnd: any = `start ${end}%`;
   const { scrollYProgress } = useScroll({
     target: element,
     // offset: ["start end", "start start"], // start animation once in view, complete animation at top of view
-    offset: [offsetStart, offsetEnd],
+    offset: [`start ${start}%`, `start ${end}%`],
   });
 
   // useEffect(() => {

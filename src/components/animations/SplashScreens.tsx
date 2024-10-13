@@ -9,9 +9,9 @@ interface ComponentProps {
 }
 
 export function LoadingBarVignette({
-  className,
+  className = "",
   finishLoading,
-  logo
+  logo,
 }: ComponentProps) {
   const circleRef = useRef(null);
   const logoRef = useRef(null);
@@ -82,7 +82,9 @@ export function LoadingBarVignette({
   }, [finishLoading]);
 
   return (
-    <div className="fixed inset-0 overflow-hidden z-[99999] flex flex-col items-center justify-center bg-transparent cursor-wait">
+    <div
+      className={`${className} fixed inset-0 overflow-hidden z-[99999] flex flex-col items-center justify-center bg-transparent cursor-wait`}
+    >
       {/* The circle, styled to be large and circular immediately */}
       <div
         ref={circleRef}
@@ -100,10 +102,7 @@ export function LoadingBarVignette({
       </div>
       {/* Loading bar */}
       <div className="absolute bottom-10 w-full px-20">
-        <div
-          ref={loadingBarRef}
-          className="h-1 w-full bg-white"
-        ></div>
+        <div ref={loadingBarRef} className="h-1 w-full bg-white"></div>
       </div>
     </div>
   );

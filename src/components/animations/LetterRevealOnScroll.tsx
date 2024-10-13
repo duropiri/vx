@@ -1,11 +1,6 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register the ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
 
 interface AnimationProps {
   children: React.ReactNode;
@@ -34,39 +29,46 @@ const LetterRevealOnScroll: React.FC<AnimationProps> = ({
   }, []);
 
   useEffect(() => {
-    if (!isClient || !containerRef.current) return;
+    const loadGSAP = async () => {
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+      if (!isClient || !containerRef.current) return;
 
-    const chars = containerRef.current.querySelectorAll(".char");
+      const chars = containerRef.current.querySelectorAll(".char");
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: start,
-        end: end,
-        scrub: 1,
-        markers: markers,
-      },
-    });
-
-    tl.fromTo(
-      chars,
-      { y: "100%", opacity: 0 },
-      {
-        y: "0%",
-        opacity: 1,
-        duration: duration,
-        stagger: {
-          each: staggerDuration,
-          from: "start",
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: containerRef.current,
+          start: start,
+          end: end,
+          scrub: 1,
+          markers: markers,
         },
-        ease: "none",
-      }
-    );
+      });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl.fromTo(
+        chars,
+        { y: "100%", opacity: 0 },
+        {
+          y: "0%",
+          opacity: 1,
+          duration: duration,
+          stagger: {
+            each: staggerDuration,
+            from: "start",
+          },
+          ease: "none",
+        }
+      );
+
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
     };
-  }, [isClient, staggerDuration, start, end]);
+
+    loadGSAP();
+  }, [isClient, staggerDuration, start, end, duration, markers]);
 
   const splitText = (node: React.ReactNode): React.ReactNode => {
     if (typeof node === "string") {

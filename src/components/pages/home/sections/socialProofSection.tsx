@@ -80,7 +80,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
     },
     ref
   ) => {
-    const [color, setColor] = useState(originalColor);
+    const [color] = useState(originalColor);
 
     const commonProps = {
       id,

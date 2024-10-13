@@ -9,18 +9,15 @@ import { usePathname } from "next/navigation";
 import Header from "@/components/animations/NavigationMenu";
 import { NavLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";
-import StickyFooter from "@/components/animations/StickyFooter";
+// import StickyFooter from "@/components/animations/StickyFooter";
 import CustomCursor from "@/components/animations/CustomCursor";
 import SmoothScrolling from "@/components/animations/SmoothScrolling";
 import {
-  // slide,
-  // perspective,
-  // opacity,
-  exitSlide,
-  opacity,
+  slide,
   perspective,
+  opacity,
+  exitSlide,
 } from "@/components/layout/transitions/transitions";
-import Image from "next/image";
 
 const MOBILE_BREAKPOINT = 1024;
 
@@ -33,6 +30,11 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
   // const [isVisible, setIsVisible] = useState(true);
   // const [isEnter, setIsEnter] = useState(false);
   // const [isExit, setIsExit] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+
+  const handleAnimationComplete = () => {
+    setIsVisible(false); // Set isVisible to false after the animation completes
+  };
 
   const isAdminPage = pathname.startsWith("/admin");
 
@@ -64,10 +66,15 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
   return (
     <div
       id="template"
-      className={`${!isAdminPage && "cursor-none"} relative size-full bg-white`}
+      className={`${
+        !isAdminPage && "cursor-none"
+      } relative size-full bg-white`}
     >
-      {/* <motion.div
-        className="w-full h-full fixed left-0 top-0 bg-bagiBlack z-[9999999] cursor-wait"
+      <div className="hidden md:block z-[99999]">
+        <CustomCursor />
+      </div>
+      <motion.div
+        className="w-full h-full fixed left-0 top-0 bg-ash z-[99999] cursor-wait"
         variants={slide}
         initial={slide.initial}
         exit={slide.exit}
@@ -76,8 +83,8 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           duration: 1,
           ease: [0.76, 0, 0.24, 1],
         }}
-      /> */}
-      {/* <motion.div
+      />
+      <motion.div
         variants={perspective}
         initial={perspective.initial}
         exit={perspective.exit}
@@ -86,8 +93,8 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           duration: 1.2,
           ease: [0.76, 0, 0.24, 1],
         }}
-      > */}
-      {/* <motion.div
+      >
+        {/* <motion.div
           className=""
           variants={opacity}
           initial={opacity.initial}
@@ -97,9 +104,10 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
             duration: 0.2,
           }}
         > */}
-      {!isAdminPage ? (
-        <>
-          {/* <motion.div
+        {!isAdminPage ? (
+          <>
+            {isVisible && (
+              <motion.div
                 className="w-full h-full fixed left-0 top-0 bg-ash z-[9999999] cursor-wait"
                 variants={exitSlide}
                 initial={exitSlide.initial}
@@ -109,24 +117,22 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
                   duration: 1,
                   ease: [0.76, 0, 0.24, 1],
                 }}
-              /> */}
-
-          <div className="hidden md:block z-[99999999]">
-            <CustomCursor />
-          </div>
-          <SmoothScrolling>
-            <Header className="absolute" navigation={NavLinks} />
-            {children}
-            {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
-            <Footer />
-          </SmoothScrolling>
-          {/* </StickyFooter> */}
-        </>
-      ) : (
-        <>{children}</>
-      )}
-      {/* </motion.div> */}
-      {/* </motion.div> */}
+                onAnimationComplete={handleAnimationComplete} // Call handleAnimationComplete when the animation is done
+              />
+            )}
+            <SmoothScrolling>
+              <Header className="absolute" navigation={NavLinks} />
+              {children}
+              {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
+              <Footer />
+            </SmoothScrolling>
+            {/* </StickyFooter> */}
+          </>
+        ) : (
+          <>{children}</>
+        )}
+        {/* </motion.div> */}
+      </motion.div>
     </div>
   );
 };

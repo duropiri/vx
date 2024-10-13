@@ -1,7 +1,11 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import CharByCharOnScroll from "@/components/animations/CharByCharOnScroll";
-import Link from "next/link";
+import React, {
+  // useEffect,
+  // useRef,
+  useState,
+} from "react";
+// import CharByCharOnScroll from "@/components/animations/CharByCharOnScroll";
+// import Link from "next/link";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 
@@ -10,10 +14,10 @@ interface ComponentProps {
 }
 
 export default function Footer({ className = "" }: ComponentProps) {
-  const formRef = useRef<HTMLFormElement>(null); // Initialize with null
+  // const formRef = useRef<HTMLFormElement>(null); // Initialize with null
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault();
     if (email) {
       // Process the email submission here (e.g., send to API)
@@ -43,9 +47,11 @@ export default function Footer({ className = "" }: ComponentProps) {
                 <div className="flex flex-col items-start justify-start gap-[2rem]">
                   {/* Logo */}
                   <nav className="flex flex-row items-center gap-[0.5rem]">
-                    <img
+                    <Image
                       src="/images/logo2.webp"
-                      alt="virtual xposure"
+                      alt="logo"
+                      width={36}
+                      height={22}
                       className="h-[1.375rem]"
                     />
                     <h1 className="pn-semibold-24">Virtual Xposure</h1>

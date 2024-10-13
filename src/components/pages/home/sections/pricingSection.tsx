@@ -9,61 +9,61 @@ interface SectionProps {
   className?: string;
 }
 
-const Prices = [
-  {
-    plan: "Basic Plan",
-    description: "No Contracts. Cancel Anytime.",
-    price: 1000,
-    features: [
-      "(10x) Social Media Short Form Videos",
-      "(10x) Custom Social Media Thumbnails",
-      "All-inclusive social media management including content creation, moderation & scheduling",
-      "Includes Instagram, Facebook & TikTok",
-      "Daily Communication",
-      "Topic Research & Script Writing",
-      "Copywriting & Ideation",
-      "Monthly Strategy Plan",
-      "FREE BONUS Instagram Verification",
-      "FREE BONUS Social Media Account Optimization Audit ($500 VALUE)",
-      "2X Money Back Guarantee",
-    ],
-  },
-  {
-    plan: "Advanced Plan",
-    description: "3 Month Commitment",
-    price: 2000,
-    addition: "Everything in Basic Plan Plus",
-    features: [
-      "(8x) Social Media Short-Form Videos",
-      "(8x) Custom Social Media Thumbnails",
-      "(20x) Social Media Carousel Posts",
-      "Includes Instagram, Facebook, TikTok & LinkedIn",
-      "Hashtag Research and Analytics",
-      "Unlimited Revisions",
-      "Weekly Analytics Report (Up to 1 Year of Data)",
-      "FREE BONUS Professional Headshots & Lifestyle Photos ($1500 VALUE)",
-      "FREE BONUS Customizable LinkinBio URL",
-      "FREE BONUS Members-Only VX Merch",
-    ],
-  },
-  {
-    plan: "Unlimited Plan",
-    description: "3 Month Commitment",
-    price: 6000,
-    addition: "Everything in Advanced Plan Plus",
-    features: [
-      "(30x) Social Media Short-Form Videos",
-      "(30x) Custom Social Media Thumbnails",
-      "(30x) Social Media Carousel Posts",
-      "Daily Photo/Video Story Posts",
-      "Priority Listing Appointment Booking (EXCLUSIVE)",
-      "Unlimited Social Media Account(s) - ALL Social Media Platforms including Instagram, Facebook, TikTok, LinkedIn, Twitter (X), and Pinterest",
-      "Media Buying & Advertising",
-      "FREE BONUS Exclusive Get-Comfortable-On-Camera-In-3-Days Training Program ($1000 VALUE)",
-      "FREE BONUS Custom Logo Design ($2000 VALUE)",
-    ],
-  },
-];
+// const Prices = [
+//   {
+//     plan: "Basic Plan",
+//     description: "No Contracts. Cancel Anytime.",
+//     price: 1000,
+//     features: [
+//       "(10x) Social Media Short Form Videos",
+//       "(10x) Custom Social Media Thumbnails",
+//       "All-inclusive social media management including content creation, moderation & scheduling",
+//       "Includes Instagram, Facebook & TikTok",
+//       "Daily Communication",
+//       "Topic Research & Script Writing",
+//       "Copywriting & Ideation",
+//       "Monthly Strategy Plan",
+//       "FREE BONUS Instagram Verification",
+//       "FREE BONUS Social Media Account Optimization Audit ($500 VALUE)",
+//       "2X Money Back Guarantee",
+//     ],
+//   },
+//   {
+//     plan: "Advanced Plan",
+//     description: "3 Month Commitment",
+//     price: 2000,
+//     addition: "Everything in Basic Plan Plus",
+//     features: [
+//       "(8x) Social Media Short-Form Videos",
+//       "(8x) Custom Social Media Thumbnails",
+//       "(20x) Social Media Carousel Posts",
+//       "Includes Instagram, Facebook, TikTok & LinkedIn",
+//       "Hashtag Research and Analytics",
+//       "Unlimited Revisions",
+//       "Weekly Analytics Report (Up to 1 Year of Data)",
+//       "FREE BONUS Professional Headshots & Lifestyle Photos ($1500 VALUE)",
+//       "FREE BONUS Customizable LinkinBio URL",
+//       "FREE BONUS Members-Only VX Merch",
+//     ],
+//   },
+//   {
+//     plan: "Unlimited Plan",
+//     description: "3 Month Commitment",
+//     price: 6000,
+//     addition: "Everything in Advanced Plan Plus",
+//     features: [
+//       "(30x) Social Media Short-Form Videos",
+//       "(30x) Custom Social Media Thumbnails",
+//       "(30x) Social Media Carousel Posts",
+//       "Daily Photo/Video Story Posts",
+//       "Priority Listing Appointment Booking (EXCLUSIVE)",
+//       "Unlimited Social Media Account(s) - ALL Social Media Platforms including Instagram, Facebook, TikTok, LinkedIn, Twitter (X), and Pinterest",
+//       "Media Buying & Advertising",
+//       "FREE BONUS Exclusive Get-Comfortable-On-Camera-In-3-Days Training Program ($1000 VALUE)",
+//       "FREE BONUS Custom Logo Design ($2000 VALUE)",
+//     ],
+//   },
+// ];
 
 function PricingSection({ className }: SectionProps) {
   const [isYearly, setIsYearly] = useState(false);

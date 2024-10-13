@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { useScroll, motion } from "framer-motion";
 
 interface AnimationProps {
@@ -17,12 +17,10 @@ export default function OpacityOnScroll({
 }: AnimationProps) {
   const element = useRef(null);
   // Convert start and end to a percentage string format required by Framer Motion
-  const offsetStart: any = `start ${start}%`;
-  const offsetEnd: any = `end ${end}%`;
   const { scrollYProgress } = useScroll({
     target: element,
     // offset: ["start end", "start start"], // start animation once in view, complete animation at top of view
-    offset: [offsetStart, offsetEnd],
+    offset: [`start ${start}%`, `end ${end}%`],
   });
 
   // useEffect(() => {

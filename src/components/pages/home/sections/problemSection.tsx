@@ -2,7 +2,6 @@
 import ZoomParallax from "@/components/animations/ZoomParallax";
 import React, {
   forwardRef,
-  RefObject,
   useEffect,
   useRef,
   useState,
@@ -11,16 +10,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
-import SplineWrapper from "@/components/SplineWrapper";
-import Image from "next/image";
-import {
-  cubicBezier,
-  easeInOut,
-  motion,
-  MotionValue,
-  useScroll,
-  useTransform,
-} from "framer-motion";
+
+
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,7 +23,7 @@ interface SectionProps {
 
 const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ className = "", originalColor, transitionColor }, ref) => {
-    const [color, setColor] = useState(originalColor);
+    const [color] = useState(originalColor);
 
     const roadRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement | null>(null);
@@ -44,7 +35,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     const textRef = useRef<HTMLDivElement>(null);
     const headerRef = useRef<HTMLSpanElement>(null);
     const bodyRef = useRef<HTMLParagraphElement>(null);
-    const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
+    // const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
 
     useEffect(() => {
       if (!ref || !svgRef.current || !lineRef.current) return;

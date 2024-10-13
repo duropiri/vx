@@ -52,8 +52,8 @@ function FAQSection({ className }: SectionProps) {
           subheading="Frequently Asked Questions"
           body={
             <>
-              If you have any further questions, please don't hesitate to reach
-              out to our{" "}
+              If you have any further questions, please don&apos;t hesitate to
+              reach out to our{" "}
               <span className="pn-bold-16 text-goldenbrown">
                 customer support
               </span>{" "}

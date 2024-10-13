@@ -25,7 +25,7 @@ interface ScrollingBannerProps {
 export default function ScrollingBanner({
   children,
   baseVelocity = 600,
-  length = 50,
+  length = 25,
   className,
   child,
   innerChild,

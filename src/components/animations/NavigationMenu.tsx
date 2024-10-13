@@ -1,24 +1,30 @@
 "use client";
-import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+// import {
+//   // useEffect,
+//   useState,
+// } from "react";
+// import {
+//   motion,
+//   // AnimatePresence
+// } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { getChars } from "@/components/animations/GetChars";
 
-const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
+// const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
 
-const opacity = {
-  initial: { opacity: 0 },
-  open: { opacity: 1, transition: { duration: 0.35 } },
-  closed: { opacity: 0, transition: { duration: 0.35 } },
-};
+// const opacity = {
+//   initial: { opacity: 0 },
+//   open: { opacity: 1, transition: { duration: 0.35 } },
+//   closed: { opacity: 0, transition: { duration: 0.35 } },
+// };
 
-const height = {
-  initial: { height: 0 },
-  enter: { height: "auto", transition },
-  exit: { height: 0, transition },
-};
+// const height = {
+//   initial: { height: 0 },
+//   enter: { height: "auto", transition },
+//   exit: { height: 0, transition },
+// };
 
 // const background = {
 //   initial: { height: 0 },
@@ -26,11 +32,11 @@ const height = {
 //   closed: { height: 0, transition },
 // };
 
-const blur = {
-  initial: { filter: "blur(0px)", opacity: 1 },
-  open: { filter: "blur(4px)", opacity: 0.6, transition: { duration: 0.3 } },
-  closed: { filter: "blur(0px)", opacity: 1, transition: { duration: 0.3 } },
-};
+// const blur = {
+//   initial: { filter: "blur(0px)", opacity: 1 },
+//   open: { filter: "blur(4px)", opacity: 0.6, transition: { duration: 0.3 } },
+//   closed: { filter: "blur(0px)", opacity: 1, transition: { duration: 0.3 } },
+// };
 
 export const translate = {
   initial: { y: "100%", opacity: 0 },
@@ -52,9 +58,9 @@ interface LinkDetails {
   src?: string;
 }
 
-interface NavProps {
-  links: LinkDetails[];
-}
+// interface NavProps {
+//   links: LinkDetails[];
+// }
 
 // interface BodyProps {
 //   links: LinkDetails[];
@@ -64,223 +70,224 @@ interface NavProps {
 //   >;
 // }
 
-interface FooterProps {}
+// interface FooterProps {}
 
-interface ImageProps {
-  src: string;
-  isActive: boolean;
-}
+// interface ImageProps {
+//   src: string;
+//   isActive: boolean;
+// }
 
 interface HeaderProps {
   className?: string;
   navigation: LinkDetails[];
 }
 
-const Nav: React.FC<NavProps> = ({ links }) => {
-  const [selectedLink, setSelectedLink] = useState({
-    isActive: false,
-    index: 0,
-  });
+// const Nav: React.FC<NavProps> = ({ links }) => {
+//   const [selectedLink, setSelectedLink] = useState({
+//     isActive: false,
+//     index: 0,
+//   });
 
-  return (
-    <motion.div
-      variants={height}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className="overflow-hidden flex flex-row items-start justify-end size-full text-white"
-    >
-      <div className="flex flex-col items-end justify-between size-full">
-        <div className="flex flex-wrap mt-10 justify-end">
-          {links.map((link, index) => (
-            <Link key={`l_${index}`} href={link.href} passHref>
-              <motion.p
-                onMouseOver={() => setSelectedLink({ isActive: true, index })}
-                onMouseLeave={() => setSelectedLink({ isActive: false, index })}
-                variants={blur}
-                animate={
-                  selectedLink.isActive && selectedLink.index !== index
-                    ? "open"
-                    : "closed"
-                }
-                className="m-0 flex overflow-hidden large-text sm:text-[10vw] md:text-[3vw] pl-8 pt-2 font-light "
-              >
-                {getChars(link.title)}
-              </motion.p>
-            </Link>
-          ))}
-        </div>
-        <Footer />
-      </div>
-      {links[selectedLink.index].src && (
-        <div className="flex relative w-[30vw] h-[300px]">
-          <ImageModal
-            src={links[selectedLink.index].src || ""}
-            isActive={selectedLink.isActive}
-          />
-        </div>
-      )}
-    </motion.div>
-  );
-};
+//   return (
+//     <motion.div
+//       variants={height}
+//       initial="initial"
+//       animate="enter"
+//       exit="exit"
+//       className="overflow-hidden flex flex-row items-start justify-end size-full text-white"
+//     >
+//       <div className="flex flex-col items-end justify-between size-full">
+//         <div className="flex flex-wrap mt-10 justify-end">
+//           {links.map((link, index) => (
+//             <Link key={`l_${index}`} href={link.href} passHref>
+//               <motion.p
+//                 onMouseOver={() => setSelectedLink({ isActive: true, index })}
+//                 onMouseLeave={() => setSelectedLink({ isActive: false, index })}
+//                 variants={blur}
+//                 animate={
+//                   selectedLink.isActive && selectedLink.index !== index
+//                     ? "open"
+//                     : "closed"
+//                 }
+//                 className="m-0 flex overflow-hidden large-text sm:text-[10vw] md:text-[3vw] pl-8 pt-2 font-light "
+//               >
+//                 {getChars(link.title)}
+//               </motion.p>
+//             </Link>
+//           ))}
+//         </div>
+//         <Footer />
+//       </div>
+//       {links[selectedLink.index].src && (
+//         <div className="flex relative w-[30vw] h-[300px]">
+//           <ImageModal
+//             src={links[selectedLink.index].src || ""}
+//             isActive={selectedLink.isActive}
+//           />
+//         </div>
+//       )}
+//     </motion.div>
+//   );
+// };
 
-const Footer: React.FC<FooterProps> = () => {
-  return (
-    <div className="flex flex-wrap mt-10 small-text uppercase gap-10 text-white">
-      <ul className="w-full md:w-auto mt-2 list-none p-0">
-        <motion.li
-          custom={[0.3, 0]}
-          variants={translate}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="flex items-end justify-end"
-        >
-          <span className="font-extrabold mr-2">Made by:</span>{" "}
-          @relaydigitalmktg
-        </motion.li>
-      </ul>
-      <ul className="w-full md:w-auto mt-2 list-none p-0">
-        <motion.li
-          custom={[0.3, 0]}
-          variants={translate}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="flex items-end justify-end"
-        >
-          <Link
-            href="/privacy-policy"
-            aria-label="Visit Privacy Policy Page"
-            passHref
-          >
-            Privacy Policy
-          </Link>
-        </motion.li>
-        <motion.li
-          custom={[0.3, 0]}
-          variants={translate}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="flex items-end justify-end"
-        >
-          <Link
-            href="/terms"
-            aria-label="Visit Terms and Conditions Page"
-            passHref
-          >
-            Terms & Conditions
-          </Link>
-        </motion.li>
-      </ul>
-    </div>
-  );
-};
+// const Footer: React.FC<FooterProps> = () => {
+//   return (
+//     <div className="flex flex-wrap mt-10 small-text uppercase gap-10 text-white">
+//       <ul className="w-full md:w-auto mt-2 list-none p-0">
+//         <motion.li
+//           custom={[0.3, 0]}
+//           variants={translate}
+//           initial="initial"
+//           animate="enter"
+//           exit="exit"
+//           className="flex items-end justify-end"
+//         >
+//           <span className="font-extrabold mr-2">Made by:</span>{" "}
+//           @relaydigitalmktg
+//         </motion.li>
+//       </ul>
+//       <ul className="w-full md:w-auto mt-2 list-none p-0">
+//         <motion.li
+//           custom={[0.3, 0]}
+//           variants={translate}
+//           initial="initial"
+//           animate="enter"
+//           exit="exit"
+//           className="flex items-end justify-end"
+//         >
+//           <Link
+//             href="/privacy-policy"
+//             aria-label="Visit Privacy Policy Page"
+//             passHref
+//           >
+//             Privacy Policy
+//           </Link>
+//         </motion.li>
+//         <motion.li
+//           custom={[0.3, 0]}
+//           variants={translate}
+//           initial="initial"
+//           animate="enter"
+//           exit="exit"
+//           className="flex items-end justify-end"
+//         >
+//           <Link
+//             href="/terms"
+//             aria-label="Visit Terms and Conditions Page"
+//             passHref
+//           >
+//             Terms & Conditions
+//           </Link>
+//         </motion.li>
+//       </ul>
+//     </div>
+//   );
+// };
 
-const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
-  return (
-    <>
-      {src && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isActive ? 1 : 0 }}
-          className=" inset-0 -z-10"
-        >
-          <Image
-            src={`/img/${src}`}
-            alt="Selected link image"
-            className="size-full object-cover"
-          />
-        </motion.div>
-      )}
-    </>
-  );
-};
+// const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
+//   return (
+//     <>
+//       {src && (
+//         <motion.div
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: isActive ? 1 : 0 }}
+//           className=" inset-0 -z-10"
+//         >
+//           <Image
+//             src={`/img/${src}`}
+//             alt="Selected link image"
+//             className="size-full object-cover"
+//           />
+//         </motion.div>
+//       )}
+//     </>
+//   );
+// };
 
 const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
-  const [isActive, setIsActive] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isBottom, setIsBottom] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  // const [isActive, setIsActive] = useState(false);
+  // const [isScrolled, setIsScrolled] = useState(false);
+  // const [isBottom, setIsBottom] = useState(false);
+  // const [isMobile, setIsMobile] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
+  //   };
 
-    // Check if the user is at the bottom of the page
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
+  //   // Check if the user is at the bottom of the page
+  //   const handleScroll = () => {
+  //     const scrollTop = window.scrollY;
+  //     const windowHeight = window.innerHeight;
+  //     const documentHeight = document.documentElement.scrollHeight;
 
-      // Detect when user reaches the bottom of the page
-      setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
+  //     // Detect when user reaches the bottom of the page
+  //     setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
 
-      // Set isScrolled for animation purposes
-      setIsScrolled(
-        scrollTop > 50 && scrollTop + windowHeight < documentHeight
-      );
-    };
+  //     // Set isScrolled for animation purposes
+  //     setIsScrolled(
+  //       scrollTop > 50 && scrollTop + windowHeight < documentHeight
+  //     );
+  //   };
 
-    // Initial setup
-    handleResize();
-    handleScroll();
+  //   // Initial setup
+  //   handleResize();
+  //   handleScroll();
 
-    // Event listeners for scroll and resize
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("scroll", handleScroll);
+  //   // Event listeners for scroll and resize
+  //   window.addEventListener("resize", handleResize);
+  //   window.addEventListener("scroll", handleScroll);
 
-    // Cleanup event listeners
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+  //   // Cleanup event listeners
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //     window.removeEventListener("scroll", handleScroll);
+  //   };
+  // }, []);
 
   // Define animation variants
-  const navdockVariants = (isMobile: any) => ({
-    hidden: {
-      width: isMobile ? "auto" : "3.5rem", // No width animation on mobile, "3.5rem" on desktop
-      opacity: 0,
-      transition: { duration: 0 },
-    },
-    expanded: {
-      width: isMobile ? "100%" : "auto", // Keep auto width but remove width animation on mobile
-      opacity: 1,
-      transition: {
-        duration: isMobile ? 0 : 0.5, // No animation on mobile
-        when: "beforeChildren",
-        staggerChildren: 0,
-      },
-    },
-  });
+  // const navdockVariants = (isMobile: any) => ({
+  //   hidden: {
+  //     width: isMobile ? "auto" : "3.5rem", // No width animation on mobile, "3.5rem" on desktop
+  //     opacity: 0,
+  //     transition: { duration: 0 },
+  //   },
+  //   expanded: {
+  //     width: isMobile ? "100%" : "auto", // Keep auto width but remove width animation on mobile
+  //     opacity: 1,
+  //     transition: {
+  //       duration: isMobile ? 0 : 0.5, // No animation on mobile
+  //       when: "beforeChildren",
+  //       staggerChildren: 0,
+  //     },
+  //   },
+  // });
 
-  const logoVariants = (isMobile: any) => ({
-    hidden: {
-      x: isMobile ? 0 : 150, // No x animation on mobile
-      width: "2.25rem",
-      transition: { duration: 0 },
-    },
-    expanded: {
-      x: isMobile ? 0 : 0, // No x animation on mobile
-      transition: { duration: isMobile ? 0 : 0.5 },
-    },
-  });
+  // const logoVariants = (isMobile: any) => ({
+  //   hidden: {
+  //     x: isMobile ? 0 : 150, // No x animation on mobile
+  //     width: "2.25rem",
+  //     transition: { duration: 0 },
+  //   },
+  //   expanded: {
+  //     x: isMobile ? 0 : 0, // No x animation on mobile
+  //     transition: { duration: isMobile ? 0 : 0.5 },
+  //   },
+  // });
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 0, transition: { duration: 0 } },
-    visible: { opacity: 1, y: 0, transition: { delay: 0, duration: 0.5 } },
-  };
+  // const itemVariants = {
+  //   hidden: { opacity: 0, y: 0, transition: { duration: 0 } },
+  //   visible: { opacity: 1, y: 0, transition: { delay: 0, duration: 0.5 } },
+  // };
 
   return (
     <>
       <div
         id="header"
-        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[2rem] lg:p-[0.438rem] lg:pl-[1.5rem] ${
-          isActive ? "" : "mix-blend-differences"
-        } ${isScrolled ? "opacity-0 pointer-events-none" : ""}`}
+        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[2rem] lg:p-[0.438rem] lg:pl-[1.5rem] 
+        ${false ? "" : "mix-blend-differences"} 
+        ${false ? "opacity-0 pointer-events-none" : ""}
+        `}
       >
         {/* Original Header */}
         <div className="relative flex size-full items-center justify-center sm:justify-between gap-10">
@@ -304,9 +311,9 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
           {/* Navigation */}
           <nav
-            className={`pn-regular-16 flex items-center justify-end gap-[1.313rem] ${
-              isActive ? "opacity-0 pointer-events-none" : ""
-            } hidden transition-all duration-1000 md:flex size-full max-w-[55vw]`}
+            className={`pn-regular-16 flex items-center justify-end gap-[1.313rem] 
+              ${false ? "opacity-0 pointer-events-none" : ""} 
+            hidden transition-all duration-1000 md:flex size-full max-w-[55vw]`}
           >
             {navigation.map((nav, index) => (
               <HoverWrapper
@@ -366,9 +373,9 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </nav>
         </div>
 
-        <AnimatePresence>
+        {/* <AnimatePresence>
           {isActive && <Nav links={navigation} />}
-        </AnimatePresence>
+        </AnimatePresence> */}
       </div>
 
       {/* Navdock */}

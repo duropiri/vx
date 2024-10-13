@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
 import "./globals.scss";
 import { PreloaderProvider } from "@/contexts/PreloaderContext";
 import PageAnimatePresence from "@/components/HOC/PageAnimatePresence";
-
 export const metadata: Metadata = {
   title: "Virtual Xposure",
   description: "Meet the Gold Standard in Real Estate Marketing",

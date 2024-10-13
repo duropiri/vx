@@ -5,7 +5,7 @@ import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import SVGScroll from "@/components/animations/svgScroll";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 
 interface SectionProps {
   className?: string;
@@ -20,9 +20,9 @@ function RoadmapSection({ className }: SectionProps) {
       gsap.registerPlugin(ScrollTrigger);
 
       // Parallax effect
-      let effectElements = gsap.utils.toArray("[data-speed]");
-      effectElements.forEach((el: any) => {
-        let speed = parseFloat(el.getAttribute("data-speed"));
+      const effectElements = gsap.utils.toArray("[data-speed]");
+      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
+        const speed = parseFloat(el.getAttribute("data-speed") || "0");
         gsap.fromTo(
           el,
           { y: 0 },
@@ -34,14 +34,14 @@ function RoadmapSection({ className }: SectionProps) {
               start: "top bottom",
               end: "bottom top",
               scrub: true,
-              onRefresh: (self) => {
-                let start = Math.max(0, self.start); // ensure no negative values
-                let distance = self.end - start;
-                let end = start + distance / speed;
-                (self as any).setPositions(start, end);
+              onRefresh: (self: any) => {
+                const start = Math.max(0, self.start); // ensure no negative values
+                const distance = self.end - start;
+                const end = start + distance / speed;
+                self.setPositions(start, end);
                 if (self.animation) {
                   // Check if self.animation is defined
-                  (self as any).animation.vars.y = (end - start) * (1 - speed);
+                  self.animation.vars.y = (end - start) * (1 - speed);
                   self.animation
                     .invalidate()
                     .progress(1)
@@ -102,7 +102,7 @@ function RoadmapSection({ className }: SectionProps) {
                 viewBox="0 0 1572 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[200dvw] lg:w-[100dvw] h-[200vh] lg:h-[420vh]"
+                className="w-[300dvw] lg:w-[100dvw] h-[300vh] lg:h-[420vh]"
               >
                 <path
                   d="M811 20.5C811 20.5 740.499 997.501 1250.5 1019.5C1749.5 1000.9 1705 563 1284.5 563C863.999 563 383.5 966 549.5 1460.5C715.5 1955 1564.64 1229 1579 1792.5C1593.35 2356 433.999 2047.79 221 2248.64C8.00008 2449.5 237 2637.5 668.5 2665.5C1100 2693.5 1164.5 2337 934 2379C703.5 2421 -21.5 2811.5 22 3093.5C65.5 3375.5 287 3435.5 550 3216.5C813 2997.5 772 3514.5 1131.5 3314C1491 3113.5 1664 3578 1284.5 3685C904.999 3792 -149.5 4406 155.5 3834.5C460.5 3263 884.5 4873.5 884.5 4873.5"

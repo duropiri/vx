@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState, useRef } from "react";
-import { gsap } from "gsap";
 import { usePreloader } from "@/contexts/PreloaderContext";
 import Image from "next/image";
 
@@ -18,7 +17,7 @@ const Preloader: React.FC<PreloaderProps> = ({
   const duration = 4000;
   const textRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
-  const maskRef = useRef<HTMLDivElement>(null);
+  // const maskRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const updateLoadingPercentage = (percentage: number) => {
@@ -84,79 +83,85 @@ const Preloader: React.FC<PreloaderProps> = ({
   }, [loadingPercentage, finishAnimation]);
 
   useEffect(() => {
-    if (loadingPercentage === 100) {
-      if (textRef.current && imageRef.current) {
-        const chars = textRef.current.querySelectorAll(".char");
+    const loadGSAP = async () => {
+      const { gsap } = await import("gsap");
 
-        const tl = gsap.timeline({
-          defaults: { ease: "power2.inOut" },
-          onComplete: () => {
-            // Start the final animation to reveal the site
-            gsap.to(imageRef.current, {
-              scale: 0,
-              opacity: 0,
-              duration: duration / 1000 / 5,
-              ease: "power1.inOut",
-            });
-            gsap.to(".splash-screen", {
-              clipPath: "inset(0% 0% 100% 0%)",
-              duration: duration / 1000 / 4,
-              ease: "power4.inOut",
-              onComplete: () => {
-                setTimeout(finishAnimation, duration);
-              },
-            });
-          },
-        });
+      if (loadingPercentage === 100) {
+        if (textRef.current && imageRef.current) {
+          const chars = textRef.current.querySelectorAll(".char");
 
-        tl.fromTo(
-          chars,
-          { y: 25, opacity: 0 },
-          {
-            y: 0,
-            opacity: 1,
-            duration: duration / 1000 / ((duration / 1000) * 4),
-            ease: "power4.out",
-            stagger: 0.075,
-          }
-        )
-          .to(chars, {
-            y: -25,
-            opacity: 0,
-            duration: duration / 1000 / ((duration / 1000) * 2),
-            ease: "power4.in",
-          })
-          .fromTo(
-            imageRef.current,
-            { scale: 0, opacity: 0 },
+          const tl = gsap.timeline({
+            defaults: { ease: "power2.inOut" },
+            onComplete: () => {
+              // Start the final animation to reveal the site
+              gsap.to(imageRef.current, {
+                scale: 0,
+                opacity: 0,
+                duration: duration / 1000 / 5,
+                ease: "power1.inOut",
+              });
+              gsap.to(".splash-screen", {
+                clipPath: "inset(0% 0% 100% 0%)",
+                duration: duration / 1000 / 4,
+                ease: "power4.inOut",
+                onComplete: () => {
+                  setTimeout(finishAnimation, duration);
+                },
+              });
+            },
+          });
+
+          tl.fromTo(
+            chars,
+            { y: 25, opacity: 0 },
             {
-              scale: 1.1,
+              y: 0,
               opacity: 1,
-              duration: duration / 1000 / ((duration / 1000) * 2),
-              ease: "power1.inOut",
+              duration: duration / 1000 / ((duration / 1000) * 4),
+              ease: "power4.out",
+              stagger: 0.075,
             }
           )
-          .to(imageRef.current, {
-            scale: 0.95, // Pulsate smaller
-            duration: duration / 1000 / 15,
-            ease: "power1.inOut",
-          })
-          .to(imageRef.current, {
-            scale: 1.05, // Pulsate larger again
-            duration: duration / 1000 / 15,
-            ease: "power1.inOut",
-          })
-          .to(imageRef.current, {
-            scale: 1, // Return to original size
-            duration: duration / 1000 / 15,
-            ease: "power1.inOut",
-          });
+            .to(chars, {
+              y: -25,
+              opacity: 0,
+              duration: duration / 1000 / ((duration / 1000) * 2),
+              ease: "power4.in",
+            })
+            .fromTo(
+              imageRef.current,
+              { scale: 0, opacity: 0 },
+              {
+                scale: 1.1,
+                opacity: 1,
+                duration: duration / 1000 / ((duration / 1000) * 2),
+                ease: "power1.inOut",
+              }
+            )
+            .to(imageRef.current, {
+              scale: 0.95, // Pulsate smaller
+              duration: duration / 1000 / 15,
+              ease: "power1.inOut",
+            })
+            .to(imageRef.current, {
+              scale: 1.05, // Pulsate larger again
+              duration: duration / 1000 / 15,
+              ease: "power1.inOut",
+            })
+            .to(imageRef.current, {
+              scale: 1, // Return to original size
+              duration: duration / 1000 / 15,
+              ease: "power1.inOut",
+            });
+        }
+      } else {
+        gsap.to(".splash-screen", {
+          clipPath: "inset(0% 0% 0% 0%)",
+        });
       }
-    } else {
-      gsap.to(".splash-screen", {
-        clipPath: "inset(0% 0% 0% 0%)",
-      });
-    }
+    };
+
+    loadGSAP();
   }, [loadingPercentage, finishAnimation, duration]);
 
   if (!isAnimating) {
@@ -165,7 +170,7 @@ const Preloader: React.FC<PreloaderProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 overflow-hidden z-[99999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]">
+    <div className="fixed inset-0 overflow-hidden z-[99999999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]">
       <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
         {/* Sunburst SVG */}
         {/* <div className="absolute inset-0 flex items-center justify-center">
@@ -198,7 +203,7 @@ const Preloader: React.FC<PreloaderProps> = ({
             alt="Loading"
             width={150}
             height={150}
-            sizes="(max-width: 640px) 50px, (max-width: 1024px) 100px, 150px" // Adjust these sizes based on your layout
+            sizes="(max-width: 640px) 150px, (max-width: 1024px) 150px, 150px" // Adjust these sizes based on your layout
             className="w-[9.375rem] mix-blend-difference"
           />
         </div>

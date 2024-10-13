@@ -7,27 +7,31 @@ import { motion, MotionValue, useTransform } from "framer-motion";
 
 interface SectionProps {
   className?: string;
-  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
+  scrollYProgress: MotionValue<number>; // Proper type for scrollYProgress
 }
 
 function StatsSection({ className, scrollYProgress }: SectionProps) {
   const ref = useRef<HTMLDivElement>(null);
 
-  const { start: start89, countUpRef: countUpRef89 } =
-    useScrollTriggeredCountUp(ref, 89);
-  const { start: start58, countUpRef: countUpRef58 } =
-    useScrollTriggeredCountUp(ref, 58);
-  const { start: start47, countUpRef: countUpRef47 } =
-    useScrollTriggeredCountUp(ref, 47);
-  const { start: start24, countUpRef: countUpRef24 } =
-    useScrollTriggeredCountUp(ref, 24);
+  const {
+    start: start89,
+    // countUpRef: countUpRef89
+  } = useScrollTriggeredCountUp(ref, 89);
+  const {
+    start: start58,
+    // countUpRef: countUpRef58
+  } = useScrollTriggeredCountUp(ref, 58);
+  const {
+    start: start47,
+    // countUpRef: countUpRef47
+  } = useScrollTriggeredCountUp(ref, 47);
+  const {
+    start: start24,
+    // countUpRef: countUpRef24
+  } = useScrollTriggeredCountUp(ref, 24);
 
-  const scale = scrollYProgress
-    ? useTransform(scrollYProgress, [0, 1], [1, 0.8])
-    : undefined;
-  const rotate = scrollYProgress
-    ? useTransform(scrollYProgress, [0, 1], [0, -5])
-    : undefined;
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
 
   return (
     <motion.div

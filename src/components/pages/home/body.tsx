@@ -12,16 +12,10 @@ import PricingSection from "@/components/pages/home/sections/pricingSection";
 import CTASection from "@/components/pages/home/sections/ctaSection";
 import FAQSection from "@/components/pages/home/sections/faqSection";
 import ContactSection from "@/components/pages/home/sections/contactSection";
-import { useScroll, MotionValue } from "framer-motion";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
-import Image from "next/image";
+import { useScroll } from "framer-motion";
 import { NavLinks } from "@/data/navLinks";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-gsap.registerPlugin(ScrollTrigger);
-
-function body() {
+function Body() {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
 
@@ -33,69 +27,77 @@ function body() {
 
   useEffect(() => {
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-    const heroSection = sectionRefs.current[0];
+    // const heroSection = sectionRefs.current[0];
 
-    if (triggerSection) {
-      const updateColors = (change: boolean) => {
-        sectionRefs.current.forEach((section) => {
-          if (section) {
-            const originalColor = section.dataset.originalColor;
-            const transitionColor = section.dataset.transitionColor;
+    const loadGSAP = async () => {
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
 
-            if (!originalColor || !transitionColor) {
-              console.warn(
-                "Original or transition color not set for section:",
-                section
-              );
-              return;
-            }
+      if (triggerSection) {
+        const updateColors = (change: boolean) => {
+          sectionRefs.current.forEach((section) => {
+            if (section) {
+              const originalColor = section.dataset.originalColor;
+              const transitionColor = section.dataset.transitionColor;
 
-            const newColor = change ? transitionColor : originalColor;
+              if (!originalColor || !transitionColor) {
+                console.warn(
+                  "Original or transition color not set for section:",
+                  section
+                );
+                return;
+              }
 
-            // Animate background color for each section
-            gsap.to(section, {
-              backgroundColor: newColor,
-              duration: 0.5,
-              ease: "power1.inOut",
-            });
+              const newColor = change ? transitionColor : originalColor;
 
-            // Update the color state of the ColorChangeSection component
-            const sectionComponent = section as unknown as {
-              setColor: (color: string) => void;
-            };
-            if (sectionComponent.setColor) {
-              sectionComponent.setColor(newColor);
-            }
-
-            // Animate gradient colors
-            const gradientElements = section.querySelectorAll(
-              ".bg-gradient-to-b, .bg-gradient-to-t"
-            ) as NodeListOf<HTMLElement>;
-            gradientElements.forEach((el) => {
-              gsap.to(el, {
-                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
+              // Animate background color for each section
+              gsap.to(section, {
+                backgroundColor: newColor,
                 duration: 0.5,
                 ease: "power1.inOut",
               });
-            });
-          }
+
+              // Update the color state of the ColorChangeSection component
+              const sectionComponent = section as unknown as {
+                setColor: (color: string) => void;
+              };
+              if (sectionComponent.setColor) {
+                sectionComponent.setColor(newColor);
+              }
+
+              // Animate gradient colors
+              const gradientElements = section.querySelectorAll(
+                ".bg-gradient-to-b, .bg-gradient-to-t"
+              ) as NodeListOf<HTMLElement>;
+              gradientElements.forEach((el) => {
+                gsap.to(el, {
+                  "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
+                  duration: 0.5,
+                  ease: "power1.inOut",
+                });
+              });
+            }
+          });
+        };
+
+        // Create ScrollTrigger for the section at index 1 only
+        ScrollTrigger.create({
+          trigger: triggerSection,
+          start: "top-=400px top",
+          end: "bottom top",
+          onEnter: () => updateColors(true),
+          onLeaveBack: () => updateColors(false),
+          // markers: true, // Remove in production
         });
+      }
+
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
-
-      // Create ScrollTrigger for the section at index 1 only
-      ScrollTrigger.create({
-        trigger: triggerSection,
-        start: "top-=400px top",
-        end: "bottom top",
-        onEnter: () => updateColors(true),
-        onLeaveBack: () => updateColors(false),
-        // markers: true, // Remove in production
-      });
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
+
+    loadGSAP();
   }, []);
 
   return (
@@ -189,4 +191,4 @@ function body() {
   );
 }
 
-export default body;
+export default Body;

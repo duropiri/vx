@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { CountUpProps } from "react-countup";
 
 interface CountUpRef {
   start: () => void;
@@ -14,8 +13,8 @@ interface UseScrollTriggeredCountUpReturn {
 
 const useScrollTriggeredCountUp = (
   ref: React.RefObject<HTMLElement>,
-  end: number,
-  duration = 2000
+  // end: number,
+  // duration = 2000
 ): UseScrollTriggeredCountUpReturn => {
   const [start, setStart] = useState(false);
   const countUpRef = useRef<CountUpRef | null>(null);

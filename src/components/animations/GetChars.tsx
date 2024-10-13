@@ -1,8 +1,8 @@
 import { translate } from "./NavigationMenu";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export const getChars = (word: string) => {
-    let chars: JSX.Element[] = [];
+    const chars: JSX.Element[] = [];
     word.split("").forEach((char, i) => {
       chars.push(
         <motion.span

@@ -224,7 +224,7 @@ export default function CustomCursor() {
   }, [pathname, isClosed]);
 
   return (
-    <>
+    <div id="cursor">
       <div
         ref={cursorRef}
         className="fixed pointer-events-none flex items-center justify-center rounded-full text-white border border-white mix-blend-difference size-[4.688rem]"
@@ -240,6 +240,6 @@ export default function CustomCursor() {
         className="fixed pointer-events-none rounded-full bg-white mix-blend-difference size-[0.469rem]"
         style={{ zIndex: 1000 }}
       ></div>
-    </>
+    </div>
   );
 }

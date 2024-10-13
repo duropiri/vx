@@ -1,10 +1,4 @@
 import React, { useEffect, useRef, ReactElement, RefCallback } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { MotionPathPlugin } from "gsap/MotionPathPlugin";
-
-// Register the required GSAP plugins
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 interface SVGScrollProps {
   children: ReactElement;
@@ -33,49 +27,56 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    if (!svgRef.current || !pathRef.current || !rocketRef.current) return;
+    const loadGSAP = async () => {
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      const { MotionPathPlugin } = await import("gsap/MotionPathPlugin");
+      gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+      if (!svgRef.current || !pathRef.current || !rocketRef.current) return;
 
-    const pathLength = pathRef.current.getTotalLength();
-    pathRef.current.style.strokeDasharray = `${pathLength}`;
-    pathRef.current.style.strokeDashoffset = `${pathLength}`;
+      const pathLength = pathRef.current.getTotalLength();
+      pathRef.current.style.strokeDasharray = `${pathLength}`;
+      pathRef.current.style.strokeDashoffset = `${pathLength}`;
 
-    gsap.set(rocketRef.current, { visibility: "hidden" }); // Initially hide the rocket
+      gsap.set(rocketRef.current, { visibility: "hidden" }); // Initially hide the rocket
 
-    // Create a timeline for synchronized animations
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: svgRef.current,
-        start: "top center",
-        end: "bottom center",
-        scrub: true,
-      },
-    });
-
-    // Animate the path reveal
-    tl.to(pathRef.current, {
-      strokeDashoffset: 0,
-      ease: "none",
-    });
-
-    // Animate the rocket along the path
-    tl.to(
-      rocketRef.current,
-      {
-        visibility: "visible", // Make the rocket visible before moving
-        motionPath: {
-          path: pathRef.current,
-          align: pathRef.current,
-          alignOrigin: [0.5, 0.5],
-          autoRotate: true,
+      // Create a timeline for synchronized animations
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: svgRef.current,
+          start: "top center",
+          end: "bottom center",
+          scrub: true,
         },
-        ease: "none",
-      },
-      0
-    ); // Start at the same time as path reveal
+      });
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // Animate the path reveal
+      tl.to(pathRef.current, {
+        strokeDashoffset: 0,
+        ease: "none",
+      });
+
+      // Animate the rocket along the path
+      tl.to(
+        rocketRef.current,
+        {
+          visibility: "visible", // Make the rocket visible before moving
+          motionPath: {
+            path: pathRef.current,
+            align: pathRef.current,
+            alignOrigin: [0.5, 0.5],
+            autoRotate: true,
+          },
+          ease: "none",
+        },
+        0
+      ); // Start at the same time as path reveal
+
+      return () => {
+        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      };
     };
+    loadGSAP();
   }, []);
 
   const refCallback: RefCallback<SVGSVGElement> = (node) => {

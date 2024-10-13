@@ -1,5 +1,4 @@
 import React, { forwardRef, RefObject } from "react";
-import CharByCharOnScroll from "../animations/CharByCharOnScroll";
 import OpacityOnScroll from "../animations/OpacityOnScroll";
 
 interface SectionProps {

@@ -1,6 +1,10 @@
 "use client";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
-import { motion, MotionValue, useTransform } from "framer-motion";
+import {
+  motion,
+  MotionValue,
+  // useTransform
+} from "framer-motion";
 import React, { forwardRef, useState } from "react";
 
 interface SectionProps {
@@ -12,15 +16,24 @@ interface SectionProps {
 }
 
 const CopySection = forwardRef<HTMLDivElement, SectionProps>(
-  ({ className, copy, scrollYProgress, originalColor, transitionColor }, ref) => {
-    const [color, setColor] = useState(originalColor);
+  (
+    {
+      className,
+      copy,
+      // scrollYProgress,
+      originalColor,
+      transitionColor,
+    },
+    ref
+  ) => {
+    const [color] = useState(originalColor);
 
-    const scale = scrollYProgress
-      ? useTransform(scrollYProgress, [0, 1], [0.8, 1])
-      : undefined;
-    const rotate = scrollYProgress
-      ? useTransform(scrollYProgress, [0, 1], [5, 0])
-      : undefined;
+    // const scale = scrollYProgress
+    //   ? useTransform(scrollYProgress, [0, 1], [0.8, 1])
+    //   : undefined;
+    // const rotate = scrollYProgress
+    //   ? useTransform(scrollYProgress, [0, 1], [5, 0])
+    //   : undefined;
 
     return (
       <motion.div

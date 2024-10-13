@@ -2,7 +2,7 @@
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion, MotionValue, useTransform } from "framer-motion";
+import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
@@ -11,7 +11,7 @@ interface SectionProps {
   scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
 }
 
-function SolutionSection({ className, scrollYProgress }: SectionProps) {
+function SolutionSection({ className }: SectionProps) {
   const bentosRef = useRef<HTMLDivElement>(null);
   const bentoRefs = useRef<(HTMLDivElement | null)[]>([]);
 

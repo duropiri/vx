@@ -12,7 +12,7 @@ interface SectionProps {
   scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
 }
 
-function ServicesSection({ className, scrollYProgress }: SectionProps) {
+function ServicesSection({ className }: SectionProps) {
   const [firstBentoHovered, setFirstBentoHovered] = useState(false);
   const [fourthBentoHovered, setFourthBentoHovered] = useState(false);
 
@@ -420,9 +420,12 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                                 virtual tour today. DM us for more info!
                               </div>
                             </div>
-                            <img
+                            <Image
+                              width={70}
+                              height={70}
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
                               src="/images/VirtualXposure-ExteriorImage.webp"
+                              alt="post-image"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -497,9 +500,12 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                                 virtual tour today. DM us for more info!
                               </div>
                             </div>
-                            <img
+                            <Image
+                              width={70}
+                              height={70}
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
                               src="/images/VirtualXposure-ExteriorImage.webp"
+                              alt="post-image"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -574,9 +580,12 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                                 virtual tour today. DM us for more info!
                               </div>
                             </div>
-                            <img
+                            <Image
+                              width={70}
+                              height={70}
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
                               src="/images/VirtualXposure-ExteriorImage.webp"
+                              alt="post-image"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -651,9 +660,12 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                                 virtual tour today. DM us for more info!
                               </div>
                             </div>
-                            <img
+                            <Image
+                              width={70}
+                              height={70}
                               className="w-[70px] h-[70px] rounded-[5px] border border-white"
                               src="/images/VirtualXposure-ExteriorImage.webp"
+                              alt="post-image"
                             />
                           </div>
                           <div className="w-full justify-between items-center flex">
@@ -738,25 +750,40 @@ function ServicesSection({ className, scrollYProgress }: SectionProps) {
                         <span className="group-hover:animate-ping absolute flex size-52 lg:size-full rounded-full group-hover:bg-indigo-300/25 bg-transparent" />
                         <div className="relative flex flex-col items-center justify-center w-52 h-52 rounded-full border border-ash/10">
                           <div className="justify-center items-center flex flex-row space-x-[-1.5rem]">
-                            <img
-                              className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[-50%] group-hover:-rotate-45"
+                            <Image
+                              width={48}
+                              height={48}
+                              className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[-50%] group-hover:-rotate-45"
                               src="/images/team.webp"
+                              alt="team-image"
                             />
-                            <img
-                              className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[-25%] group-hover:-rotate-12 group-hover:translate-y-[-25%]"
+                            <Image
+                              width={48}
+                              height={48}
+                              className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[-25%] group-hover:-rotate-12 group-hover:translate-y-[-25%]"
                               src="/images/team_1.webp"
+                              alt="team-image"
                             />
-                            <img
-                              className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-y-[-35%]"
+                            <Image
+                              width={48}
+                              height={48}
+                              className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-y-[-35%]"
                               src="/images/team_2.webp"
+                              alt="team-image"
                             />
-                            <img
-                              className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[25%] group-hover:rotate-12 group-hover:translate-y-[-25%]"
+                            <Image
+                              width={48}
+                              height={48}
+                              className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[25%] group-hover:rotate-12 group-hover:translate-y-[-25%]"
                               src="/images/team_3.webp"
+                              alt="team-image"
                             />
-                            <img
-                              className="transition-all duration-500 w-12 h-12 relative rounded-[86px] group-hover:translate-x-[50%] group-hover:rotate-45"
+                            <Image
+                              width={48}
+                              height={48}
+                              className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[50%] group-hover:rotate-45"
                               src="/images/team_4.webp"
+                              alt="team-image"
                             />
                           </div>
                         </div>

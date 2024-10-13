@@ -7,13 +7,7 @@ import React, {
   useRef,
   useState,
 } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useScroll,
-  useTransform,
-  easeInOut,
-} from "framer-motion";
+import { motion, useScroll, useTransform, easeInOut } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { getChars } from "@/components/animations/GetChars";
@@ -36,7 +30,7 @@ interface SectionProps {
 
 const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ className = "", navigation, originalColor, transitionColor }, ref) => {
-    const [color, setColor] = useState(originalColor);
+    const [color] = useState(originalColor);
     const { scrollY } = useScroll();
     const opacity = useTransform(scrollY, [0, 500], [1, 0], {
       ease: easeInOut,
@@ -62,19 +56,14 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     const heroCTARef = useRef<HTMLDivElement>(null);
     const navdockRef = useRef<HTMLDivElement>(null);
-    const heroSectionRef = useRef<HTMLDivElement>(null);
+    // const heroSectionRef = useRef<HTMLDivElement>(null);
 
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isBottom, setIsBottom] = useState(false);
+    // const [isScrolled, setIsScrolled] = useState(false);
+    // const [isBottom, setIsBottom] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
-    const [hasPassedHero, setHasPassedHero] = useState(false);
-    const [isTransforming, setIsTransforming] = useState(false);
-    const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
-
-    // Screen Size checking
-    useEffect(() => {
-      console.log("Is Mobile:", isMobile);
-    }, [isMobile]); // This will run whenever isMobile changes
+    // const [hasPassedHero, setHasPassedHero] = useState(false);
+    // const [isTransforming, setIsTransforming] = useState(false);
+    // const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
 
     // Screen Size checking (previous useEffect remains the same)
     useEffect(() => {
@@ -82,29 +71,34 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         setIsMobile(window.innerWidth <= 768);
       };
 
-      const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
+      // const handleScroll = () => {
+      //   const scrollTop = window.scrollY;
+      //   const windowHeight = window.innerHeight;
+      //   const documentHeight = document.documentElement.scrollHeight;
 
-        setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
-        setIsScrolled(
-          scrollTop > 50 && scrollTop + windowHeight < documentHeight
-        );
-      };
+      //   setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
+      //   setIsScrolled(
+      //     scrollTop > 50 && scrollTop + windowHeight < documentHeight
+      //   );
+      // };
 
       // Initial setup
       handleResize();
-      handleScroll();
+      // handleScroll();
 
       window.addEventListener("resize", handleResize);
-      window.addEventListener("scroll", handleScroll);
+      // window.addEventListener("scroll", handleScroll);
 
       return () => {
         window.removeEventListener("resize", handleResize);
-        window.removeEventListener("scroll", handleScroll);
+        // window.removeEventListener("scroll", handleScroll);
       };
     }, []);
+
+    // Screen Size checking
+    useEffect(() => {
+      console.log("Is Mobile:", isMobile);
+    }, [isMobile]); // This will run whenever isMobile changes
 
     // GSAP Animations
     useEffect(() => {
@@ -114,9 +108,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         gsap.registerPlugin(ScrollTrigger);
 
         // Parallax effect
-        let effectElements = gsap.utils.toArray("[data-speed]");
-        effectElements.forEach((el: any) => {
-          let speed = parseFloat(el.getAttribute("data-speed"));
+        const effectElements = gsap.utils.toArray("[data-speed]");
+        (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
+          const speed = parseFloat(el.getAttribute("data-speed") || "0");
           gsap.fromTo(
             el,
             { y: 0 },
@@ -129,9 +123,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 end: "bottom top",
                 scrub: true,
                 onRefresh: (self) => {
-                  let start = Math.max(0, self.start); // ensure no negative values
-                  let distance = self.end - start;
-                  let end = start + distance / speed;
+                  const start = Math.max(0, self.start); // ensure no negative values
+                  const distance = self.end - start;
+                  const end = start + distance / speed;
                   (self as any).setPositions(start, end);
                   if (self.animation) {
                     // Check if self.animation is defined
@@ -149,36 +143,54 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         });
 
         // Hero CTA to Navdock transition
-        if (!isMobile && heroCTARef.current && navdockRef.current) {
+        if (
+          // !isMobile &&
+          heroCTARef.current &&
+          navdockRef.current
+        ) {
           const heroCTA = heroCTARef.current;
           const navdock = navdockRef.current;
 
           // const heroBounds = heroCTA.getBoundingClientRect();
 
+          // START
           // Set navdock initial state (SIZE AND COLOR)
           gsap.set(navdock, {
             display: "flex",
             padding: 0,
-            width: isMobile ? "100%" : "11rem",
+            width:
+              // isMobile ? "100%" :
+              "11rem",
             height: "3.313rem",
-            background: isMobile ? "#1b1a17" : "#c5a05e",
+            background:
+              // isMobile ? "#1b1a17" :
+              "#c5a05e",
             borderRadius: "9999px",
             opacity: 0,
           });
 
-          // Hide elements initially (HIDDEN)
-          gsap.set(["#logo", ".nav-item"], {
-            display: "none",
+          // Hide elements on desktop, visible on mobile
+          gsap.set(["#logo", ".nav"], {
+            display: isMobile ? "flex" : "none",
           });
 
+          // Set initial position for the CTA
+          gsap.set("#navdock-cta", {
+            x: 0,
+          });
+          // END START
+
+          // PHASE 1
           // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
           ScrollTrigger.create({
             trigger: heroCTA,
-            start: isMobile ? `top -10vh` : `top 2.5rem`, // When heroCTA reaches navdock position
+            start: isMobile ? `bottom top` : `top 40px`, // When heroCTA reaches navdock position
             // end: "+=50",
             // markers: true,
             onEnter: () => {
-              gsap.set(heroCTA, { opacity: isMobile ? 1 : 0 }); // Hide heroCTA
+              gsap.set(heroCTA, {
+                opacity: isMobile ? 1 : 0,
+              }); // Hide heroCTA
               gsap.set(navdock, { opacity: 1 }); // Show navdock
             },
             onLeaveBack: () => {
@@ -186,7 +198,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               gsap.set(heroCTA, { opacity: 1 }); // Show heroCTA
             },
           });
+          // END PHASE 1
 
+          // PHASE 2
           // Second ScrollTrigger (Navdock): Handle navdock transformation and element animations
           ScrollTrigger.create({
             trigger: heroCTA,
@@ -194,101 +208,129 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             // end: "+=50vh",
             // markers: true,
             onEnter: () => {
-              setIsTransforming(true);
+              const tl = gsap.timeline();
+
+              gsap.set("#navdock-cta", {
+                opacity: 0,
+                display: "none",
+                x: "12rem",
+                duration: 0,
+              });
 
               // Animate the navdock (to navdock final style)
-              gsap.to(navdock, {
+              tl.to(navdock, {
                 background: "#1b1a17",
-                width: isMobile ? "100%" : "auto",
+                width:
+                  // isMobile ? "100%" :
+                  "25rem",
                 height: "3.313rem",
-                paddingLeft: isMobile ? "0px" : "1.5rem",
+                paddingLeft:
+                  // isMobile ? "0px" :
+                  "1.5rem",
                 paddingRight: "0px",
                 paddingTop: "0px",
                 paddingBottom: "0px",
-                gap: "1.313rem",
+                // gap: "1.313rem",
                 border: "0.125rem solid #1b1a17",
-                borderRadius: isMobile ? "0px" : "9999px",
+                borderRadius:
+                  // isMobile ? "0px" :
+                  "9999px",
 
-                duration: 0.2,
-                onComplete: () => {
-                  setHasPassedHero(true);
-
-                  // Once the navdock is transformed, animate the logo and nav items
-
-                  // Animate the logo (from hidden to expanded)
-                  gsap.fromTo(
-                    "#logo",
-                    {
-                      x: isMobile ? 0 : 150,
-                      width: "2.25rem",
-                      opacity: 0,
-                      display: "none",
-                    }, // Hidden state
-                    {
-                      x: isMobile ? 0 : 0,
-                      width: "auto",
-                      opacity: 1,
-                      display: "flex",
-                      duration: isMobile ? 0 : 0.2,
-                    } // Expanded state
-                  );
-
-                  // Animate nav items (from hidden to visible with no staggered effect)
-                  gsap.fromTo(
-                    ".nav-item",
-                    { opacity: 0, y: 1, display: "none" }, // Hidden state
-                    {
-                      opacity: 1,
-                      y: 0,
-                      display: "flex",
-                      duration: 0.2,
-                      stagger: 0,
-                    } // Visible state
-                  );
-
-                  // Animate the navdock cta (from transparent to goldenbrown)
-                  gsap.fromTo(
-                    "#navdock-cta",
-                    {
-                      backgroundColor: "transparent",
-                    }, // HEROCTA STYLE
-                    {
-                      backgroundColor: "#c5a05e",
-                    }
-                  );
-                },
+                duration: 0.5,
               });
+
+              // Animate the logo (from hidden to expanded)
+              tl.fromTo(
+                "#logo",
+                {
+                  opacity: 0,
+                  display: "none",
+                },
+                {
+                  opacity: 1,
+                  display: "flex",
+                  duration: 0.5,
+                },
+                "-=0.25" // Start slightly before the navdock animation finishes
+              );
+
+              // Animate nav items (from hidden to visible)
+              tl.fromTo(
+                ".nav",
+                { y: 10, opacity: 0, display: "none" }, // Hidden state
+                {
+                  y: 0,
+                  opacity: 1,
+                  display: "flex",
+                  duration: 0.3,
+                  stagger: 0.1,
+                }, // Visible state
+                "-=0.25" // Start slightly before the navdock animation finishes
+              );
+
+              // Animate the navdock cta (from transparent to goldenbrown)
+              tl.to(
+                "#navdock-cta",
+                {
+                  x: 0,
+                  display: "flex",
+                  opacity: 1,
+                  backgroundColor: "#c5a05e",
+                  duration: 0.3,
+                },
+                "-=0.5" // Start at the same time as the nav items
+              );
             },
             onLeaveBack: () => {
-              setIsTransforming(false);
-              setHasPassedHero(false);
+              const tl = gsap.timeline();
+
+              gsap.set(["#logo", ".nav", "#navdock-cta"], {
+                opacity: 0,
+              });
+
+              gsap.set("#navdock-cta", {
+                display: "none",
+                y: "3.5rem",
+              });
 
               // Animate the navdock back to its default state
-              gsap.to(navdock, {
+              tl.to(navdock, {
                 display: "flex",
                 padding: 0,
-                width: isMobile ? "100%" : "11rem",
+                width:
+                  // isMobile ? "100%" :
+                  "11rem",
                 height: "3.313rem",
-                background: isMobile ? "#1b1a17" : "#c5a05e",
+                background:
+                  // isMobile ? "#1b1a17" :
+                  "#1b1a17",
               });
 
-              // Hide the logo (reset to hidden state)
-              gsap.to("#logo", {
-                x: isMobile ? 0 : 150,
-                display: "none",
-              });
-
-              // Hide nav items (reset to hidden state)
-              gsap.to(".nav-item", {
-                display: "none",
-              });
+              // Hide the logo and nav items
+              tl.to(
+                ["#logo", ".nav"],
+                {
+                  display: "none",
+                  duration: 0.3,
+                },
+                "-=0.3"
+              );
 
               // Reset navdock cta (reset to default state, HEROCTA STYLES)
-              gsap.to("#navdock-cta", {
-                background: "transparent",
-              });
+              tl.to(
+                "#navdock-cta",
+                {
+                  display: "flex",
+                  opacity: 1,
+                  y: 0,
+                  backgroundColor: "transparent",
+                  duration: 0.5,
+                },
+                "-=0.5"
+              );
             },
           });
+          // END PHASE 2
         }
 
         // Add new ScrollTrigger for mobile navdock fade out
@@ -303,18 +345,18 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 const progress = self.progress;
                 gsap.to(navdockRef.current, {
                   opacity: 1 - progress,
-                  duration: 0.2,
+                  duration: 0.5,
                   onComplete: () => {
-                    setShouldHideNavdock(progress === 1);
+                    // setShouldHideNavdock(progress === 1);
                   },
                 });
               } else {
                 // Ensure navdock is visible on desktop
                 gsap.to(navdockRef.current, {
                   opacity: 1,
-                  duration: 0.2,
+                  duration: 0.5,
                   onComplete: () => {
-                    setShouldHideNavdock(false);
+                    // setShouldHideNavdock(false);
                   },
                 });
               }
@@ -835,7 +877,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   />
                 </defs>
                 <text
-                  className="pn-regular-16 !text-[1.125rem] 2xl:!text-[1rem]"
+                  className="pn-regular-16 !text-[1.125rem] xl:!text-[1.125rem] [@media(min-width:1440px)]:!text-[1rem]"
                   fontSize="4.5"
                   fill="currentColor"
                   letterSpacing="0.1"
@@ -882,23 +924,24 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             className={`flex flex-row items-center justify-between border-[0.125rem] border-ash lg:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
           >
             {/* Navdock Final Form */}
-            <div id="logo" className="">
+            <div id="logo" className="flex items-center h-full">
               <Link
                 href="/"
                 passHref
-                className="cursor-select-hover flex overflow-hidden"
+                className="cursor-select-hover flex h-[36px] aspect-square overflow-hidden"
               >
                 <Image
                   src="/images/logo2.webp"
                   alt="logo"
                   width={36}
-                  height={22}
+                  height={36}
                   className="size-full"
                 />
               </Link>
             </div>
 
-            <nav className="contents flex-row gap-[1.25rem] text-white">
+            {/* Navigation Links */}
+            <nav className="nav flex flex-row w-full items-center justify-between mx-[1.313rem] h-full text-white">
               {navigation.map((nav, index) => (
                 <HoverWrapper
                   key={index}
@@ -917,9 +960,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <HoverWrapper
               href="/#contact"
               id="navdock-cta"
-              className="button !border-none h-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]"
+              className="button self-end !border-none size-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 max-w-[11rem] "
             >
-              <FlipLink className={`flex items-center w-full`}>
+              <FlipLink
+                className={`flex items-center w-full max-h-[1rem] text-nowrap`}
+              >
                 Get In Touch
               </FlipLink>
               <svg

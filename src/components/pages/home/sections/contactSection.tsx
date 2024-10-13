@@ -25,18 +25,25 @@ function ContactSection({ className }: SectionProps) {
           }
         />
 
-        <div className="cursor-none-hover w-full 2xl:h-[44rem] overflow-hidden">
+        <div className="cursor-none-hover w-full h-full 2xl:min-h-[44rem] overflow-hidden">
           <iframe
             src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
-            style={{ width: "100%", border: "none", overflow: "visible" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              minHeight: "calc(44rem + 64px)",
+              border: "none",
+              overflow: "visible",
+            }}
             scrolling="no"
             id="zIDoL2aZcFRCtxiFBaoP_1728040058508"
             className="cursor-none-hover flex bg-transparent -mt-[1rem] 2xl:-mt-[4rem]"
+            loading="lazy" // Lazy load the iframe
           ></iframe>
-          <br />
           <script
             src="https://link.msgsndr.com/js/form_embed.js"
             type="text/javascript"
+            defer // Defer loading of the script
           ></script>
         </div>
       </div>

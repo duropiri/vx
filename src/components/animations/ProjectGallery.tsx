@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef, CSSProperties } from "react";
-import { useScroll, motion, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import Image from "next/image";
 
@@ -18,13 +18,13 @@ export interface ProjectDetails {
 }
 
 export default function ProjectGallery({
-  className,
+  className = "",
   projects = [],
 }: AnimationProps) {
   const [modal, setModal] = useState({ active: false, index: 0 });
 
   return (
-    <main className={styles.main}>
+    <main className={`${className} ${styles.main}`}>
       <div className={styles.body}>
         {projects.map((project, index) => {
           return (
@@ -117,32 +117,32 @@ function Modal({
 
   useEffect(() => {
     //Move Container
-    let xMoveContainer = gsap.quickTo(modalContainer.current, "left", {
+    const xMoveContainer = gsap.quickTo(modalContainer.current, "left", {
       duration: 0.8,
       ease: "power3",
     });
-    let yMoveContainer = gsap.quickTo(modalContainer.current, "top", {
+    const yMoveContainer = gsap.quickTo(modalContainer.current, "top", {
       duration: 0.8,
       ease: "power3",
     });
     //Move cursor
-    let xMoveCursor = gsap.quickTo(cursor.current, "left", {
+    const xMoveCursor = gsap.quickTo(cursor.current, "left", {
       duration: 0.5,
       ease: "power3",
     });
-    let yMoveCursor = gsap.quickTo(cursor.current, "top", {
+    const yMoveCursor = gsap.quickTo(cursor.current, "top", {
       duration: 0.5,
       ease: "power3",
     });
     //Move cursor label
-    let xMoveCursorLabel = gsap.quickTo(cursorLabel.current, "left", {
-      duration: 0.45,
-      ease: "power3",
-    });
-    let yMoveCursorLabel = gsap.quickTo(cursorLabel.current, "top", {
-      duration: 0.45,
-      ease: "power3",
-    });
+    // const xMoveCursorLabel = gsap.quickTo(cursorLabel.current, "left", {
+    //   duration: 0.45,
+    //   ease: "power3",
+    // });
+    // const yMoveCursorLabel = gsap.quickTo(cursorLabel.current, "top", {
+    //   duration: 0.45,
+    //   ease: "power3",
+    // });
 
     window.addEventListener("mousemove", (e) => {
       const { pageX, pageY } = e;
@@ -150,8 +150,8 @@ function Modal({
       yMoveContainer(pageY);
       xMoveCursor(pageX);
       yMoveCursor(pageY);
-    //   xMoveCursorLabel(pageX);
-    //   yMoveCursorLabel(pageY);
+      //   xMoveCursorLabel(pageX);
+      //   yMoveCursorLabel(pageY);
     });
   }, []);
 
@@ -203,42 +203,42 @@ function Modal({
 }
 
 const styles = {
-    main: "flex h-[100vh] items-center justify-center",
-    body: "w-[1000px] flex flex-col items-center justify-center",
-    project: {
-      display: "flex",
-      width: "100%",
-      justifyContent: "space-between",
-      alignItems: "center",
-      padding: "50px 100px",
-      borderTop: "1px solid rgb(201, 201, 201)",
-      cursor: "pointer",
-      transition: "all 0.2s",
-    } as CSSProperties,
-    lastProject: {
-      borderBottom: "1px solid rgb(201, 201, 201)",
-    } as CSSProperties,
-    projectTitle: {
-      fontSize: "60px",
-      margin: "0px",
-      fontWeight: 400,
-      transition: "all 0.4s",
-    } as CSSProperties,
-    projectDescription: {
-      transition: "all 0.4s",
-      fontWeight: 300,
-    } as CSSProperties,
-    modalContainer:
-      "h-[350px] w-[400px] absolute bg-white overflow-hidden pointer-events-none flex items-center justify-center",
-    modalSlider: {
-      height: "100%",
-      width: "100%",
-      position: "absolute",
-      transition: "top 0.5s cubic-bezier(0.76, 0, 0.24, 1)",
-    } as CSSProperties,
-    modal: "h-full w-full flex items-center justify-center",
-    cursor:
-      " w-[80px] h-[80px] rounded-full text-white absolute z-2 flex items-center justify-center text-[14px] font-normal pointer-events-none",
-    cursorLabel:
-      "absolute text-center bg-transparent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
-  };
+  main: "flex h-[100vh] items-center justify-center",
+  body: "w-[1000px] flex flex-col items-center justify-center",
+  project: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "space-between",
+    alignItems: "center",
+    padding: "50px 100px",
+    borderTop: "1px solid rgb(201, 201, 201)",
+    cursor: "pointer",
+    transition: "all 0.2s",
+  } as CSSProperties,
+  lastProject: {
+    borderBottom: "1px solid rgb(201, 201, 201)",
+  } as CSSProperties,
+  projectTitle: {
+    fontSize: "60px",
+    margin: "0px",
+    fontWeight: 400,
+    transition: "all 0.4s",
+  } as CSSProperties,
+  projectDescription: {
+    transition: "all 0.4s",
+    fontWeight: 300,
+  } as CSSProperties,
+  modalContainer:
+    "h-[350px] w-[400px] absolute bg-white overflow-hidden pointer-events-none flex items-center justify-center",
+  modalSlider: {
+    height: "100%",
+    width: "100%",
+    position: "absolute",
+    transition: "top 0.5s cubic-bezier(0.76, 0, 0.24, 1)",
+  } as CSSProperties,
+  modal: "h-full w-full flex items-center justify-center",
+  cursor:
+    " w-[80px] h-[80px] rounded-full text-white absolute z-2 flex items-center justify-center text-[14px] font-normal pointer-events-none",
+  cursorLabel:
+    "absolute text-center bg-transparent top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
+};

@@ -1,7 +1,7 @@
 "use client";
 import { ReactLenis } from "lenis/react";
-import { useEffect, useCallback, useRef } from "react";
-import Lenis from "@studio-freight/lenis";
+// import { useRef } from "react";
+// import Lenis from "@studio-freight/lenis";
 
 interface SmoothScrollingProps {
   children: React.ReactNode;
@@ -12,7 +12,7 @@ export default function SmoothScrolling({
   children,
   className = "",
 }: SmoothScrollingProps) {
-  const lenisRef = useRef<Lenis | null>(null);
+  // const lenisRef = useRef<Lenis | null>(null);
 
   return (
     <ReactLenis
