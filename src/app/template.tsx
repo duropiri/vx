@@ -15,7 +15,7 @@ import SmoothScrolling from "@/components/animations/SmoothScrolling";
 import {
   slide,
   perspective,
-  opacity,
+  // opacity,
   exitSlide,
 } from "@/components/layout/transitions/transitions";
 

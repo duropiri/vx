@@ -2,7 +2,6 @@
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import React, { useRef } from "react";
 import CountUp from "react-countup";
-import useScrollTriggeredCountUp from "@/components/animations/useScrollTriggeredCountUp";
 import { motion, MotionValue, useTransform } from "framer-motion";
 
 interface SectionProps {
@@ -12,23 +11,6 @@ interface SectionProps {
 
 function StatsSection({ className, scrollYProgress }: SectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-
-  const {
-    start: start89,
-    // countUpRef: countUpRef89
-  } = useScrollTriggeredCountUp(ref, 89);
-  const {
-    start: start58,
-    // countUpRef: countUpRef58
-  } = useScrollTriggeredCountUp(ref, 58);
-  const {
-    start: start47,
-    // countUpRef: countUpRef47
-  } = useScrollTriggeredCountUp(ref, 47);
-  const {
-    start: start24,
-    // countUpRef: countUpRef24
-  } = useScrollTriggeredCountUp(ref, 24);
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
@@ -292,7 +274,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                 <CountUp
                   end={89}
                   duration={2}
-                  start={start89 ? undefined : 0}
+                  start={0}
                   // ref={countUpRef89}
                 />
                 %
@@ -310,7 +292,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                 <CountUp
                   end={58}
                   duration={2}
-                  start={start58 ? undefined : 0}
+                  start={0}
                   // ref={countUpRef58}
                 />
                 %
@@ -330,7 +312,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                 <CountUp
                   end={47}
                   duration={2}
-                  start={start47 ? undefined : 0}
+                  start={0}
                   // ref={countUpRef47}
                 />
                 %
@@ -348,7 +330,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
                 <CountUp
                   end={24}
                   duration={2}
-                  start={start24 ? undefined : 0}
+                  start={0}
                   // ref={countUpRef24}
                 />
                 %

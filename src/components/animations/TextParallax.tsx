@@ -118,32 +118,32 @@ const Phrase: React.FC<PhraseProps> = ({ text, src }) => {
 };
 
 // Example phrases array
-const phrases = [
-    {
-      items: [
-        { text: "empathetic", src: "/images/1.webp" },
-        { text: "useful", src: "/images/2.webp" },
-        { text: "intuitive", src: "/images/3.webp" },
-      ],
-      direction: "left",
-      left: "-40%",
-    },
-    {
-      items: [
-        { text: "empathetic", src: "/images/4.webp" },
-        { text: "useful", src: "/images/5.webp" },
-        { text: "intuitive", src: "/images/6.webp" },
-      ],
-      direction: "right",
-      left: "-25%",
-    },
-    {
-      items: [
-        { text: "empathetic", src: "/images/7.webp" },
-        { text: "useful", src: "/images/8.webp" },
-        { text: "intuitive", src: "/images/9.webp" },
-      ],
-      direction: "left",
-      left: "-70%",
-    },
-  ];
+// const phrases = [
+//     {
+//       items: [
+//         { text: "empathetic", src: "/images/1.webp" },
+//         { text: "useful", src: "/images/2.webp" },
+//         { text: "intuitive", src: "/images/3.webp" },
+//       ],
+//       direction: "left",
+//       left: "-40%",
+//     },
+//     {
+//       items: [
+//         { text: "empathetic", src: "/images/4.webp" },
+//         { text: "useful", src: "/images/5.webp" },
+//         { text: "intuitive", src: "/images/6.webp" },
+//       ],
+//       direction: "right",
+//       left: "-25%",
+//     },
+//     {
+//       items: [
+//         { text: "empathetic", src: "/images/7.webp" },
+//         { text: "useful", src: "/images/8.webp" },
+//         { text: "intuitive", src: "/images/9.webp" },
+//       ],
+//       direction: "left",
+//       left: "-70%",
+//     },
+//   ];
