@@ -105,7 +105,7 @@ function Body() {
       <HeroSection
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
-        className="min-w-[100vw]"
+        className="min-w-[100vw] min-h-[100vh]"
         navigation={NavLinks}
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[0] = el;

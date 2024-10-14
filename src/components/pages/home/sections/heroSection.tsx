@@ -790,7 +790,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Hero */}
         <div
           id="hero"
-          className={`section-container hero-container ${className} overflow-hidden z-[100]`}
+          className={`section-container hero-container ${className} overflow-hidden z-[100] max-h-[100dvh]`}
         >
           <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw] z-10">
             {/* Main Copy */}
