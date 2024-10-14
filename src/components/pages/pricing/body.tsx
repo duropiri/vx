@@ -9,7 +9,7 @@ import ContactSection from "@/components/pages/home/sections/contactSection";
 function body() {
   return (
     <>
-      <PricingSection className="bg-white z-10 pt-[6rem]" />
+      <PricingSection className="bg-white z-10 !pt-[6rem]" />
       <SocialProofSection full className="bg-white z-10" />
       <CTASection className="bg-white z-10" />
       <FAQSection className="bg-white z-10" />
