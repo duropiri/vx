@@ -54,4 +54,6 @@ const CopySection = forwardRef<HTMLDivElement, SectionProps>(
   }
 );
 
+CopySection.displayName = "CopySection";
+
 export default CopySection;

@@ -264,4 +264,6 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
   }
 );
 
+SocialProofSection.displayName = "SocialProofSection";
+
 export default SocialProofSection;

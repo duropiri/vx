@@ -421,4 +421,6 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
   }
 );
 
+ProblemSection.displayName = "ProblemSection";
+
 export default ProblemSection;

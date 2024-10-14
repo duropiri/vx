@@ -58,12 +58,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     const navdockRef = useRef<HTMLDivElement>(null);
     // const heroSectionRef = useRef<HTMLDivElement>(null);
 
-    // const [isScrolled, setIsScrolled] = useState(false);
-    // const [isBottom, setIsBottom] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [isBottom, setIsBottom] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     // const [hasPassedHero, setHasPassedHero] = useState(false);
     // const [isTransforming, setIsTransforming] = useState(false);
-    // const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
+    const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
 
     // Screen Size checking (previous useEffect remains the same)
     useEffect(() => {
@@ -71,27 +71,27 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         setIsMobile(window.innerWidth <= 768);
       };
 
-      // const handleScroll = () => {
-      //   const scrollTop = window.scrollY;
-      //   const windowHeight = window.innerHeight;
-      //   const documentHeight = document.documentElement.scrollHeight;
+      const handleScroll = () => {
+        const scrollTop = window.scrollY;
+        const windowHeight = window.innerHeight;
+        const documentHeight = document.documentElement.scrollHeight;
 
-      //   setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
-      //   setIsScrolled(
-      //     scrollTop > 50 && scrollTop + windowHeight < documentHeight
-      //   );
-      // };
+        setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
+        setIsScrolled(
+          scrollTop > 50 && scrollTop + windowHeight < documentHeight
+        );
+      };
 
       // Initial setup
       handleResize();
-      // handleScroll();
+      handleScroll();
 
       window.addEventListener("resize", handleResize);
-      // window.addEventListener("scroll", handleScroll);
+      window.addEventListener("scroll", handleScroll);
 
       return () => {
         window.removeEventListener("resize", handleResize);
-        // window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("scroll", handleScroll);
       };
     }, []);
 
@@ -347,7 +347,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   opacity: 1 - progress,
                   duration: 0.5,
                   onComplete: () => {
-                    // setShouldHideNavdock(progress === 1);
+                    setShouldHideNavdock(progress === 1);
                   },
                 });
               } else {
@@ -356,7 +356,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   opacity: 1,
                   duration: 0.5,
                   onComplete: () => {
-                    // setShouldHideNavdock(false);
+                    setShouldHideNavdock(false);
                   },
                 });
               }
@@ -1009,5 +1009,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     );
   }
 );
+
+HeroSection.displayName = "HeroSection";
+
 
 export default HeroSection;
