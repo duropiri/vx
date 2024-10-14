@@ -385,13 +385,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Assemble Icons */}
         <div
           id="icons"
-          className="pointer-events-none absolute !bg-transparent top-0 h-[100dvh] w-[100vw] !p-0 overflow-hidden blur-[1px] lg:blur-none"
+          className="pointer-events-none absolute !bg-transparent top-0 h-[100vh] w-[100vw] !p-0 overflow-hidden blur-[1px] lg:blur-none"
         >
           {/* Light Rays */}
 
           <div className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden">
             <div
-              className="pointer-events-none absolute flex h-[100dvh] w-[100vw] bg-gradient-to-t from-10% to-transparent to-30% transition-all z-30"
+              className="pointer-events-none absolute flex h-[100vh] w-[100vw] bg-gradient-to-t from-10% to-transparent to-30% transition-all z-30"
               style={
                 {
                   "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
