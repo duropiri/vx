@@ -46,7 +46,7 @@ function ServicesSection({ className }: SectionProps) {
               yOverflow={false}
               duration={0.6}
               width="100%"
-              className="group relative flex flex-col h-full max-h-[31.25rem] "
+              className="group relative flex flex-col h-full max-h-[31.25rem]"
             >
               <div
                 className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden"
@@ -338,7 +338,7 @@ function ServicesSection({ className }: SectionProps) {
               width="100%"
               className="group relative flex flex-col size-full max-h-[31.25rem]"
             >
-              <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full">
+              <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]">
                 {/* Content */}
                 <div className="h-full w-full flex-col justify-start items-start gap-[1.125rem] flex relative">
                   {/* Header */}
@@ -762,9 +762,9 @@ function ServicesSection({ className }: SectionProps) {
               duration={0.6}
               delay={0.5}
               width="100%"
-              className="group relative flex flex-col h-full max-h-[31.25rem] justify-start items-center max-w-[25%]"
+              className="group relative flex flex-col h-full max-h-[31.25rem] justify-start items-center lg:max-w-[21.875rem]"
             >
-              <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow overflow-hidden h-full">
+              <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow overflow-hidden h-full max-h-[31.25rem]">
                 <div className="flex-col size-full justify-start items-start gap-[2rem] flex">
                   {/* Header */}
                   <div className="h-[126px] flex-col justify-center items-center gap-[0.625rem] flex">
@@ -848,7 +848,7 @@ function ServicesSection({ className }: SectionProps) {
               className="group relative size-full max-h-[31.25rem]"
             >
               <div
-                className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden h-full"
+                className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden h-full max-h-[31.25rem]"
                 onMouseEnter={() => setFourthBentoHovered(true)}
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >

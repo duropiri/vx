@@ -313,7 +313,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           {/* Centered Text for Steps */}
           <div
             ref={textContainerRef}
-            className="sticky top-0 left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex py-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
+            className="sticky top-[2.5rem] left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex py-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
           >
             <SectionHeader
               ref={textRef}
