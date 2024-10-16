@@ -1,4 +1,3 @@
-"use client";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";

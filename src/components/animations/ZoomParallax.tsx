@@ -11,6 +11,7 @@ interface AnimationProps {
   children?: React.ReactNode;
   className?: string;
   media: Media[];
+  id?: string;
   onStepChange: (step: number) => void; // New prop to notify ProblemSection
 }
 
@@ -28,6 +29,7 @@ interface Media {
 export default function ZoomParallax({
   className = "",
   media,
+  id,
   onStepChange, // Pass this as a prop
 }: AnimationProps) {
   const [isMobile, setIsMobile] = useState(false);
@@ -188,6 +190,7 @@ export default function ZoomParallax({
 
   return (
     <div
+      id={id}
       ref={containerRef}
       className={`${className} ${styles.container}`}
       style={{ height: `${media.length * 100 - media.length * 10}vh` }}

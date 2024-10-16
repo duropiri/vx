@@ -1,4 +1,3 @@
-"use client";
 import CharByCharOnScroll from "@/components/animations/CharByCharOnScroll";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";

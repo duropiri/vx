@@ -1,4 +1,3 @@
-"use client";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import {
   motion,

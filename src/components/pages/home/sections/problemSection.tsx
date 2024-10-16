@@ -1,4 +1,3 @@
-"use client";
 import ZoomParallax from "@/components/animations/ZoomParallax";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
@@ -187,13 +186,16 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           ref={containerRef}
           className="relative flex flex-col w-full items-end justify-start"
         >
-          <div className="sticky top-0 flex flex-col h-[100vh] w-[100dvw] items-center justify-end">
+          <div
+            id="road"
+            className="sticky top-0 flex flex-col h-[100vh] w-[100dvw] items-center justify-end"
+          >
             <div
               ref={roadRef}
-              className="relative flex justify-center min-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash blur-sm"
+              className="relative flex justify-center max-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash"
             >
               <div
-                className="absolute top-0 w-full h-[5rem] bg-gradient-to-b to-transparent z-10"
+                className="absolute top-0 w-full min-w-[100vw] h-[5rem] bg-gradient-to-b to-transparent z-10"
                 style={
                   {
                     "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
@@ -204,7 +206,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                 }
               />
               <div
-                className="absolute bottom-0 w-full h-[2.5rem] bg-gradient-to-t to-transparent z-10"
+                className="absolute bottom-0 w-full min-w-[100vw] h-[5rem] bg-gradient-to-t to-transparent z-10"
                 style={
                   {
                     "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
@@ -221,7 +223,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                 viewBox="0 0 357 215"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="size-full opacity-50"
+                className="w-full h-full max-h-[40vh] lg:max-h-[50vh] min-w-[200vw] lg:min-w-[100vw] opacity-50"
               >
                 <path
                   d="M145.929 0.0078125H138.105L0 215.004H15.0758L145.929 0.0078125Z"
@@ -263,7 +265,10 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
         </div> */}
 
           {/* Progress Bar */}
-          <div className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[1rem] lg:mr-[5rem] -mt-[100vh]">
+          <div
+            id="progressBar"
+            className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[1rem] lg:mr-[5rem] -mt-[100vh]"
+          >
             <div ref={progressBarRef} className="absolute w-[2.875rem]">
               <div className="inset-0 flex flex-col items-center text-ash">
                 <svg
@@ -312,6 +317,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
 
           {/* Centered Text for Steps */}
           <div
+            id="problemCopy"
             ref={textContainerRef}
             className="sticky top-[2.5rem] left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex py-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
           >
@@ -328,6 +334,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
 
           {/* ZoomParallax with images */}
           <ZoomParallax
+            id="problemImages"
             className="pointer-events-none -mt-[100vh]"
             media={media}
             onStepChange={setActiveStep}

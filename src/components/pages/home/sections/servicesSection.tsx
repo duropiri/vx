@@ -1,4 +1,3 @@
-"use client";
 import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";

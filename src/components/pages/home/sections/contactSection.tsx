@@ -1,4 +1,3 @@
-"use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import React from "react";
 import { motion } from "framer-motion";

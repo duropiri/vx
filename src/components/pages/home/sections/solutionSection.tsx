@@ -1,4 +1,3 @@
-"use client";
 import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
@@ -47,7 +46,7 @@ function SolutionSection({ className }: SectionProps) {
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
       {/* Background Text Parallax */}
-      <div className="select-none blur-[0.125rem] absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
+      <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
         <ScrollingBanner
           baseVelocity={10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
@@ -144,8 +143,9 @@ function SolutionSection({ className }: SectionProps) {
                 bentoRefs.current[0] = el;
               }}
             >
-              <div className="bento-border"></div>
-              <div className="bento-content">
+              <div className="bento-border pointer-events-none"></div>
+              <div className="bento-content overflow-hidden">
+                <div className="hidden lg:block absolute h-[300%] w-[40%] right-0 translate-x-[10%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12" />
                 <div className="flex flex-col justify-center lg:justify-start items-start gap-[1.5rem] text-white lg:max-w-[42%]">
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
                     Your Complete Digital Marketing Solution
@@ -167,6 +167,15 @@ function SolutionSection({ className }: SectionProps) {
 
                     <li>Build a strong, consistent online presence</li>
                   </ul>
+                </div>
+                <div className="hidden lg:flex items-center justify-end relative size-full max-w-[50%] opacity-75 pointer-events-none translate-x-[10%]">
+                  <Image
+                    alt="icon"
+                    src="/images/complete-dms.webp"
+                    height={500}
+                    width={500}
+                    className="size-[80%] object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -219,7 +228,8 @@ function SolutionSection({ className }: SectionProps) {
                 }}
               >
                 <div className="bento-border"></div>
-                <div className="bento-content">
+                <div className="bento-content overflow-hidden">
+                  <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12" />
                   <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       High-Quality Content Creation
@@ -239,6 +249,15 @@ function SolutionSection({ className }: SectionProps) {
                       <li>Professional video and photo shoots</li>
                       <li>Unlimited revisions until perfection</li>
                     </ul>
+                  </div>
+                  <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none translate-x-[10%]">
+                    <Image
+                      alt="icon"
+                      src="/images/high-quality-cc.webp"
+                      height={500}
+                      width={500}
+                      className="size-[80%] object-cover"
+                    />
                   </div>
                 </div>
               </div>
@@ -264,7 +283,8 @@ function SolutionSection({ className }: SectionProps) {
                 }}
               >
                 <div className="bento-border"></div>
-                <div className="bento-content">
+                <div className="bento-content overflow-hidden">
+                  <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[10%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12" />
                   <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       Strategic Growth for Realtors{" "}
@@ -279,6 +299,15 @@ function SolutionSection({ className }: SectionProps) {
                       ensuring you&apos;re reaching the right audience and
                       driving real engagement that leads to sales.
                     </p>
+                  </div>
+                  <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none">
+                    <Image
+                      alt="icon"
+                      src="/images/strategic-growth.webp"
+                      height={500}
+                      width={500}
+                      className="size-[70%] object-cover"
+                    />
                   </div>
                 </div>
               </div>

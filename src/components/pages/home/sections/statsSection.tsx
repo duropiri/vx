@@ -1,4 +1,3 @@
-"use client";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import React, { useEffect, useRef } from "react";
 import CountUp from "react-countup";

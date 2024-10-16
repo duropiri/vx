@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect, useState, useRef } from "react";
 import { usePreloader } from "@/contexts/PreloaderContext";
 import Image from "next/image";
