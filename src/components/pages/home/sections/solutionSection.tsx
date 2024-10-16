@@ -1,4 +1,5 @@
 "use client";
+import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
@@ -128,7 +129,15 @@ function SolutionSection({ className }: SectionProps) {
           className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[0.5rem]"
         >
           {/* Top Row */}
-          <div className="bento-row">
+          <Reveal
+            once
+            slide={false}
+            xOverflow={false}
+            yOverflow={false}
+            duration={0.6}
+            width="100%"
+            className="bento-row"
+          >
             <div
               className="solution-bento"
               ref={(el: HTMLDivElement | null) => {
@@ -161,213 +170,194 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </div>
-
+          </Reveal>
           {/* Middle Row */}
-          <div className="bento-row">
-            {/* First Bento */}
-            <div
-              className="solution-bento bento-center lg:max-w-[29%]"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[1] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content h-full">
-                <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    Social Media Managed by Experts
-                  </span>
-                  <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                    <h1 className="pn-bold-20 !leading-[1.5rem]">
-                      Stop Managing Social Media—Start Seeing Results.
+          <Reveal
+            once
+            slide={false}
+            xOverflow={false}
+            yOverflow={false}
+            duration={0.6}
+            width="100%"
+            className="bento-row"
+          >
+            <div className="bento-row">
+              {/* First Bento */}
+              <div
+                className="solution-bento bento-center lg:max-w-[29%]"
+                ref={(el: HTMLDivElement | null) => {
+                  bentoRefs.current[1] = el;
+                }}
+              >
+                <div className="bento-border"></div>
+                <div className="bento-content h-full">
+                  <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
+                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                      Social Media Managed by Experts
+                    </span>
+                    <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
+                      <h1 className="pn-bold-20 !leading-[1.5rem]">
+                        Stop Managing Social Media—Start Seeing Results.
+                      </h1>
+                      <p className="pn-regular-16">
+                        Forget the hassle of managing your own social media. Our
+                        team of experts takes care of everything—from posting
+                        and scheduling to audience engagement. With a strategy
+                        tailored to your brand, you&apos;ll see a measurable
+                        impact without the stress.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Second Bento */}
+              <div
+                className="solution-bento"
+                ref={(el: HTMLDivElement | null) => {
+                  bentoRefs.current[2] = el;
+                }}
+              >
+                <div className="bento-border"></div>
+                <div className="bento-content">
+                  <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
+                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                      High-Quality Content Creation
+                    </span>
+                    <h1 className="pn-regular-28">
+                      Professional Content Designed to Convert.
                     </h1>
-                    <p className="pn-regular-16">
-                      Forget the hassle of managing your own social media. Our
-                      team of experts takes care of everything—from posting and
-                      scheduling to audience engagement. With a strategy
-                      tailored to your brand, you&apos;ll see a measurable
-                      impact without the stress.
+                    <p className="pn-regular-22">
+                      In today&apos;s market, content is everything. Our
+                      in-house team produces high-quality videos, photos, and
+                      social media assets that resonate with your audience and
+                      help you close more deals. From scripting to production,
+                      we ensure every piece of content aligns with your brand.
                     </p>
+                    <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
+                      <li>Scriptwriting and topic research</li>
+                      <li>Professional video and photo shoots</li>
+                      <li>Unlimited revisions until perfection</li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </div>
-
-            {/* Second Bento */}
-            <div
-              className="solution-bento"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[2] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content">
-                <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    High-Quality Content Creation
-                  </span>
-                  <h1 className="pn-regular-28">
-                    Professional Content Designed to Convert.
-                  </h1>
-                  <p className="pn-regular-22">
-                    In today&apos;s market, content is everything. Our in-house
-                    team produces high-quality videos, photos, and social media
-                    assets that resonate with your audience and help you close
-                    more deals. From scripting to production, we ensure every
-                    piece of content aligns with your brand.
-                  </p>
-                  <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
-                    <li>Scriptwriting and topic research</li>
-                    <li>Professional video and photo shoots</li>
-                    <li>Unlimited revisions until perfection</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
+          </Reveal>
 
           {/* Bottom Row */}
-          <div className="bento-row">
-            {/* First Bento */}
-            <div
-              className="solution-bento"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[3] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content">
-                <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    Strategic Growth for Realtors{" "}
-                  </span>
-                  <h1 className="pn-regular-28">
-                    Grow Your Business with Proven Strategies.{" "}
-                  </h1>
-                  <p className="pn-regular-22">
-                    At VX, we don&apos;t just post content—we help your business
-                    grow. Our custom social media strategies are designed
-                    specifically for real estate professionals, ensuring
-                    you&apos;re reaching the right audience and driving real
-                    engagement that leads to sales.
-                  </p>
-                </div>
-              </div>
-            </div>
-            {/* Second Bento */}
-            <div
-              className="solution-bento bento-center lg:max-w-[28%]"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[4] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content h-full">
-                <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    Data-Driven Results & Reporting
-                  </span>
-                  <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                    <h1 className="pn-bold-20 !leading-[1.5rem]">
-                      Measure What Matters with Comprehensive Reporting.
+          <Reveal
+            once
+            slide={false}
+            xOverflow={false}
+            yOverflow={false}
+            duration={0.6}
+            width="100%"
+            className="bento-row"
+          >
+            <div className="bento-row">
+              {/* First Bento */}
+              <div
+                className="solution-bento"
+                ref={(el: HTMLDivElement | null) => {
+                  bentoRefs.current[3] = el;
+                }}
+              >
+                <div className="bento-border"></div>
+                <div className="bento-content">
+                  <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
+                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                      Strategic Growth for Realtors{" "}
+                    </span>
+                    <h1 className="pn-regular-28">
+                      Grow Your Business with Proven Strategies.{" "}
                     </h1>
-                    <p className="pn-regular-16">
-                      See the direct impact of your digital marketing efforts
-                      with data-driven reports that track growth, engagement,
-                      and return on investment. Our reporting tools give you the
-                      clarity you need to make informed decisions and
-                      continuously improve.
+                    <p className="pn-regular-22">
+                      At VX, we don&apos;t just post content—we help your
+                      business grow. Our custom social media strategies are
+                      designed specifically for real estate professionals,
+                      ensuring you&apos;re reaching the right audience and
+                      driving real engagement that leads to sales.
                     </p>
                   </div>
                 </div>
               </div>
+              {/* Second Bento */}
+              <div
+                className="solution-bento bento-center lg:max-w-[28%]"
+                ref={(el: HTMLDivElement | null) => {
+                  bentoRefs.current[4] = el;
+                }}
+              >
+                <div className="bento-border"></div>
+                <div className="bento-content h-full">
+                  <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
+                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                      Data-Driven Results & Reporting
+                    </span>
+                    <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
+                      <h1 className="pn-bold-20 !leading-[1.5rem]">
+                        Measure What Matters with Comprehensive Reporting.
+                      </h1>
+                      <p className="pn-regular-16">
+                        See the direct impact of your digital marketing efforts
+                        with data-driven reports that track growth, engagement,
+                        and return on investment. Our reporting tools give you
+                        the clarity you need to make informed decisions and
+                        continuously improve.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
         {/* CTA */}
         <div className="flex flex-col lg:flex-row items-center justify-center w-full text-white gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button cursor-select-hover !bg-ash !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
-            <FlipLink className="">See More</FlipLink>
-            <svg
-              width="21"
-              height="21"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_73_5969)">
-                <path
-                  d="M14.6665 6.33398L6.33319 14.6673"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M7.16656 6.33398H14.6666V13.834"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_73_5969">
-                  <rect
-                    width="20"
-                    height="20"
-                    fill="white"
-                    transform="translate(0.499878 0.5)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
+            <FlipLink className="font-semibold">See More</FlipLink>
+            <Image
+              alt="arrow"
+              src="/svgs/arrow-redirect-cta-white.svg"
+              className="text-white group-hover:rotate-45 transition-all duration-300"
+              height={21}
+              width={21}
+            />
           </HoverWrapper>
-          <HoverWrapper
-            href="#contact"
-            className="button cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+          <motion.div
+            className={`button text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
+            style={{
+              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+              backgroundSize: "300% 100%",
+            }}
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 2,
+              ease: "linear",
+              repeat: Infinity,
+            }}
           >
-            <FlipLink className="">Get In Touch</FlipLink>
-            <svg
-              width="21"
-              height="21"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <HoverWrapper
+              href="#contact"
+              className="flex size-full items-center gap-[1rem] px-[1.5rem] py-[0.875rem]"
             >
-              <g clip-path="url(#clip0_73_5969)">
-                <path
-                  d="M14.6665 6.33398L6.33319 14.6673"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M7.16656 6.33398H14.6666V13.834"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_73_5969">
-                  <rect
-                    width="20"
-                    height="20"
-                    fill="white"
-                    transform="translate(0.499878 0.5)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
-          </HoverWrapper>
+              <FlipLink className="font-semibold">Get In Touch</FlipLink>
+              <Image
+                alt="arrow"
+                src="/svgs/arrow-redirect-cta.svg"
+                className="text-white group-hover:rotate-45 transition-all duration-300"
+                height={21}
+                width={21}
+              />
+            </HoverWrapper>
+          </motion.div>
         </div>
       </div>
     </motion.div>

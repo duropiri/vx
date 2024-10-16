@@ -1,6 +1,7 @@
 "use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import React from "react";
+import { motion } from "framer-motion";
 
 interface SectionProps {
   className?: string;
@@ -17,8 +18,27 @@ function ContactSection({ className }: SectionProps) {
           subheading={
             <>
               Book Your{" "}
-              <span className="text-goldenbrown uppercase underline underline-offset-4">
-                Free
+              <span className="text-goldenbrown underline underline-offset-4">
+                <motion.span
+                  className="text-goldenbrown uppercase"
+                  style={{
+                    background:
+                      "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+                    backgroundSize: "200% 100%",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 5,
+                    ease: "linear",
+                    repeat: Infinity,
+                  }}
+                >
+                  Free
+                </motion.span>
               </span>{" "}
               Consultation With Us Today!
             </>

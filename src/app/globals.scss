@@ -357,6 +357,7 @@ body {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
   align-items: flex-start;
   justify-content: space-between;
   padding: 4.5rem 2.5rem 2.5rem;
@@ -469,7 +470,7 @@ body {
   }
 }
 
-#bentos:hover > .bento-row > .solution-bento > .bento-border {
+#bentos:hover > .bento-row .solution-bento > .bento-border {
   opacity: 1;
 }
 

@@ -1,7 +1,9 @@
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
+import Image from "next/image";
 import React from "react";
+import { motion } from "framer-motion";
 
 interface SectionProps {
   className?: string;
@@ -27,84 +29,46 @@ function CTASection({ className = "" }: SectionProps) {
         <div className="flex flex-col lg:flex-row gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
-            <FlipLink className="">See More</FlipLink>
-            <svg
-              width="21"
-              height="21"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <g clip-path="url(#clip0_73_5969)">
-                <path
-                  d="M14.6665 6.33398L6.33319 14.6673"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M7.16656 6.33398H14.6666V13.834"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_73_5969">
-                  <rect
-                    width="20"
-                    height="20"
-                    fill="white"
-                    transform="translate(0.499878 0.5)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
+            <FlipLink className="font-semibold">See More</FlipLink>
+            <Image
+              alt="arrow"
+              src="/svgs/arrow-redirect-cta-white.svg"
+              className="text-white group-hover:rotate-45 transition-all duration-300"
+              height={21}
+              width={21}
+            />
           </HoverWrapper>
-          <HoverWrapper
-            href="#contact"
-            className="button cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+          <motion.div
+            className={`button text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
+            style={{
+              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+              backgroundSize: "300% 100%",
+            }}
+            animate={{
+              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+            }}
+            transition={{
+              duration: 2,
+              ease: "linear",
+              repeat: Infinity,
+            }}
           >
-            <FlipLink className="">Get In Touch</FlipLink>
-            <svg
-              width="21"
-              height="21"
-              viewBox="0 0 21 21"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <HoverWrapper
+              href="#contact"
+              className="flex size-full items-center gap-[1rem] px-[1.5rem] py-[0.875rem]"
             >
-              <g clip-path="url(#clip0_73_5969)">
-                <path
-                  d="M14.6665 6.33398L6.33319 14.6673"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-                <path
-                  d="M7.16656 6.33398H14.6666V13.834"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </g>
-              <defs>
-                <clipPath id="clip0_73_5969">
-                  <rect
-                    width="20"
-                    height="20"
-                    fill="white"
-                    transform="translate(0.499878 0.5)"
-                  />
-                </clipPath>
-              </defs>
-            </svg>
-          </HoverWrapper>
+              <FlipLink className="font-semibold">Get In Touch</FlipLink>
+              <Image
+                alt="arrow"
+                src="/svgs/arrow-redirect-cta.svg"
+                className="text-white group-hover:rotate-45 transition-all duration-300"
+                height={21}
+                width={21}
+              />
+            </HoverWrapper>
+          </motion.div>
         </div>
       </div>
     </div>

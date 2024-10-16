@@ -203,7 +203,7 @@ const Preloader: React.FC<PreloaderProps> = ({
           />
         </div>
 
-        <div className="absolute bottom-0 right-0 text-end">
+        <div className="absolute bottom-0 left-[1.5rem] text-start">
           <div className="pn-regular-28 mr-[1rem] mb-[1.5rem] mix-blend-difference">
             {loadingPercentage}%
           </div>

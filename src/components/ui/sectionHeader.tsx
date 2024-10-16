@@ -1,5 +1,7 @@
 import React, { forwardRef, RefObject } from "react";
 import OpacityOnScroll from "../animations/OpacityOnScroll";
+import { motion } from "framer-motion";
+import { Reveal } from "../animations/Reveal";
 
 interface SectionProps {
   className?: string;
@@ -49,12 +51,17 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         >
           {heading}
         </span>
-        <h2
-          ref={subheadingRef}
-          className="pn-semibold-48 capitalize leading-snug"
-        >
-          {subheading}
-        </h2>
+        <Reveal once slide={false}>
+          <motion.h2
+            ref={subheadingRef}
+            className="pn-semibold-48 capitalize leading-snug"
+            initial={{ y: 20 }}
+            animate={{ y: 0 }}
+            exit={{ y: -20 }}
+          >
+            {subheading}
+          </motion.h2>
+        </Reveal>
         {body && (
           <OpacityOnScroll end={80}>
             <p ref={bodyRef} className="pn-regular-16 max-w-[43.75rem]">
@@ -66,5 +73,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
     );
   }
 );
+
+SectionHeader.displayName = "SectionHeader";
 
 export default SectionHeader;

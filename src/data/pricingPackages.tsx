@@ -1,0 +1,105 @@
+export const pricingPackages = {
+  strategicGrowth: {
+    name: "Strategic Growth",
+    price: "1,795",
+    billingCycle: "month",
+    commitment: "No Contracts. Cancel Anytime.",
+    features: [
+      { name: "Social Media Short-Form Videos", quantity: 10 },
+      { name: "Custom Social Media Thumbnails", quantity: 10 },
+      {
+        name: "All-inclusive social media management including content creation, moderation & scheduling",
+        value: "$2000",
+      },
+      { name: "Platforms", details: "Instagram, Facebook & TikTok" },
+      { name: "Monthly Strategy Plan", value: "$250" },
+      { name: "Topic Research & Script Writing", value: "$250" },
+      { name: "Copywriting & Ideation", value: "$250" },
+      { name: "Hashtag Research and Analytics", value: "$250" },
+      { name: "Instagram Verification", value: "$250", free: true },
+      {
+        name: "Social Media Account Optimization Audit",
+        value: "$250",
+        free: true,
+      },
+      { name: "2X Money Back Guarantee", value: "$250" },
+    ],
+    cta: "Get Started",
+  },
+  scalingMaestro: {
+    name: "Scaling Maestro",
+    price: {
+      monthly: "3,495",
+      yearly: "2,900",
+    },
+    billingCycle: "month",
+    commitment: {
+      monthly: "3 Month Commitment.",
+      yearly: "12 Month Commitment.",
+    },
+    features: [
+      {
+        name: "Everything in",
+        details: "Strategic Growth Plan",
+        inclusion: true,
+      },
+      { name: "Social Media Short-Form Videos", quantity: 20, value: "3x" },
+      { name: "Custom Social Media Thumbnails", quantity: 20, value: "3x" },
+      { name: "Social Media Feed Posts", quantity: 15, value: "$1200" },
+      { name: "Platforms", details: "Instagram, Facebook, TikTok & LinkedIn" },
+      { name: "Follow-Up Automations & Lead Capture", value: "$500" },
+      { name: "Offer Creation & Marketing Consulting", value: "$1000" },
+      { name: "Weekly Analytics Report - Up to 1 Year of Data", value: "$250" },
+      {
+        name: "Professional Headshots & Lifestyle Photos",
+        value: "$750",
+        free: true,
+      },
+      { name: "Custom Lead Capture Clickfunnel", value: "$1000", free: true },
+      { name: "Proprietary Lead Magnet", value: "$1000", free: true },
+    ],
+    cta: "Get Started",
+    popular: true,
+  },
+  absoluteDomination: {
+    name: "Absolute Domination",
+    price: {
+      monthly: "6,995",
+      yearly: "5,805",
+    },
+    billingCycle: "month",
+    commitment: {
+      monthly: "3 Month Commitment.",
+      yearly: "12 Month Commitment.",
+    },
+    features: [
+      {
+        name: "Everything in",
+        details: "Scaling Maestro Plan",
+        inclusion: true,
+      },
+      { name: "Social Media Short-Form Videos", quantity: 30, value: "2.5x" },
+      { name: "Custom Social Media Thumbnails", quantity: 30, value: "2.5x" },
+      { name: "Social Media Feed Posts", quantity: 30, value: "5x" },
+      { name: "Daily Photo/Video Story Posts", value: "$1000" },
+      {
+        name: "Unlimited Social Media Account(s) - ALL Social Media Platforms including Instagram, Facebook, TikTok, LinkedIn, Twitter (X), and Pinterest",
+      },
+      { name: "Media Buying & Advertising", value: "$3000" },
+      { name: "Lead Generation & CRM Pipeline Management", value: "$3000" },
+      { name: "Personalized Email & Text Automation System", value: "$1000" },
+      { name: "Branding Development & Logo Design", value: "$2000" },
+      {
+        name: "Exclusive Get-Comfortable-On-Camera-In-3-Days Training Program",
+        value: "$1000",
+        free: true,
+      },
+      {
+        name: "Get-Ready-To-Go-Viral-Prep-Checklist",
+        value: "$100",
+        free: true,
+      },
+    ],
+    cta: "Contact Us",
+  },
+};

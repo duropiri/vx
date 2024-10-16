@@ -1,17 +1,11 @@
 "use client";
 import ZoomParallax from "@/components/animations/ZoomParallax";
-import React, {
-  forwardRef,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
-
-
+import { motion, useScroll, useTransform } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -25,9 +19,17 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ className = "", originalColor, transitionColor }, ref) => {
     const [color] = useState(originalColor);
 
+    const containerRef = useRef<HTMLDivElement>(null);
     const roadRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement | null>(null);
     const lineRef = useRef<SVGLineElement | null>(null);
+
+    // const { scrollYProgress } = useScroll({
+    //   target: roadRef,
+    //   offset: ["start start", "end end"]
+    // });
+
+    // const dashOffset = useTransform(scrollYProgress, [0, 1], [2700, 0]);
 
     const [activeStep, setActiveStep] = useState(1);
     const progressBarRef = useRef<HTMLDivElement>(null);
@@ -38,7 +40,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     // const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
 
     useEffect(() => {
-      if (!ref || !svgRef.current || !lineRef.current) return;
+      if (!svgRef.current || !lineRef.current) return;
 
       const line = lineRef.current;
 
@@ -62,7 +64,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
         strokeDashoffset: 0,
         ease: "none",
         scrollTrigger: {
-          trigger: (ref as React.RefObject<HTMLDivElement>).current,
+          trigger: containerRef.current,
           start: "top top",
           end: "bottom-=110px bottom",
           scrub: true,
@@ -73,7 +75,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
-    }, [ref]);
+    }, [svgRef, lineRef]);
 
     useEffect(() => {
       if (!progressBarRef.current || !textRef.current) return;
@@ -172,7 +174,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           );
         },
       });
-    }, [activeStep, media.length]); // Re-run the effect when activeStep or media length changes
+    }, [activeStep]); // Re-run the effect when activeStep or media length changes
 
     return (
       <div
@@ -181,11 +183,14 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex flex-col w-full items-end justify-start">
+        <div
+          ref={containerRef}
+          className="relative flex flex-col w-full items-end justify-start"
+        >
           <div className="sticky top-0 flex flex-col h-[100vh] w-[100dvw] items-center justify-end">
             <div
               ref={roadRef}
-              className="relative  flex justify-center min-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash blur-sm"
+              className="relative flex justify-center min-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash blur-sm"
             >
               <div
                 className="absolute top-0 w-full h-[5rem] bg-gradient-to-b to-transparent z-10"
@@ -209,96 +214,6 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                   } as React.CSSProperties
                 }
               />
-              {/* <svg
-              width="357"
-              height="215"
-              viewBox="0 0 357 215"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-              className="size-full"
-            >
-              <path
-                d="M145.929 0.0078125H138.105L0 215.004H15.0758L145.929 0.0078125Z"
-                fill="#C5A05E"
-              />
-              <path
-                d="M341.944 214.996H357.005L218.9 0H211.076L341.944 214.996Z"
-                fill="#C5A05E"
-              />
-              <path
-                d="M205.879 0.0078125H151.11L27.4805 215.004L329.543 214.989L205.879 0.0078125Z"
-                fill="#C5A05E"
-              />
-              <motion.g
-                style={{
-                  y: getTranformY(0, 1500),
-                  scaleX: getScaleX(1, 30),
-                  scaleY: getScaleY(0.5, 30),
-                  transformOrigin: "top",
-                }}
-              >
-                <path
-                  d="M184.457 12.0811L183.738 0H174.769L174.049 12.0811H184.457Z"
-                  fill="white"
-                />
-              </motion.g>
-
-              <motion.g
-                style={{
-                  y: getTranformY(0, 3000),
-                  scaleX: getScaleX(1, 40),
-                  scaleY: getScaleY(0.5, 30),
-                  transformOrigin: "top",
-                }}
-              >
-                <path
-                  d="M173.462 22.1366H185.059L186.277 42.6437H172.244L173.462 22.1366Z"
-                  fill="red"
-                />
-              </motion.g>
-
-              <motion.g
-                style={{
-                  y: getTranformY(0, 6000),
-                  scaleX: getScaleX(1, 40),
-                  scaleY: getScaleY(0.75, 30),
-                  transformOrigin: "top",
-                }}
-              >
-                <path
-                  d="M171.349 57.7346H187.173L188.979 88.1507H169.543L171.349 57.7346Z"
-                  fill="green"
-                />
-              </motion.g>
-
-              <motion.g
-                style={{
-                  y: getTranformY(0, 12000),
-                  scaleX: getScaleX(1, 40),
-                  scaleY: getScaleY(0.75, 30),
-                  transformOrigin: "top",
-                }}
-              >
-                <path
-                  d="M165.903 149.259L168.383 107.497H190.124L192.605 149.259H165.903Z"
-                  fill="blue"
-                />
-              </motion.g>
-
-              <motion.g
-                style={{
-                  y: getTranformY(0, 24000),
-                  scaleX: getScaleX(1, 40),
-                  scaleY: getScaleY(0.75, 30),
-                  transformOrigin: "top",
-                }}
-              >
-                <path
-                  d="M164.231 177.461L162 214.996L196.526 214.982L194.295 177.461H164.231Z"
-                  fill="yellow"
-                />
-              </motion.g>
-            </svg> */}
               <svg
                 ref={svgRef}
                 width="357"
@@ -320,7 +235,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                   d="M205.879 0.0078125H151.11L27.4805 215.004L329.543 214.989L205.879 0.0078125Z"
                   fill="#C5A05E"
                 />
-                <line
+                <motion.line
                   ref={lineRef}
                   x1="179"
                   y1="-7.43094e-07"
@@ -328,6 +243,8 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                   y2="215"
                   stroke="white"
                   stroke-width="34"
+                  // strokeDasharray="60 30"
+                  // style={{ strokeDashoffset: dashOffset }}
                 />
                 <path
                   d="M162 214.996L174.769 0H157L162 214.996Z"

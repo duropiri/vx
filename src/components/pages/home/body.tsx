@@ -14,6 +14,7 @@ import FAQSection from "@/components/pages/home/sections/faqSection";
 import ContactSection from "@/components/pages/home/sections/contactSection";
 import { useScroll } from "framer-motion";
 import { NavLinks } from "@/data/navLinks";
+import ChatWidget from "@/components/ui/chatWidget";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
@@ -102,6 +103,7 @@ function Body() {
 
   return (
     <>
+      <ChatWidget />
       <HeroSection
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"

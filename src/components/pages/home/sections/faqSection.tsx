@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useRef } from "react";
 
 import {
   Accordion,
@@ -8,6 +8,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SectionHeader from "@/components/ui/sectionHeader";
+import {
+  motion,
+  AnimatePresence,
+  useInView,
+  useAnimation,
+} from "framer-motion";
 
 interface SectionProps {
   className?: string;
@@ -42,6 +48,33 @@ const FAQ = [
 ];
 
 function FAQSection({ className }: SectionProps) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: false, amount: 0.2 });
+  const controls = useAnimation();
+
+  React.useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    } else {
+      controls.start("hidden");
+    }
+  }, [isInView, controls]);
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
     <div className={`section-container !flex-row ${className}`}>
       <div className="relative flex flex-col lg:flex-row size-full max-w-[87.5rem] items-start justify-between gap-[4.375rem]">
@@ -61,63 +94,44 @@ function FAQSection({ className }: SectionProps) {
             </>
           }
         />
-        {/* <div
-          className={`flex flex-col items-center lg:items-start justify-center lg:justify-start gap-y-[0.75rem] min-w-[37ch] text-center lg:text-start`}
-        >
-          <span className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
-            Got Question?
-          </span>
-          <h2 className="pn-semibold-48 text-ash leading-snug max-w-[15ch]">
-            Frequently Asked Questions
-          </h2>
-          <p className="pn-regular-16 max-w-[37ch]">
-            If you have any further questions, please don't hesitate to reach
-            out to our{" "}
-            <span className="pn-bold-16 text-goldenbrown">
-              customer support
-            </span>{" "}
-            team for assistance.
-          </p>
-        </div> */}
-        {/* <div
-          className={`flex flex-col items-center justify-center lg:items-start w-full gap-y-[0.75rem] lg:max-w-[50%] min-w-[37ch]`}
-        >
-          <span className="inline-block pn-semibold-16 uppercase bg-goldenbrown/25 text-ash px-[0.625rem] py-[0.5rem] rounded-[0.75rem]">
-            Got Question?
-          </span>
-          <h2 className="pn-semibold-48 capitalize text-ash text-center lg:text-start">
-            Frequently Asked Questions
-          </h2>
-          <p className="pn-regular-16 max-w-[43.75rem] text-center lg:text-start">
-            If you have any further questions, please don't hesitate to reach
-            out to our{" "}
-            <span className="pn-bold-16 text-goldenbrown">
-              customer support
-            </span>{" "}
-            team for assistance.
-          </p>
-        </div> */}
 
-        <div className={`relative flex size-full flex-row items-center`}>
+        <div
+          ref={ref}
+          className={`relative flex size-full flex-row items-center`}
+        >
           <Accordion
             type="single"
             collapsible
             className="flex flex-col size-full gap-[0.5rem]"
           >
-            {FAQ.map((_, index) => (
-              <AccordionItem
-                key={index}
-                value={`item-${index}`}
-                className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow py-[1.5rem] px-[2rem]"
+            <AnimatePresence>
+              <motion.div
+                variants={containerVariants}
+                initial="hidden"
+                animate={controls}
+                className="flex flex-col size-full gap-[0.5rem]"
               >
-                <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline">
-                  {_.question}
-                </AccordionTrigger>
-                <AccordionContent className="pn-regular-16">
-                  {_.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
+                {FAQ.map((_, index) => (
+                  <motion.div
+                    key={index}
+                    variants={itemVariants}
+                    transition={{ duration: 0.5 }}
+                  >
+                    <AccordionItem
+                      value={`item-${index}`}
+                      className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow py-[1.5rem] px-[2rem]"
+                    >
+                      <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline">
+                        {_.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="pn-regular-16">
+                        {_.answer}
+                      </AccordionContent>
+                    </AccordionItem>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </AnimatePresence>
           </Accordion>
         </div>
       </div>

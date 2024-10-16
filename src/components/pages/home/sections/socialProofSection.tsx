@@ -1,3 +1,5 @@
+import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
+import { Reveal } from "@/components/animations/Reveal";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
@@ -109,6 +111,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
               full ? "justify-center" : "justify-end lg:max-w-[50%]"
             }`}
           >
+            {/* Gradient Top */}
             <div
               className={`absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b to-transparent transition-all duration-500`}
               style={
@@ -120,6 +123,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 } as React.CSSProperties
               }
             />
+            {/* Gradient Bottom */}
             <div
               className={`absolute z-10 bottom-0 w-full h-[7.5rem] bg-gradient-to-t to-transparent transition-all duration-500`}
               style={
@@ -131,7 +135,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 } as React.CSSProperties
               }
             />
-            <div className="relative flex w-[11.25rem]">
+            <div className="relative flex w-[11.25rem] max-h-[22.5rem]">
               <ScrollingBanner
                 direction="vertical"
                 baseVelocity={250}
@@ -150,7 +154,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 ))}
               </ScrollingBanner>
             </div>
-            <div className="flex flex-col w-[11.25rem]">
+            <div className="flex flex-col w-[11.25rem] max-h-[22.5rem]">
               <ScrollingBanner
                 direction="vertical"
                 baseVelocity={-250}
@@ -169,7 +173,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 ))}
               </ScrollingBanner>
             </div>
-            <div className="flex flex-col w-[11.25rem]">
+            <div className="flex flex-col w-[11.25rem] max-h-[22.5rem]">
               <ScrollingBanner
                 direction="vertical"
                 baseVelocity={250}
@@ -191,7 +195,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             <div
               className={`${
                 full ? "hidden lg:flex" : "hidden"
-              } flex-col w-[11.25rem]`}
+              } flex-col w-[11.25rem] max-h-[22.5rem]`}
             >
               <ScrollingBanner
                 direction="vertical"
@@ -214,7 +218,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             <div
               className={`${
                 full ? "hidden lg:flex" : "hidden"
-              } flex-col w-[11.25rem]`}
+              } flex-col w-[11.25rem] max-h-[22.5rem]`}
             >
               <ScrollingBanner
                 direction="vertical"
@@ -237,7 +241,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             <div
               className={`${
                 full ? "hidden lg:flex" : "hidden"
-              } flex-col w-[11.25rem]`}
+              } flex-col w-[11.25rem] max-h-[22.5rem]`}
             >
               <ScrollingBanner
                 direction="vertical"

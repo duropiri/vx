@@ -3,10 +3,10 @@
 //   // useEffect,
 //   useState,
 // } from "react";
-// import {
-//   motion,
-//   // AnimatePresence
-// } from "framer-motion";
+import {
+  motion,
+  // AnimatePresence
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
@@ -327,49 +327,38 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             ))}
 
             {/* CTA */}
-            <HoverWrapper className="cursor-select-hover">
-              <Link
-                href={"#contact"}
-                className="pn-regular-16 relative group hidden md:flex button !bg-goldenbrown text-ash shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 mix-blend-normal"
-                passHref
-              >
-                <FlipLink>{getChars("Contact Us")}</FlipLink>
-                <svg
-                  width="21"
-                  height="21"
-                  viewBox="0 0 21 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
+            <motion.div
+              className={`pn-regular-16 relative group hidden md:flex button !p-0 !bg-goldenbrown text-ash shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 mix-blend-normal cursor-select-hover`}
+              style={{
+                background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+                backgroundSize: "300% 100%",
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 2,
+                ease: "linear",
+                repeat: Infinity,
+              }}
+            >
+              <HoverWrapper className="">
+                <Link
+                  href={"https://app.virtualxposure.com/"}
+                  className="flex size-full gap-[1rem] items-center px-[1.5rem] py-[0.875rem]"
+                  passHref
                 >
-                  <g clip-path="url(#clip0_73_5969)">
-                    <path
-                      d="M14.6665 6.33398L6.33319 14.6673"
-                      stroke="#1B1A17"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M7.16656 6.33398H14.6666V13.834"
-                      stroke="#1B1A17"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </g>
-                  <defs>
-                    <clipPath id="clip0_73_5969">
-                      <rect
-                        width="20"
-                        height="20"
-                        fill="white"
-                        transform="translate(0.499878 0.5)"
-                      />
-                    </clipPath>
-                  </defs>
-                </svg>
-              </Link>
-            </HoverWrapper>
+                  <FlipLink>{getChars("Client Login")}</FlipLink>
+                  <Image
+                    alt="arrow"
+                    src="/svgs/arrow-redirect-cta.svg"
+                    className="text-ash group-hover:rotate-45 transition-all duration-300"
+                    height={21}
+                    width={21}
+                  />
+                </Link>
+              </HoverWrapper>
+            </motion.div>
           </nav>
         </div>
 

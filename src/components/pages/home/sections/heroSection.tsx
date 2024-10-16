@@ -15,6 +15,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { getChars } from "@/components/animations/GetChars";
 import GsapMagnetic from "@/components/animations/GsapMagnetic";
+import { Reveal } from "@/components/animations/Reveal";
+import { GradientText } from "@/components/ui/gradientText";
 
 interface LinkDetails {
   title: string;
@@ -67,6 +69,31 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     // const [hasPassedHero, setHasPassedHero] = useState(false);
     // const [isTransforming, setIsTransforming] = useState(false);
     const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
+
+    const [revealDelay, setRevealDelay] = useState(0);
+
+    useEffect(() => {
+      const handleNavigation = (event) => {
+        if (
+          event.type === "popstate" ||
+          document.referrer.includes(window.location.origin)
+        ) {
+          setRevealDelay(0);
+        } else {
+          setRevealDelay(3.5);
+        }
+      };
+
+      // Set initial delay
+      handleNavigation({ type: "initial" });
+
+      // Listen for navigation events
+      window.addEventListener("popstate", handleNavigation);
+
+      return () => {
+        window.removeEventListener("popstate", handleNavigation);
+      };
+    }, []);
 
     // Screen Size checking (previous useEffect remains the same)
     useEffect(() => {
@@ -794,78 +821,89 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         >
           <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw] z-10">
             {/* Main Copy */}
-            <h1
-              // data-speed={1.1}
-              className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem]"
-            >
-              Meet the{"  "}
-              <span className="text-goldenbrown font-bold">
-                Gold Standard
-              </span>{" "}
-              in Real Estate Marketing
+
+            <h1 className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] flex flex-col items-center">
+              <Reveal  delay={0} slide={false}>
+                <span>
+                  Meet the <GradientText>Gold</GradientText>
+                </span>
+              </Reveal>{" "}
+              <Reveal  delay={0.05} slide={false}>
+                <span>
+                  <GradientText>Standard</GradientText> in Real
+                </span>
+              </Reveal>{" "}
+              <Reveal  delay={0.1} slide={false}>
+                <span>Estate Marketing</span>
+              </Reveal>
             </h1>
 
             {/* Hero CTA */}
-            <div className="flex h-[3.313rem] my-[0.625rem]">
-              <div
-                ref={heroCTARef}
-                className="flex flex-col lg:flex-row gap-[1rem]"
-              >
-                <div
-                  className={`flex flex-row items-center justify-center w-[100vw] h-[3.313rem]`}
-                >
-                  <HoverWrapper
-                    href="#contact"
-                    className="button h-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]"
+            <Reveal
+              once
+              ref={heroCTARef}
+              delay={revealDelay}
+              xOverflow={false}
+              yOverflow={false}
+              slide={false}
+            >
+              <div className="flex h-[3.313rem] my-[0.625rem]">
+                <div className="flex flex-col lg:flex-row gap-[1rem]">
+                  <motion.div
+                    className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[11rem]`}
+                    style={{
+                      background:
+                        "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+                      backgroundSize: "300% 100%",
+                    }}
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                    }}
+                    transition={{
+                      duration: 2,
+                      ease: "linear",
+                      repeat: Infinity,
+                    }}
                   >
-                    <FlipLink className={`flex items-center w-full`}>
-                      Get In Touch
-                    </FlipLink>
-                    <svg
-                      width="21"
-                      height="21"
-                      viewBox="0 0 21 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
+                    <HoverWrapper
+                      href="#contact"
+                      className="flex size-full items-center px-[1.5rem] py-[0.875rem]"
                     >
-                      <g clip-path="url(#clip0_73_5969)">
-                        <path
-                          d="M14.6665 6.33398L6.33319 14.6673"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                        <path
-                          d="M7.16656 6.33398H14.6666V13.834"
-                          stroke="currentColor"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_73_5969">
-                          <rect
-                            width="20"
-                            height="20"
-                            fill="white"
-                            transform="translate(0.499878 0.5)"
-                          />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </HoverWrapper>
+                      <FlipLink className={`flex items-center w-full`}>
+                        Get In Touch
+                      </FlipLink>
+
+                      <Image
+                        alt="arrow"
+                        src="/svgs/arrow-redirect-cta.svg"
+                        className="text-ash group-hover:rotate-45 transition-all duration-300"
+                        height={21}
+                        width={21}
+                      />
+                    </HoverWrapper>
+                  </motion.div>
                 </div>
               </div>
-            </div>
+            </Reveal>
           </div>
 
           {/* Circle CTA */}
-          <GsapMagnetic speed={0.5}>
-            <div
+          <GsapMagnetic speed={0.5} className="z-[100]">
+            <motion.div
               // data-speed={1.1}
-              className="select-none cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 lg:opacity-50 hover:opacity-100 transition-opacity duration-500 z-[100]"
+              className="select-none cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 lg:opacity-50 hover:opacity-100 transition-opacity duration-500"
+              style={{
+                background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+                backgroundSize: "300% 100%",
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 2,
+                ease: "linear",
+                repeat: Infinity,
+              }}
             >
               {/* Circular Text */}
               <svg
@@ -913,7 +951,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   </svg>
                 </FlipLink>
               </HoverWrapper>
-            </div>
+            </motion.div>
           </GsapMagnetic>
         </div>
 
@@ -944,7 +982,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
 
             {/* Navigation Links */}
-            <nav className="nav flex flex-row w-full items-center justify-between mx-[1.313rem] h-full text-white">
+            <nav className="nav flex flex-row  gap-[1rem] items-center justify-between mx-[1rem] h-full text-white">
               {navigation.map((nav, index) => (
                 <HoverWrapper
                   key={index}
@@ -960,52 +998,39 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </nav>
 
             {/* Initial state content (matches heroCTA exactly) */}
-            <HoverWrapper
-              href="#contact"
+            <motion.div
               id="navdock-cta"
-              className="button self-end !border-none size-full cursor-select-hover !bg-goldenbrown shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 max-w-[11rem] "
+              className={`button group !border-none !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]`}
+              style={{
+                background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
+                backgroundSize: "300% 100%",
+              }}
+              animate={{
+                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+              }}
+              transition={{
+                duration: 2,
+                ease: "linear",
+                repeat: Infinity,
+              }}
             >
-              <FlipLink
-                className={`flex items-center w-full max-h-[1rem] text-nowrap`}
+              <HoverWrapper
+                href="#contact"
+                className="flex size-full items-center px-[1.5rem] py-[0.875rem]"
               >
-                Get In Touch
-              </FlipLink>
-              <svg
-                width="21"
-                height="21"
-                viewBox="0 0 21 21"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                className=""
-              >
-                <g clip-path="url(#clip0_73_5969)">
-                  <path
-                    d="M14.6665 6.33398L6.33319 14.6673"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M7.16656 6.33398H14.6666V13.834"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_73_5969">
-                    <rect
-                      width="20"
-                      height="20"
-                      fill="white"
-                      transform="translate(0.499878 0.5)"
-                    />
-                  </clipPath>
-                </defs>
-              </svg>
-            </HoverWrapper>
+                <FlipLink className={`flex items-center w-full`}>
+                  Get In Touch
+                </FlipLink>
+
+                <Image
+                  alt="arrow"
+                  src="/svgs/arrow-redirect-cta.svg"
+                  className="text-ash group-hover:rotate-45 transition-all duration-300"
+                  height={21}
+                  width={21}
+                />
+              </HoverWrapper>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -1014,6 +1039,5 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 );
 
 HeroSection.displayName = "HeroSection";
-
 
 export default HeroSection;

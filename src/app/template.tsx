@@ -18,6 +18,7 @@ import {
   // opacity,
   exitSlide,
 } from "@/components/layout/transitions/transitions";
+import ChatWidget from "@/components/ui/chatWidget";
 
 const MOBILE_BREAKPOINT = 1024;
 
@@ -66,9 +67,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
   return (
     <div
       id="template"
-      className={`${
-        !isAdminPage && "cursor-none"
-      } relative size-full bg-white`}
+      className={`${!isAdminPage && "cursor-none"} relative size-full bg-white`}
     >
       <div className="hidden md:block z-[99999]">
         <CustomCursor />
@@ -94,7 +93,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           ease: [0.76, 0, 0.24, 1],
         }}
       > */}
-        {/* <motion.div
+      {/* <motion.div
           className=""
           variants={opacity}
           initial={opacity.initial}
@@ -104,34 +103,35 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
             duration: 0.2,
           }}
         > */}
-        {!isAdminPage ? (
-          <>
-            {isVisible && (
-              <motion.div
-                className="w-full h-full fixed left-0 top-0 bg-ash z-[9999999] cursor-wait"
-                variants={exitSlide}
-                initial={exitSlide.initial}
-                exit={exitSlide.exit}
-                animate={exitSlide.enter}
-                transition={{
-                  duration: 1,
-                  ease: [0.76, 0, 0.24, 1],
-                }}
-                onAnimationComplete={handleAnimationComplete} // Call handleAnimationComplete when the animation is done
-              />
-            )}
-            <SmoothScrolling>
-              <Header className="absolute" navigation={NavLinks} />
-              {children}
-              {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
-              <Footer />
-            </SmoothScrolling>
-            {/* </StickyFooter> */}
-          </>
-        ) : (
-          <>{children}</>
-        )}
-        {/* </motion.div> */}
+      {!isAdminPage ? (
+        <>
+          {isVisible && (
+            <motion.div
+              className="w-full h-full fixed left-0 top-0 bg-ash z-[9999999] cursor-wait"
+              variants={exitSlide}
+              initial={exitSlide.initial}
+              exit={exitSlide.exit}
+              animate={exitSlide.enter}
+              transition={{
+                duration: 1,
+                ease: [0.76, 0, 0.24, 1],
+              }}
+              onAnimationComplete={handleAnimationComplete} // Call handleAnimationComplete when the animation is done
+            />
+          )}
+          <SmoothScrolling>
+            <Header className="absolute" navigation={NavLinks} />
+            {children}
+            {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
+            {/* <ChatWidget /> */}
+            <Footer />
+          </SmoothScrolling>
+          {/* </StickyFooter> */}
+        </>
+      ) : (
+        <>{children}</>
+      )}
+      {/* </motion.div> */}
       {/* </motion.div> */}
     </div>
   );
