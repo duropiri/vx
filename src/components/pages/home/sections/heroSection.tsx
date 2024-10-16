@@ -412,7 +412,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Assemble Icons */}
         <div
           id="icons"
-          className="pointer-events-none absolute !bg-transparent top-0 h-[100vh] w-[100vw] !p-0 overflow-hidden blur-[1px] lg:blur-none"
+          className="pointer-events-none absolute !bg-transparent top-0 h-[100vh] w-[100vw] !p-0 overflow-hidden"
         >
           {/* Light Rays */}
 

@@ -136,7 +136,7 @@ function SolutionSection({ className }: SectionProps) {
             yOverflow={false}
             duration={0.6}
             width="100%"
-            className="bento-row"
+            className="bento-row !gap-y-[1rem]"
           >
             <div
               className="solution-bento"
@@ -179,9 +179,9 @@ function SolutionSection({ className }: SectionProps) {
             yOverflow={false}
             duration={0.6}
             width="100%"
-            className="bento-row"
+            className="bento-row !gap-y-[1rem]"
           >
-            <div className="bento-row">
+            <div className="bento-row !gap-y-[1rem]">
               {/* First Bento */}
               <div
                 className="solution-bento bento-center lg:max-w-[29%]"
@@ -253,9 +253,9 @@ function SolutionSection({ className }: SectionProps) {
             yOverflow={false}
             duration={0.6}
             width="100%"
-            className="bento-row"
+            className="bento-row !gap-y-[1rem]"
           >
-            <div className="bento-row">
+            <div className="bento-row !gap-y-[1rem]">
               {/* First Bento */}
               <div
                 className="solution-bento"

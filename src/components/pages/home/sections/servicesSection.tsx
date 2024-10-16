@@ -70,7 +70,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none blur-[0.031rem] transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] w-full p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-6 flex">
+                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] w-full p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-6 flex">
                     <div className="flex size-full justify-center items-start">
                       {/* Instagram Stats */}
                       <div className="w-1/2 flex-col justify-start items-center gap-[1.125rem] flex">
@@ -356,7 +356,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] pointer-events-none blur-[0.031rem] h-full px-6 py-4 rounded-2xl border border-ash/10 flex-col justify-start items-start gap-5 flex overflow-hidden">
+                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] pointer-events-none h-full px-6 py-4 rounded-2xl border border-ash/10 flex-col justify-start items-start gap-5 flex overflow-hidden">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Scheduled Posts</div>
                       <div className="w-[153px] flex-col justify-start items-start flex">
@@ -679,7 +679,7 @@ function ServicesSection({ className }: SectionProps) {
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
-                                    Instagram: @best_edmonton_realtor
+                                    LinkedIn: Best Realtor
                                   </div>
                                 </div>
                                 <div className="text-ash nu-regular-14">
@@ -869,7 +869,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none blur-[0.031rem] transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
+                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Followers</div>
                       <div className="flex-col justify-start items-start flex">
