@@ -25,9 +25,9 @@ export default function RootLayout({
           content="Meet the Gold Standard in Real Estate Marketing"
         />
         <meta name="keywords" content="Virtual Xposure, real estate marketing, digital marketing for realtors, social media management, content creation, real estate branding, realtor growth strategies, social media strategy, video content creation, real estate content marketing, realtor lead generation, brand visibility, online real estate marketing, data-driven marketing, social media automation, media buying, CRM pipeline management, real estate sales support, client engagement, virtual marketing solutions" />
-        <meta charSet="" />
-        <meta name="viewport" content="" />
-        <meta name="robots" content="" />
+        <meta charSet="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="index, follow" />
 
         <link rel="shortcut icon" href="/images/favicon.ico" />
         <link
