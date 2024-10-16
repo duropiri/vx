@@ -12,7 +12,7 @@ interface UseScrollTriggeredCountUpReturn {
 }
 
 const useScrollTriggeredCountUp = (
-  ref: React.RefObject<HTMLElement>,
+ref: React.RefObject<HTMLElement>, p0: number,
   // end: number,
   // duration = 2000
 ): UseScrollTriggeredCountUpReturn => {

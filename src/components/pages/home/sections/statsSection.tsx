@@ -1,8 +1,15 @@
 "use client";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import CountUp from "react-countup";
-import { motion, MotionValue, useTransform } from "framer-motion";
+import {
+  animate,
+  motion,
+  MotionValue,
+  useMotionValue,
+  useTransform,
+} from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
 interface SectionProps {
   className?: string;
@@ -11,6 +18,10 @@ interface SectionProps {
 
 function StatsSection({ className, scrollYProgress }: SectionProps) {
   const ref = useRef<HTMLDivElement>(null);
+  const { ref: countUpRef, inView } = useInView({
+    triggerOnce: false, // Trigger the animation only once
+    threshold: 0.5, // Trigger when 50% of the element is visible
+  });
 
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
   const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
@@ -266,18 +277,15 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
           </svg>
         </ScrollingBanner>
       </div>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[1.5rem] text-white">
+      <div
+        ref={countUpRef}
+        className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[1.5rem] text-white"
+      >
         <div className="flex flex-row size-full h-full items-start justify-between gap-x-[3.125rem]">
           <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
-                <CountUp
-                  end={89}
-                  duration={2}
-                  start={0}
-                  // ref={countUpRef89}
-                />
-                %
+                {inView ? <CountUp end={89} duration={2} /> : 0}%
               </h1>
               <p className="pn-regular-18">
                 of new home shoppers use a mobile search engine throughout their
@@ -289,13 +297,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
           <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
-                <CountUp
-                  end={58}
-                  duration={2}
-                  start={0}
-                  // ref={countUpRef58}
-                />
-                %
+                {inView ? <CountUp end={58} duration={2} /> : 0}%
               </h1>
               <p className="pn-regular-18">
                 of all website visits to real estate websites are from mobile
@@ -309,13 +311,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
           <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
-                <CountUp
-                  end={47}
-                  duration={2}
-                  start={0}
-                  // ref={countUpRef47}
-                />
-                %
+                {inView ? <CountUp end={47} duration={2} /> : 0}%
               </h1>
               <p className="pn-regular-18">
                 of homebuyers in the past two years made an offer without
@@ -327,13 +323,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
           <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
               <h1 className="pn-regular-60">
-                <CountUp
-                  end={24}
-                  duration={2}
-                  start={0}
-                  // ref={countUpRef24}
-                />
-                %
+                {inView ? <CountUp end={24} duration={2} /> : 0}%
               </h1>
               <p className="pn-regular-18">
                 of current homebuyers report they bought a home sight unseen.

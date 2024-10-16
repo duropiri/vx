@@ -194,7 +194,7 @@ const Preloader: React.FC<PreloaderProps> = ({
           ref={imageRef}
         >
           <Image
-            src="/images/logo5.webp"
+            src="/images/logo-black-black.webp"
             alt="Loading"
             width={150}
             height={150}

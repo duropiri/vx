@@ -299,7 +299,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               passHref
             >
               <Image
-                src="/images/logo5.webp"
+                src="/images/logo-black-black.webp"
                 alt="logo"
                 width={36}
                 height={22}
