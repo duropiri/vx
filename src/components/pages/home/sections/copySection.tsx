@@ -43,7 +43,7 @@ const CopySection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="flex flex-col items-start gap-y-[0.75rem] pn-regular-96 uppercase py-[5rem]">
+        <div className="flex flex-col items-start gap-y-[0.75rem] pn-regular-60 uppercase py-[5rem]">
           <LetterRevealOnScroll end="bottom 80%" className="relative">
             <h2 className="text-center text-ash max-w-[28ch]">{copy}</h2>
           </LetterRevealOnScroll>

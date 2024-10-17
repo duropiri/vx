@@ -131,8 +131,8 @@ function Body() {
         }}
         copy={
           <>
-            We now live in an <br />
-            <span className="text-goldenbrown">online</span> real estate economy
+            We now live in an <span className="text-goldenbrown">online</span>{" "}
+            real estate economy
           </>
         }
       />
@@ -167,8 +167,7 @@ function Body() {
           className="bg-white z-10"
           copy={
             <>
-              The best real estate professionals have
-              <br />
+              The best real estate professionals have{" "}
               <span className="text-goldenbrown italic">reinvented</span>{" "}
               themselves and their businesses towards a{" "}
               <span className="text-goldenbrown">

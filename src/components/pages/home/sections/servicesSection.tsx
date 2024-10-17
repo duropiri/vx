@@ -69,7 +69,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] w-full p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-6 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] w-full p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-6 flex">
                     <div className="flex size-full justify-center items-start">
                       {/* Instagram Stats */}
                       <div className="w-1/2 flex-col justify-start items-center gap-[1.125rem] flex">
@@ -854,7 +854,7 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Content */}
                 <div className="flex-col justify-start items-start gap-2 flex size-full">
                   {/* Header */}
-                  <div className="h-40 flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
+                  <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-28">
                       Real Growth & Engagement
                     </div>
@@ -868,7 +868,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Followers</div>
                       <div className="flex-col justify-start items-start flex">

@@ -213,12 +213,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
           ScrollTrigger.create({
             trigger: heroCTA,
-            start: isMobile ? `bottom top` : `top 40px`, // When heroCTA reaches navdock position
+            start: `top 40px`, // When heroCTA reaches navdock position
             // end: "+=50",
             // markers: true,
             onEnter: () => {
               gsap.set(heroCTA, {
-                opacity: isMobile ? 1 : 0,
+                opacity: 0,
               }); // Hide heroCTA
               gsap.set(navdock, { opacity: 1, display: "flex" }); // Show navdock
             },
@@ -821,7 +821,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw] z-10">
             {/* Main Copy */}
 
-            <h1 className="pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] flex flex-col items-center">
+            <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
               <Reveal delay={0} slide={false}>
                 <span>
                   Meet the <GradientText>Gold</GradientText>
@@ -834,6 +834,25 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               </Reveal>{" "}
               <Reveal delay={0.1} slide={false}>
                 <span>Estate Marketing</span>
+              </Reveal>
+            </h1>
+
+            <h1 className="sm:hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] flex flex-col items-center">
+              <Reveal delay={0} slide={false}>
+                <span>
+                  Meet the <GradientText>Gold</GradientText>
+                </span>
+              </Reveal>{" "}
+              <Reveal delay={0.05} slide={false}>
+                <span>
+                  <GradientText>Standard</GradientText> in
+                </span>
+              </Reveal>{" "}
+              <Reveal delay={0.1} slide={false}>
+                <span>Real Estate</span>
+              </Reveal>
+              <Reveal delay={0.15} slide={false}>
+                <span>Marketing</span>
               </Reveal>
             </h1>
 

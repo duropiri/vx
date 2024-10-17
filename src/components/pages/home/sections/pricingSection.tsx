@@ -21,9 +21,9 @@ const PricingTier = ({ tier, isYearly }) => {
   const hiddenFeatures = tier.features.slice(8);
 
   return (
-    <Tilt
-      options={{ axis: "x", scale: 1.025, max: 8, reverse: true }}
-      className={`pricing-box shadow-customShadow ${
+    <div
+      // options={{ axis: "x", scale: 1.025, max: 8, reverse: true }}
+      className={`pricing-box shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/50 hover:scale-105 ${
         isDomination ? "bg-ash" : "bg-white"
       }`}
       onMouseEnter={() => setIsHovered(true)}
@@ -309,7 +309,7 @@ const PricingTier = ({ tier, isYearly }) => {
           </HoverWrapper>
         </motion.div>
       )}
-    </Tilt>
+    </div>
   );
 };
 

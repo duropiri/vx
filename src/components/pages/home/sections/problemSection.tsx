@@ -319,7 +319,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             id="problemCopy"
             ref={textContainerRef}
-            className="sticky top-[2.5rem] left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex py-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
+            className="sticky top-[2.5rem] sm:top-0 left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex py-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
           >
             <SectionHeader
               ref={textRef}
@@ -328,7 +328,8 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
               subheading={media[0].text[1]}
               headingRef={headerRef}
               subheadingRef={bodyRef}
-              className="ml-[1rem] mr-[5rem] lg:ml-0 lg:mr-0"
+              className="!w-auto ml-[1rem] mr-[5rem] lg:ml-0 lg:mr-0"
+              subheadingClassName="lg:!text-[2rem] lg:!leading-tight lg:!max-w-[22ch] !w-full"
             />
           </div>
 

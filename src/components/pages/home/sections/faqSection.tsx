@@ -118,12 +118,13 @@ function FAQSection({ className }: SectionProps) {
                   >
                     <AccordionItem
                       value={`item-${index}`}
-                      className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow py-[1.5rem] px-[2rem]"
+                      className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125]"
                     >
-                      <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline">
+                      <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline  py-[2.5rem] px-[2rem]">
                         {_.question}
                       </AccordionTrigger>
-                      <AccordionContent className="pn-regular-16">
+                      <AccordionContent className="pn-regular-16 pb-[2.5rem] px-[2rem]">
+                        <div className="w-full h-[1px] bg-ash/10 mb-[2.5rem]"/>
                         {_.answer}
                       </AccordionContent>
                     </AccordionItem>

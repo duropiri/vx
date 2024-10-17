@@ -47,7 +47,7 @@ export default function Footer({ className = "" }: ComponentProps) {
                   {/* Logo */}
                   <nav className="flex flex-row items-center gap-[0.5rem]">
                     <Image
-                      src="/images/logo2-nospace.png"
+                      src="/images/logo2-nospace.webp"
                       alt="logo"
                       width={36}
                       height={22}

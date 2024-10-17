@@ -5,6 +5,9 @@ import { Reveal } from "../animations/Reveal";
 
 interface SectionProps {
   className?: string;
+  subheadingClassName?: string;
+  headingClassName?: string;
+  bodyClassName?: string;
   center?: boolean;
   small?: boolean;
   medium?: boolean;
@@ -21,6 +24,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
   (
     {
       className = "",
+      subheadingClassName = "",
+      headingClassName = "",
+      bodyClassName = "",
       center = false,
       small = false,
       medium = false,
@@ -45,7 +51,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       >
         <span
           ref={headingRef}
-          className={`subheading pn-semibold-16 ${
+          className={`subheading pn-semibold-16 ${headingClassName} ${
             dark ? "bg-charcoal text-goldenbrown" : "bg-goldenbrown/25"
           }`}
         >
@@ -54,7 +60,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         <Reveal once slide={false}>
           <motion.h2
             ref={subheadingRef}
-            className="pn-semibold-48 capitalize leading-snug"
+            className={`${subheadingClassName} pn-semibold-48 capitalize leading-snug`}
             initial={{ y: 20 }}
             animate={{ y: 0 }}
             exit={{ y: -20 }}
@@ -64,7 +70,10 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         </Reveal>
         {body && (
           <OpacityOnScroll end={80}>
-            <p ref={bodyRef} className="pn-regular-16 max-w-[43.75rem]">
+            <p
+              ref={bodyRef}
+              className={`${bodyClassName} pn-regular-16 max-w-[43.75rem]`}
+            >
               {body}
             </p>
           </OpacityOnScroll>

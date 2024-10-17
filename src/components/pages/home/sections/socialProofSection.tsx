@@ -8,57 +8,57 @@ import React, { forwardRef, RefObject, useState } from "react";
 const logos = [
   [
     {
-      src: "/images/Bedrock Homes.webp",
+      src: "/images/partner-logos/marcus-and-millichap.webp",
       alt: "Bedrock Homes",
     },
     {
-      src: "/images/Century 21 All Stars Realty.webp",
+      src: "/images/partner-logos/REMAX.webp",
       alt: "Century 21 All Stars Realty Ltd.",
     },
     {
-      src: "/images/Mutti Homes.webp",
+      src: "/images/partner-logos/CIR Realty.webp",
       alt: "Mutti Homes",
     },
-    {
-      src: "/images/CIR Realty.webp",
-      alt: "CIR Realty",
-    },
+    // {
+    //   src: "/images/partner-logos/CIR Realty.webp",
+    //   alt: "CIR Realty",
+    // },
   ],
   [
     {
-      src: "/images/EXP Realty.webp",
+      src: "/images/partner-logos/Century-21.webp",
       alt: "EXP Realty",
     },
     {
-      src: "/images/Century 21 Leading.webp",
+      src: "/images/partner-logos/Royal_LePage.webp",
       alt: "Century 21 Leading",
     },
     {
-      src: "/images/Klair Custom Homes LTD.webp",
+      src: "/images/partner-logos/EXP-Realty.webp",
       alt: "Klair Custom Homes LTD.",
     },
-    {
-      src: "/images/Century 21 Urban.webp",
-      alt: "Century 21 Urban",
-    },
+    // {
+    //   src: "/images/partner-logos/Century 21 Urban.webp",
+    //   alt: "Century 21 Urban",
+    // },
   ],
   [
     {
-      src: "/images/Qualico Properties.webp",
+      src: "/images/partner-logos/Qualico Properties.webp",
       alt: "Qualico Properties",
     },
     {
-      src: "/images/Royal LePage Noralta.webp",
+      src: "/images/partner-logos/real-broker.webp",
       alt: "Royal LePage Noralta",
     },
     {
-      src: "/images/Sable Realty.webp",
+      src: "/images/partner-logos/maxwell.webp",
       alt: "Sable Realty",
     },
-    {
-      src: "/images/MaxWell Central.webp",
-      alt: "MaxWell Central",
-    },
+    // {
+    //   src: "/images/partner-logos/MaxWell Central.webp",
+    //   alt: "MaxWell Central",
+    // },
   ],
 ];
 
@@ -140,7 +140,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 direction="vertical"
                 baseVelocity={250}
                 className="flex flex-col"
-                innerChild="flex flex-col gap-[1.5rem]"
+                innerChild="flex flex-col gap-[3rem]"
               >
                 {logos[0].map((logo, index) => (
                   <Image
@@ -159,7 +159,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 direction="vertical"
                 baseVelocity={-250}
                 className="flex flex-col"
-                innerChild="flex flex-col gap-[1.5rem]"
+                innerChild="flex flex-col gap-[3rem]"
               >
                 {logos[1].map((logo, index) => (
                   <Image
@@ -178,7 +178,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 direction="vertical"
                 baseVelocity={250}
                 className="flex flex-col"
-                innerChild="flex flex-col gap-[1.5rem]"
+                innerChild="flex flex-col gap-[3rem]"
               >
                 {logos[2].map((logo, index) => (
                   <Image
@@ -201,7 +201,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 direction="vertical"
                 baseVelocity={-250}
                 className="flex flex-col"
-                innerChild="flex flex-col gap-[1.5rem]"
+                innerChild="flex flex-col gap-[3rem]"
               >
                 {logos[0].map((logo, index) => (
                   <Image
@@ -224,7 +224,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 direction="vertical"
                 baseVelocity={250}
                 className="flex flex-col"
-                innerChild="flex flex-col gap-[1.5rem]"
+                innerChild="flex flex-col gap-[3rem]"
               >
                 {logos[1].map((logo, index) => (
                   <Image
@@ -247,7 +247,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                 direction="vertical"
                 baseVelocity={-250}
                 className="flex flex-col"
-                innerChild="flex flex-col gap-[1.5rem]"
+                innerChild="flex flex-col gap-[3rem]"
               >
                 {logos[2].map((logo, index) => (
                   <Image

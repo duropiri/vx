@@ -44,7 +44,7 @@ function ContactSection({ className }: SectionProps) {
           }
         />
 
-        <div className="cursor-none-hover w-full h-full min-h-[calc(66rem_+_64px)] 2xl:min-h-[44rem] overflow-hidden">
+        <div className="cursor-none-hover w-full h-full min-h-[calc(66rem_+_64px)] xl:min-h-[44rem] overflow-hidden">
           <iframe
             title="calendar booking"
             src="https://api.leadconnectorhq.com/widget/booking/RQmRIEsklAtDwDvOoC3q"
@@ -57,7 +57,7 @@ function ContactSection({ className }: SectionProps) {
             }}
             scrolling="no"
             id="zIDoL2aZcFRCtxiFBaoP_1728040058508"
-            className="cursor-none-hover flex bg-transparent min-h-[calc(66rem_+_64px)] 2xl:min-h-[calc(44rem_+_64px)] 2xl:-mt-[4rem]"
+            className="cursor-none-hover flex bg-transparent min-h-[calc(66rem_+_64px)] xl:min-h-[calc(44rem_+_64px)] 2xl:-mt-[4rem]"
             loading="lazy" // Lazy load the iframe
           ></iframe>
           <script
