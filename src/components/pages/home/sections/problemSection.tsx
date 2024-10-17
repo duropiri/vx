@@ -192,7 +192,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           >
             <div
               ref={roadRef}
-              className="relative flex justify-center max-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash"
+              className="relative flex justify-center max-h-[50vh] w-[100dvw] xl:w-[40dvw] text-ash overflow-hidden"
             >
               <div
                 className="absolute top-0 w-full min-w-[100vw] h-[5rem] bg-gradient-to-b to-transparent z-10"
