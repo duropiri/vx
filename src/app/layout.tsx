@@ -83,7 +83,10 @@ export default function RootLayout({
           content="/images/social-media-share-preview.webp"
         />
       </head>
-      <body className={`antialiased`}>
+      <body
+        className={`antialiased`}
+        style={{ height: "100vh", overflow: "hidden" }}
+      >
         <PreloaderProvider>
           <PageAnimatePresence>{children}</PageAnimatePresence>
         </PreloaderProvider>
