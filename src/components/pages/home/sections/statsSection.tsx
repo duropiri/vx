@@ -1,13 +1,7 @@
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CountUp from "react-countup";
-import {
-  animate,
-  motion,
-  MotionValue,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
+import { motion, MotionValue, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
 interface SectionProps {
@@ -16,18 +10,40 @@ interface SectionProps {
 }
 
 function StatsSection({ className, scrollYProgress }: SectionProps) {
-  const ref = useRef<HTMLDivElement>(null);
   const { ref: countUpRef, inView } = useInView({
     triggerOnce: false, // Trigger the animation only once
     threshold: 0.5, // Trigger when 50% of the element is visible
   });
 
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0.8]);
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, -5]);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsLargeScreen(window.innerWidth >= 2560);
+    };
+
+    checkScreenSize();
+    window.addEventListener("resize", checkScreenSize);
+
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  const scale = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isLargeScreen ? [0.8, 1] : [1, 0.8]
+  );
+
+  const rotate = useTransform(
+    scrollYProgress,
+    [0, 1],
+    isLargeScreen ? [-5, 0] : [0, -5]
+  );
 
   return (
     <motion.div
-      ref={ref}
+      ref={sectionRef}
       style={{ scale, rotate }}
       className={`sticky top-0 section-container !flex-row ${className} bg-ash relative overflow-hidden`}
     >
