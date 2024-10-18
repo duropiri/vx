@@ -900,9 +900,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Hero */}
         <div
           id="hero"
-          className={`section-container hero-container ${className} overflow-hidden z-[400]`}
+          className={`section-container hero-container ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
         >
-          <div className="relative flex flex-col items-center justify-between my-auto h-[60vh] lg:h-auto w-full lg:max-w-[100vw] gap-[2rem] z-[100]">
+          <div className="relative flex flex-col items-center justify-between sm:my-auto h-[60vh] lg:h-auto w-full lg:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
             <Reveal delay={0} slide={false}>
               <div className="button !gap-[1.5rem] !bg-ash !border-goldenbrown">
@@ -918,7 +918,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   ))}
                 </div>
                 <p className="pn-regular-16 text-white">
-                  500+ Businesses Use Us
+                  500+ Agents Trust Us
                 </p>
               </div>
             </Reveal>
@@ -940,7 +940,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>
               </h1>
 
-              <h1 className="lg:hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] flex flex-col items-center">
+              <h1 className="lg:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
                     Meet the <GradientText>Gold</GradientText>
@@ -959,13 +959,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>
               </h1>
 
-              <h2 className="pn-regular-16 text-center !font-semibold max-w-[60ch]">
+              <h2 className="pn-regular-16 text-center !font-bold max-w-[60ch]">
                 <Reveal delay={0.15} slide={false}>
                   <span>
-                    Virtual Xposure helps real estate agents dominate online
-                    with proven digital marketing strategies, including expert
-                    social media management and high-impact content creation.
-                    Gain leads, boost visibility, and close deals effortlessly.
+                    Our expert digital marketing strategies—tailored social
+                    media management and high-impact content—help you generate
+                    valuable leads, boost visibility, and close deals
+                    effortlessly.
                   </span>
                 </Reveal>
               </h2>
