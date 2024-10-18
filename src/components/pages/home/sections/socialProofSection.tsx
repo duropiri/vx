@@ -92,12 +92,12 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
       <div
         {...commonProps}
         ref={ref}
-        className={`section-container lg:!flex-row ${className}`}
+        className={`section-container lg:!flex-row !py-[3.125rem] ${className}`}
         style={{ backgroundColor: color }} // Use the passed color
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[1rem] lg:gap-y-[2rem]">
+        <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[2rem] lg:gap-y-[2rem]">
           {/* Header */}
           <SectionHeader
             small
@@ -108,7 +108,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
 
           <div
             className={`select-none relative flex size-full flex-row items-center gap-[2.5rem] max-h-[22.5rem] overflow-hidden ${
-              full ? "justify-center" : "justify-end lg:max-w-[50%]"
+              full ? "justify-center" : "justify-end sm:max-w-[50%]"
             }`}
           >
             {/* Gradient Top */}
@@ -149,7 +149,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt={logo.alt}
                     width={200}
                     height={48}
-                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
+                    // placeholder="blur"
+                    quality={80}
                   />
                 ))}
               </ScrollingBanner>
@@ -168,7 +170,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt={logo.alt}
                     width={200}
                     height={48}
-                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
+                    // placeholder="blur"
+                    quality={80}
                   />
                 ))}
               </ScrollingBanner>
@@ -187,7 +191,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt={logo.alt}
                     width={200}
                     height={48}
-                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
+                    // placeholder="blur"
+                    quality={80}
                   />
                 ))}
               </ScrollingBanner>
@@ -210,7 +216,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt={logo.alt}
                     width={200}
                     height={48}
-                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
+                    // placeholder="blur"
+                    quality={80}
                   />
                 ))}
               </ScrollingBanner>
@@ -233,7 +241,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt={logo.alt}
                     width={200}
                     height={48}
-                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
+                    // placeholder="blur"
+                    quality={80}
                   />
                 ))}
               </ScrollingBanner>
@@ -256,7 +266,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt={logo.alt}
                     width={200}
                     height={48}
-                    className="pointer-events-none h-[3rem] w-full object-contain grayscale saturate-0"
+                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
+                    // placeholder="blur"
+                    quality={80}
                   />
                 ))}
               </ScrollingBanner>

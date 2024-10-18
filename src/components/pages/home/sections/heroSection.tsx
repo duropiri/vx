@@ -9,13 +9,33 @@ import React, {
   useRef,
   useState,
 } from "react";
-import { motion, useScroll, useTransform, easeInOut } from "framer-motion";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  easeInOut,
+  useSpring,
+} from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { getChars } from "@/components/animations/GetChars";
 import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { Reveal } from "@/components/animations/Reveal";
 import { GradientText } from "@/components/ui/gradientText";
+import CircleCTA from "@/components/ui/circleCTA";
+
+import logo from "@/../../public/images/logo2.webp";
+import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+import instagramHeroImage from "@/../../public/svgs/hero-svgs/Instagram.svg";
+import twitterHeroImage from "@/../../public/svgs/hero-svgs/Twitter.svg";
+import facebookHeroImage from "@/../../public/svgs/hero-svgs/Facebook.svg";
+import tiktokHeroImage from "@/../../public/svgs/hero-svgs/TikTok.svg";
+import linkedinHeroImage from "@/../../public/svgs/hero-svgs/LinkedIn.svg";
+import pinterestHeroImage from "@/../../public/svgs/hero-svgs/Pinterest.svg";
+import youtubeHeroImage from "@/../../public/svgs/hero-svgs/Youtube.svg";
+import whatsappHeroImage from "@/../../public/svgs/hero-svgs/WhatsApp.svg";
+
+import starImage from "@/../../public/svgs/star.svg";
 
 interface LinkDetails {
   title: string;
@@ -213,7 +233,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
           ScrollTrigger.create({
             trigger: heroCTA,
-            start: `top 40px`, // When heroCTA reaches navdock position
+            start: isMobile ? `top 20px` : `top 40px`, // When heroCTA reaches navdock position
             // end: "+=50",
             // markers: true,
             onEnter: () => {
@@ -251,7 +271,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 background: "#1b1a17",
                 width:
                   // isMobile ? "100%" :
-                  "25rem",
+                  "32rem",
                 height: "3.313rem",
                 paddingLeft:
                   // isMobile ? "0px" :
@@ -542,10 +562,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute flex left-[20%] top-[20vh] lg:left-[30%] lg:top-[8rem]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, 300]),
-                  y: useTransform(scrollY, [0, 500], [0, 1200]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [-15, -45]),
+                  rotate: useSpring(
+                    useTransform(scrollY, [0, 500], [-15, -45]),
+                    { stiffness: 500, damping: 20 }
+                  ),
                 }}
               >
                 <motion.div className="size-full" animate={floatingAnimation}>
@@ -555,10 +584,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/Instagram.svg"
-                      height={16}
-                      width={23}
+                      src={instagramHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -567,12 +595,21 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {/* Repeat the same structure for other icons with different positions and delays */}
               {/* Top Right */}
               <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[10vh] lg:right-[40%] lg:top-[20vh]"
+                className="size-[5rem] absolute flex right-[10%] top-[10vh] lg:right-[30%] lg:top-[10vh]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, -300]),
-                  y: useTransform(scrollY, [0, 500], [0, 1200]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [15, 45]),
+                  rotate: useSpring(useTransform(scrollY, [0, 500], [15, 45]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                 }}
               >
                 <motion.div
@@ -591,10 +628,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/Twitter.svg"
-                      height={16}
-                      width={23}
+                      src={twitterHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -604,10 +640,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute flex left-[10%] top-[50vh] lg:left-[20%] lg:top-[30vh]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, 400]),
-                  y: useTransform(scrollY, [0, 500], [0, 1000]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [-20, -40]),
+                  rotate: useSpring(
+                    useTransform(scrollY, [0, 500], [-20, -40]),
+                    { stiffness: 500, damping: 20 }
+                  ),
                 }}
               >
                 <motion.div
@@ -626,10 +671,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/Facebook.svg"
-                      height={16}
-                      width={23}
+                      src={facebookHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -639,10 +683,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute flex right-[10%] top-[40vh] lg:right-[15rem] lg:top-[16rem]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, -400]),
-                  y: useTransform(scrollY, [0, 500], [0, 1000]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [20, 40]),
+                  rotate: useSpring(useTransform(scrollY, [0, 500], [20, 40]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                 }}
               >
                 <motion.div
@@ -661,10 +714,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/TikTok.svg"
-                      height={16}
-                      width={23}
+                      src={tiktokHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -674,10 +726,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute flex left-[5%] top-[65vh] lg:left-[5rem] lg:top-[24rem]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, 400]),
-                  y: useTransform(scrollY, [0, 500], [0, 800]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [-30, -60]),
+                  rotate: useSpring(
+                    useTransform(scrollY, [0, 500], [-30, -60]),
+                    { stiffness: 500, damping: 20 }
+                  ),
                 }}
               >
                 <motion.div
@@ -696,10 +757,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/LinkedIn.svg"
-                      height={16}
-                      width={23}
+                      src={linkedinHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -709,10 +769,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute flex right-[5%] top-[70vh] lg:right-[5rem] lg:top-[40vh]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, -400]),
-                  y: useTransform(scrollY, [0, 500], [0, 800]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [30, 60]),
+                  rotate: useSpring(useTransform(scrollY, [0, 500], [30, 60]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                 }}
               >
                 <motion.div
@@ -731,10 +800,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/Pinterest.svg"
-                      height={16}
-                      width={23}
+                      src={pinterestHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -744,10 +812,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute hidden lg:flex left-[20rem] top-[55vh]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, 300]),
-                  y: useTransform(scrollY, [0, 500], [0, 600]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [-25, -50]),
+                  rotate: useSpring(
+                    useTransform(scrollY, [0, 500], [-25, -50]),
+                    { stiffness: 500, damping: 20 }
+                  ),
                 }}
               >
                 <motion.div
@@ -766,10 +843,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/Youtube.svg"
-                      height={16}
-                      width={23}
+                      src={youtubeHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -779,10 +855,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <motion.div
                 className="size-[5rem] absolute hidden lg:flex right-[20rem] top-[60vh]"
                 style={{
-                  x: useTransform(scrollY, [0, 500], [0, -300]),
-                  y: useTransform(scrollY, [0, 500], [0, 600]),
+                  x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
+                  y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                   opacity,
-                  rotate: useTransform(scrollY, [0, 500], [25, 50]),
+                  rotate: useSpring(useTransform(scrollY, [0, 500], [25, 50]), {
+                    stiffness: 500,
+                    damping: 20,
+                  }),
                 }}
               >
                 <motion.div
@@ -801,10 +886,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <Image
                       alt="icon"
-                      src="/svgs/hero-svgs/WhatsApp.svg"
-                      height={16}
-                      width={23}
+                      src={whatsappHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
+                      quality={10}
                     />
                   </motion.div>
                 </motion.div>
@@ -816,46 +900,76 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Hero */}
         <div
           id="hero"
-          className={`section-container hero-container ${className} overflow-hidden z-[100] !h-[100dvh]`}
+          className={`section-container hero-container ${className} overflow-hidden z-[400]`}
         >
-          <div className="flex flex-col items-center my-auto w-full lg:max-w-[100vw] z-10">
+          <div className="relative flex flex-col items-center justify-between my-auto h-[60vh] lg:h-auto w-full lg:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
+            <Reveal delay={0} slide={false}>
+              <div className="button !gap-[1.5rem] !bg-ash !border-goldenbrown">
+                <div className="flex flex-row gap-[0.25rem]">
+                  {Array.from({ length: 5 }).map((_, index) => (
+                    <Image
+                      key={index}
+                      alt="start"
+                      src={starImage}
+                      className="w-[1rem]"
+                      quality={10}
+                    />
+                  ))}
+                </div>
+                <p className="pn-regular-16 text-white">
+                  500+ Businesses Use Us
+                </p>
+              </div>
+            </Reveal>
+            <div className="relative flex flex-col items-center justify-center my-auto">
+              <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10" />
+              <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] lg:flex flex-col items-center">
+                <Reveal delay={0} slide={false}>
+                  <span>
+                    Meet the <GradientText>Gold</GradientText>
+                  </span>
+                </Reveal>{" "}
+                <Reveal delay={0.05} slide={false}>
+                  <span>
+                    <GradientText>Standard</GradientText> in Real
+                  </span>
+                </Reveal>{" "}
+                <Reveal delay={0.1} slide={false}>
+                  <span>Estate Marketing</span>
+                </Reveal>
+              </h1>
 
-            <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
-              <Reveal delay={0} slide={false}>
-                <span>
-                  Meet the <GradientText>Gold</GradientText>
-                </span>
-              </Reveal>{" "}
-              <Reveal delay={0.05} slide={false}>
-                <span>
-                  <GradientText>Standard</GradientText> in Real
-                </span>
-              </Reveal>{" "}
-              <Reveal delay={0.1} slide={false}>
-                <span>Estate Marketing</span>
-              </Reveal>
-            </h1>
+              <h1 className="lg:hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] flex flex-col items-center">
+                <Reveal delay={0} slide={false}>
+                  <span>
+                    Meet the <GradientText>Gold</GradientText>
+                  </span>
+                </Reveal>{" "}
+                <Reveal delay={0.05} slide={false}>
+                  <span>
+                    <GradientText>Standard</GradientText> in
+                  </span>
+                </Reveal>{" "}
+                <Reveal delay={0.1} slide={false}>
+                  <span>Real Estate</span>
+                </Reveal>
+                <Reveal delay={0.15} slide={false}>
+                  <span>Marketing</span>
+                </Reveal>
+              </h1>
 
-            <h1 className="sm:hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] flex flex-col items-center">
-              <Reveal delay={0} slide={false}>
-                <span>
-                  Meet the <GradientText>Gold</GradientText>
-                </span>
-              </Reveal>{" "}
-              <Reveal delay={0.05} slide={false}>
-                <span>
-                  <GradientText>Standard</GradientText> in
-                </span>
-              </Reveal>{" "}
-              <Reveal delay={0.1} slide={false}>
-                <span>Real Estate</span>
-              </Reveal>
-              <Reveal delay={0.15} slide={false}>
-                <span>Marketing</span>
-              </Reveal>
-            </h1>
-
+              <h2 className="pn-regular-16 text-center !font-semibold max-w-[60ch]">
+                <Reveal delay={0.15} slide={false}>
+                  <span>
+                    Virtual Xposure helps real estate agents dominate online
+                    with proven digital marketing strategies, including expert
+                    social media management and high-impact content creation.
+                    Gain leads, boost visibility, and close deals effortlessly.
+                  </span>
+                </Reveal>
+              </h2>
+            </div>
             {/* Hero CTA */}
             <Reveal
               once
@@ -885,7 +999,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     <HoverWrapper
                       href="#contact"
-                      className="flex size-full items-center px-[1.5rem] py-[0.875rem]"
+                      className="flex w-full items-center px-[1.5rem] py-[0.5rem]"
                     >
                       <FlipLink className={`flex items-center w-full`}>
                         Get In Touch
@@ -893,157 +1007,23 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
                       <Image
                         alt="arrow"
-                        src="/svgs/arrow-redirect-cta.svg"
+                        src={arrowRedirect}
                         className="text-ash group-hover:rotate-45 transition-all duration-300"
-                        height={21}
-                        width={21}
+                        quality={10}
                       />
                     </HoverWrapper>
                   </motion.div>
                 </div>
               </div>
             </Reveal>
-          </div>
-          <GsapMagnetic speed={0.5} className="z-[100] opacity-0">
-            <motion.div
-              // data-speed={1.1}
-              className="select-none cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 lg:opacity-50 hover:opacity-100 transition-opacity duration-500"
-              style={{
-                background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                backgroundSize: "300% 100%",
-              }}
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 2,
-                ease: "linear",
-                repeat: Infinity,
-              }}
-            >
-              {/* Circular Text */}
-              <svg
-                className="animate-spin-slow inset-0 w-full h-full"
-                viewBox="0 0 100 100"
-              >
-                <defs>
-                  <path
-                    id="circlePath"
-                    d="M 50, 50 m -30, 0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" //Radius of 30, diameter of 60
-                    fill="none"
-                  />
-                </defs>
-                <text
-                  className="pn-regular-16 !text-[1.125rem] xl:!text-[1.125rem] [@media(min-width:1440px)]:!text-[1rem]"
-                  fontSize="4.5"
-                  fill="currentColor"
-                  letterSpacing="0.1"
-                >
-                  <textPath href="#circlePath" startOffset="0%">
-                    • SEE MORE • SEE MORE
-                  </textPath>
-                </text>
-              </svg>
-
-              <HoverWrapper
-                href="#socialProof1"
-                className="absolute inset-0 flex items-center justify-center"
-              >
-                <FlipLink className="">
-                  <svg
-                    width="20"
-                    height="21"
-                    viewBox="0 0 20 21"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M9.98019 19.8699V1.01367M9.98019 19.8699L18.465 11.385M9.98019 19.8699L1.49445 11.385"
-                      stroke="currentColor"
-                      stroke-width="1.5"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                  </svg>
-                </FlipLink>
-              </HoverWrapper>
-            </motion.div>
-          </GsapMagnetic>
-          <div className="absolute -top-[2.5rem] flex size-full w-[100vw] h-[100dvh] items-end justify-center">
-            {/* Circle CTA */}
-            <GsapMagnetic speed={0.5} className="z-[100]">
-              <motion.div
-                // data-speed={1.1}
-                className="select-none cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 lg:opacity-50 hover:opacity-100 transition-opacity duration-500"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                  backgroundSize: "300% 100%",
-                }}
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
-              >
-                {/* Circular Text */}
-                <svg
-                  className="animate-spin-slow inset-0 w-full h-full"
-                  viewBox="0 0 100 100"
-                >
-                  <defs>
-                    <path
-                      id="circlePath"
-                      d="M 50, 50 m -30, 0 a 30,30 0 1,1 60,0 a 30,30 0 1,1 -60,0" //Radius of 30, diameter of 60
-                      fill="none"
-                    />
-                  </defs>
-                  <text
-                    className="pn-regular-16 !text-[1.125rem] xl:!text-[1.125rem] [@media(min-width:1440px)]:!text-[1rem]"
-                    fontSize="4.5"
-                    fill="currentColor"
-                    letterSpacing="0.1"
-                  >
-                    <textPath href="#circlePath" startOffset="0%">
-                      • SEE MORE • SEE MORE
-                    </textPath>
-                  </text>
-                </svg>
-
-                <HoverWrapper
-                  href="#socialProof1"
-                  className="absolute inset-0 flex items-center justify-center"
-                >
-                  <FlipLink className="">
-                    <svg
-                      width="20"
-                      height="21"
-                      viewBox="0 0 20 21"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M9.98019 19.8699V1.01367M9.98019 19.8699L18.465 11.385M9.98019 19.8699L1.49445 11.385"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </FlipLink>
-                </HoverWrapper>
-              </motion.div>
-            </GsapMagnetic>
+            {/* </div> */}
           </div>
         </div>
 
         {/* Navdock */}
         <div
           id="navdock"
-          className={`fixed flex flex-row items-center justify-center top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
+          className={`fixed flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
         >
           <div
             ref={navdockRef}
@@ -1054,20 +1034,20 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <Link
                 href="/"
                 passHref
-                className="cursor-select-hover flex h-[36px] aspect-square overflow-hidden"
+                className="cursor-select-hover flex w-[2.25rem] aspect-square overflow-hidden"
               >
                 <Image
-                  src="/images/logo2.webp"
+                  src={logo}
                   alt="logo"
-                  width={36}
-                  height={36}
                   className="size-full"
+                  placeholder="blur"
+                  quality={10}
                 />
               </Link>
             </div>
 
             {/* Navigation Links */}
-            <nav className="nav flex flex-row  gap-[1rem] items-center justify-between mx-[1rem] h-full text-white">
+            <nav className="nav flex flex-row  gap-[1rem] lg:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white">
               {navigation.map((nav, index) => (
                 <HoverWrapper
                   key={index}
@@ -1101,7 +1081,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             >
               <HoverWrapper
                 href="#contact"
-                className="flex size-full items-center px-[1.5rem] py-[0.875rem]"
+                className="flex w-full items-center px-[1.5rem] py-[0.5rem]"
               >
                 <FlipLink className={`flex items-center w-full`}>
                   Get In Touch
@@ -1109,10 +1089,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
                 <Image
                   alt="arrow"
-                  src="/svgs/arrow-redirect-cta.svg"
+                  src={arrowRedirect}
                   className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  height={21}
-                  width={21}
+                  quality={10}
                 />
               </HoverWrapper>
             </motion.div>

@@ -7,6 +7,27 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 
+import socmedPostImage from "@/../../public/images/VirtualXposure-ExteriorImage.webp";
+import person1Image from "@/../../public/images/team.webp";
+import person2Image from "@/../../public/images/team_1.webp";
+import person3Image from "@/../../public/images/team_2.webp";
+import person4Image from "@/../../public/images/team_3.webp";
+import person5Image from "@/../../public/images/team_4.webp";
+
+import instagramImage from "@/../../public/svgs/instagram.svg";
+import facebookImage from "@/../../public/svgs/facebook.svg";
+import tiktokImage from "@/../../public/svgs/tiktok.svg";
+import linkedinImage from "@/../../public/svgs/linkedin.svg";
+
+import arrowURImage from "@/../../public/svgs/arrow-up-right.svg";
+import chevdownImage from "@/../../public/svgs/chevron-down.svg";
+import infoImage from "@/../../public/svgs/info.svg";
+import calendarImage from "@/../../public/svgs/calendar.svg";
+import clockImage from "@/../../public/svgs/clock.svg";
+import growthImage from "@/../../public/svgs/growth.svg";
+import followersImage from "@/../../public/svgs/followers.svg";
+import unfollowImage from "@/../../public/svgs/unfollow.svg";
+
 interface SectionProps {
   className?: string;
   scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
@@ -77,9 +98,9 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="w-6 h-6 justify-center items-center flex">
                             <Image
                               alt="instagram"
-                              src="/svgs/instagram.svg"
-                              height={24}
-                              width={24}
+                              src={instagramImage}
+                              
+                              quality={80}
                               className="group-hover:animate-bounce"
                             />
                           </div>
@@ -109,9 +130,9 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src="/svgs/arrow-up-right.svg"
-                                  height={24}
-                                  width={24}
+                                  src={arrowURImage}
+                                  
+                                  quality={80}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -138,9 +159,9 @@ function ServicesSection({ className }: SectionProps) {
                         <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                           <Image
                             alt="facebook"
-                            src="/svgs/facebook.svg"
-                            height={24}
-                            width={24}
+                            src={facebookImage}
+                            
+                            quality={80}
                             className="group-hover:animate-bounce"
                           />
                           <div className="text-ash nu-semibold-12">
@@ -170,9 +191,9 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src="/svgs/arrow-up-right.svg"
-                                  height={24}
-                                  width={24}
+                                  src={arrowURImage}
+                                  
+                                  quality={80}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -202,9 +223,9 @@ function ServicesSection({ className }: SectionProps) {
                             <div className="w-[21.10px] h-[23.90px] relative">
                               <Image
                                 alt="tiktok"
-                                src="/svgs/tiktok.svg"
-                                height={24}
-                                width={24}
+                                src={tiktokImage}
+                                
+                                quality={80}
                                 className="group-hover:animate-bounce"
                               />
                             </div>
@@ -233,9 +254,9 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src="/svgs/arrow-up-right.svg"
-                                  height={24}
-                                  width={24}
+                                  src={arrowURImage}
+                                  
+                                  quality={80}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -263,9 +284,9 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="w-6 h-6 justify-center items-center flex">
                             <Image
                               alt="linkedin"
-                              src="/svgs/linkedin.svg"
-                              height={24}
-                              width={24}
+                              src={linkedinImage}
+                              
+                              quality={80}
                               className="group-hover:animate-bounce"
                             />
                           </div>
@@ -296,9 +317,9 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src="/svgs/arrow-up-right.svg"
-                                  height={24}
-                                  width={24}
+                                  src={arrowURImage}
+                                  
+                                  quality={80}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -369,9 +390,9 @@ function ServicesSection({ className }: SectionProps) {
                             <div className="w-[22px] h-[22px] px-[5.50px] py-[7.60px] justify-center items-center flex">
                               <Image
                                 alt="chevron"
-                                src="/svgs/chevron-down.svg"
-                                height={24}
-                                width={24}
+                                src={chevdownImage}
+                                
+                                quality={80}
                               />
                             </div>
                           </div>
@@ -432,9 +453,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
                                       alt="instagram"
-                                      src="/svgs/instagram.svg"
-                                      height={24}
-                                      width={24}
+                                      src={instagramImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -448,11 +469,11 @@ function ServicesSection({ className }: SectionProps) {
                                 </div>
                               </div>
                               <Image
-                                width={70}
-                                height={70}
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                                src="/images/VirtualXposure-ExteriorImage.webp"
+                                src={socmedPostImage}
                                 alt="post-image"
+                                
+                                quality={80}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -461,9 +482,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="info"
-                                      src="/svgs/info.svg"
-                                      height={24}
-                                      width={24}
+                                      src={infoImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -476,9 +497,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 px-0.5 py-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="calendar"
-                                      src="/svgs/calendar.svg"
-                                      height={24}
-                                      width={24}
+                                      src={calendarImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -489,9 +510,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="clock"
-                                      src="/svgs/clock.svg"
-                                      height={24}
-                                      width={24}
+                                      src={clockImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -512,9 +533,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
                                       alt="facebook"
-                                      src="/svgs/facebook.svg"
-                                      height={24}
-                                      width={24}
+                                      src={facebookImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -528,11 +549,11 @@ function ServicesSection({ className }: SectionProps) {
                                 </div>
                               </div>
                               <Image
-                                width={70}
-                                height={70}
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                                src="/images/VirtualXposure-ExteriorImage.webp"
+                                src={socmedPostImage}
                                 alt="post-image"
+                                
+                                quality={80}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -541,9 +562,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="info"
-                                      src="/svgs/info.svg"
-                                      height={24}
-                                      width={24}
+                                      src={infoImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -556,9 +577,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 px-0.5 py-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="calendar"
-                                      src="/svgs/calendar.svg"
-                                      height={24}
-                                      width={24}
+                                      src={calendarImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -569,9 +590,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="clock"
-                                      src="/svgs/clock.svg"
-                                      height={24}
-                                      width={24}
+                                      src={clockImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -592,9 +613,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
                                       alt="tiktok"
-                                      src="/svgs/tiktok.svg"
-                                      height={24}
-                                      width={24}
+                                      src={tiktokImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -608,11 +629,11 @@ function ServicesSection({ className }: SectionProps) {
                                 </div>
                               </div>
                               <Image
-                                width={70}
-                                height={70}
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                                src="/images/VirtualXposure-ExteriorImage.webp"
+                                src={socmedPostImage}
                                 alt="post-image"
+                                
+                                quality={80}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -621,9 +642,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="info"
-                                      src="/svgs/info.svg"
-                                      height={24}
-                                      width={24}
+                                      src={infoImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -636,9 +657,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 px-0.5 py-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="calendar"
-                                      src="/svgs/calendar.svg"
-                                      height={24}
-                                      width={24}
+                                      src={calendarImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -649,9 +670,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="clock"
-                                      src="/svgs/clock.svg"
-                                      height={24}
-                                      width={24}
+                                      src={clockImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -672,9 +693,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
                                       alt="linkedin"
-                                      src="/svgs/linkedin.svg"
-                                      height={24}
-                                      width={24}
+                                      src={linkedinImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -688,11 +709,11 @@ function ServicesSection({ className }: SectionProps) {
                                 </div>
                               </div>
                               <Image
-                                width={70}
-                                height={70}
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
-                                src="/images/VirtualXposure-ExteriorImage.webp"
+                                src={socmedPostImage}
                                 alt="post-image"
+                                
+                                quality={80}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -701,9 +722,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="info"
-                                      src="/svgs/info.svg"
-                                      height={24}
-                                      width={24}
+                                      src={infoImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -716,9 +737,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 px-0.5 py-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="calendar"
-                                      src="/svgs/calendar.svg"
-                                      height={24}
-                                      width={24}
+                                      src={calendarImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -729,9 +750,9 @@ function ServicesSection({ className }: SectionProps) {
                                   <div className="w-4 h-4 p-[1.33px] justify-center items-center flex">
                                     <Image
                                       alt="clock"
-                                      src="/svgs/clock.svg"
-                                      height={24}
-                                      width={24}
+                                      src={clockImage}
+                                      
+                                      quality={80}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -789,39 +810,39 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="relative flex flex-col items-center justify-center w-52 h-52 rounded-full border border-ash/10">
                             <div className="justify-center items-center flex flex-row space-x-[-1.5rem]">
                               <Image
-                                width={48}
-                                height={48}
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[-50%] group-hover:-rotate-45"
-                                src="/images/team.webp"
+                                src={person1Image}
                                 alt="team-image"
+                                placeholder="blur"
+                                quality={80}
                               />
                               <Image
-                                width={48}
-                                height={48}
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[-25%] group-hover:-rotate-12 group-hover:translate-y-[-25%]"
-                                src="/images/team_1.webp"
+                                src={person2Image}
                                 alt="team-image"
+                                placeholder="blur"
+                                quality={80}
                               />
                               <Image
-                                width={48}
-                                height={48}
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-y-[-35%]"
-                                src="/images/team_2.webp"
+                                src={person3Image}
                                 alt="team-image"
+                                placeholder="blur"
+                                quality={80}
                               />
                               <Image
-                                width={48}
-                                height={48}
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[25%] group-hover:rotate-12 group-hover:translate-y-[-25%]"
-                                src="/images/team_3.webp"
+                                src={person4Image}
                                 alt="team-image"
+                                placeholder="blur"
+                                quality={80}
                               />
                               <Image
-                                width={48}
-                                height={48}
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[50%] group-hover:rotate-45"
-                                src="/images/team_4.webp"
+                                src={person5Image}
                                 alt="team-image"
+                                placeholder="blur"
+                                quality={80}
                               />
                             </div>
                           </div>
@@ -877,9 +898,9 @@ function ServicesSection({ className }: SectionProps) {
                             <div className="w-6 h-6 justify-center items-center flex">
                               <Image
                                 alt="instagram"
-                                src="/svgs/instagram.svg"
-                                height={24}
-                                width={24}
+                                src={instagramImage}
+                                
+                                quality={80}
                               />
                             </div>
                             <div className="flex-col justify-start items-start flex">
@@ -890,9 +911,9 @@ function ServicesSection({ className }: SectionProps) {
                             <div className="w-[22px] h-[22px] px-[5.50px] py-[7.60px] justify-center items-center flex">
                               <Image
                                 alt="chevron"
-                                src="/svgs/chevron-down.svg"
-                                height={24}
-                                width={24}
+                                src={chevdownImage}
+                                
+                                quality={80}
                               />
                             </div>
                           </div>
@@ -914,9 +935,9 @@ function ServicesSection({ className }: SectionProps) {
                             <div className="transition-all duration-500 group-hover:scale-125 w-6 h-6 relative">
                               <Image
                                 alt="growth"
-                                src="/svgs/growth.svg"
-                                height={24}
-                                width={24}
+                                src={growthImage}
+                                
+                                quality={80}
                               />
                             </div>
                             <div className="text-white nu-semibold-12">
@@ -944,9 +965,9 @@ function ServicesSection({ className }: SectionProps) {
                                 <div className="group-hover:animate-bounce w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                   <Image
                                     alt="arrow"
-                                    src="/svgs/arrow-up-right.svg"
-                                    height={24}
-                                    width={24}
+                                    src={arrowURImage}
+                                    
+                                    quality={80}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -973,9 +994,9 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="transition-all duration-500 group-hover:scale-125 w-6 h-6 relative">
                                 <Image
                                   alt="followers"
-                                  src="/svgs/followers.svg"
-                                  height={24}
-                                  width={24}
+                                  src={followersImage}
+                                  
+                                  quality={80}
                                 />
                               </div>
                             </div>
@@ -1004,9 +1025,9 @@ function ServicesSection({ className }: SectionProps) {
                                 <div className="group-hover:animate-bounce w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                   <Image
                                     alt="arrow"
-                                    src="/svgs/arrow-up-right.svg"
-                                    height={24}
-                                    width={24}
+                                    src={arrowURImage}
+                                    
+                                    quality={80}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -1033,9 +1054,9 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="transition-all duration-500 group-hover:scale-125 w-[21.09px] h-6 relative">
                                 <Image
                                   alt="unfollow"
-                                  src="/svgs/unfollow.svg"
-                                  height={24}
-                                  width={24}
+                                  src={unfollowImage}
+                                  
+                                  quality={80}
                                 />
                               </div>
                             </div>
@@ -1064,9 +1085,9 @@ function ServicesSection({ className }: SectionProps) {
                                 <div className="group-hover:animate-bounce w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                   <Image
                                     alt="arrow"
-                                    src="/svgs/arrow-up-right.svg"
-                                    height={24}
-                                    width={24}
+                                    src={arrowURImage}
+                                    
+                                    quality={80}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">

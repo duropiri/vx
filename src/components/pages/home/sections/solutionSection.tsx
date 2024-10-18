@@ -6,6 +6,15 @@ import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
+import completeDMSImage from "@/../../public/images/complete-dms.webp";
+import highQCCImage from "@/../../public/images/high-quality-cc.webp";
+import stratGrowthImage from "@/../../public/images/strategic-growth.webp";
+
+import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
+
+import vxImage from "@/../../public/svgs/virtual-xposure-text.svg";
+
 interface SectionProps {
   className?: string;
   scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
@@ -54,10 +63,9 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src="/svgs/virtual-xposure-text.svg"
+            src={vxImage}
             className="size-full"
-            height={453}
-            width={6074}
+            quality={80}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -67,10 +75,9 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src="/svgs/virtual-xposure-text.svg"
+            src={vxImage}
             className="size-full"
-            height={453}
-            width={6074}
+            quality={80}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -80,10 +87,9 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src="/svgs/virtual-xposure-text.svg"
+            src={vxImage}
             className="size-full"
-            height={453}
-            width={6074}
+            quality={80}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -93,10 +99,9 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src="/svgs/virtual-xposure-text.svg"
+            src={vxImage}
             className="size-full"
-            height={453}
-            width={6074}
+            quality={80}
           />
         </ScrollingBanner>
       </div>
@@ -145,7 +150,7 @@ function SolutionSection({ className }: SectionProps) {
             >
               <div className="bento-border pointer-events-none"></div>
               <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[40%] right-0 translate-x-[10%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12" />
+                <div className="hidden lg:block absolute h-[300%] w-[40%] right-0 translate-x-[10%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
                 <div className="flex flex-col justify-center lg:justify-start items-start gap-[1.5rem] text-white lg:max-w-[42%]">
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
                     Your Complete Digital Marketing Solution
@@ -161,20 +166,24 @@ function SolutionSection({ className }: SectionProps) {
                     selling homes while we build your brand.
                   </p>
                   <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
-                    <li>Comprehensive digital marketing strategy</li>
-
-                    <li>Social media management and content creation</li>
-
-                    <li>Build a strong, consistent online presence</li>
+                    <li className="list">
+                      Comprehensive digital marketing strategy
+                    </li>
+                    <li className="list">
+                      Social media management and content creation
+                    </li>
+                    <li className="list">
+                      Build a strong, consistent online presence
+                    </li>
                   </ul>
                 </div>
                 <div className="hidden lg:flex items-center justify-end relative size-full max-w-[50%] opacity-75 pointer-events-none translate-x-[10%]">
                   <Image
                     alt="icon"
-                    src="/images/complete-dms.webp"
-                    height={500}
-                    width={500}
+                    src={completeDMSImage}
                     className="size-[80%] object-cover"
+                    placeholder="blur"
+                    quality={80}
                   />
                 </div>
               </div>
@@ -229,7 +238,7 @@ function SolutionSection({ className }: SectionProps) {
               >
                 <div className="bento-border"></div>
                 <div className="bento-content overflow-hidden">
-                  <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12" />
+                  <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
                   <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       High-Quality Content Creation
@@ -245,18 +254,22 @@ function SolutionSection({ className }: SectionProps) {
                       we ensure every piece of content aligns with your brand.
                     </p>
                     <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
-                      <li>Scriptwriting and topic research</li>
-                      <li>Professional video and photo shoots</li>
-                      <li>Unlimited revisions until perfection</li>
+                      <li className="list">Scriptwriting and topic research</li>
+                      <li className="list">
+                        Professional video and photo shoots
+                      </li>
+                      <li className="list">
+                        Unlimited revisions until perfection
+                      </li>
                     </ul>
                   </div>
                   <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none translate-x-[10%]">
                     <Image
                       alt="icon"
-                      src="/images/high-quality-cc.webp"
-                      height={500}
-                      width={500}
+                      src={highQCCImage}
                       className="size-[80%] object-cover"
+                      placeholder="blur"
+                      quality={80}
                     />
                   </div>
                 </div>
@@ -284,7 +297,7 @@ function SolutionSection({ className }: SectionProps) {
               >
                 <div className="bento-border"></div>
                 <div className="bento-content overflow-hidden">
-                  <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[10%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12" />
+                  <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
                   <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       Strategic Growth for Realtors{" "}
@@ -303,10 +316,10 @@ function SolutionSection({ className }: SectionProps) {
                   <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none">
                     <Image
                       alt="icon"
-                      src="/images/strategic-growth.webp"
-                      height={500}
-                      width={500}
+                      src={stratGrowthImage}
                       className="size-[70%] object-cover"
+                      placeholder="blur"
+                      quality={80}
                     />
                   </div>
                 </div>
@@ -347,19 +360,18 @@ function SolutionSection({ className }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full text-white gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button group !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
               alt="arrow"
-              src="/svgs/arrow-redirect-cta-white.svg"
+              src={arrowRedirectWhite}
               className="text-white group-hover:rotate-45 transition-all duration-300"
-              height={21}
-              width={21}
+              quality={80}
             />
           </HoverWrapper>
           <motion.div
-            className={`button text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
+            className={`button !w-full lg:!w-auto text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
             style={{
               background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
               backgroundSize: "300% 100%",
@@ -375,15 +387,14 @@ function SolutionSection({ className }: SectionProps) {
           >
             <HoverWrapper
               href="#contact"
-              className="flex size-full items-center gap-[1rem] px-[1.5rem] py-[0.875rem]"
+              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[0.5rem]"
             >
               <FlipLink className="font-semibold">Get In Touch</FlipLink>
               <Image
                 alt="arrow"
-                src="/svgs/arrow-redirect-cta.svg"
+                src={arrowRedirect}
                 className="text-white group-hover:rotate-45 transition-all duration-300"
-                height={21}
-                width={21}
+                quality={80}
               />
             </HoverWrapper>
           </motion.div>

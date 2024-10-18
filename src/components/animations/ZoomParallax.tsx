@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/all";
 
 gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(CustomEase)
 
 interface AnimationProps {
   children?: React.ReactNode;
@@ -222,6 +223,8 @@ export default function ZoomParallax({
                   alt={item.alt}
                   objectFit={item.fit || "contain"}
                   sizes="(max-width: 640px) 600px, (max-width: 1024px) 600px, 600px" // Adjust these sizes based on your layout
+                  // placeholder="blur"
+                  quality={80}
                 />
               </div>
             )}

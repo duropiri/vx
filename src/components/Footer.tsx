@@ -8,6 +8,16 @@ import React, {
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 
+import logo from "@/../../public/images/logo2-nospace.webp";
+import amex from "@/../../public/svgs/amex.svg";
+import applePay from "@/../../public/svgs/apple-pay.svg";
+import dinersClub from "@/../../public/svgs/diners-club.svg";
+import discover from "@/../../public/svgs/discover.svg";
+import googlePay from "@/../../public/svgs/google-pay.svg";
+import masterCard from "@/../../public/svgs/mastercard.svg";
+import shopPay from "@/../../public/svgs/shop-pay.svg";
+import visa from "@/../../public/svgs/visa.svg";
+
 interface ComponentProps {
   className?: string;
 }
@@ -16,7 +26,7 @@ export default function Footer({ className = "" }: ComponentProps) {
   // const formRef = useRef<HTMLFormElement>(null); // Initialize with null
   const [email, setEmail] = useState("");
 
-  const handleSubmit = (e: { preventDefault: () => void; }) => {
+  const handleSubmit = (e: { preventDefault: () => void }) => {
     e.preventDefault();
     if (email) {
       // Process the email submission here (e.g., send to API)
@@ -47,11 +57,11 @@ export default function Footer({ className = "" }: ComponentProps) {
                   {/* Logo */}
                   <nav className="flex flex-row items-center gap-[0.5rem]">
                     <Image
-                      src="/images/logo2-nospace.webp"
+                      src={logo}
                       alt="logo"
-                      width={36}
-                      height={22}
-                      className=""
+                      className="w-[2.25rem]"
+                      placeholder="blur"
+                      quality={80}
                     />
                     <h1 className="pn-semibold-24">Virtual Xposure</h1>
                   </nav>
@@ -233,76 +243,58 @@ export default function Footer({ className = "" }: ComponentProps) {
 
         <div className="flex flex-row items-center gap-[0.375rem]">
           {/* Amex */}
-          <Image
-            alt="amex"
-            src="/svgs/amex.svg"
-            height={16}
-            width={23}
-            className="size-full"
-          />
+          <Image alt="amex" src={amex} className="size-full" quality={80} />
 
           {/* Apple Pay */}
           <Image
             alt="apple-pay"
-            src="/svgs/apple-pay.svg"
-            height={16}
-            width={23}
+            src={applePay}
             className="size-full"
+            quality={80}
           />
 
           {/* Diners Club */}
           <Image
             alt="diners-club"
-            src="/svgs/diners-club.svg"
-            height={16}
-            width={23}
+            src={dinersClub}
             className="size-full"
+            quality={80}
           />
 
           {/* Discover */}
           <Image
             alt="discover"
-            src="/svgs/discover.svg"
-            height={16}
-            width={23}
+            src={discover}
             className="size-full"
+            quality={80}
           />
 
           {/* Google Pay */}
           <Image
             alt="google-pay"
-            src="/svgs/google-pay.svg"
-            height={16}
-            width={23}
+            src={googlePay}
             className="size-full"
+            quality={80}
           />
 
           {/* Mastercard */}
           <Image
             alt="mastercard"
-            src="/svgs/mastercard.svg"
-            height={16}
-            width={23}
+            src={masterCard}
             className="size-full"
+            quality={80}
           />
 
           {/* Shop Pay */}
           <Image
             alt="shop-pay"
-            src="/svgs/shop-pay.svg"
-            height={16}
-            width={23}
+            src={shopPay}
             className="size-full"
+            quality={80}
           />
 
           {/* Visa */}
-          <Image
-            alt="visa"
-            src="/svgs/visa.svg"
-            height={16}
-            width={23}
-            className="size-full"
-          />
+          <Image alt="visa" src={visa} className="size-full" quality={80} />
         </div>
       </div>
     </>

@@ -5,6 +5,9 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
+import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
+
 interface SectionProps {
   className?: string;
   full?: boolean;
@@ -26,7 +29,7 @@ function CTASection({ className = "" }: SectionProps) {
             your initial investment in our services.
           </p>
         </OpacityOnScroll>
-        <div className="flex flex-col lg:flex-row gap-[1rem] my-[0.625rem]">
+        <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
             className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
@@ -34,10 +37,9 @@ function CTASection({ className = "" }: SectionProps) {
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
               alt="arrow"
-              src="/svgs/arrow-redirect-cta-white.svg"
+              src={arrowRedirectWhite}
               className="text-white group-hover:rotate-45 transition-all duration-300"
-              height={21}
-              width={21}
+              quality={80}
             />
           </HoverWrapper>
           <motion.div
@@ -57,15 +59,14 @@ function CTASection({ className = "" }: SectionProps) {
           >
             <HoverWrapper
               href="#contact"
-              className="flex size-full items-center gap-[1rem] px-[1.5rem] py-[0.875rem]"
+              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[0.5rem]"
             >
               <FlipLink className="font-semibold">Get In Touch</FlipLink>
               <Image
                 alt="arrow"
-                src="/svgs/arrow-redirect-cta.svg"
+                src={arrowRedirect}
                 className="text-white group-hover:rotate-45 transition-all duration-300"
-                height={21}
-                width={21}
+                quality={80}
               />
             </HoverWrapper>
           </motion.div>

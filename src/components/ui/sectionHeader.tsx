@@ -52,21 +52,32 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         <span
           ref={headingRef}
           className={`subheading pn-semibold-16 ${headingClassName} ${
-            dark ? "bg-charcoal text-goldenbrown" : "bg-goldenbrown/25"
+            dark ? "bg-charcoal text-goldenrod" : "bg-goldenbrown/25"
           }`}
         >
           {heading}
         </span>
         <Reveal once slide={false}>
-          <motion.h2
-            ref={subheadingRef}
-            className={`${subheadingClassName} pn-semibold-48 capitalize leading-snug`}
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            exit={{ y: -20 }}
-          >
-            {subheading}
-          </motion.h2>
+          <div className="contents">
+            <motion.h2
+              ref={subheadingRef}
+              className={`${subheadingClassName} hidden lg:block pn-semibold-48 capitalize leading-snug`}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
+              exit={{ y: -20 }}
+            >
+              {subheading}
+            </motion.h2>
+            <motion.h2
+              ref={subheadingRef}
+              className={`${subheadingClassName} lg:hidden pn-semibold-24 max-w-[24ch] capitalize leading-snug`}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
+              exit={{ y: -20 }}
+            >
+              {subheading}
+            </motion.h2>
+          </div>
         </Reveal>
         {body && (
           <OpacityOnScroll end={80}>

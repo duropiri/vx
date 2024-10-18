@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { usePreloader } from "@/contexts/PreloaderContext";
 import Image from "next/image";
+import logo from "@/../../public/images/logo-black-black.webp";
 
 interface PreloaderProps {
   finishLoading: () => void;
@@ -193,12 +194,12 @@ const Preloader: React.FC<PreloaderProps> = ({
           ref={imageRef}
         >
           <Image
-            src="/images/logo-black-black.webp"
+            src={logo}
             alt="Loading"
-            width={150}
-            height={150}
-            sizes="(max-width: 640px) 150px, (max-width: 1024px) 150px, 150px" // Adjust these sizes based on your layout
-            className="w-[9.375rem] mix-blend-difference"
+            className="w-[9.375rem] h-auto mix-blend-difference"
+            priority
+            placeholder="blur"
+            quality={80}
           />
         </div>
 

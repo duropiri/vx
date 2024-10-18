@@ -176,6 +176,8 @@ function Modal({
                 width={300}
                 height={0}
                 alt={project.title || "image"}
+                placeholder="blur"
+                quality={80}
               />
             </div>
           ))}

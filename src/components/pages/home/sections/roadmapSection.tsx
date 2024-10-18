@@ -6,6 +6,11 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React, { useEffect } from "react";
 
+import launchImage from "@/../../public/images/instant-launch.webp";
+import powerUploadImage from "@/../../public/images/power-upload.webp";
+import strategyImage from "@/../../public/images/strategy-surge.webp";
+import machineImage from "@/../../public/images/content-machine.webp";
+
 interface SectionProps {
   className?: string;
 }
@@ -191,12 +196,11 @@ function RoadmapSection({ className }: SectionProps) {
                   className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
                 />
                 <Image
-                  src="/images/instant-launch.webp"
+                  src={launchImage}
                   alt="vx"
-                  width={500}
-                  height={190}
-                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
                   className="pointer-events-none size-full object-cover z-10"
+                  placeholder="blur"
+                  quality={80}
                 />
               </div>
             </div>
@@ -262,12 +266,11 @@ function RoadmapSection({ className }: SectionProps) {
                   className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
                 />
                 <Image
-                  src="/images/power-upload.webp"
+                  src={powerUploadImage}
                   alt="vx"
-                  width={500}
-                  height={190}
-                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
                   className="pointer-events-none size-full object-cover z-10"
+                  placeholder="blur"
+                  quality={80}
                 />
               </div>
             </div>
@@ -332,12 +335,11 @@ function RoadmapSection({ className }: SectionProps) {
                   className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
                 />
                 <Image
-                  src="/images/strategy-surge.webp"
+                  src={strategyImage}
                   alt="vx"
-                  width={500}
-                  height={190}
-                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
                   className="pointer-events-none size-full object-cover z-10"
+                  placeholder="blur"
+                  quality={80}
                 />
               </div>
             </div>
@@ -402,12 +404,11 @@ function RoadmapSection({ className }: SectionProps) {
                   className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
                 />
                 <Image
-                  src="/images/content-machine.webp"
+                  src={machineImage}
                   alt="vx"
-                  width={500}
-                  height={190}
-                  sizes="(max-width: 640px) 500px, (max-width: 1024px) 500px, 500px" // Adjust these sizes based on your layout
                   className="pointer-events-none size-full object-cover z-10"
+                  placeholder="blur"
+                  quality={80}
                 />
               </div>
             </div>

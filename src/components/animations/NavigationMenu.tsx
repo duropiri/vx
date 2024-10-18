@@ -12,6 +12,9 @@ import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { getChars } from "@/components/animations/GetChars";
 
+import logo from "@/../../public/images/logo-black-black.webp";
+import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+
 // const transition = { duration: 1, ease: [0.76, 0, 0.24, 1] };
 
 // const opacity = {
@@ -299,12 +302,11 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               passHref
             >
               <Image
-                src="/images/logo-black-black.webp"
+                src={logo}
                 alt="logo"
-                width={36}
-                height={22}
-                sizes="(max-width: 640px) 36px, (max-width: 1024px) 36px, 36px" // Adjust these sizes based on your layout
-                className="size-full"
+                className="size-full w-[3rem]"
+                placeholder="blur"
+                quality={80}
               />
             </Link>
           </div>
@@ -344,17 +346,16 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             >
               <HoverWrapper className="">
                 <Link
-                  href={"https://app.virtualxposure.com/"}
-                  className="flex size-full gap-[1rem] items-center px-[1.5rem] py-[0.875rem]"
+                  href={"#contact"}
+                  className="flex size-full gap-[1rem] items-center px-[1.5rem] py-[0.5rem]"
                   passHref
                 >
-                  <FlipLink>{getChars("Client Login")}</FlipLink>
+                  <FlipLink>{getChars("Get In Touch")}</FlipLink>
                   <Image
                     alt="arrow"
-                    src="/svgs/arrow-redirect-cta.svg"
+                    src={arrowRedirect}
                     className="text-ash group-hover:rotate-45 transition-all duration-300"
-                    height={21}
-                    width={21}
+                    quality={80}
                   />
                 </Link>
               </HoverWrapper>

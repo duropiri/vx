@@ -144,7 +144,7 @@ const PricingTier = ({ tier, isYearly }) => {
 
             if (firstIncludedFeature) {
               return (
-                <div className="flex flex-wrap w-full pn-bold-20 !leading-[2.25rem]">
+                <div className="w-full pn-bold-20 !leading-[2.25rem] !tracking-tight">
                   {firstIncludedFeature.name}&nbsp;
                   <span className="underline">
                     {firstIncludedFeature.details}
@@ -160,7 +160,7 @@ const PricingTier = ({ tier, isYearly }) => {
           {visibleFeatures.map((feature, index) => (
             <span key={index}>
               {!feature.inclusion && (
-                <li className="flex flex-col items-start justify-start gap-0 pn-regular-16">
+                <li className="list flex flex-col items-start justify-start gap-0 pn-regular-16">
                   <p>
                     {feature.quantity && (
                       <>
@@ -359,6 +359,7 @@ function PricingSection({ className }: SectionProps) {
         <div className="relative flex flex-col lg:flex-row h-full w-full justify-start items-start gap-[2rem]">
           {Object.values(pricingPackages).map((tier, index) => (
             <Reveal
+              key={index}
               slide={false}
               xOverflow={false}
               yOverflow={false}
@@ -367,7 +368,7 @@ function PricingSection({ className }: SectionProps) {
               width="100%"
               className="group relative size-full"
             >
-              <PricingTier key={index} tier={tier} isYearly={isYearly} />
+              <PricingTier tier={tier} isYearly={isYearly} />
             </Reveal>
           ))}
         </div>

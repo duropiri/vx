@@ -17,7 +17,7 @@ function ContactSection({ className }: SectionProps) {
           subheading={
             <>
               Book Your{" "}
-              <span className="text-goldenbrown underline underline-offset-4">
+              <span className="text-goldenbrown underline underline-offset-2">
                 <motion.span
                   className="text-goldenbrown uppercase"
                   style={{

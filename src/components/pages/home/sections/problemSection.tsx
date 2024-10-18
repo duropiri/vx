@@ -329,7 +329,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
               headingRef={headerRef}
               subheadingRef={bodyRef}
               className="!w-auto ml-[1rem] mr-[5rem] lg:ml-0 lg:mr-0"
-              subheadingClassName="lg:!text-[2rem] lg:!leading-tight lg:!max-w-[22ch] !w-full"
+              subheadingClassName="!text-[1.5rem] lg:!text-[2rem] !font-normal lg:!leading-tight lg:!max-w-[22ch] !w-full"
             />
           </div>
 
