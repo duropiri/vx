@@ -2,7 +2,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
 import React, { useState } from "react";
-import { Tilt } from "react-tilt";
+// import { Tilt } from "react-tilt";
 import { pricingPackages } from "@/data/pricingPackages";
 import { AnimatePresence, motion } from "framer-motion";
 import { Reveal } from "@/components/animations/Reveal";
@@ -17,7 +17,6 @@ const PricingTier = ({ tier, isYearly }) => {
   const isPopular = tier.name === "Scaling Maestro";
   const isDomination = tier.name === "Absolute Domination";
 
-  const visibleFeatures = tier.features.slice(0, 8);
   const hiddenFeatures = tier.features.slice(8);
 
   return (
@@ -158,8 +157,6 @@ const PricingTier = ({ tier, isYearly }) => {
           })()}
 
           {tier.features.map((feature, index) => {
-            const visibleFeatures = tier.features.slice(0, 8);
-            const hiddenFeatures = tier.features.slice(8);
             const isVisible = index < 8;
 
             return (
