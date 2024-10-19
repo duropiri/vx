@@ -139,129 +139,83 @@ const PricingTier = ({ tier, isYearly }) => {
         >
           {(() => {
             const firstIncludedFeature = tier.features.find(
-              (feature: any) => feature.inclusion
+              (feature) => feature.inclusion
             );
 
             if (firstIncludedFeature) {
               return (
-                <div className="w-full pn-bold-20 !leading-[2.25rem] !tracking-tight">
+                <li className="w-full pn-bold-20 !leading-[2.25rem] !tracking-tight">
                   {firstIncludedFeature.name}&nbsp;
                   <span className="underline">
                     {firstIncludedFeature.details}
                   </span>
                   &nbsp;+
-                </div>
+                </li>
               );
             }
 
             return null;
           })()}
 
-          {visibleFeatures.map((feature, index) => (
-            <span key={index}>
-              {!feature.inclusion && (
-                <li className="list flex flex-col items-start justify-start gap-0 pn-regular-16">
-                  <p>
-                    {feature.quantity && (
-                      <>
+          {tier.features.map((feature, index) => {
+            const visibleFeatures = tier.features.slice(0, 8);
+            const hiddenFeatures = tier.features.slice(8);
+            const isVisible = index < 8;
+
+            return (
+              <AnimatePresence key={index}>
+                {!feature.inclusion && (isVisible || isHovered) && (
+                  <motion.li
+                    initial={
+                      !isVisible ? { height: 0, opacity: 0 } : { opacity: 1 }
+                    }
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={!isVisible ? { height: 0, opacity: 0 } : {}}
+                    transition={{
+                      duration: 0.5,
+                      delay: !isVisible ? (index - 8) * 0.1 : 0,
+                    }}
+                    className="list flex flex-col items-start justify-start gap-0 pn-regular-16"
+                  >
+                    <p>
+                      {feature.quantity && (
                         <span className="pn-bold-16">
                           ({feature.quantity}x)
-                        </span>{" "}
-                      </>
+                        </span>
+                      )}{" "}
+                      {feature.free && (
+                        <span className="pn-bold-16">FREE BONUS</span>
+                      )}{" "}
+                      {feature.name}
+                      {feature.details && (
+                        <span className="pn-bold-16"> {feature.details}</span>
+                      )}
+                    </p>
+                    {feature.value && (
+                      <span className="li-subtext">
+                        ({feature.value} value)
+                      </span>
                     )}
-                    {feature.free && (
-                      <>
-                        <span className="pn-bold-16">FREE BONUS</span>{" "}
-                      </>
-                    )}
-                    {feature.name}
-                    {feature.details && (
-                      <>
-                        {" "}
-                        <span className="pn-bold-16">{feature.details}</span>
-                      </>
-                    )}
-                  </p>
-                  {feature.value && (
-                    <span className="li-subtext">({feature.value} value)</span>
-                  )}
-                </li>
-              )}
-            </span>
-          ))}
-          {hiddenFeatures.length > 0 && (
+                  </motion.li>
+                )}
+              </AnimatePresence>
+            );
+          })}
+
+          {hiddenFeatures.length > 0 && !isHovered && (
             <AnimatePresence>
-              <motion.span
+              <motion.li
                 key="and-more"
                 initial={{ height: "auto", opacity: 1 }}
-                animate={{
-                  height: isHovered ? 0 : "auto",
-                  opacity: isHovered ? 0 : 1,
-                }}
-                exit={{ height: "auto", opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                style={{ overflow: "hidden" }}
-                className="flex flex-col items-start justify-start gap-0 pn-regular-16 !font-bold"
-              >
-                <p>and more...</p>
-              </motion.span>
-            </AnimatePresence>
-          )}
-          <AnimatePresence>
-            {isHovered && hiddenFeatures.length > 0 && (
-              <motion.div
-                initial={{ height: 0, opacity: 0 }}
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                style={{ overflow: "hidden" }}
-                className="flex flex-col -mt-[0.625rem] gap-[0.625rem] "
+                className="flex flex-col items-start justify-start gap-0 pn-regular-16 !font-bold"
               >
-                {hiddenFeatures.map((feature, index) => (
-                  <motion.li
-                    key={index}
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ delay: index * 0.1 }}
-                    className="flex flex-col items-start justify-start gap-0 pn-regular-16"
-                  >
-                    {!feature.inclusion && (
-                      <>
-                        <p>
-                          {feature.quantity && (
-                            <>
-                              <span className="pn-bold-16">
-                                ({feature.quantity}x)
-                              </span>{" "}
-                            </>
-                          )}
-                          {feature.free && (
-                            <>
-                              <span className="pn-bold-16">FREE BONUS</span>{" "}
-                            </>
-                          )}
-                          {feature.name}
-                          {feature.details && (
-                            <>
-                              {" "}
-                              <span className="pn-bold-16">
-                                {feature.details}
-                              </span>
-                            </>
-                          )}
-                        </p>
-                        {feature.value && (
-                          <span className="li-subtext">
-                            ({feature.value} value)
-                          </span>
-                        )}
-                      </>
-                    )}
-                  </motion.li>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
+                <p>and more...</p>
+              </motion.li>
+            </AnimatePresence>
+          )}
         </ul>
       </div>
 
