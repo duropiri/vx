@@ -406,7 +406,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.custom-bullet-list.light li::before {
+.custom-bullet-list.light .list::before {
   content: "";
   position: absolute;
   left: 0;
