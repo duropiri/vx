@@ -75,11 +75,7 @@ function RoadmapSection({ className }: SectionProps) {
               Your <span className="text-goldenbrown">90-Day Growth Plan</span>
             </>
           }
-          body="At Virtual Xposure, we specialize in building your brand's
-            digital presence, empowering realtors to thrive in today's
-            competitive online marketplace. Our services cover everything from
-            content creation to full-scale social media management, all backed
-            by data-driven strategies to ensure results that matter."
+          body="Our 90-Day Growth Plan is designed to rapidly increase your real estate brand's visibility and engagement through a customized content strategy, social media management, and lead generation. In just 90 days, you'll see measurable growth in online presence and leads, giving you a competitive edge in the market."
           className="bg-white z-10 pb-[10rem] lg:pb-[3.75rem]"
         />
 
