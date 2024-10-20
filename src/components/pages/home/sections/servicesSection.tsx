@@ -55,9 +55,9 @@ function ServicesSection({ className }: SectionProps) {
       by data-driven strategies to ensure results that matter."
         />
 
-        <div className="flex flex-col w-full justify-start items-start gap-[1.875rem]">
+        <div className="relative flex flex-col w-full justify-start items-start gap-[1.875rem]">
           {/* Upper Bentos (3) */}
-          <div className="flex flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
+          <div className="relative flex flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 1 */}
             <Reveal
               once
@@ -69,7 +69,7 @@ function ServicesSection({ className }: SectionProps) {
               className="group relative flex flex-col h-full max-h-[31.25rem]"
             >
               <div
-                className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden"
+                className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center size-full"
                 onMouseEnter={() => setFirstBentoHovered(true)}
                 onMouseLeave={() => setFirstBentoHovered(false)}
               >
@@ -90,7 +90,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] w-full p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-6 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] size-full p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-6 flex">
                     <div className="flex size-full justify-center items-start">
                       {/* Instagram Stats */}
                       <div className="w-1/2 flex-col justify-start items-center gap-[1.125rem] flex">
