@@ -20,7 +20,7 @@ function StatsSection({ className, scrollYProgress }: SectionProps) {
 
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsLargeScreen(window.innerWidth >= 2560);
+      setIsLargeScreen(window.innerWidth >= 2560 || window.innerHeight >= 1088);
     };
 
     checkScreenSize();
