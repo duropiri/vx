@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { motion, Variants } from "framer-motion";
 import Header from "@/components/animations/NavigationMenu";
-import { NavLinks } from "@/data/navLinks";
+import { HeaderLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";
 
 interface InnerProps {
@@ -88,7 +88,7 @@ const Inner: React.FC<InnerProps> = ({ children }) => {
         {...anim(perspective)}
       >
         <motion.div {...anim(opacity)}>
-          <Header navigation={NavLinks} />
+          <Header navigation={HeaderLinks} />
           {children}
           <Footer className="z-10" />
         </motion.div>

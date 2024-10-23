@@ -1,4 +1,4 @@
-export const NavLinks = [
+export const HeaderLinks = [
   {
     title: "Services",
     href: "/#services",
@@ -10,5 +10,35 @@ export const NavLinks = [
   {
     title: "Login",
     href: "https://app.virtualxposure.com/",
+  },
+];
+
+export const FooterCompanyLinks = [
+  {
+    title: "Services",
+    href: "/#services",
+  },
+  {
+    title: "Resources",
+    href: "/resources",
+  },
+  {
+    title: "About us",
+    href: "/about",
+  },
+];
+
+export const FooterHelpLinks = [
+  {
+    title: "Customer Support",
+    href: "/support",
+  },
+  {
+    title: "Terms & Conditions",
+    href: "/terms-and-conditions",
+  },
+  {
+    title: "Privacy Policy",
+    href: "/privacy-policy",
   },
 ];

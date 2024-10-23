@@ -7,7 +7,7 @@ import {
 // import Inner from "@/components/layout/transitions/inner";
 import { usePathname } from "next/navigation";
 import Header from "@/components/animations/NavigationMenu";
-import { NavLinks } from "@/data/navLinks";
+import { HeaderLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";
 // import StickyFooter from "@/components/animations/StickyFooter";
 import CustomCursor from "@/components/animations/CustomCursor";
@@ -120,7 +120,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
             />
           )}
           <SmoothScrolling>
-            <Header className="absolute" navigation={NavLinks} />
+            <Header className="absolute" navigation={HeaderLinks} />
             {children}
             {/* <StickyFooter className="relative z-0" marginBottom={10}> */}
             {/* <ChatWidget /> */}

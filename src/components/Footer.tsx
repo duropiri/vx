@@ -17,6 +17,7 @@ import googlePay from "@/../../public/svgs/google-pay.svg";
 import masterCard from "@/../../public/svgs/mastercard.svg";
 import shopPay from "@/../../public/svgs/shop-pay.svg";
 import visa from "@/../../public/svgs/visa.svg";
+import { FooterCompanyLinks, FooterHelpLinks } from "@/data/navLinks";
 
 interface ComponentProps {
   className?: string;
@@ -92,23 +93,25 @@ export default function Footer({ className = "" }: ComponentProps) {
                       </svg>
 
                       {/* Facebook */}
-                      <svg
-                        width="36"
-                        height="36"
-                        viewBox="0 0 36 36"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="cursor-select-hover hover:text-goldenbrown transition-all duration-300"
-                      >
-                        <path
-                          d="M36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18Z"
-                          fill="currentColor"
-                        />
-                        <path
-                          d="M16.3399 26.1105V18.9702H13.937V16.1875H16.3399V14.1353C16.3399 11.7538 17.7944 10.457 19.9189 10.457C20.9365 10.457 21.8112 10.5328 22.066 10.5667V13.0555L20.5926 13.0562C19.4372 13.0562 19.2135 13.6052 19.2135 14.4109V16.1875H21.969L21.6102 18.9702H19.2135V26.1105H16.3399Z"
-                          fill="white"
-                        />
-                      </svg>
+                      <a href="facebook.com">
+                        <svg
+                          width="36"
+                          height="36"
+                          viewBox="0 0 36 36"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="cursor-select-hover hover:text-goldenbrown transition-all duration-300"
+                        >
+                          <path
+                            d="M36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M16.3399 26.1105V18.9702H13.937V16.1875H16.3399V14.1353C16.3399 11.7538 17.7944 10.457 19.9189 10.457C20.9365 10.457 21.8112 10.5328 22.066 10.5667V13.0555L20.5926 13.0562C19.4372 13.0562 19.2135 13.6052 19.2135 14.4109V16.1875H21.969L21.6102 18.9702H19.2135V26.1105H16.3399Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </a>
 
                       {/* Instagram */}
                       <svg
@@ -170,15 +173,15 @@ export default function Footer({ className = "" }: ComponentProps) {
                   <div className="flex flex-col w-full lg:w-auto items-start justify-start gap-[2rem]">
                     <h2 className="pn-bold-20">Company</h2>
                     <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1.5rem]">
-                      <HoverWrapper className="cursor-select-hover">
-                        <FlipLink>Services</FlipLink>
-                      </HoverWrapper>
-                      <HoverWrapper className="cursor-select-hover">
-                        <FlipLink>Resources</FlipLink>
-                      </HoverWrapper>
-                      <HoverWrapper className="cursor-select-hover">
-                        <FlipLink>About us</FlipLink>
-                      </HoverWrapper>
+                      {FooterCompanyLinks.map((nav, index) => (
+                        <HoverWrapper
+                          key={index}
+                          href={nav.href}
+                          className="cursor-select-hover"
+                        >
+                          <FlipLink>{nav.title}</FlipLink>
+                        </HoverWrapper>
+                      ))}
                     </ul>
                   </div>
 
@@ -186,15 +189,15 @@ export default function Footer({ className = "" }: ComponentProps) {
                   <div className="flex flex-col w-full lg:w-auto items-start justify-start gap-[2rem]">
                     <h2 className="pn-bold-20">Help</h2>
                     <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1.5rem]">
-                      <HoverWrapper className="cursor-select-hover">
-                        <FlipLink>Customer Support</FlipLink>
-                      </HoverWrapper>
-                      <HoverWrapper className="cursor-select-hover">
-                        <FlipLink>Terms & Conditions</FlipLink>
-                      </HoverWrapper>
-                      <HoverWrapper className="cursor-select-hover">
-                        <FlipLink>Privacy Policy</FlipLink>
-                      </HoverWrapper>
+                      {FooterHelpLinks.map((nav, index) => (
+                        <HoverWrapper
+                          key={index}
+                          href={nav.href}
+                          className="cursor-select-hover"
+                        >
+                          <FlipLink>{nav.title}</FlipLink>
+                        </HoverWrapper>
+                      ))}
                     </ul>
                   </div>
                 </div>

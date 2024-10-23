@@ -13,7 +13,7 @@ import CTASection from "@/components/pages/home/sections/ctaSection";
 import FAQSection from "@/components/pages/home/sections/faqSection";
 import ContactSection from "@/components/pages/home/sections/contactSection";
 import { useScroll } from "framer-motion";
-import { NavLinks } from "@/data/navLinks";
+import { HeaderLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 
 function Body() {
@@ -108,7 +108,7 @@ function Body() {
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="min-w-[100vw] min-h-[100vh]"
-        navigation={NavLinks}
+        navigation={HeaderLinks}
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[0] = el;
         }}
