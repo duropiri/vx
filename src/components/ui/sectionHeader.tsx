@@ -17,6 +17,7 @@ interface SectionProps {
   body?: React.ReactNode | string;
   headingRef?: RefObject<HTMLSpanElement>;
   subheadingRef?: RefObject<HTMLHeadingElement>;
+  subheadingMobileRef?: RefObject<HTMLHeadingElement>; // New ref for mobile
   bodyRef?: RefObject<HTMLParagraphElement>;
 }
 
@@ -36,6 +37,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       body,
       headingRef,
       subheadingRef,
+      subheadingMobileRef, // Add the new ref
       bodyRef,
     }: SectionProps,
     ref
@@ -69,7 +71,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               {subheading}
             </motion.h2>
             <motion.h2
-              ref={subheadingRef}
+              ref={subheadingMobileRef}
               className={`${subheadingClassName} lg:hidden pn-semibold-24 max-w-[24ch] capitalize leading-snug`}
               initial={{ y: 20 }}
               animate={{ y: 0 }}

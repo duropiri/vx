@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -34,8 +34,9 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     const progressBarRef = useRef<HTMLDivElement>(null);
     const textContainerRef = useRef<HTMLDivElement>(null);
     const textRef = useRef<HTMLDivElement>(null);
-    const headerRef = useRef<HTMLSpanElement>(null);
-    const bodyRef = useRef<HTMLParagraphElement>(null);
+    const headingRef = useRef<HTMLSpanElement>(null);
+    const subheadingRef = useRef<HTMLHeadingElement>(null);
+    const subheadingMobileRef = useRef<HTMLHeadingElement>(null); // Add new ref
     // const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
 
     useEffect(() => {
@@ -127,6 +128,9 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
       const isEven = (activeStep - 1) % 2 === 0;
       // const translateX = isEven ? "translate-x-[100%]" : "-translate-x-[100%]";
 
+      // Create a timeline for better control
+      // const tl = gsap.timeline();
+
       // First animate the text out
       gsap.to(textRef.current, {
         opacity: 0,
@@ -134,9 +138,20 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
         duration: 0.25, // Adjust duration as needed
         onComplete: () => {
           // Once hidden, update text content
-          const [header, body] = media[activeStep - 1].text;
-          headerRef.current!.textContent = header;
-          bodyRef.current!.textContent = body;
+          const [header, subheading] = media[activeStep - 1].text;
+
+          // Update heading
+          if (headingRef.current) {
+            headingRef.current.textContent = header;
+          }
+
+          // Update both desktop and mobile subheadings
+          if (subheadingRef.current) {
+            subheadingRef.current.innerHTML = subheading;
+          }
+          if (subheadingMobileRef.current) {
+            subheadingMobileRef.current.innerHTML = subheading;
+          }
 
           // Update alignment classes
           textContainerRef.current!.classList.remove(
@@ -162,8 +177,8 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           }
 
           // Update alignment classes
-          headerRef.current!.classList.remove("self-start", "self-end");
-          headerRef.current!.classList.add(isEven ? "self-end" : "self-start");
+          headingRef.current!.classList.remove("self-start", "self-end");
+          headingRef.current!.classList.add(isEven ? "self-end" : "self-start");
 
           // Animate the text back in
           gsap.fromTo(
@@ -326,8 +341,9 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
               medium
               heading={media[0].text[0]}
               subheading={media[0].text[1]}
-              headingRef={headerRef}
-              subheadingRef={bodyRef}
+              headingRef={headingRef}
+              subheadingRef={subheadingRef}
+              subheadingMobileRef={subheadingMobileRef}
               className="!w-auto ml-[1rem] mr-[5rem] lg:ml-0 lg:mr-0"
               subheadingClassName="!text-[1.5rem] lg:!text-[2rem] !font-normal lg:!leading-tight lg:!max-w-[22ch] !w-full"
             />
