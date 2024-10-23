@@ -39,7 +39,7 @@ export const pricingPackages = {
     billingCycle: "monthly",
     commitment: {
       monthly: "3 Month Commitment.",
-      yearly: "12 Month Commitment",
+      yearly: "12 Month Commitment.",
     },
     features: [
       {
@@ -98,7 +98,7 @@ export const pricingPackages = {
     billingCycle: "monthly",
     commitment: {
       monthly: "3 Month Commitment.",
-      yearly: "12 Month Commitment",
+      yearly: "12 Month Commitment.",
     },
     features: [
       {
