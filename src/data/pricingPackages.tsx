@@ -32,7 +32,7 @@ export const pricingPackages = {
   },
   scalingMaestro: {
     name: "Scaling Maestro",
-    price: "3,495",
+    price: { monthly: "3,495", yearly: "2,895" },
     billingCycle: "monthly",
     commitment: "3 Month Commitment.",
     features: [
@@ -85,7 +85,7 @@ export const pricingPackages = {
   },
   absoluteDomination: {
     name: "Absolute Domination",
-    price: "6,995",
+    price: { monthly: "6,995", yearly: "5,895" },
     billingCycle: "monthly",
     commitment: "3 Month Commitment.",
     features: [
