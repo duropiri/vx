@@ -20,6 +20,7 @@ import tiktokImage from "@/../../public/svgs/tiktok.svg";
 import linkedinImage from "@/../../public/svgs/linkedin.svg";
 
 import arrowURImage from "@/../../public/svgs/arrow-up-right.svg";
+import arrowURBlackImage from "@/../../public/svgs/arrow-up-right-black.svg";
 import chevdownImage from "@/../../public/svgs/chevron-down.svg";
 import infoImage from "@/../../public/svgs/info.svg";
 import calendarImage from "@/../../public/svgs/calendar.svg";
@@ -66,7 +67,7 @@ function ServicesSection({ className }: SectionProps) {
               yOverflow={false}
               duration={0.6}
               width="100%"
-              className="group relative flex flex-col h-full max-h-[31.25rem]"
+              className="group relative flex flex-col w-full lg:w-auto h-full max-h-[31.25rem]"
             >
               <div
                 className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center size-full"
@@ -74,7 +75,7 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFirstBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex flex-col size-full justify-start items-start gap-[2rem]">
+                <div className="flex flex-col size-full justify-start items-center lg:items-start gap-[2rem]">
                   {/* Header */}
                   <div className="flex flex-col justify-center items-center gap-[0.625rem]">
                     <div className="text-center text-ash pn-bold-20">
@@ -130,7 +131,7 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src={arrowURImage}
+                                  src={arrowURBlackImage}
                                   
                                   quality={80}
                                 />
@@ -191,7 +192,7 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src={arrowURImage}
+                                  src={arrowURBlackImage}
                                   
                                   quality={80}
                                 />
@@ -254,7 +255,7 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src={arrowURImage}
+                                  src={arrowURBlackImage}
                                   
                                   quality={80}
                                 />
@@ -317,7 +318,7 @@ function ServicesSection({ className }: SectionProps) {
                               <div className="w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                 <Image
                                   alt="arrow"
-                                  src={arrowURImage}
+                                  src={arrowURBlackImage}
                                   
                                   quality={80}
                                 />
@@ -782,10 +783,10 @@ function ServicesSection({ className }: SectionProps) {
               duration={0.6}
               delay={0.5}
               width="100%"
-              className="group relative flex flex-col h-full max-h-[31.25rem] justify-start items-center lg:max-w-[21.875rem]"
+              className="group relative flex flex-col w-full lg:w-auto h-full max-h-[31.25rem] justify-center lg:justify-start items-center lg:max-w-[21.875rem]"
             >
               <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow overflow-hidden h-full max-h-[31.25rem]">
-                <div className="flex-col size-full justify-start items-start gap-[2rem] flex">
+                <div className="flex-col size-full justify-start items-center lg:items-start gap-[2rem] flex">
                   {/* Header */}
                   <div className="h-[126px] flex-col justify-center items-center gap-[0.625rem] flex">
                     <div className="text-center text-ash pn-bold-20">
@@ -873,7 +874,7 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex-col justify-start items-start gap-2 flex size-full">
+                <div className="flex-col justify-start items-center lg:items-start gap-2 flex size-full">
                   {/* Header */}
                   <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-28">
@@ -889,7 +890,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Followers</div>
                       <div className="flex-col justify-start items-start flex">
@@ -1025,7 +1026,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <div className="group-hover:animate-bounce w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                   <Image
                                     alt="arrow"
-                                    src={arrowURImage}
+                                    src={arrowURBlackImage}
                                     
                                     quality={80}
                                   />
@@ -1085,7 +1086,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <div className="group-hover:animate-bounce w-3.5 h-3.5 p-[2.62px] justify-center items-center flex">
                                   <Image
                                     alt="arrow"
-                                    src={arrowURImage}
+                                    src={arrowURBlackImage}
                                     
                                     quality={80}
                                   />
