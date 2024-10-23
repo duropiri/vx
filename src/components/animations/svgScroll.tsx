@@ -109,7 +109,7 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
         }}
       >
         <g ref={rocketRef}>
-          <g transform="translate(-15, -55) scale(0.15)">
+          <g transform="translate(55, -55) scale(0.15)">
             <path
               d="M324.288 528.899C281.619 651.078 -7.24454 745.919 2.18646 646.771C6.00346 606.574 42.3125 572.666 40.0345 479.964C39.6815 480.176 54.2505 500.328 92.9815 502.251C176.026 513.022 323.987 529.2 324.288 528.899Z"
               fill="#C5A05E"
