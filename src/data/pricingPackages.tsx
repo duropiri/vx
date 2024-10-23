@@ -11,7 +11,7 @@ export const pricingPackages = {
         name: "All-inclusive social media management including content creation, moderation & scheduling",
         value: "$2000",
       },
-      { name: "Includes", platforms: "Instagram, FaceBook & TikTok" },
+      { name: "Includes Instagram, FaceBook & TikTok" },
       { name: "Monthly Strategy Plan", value: "$250" },
       { name: "Topic Research & Script Writing", value: "$300" },
       { name: "Copywriting & Ideation", value: "$500" },
