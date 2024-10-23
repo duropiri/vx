@@ -874,7 +874,7 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex-col justify-start items-center lg:items-start gap-2 flex size-full">
+                <div className="flex-col justify-start items-start sm:items-center lg:items-start gap-2 flex size-full">
                   {/* Header */}
                   <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-28">
@@ -890,7 +890,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 sm:w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Followers</div>
                       <div className="flex-col justify-start items-start flex">
