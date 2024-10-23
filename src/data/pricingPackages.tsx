@@ -5,8 +5,8 @@ export const pricingPackages = {
     billingCycle: "monthly",
     commitment: "No Contracts. Cancel Anytime.",
     features: [
-      { name: "Social Media Short-Form Videos", quantity: "10" },
-      { name: "Custom Social Media Thumbnails", quantity: "10" },
+      { name: "Social Media Short-Form Videos", quantity: "(10x)" },
+      { name: "Custom Social Media Thumbnails", quantity: "(10x)" },
       {
         name: "All-inclusive social media management including content creation, moderation & scheduling",
         value: "$2000",
@@ -17,24 +17,30 @@ export const pricingPackages = {
       { name: "Copywriting & Ideation", value: "$500" },
       { name: "Hashtag Research and Analytics", value: "$500" },
       {
-        name: "FREE Access to our Comprehensive Client Portal, Analytics Dashboard and CRM",
+        quantity: "FREE ACCESS",
+        name: "to our Comprehensive Client Portal, Analytics Dashboard and CRM",
         value: "$500",
       },
       {
-        name: "FREE BONUS Social Media Account Optimization Audit",
+        quantity: "FREE BONUS",
+        name: "Social Media Account Optimization Audit",
         value: "$500",
       },
       {
-        name: "FREE BONUS Instagram Verification",
+        quantity: "FREE BONUS",
+        name: "Instagram Verification",
         value: "$19.99/MONTH",
       },
     ],
   },
   scalingMaestro: {
     name: "Scaling Maestro",
-    price: { monthly: "3,495", yearly: "2,895" },
+    price: { monthly: "3,495", yearly: "2,995" },
     billingCycle: "monthly",
-    commitment: "3 Month Commitment.",
+    commitment: {
+      monthly: "3 Month Commitment.",
+      yearly: "12 Month Commitment",
+    },
     features: [
       {
         name: "Everything in",
@@ -43,17 +49,17 @@ export const pricingPackages = {
       },
       {
         name: "Social Media Short-Form Videos",
-        quantity: "20",
+        quantity: "(20x)",
         value: "3X",
       },
       {
         name: "Custom Social Media Thumbnails",
-        quantity: "20",
+        quantity: "(20x)",
         value: "3X",
       },
       {
         name: "Social Media Feed Posts",
-        quantity: "15",
+        quantity: "(15x)",
         value: "$1000",
       },
       { name: "Includes Instagram, FaceBook & TikTok & LinkedIN" },
@@ -70,24 +76,30 @@ export const pricingPackages = {
         value: "$250",
       },
       {
-        name: "FREE BONUS Professional Headshots & Lifestyle Photos",
+        quantity: "FREE BONUS",
+        name: "Professional Headshots & Lifestyle Photos",
         value: "$750",
       },
       {
-        name: "FREE BONUS Custom Lead Capture Clickfunnel",
+        quantity: "FREE BONUS",
+        name: "Custom Lead Capture Clickfunnel",
         value: "$1000",
       },
       {
-        name: "FREE BONUS Proprietary Lead Magnet",
+        quantity: "FREE BONUS",
+        name: "Proprietary Lead Magnet",
         value: "$1000",
       },
     ],
   },
   absoluteDomination: {
     name: "Absolute Domination",
-    price: { monthly: "6,995", yearly: "5,895" },
+    price: { monthly: "6,995", yearly: "5,995" },
     billingCycle: "monthly",
-    commitment: "3 Month Commitment.",
+    commitment: {
+      monthly: "3 Month Commitment.",
+      yearly: "12 Month Commitment",
+    },
     features: [
       {
         name: "Everything in",
@@ -96,17 +108,17 @@ export const pricingPackages = {
       },
       {
         name: "Social Media Short-Form Videos",
-        quantity: "30",
+        quantity: "(30x)",
         value: "2.5X",
       },
       {
         name: "Custom Social Media Thumbnails",
-        quantity: "30",
+        quantity: "(30x)",
         value: "2.5X",
       },
       {
         name: "Social Media Feed Posts",
-        quantity: "30",
+        quantity: "(30x)",
         value: "5X",
       },
       {
@@ -132,11 +144,13 @@ export const pricingPackages = {
         value: "$2000",
       },
       {
-        name: "FREE BONUS Exclusive Get-Comfortable-On-Camera-In-3-Days Training Program",
+        quantity: "FREE BONUS",
+        name: "Exclusive Get-Comfortable-On-Camera-In-3-Days Training Program",
         value: "$1000",
       },
       {
-        name: "FREE BONUS Get-Ready-To-Go-Viral-Prep-Checklist",
+        quantity: "FREE BONUS",
+        name: "Get-Ready-To-Go-Viral-Prep-Checklist",
         value: "$100",
       },
     ],

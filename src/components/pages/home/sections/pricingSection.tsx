@@ -177,7 +177,7 @@ const PricingTier = ({ tier, isYearly }) => {
                     <p>
                       {feature.quantity && (
                         <span className="pn-bold-16">
-                          ({feature.quantity}x)
+                          {feature.quantity}
                         </span>
                       )}{" "}
                       {feature.free && (
