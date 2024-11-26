@@ -1,6 +1,6 @@
 import house from "@/../../public/svgs/real-estate.svg";
 import bullhorn from "@/../../public/svgs/bullhorn.svg";
-import skool from "@/../../public/images/skool.png";
+import skool from "@/../../public/svgs/skool-icon.svg";
 
 export const HeaderLinks = [
   {

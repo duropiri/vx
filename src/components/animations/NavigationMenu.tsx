@@ -159,21 +159,24 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
       {/* Services Grid */}
       <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
         <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
-        <div className="grid grid-cols-2 grid-rows-2 gap-2">
+        <div className="grid gap-2">
           {activeDropdown.dropdown.items.map((item, index) => (
             <Link
               key={index}
               href={item.href}
-              className="cursor-select-hover group flex flex-grow flex-col items-center p-4 rounded-lg bg-ash border-none border group-hover:bg-charcoal hover:-translate-y-1 transition-all duration-200 w-full self-stretch"
+              className="cursor-select-hover group inline-block w-fit"
             >
-              <div className="flex flex-col items-center justify-center gap-[0.5rem]">
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  height={20}
-                  className="transition-all duration-300 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0"
-                />
-                <div className="w-full text-center font-medium text-white/50 group-hover:text-white transition-all duration-300">
+              <div className="flex flex-row items-center justify-center gap-[0.5rem]">
+                <div className="flex-col items-center p-2 rounded-lg bg-ash/10 border-none border group-hover:bg-charcoal/10 transition-all duration-200">
+                  <Image
+                    src={item.icon}
+                    alt={item.title}
+                    height={20}
+                    width={20}
+                    className="transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-ash"
+                  />
+                </div>
+                <div className="inline-block w-fit text-black/80 group-hover:text-black transition-colors duration-200">
                   {item.title}
                 </div>
               </div>
