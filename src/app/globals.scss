@@ -1,0 +1,607 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("/fonts/ProximaNova/stylesheet.css");
+@import url("/fonts/Nunito/stylesheet.css");
+
+:root {
+  /* Color variables */
+  --black: #000000;
+  --goldenrod: #fdd98a; /* Secondary */
+  --goldenbrown: #c5a05e; /* Primary */
+  --ash: #1b1a17; /* Primary */
+  --white: #ffffff;
+  --charcoal-navy: #1a213d; /* Primary */
+  --charcoal: #434345; /* Secondary */
+
+  /* Font sizing variables */
+  --root-size: 37;
+  --max-font-size: 14px;  /* Default max for HD and below */
+  font-size: 14px;
+}
+
+@media (min-width: 370px) {
+  :root {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    font-size: calc(min((100vw / var(--root-size)), var(--max-font-size)));
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --root-size: 90;
+  }
+}
+
+/* 2K displays and above */
+@media (min-width: 2048px) {
+  :root {
+    --max-font-size: 16px;
+  }
+}
+
+/* Ensure font size doesn't exceed 16px on large screens */
+@media (min-width: 1920px) {
+  :root {
+    --root-size: 120;
+    font-size: var(--max-font-size);
+  }
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1b1a17;
+    --foreground: #ffffff;
+  }
+} */
+
+/* Hide scrollbar */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+html::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Proxima Nova, sans-serif;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Font Styles */
+
+/* Proxima Nova */
+.pn-regular-96 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 3rem; /* 42px */
+  line-height: 3rem; /* 42px */
+}
+
+.pn-regular-60 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 2.286rem; /* 32px */
+  line-height: 2.286rem; /* 32px */
+}
+
+.pn-semibold-48 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 600;
+  letter-spacing: -0.03em; /* 3% decrease */
+  font-size: 1.714rem; /* 24px */
+  line-height: 2rem; /* 57.6px */
+}
+
+.pn-bold-48 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 700;
+  font-size: 1.714rem; /* 24px */
+  line-height: 2rem; /* 22.4px */
+}
+
+.pn-semibold-40 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem; /* 40px */
+  line-height: 2rem; /* 32px */
+}
+
+@media (min-width: 768px) {
+  .pn-regular-96 {
+    font-size: 6rem; /* 96px */
+    line-height: 6rem; /* 96px */
+  }
+
+  .pn-regular-60 {
+    font-size: 3.75rem; /* 60px */
+    line-height: 3.75rem; /* 96px */
+  }
+
+  .pn-semibold-48,
+  .pn-bold-48 {
+    font-size: 3rem; /* 48px */
+    line-height: 3.6rem; /* 57.6px */
+  }
+}
+
+.pn-regular-32 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 2.286rem; /* 24px */
+  line-height: 2.286rem; /* 22.4px */
+}
+
+.pn-regular-28 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.5rem; /* 100% */
+}
+
+.pn-bold-28 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1.25rem; /* 100% */
+}
+
+.pn-semibold-24 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem; /* 24px */
+  line-height: 1.5rem; /* 16.2px */
+}
+
+.pn-regular-22 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+}
+
+.pn-semibold-22 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 600;
+}
+
+.pn-bold-20 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px */
+  line-height: 1rem; /* 100% */
+}
+
+@media (min-width: 768px) {
+  .pn-regular-32 {
+    font-size: 2rem; /* 32px */
+    line-height: 2.4rem; /* 38.4px */
+  }
+
+  .pn-regular-28,
+  .pn-bold-28 {
+    font-size: 1.75rem; /* 28px */
+    line-height: 2.625rem; /* 42px */
+  }
+
+  .pn-semibold-24 {
+  }
+
+  .pn-regular-22,
+  .pn-semibold-22 {
+    font-size: 1.375rem; /* 22px */
+    line-height: 2.25rem; /* 36px */
+  }
+
+  .pn-bold-20 {
+  }
+}
+
+.pn-bold-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 700;
+  font-size: 1rem; /* 16px *
+  line-height: 1.4rem; /* 22.4px */
+}
+
+.pn-semibold-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 600;
+  font-size: 1rem; /* 16px */
+  line-height: 1.4rem; /* 22.4px */
+}
+
+.pn-regular-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 1rem; /* 16px */
+  line-height: 1.4rem; /* 22.4px */
+}
+
+.pn-light-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 300;
+  font-size: 1rem; /* 16px */
+  line-height: 1.4rem; /* 22.4px */
+}
+
+.pn-regular-14 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 0.875rem; /* 14px */
+  letter-spacing: 0.03125rem; /* 0.5px */
+  line-height: 1.25rem; /* 20px */
+}
+
+/* Nunito */
+
+.nu-regular-12 {
+  font-family: "Nunito", sans-serif;
+  font-weight: normal;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.125rem; /* 18px */
+}
+
+.nu-regular-14 {
+  font-family: "Nunito", sans-serif;
+  font-weight: normal;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+
+.nu-semibold-12 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 0.75rem; /* 12px */
+  line-height: 1.125rem; /* 18px */
+}
+
+.nu-semibold-14 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
+
+.nu-bold-20 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem; /* 20px */
+  letter-spacing: -0.013rem; /* -0.2px */
+  line-height: 1.75rem; /* 28px */
+}
+
+.nu-bold-24 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 12px */
+  letter-spacing: -0.013rem; /* -0.2px */
+  line-height: 1.875rem; /* 30px */
+}
+
+/* End Font Styles */
+
+/* Section Styles */
+.section-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6.25rem 5rem;
+  /* margin: 6.25rem 0; */
+  width: 100vw;
+  box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+  .section-container {
+    padding: 3.125rem 2rem;
+    /* margin: 3.125rem 0; */
+  }
+}
+
+.hero-container {
+  padding-top: 5rem /* 40px */;
+  padding-bottom: 2.5rem /* 40px */;
+  height: 100vh;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* End Section Styles */
+
+/* Component Styles */
+.button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1.5rem;
+  gap: 0.625rem;
+  background-color: var(--white); /* Fill */
+  border: 0.125rem solid var(--ash); /* Stroke */
+  line-height: 1;
+  border-radius: 9999px; /* Rounded corners */
+  transition: all 0.3s ease;
+  /* cursor: pointer; */
+}
+
+.bento-row {
+  // position: sticky;
+  top: 10rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pricing-box {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 4.5rem 2.5rem 2.5rem;
+  border-radius: 1.4rem;
+  align-self: stretch;
+}
+
+@media (max-width: 768px) {
+  .pricing-box {
+    padding: 2rem 1.5rem 1.5rem;
+  }
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.75rem;
+  text-align: center;
+}
+
+.custom-bullet-list {
+  list-style: none;
+}
+
+.custom-bullet-list p {
+  height: auto;
+}
+
+.custom-bullet-list .list {
+  position: relative;
+  padding-left: 1.5rem; /* Offset to make room for the SVG */
+}
+
+.custom-bullet-list .list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem; /* Adjust to vertically align with text */
+  width: 0.813rem; /* Same as your SVG's width */
+  height: 0.625rem; /* Same as your SVG's height */
+  background-image: url('data:image/svg+xml,%3Csvg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12.7826 1.5313L4.78255 9.5313C4.71287 9.60122 4.63008 9.6567 4.53891 9.69455C4.44775 9.73241 4.35001 9.75189 4.2513 9.75189C4.15259 9.75189 4.05485 9.73241 3.96369 9.69455C3.87252 9.6567 3.78973 9.60122 3.72005 9.5313L0.220051 6.0313C0.150286 5.96154 0.0949458 5.87871 0.0571893 5.78756C0.0194329 5.69641 1.03963e-09 5.59871 0 5.50005C-1.03952e-09 5.40139 0.0194329 5.30369 0.0571893 5.21254C0.0949458 5.12139 0.150286 5.03857 0.220051 4.9688C0.289816 4.89904 0.372638 4.8437 0.46379 4.80594C0.554942 4.76818 0.652639 4.74875 0.751301 4.74875C0.849963 4.74875 0.947659 4.76818 1.03881 4.80594C1.12996 4.8437 1.21279 4.89904 1.28255 4.9688L4.25193 7.93818L11.7213 0.470051C11.8622 0.329155 12.0533 0.25 12.2526 0.25C12.4518 0.25 12.6429 0.329155 12.7838 0.470051C12.9247 0.610947 13.0039 0.802044 13.0039 1.0013C13.0039 1.20056 12.9247 1.39165 12.7838 1.53255L12.7826 1.5313Z" fill="%231B1A17"/%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.custom-bullet-list.light .list::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem; /* Adjust to vertically align with text */
+  width: 0.813rem; /* Same as your SVG's width */
+  height: 0.625rem; /* Same as your SVG's height */
+  background-image: url('data:image/svg+xml,%3Csvg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12.7826 1.5313L4.78255 9.5313C4.71287 9.60122 4.63008 9.6567 4.53891 9.69455C4.44775 9.73241 4.35001 9.75189 4.2513 9.75189C4.15259 9.75189 4.05485 9.73241 3.96369 9.69455C3.87252 9.6567 3.78973 9.60122 3.72005 9.5313L0.220051 6.0313C0.150286 5.96154 0.0949458 5.87871 0.0571893 5.78756C0.0194329 5.69641 1.03963e-09 5.59871 0 5.50005C-1.03952e-09 5.40139 0.0194329 5.30369 0.0571893 5.21254C0.0949458 5.12139 0.150286 5.03857 0.220051 4.9688C0.289816 4.89904 0.372638 4.8437 0.46379 4.80594C0.554942 4.76818 0.652639 4.74875 0.751301 4.74875C0.849963 4.74875 0.947659 4.76818 1.03881 4.80594C1.12996 4.8437 1.21279 4.89904 1.28255 4.9688L4.25193 7.93818L11.7213 0.470051C11.8622 0.329155 12.0533 0.25 12.2526 0.25C12.4518 0.25 12.6429 0.329155 12.7838 0.470051C12.9247 0.610947 13.0039 0.802044 13.0039 1.0013C13.0039 1.20056 12.9247 1.39165 12.7838 1.53255L12.7826 1.5313Z" fill="white"/%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.custom-bullet-list.gold li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem; /* Adjust to vertically align with text */
+  width: 0.813rem; /* Same as your SVG's width */
+  height: 0.625rem; /* Same as your SVG's height */
+  background-image: url('data:image/svg+xml,%3Csvg width="13" height="10" viewBox="0 0 13 10" fill="none" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M12.7826 1.5313L4.78255 9.5313C4.71287 9.60122 4.63008 9.6567 4.53891 9.69455C4.44775 9.73241 4.35001 9.75189 4.2513 9.75189C4.15259 9.75189 4.05485 9.73241 3.96369 9.69455C3.87252 9.6567 3.78973 9.60122 3.72005 9.5313L0.220051 6.0313C0.150286 5.96154 0.0949458 5.87871 0.0571893 5.78756C0.0194329 5.69641 1.03963e-09 5.59871 0 5.50005C-1.03952e-09 5.40139 0.0194329 5.30369 0.0571893 5.21254C0.0949458 5.12139 0.150286 5.03857 0.220051 4.9688C0.289816 4.89904 0.372638 4.8437 0.46379 4.80594C0.554942 4.76818 0.652639 4.74875 0.751301 4.74875C0.849963 4.74875 0.947659 4.76818 1.03881 4.80594C1.12996 4.8437 1.21279 4.89904 1.28255 4.9688L4.25193 7.93818L11.7213 0.470051C11.8622 0.329155 12.0533 0.25 12.2526 0.25C12.4518 0.25 12.6429 0.329155 12.7838 0.470051C12.9247 0.610947 13.0039 0.802044 13.0039 1.0013C13.0039 1.20056 12.9247 1.39165 12.7838 1.53255L12.7826 1.5313Z" fill="%23C5A05E"/%3E%3C/svg%3E');
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.li-subtext {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px !important;
+  margin-top: -4px;
+}
+
+.solution-bento {
+  display: flex;
+  flex-direction: column;
+  // justify-content: flex-start;
+  // align-items: flex-start;
+  // border: 1px solid rgba(#c5a05e, 0.1);
+  border-radius: 1rem;
+  background-color: rgba(#434345, 0.1);
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.solution-bento.bento-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.bento-row {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 0.5rem;
+  height: 100%;
+}
+
+@media (min-width: 1024px) {
+  .bento-row {
+    flex-direction: row;
+  }
+}
+
+#bentos:hover > .bento-row .solution-bento > .bento-border {
+  opacity: 1;
+}
+
+.solution-bento:hover::before {
+  opacity: 1;
+  pointer-events: none;
+}
+
+.solution-bento::before,
+.solution-bento > .bento-border {
+  border-radius: inherit;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 500ms;
+  pointer-events: none;
+}
+
+.solution-bento::before {
+  background: radial-gradient(
+    800px circle at var(--mouse-x) var(--mouse-y),
+    rgba(#fdd98a, 0.06),
+    transparent 40%
+  );
+  z-index: 3;
+}
+
+.solution-bento > .bento-border {
+  background: radial-gradient(
+    400px circle at var(--mouse-x) var(--mouse-y),
+    rgba(#fdd98a, 0.8),
+    transparent 40%
+  );
+  z-index: 1;
+}
+
+.bento-content {
+  display: flex;
+  padding: 2.5rem;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .bento-content {
+    flex-direction: row;
+  }
+}
+
+.solution-bento > .bento-content {
+  // background-image: linear-gradient(135deg, #1b1a17, #434345 90%, #434345 100%);
+  background-color: var(--charcoal);
+
+  border-radius: inherit;
+  height: calc(100% - 0.25rem);
+  margin: 1px;
+  position: relative;
+  width: calc(100% - 0.25rem);
+  z-index: 2;
+}
+
+.subheading {
+  display: flex;
+  align-items: flex-start;
+  text-transform: uppercase;
+  padding: 0.5rem 0.635rem;
+  border-radius: 0.75rem;
+}
+
+.subheading.grey {
+  background-color: var(--charcoal);
+  color: var(--goldenbrown);
+}
+
+.subheading.dark {
+  background-color: var(--ash);
+  color: var(--goldenbrown);
+}
+
+/* End Component Styles */
+
+/* Animations */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 5s linear infinite;
+  animation-timing-function: linear; /* Ensures smooth linear timing */
+}
+
+/* End Animations */
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+
+// .swiper {
+//   width: 240px;
+//   height: 320px;
+// }
+
+// .swiper-slide {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   border-radius: 18px;
+//   font-size: 22px;
+//   font-weight: bold;
+//   color: #fff;
+// }
