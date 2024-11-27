@@ -35,7 +35,7 @@ export const socialMediaPackages = {
   },
   scalingMaestro: {
     name: "Scaling Maestro",
-    price: { monthly: "1,995", yearly: "2,655" },
+    price: { monthly: "1,995", yearly: "1,655" },
     billingCycle: "monthly",
     commitment: {
       monthly: "3 Month Commitment.",
