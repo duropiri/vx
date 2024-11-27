@@ -127,7 +127,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           }`}
         />
         {/* Price */}
-        {/* <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
+        <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
           <h2 className="text-center pn-semibold-40">
             $
             {isYearly
@@ -137,7 +137,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           <p className="text-center text-goldenbrown pn-semibold-16">
             /{tier.billingCycle}
           </p>
-        </div> */}
+        </div>
         {/* Features */}
         <ul
           className={`custom-bullet-list ${
@@ -306,7 +306,7 @@ function PricingSection({ className, pricingPackages }: SectionProps) {
               isYearly
                 ? "bg-goldenbrown text-white"
                 : "bg-ash text-white line-through"
-            } py-[0.5rem] px-[1rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+            } py-[0.5rem] px-[0.5rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
           >
             17% Discount
           </div>

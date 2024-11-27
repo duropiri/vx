@@ -23,7 +23,7 @@ const Page = ({ children }: PageProps) => {
 
   return (
     <PreloaderProvider>
-      <div className="relative flex size-full min-w-[100vw] min-h-screen flex-col items-center justify-start select-none">
+      <div className="relative flex size-full min-w-[100vw] max-w-[100vw] min-h-screen flex-col items-center justify-start select-none">
         {/* Splash Screen Overlay */}
         {!isAdminPage && (!isLoaded || isAnimating) && (
           <>

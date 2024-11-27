@@ -30,7 +30,7 @@ const NewsletterFormClient: React.FC<{
 
   if (!mounted) {
     return (
-      <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[2rem] w-full lg:w-auto opacity-0">
+      <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] w-full lg:w-auto opacity-0">
         <h2 className="pn-bold-20">Subscribe to Newsletter</h2>
         <div className="flex w-full lg:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
       </div>
@@ -38,7 +38,7 @@ const NewsletterFormClient: React.FC<{
   }
 
   return (
-    <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[2rem] w-full lg:w-auto">
+    <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] w-full lg:w-auto">
       <h2 className="pn-bold-20">Subscribe to Newsletter</h2>
       <form
         onSubmit={onSubmit}
@@ -92,10 +92,10 @@ export default function Footer({
           <footer
             className={`${className} h-[40rem] md:h-[50rem] lg:h-[25rem] sticky top-[calc(100vh-40rem)] md:top-[calc(100vh-50rem)] lg:top-[calc(100vh-25rem)] bg-ash text-white`}
           >
-            <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[3.125rem]">
+            <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] lg:gap-[3.125rem]">
               <div className="flex flex-col lg:flex-row items-start justify-start lg:justify-between size-full max-w-[100dvw] gap-y-[1rem] lg:gap-y-[2rem]">
                 {/* Branding section */}
-                <div className="flex flex-col items-start justify-start gap-[2rem]">
+                <div className="flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem]">
                   <nav className="flex flex-row items-center gap-[0.5rem]">
                     <Image
                       src={logo}
@@ -106,7 +106,7 @@ export default function Footer({
                     />
                     <h1 className="pn-semibold-24">Virtual Xposure</h1>
                   </nav>
-                  <div className="flex flex-col items-start justify-start gap-[1.5rem]">
+                  <div className="flex flex-col items-start justify-start gap-[1rem] lg:gap-[1.5rem]">
                     <p className="pn-regular-20 text-white/75 pb-[1rem] lg:pb-[2.5rem]">
                       The Gold Standard in Real Estate Marketing
                     </p>
@@ -212,9 +212,9 @@ export default function Footer({
                 {/* Links section */}
                 <div className="flex flex-row w-full items-start justify-between lg:contents">
                   {/* Company Links */}
-                  <div className="flex flex-col w-full lg:w-auto items-start justify-start gap-[2rem]">
+                  <div className="flex flex-col w-full lg:w-auto items-start justify-start gap-[1rem] lg:gap-[2rem]">
                     <h2 className="pn-bold-20">Company</h2>
-                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1.5rem]">
+                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] lg:gap-[1.5rem]">
                       {FooterCompanyLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
@@ -228,9 +228,9 @@ export default function Footer({
                   </div>
 
                   {/* Help Links */}
-                  <div className="flex flex-col w-full lg:w-auto items-end text-end lg:text-start lg:items-start lg:justify-start gap-[2rem]">
+                  <div className="flex flex-col w-full lg:w-auto items-end text-end lg:text-start lg:items-start lg:justify-start gap-[1rem] lg:gap-[2rem]">
                     <h2 className="pn-bold-20">Help</h2>
-                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1.5rem]">
+                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] lg:gap-[1.5rem]">
                       {FooterHelpLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
@@ -262,10 +262,10 @@ export default function Footer({
 
       {/* Footer bottom section */}
       <div
-        className="flex flex-col lg:flex-row w-full !justify-between items-center gap-y-[1rem] lg:gap-y-[2rem] section-container bg-ash text-white !py-[2rem] select-none"
+        className="flex flex-col lg:flex-row w-full !justify-between items-center gap-y-[1rem] lg:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] lg:!py-[2rem] select-none"
         style={{ zIndex: 99999999999999 }}
       >
-        <p className="pn-regular-14">
+        <p className="pn-regular-14 text-center lg:text-start">
           © Copyright 2024, All Rights Reserved by VirtualXposure
         </p>
 

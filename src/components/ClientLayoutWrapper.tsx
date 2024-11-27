@@ -99,7 +99,7 @@ export default function ClientLayoutWrapper({
           content="FyVoyIhh_-5JEVZ3uQxsFMTLWF5UlcETjN7uZ_iC-eE"
         />
       </head>
-      <body className="antialiased h-screen overflow-hidden">{children}</body>
+      <body className="antialiased h-screen max-w-[100vw]">{children}</body>
     </html>
   );
 }

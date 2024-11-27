@@ -13,17 +13,17 @@ import { getChars } from "@/components/animations/GetChars";
 import logo from "@/../../public/images/logo-black-black.webp";
 // import chevronDown from "@/../../public/svgs/chevron-down.svg";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta-white.svg";
-import arrowRedirectBlack from "@/../../public/svgs/arrow-redirect-cta.svg";
+// import arrowRedirectBlack from "@/../../public/svgs/arrow-redirect-cta.svg";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
 const transition = { duration: 0.5, ease: [0.76, 0, 0.24, 1] };
 
-const opacity = {
-  initial: { opacity: 0 },
-  open: { opacity: 1, transition: { duration: 0.35 } },
-  closed: { opacity: 0, transition: { duration: 0.35 } },
-};
+// const opacity = {
+//   initial: { opacity: 0 },
+//   open: { opacity: 1, transition: { duration: 0.35 } },
+//   closed: { opacity: 0, transition: { duration: 0.35 } },
+// };
 
 const height = {
   initial: { height: 0 },
@@ -230,7 +230,7 @@ const MobileMenu: React.FC<{
         opacity: isActive ? 1 : 0,
       }}
       transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed left-0 top-[5.85rem] w-full bg-white/80 backdrop-blur-sm z-[1999] overflow-hidden"
+      className="fixed left-0 top-[3.85rem] w-full bg-white/80 backdrop-blur-sm z-[1999] overflow-hidden"
     >
       <div className="p-6 flex flex-col gap-6">
         {navigation.map((nav, index) => (
@@ -506,19 +506,19 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   // };
 
   return (
-    <div className="flex relative w-full">
+    <div className="fixed lg:relative flex z-[99999] w-full max-w-[100vw]">
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[2rem] lg:p-[0.438rem] lg:pl-[1.5rem] bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0`}
+        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[1rem] lg:p-[0.438rem] lg:pl-[1.5rem] bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0`}
       >
         {/* Original Header */}
-        <div className="relative flex size-full items-center justify-between gap-10">
+        <div className="relative flex size-full items-center justify-between gap-10 z-[9999]">
           {/* Logo */}
           <div className="cursor-select-hover relative lg:max-w-[10vw] ">
             <Link
               href={"/"}
-              className="flex size-full lg:h-[1.375rem] overflow-hidden"
+              className="flex size-full h-[1.85rem] lg:h-[1.375rem] overflow-hidden"
               passHref
             >
               <Image

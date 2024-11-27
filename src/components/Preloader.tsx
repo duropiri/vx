@@ -58,23 +58,26 @@ const Preloader: React.FC<PreloaderProps> = ({
     };
   }, [finishLoading]);
 
-  useEffect(() => {
-    if (isAnimating) {
-      document.body.classList.add("no-scroll");
-      document.body.style.height = "100vh";
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.classList.remove("no-scroll");
-      document.body.style.height = "auto";
-      document.body.style.overflow = "visible";
-    }
+  // useEffect(() => {
+  //   if (isAnimating) {
+  //     document.body.classList.add("no-scroll");
+  //     document.body.style.height = "100vh";
+  //     document.body.style.overflowY = "hidden";
+  //     document.body.style.overflowX = "hidden";
+  //   } else {
+  //     document.body.classList.remove("no-scroll");
+  //     document.body.style.height = "auto";
+  //     document.body.style.overflowY = "visible";
+  //     document.body.style.overflowX = "hidden";
+  //   }
 
-    return () => {
-      document.body.classList.remove("no-scroll");
-      document.body.style.height = "auto";
-      document.body.style.overflow = "visible";
-    };
-  }, [isAnimating]);
+  //   return () => {
+  //     document.body.classList.remove("no-scroll");
+  //     document.body.style.height = "auto";
+  //     document.body.style.overflowY = "visible";
+  //     document.body.style.overflowX = "hidden";
+  //   };
+  // }, [isAnimating]);
 
   useEffect(() => {
     if (loadingPercentage === 100) {

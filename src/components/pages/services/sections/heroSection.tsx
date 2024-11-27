@@ -135,7 +135,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {/* Content */}
-        <div className="relative z-10 section-container lg:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[10rem]">
+        <div className="relative z-10 section-container lg:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[5rem] lg:!pt-[10rem]">
           <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center lg:items-start justify-center gap-y-[2rem] lg:gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
@@ -151,12 +151,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 {detailList.map((detail, index) => (
                   <li
                     key={index}
-                    className="group flex flex-row items-center text-start gap-[0.5rem]"
+                    className="group flex flex-row items-center text-start gap-[1rem] lg:gap-[0.5rem]"
                   >
-                    <div className="w-[1rem] h-[1rem] text-white/80 group-hover:text-white">
+                    <div className="size-[4rem] lg:size-[1rem] text-white/80 group-hover:text-white">
                       {detail.icon}
                     </div>
-                    <div></div>
                     <p className="pn-regular-16 text-white/80 group-hover:text-white">
                       {detail.text}
                     </p>
@@ -166,8 +165,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             )}
 
             {/* CTA */}
-            <div className="flex h-[3.313rem] mt-[2rem]">
-              <div className="flex flex-col lg:flex-row gap-[1rem]">
+            <div className="flex h-[3.313rem] mt-[2rem] w-full">
+              <div className="flex flex-col lg:flex-row gap-[1rem] w-full">
                 <HoverWrapper
                   href={cta.href}
                   className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"

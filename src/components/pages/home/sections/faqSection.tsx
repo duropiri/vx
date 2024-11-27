@@ -9,7 +9,7 @@ import {
 import SectionHeader from "@/components/ui/sectionHeader";
 import {
   motion,
-  AnimatePresence,
+  // AnimatePresence,
   useInView,
   useAnimation,
 } from "framer-motion";
@@ -88,7 +88,7 @@ function FAQSection({ className }: SectionProps) {
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.2 }}
                   >
                     <AccordionItem
                       value={`item-${index}`}
