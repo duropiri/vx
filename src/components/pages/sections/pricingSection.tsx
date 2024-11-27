@@ -306,7 +306,7 @@ function PricingSection({ className, pricingPackages }: SectionProps) {
               isYearly
                 ? "bg-goldenbrown text-white"
                 : "bg-ash text-white line-through"
-            } py-[0.5rem] px-[1rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+            } py-[0.5rem] px-[0.5rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
           >
             17% Discount
           </div>

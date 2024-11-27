@@ -229,7 +229,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
       >
         <div
           ref={containerRef}
-          className="relative flex flex-col w-full items-end justify-start snap-section"
+          className="relative flex flex-col w-full items-end justify-start snap-section overflow-clip"
         >
           <div
             id="road"

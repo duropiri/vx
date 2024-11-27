@@ -41,7 +41,7 @@ function ServicesSection({ className }: SectionProps) {
   return (
     <div
       id="services"
-      className={`section-container !flex-row ${className} bg-white`}
+      className={`section-container !pt-[6rem] lg:!pt-[3.125rem] !flex-row ${className} bg-white`}
     >
       <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}

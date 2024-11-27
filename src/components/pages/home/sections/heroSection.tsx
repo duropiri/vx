@@ -19,10 +19,10 @@ import {
 import Link from "next/link";
 import Image from "next/image";
 import { getChars } from "@/components/animations/GetChars";
-import GsapMagnetic from "@/components/animations/GsapMagnetic";
+// import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { Reveal } from "@/components/animations/Reveal";
 import { GradientText } from "@/components/ui/gradientText";
-import CircleCTA from "@/components/ui/circleCTA";
+// import CircleCTA from "@/components/ui/circleCTA";
 
 import logo from "@/../../public/images/logo2.webp";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
@@ -193,7 +193,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
         // Hero CTA to Navdock transition
         if (
-          // !isMobile &&
+          !(window.innerWidth <= 768) &&
           heroCTARef.current &&
           navdockRef.current
         ) {
@@ -1023,7 +1023,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Navdock */}
         <div
           id="navdock"
-          className={`fixed flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
+          className={`fixed hidden lg:flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
         >
           <div
             ref={navdockRef}
@@ -1047,7 +1047,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
 
             {/* Navigation Links */}
-            <nav className="nav !hidden md:!flex flex-row gap-[1rem] lg:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white">
+            <nav className="nav flex flex-row gap-[1rem] lg:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white">
               {navigation.map((nav, index) => (
                 <HoverWrapper
                   key={index}
