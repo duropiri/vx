@@ -1,7 +1,7 @@
 export const socialMediaPackages = {
   strategicGrowth: {
     name: "Strategic Growth",
-    price: "1,795",
+    price: "995",
     billingCycle: "monthly",
     commitment: "No Contracts. Cancel Anytime.",
     features: [
@@ -35,7 +35,7 @@ export const socialMediaPackages = {
   },
   scalingMaestro: {
     name: "Scaling Maestro",
-    price: { monthly: "3,495", yearly: "2,995" },
+    price: { monthly: "1,995", yearly: "2,655" },
     billingCycle: "monthly",
     commitment: {
       monthly: "3 Month Commitment.",
@@ -94,7 +94,7 @@ export const socialMediaPackages = {
   },
   absoluteDomination: {
     name: "Absolute Domination",
-    price: { monthly: "6,995", yearly: "5,995" },
+    price: { monthly: "2,995", yearly: "2,485" },
     billingCycle: "monthly",
     commitment: {
       monthly: "3 Month Commitment.",

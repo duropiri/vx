@@ -127,7 +127,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           }`}
         />
         {/* Price */}
-        {/* <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
+        <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
           <h2 className="text-center pn-semibold-40">
             $
             {isYearly
@@ -137,7 +137,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           <p className="text-center text-goldenbrown pn-semibold-16">
             /{tier.billingCycle}
           </p>
-        </div> */}
+        </div>
         {/* Features */}
         <ul
           className={`custom-bullet-list ${
