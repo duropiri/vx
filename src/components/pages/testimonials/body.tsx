@@ -1,0 +1,69 @@
+"use client";
+import React, { useRef } from "react";
+import ContactSection from "@/components/pages/sections/contactSection";
+import StatsSection from "@/components/pages/sections/statsSection";
+import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
+import { useScroll } from "framer-motion";
+import { TestimonialsStats } from "@/data/stats";
+import CopySection from "@/components/pages/sections/copySection";
+import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
+import Image from "next/image";
+import csImage from "@/../../public/svgs/VX-Website-CS-Bar-1.svg";
+
+function Body() {
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+
+    offset: ["start start", "end end"],
+  });
+
+  return (
+    <>
+      <BasicHeroSection
+        heading="Testimonials"
+        subheading="Here's What Real Estate Professionals Are Saying"
+        content={
+          <>
+            <Image
+              src={csImage}
+              alt="hero-image"
+              width={1200}
+              height={600}
+              className="pointer-events-none"
+              quality={80}
+            />
+            <TestimonialsSection
+              noHeader
+              className="bg-white z-20 !p-0 !w-[100vw] lg:!w-full !-mx-[2rem] lg:!mx-0"
+            />
+          </>
+        }
+      />
+
+      <div ref={container} className="relative h-full bg-white min-w-[100vw]">
+        <StatsSection
+          shrinkSize={0.75}
+          rotationAmount={-15}
+          stats={TestimonialsStats}
+          className="z-0"
+          scrollYProgress={scrollYProgress}
+        />
+        <CopySection
+          scrollYProgress={scrollYProgress}
+          className="bg-white"
+          copy={
+            <>
+              We are what we repeatedly do. Excellence, therefore, is not an
+              act, but a<span className="text-goldenbrown italic">habit.</span>
+              <span className="pn-regular-16">– Aristotle</span>
+            </>
+          }
+        />
+      </div>
+      <ContactSection className="bg-white z-10" />
+    </>
+  );
+}
+
+export default Body;

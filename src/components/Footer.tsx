@@ -11,6 +11,7 @@ import masterCard from "@/../../public/svgs/mastercard.svg";
 import shopPay from "@/../../public/svgs/shop-pay.svg";
 import visa from "@/../../public/svgs/visa.svg";
 import { FooterCompanyLinks, FooterHelpLinks } from "@/data/navLinks";
+import Link from "next/link";
 
 interface ComponentProps {
   className?: string;
@@ -113,7 +114,7 @@ export default function Footer({
                     {/* Social links */}
                     <div className="flex flex-row items-center gap-[0.75rem] text-charcoal">
                       {/* Twitter */}
-                      <a href="https://x.com/virtualxposur3">
+                      <Link href="https://x.com/virtualxposur3" passHref>
                         <svg
                           width="36"
                           height="36"
@@ -131,10 +132,13 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </a>
+                      </Link>
 
                       {/* Facebook */}
-                      <a href="https://www.facebook.com/virtualxposureofficial/">
+                      <Link
+                        href="https://www.facebook.com/virtualxposureofficial/"
+                        passHref
+                      >
                         <svg
                           width="36"
                           height="36"
@@ -152,10 +156,13 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </a>
+                      </Link>
 
                       {/* Instagram */}
-                      <a href="https://www.instagram.com/virtualxposure/?hl=en">
+                      <Link
+                        href="https://www.instagram.com/virtualxposure/?hl=en"
+                        passHref
+                      >
                         <svg
                           width="36"
                           height="36"
@@ -181,7 +188,7 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </a>
+                      </Link>
 
                       {/* Ghithub */}
                       {/* <svg
@@ -218,10 +225,11 @@ export default function Footer({
                       {FooterCompanyLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
-                          href={nav.href}
                           className="cursor-select-hover"
                         >
-                          <FlipLink>{nav.title}</FlipLink>
+                          <Link href={nav.href} passHref>
+                            <FlipLink>{nav.title}</FlipLink>
+                          </Link>
                         </HoverWrapper>
                       ))}
                     </ul>
@@ -234,10 +242,11 @@ export default function Footer({
                       {FooterHelpLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
-                          href={nav.href}
                           className="cursor-select-hover"
                         >
-                          <FlipLink>{nav.title}</FlipLink>
+                          <Link href={nav.href} passHref>
+                            <FlipLink>{nav.title}</FlipLink>
+                          </Link>
                         </HoverWrapper>
                       ))}
                     </ul>

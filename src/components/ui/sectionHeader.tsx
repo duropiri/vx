@@ -12,6 +12,7 @@ interface SectionProps {
   small?: boolean;
   medium?: boolean;
   dark?: boolean;
+  largeText?: boolean;
   heading?: React.ReactNode | string;
   subheading?: React.ReactNode | string;
   body?: React.ReactNode | string;
@@ -32,6 +33,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       small = false,
       medium = false,
       dark = false,
+      largeText = false,
       heading,
       subheading,
       body,
@@ -54,7 +56,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         {heading && (
           <span
             ref={headingRef}
-            className={`subheading pn-semibold-16 ${headingClassName} ${
+            className={`subheading ${
+              largeText ? "pn-semibold-24" : "pn-semibold-16"
+            } ${headingClassName} ${
               dark ? "bg-charcoal text-goldenrod" : "bg-goldenbrown/25"
             }`}
           >
@@ -67,7 +71,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
             <div className="contents">
               <motion.h2
                 ref={subheadingRef}
-                className={`${subheadingClassName} hidden lg:block pn-semibold-48 capitalize leading-snug`}
+                className={`${subheadingClassName} hidden lg:block ${
+                  largeText ? "pn-regular-60" : "pn-semibold-48"
+                } capitalize leading-snug`}
                 initial={{ y: 20 }}
                 animate={{ y: 0 }}
                 exit={{ y: -20 }}
@@ -76,7 +82,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               </motion.h2>
               <motion.h2
                 ref={subheadingMobileRef}
-                className={`${subheadingClassName} lg:hidden pn-semibold-24 max-w-[24ch] capitalize leading-snug`}
+                className={`${subheadingClassName} lg:hidden ${
+                  largeText ? "pn-semibold-40" : "pn-semibold-24"
+                } max-w-[24ch] capitalize leading-snug`}
                 initial={{ y: 20 }}
                 animate={{ y: 0 }}
                 exit={{ y: -20 }}
@@ -91,7 +99,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
           <OpacityOnScroll end={80}>
             <p
               ref={bodyRef}
-              className={`${bodyClassName} pn-regular-16 max-w-[43.75rem]`}
+              className={`${bodyClassName} ${
+                largeText ? "pn-regular-22" : "pn-regular-16"
+              } max-w-[43.75rem]`}
             >
               {body}
             </p>

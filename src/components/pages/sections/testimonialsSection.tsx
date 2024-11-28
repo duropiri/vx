@@ -12,7 +12,7 @@ import "swiper/css/effect-cards";
 // import required modules
 import { EffectCards, Pagination, Navigation } from "swiper/modules";
 import { renderStars } from "@/components/ui/renderStars";
-import { Reveal } from "@/components/animations/Reveal";
+// import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
@@ -20,6 +20,7 @@ import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 interface SectionProps {
   className?: string;
   scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
+  noHeader?: boolean;
 }
 
 export interface Testimonial {
@@ -29,20 +30,24 @@ export interface Testimonial {
   rating: number;
 }
 
-function TestimonialsSection({ className }: SectionProps) {
+function TestimonialsSection({ className, noHeader = false }: SectionProps) {
   return (
     <div
       id="services"
-      className={`section-container !flex-col ${className} bg-white  overflow-x-hidden`}
+      className={`section-container !flex-col ${className} relative bg-white overflow-x-clip`}
     >
       <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
-        <SectionHeader
-          center
-          heading="Testimonials"
-          subheading="Here's what real estate professionals are saying"
-          body="Not yet 100% convinced? Hear what a few of the top real estate professionals have to say about us."
-        />
+        {!noHeader && (
+          <SectionHeader
+            center
+            heading="Testimonials"
+            subheading="Here's what real estate professionals are saying"
+            body="Not yet 100% convinced? Hear what a few of the top real estate professionals have to say about us."
+          />
+        )}
+
+        {/* Testimonial Carousel */}
         <div className="flex flex-col size-full mt-[5rem]">
           <Swiper
             effect={"cards"}
@@ -79,6 +84,8 @@ function TestimonialsSection({ className }: SectionProps) {
             ))}
           </Swiper>
         </div>
+
+        {/* CTA */}
         <div className="flex justify-center w-full h-[3.313rem] mt-[4rem]">
           <div className="flex flex-col lg:flex-row gap-[1rem]">
             <motion.div
@@ -98,7 +105,7 @@ function TestimonialsSection({ className }: SectionProps) {
             >
               <HoverWrapper
                 href="/testimonials"
-                className="flex w-full items-center px-[1.5rem] py-[0.5rem]"
+                className="flex size-full items-center px-[1.5rem] py-[0.5rem]"
               >
                 <FlipLink className={`flex items-center w-full`}>
                   View All Testimonials

@@ -219,7 +219,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           });
 
           // Hide elements on desktop, visible on mobile
-          gsap.set(["#logo", ".nav"], {
+          gsap.set(["#logo", "#nav"], {
             display: "none",
           });
 
@@ -269,9 +269,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               // Animate the navdock (to navdock final style)
               tl.to(navdock, {
                 background: "#1b1a17",
-                width:
-                  isMobile ? "16rem" :
-                  "42rem",
+                width: isMobile ? "16rem" : "42rem",
                 height: "3.313rem",
                 paddingLeft:
                   // isMobile ? "0px" :
@@ -292,6 +290,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               tl.fromTo(
                 "#logo",
                 {
+                  y: 0,
                   opacity: 0,
                   display: "none",
                 },
@@ -305,7 +304,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               // Animate nav items (from hidden to visible)
               tl.fromTo(
-                ".nav",
+                "#nav",
                 { y: 10, opacity: 0, display: "none" }, // Hidden state
                 {
                   y: 0,
@@ -331,41 +330,67 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               );
             },
             onLeaveBack: () => {
-              const tl = gsap.timeline();
+              // Kill any ongoing animations for these elements
+              gsap.killTweensOf(["#logo", "#nav"]);
 
-              gsap.set(["#logo", ".nav", "#navdock-cta"], {
-                opacity: 0,
-              });
-
-              gsap.set("#navdock-cta", {
+              // Immediately hide logo and nav with zero duration
+              gsap.set(["#logo", "#nav"], {
                 display: "none",
-                y: "3.5rem",
+                opacity: 0,
+                y: 0,
+                duration: 0,
+                immediate: true,
               });
 
-              // Animate the navdock back to its default state
+              // Create timeline for navdock transition
+              const tl = gsap.timeline({
+                onStart: () => {
+                  // Double-check elements are hidden at start
+                  gsap.set(["#logo", "#nav"], {
+                    display: "none",
+                    opacity: 0,
+                    immediate: true,
+                  });
+                  // Reset navdock
+                  tl.to(navdock, {
+                    display: "flex",
+                    padding: 0,
+                    width: "11rem",
+                    height: "3.313rem",
+                    background: "#1b1a17",
+                    duration: 0.3,
+                  });
+                },
+                onComplete: () => {
+                  // Triple-check elements are hidden after completion
+                  gsap.set(["#logo", "#nav"], {
+                    display: "none",
+                    opacity: 0,
+                    immediate: true,
+                  });
+                },
+              });
+
+              // Set initial states immediately
+              gsap.set("#navdock-cta", {
+                opacity: 0,
+                display: "none",
+                x: 0,
+                y: "3.5rem",
+                immediate: true,
+              });
+
+              // Reset navdock
               tl.to(navdock, {
                 display: "flex",
                 padding: 0,
-                width:
-                  // isMobile ? "100%" :
-                  "11rem",
+                width: "11rem",
                 height: "3.313rem",
-                background:
-                  // isMobile ? "#1b1a17" :
-                  "#1b1a17",
+                background: "#1b1a17",
+                duration: 0.3,
               });
 
-              // Hide the logo and nav items
-              tl.to(
-                ["#logo", ".nav"],
-                {
-                  display: "none",
-                  duration: 0.3,
-                },
-                "-=0.3"
-              );
-
-              // Reset navdock cta (reset to default state, HEROCTA STYLES)
+              // Reset CTA
               tl.to(
                 "#navdock-cta",
                 {
@@ -373,10 +398,52 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   opacity: 1,
                   y: 0,
                   backgroundColor: "transparent",
-                  duration: 0.5,
+                  duration: 0.3,
                 },
-                "-=0.5"
+                "-=0.3"
               );
+
+              // Add safety timeout to force reset if issues persist
+              setTimeout(() => {
+                // Final force reset of all elements
+                gsap.set(["#logo", "#nav"], {
+                  display: "none",
+                  opacity: 0,
+                  immediate: true,
+                });
+                gsap.set(navdock, {
+                  width: "11rem",
+                  height: "3.313rem",
+                  padding: 0,
+                  background: "#1b1a17",
+                  immediate: true,
+                });
+                gsap.set("#navdock-cta", {
+                  display: "flex",
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  backgroundColor: "transparent",
+                  immediate: true,
+                });
+              }, 500); // 500ms delay
+              // Add safety timeout to force reset if issues persist
+              setTimeout(() => {
+                // Final force reset of all elements
+                gsap.set(["#logo", "#nav"], {
+                  display: "none",
+                  opacity: 0,
+                  immediate: true,
+                });
+                gsap.set("#navdock-cta", {
+                  display: "flex",
+                  opacity: 1,
+                  x: 0,
+                  y: 0,
+                  backgroundColor: "transparent",
+                  immediate: true,
+                });
+              }, 1000); // 500ms delay
             },
           });
           // END PHASE 2
@@ -917,9 +984,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     />
                   ))}
                 </div>
-                <p className="pn-regular-16 text-white">
-                  500+ Agents Trust Us
-                </p>
+                <p className="pn-regular-16 text-white">500+ Agents Trust Us</p>
               </div>
             </Reveal>
             <div className="relative flex flex-col items-center justify-center my-auto">
@@ -1027,6 +1092,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         >
           <div
             ref={navdockRef}
+            id="inner-navdock"
             className={`flex flex-row items-center justify-between border-[0.125rem] border-ash lg:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
           >
             {/* Navdock Final Form */}
@@ -1047,7 +1113,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
 
             {/* Navigation Links */}
-            <nav className="nav flex flex-row gap-[1rem] lg:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white">
+            <nav
+              id="nav"
+              className="nav flex flex-row gap-[1rem] lg:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white"
+            >
               {navigation.map((nav, index) => (
                 <HoverWrapper
                   key={index}

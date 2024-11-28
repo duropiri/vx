@@ -34,6 +34,7 @@ export const socialMediaPackages = {
     ],
   },
   scalingMaestro: {
+    isPopular: true,
     name: "Scaling Maestro",
     price: { monthly: "1,995", yearly: "1,655" },
     billingCycle: "monthly",
@@ -93,6 +94,7 @@ export const socialMediaPackages = {
     ],
   },
   absoluteDomination: {
+    isPremium: true,
     name: "Absolute Domination",
     price: { monthly: "2,995", yearly: "2,485" },
     billingCycle: "monthly",
@@ -154,5 +156,284 @@ export const socialMediaPackages = {
         value: "$100",
       },
     ],
+  },
+};
+
+export const RealEstateHDRPhotographyPackages = {
+  starterPackage: {
+    name: "Starter Package",
+    price: "127.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "24 Hour Turnaround or FREE" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { quantity: "Unlimited", name: "SQ FT" },
+      { quantity: "Unlimited", name: "HDR Images" },
+      {
+        quantity: "FREE",
+        name: "Aerial Drone Images",
+      },
+      {
+        quantity: "FREE BONUS",
+        name: "Custom Property Website",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    cta: "Order Now",
+  },
+  deluxePackage: {
+    name: "Deluxe Package",
+    price: "247.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "24 Hour Turnaround or FREE" },
+      {
+        name: "Everything in",
+        details: "Starter Package",
+        inclusion: true,
+      },
+      { name: "iGuide ® Virtual 3D Tour" },
+      { name: "Weekly Analytics Report" },
+      { name: "RMS Measurement Report" },
+      {
+        quantity: "FREE",
+        name: "2D Schematic Floor Plan",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    cta: "Order Now",
+  },
+  socialMediaPackage: {
+    isPopular: true,
+    name: "Social Media Package",
+    price: "397.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "48 Hour Turnaround or FREE" },
+      {
+        name: "Everything in",
+        details: "Deluxe Package",
+        inclusion: true,
+      },
+      { name: "Social Media Video Tour" },
+      {
+        quantity: "FREE",
+        name: "Social Media Carousel",
+      },
+      {
+        quantity: "FREE",
+        name: "Social Media Thumbnail",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    cta: "Order Now",
+  },
+  cinematicPackage: {
+    isPremium: true,
+    name: "Cinematic Package",
+    price: "497.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "48 Hour Turnaround or FREE" },
+      {
+        name: "Everything in",
+        details: "Social Media Package",
+        inclusion: true,
+      },
+      { name: "Social Media Video Tour" },
+      {
+        quantity: "FREE",
+        name: "Social Media Carousel",
+      },
+      {
+        quantity: "FREE",
+        name: "Social Media Thumbnail",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    cta: "Order Now",
+  },
+};
+
+export const RealEstateVideographyPackages = {
+  starterPackage: {
+    name: "Starter Package",
+    price: "127.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "24 Hour Turnaround or FREE" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { quantity: "Unlimited", name: "SQ FT" },
+      { quantity: "Unlimited", name: "HDR Images" },
+      {
+        quantity: "FREE",
+        name: "Aerial Drone Images",
+      },
+      {
+        quantity: "FREE BONUS",
+        name: "Custom Property Website",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+  deluxePackage: {
+    name: "Deluxe Package",
+    price: "247.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "24 Hour Turnaround or FREE" },
+      {
+        name: "Everything in",
+        details: "Starter Package",
+        inclusion: true,
+      },
+      { name: "iGuide ® Virtual 3D Tour" },
+      { name: "Weekly Analytics Report" },
+      { name: "RMS Measurement Report" },
+      {
+        quantity: "FREE",
+        name: "2D Schematic Floor Plan",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+  socialMediaPackage: {
+    isPopular: true,
+    name: "Social Media Package",
+    price: "397.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "48 Hour Turnaround or FREE" },
+      {
+        name: "Everything in",
+        details: "Deluxe Package",
+        inclusion: true,
+      },
+      { name: "Social Media Video Tour" },
+      {
+        quantity: "FREE",
+        name: "Social Media Carousel",
+      },
+      {
+        quantity: "FREE",
+        name: "Social Media Thumbnail",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+  cinematicPackage: {
+    isPremium: true,
+    name: "Cinematic Package",
+    price: "497.99",
+    commitment: "Unlimited",
+    features: [
+      { name: "48 Hour Turnaround or FREE" },
+      {
+        name: "Everything in",
+        details: "Social Media Package",
+        inclusion: true,
+      },
+      { name: "Social Media Video Tour" },
+      { name: "Shareable Vimeo URL" },
+      {
+        quantity: "FREE",
+        name: "Custom YouTube Thumbnail",
+      },
+      {
+        name: "2X Money Back Guarantee",
+      },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+};
+
+export const VirtualStagingPackages = {
+  more5Package: {
+    name: "5 or more images",
+    price: "25",
+    billingCycle: "Image",
+    features: [
+      { name: "If you order 5 or more images" },
+      { name: "24 Hour Turnaround" },
+      { name: "100% Satisfaction Guarantee" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { name: "Top Tier Quality" },
+      { name: "SSL Secure Checkout" },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+  less5Package: {
+    name: "Less than 5 images",
+    price: "30",
+    billingCycle: "Image",
+    features: [
+      { name: "If you order less than 5 images" },
+      { name: "24 Hour Turnaround" },
+      { name: "100% Satisfaction Guarantee" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { name: "Top Tier Quality" },
+      { name: "SSL Secure Checkout" },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+};
+
+export const VirtualRennovationPackages = {
+  more5Package: {
+    name: "5 or more images",
+    price: "52.99",
+    billingCycle: "Image",
+    features: [
+      { name: "If you order 5 or more images" },
+      { name: "24 Hour Turnaround" },
+      { name: "100% Satisfaction Guarantee" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { name: "Top Tier Quality" },
+      { name: "SSL Secure Checkout" },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+  less5Package: {
+    name: "Less than 5 images",
+    price: "47.99",
+    billingCycle: "Image",
+    features: [
+      { name: "If you order less than 5 images" },
+      { name: "24 Hour Turnaround" },
+      { name: "100% Satisfaction Guarantee" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { name: "Top Tier Quality" },
+      { name: "SSL Secure Checkout" },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
   },
 };

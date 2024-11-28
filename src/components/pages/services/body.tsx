@@ -3,14 +3,16 @@ import React, { useEffect, useRef } from "react";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 
 import CTASection from "@/components/pages/services/sections/ctaSection";
-import FAQSection from "@/components/pages/services/sections/faqSection";
+import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
-import { useScroll } from "framer-motion";
-import { HeaderLinks } from "@/data/navLinks";
+// import { useScroll } from "framer-motion";
+// import { HeaderLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import WhyUsSection from "@/components/pages/services/sections/whyUsSection";
-import TestimonialsSection from "@/components/pages/services/sections/testimonialsSection";
+import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
 import HeroSection from "@/components/pages/services/sections/heroSection";
+import { listingMediaFAQ } from "@/data/faq";
+import PricingSection from "@/components/pages/sections/pricingSection";
 
 interface SectionProps {
   title: string;
@@ -23,6 +25,7 @@ interface SectionProps {
   socialproofSection?: boolean;
   ctaSection?: boolean;
   testimonialsSection?: boolean;
+  pricing?: any;
 }
 
 interface CTA {
@@ -45,15 +48,16 @@ function Body({
   socialproofSection,
   ctaSection,
   testimonialsSection,
+  pricing,
 }: SectionProps) {
-  const container = useRef<HTMLDivElement>(null);
+  // const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
 
-  const { scrollYProgress } = useScroll({
-    target: container,
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
 
-    offset: ["start start", "end end"],
-  });
+  //   offset: ["start start", "end end"],
+  // });
 
   useEffect(() => {
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
@@ -149,6 +153,13 @@ function Body({
 
         {/* Specific Pricing? */}
         {/* Pricing? */}
+        {pricing && (
+          <PricingSection
+            noSwitch
+            className="bg-white z-10"
+            pricingPackages={pricing}
+          />
+        )}
 
         {/* Why Us? */}
         {whyusSection && <WhyUsSection />}
@@ -165,7 +176,7 @@ function Body({
       </div>
       {/* Case Studies? */}
       <ContactSection className="bg-white z-10" />
-      <FAQSection className="bg-white z-10" />
+      <FAQSection faq={listingMediaFAQ} vertical className="bg-white z-10" />
     </>
   );
 }

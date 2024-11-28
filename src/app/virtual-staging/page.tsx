@@ -2,6 +2,7 @@ import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
 
 import { ServiceIcons } from "@/data/serviceIcons";
+import { VirtualStagingPackages } from "@/data/pricingPackages";
 
 // interface SectionProps {
 //   title: string;
@@ -48,6 +49,7 @@ const page = () => {
         socialproofSection
         ctaSection
         testimonialsSection
+        pricing={VirtualStagingPackages}
       />
     </Page>
   );

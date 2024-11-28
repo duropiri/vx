@@ -47,9 +47,7 @@ const page = () => {
 
   const Table = ({ data, title }) => (
     <div className="mb-8">
-      {title && (
-        <h3 className="text-xl font-bold text-gray-700 mb-4">{title}</h3>
-      )}
+      {title && <h3 className="text-xl font-bold mb-4">{title}</h3>}
       <div className="overflow-x-auto">
         <table className="w-full border-collapse">
           <thead>
@@ -79,13 +77,13 @@ const page = () => {
 
   return (
     <Page>
-      <div id="contract" className={`section-container !flex-row `}>
-        <div className="max-w-4xl mx-auto px-4 py-8">
-          <h1 className="text-3xl font-bold text-gray-700 text-center mb-8">
+      <div id="privacy-policy" className={`section-container !flex-row `}>
+        <div className="relative flex size-full max-w-[87.5rem] flex-col items-center justify-between gap-[1.5rem] lg:gap-[3.75rem]">
+          <h1 className="pn-bold-48 text-center mb-8">
             Privacy Policy
           </h1>
 
-          <p className="mb-8 text-gray-600">
+          <p className="mb-8">
             This Privacy Policy describes how virtual exposure.ca (the
             &quot;Site&quot; or &quot;we&quot;) collects, uses, and discloses
             your Personal Information when you visit or make a purchase from the
@@ -93,10 +91,10 @@ const page = () => {
           </p>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">
+            <h2 className="pn-semibold-40 mb-4">
               Collecting Personal Information
             </h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4">
               When you visit the Site, we collect certain information about your
               device, your interaction with the Site, and information necessary
               to process your purchases. We may also collect additional
@@ -108,10 +106,8 @@ const page = () => {
             </p>
 
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">
-                Device information
-              </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray-600">
+              <h3 className="text-xl font-bold mb-2">Device information</h3>
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <span className="font-bold">
                     Examples of Personal Information collected:
@@ -140,10 +136,8 @@ const page = () => {
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">
-                Order information
-              </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray-600">
+              <h3 className="text-xl font-bold mb-2">Order information</h3>
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <span className="font-bold">
                     Examples of Personal Information collected:
@@ -176,10 +170,10 @@ const page = () => {
             </div>
 
             <div className="mb-6">
-              <h3 className="text-xl font-bold text-gray-700 mb-2">
+              <h3 className="text-xl font-bold mb-2">
                 Customer support information
               </h3>
-              <ul className="list-disc pl-6 space-y-2 text-gray-600">
+              <ul className="list-disc pl-6 space-y-2">
                 <li>
                   <span className="font-bold">Purpose of collection:</span> to
                   provide customer support.
@@ -193,15 +187,15 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">
+            <h2 className="pn-semibold-40 mb-4">
               Sharing Personal Information
             </h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4">
               We share your Personal Information with service providers to help
               us provide our services and fulfill your contracts with us, as
               described above. For example:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-600">
+            <ul className="list-disc pl-6 space-y-2">
               <li>
                 We use Shopify to power our online store. You can read more
                 about how Shopify uses your Personal Information here:{" "}
@@ -223,15 +217,13 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">
-              Behavioral Advertising
-            </h2>
-            <p className="mb-4 text-gray-600">
+            <h2 className="pn-semibold-40 mb-4">Behavioral Advertising</h2>
+            <p className="mb-4">
               As described above, we use your Personal Information to provide
               you with targeted advertisements or marketing communications we
               believe may be of interest to you. For example:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-600 mb-4">
+            <ul className="list-disc pl-6 space-y-2 mb-4">
               <li>
                 We use Google Analytics to help us understand how our customers
                 use the Site. You can read more about how Google uses your
@@ -250,10 +242,10 @@ const page = () => {
                 advertising partners.
               </li>
             </ul>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4">
               You can opt-out of targeted advertising by:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-600">
+            <ul className="list-disc pl-6 space-y-2">
               <li>
                 <span className="font-bold">FACEBOOK</span> -{" "}
                 <a
@@ -285,25 +277,23 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">
+            <h2 className="pn-semibold-40 mb-4">
               Using Personal Information
             </h2>
-            <p className="mb-4 text-gray-600">
+            <p className="mb-4">
               We use your personal information to provide our services to you,
               which includes offering products for sale, processing payment,
               shipping and fulfillment of your order, and keeping you up to date
               on new products, services, and offers.
             </p>
-            <h3 className="text-xl font-bold text-gray-700 mb-2">
-              Lawful basis
-            </h3>
-            <p className="mb-4 text-gray-600">
+            <h3 className="text-xl font-bold mb-2">Lawful basis</h3>
+            <p className="mb-4">
               Pursuant to the General Data Protection Regulation
               (&quot;GDPR&quot;), if you are a resident of the European Economic
               Area (&quot;EEA&quot;), we process your personal information under
               the following lawful bases:
             </p>
-            <ul className="list-disc pl-6 space-y-2 text-gray-600">
+            <ul className="list-disc pl-6 space-y-2">
               <li>Your consent;</li>
               <li>The performance of the contract between you and the Site;</li>
               <li>Compliance with our legal obligations;</li>
@@ -317,25 +307,23 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">Cookies</h2>
-            <p className="mb-4 text-gray-600">
+            <h2 className="pn-semibold-40 mb-4">Cookies</h2>
+            <p className="mb-4">
               A cookie is a small amount of information that&apos;s downloaded
               to your computer or device when you visit our Site. We use a
               number of different cookies, including functional, performance,
               advertising, and social media or content cookies.
             </p>
 
-            <h3 className="text-xl font-bold text-gray-700 mb-4">
+            <h3 className="text-xl font-bold mb-4">
               Cookies Necessary for the Functioning of the Store
             </h3>
             <Table data={cookieTable} title={undefined} />
 
-            <h3 className="text-xl font-bold text-gray-700 mb-4">
-              Reporting and Analytics
-            </h3>
+            <h3 className="text-xl font-bold mb-4">Reporting and Analytics</h3>
             <Table data={analyticsTable} title={undefined} />
 
-            <p className="text-gray-600 mt-6">
+            <p className="mt-6">
               The length of time that a cookie remains on your computer or
               mobile device depends on whether it is a &quot;persistent&quot; or
               &quot;session&quot; cookie. Session cookies last until you stop
@@ -345,7 +333,7 @@ const page = () => {
               to your device.
             </p>
 
-            <p className="text-gray-600 mt-4">
+            <p className="mt-4">
               You can control and manage cookies in various ways. Please keep in
               mind that removing or blocking cookies can negatively impact your
               user experience and parts of our website may no longer be fully
@@ -354,10 +342,8 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">
-              Do Not Track
-            </h2>
-            <p className="text-gray-600">
+            <h2 className="pn-semibold-40 mb-4">Do Not Track</h2>
+            <p className="">
               Please note that because there is no consistent industry
               understanding of how to respond to &quot;Do Not Track&quot;
               signals, we do not alter our data collection and usage practices
@@ -366,8 +352,8 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">Changes</h2>
-            <p className="text-gray-600">
+            <h2 className="pn-semibold-40 mb-4">Changes</h2>
+            <p className="">
               We may update this Privacy Policy from time to time in order to
               reflect, for example, changes to our practices or for other
               operational, legal, or regulatory reasons.
@@ -375,20 +361,20 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-700 mb-4">Contact</h2>
-            <p className="text-gray-600 mb-4">
+            <h2 className="pn-semibold-40 mb-4">Contact</h2>
+            <p className="mb-4">
               For more information about our privacy practices, if you have
               questions, or if you would like to make a complaint, please
               contact us by email at{" "}
               <a
-                href="mailto:info@virtualxosure.ca"
+                href="mailto:info@virtualxposure.ca"
                 className="text-blue-600 hover:text-blue-800"
               >
-                info@virtualxosure.ca
+                info@virtualxposure.ca
               </a>
             </p>
-            <p className="text-gray-600 mb-4">Last updated: [12/20/2021]</p>
-            <p className="text-gray-600">
+            <p className="mb-4">Last updated: [12/20/2021]</p>
+            <p className="">
               If you are not satisfied with our response to your complaint, you
               have the right to lodge your complaint with the relevant data
               protection authority. You can contact your local data protection

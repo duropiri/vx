@@ -2,31 +2,31 @@
 import React, { useEffect, useRef } from "react";
 import HeroSection from "@/components/pages/home/sections/heroSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
-import CopySection from "@/components/pages/home/sections/copySection";
+import CopySection from "@/components/pages/sections/copySection";
 import ProblemSection from "@/components/pages/home/sections/problemSection";
-import StatsSection from "@/components/pages/home/sections/statsSection";
+import StatsSection from "@/components/pages/sections/statsSection";
 import SolutionSection from "@/components/pages/home/sections/solutionSection";
 import ServicesSection from "@/components/pages/home/sections/servicesSection";
 import RoadmapSection from "@/components/pages/home/sections/roadmapSection";
 import PricingSection from "@/components/pages/sections/pricingSection";
 import CTASection from "@/components/pages/home/sections/ctaSection";
-import FAQSection from "@/components/pages/home/sections/faqSection";
+import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
 import { useScroll } from "framer-motion";
 import { HeaderLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import { socialMediaPackages } from "@/data/pricingPackages";
+import { HomePageStats } from "@/data/stats";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
-  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-
   const { scrollYProgress } = useScroll({
     target: container,
 
     offset: ["start start", "end end"],
   });
 
+  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
   useEffect(() => {
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
     // const heroSection = sectionRefs.current[0];
@@ -162,9 +162,12 @@ function Body() {
       />
 
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
-        <StatsSection className="" scrollYProgress={scrollYProgress} />
-        <CopySection
+        <StatsSection
+          stats={HomePageStats}
+          className=""
           scrollYProgress={scrollYProgress}
+        />
+        <CopySection
           className="bg-white z-10"
           copy={
             <>

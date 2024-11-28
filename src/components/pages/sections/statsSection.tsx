@@ -3,10 +3,21 @@ import React, { useRef } from "react";
 import CountUp from "react-countup";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import { HomePageStats } from "@/data/stats";
+
+interface Stat {
+  value: number;
+  unit: string;
+  description: string;
+  source?: string;
+}
 
 interface SectionProps {
   className?: string;
   scrollYProgress: MotionValue<number>;
+  stats?: Stat[];
+  shrinkSize?: number;
+  rotationAmount?: number;
 }
 
 /**
@@ -23,16 +34,29 @@ interface SectionProps {
 function StatsSection({
   className,
   scrollYProgress,
+  stats = HomePageStats,
+  shrinkSize = 0,
+  rotationAmount = -45,
 }: SectionProps): React.JSX.Element {
+  const isLongFormat = stats.length >= 4; // Use 2x2 grid for 4 stats, else use single row
+  // Helper function to chunk array into pairs
+  const getPairs = (arr: Stat[]): Stat[][] => {
+    const pairs: Stat[][] = [];
+    for (let i = 0; i < arr.length; i += 2) {
+      pairs.push(arr.slice(i, i + 2));
+    }
+    return pairs;
+  };
+
   const { ref: countUpRef, inView } = useInView({
     triggerOnce: false, // Trigger the animation only once
     threshold: 0.005, // Trigger when 5% of the element is visible
   });
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, shrinkSize]);
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, -45]);
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, rotationAmount]);
 
   const blur = useTransform(
     scrollYProgress,
@@ -295,56 +319,61 @@ function StatsSection({
           ref={countUpRef}
           className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[1.5rem] text-white"
         >
-          <div className="flex flex-row size-full h-full items-start justify-between gap-x-[3.125rem]">
-            <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
-              <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-                <h1 className="pn-regular-60">
-                  {inView ? <CountUp end={89} duration={2} /> : 0}%
-                </h1>
-                <p className="pn-regular-18">
-                  of new home shoppers use a mobile search engine throughout
-                  their research.
-                </p>
-              </div>
-              <p className="pn-regular-14">NAR</p>
-            </div>
-            <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
-              <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-                <h1 className="pn-regular-60">
-                  {inView ? <CountUp end={58} duration={2} /> : 0}%
-                </h1>
-                <p className="pn-regular-18">
-                  of all website visits to real estate websites are from mobile
-                  devices.
-                </p>
-              </div>
-              <p className="pn-regular-14">NAR</p>
-            </div>
-          </div>
-          <div className="relative flex flex-row size-full h-full items-start justify-between gap-x-[3.125rem]">
-            <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
-              <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-                <h1 className="pn-regular-60">
-                  {inView ? <CountUp end={47} duration={2} /> : 0}%
-                </h1>
-                <p className="pn-regular-18">
-                  of homebuyers in the past two years made an offer without
-                  physically touring a home.
-                </p>
-              </div>
-              <p className="pn-regular-14">Landing Tree</p>
-            </div>
-            <div className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white">
-              <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-                <h1 className="pn-regular-60">
-                  {inView ? <CountUp end={24} duration={2} /> : 0}%
-                </h1>
-                <p className="pn-regular-18">
-                  of current homebuyers report they bought a home sight unseen.
-                </p>
-              </div>
-              <p className="pn-regular-14">Quora</p>
-            </div>
+          <div
+            className={`${
+              isLongFormat
+                ? "flex flex-col gap-y-[3.125rem]"
+                : "grid grid-cols-1 md:grid-cols-3 gap-[6rem]"
+            } w-full`}
+          >
+            {isLongFormat
+              ? // Two column layout for 4+ stats
+                getPairs(stats).map((pair, pairIndex) => (
+                  <div
+                    key={pairIndex}
+                    className="flex flex-row size-full h-full items-start justify-between gap-x-[3.125rem]"
+                  >
+                    {pair.map((stat, index) => (
+                      <div
+                        key={`${pairIndex}-${index}`}
+                        className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white"
+                      >
+                        <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
+                          <h1 className="pn-regular-60">
+                            {inView ? (
+                              <CountUp end={stat.value} duration={2} />
+                            ) : (
+                              0
+                            )}
+                            {stat.unit}
+                          </h1>
+                          <p className="pn-regular-18">{stat.description}</p>
+                        </div>
+                        {stat.source && (
+                          <p className="pn-regular-14">{stat.source}</p>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                ))
+              : // Single row grid for 3 or fewer stats
+                stats.map((stat, index) => (
+                  <div
+                    key={index}
+                    className="flex flex-col self-stretch items-start justify-start pb-3 gap-3 border-b border-white"
+                  >
+                    <div className="flex flex-col w-full items-start justify-start gap-3">
+                      <h1 className="pn-regular-60">
+                        {inView ? <CountUp end={stat.value} duration={2} /> : 0}
+                        {stat.unit}
+                      </h1>
+                      <p className="pn-regular-18">{stat.description}</p>
+                    </div>
+                    {stat.source && (
+                      <p className="pn-regular-14">{stat.source}</p>
+                    )}
+                  </div>
+                ))}
           </div>
         </div>
       </motion.div>

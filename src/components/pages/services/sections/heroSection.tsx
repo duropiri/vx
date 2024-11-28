@@ -1,10 +1,16 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 // import { Reveal } from "@/components/animations/Reveal";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
+// import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import React, { forwardRef, RefObject, useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React, {
+  forwardRef,
+  RefObject,
+  useEffect,
+  // useState
+} from "react";
+// import { motion } from "framer-motion";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
 
@@ -35,10 +41,10 @@ interface DetailItem {
 const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
   (
     {
-      className = "",
-      full = false,
-      originalColor = "#FFFFFF",
-      transitionColor = "#FFFFFF",
+      // className = "",
+      // full = false,
+      // originalColor = "#FFFFFF",
+      // transitionColor = "#FFFFFF",
       id,
       title,
       copy,
@@ -48,7 +54,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     },
     ref
   ) => {
-    const [color] = useState(originalColor);
+    // const [color] = useState(originalColor);
     // GSAP Animations
     useEffect(() => {
       const loadGSAP = async () => {
@@ -135,11 +141,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {/* Content */}
-        <div className="relative z-10 section-container lg:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[5rem] lg:!pt-[10rem]">
+        <div className="relative z-10 section-container lg:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[8rem] lg:!pt-[10rem]">
           <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center lg:items-start justify-center gap-y-[2rem] lg:gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
-              small
+              medium
+              largeText
               subheading={title}
               body={<>{copy}</>}
               className="text-white" // Add light text color
@@ -185,7 +192,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
           </div>
           {/* Gradient */}
-          <div className="absolute inset-0 size-full h-[120%] flex flex-col w-full h-[120%] origin-top-left bg-gradient-to-l from-transparent from-50% via-ash/50 via-75% to-ash to-100%  pointer-events-none" />
+          <div className="absolute inset-0 flex flex-col w-full h-[120%] origin-top-left bg-gradient-to-l from-transparent from-30% via-ash/50 via-45% to-ash to-100%  pointer-events-none" />
         </div>
       </div>
     );

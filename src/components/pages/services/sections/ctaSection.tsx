@@ -40,7 +40,7 @@ function CTASection({ className = "" }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button group cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
@@ -51,7 +51,7 @@ function CTASection({ className = "" }: SectionProps) {
             />
           </HoverWrapper>
           <motion.div
-            className={`button text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
+            className={`button text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-none w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
             style={{
               background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
               backgroundSize: "300% 100%",

@@ -32,15 +32,15 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
   // const [isEnter, setIsEnter] = useState(false);
   // const [isExit, setIsExit] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
+  // const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
   
-  const handleInitialAnimationComplete = () => {
-    setIsInitialAnimationDone(true);
-  };
+  // const handleInitialAnimationComplete = () => {
+  //   setIsInitialAnimationDone(true);
+  // };
 
-  const handleExitAnimationComplete = () => {
-    setIsVisible(false);
-  };
+  // const handleExitAnimationComplete = () => {
+  //   setIsVisible(false);
+  // };
 
   const handleAnimationComplete = () => {
     setIsVisible(false); // Set isVisible to false after the animation completes

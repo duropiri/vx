@@ -47,6 +47,9 @@ export default function CustomCursor() {
     const handleSelectHover = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLElement;
       const scale = target.getAttribute("data-scale") || "0.4";
+      if (followerTextRef.current) {
+        followerTextRef.current.innerHTML = "";
+      }
       gsap.to(cursorRef.current, {
         scale: parseFloat(scale),
         backgroundColor: "white",
@@ -99,9 +102,9 @@ export default function CustomCursor() {
       });
     };
 
-    const handleSwipeHover = (e: MouseEvent) => {
+    const handleDragHover = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLElement;
-      const text = target.getAttribute("data-follower-text") || "Swipe";
+      const text = target.getAttribute("data-follower-text") || "Drag";
       const scale = target.getAttribute("data-scale") || "1.7";
       if (followerTextRef.current) {
         followerTextRef.current.innerHTML = text;
@@ -190,10 +193,10 @@ export default function CustomCursor() {
           el.addEventListener("mouseleave", handleMouseLeaveReset);
         });
 
-        document
+      document
         .querySelectorAll<HTMLElement>(".cursor-swipe-hover")
         .forEach((el) => {
-          el.addEventListener("mouseenter", handleSwipeHover);
+          el.addEventListener("mouseenter", handleDragHover);
           el.addEventListener("mouseleave", handleMouseLeaveReset);
         });
 
@@ -245,7 +248,7 @@ export default function CustomCursor() {
           el.removeEventListener("mouseenter", handleSelectHover);
           el.removeEventListener("mouseenter", handleNoneHover);
           el.removeEventListener("mouseenter", handleViewHover);
-          el.removeEventListener("mouseenter", handleSwipeHover);
+          el.removeEventListener("mouseenter", handleDragHover);
           el.removeEventListener("mouseenter", handlePlayHover);
           el.removeEventListener("mouseleave", handleMouseLeaveReset);
           el.removeEventListener("click", handlePlayClick);

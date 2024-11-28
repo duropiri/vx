@@ -9,18 +9,25 @@ import {
 import SectionHeader from "@/components/ui/sectionHeader";
 import {
   motion,
-  AnimatePresence,
+  // AnimatePresence,
   useInView,
   useAnimation,
 } from "framer-motion";
 
-import { listingMediaFAQ } from "@/data/faq";
-
 interface SectionProps {
   className?: string;
+  vertical?: boolean;
+  faq?: FAQProps[];
 }
 
-function FAQSection({ className }: SectionProps) {
+interface FAQProps {
+  question: string;
+  answer: string;
+}
+
+import { FAQ } from "@/data/faq";
+
+function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const controls = useAnimation();
@@ -50,10 +57,15 @@ function FAQSection({ className }: SectionProps) {
 
   return (
     <div className={`section-container !flex-row ${className}`}>
-      <div className="relative flex flex-col size-full max-w-[87.5rem] justify-between gap-[4.375rem] items-center">
+      <div
+        className={`relative flex flex-col ${
+          vertical ? "items-center" : "lg:flex-row items-start"
+        } size-full max-w-[87.5rem] justify-between gap-[4.375rem]`}
+      >
         {/* Header */}
         <SectionHeader
-          center
+          center={vertical}
+          small={!vertical}
           heading="Got Questions?"
           subheading="Frequently Asked Questions"
           body={
@@ -81,13 +93,14 @@ function FAQSection({ className }: SectionProps) {
               variants={containerVariants}
               initial="hidden"
               animate={controls}
+              whileInView="visible"
               className="flex flex-col size-full gap-[0.5rem]"
             >
-              {listingMediaFAQ.map((_, index) => (
+              {faq.map((_, index) => (
                 <motion.div
                   key={index}
                   variants={itemVariants}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.2 }}
                 >
                   <AccordionItem
                     value={`item-${index}`}

@@ -2,6 +2,7 @@ import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
 
 import { ServiceIcons } from "@/data/serviceIcons";
+import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 
 // interface SectionProps {
 //   title: string;
@@ -36,7 +37,10 @@ const page = () => {
             icon: ServiceIcons.thumb,
             text: "Results Oriented - Helping you to achieve a higher sales price; sell your listings faster, and provide stand-out results for your clients.",
           },
-          { icon: ServiceIcons.timer, text: "48 Hour Turnaround - Time is money. Launch your listing within two days after our scheduled appointment." },
+          {
+            icon: ServiceIcons.timer,
+            text: "48 Hour Turnaround - Time is money. Launch your listing within two days after our scheduled appointment.",
+          },
           {
             icon: ServiceIcons.guarantee,
             text: "2X Money Back Guarantee - If you're not completely blown away, we'll double your investment in our services.",
@@ -48,6 +52,7 @@ const page = () => {
         socialproofSection
         ctaSection
         testimonialsSection
+        pricing={RealEstateVideographyPackages}
       />
     </Page>
   );

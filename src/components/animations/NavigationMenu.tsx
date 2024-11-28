@@ -14,6 +14,7 @@ import logo from "@/../../public/images/logo-black-black.webp";
 // import chevronDown from "@/../../public/svgs/chevron-down.svg";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta-white.svg";
 // import arrowRedirectBlack from "@/../../public/svgs/arrow-redirect-cta.svg";
+import { usePathname } from "next/navigation";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 
@@ -404,6 +405,8 @@ const MobileMenu: React.FC<{
 // };
 
 const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
   const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
     null
   );
@@ -431,82 +434,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     //   setActiveDropdown(null);
     // }
   };
-  // const [isScrolled, setIsScrolled] = useState(false);
-  // const [isBottom, setIsBottom] = useState(false);
-  // const [isMobile, setIsMobile] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
-  //   };
-
-  //   // Check if the user is at the bottom of the page
-  //   const handleScroll = () => {
-  //     const scrollTop = window.scrollY;
-  //     const windowHeight = window.innerHeight;
-  //     const documentHeight = document.documentElement.scrollHeight;
-
-  //     // Detect when user reaches the bottom of the page
-  //     setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
-
-  //     // Set isScrolled for animation purposes
-  //     setIsScrolled(
-  //       scrollTop > 50 && scrollTop + windowHeight < documentHeight
-  //     );
-  //   };
-
-  //   // Initial setup
-  //   handleResize();
-  //   handleScroll();
-
-  //   // Event listeners for scroll and resize
-  //   window.addEventListener("resize", handleResize);
-  //   window.addEventListener("scroll", handleScroll);
-
-  //   // Cleanup event listeners
-  //   return () => {
-  //     window.removeEventListener("resize", handleResize);
-  //     window.removeEventListener("scroll", handleScroll);
-  //   };
-  // }, []);
-
-  // Define animation variants
-  // const navdockVariants = (isMobile: any) => ({
-  //   hidden: {
-  //     width: isMobile ? "auto" : "3.5rem", // No width animation on mobile, "3.5rem" on desktop
-  //     opacity: 0,
-  //     transition: { duration: 0 },
-  //   },
-  //   expanded: {
-  //     width: isMobile ? "100%" : "auto", // Keep auto width but remove width animation on mobile
-  //     opacity: 1,
-  //     transition: {
-  //       duration: isMobile ? 0 : 0.5, // No animation on mobile
-  //       when: "beforeChildren",
-  //       staggerChildren: 0,
-  //     },
-  //   },
-  // });
-
-  // const logoVariants = (isMobile: any) => ({
-  //   hidden: {
-  //     x: isMobile ? 0 : 150, // No x animation on mobile
-  //     width: "2.25rem",
-  //     transition: { duration: 0 },
-  //   },
-  //   expanded: {
-  //     x: isMobile ? 0 : 0, // No x animation on mobile
-  //     transition: { duration: isMobile ? 0 : 0.5 },
-  //   },
-  // });
-
-  // const itemVariants = {
-  //   hidden: { opacity: 0, y: 0, transition: { duration: 0 } },
-  //   visible: { opacity: 1, y: 0, transition: { delay: 0, duration: 0.5 } },
-  // };
 
   return (
-    <div className="fixed lg:relative flex z-[99999] w-full max-w-[100vw]">
+    <div
+      className={`${
+        isHomePage ? "fixed lg:relative" : "fixed"
+      } flex z-[99999] w-full max-w-[100vw]`}
+    >
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
@@ -552,35 +486,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                     )}
                   </Link>
                 </HoverWrapper>
-                {/* Dropdown Menu */}
-                {/* {nav.dropdown && (
-                  <div className="absolute invisible group-hover:visible opacity-0 group-hover:opacity-100 left-1/2 -translate-x-1/2 top-[2rem] w-screen bg-white border-t border-gray-200 shadow-lg transition-all duration-200">
-                    <div className="flex flex-col bg-white rounded-lg shadow-lg p-4 w-full gap-[1rem]">
-                      {nav.dropdown.items.map((item, itemIndex) => (
-                        <Link
-                          key={itemIndex}
-                          href={item.href}
-                          passHref
-                          className="flex justify-center items-center w-full rounded-lg"
-                        >
-                          <div className="cursor-select-hover button !bg-ash !border-goldenbrown hover:!bg-charcoal hover:-translate-y-1 transition-all !p-[1rem] !rounded-lg size-full">
-                            <div className="flex flex-col items-center justify-center text-white gap-[0.5rem]">
-                              <Image
-                                src={item.icon}
-                                alt={item.title}
-                                height={20}
-                                className="text-white"
-                              />
-                              <div className="w-full text-center font-medium">
-                                {item.title}
-                              </div>
-                            </div>
-                          </div>
-                        </Link>
-                      ))}
-                    </div>{" "}
-                  </div>
-                )} */}
               </div>
             ))}
 
@@ -620,7 +525,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 }`}
               />
             </div>
-            {/* <span className="pn-regular-16">{isActive ? "Close" : "Menu"}</span> */}
           </div>
 
           {/* Mobile Menu */}
@@ -636,9 +540,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           {activeDropdown && <Nav activeDropdown={activeDropdown} />}
         </AnimatePresence>
       </div>
-
-      {/* Spacer to prevent content from hiding under fixed header */}
-      {/* <div className="h-[44px]" /> */}
 
       {/* Backdrop */}
       <AnimatePresence>
