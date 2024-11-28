@@ -78,9 +78,9 @@ function RoadmapSection({ className }: SectionProps) {
 
   return (
     <div
-      className={`section-container !flex-row ${className} overflow-hidden !pb-0 mb-[3.125rem] lg:mb-[6.25rem]`}
+      className={`section-container !flex-row ${className} overflow-hidden !pb-0 mb-[3.125rem] sm:mb-[6.25rem]`}
     >
-      <div className="relative flex size-full flex-col items-start justify-between lg:gap-0">
+      <div className="relative flex size-full flex-col items-start justify-between sm:gap-0">
         {/* Header */}
         <SectionHeader
           center
@@ -91,11 +91,11 @@ function RoadmapSection({ className }: SectionProps) {
             </>
           }
           body="Our 90-Day Growth Plan is designed to rapidly increase your real estate brand's visibility and engagement through a customized content strategy, social media management, and lead generation. In just 90 days, you'll see measurable growth in online presence and leads, giving you a competitive edge in the market."
-          className="bg-white z-10 pb-[10rem] lg:pb-[3.75rem]"
+          className="bg-white z-10 pb-[10rem] sm:pb-[3.75rem]"
         />
 
         {/* Content */}
-        <div className="relative flex flex-col size-full items-center justify-center lg:min-h-[400vh]">
+        <div className="relative flex flex-col size-full items-center justify-center sm:min-h-[400vh]">
           {/* Gradient Top */}
           <div className="pointer-events-none absolute z-10 top-0 w-[100dvw] h-[7.5rem] bg-gradient-to-b from-white to-transparent" />
           {/* Gradient Bottom */}
@@ -117,7 +117,7 @@ function RoadmapSection({ className }: SectionProps) {
                 viewBox="0 0 1572 4394"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="w-[300dvw] lg:w-[100dvw] h-[300vh] lg:h-[420vh]"
+                className="w-[300dvw] sm:w-[100dvw] h-[300vh] sm:h-[420vh]"
               >
                 <path
                   d="M811 20.5C811 20.5 740.499 997.501 1250.5 1019.5C1749.5 1000.9 1705 563 1284.5 563C863.999 563 383.5 966 549.5 1460.5C715.5 1955 1564.64 1229 1579 1792.5C1593.35 2356 433.999 2047.79 221 2248.64C8.00008 2449.5 237 2637.5 668.5 2665.5C1100 2693.5 1164.5 2337 934 2379C703.5 2421 -21.5 2811.5 22 3093.5C65.5 3375.5 287 3435.5 550 3216.5C813 2997.5 772 3514.5 1131.5 3314C1491 3113.5 1664 3578 1284.5 3685C904.999 3792 -149.5 4406 155.5 3834.5C460.5 3263 884.5 4873.5 884.5 4873.5"
@@ -146,9 +146,9 @@ function RoadmapSection({ className }: SectionProps) {
           </div>
 
           {/* Steps Copy */}
-          <div className="flex flex-col size-full lg:min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10 snap-y">
+          <div className="flex flex-col size-full sm:min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10 snap-y">
             {/* Step 1 */}
-            <div className="snap-start lg:min-h-[100vh] flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[8rem] lg:gap-[6.25rem] lg:pt-[7.5rem] py-[1.875rem]">
+            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] sm:pt-[7.5rem] py-[1.875rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -170,7 +170,7 @@ function RoadmapSection({ className }: SectionProps) {
                     <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={85}>
-                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
+                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
@@ -200,7 +200,7 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] -translate-x-[2rem] sm:translate-x-0 rounded-r-[2.5rem]"
               >
                 <div
                   data-speed={0.9}
@@ -217,7 +217,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 2 */}
-            <div className="snap-start lg:min-h-[100vh] flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[8rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem]">
+            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -239,7 +239,7 @@ function RoadmapSection({ className }: SectionProps) {
                     <h2 className="text-ash pn-bold-28">The Power Upload</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={85}>
-                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
+                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
@@ -270,7 +270,7 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] translate-x-[2rem] sm:translate-x-0 rounded-l-[2.5rem]"
               >
                 <div
                   data-speed={0.9}
@@ -287,7 +287,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 3 */}
-            <div className="snap-start lg:min-h-[100vh] flex flex-col lg:flex-row size-full lg:h-[100vh] items-center justify-between lg:pl-[2.5rem] gap-y-[8rem] lg:gap-[6.25rem] py-[1.875rem]">
+            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] py-[1.875rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -309,7 +309,7 @@ function RoadmapSection({ className }: SectionProps) {
                     <h2 className="text-ash pn-bold-28">The Strategy Surge</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={85}>
-                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
+                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
@@ -339,7 +339,7 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] -translate-x-[2rem] lg:translate-x-0 rounded-r-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] -translate-x-[2rem] sm:translate-x-0 rounded-r-[2.5rem]"
               >
                 <div
                   data-speed={0.9}
@@ -356,7 +356,7 @@ function RoadmapSection({ className }: SectionProps) {
             </div>
 
             {/* Step 4 */}
-            <div className="snap-start lg:min-h-[100vh] flex flex-col lg:flex-row-reverse size-full lg:h-[100vh] items-center justify-between gap-y-[8rem] lg:pr-[2.5rem] lg:gap-[6.25rem] py-[1.875rem] lg:pb-[7.5rem]">
+            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem] sm:pb-[7.5rem]">
               <div
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
@@ -378,7 +378,7 @@ function RoadmapSection({ className }: SectionProps) {
                     <h2 className="text-ash pn-bold-28">The Content Machine</h2>
                   </LetterRevealOnScroll>
                   <OpacityOnScroll end={85}>
-                    <div className="flex lg:p-[0.625rem] w-[1rem] lg:w-auto justify-start items-center">
+                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
                         height="23"
@@ -408,7 +408,7 @@ function RoadmapSection({ className }: SectionProps) {
               </div>
               <div
                 data-speed={1.25}
-                className="select-none flex flex-col items-center justify-center w-full lg:w-[31.25rem] translate-x-[2rem] lg:translate-x-0 rounded-l-[2.5rem]"
+                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] translate-x-[2rem] sm:translate-x-0 rounded-l-[2.5rem]"
               >
                 <div
                   data-speed={0.9}

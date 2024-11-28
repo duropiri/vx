@@ -215,7 +215,7 @@ export default function ZoomParallax({
                       : item.left || "0%",
                   // width: "25vw",
                 }}
-                className={`${styles.imageContainer} aspect-square w-[30vw] lg:w-[25vw]`}
+                className={`${styles.imageContainer} aspect-square w-[30vw] sm:w-[25vw]`}
               >
                 <Image
                   src={item.src}

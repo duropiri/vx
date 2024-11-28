@@ -627,7 +627,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative z-10">
               {/* Top Left */}
               <motion.div
-                className="size-[5rem] absolute flex left-[20%] top-[20vh] lg:left-[30%] lg:top-[8rem]"
+                className="size-[5rem] absolute flex left-[20%] top-[20vh] sm:left-[30%] sm:top-[8rem]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
                     stiffness: 500,
@@ -662,7 +662,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {/* Repeat the same structure for other icons with different positions and delays */}
               {/* Top Right */}
               <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[10vh] lg:right-[30%] lg:top-[10vh]"
+                className="size-[5rem] absolute flex right-[10%] top-[10vh] sm:right-[30%] sm:top-[10vh]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
                     stiffness: 500,
@@ -705,7 +705,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               {/* Mid-Left Upper */}
               <motion.div
-                className="size-[5rem] absolute flex left-[10%] top-[50vh] lg:left-[20%] lg:top-[30vh]"
+                className="size-[5rem] absolute flex left-[10%] top-[50vh] sm:left-[20%] sm:top-[30vh]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
                     stiffness: 500,
@@ -748,7 +748,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               {/* Mid-Right Upper */}
               <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[40vh] lg:right-[15rem] lg:top-[16rem]"
+                className="size-[5rem] absolute flex right-[10%] top-[40vh] sm:right-[15rem] sm:top-[16rem]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
                     stiffness: 500,
@@ -791,7 +791,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               {/* Mid-Left Lower */}
               <motion.div
-                className="size-[5rem] absolute flex left-[5%] top-[65vh] lg:left-[5rem] lg:top-[24rem]"
+                className="size-[5rem] absolute flex left-[5%] top-[65vh] sm:left-[5rem] sm:top-[24rem]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
                     stiffness: 500,
@@ -834,7 +834,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               {/* Mid-Right Lower */}
               <motion.div
-                className="size-[5rem] absolute flex right-[5%] top-[70vh] lg:right-[5rem] lg:top-[40vh]"
+                className="size-[5rem] absolute flex right-[5%] top-[70vh] sm:right-[5rem] sm:top-[40vh]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
                     stiffness: 500,
@@ -877,7 +877,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               {/* Bottom Left */}
               <motion.div
-                className="size-[5rem] absolute hidden lg:flex left-[20rem] top-[55vh]"
+                className="size-[5rem] absolute hidden sm:flex left-[20rem] top-[55vh]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
                     stiffness: 500,
@@ -920,7 +920,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
               {/* Bottom Right */}
               <motion.div
-                className="size-[5rem] absolute hidden lg:flex right-[20rem] top-[60vh]"
+                className="size-[5rem] absolute hidden sm:flex right-[20rem] top-[60vh]"
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
                     stiffness: 500,
@@ -969,7 +969,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           id="hero"
           className={`section-container hero-container ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
         >
-          <div className="relative flex flex-col items-center justify-between sm:my-auto h-[60vh] lg:h-auto w-full lg:max-w-[100vw] gap-[2rem] z-[100]">
+          <div className="relative flex flex-col items-center justify-between sm:my-auto h-[60vh] sm:h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
             <Reveal delay={0} slide={false}>
               <div className="button !gap-[1.5rem] !bg-ash !border-goldenbrown">
@@ -989,7 +989,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </Reveal>
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10" />
-              <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] lg:flex flex-col items-center">
+              <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
                     Meet the <GradientText>Gold</GradientText>
@@ -1005,7 +1005,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>
               </h1>
 
-              <h1 className="lg:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
+              <h1 className="sm:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
                     Meet the <GradientText>Gold</GradientText>
@@ -1045,7 +1045,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               slide={false}
             >
               <div className="flex h-[3.313rem] my-[0.625rem]">
-                <div className="flex flex-col lg:flex-row gap-[1rem]">
+                <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <motion.div
                     className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[11rem]`}
                     style={{
@@ -1088,12 +1088,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Navdock */}
         <div
           id="navdock"
-          className={`fixed hidden lg:flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
+          className={`fixed hidden sm:flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
         >
           <div
             ref={navdockRef}
             id="inner-navdock"
-            className={`flex flex-row items-center justify-between border-[0.125rem] border-ash lg:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
+            className={`flex flex-row items-center justify-between border-[0.125rem] border-ash sm:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
           >
             {/* Navdock Final Form */}
             <div id="logo" className="flex items-center h-full">
@@ -1115,7 +1115,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Navigation Links */}
             <nav
               id="nav"
-              className="nav flex flex-row gap-[1rem] lg:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white"
+              className="nav flex flex-row gap-[1rem] sm:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white"
             >
               {navigation.map((nav, index) => (
                 <HoverWrapper

@@ -35,7 +35,7 @@ function Body() {
             />
             <TestimonialsSection
               noHeader
-              className="bg-white z-20 !p-0 !w-[100vw] lg:!w-full !-mx-[2rem] lg:!mx-0"
+              className="bg-white z-20 !p-0 !w-[100vw] sm:!w-full !-mx-[2rem] sm:!mx-0"
             />
           </>
         }

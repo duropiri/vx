@@ -53,7 +53,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
       }}
     >
       {tier.isPopular && (
-        <div className="relative self-center lg:absolute lg:top-[1.5rem] lg:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] lg:mt-0 lg:mb-0 bg-ash rounded-b-[1rem] lg:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
+        <div className="relative self-center sm:absolute sm:top-[1.5rem] sm:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] sm:mt-0 sm:mb-0 bg-ash rounded-b-[1rem] sm:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
           <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
             <svg
               width="15"
@@ -100,7 +100,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         }`}
       >
         {/* Heading */}
-        <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
+        <div className="flex flex-col w-full items-center justify-start gap-[1rem] sm:gap-0">
           <h1
             className={`text-center pn-regular-32 ${
               tier.isPopular ? "text-goldenbrown" : ""
@@ -303,7 +303,7 @@ function PricingSection({
 
   return (
     <div id="pricing" className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem] text-ash">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem] text-ash">
         {/* Header */}
         <SectionHeader
           center
@@ -330,7 +330,7 @@ function PricingSection({
                 isYearly
                   ? "bg-goldenbrown text-white"
                   : "bg-ash text-white line-through"
-              } py-[0.5rem] px-[0.5rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+              } py-[0.5rem] px-[0.5rem] sm:py-[0.75rem] sm:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
             >
               17% Discount
             </div>

@@ -49,9 +49,9 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         ref={ref}
         className={`section-header ${className} ${
           dark ? "text-white" : "text-ash"
-        } ${center ? "text-center" : "lg:text-start lg:!items-start"} ${
-          small ? "lg:max-w-[45ch]" : ""
-        } ${medium ? "lg:max-w-[65ch]" : ""}`}
+        } ${center ? "text-center" : "sm:text-start sm:!items-start"} ${
+          small ? "sm:max-w-[45ch]" : ""
+        } ${medium ? "sm:max-w-[65ch]" : ""}`}
       >
         {heading && (
           <span
@@ -71,7 +71,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
             <div className="contents">
               <motion.h2
                 ref={subheadingRef}
-                className={`${subheadingClassName} hidden lg:block ${
+                className={`${subheadingClassName} hidden sm:block ${
                   largeText ? "pn-regular-60" : "pn-semibold-48"
                 } capitalize leading-snug`}
                 initial={{ y: 20 }}
@@ -82,7 +82,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               </motion.h2>
               <motion.h2
                 ref={subheadingMobileRef}
-                className={`${subheadingClassName} lg:hidden ${
+                className={`${subheadingClassName} sm:hidden ${
                   largeText ? "pn-semibold-40" : "pn-semibold-24"
                 } max-w-[24ch] capitalize leading-snug`}
                 initial={{ y: 20 }}

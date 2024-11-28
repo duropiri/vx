@@ -92,12 +92,12 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
       <div
         {...commonProps}
         ref={ref}
-        className={`section-container lg:!flex-row !py-[3.125rem] ${className} min-h-[60vh]`}
+        className={`section-container sm:!flex-row !py-[3.125rem] ${className} min-h-[60vh]`}
         style={{ backgroundColor: color }} // Use the passed color
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[87.5rem] flex-col lg:flex-row items-center justify-between gap-y-[2rem] lg:gap-y-[2rem]">
+        <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-center justify-between gap-y-[2rem] sm:gap-y-[2rem]">
           {/* Header */}
           <SectionHeader
             small
@@ -200,7 +200,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
             <div
               className={`${
-                full ? "hidden lg:flex" : "hidden"
+                full ? "hidden sm:flex" : "hidden"
               } flex-col w-[11.25rem] max-h-[22.5rem]`}
             >
               <ScrollingBanner
@@ -225,7 +225,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
             <div
               className={`${
-                full ? "hidden lg:flex" : "hidden"
+                full ? "hidden sm:flex" : "hidden"
               } flex-col w-[11.25rem] max-h-[22.5rem]`}
             >
               <ScrollingBanner
@@ -250,7 +250,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
             <div
               className={`${
-                full ? "hidden lg:flex" : "hidden"
+                full ? "hidden sm:flex" : "hidden"
               } flex-col w-[11.25rem] max-h-[22.5rem]`}
             >
               <ScrollingBanner

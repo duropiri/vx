@@ -438,7 +438,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   return (
     <div
       className={`${
-        isHomePage ? "fixed lg:relative" : "fixed"
+        isHomePage ? "fixed sm:relative" : "fixed"
       } flex z-[99999] w-full max-w-[100vw]`}
     >
       <div
@@ -458,7 +458,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               <Image
                 src={logo}
                 alt="logo"
-                className="w-[3rem] sm:w-[2.25rem]"
+                className="w-[3rem] lg:w-[2.25rem]"
                 placeholder="blur"
                 quality={80}
               />

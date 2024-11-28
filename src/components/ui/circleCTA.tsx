@@ -8,7 +8,7 @@ function CircleCTA() {
     <GsapMagnetic speed={0.5} className="z-[100]">
       <motion.div
         // data-speed={1.1}
-        className="select-none cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 lg:opacity-50 hover:opacity-100 transition-opacity duration-500"
+        className="select-none cursor-select-hover relative size-[7.5rem] mx-auto bg-goldenbrown shadow-customShadow shadow-ash/5 rounded-full border-[0.125rem] border-ash opacity-100 sm:opacity-50 hover:opacity-100 transition-opacity duration-500"
         style={{
           background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
           backgroundSize: "300% 100%",

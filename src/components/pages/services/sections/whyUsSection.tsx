@@ -14,7 +14,7 @@ function WhyUsSection({ className }: SectionProps) {
       id="services"
       className={`section-container !flex-col ${className} bg-white`}
     >
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
           center
@@ -22,7 +22,7 @@ function WhyUsSection({ className }: SectionProps) {
           subheading="Why Choose Virtual Xposure?"
           body="We deliver excellence at every level, combining cutting-edge technology with unmatched customer service. Our proven track record and comprehensive solutions ensure your success, backed by industry-leading guarantees and lightning-fast delivery."
         />
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 mt-[5rem]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-12 mt-[5rem]">
           {WhyUsItems.map((item, index) => (
             <motion.div
               key={index + 4}

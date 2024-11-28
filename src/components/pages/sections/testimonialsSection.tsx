@@ -36,7 +36,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
       id="services"
       className={`section-container !flex-col ${className} relative bg-white overflow-x-clip`}
     >
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
         {/* Header */}
         {!noHeader && (
           <SectionHeader
@@ -53,7 +53,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
             effect={"cards"}
             grabCursor={true}
             modules={[EffectCards, Pagination, Navigation]}
-            className="mySwiper max-w-[65vw] w-full lg:w-[34rem] h-[32rem] lg:h-[24rem]"
+            className="mySwiper max-w-[65vw] w-full sm:w-[34rem] h-[32rem] sm:h-[24rem]"
           >
             {testimonials.map((item, index) => (
               <SwiperSlide
@@ -87,7 +87,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
 
         {/* CTA */}
         <div className="flex justify-center w-full h-[3.313rem] mt-[4rem]">
-          <div className="flex flex-col lg:flex-row gap-[1rem]">
+          <div className="flex flex-col sm:flex-row gap-[1rem]">
             <motion.div
               className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[15rem]`}
               style={{

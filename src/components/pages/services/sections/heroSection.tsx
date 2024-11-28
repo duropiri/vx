@@ -141,8 +141,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {/* Content */}
-        <div className="relative z-10 section-container lg:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[8rem] lg:!pt-[10rem]">
-          <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center lg:items-start justify-center gap-y-[2rem] lg:gap-y-[2rem]">
+        <div className="relative z-10 section-container sm:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[8rem] sm:!pt-[10rem]">
+          <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
               medium
@@ -158,9 +158,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 {detailList.map((detail, index) => (
                   <li
                     key={index}
-                    className="group flex flex-row items-center text-start gap-[1rem] lg:gap-[0.5rem]"
+                    className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
                   >
-                    <div className="size-[2rem] lg:size-[1rem] min-w-[2rem] lg:min-w-[1rem] max-w-[2rem] lg:max-w-[1rem] text-white/80 group-hover:text-white">
+                    <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
                       {detail.icon}
                     </div>
                     <p className="pn-regular-16 text-white/80 group-hover:text-white">
@@ -173,7 +173,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
             {/* CTA */}
             <div className="flex h-[3.313rem] mt-[2rem] w-full">
-              <div className="flex flex-col lg:flex-row gap-[1rem] w-full">
+              <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                 <HoverWrapper
                   href={cta.href}
                   className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
