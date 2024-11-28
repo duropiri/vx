@@ -2,6 +2,7 @@ import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
 
 import { ServiceIcons } from "@/data/serviceIcons";
+import { graphicDesignFAQ } from "@/data/faq";
 
 // interface SectionProps {
 //   title: string;
@@ -33,6 +34,7 @@ const page = () => {
         }}
         src="/images/graphic-design.jpg"
         whyusSection
+        faq={graphicDesignFAQ}
       />
     </Page>
   );

@@ -160,7 +160,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     key={index}
                     className="group flex flex-row items-center text-start gap-[1rem] lg:gap-[0.5rem]"
                   >
-                    <div className="size-[4rem] lg:size-[1rem] text-white/80 group-hover:text-white">
+                    <div className="size-[2rem] lg:size-[1rem] min-w-[2rem] lg:min-w-[1rem] max-w-[2rem] lg:max-w-[1rem] text-white/80 group-hover:text-white">
                       {detail.icon}
                     </div>
                     <p className="pn-regular-16 text-white/80 group-hover:text-white">

@@ -77,3 +77,46 @@ As for logo design and animation, custom graphic design, and everything else, ou
       "Our service thrives on efficiency. The less time we spend on acquiring payment, the more time we have to market your real estate properties as effectively as possible. This way, everything is taken care of up-front, your files are delivered to you ASAP, and there's no need for any awkward, uncomfortable phone calls.",
   },
 ];
+
+export const graphicDesignFAQ = [
+  {
+    question: "What can you do that I can't do myself?",
+    answer:
+      "Our team does more than just put our creative skills to work. Though most our team is intuitively creative already, we have relentlessly spent time studying numerous design principles. It’s vital to understand how to use design elements to transmit the required messages and values as well as evoke a certain feeling in the viewer. As a visual communicator, we leverage these design elements and use concepts such as color, typography, space, balance, form and lines to create their visual message.",
+  },
+  {
+    question: "What if I don't like your service?",
+    answer:
+      "If you’re for any reason unsatisfied with any part of your experience with us, simply let us know, and get your money back – guaranteed. We stand by our service, and put our money where our mouth is. ",
+  },
+  {
+    question: "How do I get started and place an order?",
+    answer:
+      "The process is pretty simple. Just click on the order link, fill out the order form, and then submit the form to place your order.",
+  },
+  {
+    question: "How will everything be sent to me?",
+    answer:
+      "All branding files, logos, brochures and any other content we provide will be sent to your registered email address on file. ",
+  },
+  {
+    question: "Why is my branding important?",
+    answer:
+      "Branding is important because not only is it what makes a memorable impression on consumers but it allows your customers and clients to know what to expect from your company. It is a way of distinguishing yourself from the competitors and clarifying what it is you offer that makes you the better choice. There’s a huge amount of competition in the modern-day real estate industry, so your business needs to go the extra mile to ensure you stand out from the crowd. To do this, invest in creating a strong brand that will get people’s attention, retain loyal clients, and ultimately grow your business. With the right branding, you have the chance to get some control over how prospects view your real estate service, so you don’t want to overlook this.",
+  },
+  {
+    question: "How are your services possible at such a low rate?",
+    answer:
+      "Our team is full of dedicated, talented individuals with an unnerving drive and passion to help build your real estate business. It can take an experienced person 20 minutes to create a project that a less experienced person would take 20 hours to complete. By optimizing our operations and workforce, we’re able to ensure the right jobs are put in the right hands right away, to provide you with the best of both worlds: a quick turnaround and low pricing. ",
+  },
+  {
+    question: "How do we stay in touch?",
+    answer:
+      "Feel free to reach out to us via social media, email, or by calling in to our office line at +1 (780) 666-5277 anytime from Monday to Friday (9:00 AM – 5:00 PM). We look forward to chatting with you soon!",
+  },
+  {
+    question: "What size should my files be?",
+    answer:
+      "The ideal file size for graphic design is between 1-10 MB. Although, in some cases this may also depend on the type of project we undertake. Please feel free to reach out to our team if you have any further questions about this. ",
+  },
+];

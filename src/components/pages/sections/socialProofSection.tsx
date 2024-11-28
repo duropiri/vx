@@ -69,6 +69,10 @@ interface SectionProps {
   transitionColor?: string;
   ref?: RefObject<HTMLDivElement>;
   id?: string;
+
+  heading?: string;
+  subheading?: string;
+  body?: string;
 }
 
 const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
@@ -79,6 +83,9 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
       originalColor = "#FFFFFF",
       transitionColor = "#FFFFFF",
       id,
+      heading,
+      subheading,
+      body,
     },
     ref
   ) => {
@@ -102,8 +109,11 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
           <SectionHeader
             small
             className={`${full ? "!hidden" : ""}`}
-            heading="Our Partners"
-            subheading="A Few Of Our Clients In The Real Estate Industry"
+            heading={heading || "Our Partners"}
+            subheading={
+              subheading || "A Few Of Our Clients In The Real Estate Industry"
+            }
+            body={body}
           />
 
           <div

@@ -114,4 +114,12 @@ export const FooterHelpLinks = [
     title: "Privacy Policy",
     href: "/privacy-policy",
   },
+  {
+    title: "Refund Policy",
+    href: "/refund-policy",
+  },
+  {
+    title: "FAQ",
+    href: "/faq",
+  },
 ];

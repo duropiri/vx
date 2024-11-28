@@ -77,11 +77,12 @@ const page = () => {
 
   return (
     <Page>
-      <div id="privacy-policy" className={`section-container !flex-row `}>
+      <div
+        id="privacy-policy"
+        className={`section-container !flex-row !pt-[6rem] lg:!pt-[3.125rem]`}
+      >
         <div className="relative flex size-full max-w-[87.5rem] flex-col items-center justify-between gap-[1.5rem] lg:gap-[3.75rem]">
-          <h1 className="pn-bold-48 text-center mb-8">
-            Privacy Policy
-          </h1>
+          <h1 className="pn-bold-48 text-center mb-8">Privacy Policy</h1>
 
           <p className="mb-8">
             This Privacy Policy describes how virtual exposure.ca (the
@@ -242,9 +243,7 @@ const page = () => {
                 advertising partners.
               </li>
             </ul>
-            <p className="mb-4">
-              You can opt-out of targeted advertising by:
-            </p>
+            <p className="mb-4">You can opt-out of targeted advertising by:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
                 <span className="font-bold">FACEBOOK</span> -{" "}
@@ -277,9 +276,7 @@ const page = () => {
           </section>
 
           <section className="mb-8">
-            <h2 className="pn-semibold-40 mb-4">
-              Using Personal Information
-            </h2>
+            <h2 className="pn-semibold-40 mb-4">Using Personal Information</h2>
             <p className="mb-4">
               We use your personal information to provide our services to you,
               which includes offering products for sale, processing payment,

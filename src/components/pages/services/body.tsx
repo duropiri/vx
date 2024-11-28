@@ -26,6 +26,7 @@ interface SectionProps {
   ctaSection?: boolean;
   testimonialsSection?: boolean;
   pricing?: any;
+  faq?: any;
 }
 
 interface CTA {
@@ -49,6 +50,7 @@ function Body({
   ctaSection,
   testimonialsSection,
   pricing,
+  faq,
 }: SectionProps) {
   // const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -162,21 +164,29 @@ function Body({
         )}
 
         {/* Why Us? */}
-        {whyusSection && <WhyUsSection />}
+        <WhyUsSection />
         {/* Steps? */}
         {/* Who is it for? */}
         {/* Styles? */}
-        {socialproofSection && (
-          <SocialProofSection full className="bg-white z-10" />
-        )}
-        {ctaSection && <CTASection className="bg-white z-10" />}
+
+        <SocialProofSection
+          subheading="Trusted By The Best"
+          body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
+          className="bg-white z-10"
+        />
+
+        <CTASection className="bg-white z-10" />
         {/* Unlimited? */}
         {/* Testimonials? */}
-        {testimonialsSection && <TestimonialsSection />}
+        <TestimonialsSection />
       </div>
       {/* Case Studies? */}
       <ContactSection className="bg-white z-10" />
-      <FAQSection faq={listingMediaFAQ} vertical className="bg-white z-10" />
+      <FAQSection
+        faq={faq || listingMediaFAQ}
+        vertical
+        className="bg-white z-10"
+      />
     </>
   );
 }

@@ -363,9 +363,7 @@ export const RealEstateVideographyPackages = {
         quantity: "FREE",
         name: "Custom YouTube Thumbnail",
       },
-      {
-        name: "2X Money Back Guarantee",
-      },
+      { name: "2X Money Back Guarantee" },
     ],
     href: "/appointment-booking",
     cta: "Order Now",
@@ -432,6 +430,26 @@ export const VirtualRennovationPackages = {
       { quantity: "Unlimited", name: "Revisions" },
       { name: "Top Tier Quality" },
       { name: "SSL Secure Checkout" },
+    ],
+    href: "/appointment-booking",
+    cta: "Order Now",
+  },
+};
+
+export const ThreeDimensionalRenderingPackages = {
+  more5Package: {
+    name: "3D Interior & Exterior Architecture Rendering",
+    price: "267",
+    billingCycle: "Room Or Space",
+    features: [
+      { name: "Includes 2 High Resolution Images" },
+      { name: "7 Day Turnaround" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { name: "Residential, Commercial, and Industrial" },
+      { name: "SSL Secure Checkout" },
+      { name: "First Class Customer Service" },
+      { name: "Online Customer Support" },
+      { name: "2X Money Back Guarantee" },
     ],
     href: "/appointment-booking",
     cta: "Order Now",

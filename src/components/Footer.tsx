@@ -32,7 +32,7 @@ const NewsletterFormClient: React.FC<{
   if (!mounted) {
     return (
       <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] w-full lg:w-auto opacity-0">
-        <h2 className="pn-bold-20">Subscribe to Newsletter</h2>
+        <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
         <div className="flex w-full lg:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
       </div>
     );
@@ -40,7 +40,7 @@ const NewsletterFormClient: React.FC<{
 
   return (
     <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] w-full lg:w-auto">
-      <h2 className="pn-bold-20">Subscribe to Newsletter</h2>
+      <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
       <form
         onSubmit={onSubmit}
         className="flex w-full lg:w-[30.469rem] rounded-[0.5rem] overflow-hidden"
