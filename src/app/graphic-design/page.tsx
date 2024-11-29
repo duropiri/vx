@@ -33,7 +33,7 @@ const WhatIsItSection1 = () => (
         production.
       </p>
       {/* CTA */}
-      <div className="flex justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+      <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <motion.div
             className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
@@ -101,7 +101,7 @@ const WhatIsItSection2 = () => (
         we&apos;ll make sure your brochure does not end up in the trash!
       </p>
       {/* CTA */}
-      <div className="flex justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+      <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <motion.div
             className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
@@ -173,7 +173,7 @@ const WhatIsItSection3 = () => (
         make your real estate business stand out, a cut above the rest.
       </p>
       {/* CTA */}
-      <div className="flex justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+      <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <motion.div
             className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
