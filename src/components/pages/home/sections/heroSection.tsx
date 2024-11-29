@@ -269,7 +269,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               // Animate the navdock (to navdock final style)
               tl.to(navdock, {
                 background: "#1b1a17",
-                width: isMobile ? "16rem" : "42rem",
+                width: isMobile ? "16rem" : "52rem",
                 height: "3.313rem",
                 paddingLeft:
                   // isMobile ? "0px" :

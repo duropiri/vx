@@ -78,6 +78,7 @@ function RoadmapSection({ className }: SectionProps) {
 
   return (
     <div
+      id="roadmap"
       className={`section-container !flex-row ${className} overflow-hidden !pb-0 mb-[3.125rem] sm:mb-[6.25rem]`}
     >
       <div className="relative flex size-full flex-col items-start justify-between sm:gap-0">

@@ -289,7 +289,7 @@ export const RealEstateVideographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   deluxePackage: {
@@ -314,7 +314,7 @@ export const RealEstateVideographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   socialMediaPackage: {
@@ -342,7 +342,7 @@ export const RealEstateVideographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   cinematicPackage: {
@@ -365,7 +365,7 @@ export const RealEstateVideographyPackages = {
       },
       { name: "2X Money Back Guarantee" },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
 };
@@ -383,7 +383,7 @@ export const VirtualStagingPackages = {
       { name: "Top Tier Quality" },
       { name: "SSL Secure Checkout" },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   less5Package: {
@@ -398,7 +398,7 @@ export const VirtualStagingPackages = {
       { name: "Top Tier Quality" },
       { name: "SSL Secure Checkout" },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
 };
@@ -416,7 +416,7 @@ export const VirtualRennovationPackages = {
       { name: "Top Tier Quality" },
       { name: "SSL Secure Checkout" },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   less5Package: {
@@ -431,7 +431,7 @@ export const VirtualRennovationPackages = {
       { name: "Top Tier Quality" },
       { name: "SSL Secure Checkout" },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
 };
@@ -451,7 +451,7 @@ export const ThreeDimensionalRenderingPackages = {
       { name: "Online Customer Support" },
       { name: "2X Money Back Guarantee" },
     ],
-    href: "/appointment-booking",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
 };

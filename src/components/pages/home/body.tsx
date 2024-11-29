@@ -13,7 +13,7 @@ import CTASection from "@/components/pages/home/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
 import { useScroll } from "framer-motion";
-import { HeaderLinks } from "@/data/navLinks";
+import { HeaderLinks, NavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import { socialMediaPackages } from "@/data/pricingPackages";
 import { HomePageStats } from "@/data/stats";
@@ -109,7 +109,7 @@ function Body() {
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="min-w-[100vw] min-h-[100vh]"
-        navigation={HeaderLinks}
+        navigation={NavdockLinks}
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[0] = el;
         }}

@@ -126,7 +126,7 @@ function Body() {
                     alt="hero-image"
                     width={1200}
                     height={600}
-                    className="cursor-select-hover hover:scale-110 transition-all point"
+                    className="cursor-select-hover hover:scale-110 transition-all"
                     quality={80}
                   />
                 </div>

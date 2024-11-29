@@ -56,7 +56,7 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
   };
 
   return (
-    <div className={`section-container !flex-row ${className}`}>
+    <div id="faqs" className={`section-container !flex-row ${className}`}>
       <div
         className={`relative flex flex-col ${
           vertical ? "items-center" : "lg:flex-row items-start"
@@ -90,17 +90,29 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
             className="flex flex-col size-full gap-[0.5rem]"
           >
             <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate={controls}
-              whileInView="visible"
+              // variants={containerVariants}
+              // initial="hidden"
+              // animate={controls}
+              // whileInView="visible"
               className="flex flex-col size-full gap-[0.5rem]"
             >
               {faq.map((_, index) => (
                 <motion.div
                   key={index}
-                  variants={itemVariants}
-                  transition={{ duration: 0.2 }}
+                  // variants={itemVariants}
+                  // transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{
+                    once: true, // Only animate once
+                    amount: 0.3, // Trigger when 30% of element is in view
+                    margin: "50px", // Start animation 50px before element enters viewport
+                  }}
+                  transition={{
+                    delay: (index + 1) * 0.1,
+                    duration: 0.5,
+                    ease: "easeOut",
+                  }}
                 >
                   <AccordionItem
                     value={`item-${index}`}

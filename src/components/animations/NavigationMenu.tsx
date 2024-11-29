@@ -231,7 +231,7 @@ const MobileMenu: React.FC<{
         opacity: isActive ? 1 : 0,
       }}
       transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed left-0 top-[3.85rem] w-full bg-white/80 backdrop-blur-sm z-[1999] overflow-hidden"
+      className="fixed left-0 top-[3.85rem] w-full bg-white/80 backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
     >
       <div className="p-6 flex flex-col gap-6">
         {navigation.map((nav, index) => (

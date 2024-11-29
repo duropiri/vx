@@ -78,6 +78,30 @@ export const HeaderLinks = [
   },
 ];
 
+export const NavdockLinks = [
+  {
+    title: "Our Solutions",
+    href: "/#solutions",
+  },
+  {
+    title: "Our Services",
+    href: "/#services",
+  },
+  {
+    title: "Roadmap",
+    href: "/#roadmap",
+  },
+  {
+    title: "Plans & Pricing",
+    href: "/#pricing",
+  },
+  {
+    title: "FAQs",
+    href: "/#faqs",
+  },
+];
+
+
 export const FooterCompanyLinks = [
   {
     title: "Listing Media",

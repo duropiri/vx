@@ -2,6 +2,7 @@
 // import { Reveal } from "@/components/animations/Reveal";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
+import { MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { forwardRef, RefObject, useState } from "react";
 
@@ -63,6 +64,7 @@ const logos = [
 ];
 
 interface SectionProps {
+  scrollYProgress?: MotionValue<number>;
   className?: string;
   full?: boolean;
   originalColor?: string;

@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 
 import CTASection from "@/components/pages/services/sections/ctaSection";
@@ -13,6 +13,9 @@ import TestimonialsSection from "@/components/pages/sections/testimonialsSection
 import HeroSection from "@/components/pages/services/sections/heroSection";
 import { listingMediaFAQ } from "@/data/faq";
 import PricingSection from "@/components/pages/sections/pricingSection";
+import Basic2ColumnSection from "@/components/pages/sections/basic2ColumnSection";
+import BasicSection from "@/components/pages/sections/basicSection";
+import { useScroll } from "framer-motion";
 
 interface SectionProps {
   title: string;
@@ -27,6 +30,12 @@ interface SectionProps {
   testimonialsSection?: boolean;
   pricing?: any;
   faq?: any;
+
+  whatisitSection?: any | any[];
+  benefitsSection?: any;
+  stepsSection?: any[];
+  unlimitedSection?: any[];
+  advantageSection?: any;
 }
 
 interface CTA {
@@ -45,22 +54,29 @@ function Body({
   detailList,
   cta,
   src,
+  whatisitSection,
+  benefitsSection,
+  advantageSection,
   whyusSection,
+  stepsSection,
   socialproofSection,
   ctaSection,
+  unlimitedSection,
   testimonialsSection,
   pricing,
   faq,
 }: SectionProps) {
-  // const container = useRef<HTMLDivElement>(null);
+  // const heroRef = useRef<HTMLDivElement>(null);
+  // const [heroHeight, setHeroHeight] = useState(0);
+
+  const container = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+
+    offset: ["start start", "end end"],
+  });
+
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-
-  //   offset: ["start start", "end end"],
-  // });
-
   useEffect(() => {
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
     // const heroSection = sectionRefs.current[0];
@@ -133,6 +149,20 @@ function Body({
       };
     };
 
+    // if (heroRef.current) {
+    //   const updateHeight = () => {
+    //     setHeroHeight(heroRef.current?.offsetHeight || 0);
+    //   };
+
+    //   // Initial measurement
+    //   updateHeight();
+
+    //   // Update on window resize
+    //   window.addEventListener("resize", updateHeight);
+
+    //   return () => window.removeEventListener("resize", updateHeight);
+    // }
+
     loadGSAP();
   }, []);
 
@@ -140,18 +170,41 @@ function Body({
     <>
       <ChatWidget />
       {/* Hero */}
-      <HeroSection
-        title={title}
-        copy={copy}
-        detailList={detailList}
-        cta={{ label: cta.label, href: cta.href }}
-        src={src}
-      />
-      <div className="z-[99] rounded-t-3xl overflow-hidden">
+      <div
+        // ref={heroRef}
+        className="sticky top-0 left-0 w-full z-0 bg-ash"
+      >
+        <HeroSection
+          title={title}
+          copy={copy}
+          detailList={detailList}
+          cta={{ label: cta.label, href: cta.href }}
+          src={src}
+          // className="fixed inset-0 w-full"
+        />
+      </div>
+      {/* Spacer div that matches hero height */}
+      {/* <div style={{ height: 0 }} /> */}
+      <div className="relative -mt-[4rem] z-[99] rounded-t-3xl overflow-hidden bg-white">
         {/* What is it? */}
+        {whatisitSection &&
+          (Array.isArray(whatisitSection) ? (
+            whatisitSection.map((section, index) => (
+              <BasicSection
+                key={index}
+                className={`${index % 2 && "!bg-ash/5"}`}
+                content={section}
+              />
+            ))
+          ) : (
+            <BasicSection content={whatisitSection} />
+          ))}
 
         {/* Benefits? */}
+        {benefitsSection && <BasicSection content={benefitsSection} />}
+
         {/* Advantage? */}
+        {advantageSection && <BasicSection content={advantageSection} />}
 
         {/* Specific Pricing? */}
         {/* Pricing? */}
@@ -162,26 +215,51 @@ function Body({
             pricingPackages={pricing}
           />
         )}
-
+      </div>
+      <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         {/* Why Us? */}
-        <WhyUsSection />
+        <WhyUsSection
+          scrollYProgress={scrollYProgress}
+          shrinkSize={0.75}
+          rotationAmount={-20}
+          className="z-0"
+        />
         {/* Steps? */}
+        {stepsSection && (
+          <Basic2ColumnSection
+            className="bg-white z-10 relative"
+            leftContent={stepsSection[0]}
+            rightContent={stepsSection[1]}
+          />
+        )}
+
         {/* Who is it for? */}
         {/* Styles? */}
 
+        {/* Social Proof */}
         <SocialProofSection
           subheading="Trusted By The Best"
           body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
-          className="bg-white z-10"
+          className="bg-white z-10 relative"
         />
-
-        <CTASection className="bg-white z-10" />
-        {/* Unlimited? */}
-        {/* Testimonials? */}
-        <TestimonialsSection />
       </div>
+      {/* CTA */}
+      <CTASection className="bg-white z-10" />
+      {/* Unlimited? */}
+      {unlimitedSection && (
+        <Basic2ColumnSection
+          className="bg-white z-10 relative"
+          leftContent={unlimitedSection[0]}
+          rightContent={unlimitedSection[1]}
+        />
+      )}
+      {/* Testimonials */}
+      <TestimonialsSection className="bg-white z-10 relative" />
+
       {/* Case Studies? */}
+      {/* Contact */}
       <ContactSection className="bg-white z-10" />
+      {/* FAQ */}
       <FAQSection
         faq={faq || listingMediaFAQ}
         vertical

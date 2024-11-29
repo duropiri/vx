@@ -1,3 +1,4 @@
+"use client";
 import React, { forwardRef, RefObject } from "react";
 import OpacityOnScroll from "../animations/OpacityOnScroll";
 import { motion } from "framer-motion";
@@ -9,6 +10,7 @@ interface SectionProps {
   headingClassName?: string;
   bodyClassName?: string;
   center?: boolean;
+  noCenter?: boolean;
   small?: boolean;
   medium?: boolean;
   dark?: boolean;
@@ -30,6 +32,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       headingClassName = "",
       bodyClassName = "",
       center = false,
+      noCenter = false,
       small = false,
       medium = false,
       dark = false,
@@ -82,9 +85,11 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               </motion.h2>
               <motion.h2
                 ref={subheadingMobileRef}
-                className={`${subheadingClassName} sm:hidden ${
+                className={`${subheadingClassName} ${
+                  noCenter && "text-start"
+                } sm:hidden ${
                   largeText ? "pn-semibold-40" : "pn-semibold-24"
-                } max-w-[24ch] capitalize leading-snug`}
+                } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug`}
                 initial={{ y: 20 }}
                 animate={{ y: 0 }}
                 exit={{ y: -20 }}
@@ -99,7 +104,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
           <OpacityOnScroll end={80}>
             <p
               ref={bodyRef}
-              className={`${bodyClassName} ${
+              className={`${bodyClassName} ${noCenter && "text-start"} ${
                 largeText ? "pn-regular-22" : "pn-regular-16"
               } max-w-[43.75rem]`}
             >

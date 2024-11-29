@@ -52,6 +52,7 @@ function SolutionSection({ className }: SectionProps) {
 
   return (
     <motion.div
+      id="solutions"
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
       {/* Background Text Parallax */}
@@ -112,7 +113,7 @@ function SolutionSection({ className }: SectionProps) {
         <SectionHeader
           dark
           center
-          heading="Our Services"
+          heading="Our Solutions"
           subheading={
             <>
               That&apos;s Exactly Why{" "}

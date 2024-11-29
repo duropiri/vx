@@ -223,6 +223,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     return (
       <div
         ref={ref}
+        id="problem"
         className={`section-container !px-0 !flex-row ${className} relative scroll-smooth`}
         data-original-color={originalColor}
         data-transition-color={transitionColor}

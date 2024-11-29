@@ -110,7 +110,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Video Background */}
         {src.endsWith(".mp4") || src.endsWith(".webm") ? (
           <div
-            data-speed={0.75}
+            data-speed={1.05}
             className="absolute inset-0 size-full h-[120%]"
           >
             <video
@@ -126,8 +126,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           </div>
         ) : (
           <div
-            data-speed={0.75}
-            className="absolute inset-0 size-full h-[120%]"
+            data-speed={1.05}
+            className="absolute inset-0 size-full h-[120%] pointer-events-none"
           >
             <Image
               src={src}
@@ -136,25 +136,27 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               className="object-cover"
               quality={80}
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-black/40 pointer-events-none" />
           </div>
         )}
 
         {/* Content */}
-        <div className="relative z-10 section-container sm:!flex-row !py-[3.125rem] min-h-[60vh] overflow-visible !pt-[8rem] sm:!pt-[10rem]">
+        <div data-speed={1.1} className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]">
           <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
               medium
+              noCenter
               largeText
               subheading={title}
               body={<>{copy}</>}
+              bodyClassName="mt-[1rem]"
               className="text-white" // Add light text color
             />
 
             {/* Detail List */}
             {detailList && (
-              <ul className="flex flex-col items-start space-y-[1rem]">
+              <ul className="flex flex-col size-full items-start space-y-[1rem]">
                 {detailList.map((detail, index) => (
                   <li
                     key={index}

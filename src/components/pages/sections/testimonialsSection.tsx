@@ -16,6 +16,7 @@ import { renderStars } from "@/components/ui/renderStars";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+import Link from "next/link";
 
 interface SectionProps {
   className?: string;
@@ -86,7 +87,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center w-full h-[3.313rem] mt-[4rem]">
+        <div className="flex justify-center w-full h-[3.313rem]">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
             <motion.div
               className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[15rem]`}
@@ -103,20 +104,19 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
                 repeat: Infinity,
               }}
             >
-              <HoverWrapper
-                href="/testimonials"
-                className="flex size-full items-center px-[1.5rem] py-[0.5rem]"
-              >
-                <FlipLink className={`flex items-center w-full`}>
-                  View All Testimonials
-                </FlipLink>
+              <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+                <Link href="/testimonials" className="flex size-full items-center" passHref>
+                  <FlipLink className={`flex items-center w-full`}>
+                    View All Testimonials
+                  </FlipLink>
 
-                <Image
-                  alt="arrow"
-                  src={arrowRedirect}
-                  className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  quality={10}
-                />
+                  <Image
+                    alt="arrow"
+                    src={arrowRedirect}
+                    className="text-ash group-hover:rotate-45 transition-all duration-300"
+                    quality={10}
+                  />
+                </Link>
               </HoverWrapper>
             </motion.div>
           </div>
