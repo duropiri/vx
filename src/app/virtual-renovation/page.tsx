@@ -145,7 +145,7 @@ const page = () => {
           label: "Place an order",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/videos/virtual-3d-tours.mp4"
+        src="/videos/virtual-3d-tours.webm"
         whatisitSection={<WhatIsItSection />}
         whyusSection
         socialproofSection

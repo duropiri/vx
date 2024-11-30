@@ -129,7 +129,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     return (
       <div ref={ref} id={id} className="relative w-full overflow-hidden">
         {/* Video Background */}
-        {src.endsWith(".mp4") || src.endsWith(".webm") ? (
+        {src.endsWith(".webm") || src.endsWith(".webm") ? (
           <div
             data-speed={1.5}
             data-media-wrapper
