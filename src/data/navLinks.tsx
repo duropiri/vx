@@ -105,11 +105,11 @@ export const NavdockLinks = [
 export const FooterCompanyLinks = [
   {
     title: "Listing Media",
-    href: "/listing-media",
+    href: "/services/listing-media",
   },
   {
     title: "Social Media Management",
-    href: "/social-media-management",
+    href: "/services/social-media-management",
   },
   {
     title: "Exclusive Community",
