@@ -366,6 +366,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={instagramHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -410,6 +411,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={twitterHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -453,6 +455,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={facebookHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -496,6 +499,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={tiktokHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -539,6 +543,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={linkedinHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -582,6 +587,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={pinterestHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -625,6 +631,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={youtubeHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
@@ -668,6 +675,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={whatsappHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
                       quality={10}
+                      priority
                     />
                   </motion.div>
                 </motion.div>
