@@ -27,8 +27,15 @@ const useScrollDirection = () => {
   useEffect(() => {
     const updateScrollDirection = () => {
       const scrollY = window.scrollY;
-      const direction = scrollY > lastScrollY ? "down" : "up";
+      
+      // Always show header at the top of the page
+      if (scrollY === 0) {
+        setScrollDirection("up");
+        return;
+      }
 
+      const direction = scrollY > lastScrollY ? "down" : "up";
+      
       // Only update direction if the scroll is more than 5px to prevent tiny movements
       if (Math.abs(scrollY - lastScrollY) > 5) {
         setScrollDirection(direction);
