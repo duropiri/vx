@@ -758,7 +758,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               className="z-[999]"
             >
               <div className="flex h-[3.313rem] my-[0.625rem]">
-                <div className="flex flex-col sm:flex-row gap-[2rem]">
+                <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <motion.div
                     className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
                     style={{

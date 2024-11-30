@@ -244,45 +244,47 @@ const Body = () => {
       <ChatWidget />
       <div className="relative flex flex-row min-h-screen overflow-hidden bg-ash">
         {/* Left section */}
-        <Link
-          href="/services/listing-media"
-          data-follower-text="Explore"
-          className={`bg-ash cursor-text-hover`}
-          style={{
-            width: "30vw",
-            transform: `translateX(${
-              isLeftHovered
-                ? "0%"
-                : isRightHovered
-                ? "-100%"
-                : showLeftHint
-                ? isMobile
-                  ? "-60%"
-                  : "-80%"
-                : isMobile
-                ? "-70%"
-                : "-86%"
-            })`,
-            opacity: `${isLeftHovered ? "100%" : "50%"}`,
-            transition: showLeftHint ? HINT_TRANSITION : BASE_TRANSITION,
-            position: "absolute",
-            left: 0,
-            top: 0,
-            bottom: 0,
-            zIndex: 10,
-          }}
-        >
-          <ListingMediaSection
-            content={leftContent}
-            onMouseEnter={() => setIsLeftHovered(true)}
-            className="h-full cursor-text-hover !bg-transparent"
-            style={
-              {
-                "--section-width": "100%",
-              } as React.CSSProperties
-            }
-          />
-        </Link>
+        {!isMobile && (
+          <Link
+            href="/services/listing-media"
+            data-follower-text="Explore"
+            className={`bg-ash cursor-text-hover`}
+            style={{
+              width: "30vw",
+              transform: `translateX(${
+                isLeftHovered
+                  ? "0%"
+                  : isRightHovered
+                  ? "-100%"
+                  : showLeftHint
+                  ? isMobile
+                    ? "-60%"
+                    : "-80%"
+                  : isMobile
+                  ? "-70%"
+                  : "-86%"
+              })`,
+              opacity: `${isLeftHovered ? "100%" : "50%"}`,
+              transition: showLeftHint ? HINT_TRANSITION : BASE_TRANSITION,
+              position: "absolute",
+              left: 0,
+              top: 0,
+              bottom: 0,
+              zIndex: 10,
+            }}
+          >
+            <ListingMediaSection
+              content={leftContent}
+              onMouseEnter={() => setIsLeftHovered(true)}
+              className="h-full cursor-text-hover !bg-transparent"
+              style={
+                {
+                  "--section-width": "100%",
+                } as React.CSSProperties
+              }
+            />
+          </Link>
+        )}
 
         {/* Center section */}
         <div
@@ -313,45 +315,47 @@ const Body = () => {
         </div>
 
         {/* Right section */}
-        <Link
-          href="/services/social-media-management"
-          data-follower-text="Explore"
-          className="bg-ash cursor-text-hover"
-          style={{
-            width: "30vw",
-            transform: `translateX(${
-              isRightHovered
-                ? "0%"
-                : isLeftHovered
-                ? "100%"
-                : showRightHint
-                ? isMobile
-                  ? "60%"
-                  : "80%"
-                : isMobile
-                ? "70%"
-                : "86%"
-            })`,
-            opacity: `${isRightHovered ? "100%" : "50%"}`,
-            transition: showRightHint ? HINT_TRANSITION : BASE_TRANSITION,
-            position: "absolute",
-            right: 0,
-            top: 0,
-            bottom: 0,
-            zIndex: 10,
-          }}
-        >
-          <SocialMediaManagementSection
-            content={rightContent}
-            onMouseEnter={() => setIsRightHovered(true)}
-            className="h-full !bg-transparent"
-            style={
-              {
-                "--section-width": "100%",
-              } as React.CSSProperties
-            }
-          />
-        </Link>
+        {!isMobile && (
+          <Link
+            href="/services/social-media-management"
+            data-follower-text="Explore"
+            className="bg-ash cursor-text-hover"
+            style={{
+              width: "30vw",
+              transform: `translateX(${
+                isRightHovered
+                  ? "0%"
+                  : isLeftHovered
+                  ? "100%"
+                  : showRightHint
+                  ? isMobile
+                    ? "60%"
+                    : "80%"
+                  : isMobile
+                  ? "70%"
+                  : "86%"
+              })`,
+              opacity: `${isRightHovered ? "100%" : "50%"}`,
+              transition: showRightHint ? HINT_TRANSITION : BASE_TRANSITION,
+              position: "absolute",
+              right: 0,
+              top: 0,
+              bottom: 0,
+              zIndex: 10,
+            }}
+          >
+            <SocialMediaManagementSection
+              content={rightContent}
+              onMouseEnter={() => setIsRightHovered(true)}
+              className="h-full !bg-transparent"
+              style={
+                {
+                  "--section-width": "100%",
+                } as React.CSSProperties
+              }
+            />
+          </Link>
+        )}
       </div>
     </>
   );
