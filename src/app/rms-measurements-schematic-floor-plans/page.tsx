@@ -11,9 +11,9 @@ import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
-import floorplanImage from "@/../../public/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.jpg";
-import threedimensionalfloorplanImage from "@/../../public/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.png";
-import siteplanImage from "@/../../public/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.jpg";
+import floorplanImage from "@/../../public/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
+import threedimensionalfloorplanImage from "@/../../public/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
+import siteplanImage from "@/../../public/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
 
 const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -307,7 +307,7 @@ const page = () => {
           { icon: ServiceIcons.guarantee, text: "2X Money Back Guarantee" },
         ]}
         cta={{ label: "Book Now", href: "https://listings.virtualxposure.com/order" }}
-        src="/images/rms-measurements-schematic-floor-plans.png"
+        src="/images/rms-measurements-schematic-floor-plans.webp"
         benefitsSection={<BenefitsSection />}
         whatisitSection={[
           <WhatIsItSection1 />,

@@ -538,7 +538,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           {/* Mobile Menu */}
           <MobileMenu
             navigation={navigation}
-            isActive={isActive}
+            isActive={isActive && scrollDirection !== "down"}
             onClose={() => setIsActive(false)}
           />
         </div>

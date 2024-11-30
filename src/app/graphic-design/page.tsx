@@ -9,11 +9,11 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
-import service1 from "@/../../public/images/service_2.jpg";
+import service1 from "@/../../public/images/service_2.webp";
 
-import service2 from "@/../../public/images/print-design-northumberland-min.jpg";
+import service2 from "@/../../public/images/print-design-northumberland-min.webp";
 
-import service3 from "@/../../public/images/service_2-1.jpg";
+import service3 from "@/../../public/images/service_2-1.webp";
 import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
 
 import { useEffect } from "react";
@@ -311,7 +311,7 @@ const page = () => {
           label: "Book a FREE Consultation",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/images/graphic-design.jpg"
+        src="/images/graphic-design.webp"
         whatisitSection={[
           <WhatIsItSection1 />,
           <WhatIsItSection2 />,

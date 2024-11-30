@@ -11,7 +11,7 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
-import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-584x1024.png";
+import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-584x1024.webp";
 
 const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">

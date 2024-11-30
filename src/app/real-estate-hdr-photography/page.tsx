@@ -7,8 +7,8 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import Image from "next/image";
-import heroImage2 from "@/../../public/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.jpg";
-import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-584x1024.png";
+import heroImage2 from "@/../../public/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
+import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-584x1024.webp";
 import { useEffect } from "react";
 
 const WhatIsItSection = () => (
@@ -373,7 +373,7 @@ const page = () => {
           label: "Order Now",
           href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
         }}
-        src="/images/real-estate-hdr-photography.jpg"
+        src="/images/real-estate-hdr-photography.webp"
         whatisitSection={<WhatIsItSection />}
         whyusSection
         stepsSection={[<StepsLeftSection />, <StepsRightSection />]}

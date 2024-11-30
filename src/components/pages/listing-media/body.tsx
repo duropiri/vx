@@ -20,18 +20,18 @@ import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
 
-import virtual3dtours from "@/../../public/images/virtual-3d-tours.jpg";
-import hdrphotography from "@/../../public/images/hdr-photography.jpg";
-import rmsmeasurements from "@/../../public/images/rms-measurements.jpg";
-import virtualstaging from "@/../../public/images/virtual-staging.jpg";
-import hdrdronephotography from "@/../../public/images/hdr-drone-photography.jpg";
-import schematicfloorplans from "@/../../public/images/schematic-floor-plans.jpg";
-import customgraphicdesign from "@/../../public/images/custom-graphic-design.jpg";
-import highproductionvideotours from "@/../../public/images/high-production-video-tours.jpg";
-import socialmediacontentcreation from "@/../../public/images/social-media-content-creation.jpg";
-import brochuredesign from "@/../../public/images/brochure-design.jpg";
-import logodesign from "@/../../public/images/logo-design.jpg";
-import logoanimation from "@/../../public/images/logo-animation.jpg";
+import virtual3dtours from "@/../../public/images/virtual-3d-tours.webp";
+import hdrphotography from "@/../../public/images/hdr-photography.webp";
+import rmsmeasurements from "@/../../public/images/rms-measurements.webp";
+import virtualstaging from "@/../../public/images/virtual-staging.webp";
+import hdrdronephotography from "@/../../public/images/hdr-drone-photography.webp";
+import schematicfloorplans from "@/../../public/images/schematic-floor-plans.webp";
+import customgraphicdesign from "@/../../public/images/custom-graphic-design.webp";
+import highproductionvideotours from "@/../../public/images/high-production-video-tours.webp";
+import socialmediacontentcreation from "@/../../public/images/social-media-content-creation.webp";
+import brochuredesign from "@/../../public/images/brochure-design.webp";
+import logodesign from "@/../../public/images/logo-design.webp";
+import logoanimation from "@/../../public/images/logo-animation.webp";
 import BasicSection from "@/components/pages/sections/basicSection";
 
 const services = [
