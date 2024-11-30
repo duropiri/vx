@@ -1,202 +1,360 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, {
+  useEffect,
+  // useRef,
+  useState,
+} from "react";
 import HeroSection from "@/components/pages/home/sections/heroSection";
-import SocialProofSection from "@/components/pages/sections/socialProofSection";
-import CopySection from "@/components/pages/sections/copySection";
-import ProblemSection from "@/components/pages/home/sections/problemSection";
-import StatsSection from "@/components/pages/sections/statsSection";
-import SolutionSection from "@/components/pages/home/sections/solutionSection";
-import ServicesSection from "@/components/pages/home/sections/servicesSection";
-import RoadmapSection from "@/components/pages/home/sections/roadmapSection";
-import PricingSection from "@/components/pages/sections/pricingSection";
-import CTASection from "@/components/pages/home/sections/ctaSection";
-import FAQSection from "@/components/pages/sections/faqSection";
-import ContactSection from "@/components/pages/sections/contactSection";
-import { useScroll } from "framer-motion";
-import { HeaderLinks, NavdockLinks } from "@/data/navLinks";
+import { NavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
-import { socialMediaPackages } from "@/data/pricingPackages";
-import { HomePageStats } from "@/data/stats";
+import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
+import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
+import ScrollingBanner from "@/components/animations/ScrollingBanner";
+// import { Volume2, VolumeX } from "lucide-react";
+import Link from "next/link";
 
-function Body() {
-  const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
+const TRANSITION_TIMING = "0.6s";
+const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
+const HINT_TIMING = "0.3s";
+const BASE_TRANSITION = `all ${TRANSITION_TIMING} ${TRANSITION_EASING}`;
+const HINT_TRANSITION = `transform ${HINT_TIMING} ${TRANSITION_EASING}`;
 
-    offset: ["start start", "end end"],
-  });
+// const VideoBackground = ({ className = "" }) => {
+//   const videoRef = useRef<HTMLVideoElement>(null);
 
-  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+//   const handleMouseEnter = () => {
+//     if (videoRef.current) {
+//       // Restart the video
+//       videoRef.current.currentTime = 0;
+//       videoRef.current.play();
+
+//       // Unmute and fade in audio
+//       videoRef.current.muted = false;
+//       videoRef.current.volume = 0;
+//       const fadeAudio = setInterval(() => {
+//         if (videoRef.current && videoRef.current.volume < 1) {
+//           videoRef.current.volume = Math.min(videoRef.current.volume + 0.1, 1);
+//         } else {
+//           clearInterval(fadeAudio);
+//         }
+//       }, 50);
+//     }
+//   };
+
+//   const handleMouseLeave = () => {
+//     if (videoRef.current) {
+//       // Fade out audio before muting
+//       const fadeAudio = setInterval(() => {
+//         if (videoRef.current && videoRef.current.volume > 0) {
+//           videoRef.current.volume = Math.max(videoRef.current.volume - 0.1, 0);
+//         } else {
+//           if (videoRef.current) videoRef.current.muted = true;
+//           clearInterval(fadeAudio);
+//         }
+//       }, 50);
+//     }
+//   };
+
+//   return (
+//     <div
+//       className="absolute inset-0"
+//       onMouseEnter={handleMouseEnter}
+//       onMouseLeave={handleMouseLeave}
+//     >
+//       {/* Video Element */}
+//       <video
+//         ref={videoRef}
+//         autoPlay
+//         loop
+//         muted
+//         playsInline
+//         className={`absolute inset-0 w-full h-full object-cover opacity-75 ${className}`}
+//         style={{
+//           zIndex: 0,
+//         }}
+//       >
+//         <source src="/videos/blake-vx.mp4" type="video/mp4" />
+//       </video>
+
+//       {/* Gradient Overlay */}
+//       <div
+//         className="absolute inset-0 bg-gradient-to-l from-transparent to-ash to-80%"
+//         style={{
+//           zIndex: 1,
+//         }}
+//       />
+//     </div>
+//   );
+// };
+
+const Body = () => {
+  const [isLeftHovered, setIsLeftHovered] = useState(false);
+  const [isRightHovered, setIsRightHovered] = useState(false);
+  const [isHeroHovered, setIsHeroHovered] = useState(false);
+  const [showLeftHint, setShowLeftHint] = useState(false);
+  const [showRightHint, setShowRightHint] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
   useEffect(() => {
-    const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-    // const heroSection = sectionRefs.current[0];
-
-    const loadGSAP = async () => {
-      const { gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
-
-      if (triggerSection) {
-        const updateColors = (change: boolean) => {
-          sectionRefs.current.forEach((section) => {
-            if (section) {
-              const originalColor = section.dataset.originalColor;
-              const transitionColor = section.dataset.transitionColor;
-
-              if (!originalColor || !transitionColor) {
-                console.warn(
-                  "Original or transition color not set for section:",
-                  section
-                );
-                return;
-              }
-
-              const newColor = change ? transitionColor : originalColor;
-
-              // Animate background color for each section
-              gsap.to(section, {
-                backgroundColor: newColor,
-                duration: 0.5,
-                ease: "power1.inOut",
-              });
-
-              // Update the color state of the ColorChangeSection component
-              const sectionComponent = section as unknown as {
-                setColor: (color: string) => void;
-              };
-              if (sectionComponent.setColor) {
-                sectionComponent.setColor(newColor);
-              }
-
-              // Animate gradient colors
-              const gradientElements = section.querySelectorAll(
-                ".bg-gradient-to-b, .bg-gradient-to-t"
-              ) as NodeListOf<HTMLElement>;
-              gradientElements.forEach((el) => {
-                gsap.to(el, {
-                  "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                  duration: 0.5,
-                  ease: "power1.inOut",
-                });
-              });
-            }
-          });
-        };
-
-        // Create ScrollTrigger for the section at index 1 only
-        ScrollTrigger.create({
-          trigger: triggerSection,
-          start: "top-=400px top",
-          end: "bottom top",
-          onEnter: () => updateColors(true),
-          onLeaveBack: () => updateColors(false),
-          // markers: true, // Remove in production
-        });
-      }
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-      };
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768); // Standard mobile breakpoint
     };
 
-    loadGSAP();
+    // Initial check
+    checkMobile();
+
+    // Add listener for window resize
+    window.addEventListener("resize", checkMobile);
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
+
+  // Hint animation timer
+  useEffect(() => {
+    // Don't show hints if panels are hovered
+    if (isLeftHovered || isRightHovered) return;
+
+    // Initial delay before starting hints
+    const initialDelay = setTimeout(() => {
+      const interval = setInterval(() => {
+        // Alternate between left and right hints
+        setShowLeftHint(true);
+
+        setTimeout(() => {
+          setShowLeftHint(false);
+
+          setTimeout(() => {
+            setShowRightHint(true);
+
+            setTimeout(() => {
+              setShowRightHint(false);
+            }, 1000); // Duration of right hint
+          }, 500); // Delay between left and right
+        }, 1000); // Duration of left hint
+      }, 16000); // Time between hint cycles
+
+      return () => clearInterval(interval);
+    }, 2000); // Initial delay
+
+    return () => clearTimeout(initialDelay);
+  }, [isHeroHovered, isLeftHovered, isRightHovered]);
+
+  const handleHeroEnter = () => {
+    setIsHeroHovered(true);
+    setIsLeftHovered(false);
+    setIsRightHovered(false);
+  };
+
+  const handleHeroLeave = () => {
+    setIsHeroHovered(false);
+  };
+
+  const leftContent = (
+    <div className="relative section-container flex-col !items-end justify-start !pr-0 !w-auto h-full overflow-hidden bg-goldenbrown">
+      {/* Video Background Container */}
+      <div className="absolute inset-0">
+        {/* Video Element */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-75"
+          style={{
+            zIndex: 0,
+          }}
+        >
+          <source src="/videos/virtual-3d-tours.mp4" type="video/mp4" />
+        </video>
+
+        {/* Gradient Overlay */}
+        <div
+          className="absolute inset-0 bg-gradient-to-r from-transparent to-goldenbrown to-80%"
+          style={{
+            zIndex: 1,
+            // mixBlendMode: "multiply",
+          }}
+        />
+      </div>
+      {/* Gradient */}
+      <div
+        style={{
+          opacity: `${isLeftHovered ? "0%" : "100%"}`,
+          transition: "all 0.6s ease-in-out",
+        }}
+        className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
+      />
+      <ScrollingBanner
+        vertical
+        baseVelocity={10000}
+        className="bg-goldenbrown z-10"
+      >
+        <h2 className="pn-regular-96 uppercase text-ash">Listing Media</h2>
+      </ScrollingBanner>
+    </div>
+  );
+
+  const rightContent = (
+    <div className="section-container flex-col !items-start justify-start !pl-0 !w-auto h-full overflow-hidden bg-ash">
+      {/* Video Background Container */}
+      {/* <VideoBackground className="ml-[7.5rem]" /> */}
+      <div className="absolute inset-0">
+        {/* Video Element */}
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-75 ml-[5rem]"
+          style={{
+            zIndex: 0,
+          }}
+        >
+          <source src="/videos/blake-vx.mp4" type="video/mp4" />
+        </video>
+
+        {/* Gradient Overlay */}
+        <div
+          className="absolute inset-0 bg-gradient-to-l from-transparent to-ash to-80%"
+          style={{
+            zIndex: 1,
+            // mixBlendMode: "multiply",
+          }}
+        />
+      </div>
+      {/* Gradient */}
+      <div
+        style={{
+          opacity: `${isRightHovered ? "0%" : "100%"}`,
+          transition: "all 0.6s ease-in-out",
+        }}
+        className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none rounded-t-[1.875rem] z-20"
+      />
+      <ScrollingBanner vertical baseVelocity={10000} className="bg-ash z-10">
+        <h2 className="pn-regular-96 uppercase text-goldenbrown">
+          Social Media Management
+        </h2>
+      </ScrollingBanner>
+    </div>
+  );
 
   return (
     <>
       <ChatWidget />
-      <HeroSection
-        originalColor="#EFE6CF"
-        transitionColor="#FFFFFF"
-        className="min-w-[100vw] min-h-[100vh]"
-        navigation={NavdockLinks}
-        ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[0] = el;
-        }}
-      />
-      <SocialProofSection
-        id="socialProof1"
-        originalColor="#EFE6CF"
-        transitionColor="#FFFFFF"
-        className="z-10 min-w-[100vw]"
-        ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[1] = el;
-        }}
-      />
-      <CopySection
-        originalColor="#EFE6CF"
-        transitionColor="#FFFFFF"
-        className="z-10 min-w-[100vw]"
-        ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[2] = el;
-        }}
-        copy={
-          <>
-            We now live in an<span className="text-goldenbrown">online</span>
-            real estate economy
-          </>
-        }
-      />
-      <ProblemSection
-        originalColor="#EFE6CF"
-        transitionColor="#FFFFFF"
-        className="z-0 min-w-[100vw]"
-        ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[3] = el;
-        }}
-      />
-      <CopySection
-        originalColor="#EFE6CF"
-        transitionColor="#FFFFFF"
-        className="z-10 min-w-[100vw]"
-        ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[4] = el;
-        }}
-        copy={
-          <>
-            A shift from person-to-person transactions to a place where almost
-            <span className="text-goldenbrown">100%</span>of buyers start their
-            buying process<span className="text-goldenbrown">online</span>
-          </>
-        }
-      />
+      <div className="relative flex flex-row min-h-screen overflow-hidden bg-ash">
+        {/* Left section */}
+        <Link
+          href="/services/listing-media"
+          data-follower-text="Explore"
+          className={`bg-ash cursor-text-hover`}
+          style={{
+            width: "30vw",
+            transform: `translateX(${
+              isLeftHovered
+                ? "0%"
+                : isRightHovered
+                ? "-100%"
+                : showLeftHint
+                ? isMobile
+                  ? "-60%"
+                  : "-80%"
+                : isMobile
+                ? "-70%"
+                : "-86%"
+            })`,
+            opacity: `${isLeftHovered ? "100%" : "50%"}`,
+            transition: showLeftHint ? HINT_TRANSITION : BASE_TRANSITION,
+            position: "absolute",
+            left: 0,
+            top: 0,
+            bottom: 0,
+            zIndex: 10,
+          }}
+        >
+          <ListingMediaSection
+            content={leftContent}
+            onMouseEnter={() => setIsLeftHovered(true)}
+            className="h-full cursor-text-hover !bg-transparent"
+            style={
+              {
+                "--section-width": "100%",
+              } as React.CSSProperties
+            }
+          />
+        </Link>
 
-      <div ref={container} className="relative h-full bg-white min-w-[100vw]">
-        <StatsSection
-          stats={HomePageStats}
-          className=""
-          scrollYProgress={scrollYProgress}
-        />
-        <CopySection
-          className="bg-white z-10"
-          copy={
-            <>
-              The best real estate professionals have
-              <span className="text-goldenbrown italic">reinvented</span>
-              themselves and their businesses towards a
-              <span className="text-goldenbrown">
-                more substantial online presence
-              </span>
-            </>
-          }
-        />
+        {/* Center section */}
+        <div
+          className="relative w-full z-5 overflow-hidden bg-ash"
+          style={{
+            transform: `translateX(${
+              isLeftHovered ? "30vw" : isRightHovered ? "-30vw" : "0"
+            })`,
+            transition: BASE_TRANSITION,
+          }}
+          onMouseEnter={handleHeroEnter}
+          onMouseLeave={handleHeroLeave}
+        >
+          <div
+            className="overflow-hidden transition-all"
+            style={{
+              opacity: isLeftHovered || isRightHovered ? 0.2 : 1,
+              transition: BASE_TRANSITION,
+            }}
+          >
+            <HeroSection
+              originalColor="#EFE6CF"
+              transitionColor="#FFFFFF"
+              className="min-h-screen"
+              navigation={NavdockLinks}
+            />
+          </div>
+        </div>
+
+        {/* Right section */}
+        <Link
+          href="/services/social-media-management"
+          data-follower-text="Explore"
+          className="bg-ash cursor-text-hover"
+          style={{
+            width: "30vw",
+            transform: `translateX(${
+              isRightHovered
+                ? "0%"
+                : isLeftHovered
+                ? "100%"
+                : showRightHint
+                ? isMobile
+                  ? "60%"
+                  : "80%"
+                : isMobile
+                ? "70%"
+                : "86%"
+            })`,
+            opacity: `${isRightHovered ? "100%" : "50%"}`,
+            transition: showRightHint ? HINT_TRANSITION : BASE_TRANSITION,
+            position: "absolute",
+            right: 0,
+            top: 0,
+            bottom: 0,
+            zIndex: 10,
+          }}
+        >
+          <SocialMediaManagementSection
+            content={rightContent}
+            onMouseEnter={() => setIsRightHovered(true)}
+            className="h-full !bg-transparent"
+            style={
+              {
+                "--section-width": "100%",
+              } as React.CSSProperties
+            }
+          />
+        </Link>
       </div>
-      <SocialProofSection full className="bg-white z-10" />
-
-      <SolutionSection className="bg-ash z-10" />
-      <ServicesSection className="bg-white z-10" />
-
-      <RoadmapSection className="bg-white z-10" />
-      <SocialProofSection full className="bg-white z-10" />
-      <PricingSection
-        className="bg-white z-10"
-        pricingPackages={socialMediaPackages}
-      />
-      <CTASection className="bg-white z-10" />
-      <FAQSection className="bg-white z-10" />
-      <ContactSection className="bg-white z-10" />
     </>
   );
-}
+};
 
 export default Body;

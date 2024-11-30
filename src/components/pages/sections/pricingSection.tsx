@@ -303,7 +303,7 @@ function PricingSection({
 
   return (
     <div id="pricing" className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem] text-ash">
+      <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem] text-ash">
         {/* Header */}
         <SectionHeader
           center
@@ -314,7 +314,7 @@ function PricingSection({
 
         {/* Plan Switch */}
         {!noSwitch && (
-          <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16 !text-[12px]">
+          <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16">
             <span className="py-[0.75rem] px-[1.375rem]">Monthly</span>
 
             <Switch
@@ -353,47 +353,72 @@ function PricingSection({
                 >
                   {Object.values(pricingPackages).map((tier, index) => (
                     <SwiperSlide key={index} className="cursor-swipe-hover">
-                      <div className="group relative size-full">
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{
+                          // once: true, // Only animate once
+                          amount: 0.2, // Trigger when 30% of element is in view
+                          margin: "50px", // Start animation 50px before element enters viewport
+                        }}
+                        transition={{
+                          delay: 0.1,
+                          // staggerChildren: 1,
+                          duration: 0.2,
+                          ease: "easeOut",
+                        }}
+                        className="group relative size-full"
+                      >
                         <PricingTier
                           tier={tier}
                           isYearly={isYearly}
                           className=""
                         />
-                      </div>
+                      </motion.div>
                     </SwiperSlide>
                   ))}
                 </Swiper>
               </div>
               <div className="lg:hidden contents">
                 {Object.values(pricingPackages).map((tier, index) => (
-                  <Reveal
-                    once
-                    key={index}
-                    slide={false}
-                    xOverflow={false}
-                    yOverflow={false}
-                    duration={0.6}
-                    delay={0 + 0.1 * index}
-                    width="100%"
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{
+                      // once: true, // Only animate once
+                      amount: 0.2, // Trigger when 30% of element is in view
+                      margin: "50px", // Start animation 50px before element enters viewport
+                    }}
+                    transition={{
+                      delay: 0.1,
+                      // staggerChildren: 1,
+                      duration: 0.2,
+                      ease: "easeOut",
+                    }}
                     className="group relative size-full lg:w-1/3"
                   >
                     <PricingTier tier={tier} isYearly={isYearly} className="" />
-                  </Reveal>
+                  </motion.div>
                 ))}
               </div>
             </>
           ) : Object.keys(pricingPackages).length > 2 ? (
             <>
               {Object.values(pricingPackages).map((tier, index) => (
-                <Reveal
-                  once
-                  key={index}
-                  slide={false}
-                  xOverflow={false}
-                  yOverflow={false}
-                  duration={0.6}
-                  delay={0 + 0.1 * index}
-                  width="100%"
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{
+                    // once: true, // Only animate once
+                    amount: 0.2, // Trigger when 30% of element is in view
+                    margin: "50px", // Start animation 50px before element enters viewport
+                  }}
+                  transition={{
+                    delay: 0.1,
+                    // staggerChildren: 1,
+                    duration: 0.2,
+                    ease: "easeOut",
+                  }}
                   className="group relative size-full lg:w-1/3"
                 >
                   <PricingTier
@@ -401,29 +426,30 @@ function PricingSection({
                     isYearly={isYearly}
                     className="lg:min-h-[54.013rem]"
                   />
-                </Reveal>
+                </motion.div>
               ))}
             </>
           ) : (
             <>
               {Object.values(pricingPackages).map((tier, index) => (
-                <Reveal
-                  once
-                  key={index}
-                  slide={false}
-                  xOverflow={false}
-                  yOverflow={false}
-                  duration={0.6}
-                  delay={0 + 0.1 * index}
-                  width="100%"
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{
+                    // once: true, // Only animate once
+                    amount: 0.2, // Trigger when 30% of element is in view
+                    margin: "50px", // Start animation 50px before element enters viewport
+                  }}
+                  transition={{
+                    delay: 0.1,
+                    // staggerChildren: 1,
+                    duration: 0.2,
+                    ease: "easeOut",
+                  }}
                   className="group relative size-full lg:w-1/3"
                 >
-                  <PricingTier
-                    tier={tier}
-                    isYearly={isYearly}
-                    className=""
-                  />
-                </Reveal>
+                  <PricingTier tier={tier} isYearly={isYearly} className="" />
+                </motion.div>
               ))}
             </>
           )}

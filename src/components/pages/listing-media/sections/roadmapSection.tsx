@@ -147,7 +147,7 @@ function RoadmapSection({ className }: SectionProps) {
           </div>
 
           {/* Steps Copy */}
-          <div className="flex flex-col size-full sm:min-h-[400vh] max-w-[87.5rem] items-start justify-between z-10 snap-y">
+          <div className="flex flex-col size-full sm:min-h-[400vh] max-w-[--section-width] items-start justify-between z-10 snap-y">
             {/* Step 1 */}
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] sm:pt-[7.5rem] py-[1.875rem]">
               <div

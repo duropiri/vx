@@ -81,7 +81,7 @@ export default function Footer({
   };
 
   return (
-    <>
+    <footer>
       <div
         className="relative h-[40rem] md:h-[50rem] lg:h-[25rem] select-none"
         style={{
@@ -90,7 +90,7 @@ export default function Footer({
         }}
       >
         <div className="relative h-[calc(100vh+40rem)] md:h-[calc(100vh+50rem)] lg:h-[calc(100vh+25rem)] -top-[100vh]">
-          <footer
+          <div
             className={`${className} h-[40rem] md:h-[50rem] lg:h-[25rem] sticky top-[calc(100vh-40rem)] md:top-[calc(100vh-50rem)] lg:top-[calc(100vh-25rem)] bg-ash text-white`}
           >
             <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] lg:gap-[3.125rem]">
@@ -114,10 +114,12 @@ export default function Footer({
                     {/* Social links */}
                     <div className="flex flex-row items-center gap-[0.75rem] text-charcoal">
                       {/* Twitter */}
-                      <Link href="https://x.com/virtualxposur3" passHref>
+                      <Link
+                        href="https://x.com/virtualxposur3"
+                        passHref
+                        className="size-[3rem]"
+                      >
                         <svg
-                          width="36"
-                          height="36"
                           viewBox="0 0 36 36"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -138,10 +140,9 @@ export default function Footer({
                       <Link
                         href="https://www.facebook.com/virtualxposureofficial/"
                         passHref
+                        className="size-[3rem]"
                       >
                         <svg
-                          width="36"
-                          height="36"
                           viewBox="0 0 36 36"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -162,10 +163,9 @@ export default function Footer({
                       <Link
                         href="https://www.instagram.com/virtualxposure/?hl=en"
                         passHref
+                        className="size-[3rem]"
                       >
                         <svg
-                          width="36"
-                          height="36"
                           viewBox="0 0 36 36"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -189,27 +189,6 @@ export default function Footer({
                           />
                         </svg>
                       </Link>
-
-                      {/* Ghithub */}
-                      {/* <svg
-                        width="36"
-                        height="36"
-                        viewBox="0 0 36 36"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="cursor-select-hover hover:text-goldenbrown transition-all duration-300"
-                      >
-                        <path
-                          d="M36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18Z"
-                          fill="currentColor"
-                        />
-                        <path
-                          fill-rule="evenodd"
-                          clip-rule="evenodd"
-                          d="M18.78 9.29102C14.1631 9.29102 10.4487 13.0054 10.4487 17.6223C10.4487 21.302 12.844 24.4262 16.1418 25.537C16.5583 25.6065 16.6972 25.3635 16.6972 25.1205C16.6972 24.9122 16.6972 24.3915 16.6972 23.6972C14.3714 24.2179 13.8854 22.5864 13.8854 22.5864C13.5035 21.6144 12.9481 21.3714 12.9481 21.3714C12.1844 20.8507 13.0175 20.8507 13.0175 20.8507C13.8507 20.9201 14.302 21.7185 14.302 21.7185C15.0309 23.0029 16.2459 22.6211 16.7319 22.4128C16.8013 21.8574 17.0096 21.5102 17.2526 21.302C15.4128 21.0937 13.4688 20.3647 13.4688 17.171C13.4688 16.2685 13.7812 15.5048 14.3367 14.9494C14.2672 14.7411 13.9548 13.9079 14.4061 12.7277C14.4061 12.7277 15.1004 12.5194 16.6972 13.5955C17.3568 13.4219 18.0858 13.3178 18.78 13.3178C19.4743 13.3178 20.2033 13.4219 20.8628 13.5955C22.4597 12.5194 23.154 12.7277 23.154 12.7277C23.6052 13.8732 23.3275 14.7064 23.2234 14.9494C23.7441 15.5395 24.0912 16.2685 24.0912 17.171C24.0912 20.3647 22.1473 21.059 20.2727 21.2673C20.5851 21.5103 20.8281 22.031 20.8281 22.7947C20.8281 23.9055 20.8281 24.8081 20.8281 25.0858C20.8281 25.294 20.967 25.5718 21.4183 25.5023C24.7161 24.4262 27.1113 21.302 27.1113 17.6223C27.1113 13.0054 23.397 9.29102 18.78 9.29102Z"
-                          fill="white"
-                        />
-                      </svg> */}
                     </div>
                   </div>
                 </div>
@@ -265,7 +244,7 @@ export default function Footer({
 
               <div className="hidden lg:flex h-[0.055rem] w-full bg-charcoal" />
             </div>
-          </footer>
+          </div>
         </div>
       </div>
 
@@ -280,46 +259,46 @@ export default function Footer({
 
         <div className="flex flex-row items-center gap-[0.375rem] lg:pr-[2rem]">
           {/* Payment method icons */}
-          <Image alt="amex" src={amex} className="size-full" quality={80} />
+          <Image alt="amex" src={amex} className="size-full max-w-[2rem]" quality={80} />
           <Image
             alt="apple-pay"
             src={applePay}
-            className="size-full"
+            className="size-full max-w-[2rem]"
             quality={80}
           />
           <Image
             alt="diners-club"
             src={dinersClub}
-            className="size-full"
+            className="size-full max-w-[2rem]"
             quality={80}
           />
           <Image
             alt="discover"
             src={discover}
-            className="size-full"
+            className="size-full max-w-[2rem]"
             quality={80}
           />
           <Image
             alt="google-pay"
             src={googlePay}
-            className="size-full"
+            className="size-full max-w-[2rem]"
             quality={80}
           />
           <Image
             alt="mastercard"
             src={masterCard}
-            className="size-full"
+            className="size-full max-w-[2rem]"
             quality={80}
           />
           <Image
             alt="shop-pay"
             src={shopPay}
-            className="size-full"
+            className="size-full max-w-[2rem]"
             quality={80}
           />
-          <Image alt="visa" src={visa} className="size-full" quality={80} />
+          <Image alt="visa" src={visa} className="size-full max-w-[2rem]" quality={80} />
         </div>
       </div>
-    </>
+    </footer>
   );
 }

@@ -15,44 +15,66 @@
   --charcoal-navy: #1a213d; /* Primary */
   --charcoal: #434345; /* Secondary */
 
+  --section-width: 120rem;
+
   /* Font sizing variables */
-  --root-size: 37;
-  --max-font-size: 14px;  /* Default max for HD and below */
-  font-size: 14px;
+  // --root-size: 37;
+  // --max-font-size: 14px;  /* Default max for HD and below */
+  // font-size: 14px;
+  --size: 305;
+  font-size: calc((100vw / var(--size)) * 10);
 }
 
-@media (min-width: 370px) {
+@media (min-width: 768px) {
   :root {
-    font-size: 14px;
+    --size: 768;
   }
 }
 
 @media (min-width: 1024px) {
   :root {
-    font-size: calc(min((100vw / var(--root-size)), var(--max-font-size)));
+    --size: 1024;
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
   :root {
-    --root-size: 90;
+    --size: 1440;
   }
 }
 
-/* 2K displays and above */
-@media (min-width: 2048px) {
-  :root {
-    --max-font-size: 16px;
-  }
-}
+// @media (min-width: 370px) {
+//   :root {
+//     font-size: 14px;
+//   }
+// }
 
-/* Ensure font size doesn't exceed 16px on large screens */
-@media (min-width: 1920px) {
-  :root {
-    --root-size: 120;
-    font-size: var(--max-font-size);
-  }
-}
+// @media (min-width: 1024px) {
+//   :root {
+//     font-size: calc(min((100vw / var(--root-size)), var(--max-font-size)));
+//   }
+// }
+
+// @media (min-width: 1024px) {
+//   :root {
+//     --root-size: 90;
+//   }
+// }
+
+// /* 2K displays and above */
+// @media (min-width: 2048px) {
+//   :root {
+//     --max-font-size: 16px;
+//   }
+// }
+
+// /* Ensure font size doesn't exceed 16px on large screens */
+// @media (min-width: 1920px) {
+//   :root {
+//     --root-size: 120;
+//     font-size: var(--max-font-size);
+//   }
+// }
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -590,7 +612,6 @@ body {
     --radius: 0.5rem;
   }
 }
-
 
 // .swiper {
 //   width: 240px;

@@ -12,29 +12,30 @@ import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-
 import { useEffect } from "react";
 
 const WhatIsItSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="Why"
       subheading="Why does the quality of your photos matter?"
       className="text-black"
     />
-    <div className="relative flex size-full lg:h-[30vh] max-w-[87.5rem] flex-col lg:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
-      <div className="flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden">
-        <Image
-          // data-speed={0.95}
-          src={heroImage2}
-          alt="hero-image"
-          width={1200}
-          height={600}
-          className=""
-          quality={80}
-        />
+    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col lg:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] p-[2rem]">
+      <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
+        <div data-speed={0.95} data-media-wrapper className="size-full">
+          <Image
+            src={heroImage2}
+            alt="hero-image"
+            width={1200}
+            height={600}
+            className="w-full h-[125%] scale-125 -translate-y-[10%] group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
+            quality={80}
+          />
+        </div>
       </div>
-      <div className="relative flex size-full flex-col sm:flex-row items-start justify-between gap-[1.5rem]">
+      <div className="relative flex size-full flex-col sm:flex-row items-start justify-between gap-[1.5rem] max-h-[70%] sm:max-w-[40%]">
         <ul
           // data-speed={1.02}
-          className="flex flex-col size-full items-start justify-center space-y-[1rem] bg-ash rounded-[1rem] p-[1.5rem]"
+          className="group opacity-90 backdrop-blur-lg scale-100 group-hover:opacity-100 sm:hover:-translate-y-[2rem] sm:hover:scale-105 transition-all duration-500 flex flex-col size-full items-start justify-center space-y-[10%] bg-ash rounded-[1rem] p-[1.5rem]"
         >
           {[
             {
@@ -87,7 +88,7 @@ const WhatIsItSection = () => (
         </ul>
         <ul
           // data-speed={1.08}
-          className="flex flex-col size-full items-start justify-center space-y-[1rem] bg-ash rounded-[1rem] p-[1.5rem]"
+          className="group opacity-90 backdrop-blur-lg scale-100 group-hover:opacity-100 sm:hover:-translate-y-[2rem] sm:hover:scale-105 transition-all duration-500 flex flex-col size-full items-start justify-center space-y-[10%] bg-ash rounded-[1rem] p-[1.5rem]"
         >
           {[
             {
@@ -146,7 +147,7 @@ const WhatIsItSection = () => (
 );
 
 const StepsLeftSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"

@@ -1,4 +1,4 @@
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
+import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import React, { useRef } from "react";
 import CountUp from "react-countup";
 import { motion, MotionValue, useTransform } from "framer-motion";
@@ -317,7 +317,7 @@ function StatsSection({
         </div>
         <div
           ref={countUpRef}
-          className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[1.5rem] text-white"
+          className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-y-[1.5rem] text-white"
         >
           <div
             className={`${

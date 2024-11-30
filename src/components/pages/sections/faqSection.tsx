@@ -40,27 +40,27 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
     }
   }, [isInView, controls]);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
+  // const containerVariants = {
+  //   hidden: { opacity: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     transition: {
+  //       staggerChildren: 0.1,
+  //     },
+  //   },
+  // };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
-  };
+  // const itemVariants = {
+  //   hidden: { opacity: 0, y: 20 },
+  //   visible: { opacity: 1, y: 0 },
+  // };
 
   return (
     <div id="faqs" className={`section-container !flex-row ${className}`}>
       <div
         className={`relative flex flex-col ${
           vertical ? "items-center" : "lg:flex-row items-start"
-        } size-full max-w-[87.5rem] justify-between gap-[4.375rem]`}
+        } size-full max-w-[--section-width] justify-between gap-[4.375rem]`}
       >
         {/* Header */}
         <SectionHeader
@@ -99,18 +99,17 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
               {faq.map((_, index) => (
                 <motion.div
                   key={index}
-                  // variants={itemVariants}
-                  // transition={{ duration: 0.2 }}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{
-                    once: true, // Only animate once
-                    amount: 0.3, // Trigger when 30% of element is in view
+                    // once: true, // Only animate once
+                    amount: 0.2, // Trigger when 30% of element is in view
                     margin: "50px", // Start animation 50px before element enters viewport
                   }}
                   transition={{
-                    delay: (index + 1) * 0.1,
-                    duration: 0.5,
+                    delay: 0.1,
+                    // staggerChildren: 1,
+                    duration: 0.2,
                     ease: "easeOut",
                   }}
                 >

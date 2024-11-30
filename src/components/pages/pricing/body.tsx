@@ -2,7 +2,7 @@
 import React from "react";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 import PricingSection from "@/components/pages/sections/pricingSection";
-import CTASection from "@/components/pages/home/sections/ctaSection";
+import CTASection from "@/components/pages/social-media-management/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
 import { socialMediaPackages } from "@/data/pricingPackages";

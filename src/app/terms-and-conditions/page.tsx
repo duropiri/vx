@@ -81,7 +81,7 @@ const page = () => {
         id="terms-and-conditions"
         className={`section-container !flex-row !pt-[6rem] lg:!pt-[3.125rem]`}
       >
-        <div className="relative flex size-full max-w-[87.5rem] flex-col items-center justify-between gap-[1.5rem] sm:gap-[3.75rem]">
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-between gap-[1.5rem] sm:gap-[3.75rem]">
           <h1 className="pn-bold-48 text-center mb-8">Terms and Conditions</h1>
 
           <p className="mb-8">

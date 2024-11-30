@@ -14,7 +14,7 @@ import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-584x1024.png";
 
 const WhatIsItSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="Why"
@@ -22,7 +22,7 @@ const WhatIsItSection = () => (
       body="In today’s world of short attention spans, standing out in the crowded real estate market requires a fresh approach. Consider creating engaging real estate videos to give clients a realistic feel for the property and capture their interest in a unique way."
       className="text-black"
     />
-    <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
+    <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
         {[
           {
@@ -117,7 +117,7 @@ const WhatIsItSection = () => (
 );
 
 const StepsLeftSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"

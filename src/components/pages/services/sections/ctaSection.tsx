@@ -16,7 +16,7 @@ interface SectionProps {
 function CTASection({ className = "" }: SectionProps) {
   return (
     <div className={`section-container ${className}`}>
-      <div className="flex flex-col items-center justify-center w-full bg-ash rounded-[1rem] px-[2.5rem] lg:px-[12.5rem] py-[2.5rem] lg:py-[5rem] gap-y-[1rem] lg:gap-y-[2rem] text-white text-center">
+      <div className="flex flex-col items-center justify-center w-full max-w-[--section-width] bg-ash rounded-[1rem] px-[2.5rem] lg:px-[12.5rem] py-[2.5rem] lg:py-[5rem] gap-y-[1rem] lg:gap-y-[2rem] text-white text-center">
         <LetterRevealOnScroll className="relative">
           <h1 className="pn-regular-96">2X Money Back Guarantee</h1>
         </LetterRevealOnScroll>
@@ -40,7 +40,7 @@ function CTASection({ className = "" }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button group cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button group cursor-select-hover !bg-transparent !border-white w-full lg:w-[18.75rem] shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5 !px-[1.5rem] !py-[1.25rem]"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
@@ -67,7 +67,7 @@ function CTASection({ className = "" }: SectionProps) {
           >
             <HoverWrapper
               href="#contact"
-              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[0.5rem]"
+              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[1.25rem] !w-[18.75rem]"
             >
               <FlipLink className="font-semibold">Get In Touch</FlipLink>
               <Image

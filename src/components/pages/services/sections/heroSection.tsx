@@ -97,6 +97,27 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           );
         });
 
+        // Scale effect for background media
+        const mediaWrapper = document.querySelector("[data-media-wrapper]");
+        if (mediaWrapper) {
+          gsap.fromTo(
+            mediaWrapper,
+            {
+              scale: 1,
+            },
+            {
+              scale: 1.15,
+              ease: "none",
+              scrollTrigger: {
+                trigger: mediaWrapper,
+                start: "top top",
+                end: "bottom top",
+                scrub: true,
+              },
+            }
+          );
+        }
+
         return () => {
           ScrollTrigger.getAll().forEach((st) => st.kill());
         };
@@ -106,11 +127,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     }, []);
 
     return (
-      <div ref={ref} id={id} className="relative w-full">
+      <div ref={ref} id={id} className="relative w-full overflow-hidden">
         {/* Video Background */}
         {src.endsWith(".mp4") || src.endsWith(".webm") ? (
           <div
-            data-speed={1.05}
+            data-speed={1.5}
+            data-media-wrapper
+
             className="absolute inset-0 size-full h-[120%]"
           >
             <video
@@ -126,7 +149,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           </div>
         ) : (
           <div
-            data-speed={1.05}
+            data-speed={1.5}
+            data-media-wrapper
+
             className="absolute inset-0 size-full h-[120%] pointer-events-none"
           >
             <Image
@@ -141,8 +166,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {/* Content */}
-        <div data-speed={1.1} className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]">
-          <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">
+        <div
+          data-speed={1.1}
+          className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
+        >
+          <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
               medium

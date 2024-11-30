@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
-
+import { motion } from "framer-motion";
 import CTASection from "@/components/pages/services/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
@@ -192,7 +194,7 @@ function Body({
             whatisitSection.map((section, index) => (
               <BasicSection
                 key={index}
-                className={`${index % 2 && "!bg-ash/5"}`}
+                className={`${index % 2 && "!bg-ash"}`}
                 content={section}
               />
             ))
@@ -244,7 +246,25 @@ function Body({
         />
       </div>
       {/* CTA */}
-      <CTASection className="bg-white z-10" />
+      <div className="bg-white z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{
+            // once: true, // Only animate once
+            amount: 0.2, // Trigger when 30% of element is in view
+            margin: "50px", // Start animation 50px before element enters viewport
+          }}
+          transition={{
+            delay: 0.1,
+            // staggerChildren: 1,
+            duration: 0.2,
+            ease: "easeOut",
+          }}
+        >
+          <CTASection className="bg-white z-10" />
+        </motion.div>
+      </div>
       {/* Unlimited? */}
       {unlimitedSection && (
         <Basic2ColumnSection
@@ -258,7 +278,25 @@ function Body({
 
       {/* Case Studies? */}
       {/* Contact */}
-      <ContactSection className="bg-white z-10" />
+      <div className="bg-white z-10">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{
+            // once: true, // Only animate once
+            amount: 0.2, // Trigger when 30% of element is in view
+            margin: "50px", // Start animation 50px before element enters viewport
+          }}
+          transition={{
+            delay: 0.1,
+            // staggerChildren: 1,
+            duration: 0.2,
+            ease: "easeOut",
+          }}
+        >
+          <ContactSection className="bg-white z-10" />
+        </motion.div>
+      </div>
       {/* FAQ */}
       <FAQSection
         faq={faq || listingMediaFAQ}

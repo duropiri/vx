@@ -1,6 +1,6 @@
 import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
+import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
@@ -108,7 +108,7 @@ function SolutionSection({ className }: SectionProps) {
       </div>
 
       {/* Content */}
-      <div className="flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-y-[4rem] lg:gap-y-[8rem] z-10">
+      <div className="flex size-full max-w-[--section-width] flex-col items-start justify-between gap-y-[4rem] lg:gap-y-[8rem] z-10">
         {/* Header */}
         <SectionHeader
           dark
@@ -133,15 +133,22 @@ function SolutionSection({ className }: SectionProps) {
           ref={bentosRef}
           className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[0.5rem]"
         >
-          {/* Top Row */}
-          <Reveal
-            once
-            slide={false}
-            xOverflow={false}
-            yOverflow={false}
-            duration={0.6}
-            width="100%"
+          {/* Top Row (1) */}
+          <motion.div
             className="bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
           >
             <div
               className="solution-bento"
@@ -182,23 +189,137 @@ function SolutionSection({ className }: SectionProps) {
                   <Image
                     alt="icon"
                     src={completeDMSImage}
-                    className="size-[80%] object-cover"
+                    className="size-[80%] h-full object-cover"
                     placeholder="blur"
                     quality={80}
                   />
                 </div>
               </div>
             </div>
-          </Reveal>
-          {/* Middle Row */}
-          <Reveal
-            once
-            slide={false}
-            xOverflow={false}
-            yOverflow={false}
-            duration={0.6}
-            width="100%"
-            className="bento-row !gap-y-[1rem]"
+          </motion.div>
+
+          <motion.div
+            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+          >
+            <div
+              className="solution-bento bento-center lg:max-w-[29%]"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[1] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content h-full">
+                <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                    Social Media Managed by Experts
+                  </span>
+                  <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
+                    <h1 className="pn-bold-20 !leading-[1.5rem]">
+                      Stop Managing Social Media—Start Seeing Results.
+                    </h1>
+                    <p className="pn-regular-16">
+                      Forget the hassle of managing your own social media. Our
+                      team of experts takes care of everything—from posting and
+                      scheduling to audience engagement. With a strategy
+                      tailored to your brand, you&apos;ll see a measurable
+                      impact without the stress.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+          >
+            <div
+              className="solution-bento"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[2] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content overflow-hidden">
+                <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                    High-Quality Content Creation
+                  </span>
+                  <h1 className="pn-regular-28">
+                    Professional Content Designed to Convert.
+                  </h1>
+                  <p className="pn-regular-22">
+                    In today&apos;s market, content is everything. Our in-house
+                    team produces high-quality videos, photos, and social media
+                    assets that resonate with your audience and help you close
+                    more deals. From scripting to production, we ensure every
+                    piece of content aligns with your brand.
+                  </p>
+                  <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
+                    <li className="list">Scriptwriting and topic research</li>
+                    <li className="list">
+                      Professional video and photo shoots
+                    </li>
+                    <li className="list">
+                      Unlimited revisions until perfection
+                    </li>
+                  </ul>
+                </div>
+                <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none translate-x-[10%]">
+                  <Image
+                    alt="icon"
+                    src={highQCCImage}
+                    className="size-[80%] h-full object-cover"
+                    placeholder="blur"
+                    quality={80}
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+          {/* sm: Middle Row (2)*/}
+          <motion.div
+            className="!hidden sm:!flex bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
           >
             <div className="bento-row !gap-y-[1rem]">
               {/* First Bento */}
@@ -268,7 +389,7 @@ function SolutionSection({ className }: SectionProps) {
                     <Image
                       alt="icon"
                       src={highQCCImage}
-                      className="size-[80%] object-cover"
+                      className="size-[80%] h-full object-cover"
                       placeholder="blur"
                       quality={80}
                     />
@@ -276,17 +397,122 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </Reveal>
+          </motion.div>
 
-          {/* Bottom Row */}
-          <Reveal
-            once
-            slide={false}
-            xOverflow={false}
-            yOverflow={false}
-            duration={0.6}
-            width="100%"
-            className="bento-row !gap-y-[1rem]"
+          <motion.div
+            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+          >
+            <div
+              className="solution-bento"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[3] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content overflow-hidden">
+                <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                    Strategic Growth for Realtors{" "}
+                  </span>
+                  <h1 className="pn-regular-28">
+                    Grow Your Business with Proven Strategies.{" "}
+                  </h1>
+                  <p className="pn-regular-22">
+                    At VX, we don&apos;t just post content—we help your business
+                    grow. Our custom social media strategies are designed
+                    specifically for real estate professionals, ensuring
+                    you&apos;re reaching the right audience and driving real
+                    engagement that leads to sales.
+                  </p>
+                </div>
+                <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none">
+                  <Image
+                    alt="icon"
+                    src={stratGrowthImage}
+                    className="size-[70%] h-full object-cover"
+                    placeholder="blur"
+                    quality={80}
+                  />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          <motion.div
+            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+          >
+            <div
+              className="solution-bento bento-center lg:max-w-[28%]"
+              ref={(el: HTMLDivElement | null) => {
+                bentoRefs.current[4] = el;
+              }}
+            >
+              <div className="bento-border"></div>
+              <div className="bento-content h-full">
+                <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
+                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
+                    Data-Driven Results & Reporting
+                  </span>
+                  <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
+                    <h1 className="pn-bold-20 !leading-[1.5rem]">
+                      Measure What Matters with Comprehensive Reporting.
+                    </h1>
+                    <p className="pn-regular-16">
+                      See the direct impact of your digital marketing efforts
+                      with data-driven reports that track growth, engagement,
+                      and return on investment. Our reporting tools give you the
+                      clarity you need to make informed decisions and
+                      continuously improve.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* sm: Bottom Row (2)*/}
+          <motion.div
+            className="!hidden sm:!flex bento-row !gap-y-[1rem]"
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{
+              // once: true, // Only animate once
+              amount: 0.2, // Trigger when 30% of element is in view
+              margin: "50px", // Start animation 50px before element enters viewport
+            }}
+            transition={{
+              delay: 0.1,
+              // staggerChildren: 1,
+              duration: 0.2,
+              ease: "easeOut",
+            }}
           >
             <div className="bento-row !gap-y-[1rem]">
               {/* First Bento */}
@@ -318,7 +544,7 @@ function SolutionSection({ className }: SectionProps) {
                     <Image
                       alt="icon"
                       src={stratGrowthImage}
-                      className="size-[70%] object-cover"
+                      className="size-[70%] h-full object-cover"
                       placeholder="blur"
                       quality={80}
                     />
@@ -354,7 +580,7 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </Reveal>
+          </motion.div>
         </div>
 
         {/* CTA */}

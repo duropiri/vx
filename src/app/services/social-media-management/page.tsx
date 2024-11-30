@@ -1,10 +1,10 @@
 import Page from "@/components/layout/page";
-import React from "react";
+import Body from "@/components/pages/social-media-management/body";
 
 const page = () => {
   return (
     <Page>
-      <></>
+      <Body />
     </Page>
   );
 };

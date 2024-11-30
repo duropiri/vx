@@ -17,6 +17,31 @@ import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta-white.svg";
 import { usePathname } from "next/navigation";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";
+import { FooterHelpLinks } from "@/data/navLinks";
+
+// Custom hook to track scroll direction
+const useScrollDirection = () => {
+  const [scrollDirection, setScrollDirection] = useState("up");
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const updateScrollDirection = () => {
+      const scrollY = window.scrollY;
+      const direction = scrollY > lastScrollY ? "down" : "up";
+
+      // Only update direction if the scroll is more than 5px to prevent tiny movements
+      if (Math.abs(scrollY - lastScrollY) > 5) {
+        setScrollDirection(direction);
+      }
+      setLastScrollY(scrollY);
+    };
+
+    window.addEventListener("scroll", updateScrollDirection);
+    return () => window.removeEventListener("scroll", updateScrollDirection);
+  }, [lastScrollY]);
+
+  return scrollDirection;
+};
 
 const transition = { duration: 0.5, ease: [0.76, 0, 0.24, 1] };
 
@@ -94,12 +119,12 @@ interface NavProps {
 //   >;
 // }
 
-// interface FooterProps {}
+interface FooterProps {}
 
-// interface ImageProps {
-//   src: string;
-//   isActive: boolean;
-// }
+interface ImageProps {
+  src: string;
+  isActive: boolean;
+}
 
 interface HeaderProps {
   className?: string;
@@ -127,92 +152,80 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
   );
 
   return (
-    <motion.div
-      variants={height}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className="overflow-hidden flex flex-row items-start justify-center size-full text-black"
-    >
-      {/* <div className="max-w-[980px] mx-auto py-8 px-4">
-        <div className="grid grid-cols-3 gap-8">
-          {activeDropdown.dropdown.items.map((item, index) => (
-            <Link
-              key={index}
-              href={item.href}
-              className="cursor-select-hover group flex flex-col items-center p-4 rounded-lg bg-ash border-goldenbrown border group-hover:bg-charcoal hover:-translate-y-1 transition-all duration-200"
-            >
-              <div className="flex flex-col items-center justify-center gap-[0.5rem]">
-                <Image
-                  src={item.icon}
-                  alt={item.title}
-                  height={20}
-                  className="transition-all duration-300 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0"
-                />
-                <div className="w-full text-center font-medium text-white/50 group-hover:text-white transition-all duration-300">
-                  {item.title}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div> */}
-      {/* Services Grid */}
-      <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
-        <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
-        <div className="grid gap-2">
-          {activeDropdown.dropdown.items.map((item, index) => (
-            <Link
-              key={index}
-              href={item.href}
-              className="cursor-select-hover group inline-block w-fit"
-            >
-              <div className="flex flex-row items-center justify-center gap-[0.5rem]">
-                <div className="flex-col items-center p-2 rounded-lg bg-ash/10 border-none border group-hover:bg-charcoal/10 transition-all duration-200">
-                  <Image
-                    src={item.icon}
-                    alt={item.title}
-                    height={20}
-                    width={20}
-                    className="transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-ash"
-                  />
-                </div>
-                <div className="inline-block w-fit text-black/80 group-hover:text-black transition-colors duration-200">
-                  {item.title}
-                </div>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </div>
-
-      {/* Quick Links Section */}
-      <div className="col-span-5 pr-[2rem] py-[2rem]">
-        <h3 className="text-sm font-medium text-black/40 mb-5">Quick links</h3>
-        <div className="grid gap-6">
-          {groupedLinks &&
-            Object.entries(groupedLinks).map(([category, links]) => (
-              <div key={category} className="space-y-4">
-                {/* <h4 className="text-sm font-medium text-black/40">
-                  {category}
-                </h4> */}
-                <div className="space-y-2">
-                  {links.map((link, index) => (
-                    <div key={index} className="flex">
-                      <Link
-                        href={link.href}
-                        className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200"
-                      >
-                        {link.title}
-                      </Link>
+    <>
+      <motion.div
+        variants={height}
+        initial="initial"
+        animate="enter"
+        exit="exit"
+        className="overflow-hidden flex flex-col items-start justify-center size-full text-white"
+      >
+        <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
+          {/* Services Grid */}
+          <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
+            <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
+            <div className="grid gap-2">
+              {activeDropdown.dropdown.items.map((item, index) => (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className="cursor-select-hover group inline-block w-fit"
+                >
+                  <div className="flex flex-row items-center justify-center gap-[0.5rem]">
+                    <div className="flex-col items-center p-2 rounded-lg bg-ash/10 border-none border group-hover:bg-charcoal/10 transition-all duration-200">
+                      <Image
+                        src={item.icon}
+                        alt={item.title}
+                        height={20}
+                        width={20}
+                        className="transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-ash"
+                      />
                     </div>
-                  ))}
-                </div>
-              </div>
-            ))}
+                    <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
+                      <div className="inline-block w-fit text-black/80 group-hover:text-black transition-colors duration-200">
+                        <FlipLink>{item.title}</FlipLink>
+                      </div>
+                    </HoverWrapper>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Quick Links Section */}
+          <div className="col-span-5 pr-[2rem] py-[2rem]">
+            <h3 className="text-sm font-medium text-black/40 mb-5">
+              Quick links
+            </h3>
+            <div className="grid gap-6">
+              {groupedLinks &&
+                Object.entries(groupedLinks).map(([category, links]) => (
+                  <div key={category} className="space-y-4">
+                    {/* <h4 className="text-sm font-medium text-black/40">
+                    {category}
+                  </h4> */}
+                    <div className="space-y-2">
+                      {links.map((link, index) => (
+                        <div key={index} className="flex">
+                          <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
+                            <Link
+                              href={link.href}
+                              className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200"
+                            >
+                              <FlipLink>{link.title}</FlipLink>
+                            </Link>
+                          </HoverWrapper>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+            </div>
+          </div>
         </div>
-      </div>
-    </motion.div>
+        <Footer />
+      </motion.div>
+    </>
   );
 };
 
@@ -330,88 +343,75 @@ const MobileMenu: React.FC<{
   );
 };
 
-// const Footer: React.FC<FooterProps> = () => {
-//   return (
-//     <div className="flex flex-wrap mt-10 small-text uppercase gap-10 text-white">
-//       <ul className="w-full md:w-auto mt-2 list-none p-0">
-//         <motion.li
-//           custom={[0.3, 0]}
-//           variants={translate}
-//           initial="initial"
-//           animate="enter"
-//           exit="exit"
-//           className="flex items-end justify-end"
-//         >
-//           <span className="font-extrabold mr-2">Made by:</span>{" "}
-//           @relaydigitalmktg
-//         </motion.li>
-//       </ul>
-//       <ul className="w-full md:w-auto mt-2 list-none p-0">
-//         <motion.li
-//           custom={[0.3, 0]}
-//           variants={translate}
-//           initial="initial"
-//           animate="enter"
-//           exit="exit"
-//           className="flex items-end justify-end"
-//         >
-//           <Link
-//             href="/privacy-policy"
-//             aria-label="Visit Privacy Policy Page"
-//             passHref
-//           >
-//             Privacy Policy
-//           </Link>
-//         </motion.li>
-//         <motion.li
-//           custom={[0.3, 0]}
-//           variants={translate}
-//           initial="initial"
-//           animate="enter"
-//           exit="exit"
-//           className="flex items-end justify-end"
-//         >
-//           <Link
-//             href="/terms"
-//             aria-label="Visit Terms and Conditions Page"
-//             passHref
-//           >
-//             Terms & Conditions
-//           </Link>
-//         </motion.li>
-//       </ul>
-//     </div>
-//   );
-// };
+const Footer: React.FC<FooterProps> = () => {
+  return (
+    <div className="flex flex-wrap w-full justify-between mt-10 small-text gap-10 text-black pn-regular-16 ">
+      <ul className="w-full md:w-auto mt-2 list-none p-0">
+        <motion.li
+          custom={[0.3, 0]}
+          variants={translate}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="flex items-end justify-end text-black/10 text-[0.5rem]"
+        >
+          <span className="mr-2">Made by:</span> @relaydigitalmktg
+        </motion.li>
+      </ul>
+      <ul className="flex flex-row gap-[0.5rem] w-full md:w-auto mt-2 list-none p-0">
+        {FooterHelpLinks.map((link, index) => (
+          <motion.li
+            custom={[0.3, 0]}
+            variants={translate}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            className="flex items-end justify-end cursor-select-hover text-[0.8rem] text-black/70 hover:text-black transition-all"
+          >
+            <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
+              <Link href={link.href} aria-label={link.title} passHref>
+                <FlipLink>{link.title}</FlipLink>
+              </Link>
+            </HoverWrapper>
+          </motion.li>
+        ))}
+      </ul>
+    </div>
+  );
+};
 
-// const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
-//   return (
-//     <>
-//       {src && (
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: isActive ? 1 : 0 }}
-//           className=" inset-0 -z-10"
-//         >
-//           <Image
-//             src={`/img/${src}`}
-//             alt="Selected link image"
-//             className="size-full object-cover"
-//           />
-//         </motion.div>
-//       )}
-//     </>
-//   );
-// };
+const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
+  return (
+    <>
+      {src && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isActive ? 1 : 0 }}
+          className=" inset-0 -z-10"
+        >
+          <Image
+            src={`/img/${src}`}
+            alt="Selected link image"
+            className="size-full object-cover"
+          />
+        </motion.div>
+      )}
+    </>
+  );
+};
 
 const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const pathname = usePathname();
-  const isHomePage = pathname === "/";
+  const isHomePage =
+    pathname === "/" ||
+    pathname === "/services/listing-media" ||
+    pathname === "/services/social-media-management";
   const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
     null
   );
   const [isMouseInHeader, setIsMouseInHeader] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
     if (!isMouseInHeader) {
@@ -436,10 +436,18 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   };
 
   return (
-    <div
+    <motion.div
       className={`${
         isHomePage ? "fixed sm:relative" : "fixed"
       } flex z-[99999] w-full max-w-[100vw]`}
+      initial={{ y: 0 }}
+      animate={{
+        y: scrollDirection === "down" ? -100 : 0,
+        transition: {
+          duration: 0.3,
+          ease: "easeInOut",
+        },
+      }}
     >
       <div
         id="header"
@@ -537,7 +545,9 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
         {/* Dropdown Menu using Nav component */}
         <AnimatePresence>
-          {activeDropdown && <Nav activeDropdown={activeDropdown} />}
+          {activeDropdown && scrollDirection !== "down" && (
+            <Nav activeDropdown={activeDropdown} />
+          )}
         </AnimatePresence>
       </div>
 
@@ -553,7 +563,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           />
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 };
 

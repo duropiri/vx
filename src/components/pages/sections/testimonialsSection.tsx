@@ -37,7 +37,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
       id="services"
       className={`section-container !flex-col ${className} relative bg-white overflow-x-clip`}
     >
-      <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
         {/* Header */}
         {!noHeader && (
           <SectionHeader

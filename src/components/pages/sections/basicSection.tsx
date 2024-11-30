@@ -1,4 +1,4 @@
-import SectionHeader from "@/components/ui/sectionHeader";
+// import SectionHeader from "@/components/ui/sectionHeader";
 import {
   // motion,
   MotionValue,
@@ -14,7 +14,7 @@ interface SectionProps {
 function BasicSection({ className, content }: SectionProps) {
   return (
     <div className={`section-container !flex-col ${className} bg-white`}>
-      <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
         {content && <div className="flex flex-col size-full">{content}</div>}
       </div>
     </div>

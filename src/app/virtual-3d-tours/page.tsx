@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
-import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
+// import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+// import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
 import SectionHeader from "@/components/ui/sectionHeader";
@@ -11,69 +13,80 @@ import heroImage2 from "@/../../public/images/614d398d1a34a3bb1ceff8b1_Second-fl
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
-
+import { useEffect } from "react";
 
 const WhatIsItSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
-      <div className="flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden">
-        <Image
-          // data-speed={0.95}
-          src={heroImage2}
-          alt="hero-image"
-          width={1200}
-          height={600}
-          className=""
-          quality={80}
-        />
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
+      <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
+        <div data-speed={0.95} data-media-wrapper className="size-full">
+          <Image
+            src={heroImage2}
+            alt="hero-image"
+            width={1200}
+            height={600}
+            className="w-full h-[125%] scale-125 -translate-y-[10%] group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
+            quality={80}
+          />
+        </div>
       </div>
-      <div className="relative flex size-full flex-col items-start justify-between gap-[1.5rem]">
-        <SectionHeader
-          heading="GROW WITH TECHNOLOGY"
-          subheading="What is a Virtual 3D Tour?"
-          className="text-black"
-        />
-        <p
-          className={`pn-regular-16
+      {/* Inverted Border Radius */}
+      <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+        <div className="absolute top-0 left-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4 " />
+      </div>
+      <div className="relative flex flex-col items-end h-full justify-end max-h-full sm:max-h-[80%] sm:max-w-[40%]">
+        {/* Inverted Border Radius */}
+        <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4 " />
+        </div>
+        <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
+          <SectionHeader
+            heading="GROW WITH TECHNOLOGY"
+            subheading="What is a Virtual 3D Tour?"
+            className="text-black"
+          />
+          <p
+            className={`pn-regular-16
               max-w-[43.75rem]`}
-        >
-          Step into a new era of real estate marketing with our 360° virtual
-          tours! These immersive experiences bring listings to life,
-          transforming how properties are showcased.
-        </p>
-        <p
-          className={`pn-regular-16
+          >
+            Step into a new era of real estate marketing with our 360° virtual
+            tours! These immersive experiences bring listings to life,
+            transforming how properties are showcased.
+          </p>
+          <p
+            className={`pn-regular-16
               max-w-[43.75rem]`}
-        >
-          With Virtual 3D Tours, real estate agents can save time and money,
-          move properties faster, impress prospective buyers, and win more
-          listings. They help buyers build an immediate and lasting emotional
-          connection to properties by offering an immersive, simulated
-          experience.
-        </p>
-        <p
-          className={`pn-regular-16
+          >
+            With Virtual 3D Tours, real estate agents can save time and money,
+            move properties faster, impress prospective buyers, and win more
+            listings. They help buyers build an immediate and lasting emotional
+            connection to properties by offering an immersive, simulated
+            experience.
+          </p>
+          <p
+            className={`pn-regular-16
               max-w-[43.75rem]`}
-        >
-          Plus, with faster internet speeds and higher-resolution displays,
-          virtual tours are now more convenient and accessible than ever before.
-          Whether you have a smartphone or a tablet, you can explore properties
-          from anywhere, anytime.
-        </p>
+          >
+            Plus, with faster internet speeds and higher-resolution displays,
+            virtual tours are now more convenient and accessible than ever
+            before. Whether you have a smartphone or a tablet, you can explore
+            properties from anywhere, anytime.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 );
 
 const BenefitsSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="Why's & What's"
       subheading="What are the Benefits?"
       className="text-black"
     />
-    <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
+    <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-12 mt-[2.5rem] sm:mt-[5rem]">
         {[
           {
@@ -187,26 +200,31 @@ const BenefitsSection = () => (
 );
 
 const AdvantageSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="Advantage"
       subheading="The 3D Advantage"
       className="text-black"
     />
-    <div className="relative flex size-full sm:h-[30vh] max-w-[87.5rem] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
-      <div className="flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden">
+    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
+      <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
         <video
           src="/videos/virtual-3d-tours.mp4"
           autoPlay
           loop
           muted
           playsInline
-          className="w-full h-full object-cover"
+          className="w-full h-full opacity-100 group-hover:opacity-80 transition-opacity duration-500 object-cover"
         />
       </div>
-      <div className="relative flex size-full flex-col items-start justify-between gap-[1.5rem]">
-        <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem]">
+
+      <div className="relative flex flex-col items-start h-full justify-end max-h-full sm:max-h-[80%] sm:max-w-[40%]">
+        {/* Inverted Border Radius */}
+        <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+          <div className="absolute top-0 right-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-r-4 " />
+        </div>
+        <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tr-[1rem]">
           {[
             {
               text: "Real estate listings with a virtual home tour get 87% more views",
@@ -241,11 +259,64 @@ const AdvantageSection = () => (
           ))}
         </ul>
       </div>
+      {/* Inverted Border Radius */}
+      <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+        <div className="absolute top-0 right-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-r-4 " />
+      </div>
     </div>
   </div>
 );
 
 const page = () => {
+  // GSAP Animations
+  useEffect(() => {
+    const loadGSAP = async () => {
+      const { gsap } = await import("gsap");
+      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Parallax effect
+      const effectElements = gsap.utils.toArray("[data-speed]");
+      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
+        const speed = parseFloat(el.getAttribute("data-speed") || "0");
+        gsap.fromTo(
+          el,
+          { y: 0 },
+          {
+            y: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+              onRefresh: (self) => {
+                const start = Math.max(0, self.start); // ensure no negative values
+                const distance = self.end - start;
+                const end = start + distance / speed;
+                (self as any).setPositions(start, end);
+                if (self.animation) {
+                  // Check if self.animation is defined
+                  (self as any).animation.vars.y = (end - start) * (1 - speed);
+                  self.animation
+                    .invalidate()
+                    .progress(1)
+                    .progress(self.progress);
+                }
+              },
+            },
+          }
+        );
+      });
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+      };
+    };
+
+    loadGSAP();
+  }, []);
+
   return (
     <Page>
       <Body
@@ -263,7 +334,10 @@ const page = () => {
           { icon: ServiceIcons.infinity, text: "Unlimited Revisions" },
           { icon: ServiceIcons.guarantee, text: "2X Money Back Guarantee" },
         ]}
-        cta={{ label: "Book Now", href: "https://listings.virtualxposure.com/order" }}
+        cta={{
+          label: "Book Now",
+          href: "https://listings.virtualxposure.com/order",
+        }}
         src="/videos/virtual-3d-tours.mp4"
         whatisitSection={<WhatIsItSection />}
         benefitsSection={<BenefitsSection />}

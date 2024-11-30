@@ -5,7 +5,7 @@ import skool from "@/../../public/svgs/skool-icon.svg";
 export const HeaderLinks = [
   {
     title: "Our Solutions",
-    href: "/#services",
+    href: "/services/social-media-management#services",
     dropdown: {
       instantLinks: [
         {
@@ -81,23 +81,23 @@ export const HeaderLinks = [
 export const NavdockLinks = [
   {
     title: "Our Solutions",
-    href: "/#solutions",
+    href: "/services/social-media-management#solutions",
   },
   {
     title: "Our Services",
-    href: "/#services",
+    href: "/services/social-media-management#services",
   },
   {
     title: "Roadmap",
-    href: "/#roadmap",
+    href: "/services/social-media-management#roadmap",
   },
   {
     title: "Plans & Pricing",
-    href: "/#pricing",
+    href: "/services/social-media-management#pricing",
   },
   {
     title: "FAQs",
-    href: "/#faqs",
+    href: "/services/social-media-management#faqs",
   },
 ];
 

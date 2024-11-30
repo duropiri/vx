@@ -2,7 +2,7 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import { motion, MotionValue, useTransform } from "framer-motion";
 import React, { useRef } from "react";
 import { WhyUsItems } from "@/data/whyUsItems";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
+import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import Image from "next/image";
 import vxImage from "@/../../public/svgs/virtual-xposure-text.svg";
 
@@ -64,7 +64,7 @@ function WhyUsSection({
         </ScrollingBanner>
       </div>
       <motion.div style={{ scale, rotate, filter: blur }}>
-        <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
           {/* Header */}
           <SectionHeader
             dark

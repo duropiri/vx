@@ -60,6 +60,29 @@ export default function CustomCursor() {
       });
     };
 
+    const handleTextHover = (e: MouseEvent) => {
+      const target = e.currentTarget as HTMLElement;
+      const text = target.getAttribute("data-follower-text") || "Explore";
+      const scale = target.getAttribute("data-scale") || "1.7";
+      if (followerTextRef.current) {
+        followerTextRef.current.innerHTML = text;
+      }
+      gsap.to(cursorRef.current, {
+        scale: parseFloat(scale),
+        backgroundColor: "white",
+        ease: "power3.out",
+        autoAlpha: 1,
+        duration: 0.4,
+        overwrite: "auto",
+      });
+      gsap.to(innerDotRef.current, {
+        ease: "power3.out",
+        autoAlpha: 0,
+        duration: 0.4,
+        overwrite: "auto",
+      });
+    };
+
     const handleNoneHover = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLElement;
       const scale = target.getAttribute("data-scale") || "0";
@@ -187,6 +210,13 @@ export default function CustomCursor() {
         });
 
       document
+        .querySelectorAll<HTMLElement>(".cursor-text-hover")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", handleTextHover);
+          el.addEventListener("mouseleave", handleMouseLeaveReset);
+        });
+
+      document
         .querySelectorAll<HTMLElement>(".cursor-view-hover")
         .forEach((el) => {
           el.addEventListener("mouseenter", handleViewHover);
@@ -242,10 +272,11 @@ export default function CustomCursor() {
 
       document
         .querySelectorAll<HTMLElement>(
-          ".cursor-select-hover, .cursor-none-hover, .cursor-view-hover, .cursor-play-hover"
+          ".cursor-select-hover, .cursor-none-hover, .cursor-view-hover, .cursor-play-hover, .cursor-text-hover"
         )
         .forEach((el) => {
           el.removeEventListener("mouseenter", handleSelectHover);
+          el.removeEventListener("mouseenter", handleTextHover);
           el.removeEventListener("mouseenter", handleNoneHover);
           el.removeEventListener("mouseenter", handleViewHover);
           el.removeEventListener("mouseenter", handleDragHover);

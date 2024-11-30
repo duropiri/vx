@@ -1,6 +1,6 @@
 // import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 // import { Reveal } from "@/components/animations/Reveal";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
+import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { MotionValue } from "framer-motion";
 import Image from "next/image";
@@ -106,7 +106,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-center justify-between gap-y-[2rem] sm:gap-y-[2rem]">
+        <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-between gap-y-[2rem] sm:gap-y-[2rem]">
           {/* Header */}
           <SectionHeader
             small

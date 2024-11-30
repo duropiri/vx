@@ -16,14 +16,14 @@ import threedimensionalfloorplanImage from "@/../../public/images/7957402_3d-flo
 import siteplanImage from "@/../../public/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.jpg";
 
 const BenefitsSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="3D Floor Plans"
       subheading="Why are they worth it?"
       className="text-black"
     />
-    <div className="relative flex size-full max-w-[87.5rem] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
+    <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
         {[
           {
@@ -123,13 +123,13 @@ const BenefitsSection = () => (
 );
 
 const WhatIsItSection1 = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
     <SectionHeader
       center
       subheading="2D Schematic Floor Plan"
       className="text-black"
     />
-    <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
+    <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
         <SectionHeader
           subheading="Showcase your home layout in detail."
@@ -171,7 +171,7 @@ const WhatIsItSection1 = () => (
           alt="floorplan-image"
           width={1200}
           height={600}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover pointer-events-none"
           quality={80}
         />
       </div>
@@ -180,13 +180,13 @@ const WhatIsItSection1 = () => (
 );
 
 const WhatIsItSection2 = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
     <SectionHeader
       center
       subheading="3D Premium Floor Plan"
-      className="text-black"
+      className="text-white"
     />
-    <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
+    <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="relative flex flex-col size-full items-start justify-center rounded-[1rem]">
         <Image
           // data-speed={0.95}
@@ -194,7 +194,7 @@ const WhatIsItSection2 = () => (
           alt="3d-floorplan-image"
           width={1200}
           height={600}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover pointer-events-none"
           quality={80}
         />
       </div>
@@ -202,31 +202,31 @@ const WhatIsItSection2 = () => (
         <SectionHeader
           subheading="Transform your listing with a custom 3D Rendered Floor Plan, as prospective buyers watch their dream home come to life."
           body="The 3D Floor Plan enables real estate marketers and architects to present floor plans to clients with remarkable detail. By incorporating elements like cabinets, flooring, bathroom fixtures, paint colors, wall tiles, and various interior finishes, potential buyers gain a comprehensive view of the home or property."
-          className="text-black"
+          className="text-white"
         />
         <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] w-full">
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-black/80 group-hover:text-black">
+            <p className="pn-regular-16 text-white/80 group-hover:text-white">
               Custom 3D Floor Plan
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-black/80 group-hover:text-black">
+            <p className="pn-regular-16 text-white/80 group-hover:text-white">
               Unlimited Revisions
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-black/80 group-hover:text-black">
+            <p className="pn-regular-16 text-white/80 group-hover:text-white">
               48 Hour Turnaround
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-black/80 group-hover:text-black">
+            <p className="pn-regular-16 text-white/80 group-hover:text-white">
               SSL Encrypted Checkout
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-black/80 group-hover:text-black">
+            <p className="pn-regular-16 text-white/80 group-hover:text-white">
               2X Money Back Guarantee
             </p>
           </li>
@@ -237,13 +237,13 @@ const WhatIsItSection2 = () => (
 );
 
 const WhatIsItSection3 = () => (
-  <div className="z-[999] relative flex size-full max-w-[87.5rem] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
+  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
     <SectionHeader
       center
       subheading="Add-on: Exclusive Site plan"
       className="text-black"
     />
-    <div className="relative flex size-full max-w-[87.5rem] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
+    <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
         <SectionHeader
           subheading="Showcase the landscaping & the exterior elements of your listing."
@@ -280,7 +280,7 @@ const WhatIsItSection3 = () => (
           alt="siteplan-image"
           width={1200}
           height={600}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover pointer-events-none"
           quality={80}
         />
       </div>

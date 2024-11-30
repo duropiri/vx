@@ -365,7 +365,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             id="problemCopy"
             ref={textContainerRef}
-            className="sticky top-[2.5rem] sm:top-0 left-0 w-full max-w-[87.5rem] -mt-[100vh] h-[100vh] flex pt-[7.5rem] pb-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
+            className="sticky top-[2.5rem] sm:top-0 left-0 w-full max-w-[--section-width] -mt-[100vh] h-[100vh] flex pt-[7.5rem] pb-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
           >
             <SectionHeader
               ref={textRef}
