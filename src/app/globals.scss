@@ -15,7 +15,7 @@
   --charcoal-navy: #1a213d; /* Primary */
   --charcoal: #434345; /* Secondary */
 
-  --section-width: 120rem;
+  --section-width: 98vw;
 
   /* Font sizing variables */
   // --root-size: 37;
@@ -28,6 +28,7 @@
 @media (min-width: 768px) {
   :root {
     --size: 768;
+    --section-width: 90vw;
   }
 }
 
@@ -39,7 +40,8 @@
 
 @media (min-width: 1200px) {
   :root {
-    --size: 1440;
+    --size: 1600;
+    
   }
 }
 

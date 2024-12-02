@@ -184,12 +184,15 @@ const ServiceCard = ({
             isRight ? "r" : "l"
           }-[1rem]`}
         >
+          {/* Header */}
           <SectionHeader subheading={title} className={themeClasses.text} />
+          {/* Body */}
           <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
+          {/* CTA */}
           {darkTheme ? (
             <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
               <HoverWrapper
-                className={`button group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-customShadow ${themeClasses.shadow} hover:shadow-goldenrod/5`}
+                className={`button group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5`}
               >
                 <Link
                   href={href}
@@ -210,7 +213,7 @@ const ServiceCard = ({
             <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
               <div className="flex flex-col sm:flex-row gap-[1rem]">
                 <motion.div
-                  className={`button group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
+                  className={`button group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
                   // style={{
                   //   background:
                   //     "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
@@ -268,7 +271,7 @@ const ServicesSection = () => (
       subheading="Our Unlimited Services Include"
       className="text-black"
     />
-    <motion.div className="z-[999] relative flex sm:grid size-full max-w-[--section-width] flex-col sm:grid-cols-2 lg:grid-cols-2 items-center sm:items-start justify-center gap-[3rem] sm:gap-[2rem]">
+    <motion.div className="z-[999] relative flex sm:grid size-full max-w-[--section-width] flex-col sm:grid-cols-2 lg:grid-cols-3 items-center sm:items-start justify-center gap-[3rem] sm:gap-[2rem]">
       {services.map((service, index) => (
         <motion.div
           key={index + 2}
@@ -290,7 +293,7 @@ const ServicesSection = () => (
           <ServiceCard
             key={service.title}
             {...service}
-            isRight={index % 2 !== 0}
+            isRight={index % 1 !== 0}
           />
         </motion.div>
       ))}
@@ -405,12 +408,22 @@ function Body() {
         subheading="Trusted By The Best"
         body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
       />
+      <BasicSection
+        originalColor="#EFE6CF"
+        transitionColor="#FFFFFF"
+        ref={(el: HTMLDivElement | null) => {
+          sectionRefs.current[2] = el;
+        }}
+        className={``}
+        content={<ServicesSection />}
+      />
+
       <CopySection
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[2] = el;
+          sectionRefs.current[3] = el;
         }}
         copy={
           <>
@@ -446,8 +459,6 @@ function Body() {
           }
         />
       </div>
-
-      <BasicSection className={``} content={<ServicesSection />} />
 
       <SocialProofSection full className="bg-white z-10" />
       {/* CTA */}

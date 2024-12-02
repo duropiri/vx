@@ -1,6 +1,7 @@
 "use client";
 import React, {
   useEffect,
+  useRef,
   // useRef,
   useState,
 } from "react";
@@ -95,6 +96,11 @@ const Body = () => {
   const [showRightHint, setShowRightHint] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
+  // Refs to store timeouts and intervals
+  const hintIntervalRef = useRef<NodeJS.Timeout | null>(null);
+  const initialDelayRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Resize checker
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768); // Standard mobile breakpoint
@@ -110,35 +116,64 @@ const Body = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  // Hint animation timer
-  useEffect(() => {
-    // Don't show hints if panels are hovered
-    if (isLeftHovered || isRightHovered) return;
+  // Clear all animations and timers
+  const clearAllAnimations = () => {
+    if (hintIntervalRef.current) {
+      clearInterval(hintIntervalRef.current);
+      hintIntervalRef.current = null;
+    }
+    if (initialDelayRef.current) {
+      clearTimeout(initialDelayRef.current);
+      initialDelayRef.current = null;
+    }
+    setShowLeftHint(false);
+    setShowRightHint(false);
+  };
 
-    // Initial delay before starting hints
-    const initialDelay = setTimeout(() => {
-      const interval = setInterval(() => {
-        // Alternate between left and right hints
-        setShowLeftHint(true);
+  // Start hint animation sequence
+  const startHintSequence = () => {
+    // Clear any existing animations first
+    clearAllAnimations();
 
-        setTimeout(() => {
-          setShowLeftHint(false);
+    // Only start new sequence if panels aren't hovered
+    if (!isLeftHovered && !isRightHovered) {
+      initialDelayRef.current = setTimeout(() => {
+        const runHintSequence = () => {
+          setShowLeftHint(true);
 
           setTimeout(() => {
-            setShowRightHint(true);
+            setShowLeftHint(false);
 
             setTimeout(() => {
-              setShowRightHint(false);
-            }, 1000); // Duration of right hint
-          }, 500); // Delay between left and right
-        }, 1000); // Duration of left hint
-      }, 16000); // Time between hint cycles
+              setShowRightHint(true);
 
-      return () => clearInterval(interval);
-    }, 2000); // Initial delay
+              setTimeout(() => {
+                setShowRightHint(false);
+              }, 1000); // Right hint duration
+            }, 500); // Delay between hints
+          }, 1000); // Left hint duration
+        };
 
-    return () => clearTimeout(initialDelay);
-  }, [isHeroHovered, isLeftHovered, isRightHovered]);
+        // Run initial sequence
+        runHintSequence();
+
+        // Set up interval for repeated sequences
+        hintIntervalRef.current = setInterval(runHintSequence, 16000);
+      }, 2000); // Initial delay
+    }
+  };
+
+  // Effect to manage hint animations
+  useEffect(() => {
+    if (isLeftHovered || isRightHovered) {
+      clearAllAnimations();
+    } else {
+      startHintSequence();
+    }
+
+    // Cleanup on unmount or when dependencies change
+    return () => clearAllAnimations();
+  }, [isLeftHovered, isRightHovered]);
 
   const handleHeroEnter = () => {
     setIsHeroHovered(true);
@@ -180,7 +215,7 @@ const Body = () => {
       {/* Gradient */}
       <div
         style={{
-          opacity: `${isLeftHovered ? "0%" : "100%"}`,
+          opacity: `${isLeftHovered ? "50%" : "100%"}`,
           transition: "all 0.6s ease-in-out",
         }}
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
@@ -188,9 +223,9 @@ const Body = () => {
       <ScrollingBanner
         vertical
         baseVelocity={10000}
-        className="bg-goldenbrown z-10"
+        className="bg-goldenbrown z-10 w-auto"
       >
-        <h2 className="pn-regular-96 uppercase text-ash">Listing Media</h2>
+        <h2 className="pn-regular-32 uppercase text-white">Listing Media</h2>
       </ScrollingBanner>
     </div>
   );
@@ -226,13 +261,13 @@ const Body = () => {
       {/* Gradient */}
       <div
         style={{
-          opacity: `${isRightHovered ? "0%" : "100%"}`,
+          opacity: `${isRightHovered ? "50%" : "100%"}`,
           transition: "all 0.6s ease-in-out",
         }}
-        className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none rounded-t-[1.875rem] z-20"
+        className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
       />
       <ScrollingBanner vertical baseVelocity={10000} className="bg-ash z-10">
-        <h2 className="pn-regular-96 uppercase text-goldenbrown">
+        <h2 className="pn-regular-32 uppercase text-white">
           Social Media Management
         </h2>
       </ScrollingBanner>
@@ -257,12 +292,8 @@ const Body = () => {
                   : isRightHovered
                   ? "-100%"
                   : showLeftHint
-                  ? isMobile
-                    ? "-60%"
-                    : "-80%"
-                  : isMobile
-                  ? "-70%"
-                  : "-86%"
+                  ? "-90%"
+                  : "-95%"
               })`,
               opacity: `${isLeftHovered ? "100%" : "50%"}`,
               transition: showLeftHint ? HINT_TRANSITION : BASE_TRANSITION,
@@ -288,11 +319,16 @@ const Body = () => {
 
         {/* Center section */}
         <div
-          className="relative w-full z-5 overflow-hidden bg-ash"
+          className="relative w-full z-5 overflow-hidden"
           style={{
             transform: `translateX(${
               isLeftHovered ? "30vw" : isRightHovered ? "-30vw" : "0"
             })`,
+            backgroundColor: isLeftHovered
+              ? "var(--goldenbrown)"
+              : isRightHovered
+              ? "var(--ash)"
+              : "white",
             transition: BASE_TRANSITION,
           }}
           onMouseEnter={handleHeroEnter}
@@ -301,7 +337,12 @@ const Body = () => {
           <div
             className="overflow-hidden transition-all"
             style={{
-              opacity: isLeftHovered || isRightHovered ? 0.2 : 1,
+              opacity: isLeftHovered || isRightHovered ? 0.6 : 1,
+              scale: isLeftHovered || isRightHovered ? 0.9999 : 1,
+              borderBottomLeftRadius:
+                isLeftHovered || isRightHovered ? "1rem" : 0,
+              borderBottomRightRadius:
+                isLeftHovered || isRightHovered ? "1rem" : 0,
               transition: BASE_TRANSITION,
             }}
           >
@@ -328,12 +369,8 @@ const Body = () => {
                   : isLeftHovered
                   ? "100%"
                   : showRightHint
-                  ? isMobile
-                    ? "60%"
-                    : "80%"
-                  : isMobile
-                  ? "70%"
-                  : "86%"
+                  ? "90%"
+                  : "95%"
               })`,
               opacity: `${isRightHovered ? "100%" : "50%"}`,
               transition: showRightHint ? HINT_TRANSITION : BASE_TRANSITION,

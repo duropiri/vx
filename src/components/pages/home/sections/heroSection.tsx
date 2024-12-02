@@ -783,10 +783,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       repeat: Infinity,
                     }}
                   >
-                    <HoverWrapper className="flex w-full items-center">
+                    <HoverWrapper className="flex size-full items-center">
                       <Link
                         href="/services/listing-media"
-                        className="flex flex-row w-full items-center justify-center px-[1.5rem] py-[0.5rem] gap-[1rem]"
+                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[0.5rem] gap-[1rem]"
                         passHref
                       >
                         <FlipLink className={`flex items-center pn-semibold-16`}>
@@ -818,10 +818,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     //   repeat: Infinity,
                     // }}
                   >
-                    <HoverWrapper className="flex w-full items-center">
+                    <HoverWrapper className="flex size-full items-center">
                       <Link
                         href="/services/social-media-management"
-                        className="flex flex-row w-full items-center justify-center px-[1.5rem] py-[0.5rem] gap-[1rem]"
+                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[0.5rem] gap-[1rem]"
                         passHref
                       >
                         <FlipLink className={`flex items-center text-goldenbrown pn-semibold-16`}>
