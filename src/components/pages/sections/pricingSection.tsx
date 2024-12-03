@@ -349,7 +349,7 @@ function PricingSection({
                   grabCursor={true}
                   scrollbar={{ draggable: true }}
                   modules={[Pagination, Navigation, Scrollbar, A11y]}
-                  className="mySwiper w-full !overflow-visible"
+                  className="mySwiper w-full lg:max-w-[95rem] !overflow-visible"
                 >
                   {Object.values(pricingPackages).map((tier, index) => (
                     <SwiperSlide key={index} className="cursor-swipe-hover">
@@ -395,7 +395,7 @@ function PricingSection({
                       duration: 0.2,
                       ease: "easeOut",
                     }}
-                    className="group relative size-full lg:w-1/3"
+                    className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
                   >
                     <PricingTier tier={tier} isYearly={isYearly} className="" />
                   </motion.div>
@@ -419,7 +419,7 @@ function PricingSection({
                     duration: 0.2,
                     ease: "easeOut",
                   }}
-                  className="group relative size-full lg:w-1/3"
+                  className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
                 >
                   <PricingTier
                     tier={tier}
@@ -446,7 +446,7 @@ function PricingSection({
                     duration: 0.2,
                     ease: "easeOut",
                   }}
-                  className="group relative size-full lg:w-1/3"
+                  className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
                 >
                   <PricingTier tier={tier} isYearly={isYearly} className="" />
                 </motion.div>

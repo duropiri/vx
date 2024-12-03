@@ -54,7 +54,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
             effect={"cards"}
             grabCursor={true}
             modules={[EffectCards, Pagination, Navigation]}
-            className="mySwiper max-w-[65vw] w-full sm:w-[34rem] h-[32rem] sm:h-[24rem]"
+            className="mySwiper max-w-[65vw] w-full sm:w-[50rem] h-[32rem] sm:h-[24rem]"
           >
             {testimonials.map((item, index) => (
               <SwiperSlide
@@ -72,7 +72,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
                       <path d="M22.22,26.06c.09,0,8.78-.14,8.78-11.89a7.22,7.22,0,1,0-9.78,6.73v4.16A1,1,0,0,0,22.22,26.06ZM18.56,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.89,9.31-5.78,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,18.56,14.17Z" />
                     </svg>
                   </div>
-                  <p className="my-auto text-center pn-regular-16">
+                  <p className="my-auto text-center pn-regular-16 max-w-[50ch]">
                     {item.quote}
                   </p>
                   <div className="flex flex-row gap-[0.3rem] text-goldenbrown my-auto">

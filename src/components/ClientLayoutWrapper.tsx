@@ -18,7 +18,7 @@ export default function ClientLayoutWrapper({
   if (!hasMounted) {
     return (
       <html lang="en">
-        <body className="antialiased h-screen overflow-hidden">
+        <body className="antialiased overflow-hidden">
           {/* Loading state or nothing */}
         </body>
       </html>
@@ -99,7 +99,7 @@ export default function ClientLayoutWrapper({
           content="FyVoyIhh_-5JEVZ3uQxsFMTLWF5UlcETjN7uZ_iC-eE"
         />
       </head>
-      <body className="antialiased h-screen max-w-[100vw]">{children}</body>
+      <body className="antialiased max-w-[100vw]">{children}</body>
     </html>
   );
 }
