@@ -34,7 +34,7 @@ export interface Testimonial {
 function TestimonialsSection({ className, noHeader = false }: SectionProps) {
   return (
     <div
-      id="services"
+      id="testimonials"
       className={`section-container !flex-col ${className} relative bg-white overflow-x-clip`}
     >
       <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
@@ -87,26 +87,14 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
         </div>
 
         {/* CTA */}
-        <div className="flex justify-center w-full h-[3.313rem]">
+        <div className="flex justify-center w-full">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
             <motion.div
-              className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[15rem]`}
-              style={{
-                background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                backgroundSize: "300% 100%",
-              }}
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 2,
-                ease: "linear",
-                repeat: Infinity,
-              }}
+              className={`button gold pn-regular-22 pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit`}
             >
-              <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
-                <Link href="/testimonials" className="flex size-full items-center" passHref>
-                  <FlipLink className={`flex items-center w-full`}>
+              <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
+                <Link href="/testimonials" className="flex size-full items-center gap-[1rem]" passHref>
+                  <FlipLink className={`flex items-center w-fit`}>
                     View All Testimonials
                   </FlipLink>
 

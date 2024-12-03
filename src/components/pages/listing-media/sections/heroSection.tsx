@@ -209,7 +209,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             padding: 0,
             width:
               // isMobile ? "100%" :
-              "11rem",
+              "14rem",
             height: "3.313rem",
             background:
               // isMobile ? "#1b1a17" :
@@ -269,7 +269,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               // Animate the navdock (to navdock final style)
               tl.to(navdock, {
                 background: "#1b1a17",
-                width: isMobile ? "16rem" : "34rem",
+                width: isMobile ? "16rem" : "38rem",
                 height: "3.313rem",
                 paddingLeft:
                   // isMobile ? "0px" :
@@ -355,7 +355,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   tl.to(navdock, {
                     display: "flex",
                     padding: 0,
-                    width: "11rem",
+                    width: "14rem",
                     height: "3.313rem",
                     background: "#1b1a17",
                     duration: 0.3,
@@ -384,7 +384,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               tl.to(navdock, {
                 display: "flex",
                 padding: 0,
-                width: "11rem",
+                width: "14rem",
                 height: "3.313rem",
                 background: "#1b1a17",
                 duration: 0.3,
@@ -412,7 +412,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   immediate: true,
                 });
                 gsap.set(navdock, {
-                  width: "11rem",
+                  width: "14rem",
                   height: "3.313rem",
                   padding: 0,
                   background: "#1b1a17",
@@ -630,11 +630,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(
@@ -666,16 +666,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(useTransform(scrollY, [0, 500], [15, 45]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                 }}
               >
@@ -710,11 +710,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(
@@ -754,16 +754,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(useTransform(scrollY, [0, 500], [20, 40]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                 }}
               >
@@ -798,11 +798,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(
@@ -842,16 +842,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(useTransform(scrollY, [0, 500], [30, 60]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                 }}
               >
@@ -886,11 +886,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(
@@ -930,16 +930,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 style={{
                   x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                   opacity,
                   rotate: useSpring(useTransform(scrollY, [0, 500], [25, 50]), {
                     stiffness: 500,
-                    damping: 20,
+                    damping: 35,
                   }),
                 }}
               >
@@ -979,7 +979,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full max-w-[80vw] sm:max-w-[100vw] gap-[2rem] z-[100] -translate-y-[20%] sm:translate-y-0">
             {/* Main Copy */}
             <Reveal delay={0} slide={false}>
-              <div className="button !gap-[1.5rem] !bg-ash !border-goldenbrown">
+              <div className="button dark thin pn-regular-22 !gap-[1.5rem] !border-goldenbrown">
                 <div className="flex flex-row gap-[0.25rem]">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Image
@@ -1002,7 +1002,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
                   <span>
-                    <GradientText>Excellence</GradientText> in Real
+                    <span className="text-goldenbrown gold-text font-bold">Excellence</span> in Real
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
@@ -1016,7 +1016,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
                   <span>
-                    <GradientText>Excellence</GradientText> in
+                    <span className="text-goldenbrown gold-text font-bold">Excellence</span> in
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
@@ -1048,31 +1048,18 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               slide={false}
               className="z-[999]"
             >
-              <div className="flex h-[3.313rem] my-[0.625rem]">
+              <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <motion.div
-                    className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[11rem]`}
-                    style={{
-                      background:
-                        "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                      backgroundSize: "300% 100%",
-                    }}
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 2,
-                      ease: "linear",
-                      repeat: Infinity,
-                    }}
+                    className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]`}
                   >
-                    <HoverWrapper className="flex w-full items-center">
+                    <HoverWrapper className="flex flex-row w-full items-center justify-center">
                       <Link
                         href="https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938"
-                        className="flex w-full items-center px-[1.5rem] py-[0.5rem]"
+                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
                         passHref
                       >
-                        <FlipLink className={`flex items-center w-full`}>
+                        <FlipLink className={`flex items-center w-fit`}>
                           Get In Touch
                         </FlipLink>
 
@@ -1095,7 +1082,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Navdock */}
         <div
           id="navdock"
-          className={`fixed hidden sm:flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] h-[3.313rem] z-[999] max-w-[100vw]`}
+          className={`fixed hidden sm:flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] z-[999] max-w-[100vw]`}
         >
           <div
             ref={navdockRef}
@@ -1122,7 +1109,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Navigation Links */}
             <nav
               id="nav"
-              className="nav flex flex-row gap-[1rem] sm:gap-[2rem] items-center justify-between mx-[1rem] h-full text-white"
+              className="nav flex flex-row gap-[1rem] sm:gap-[2rem] items-center justify-between mx-[2rem] h-full text-white"
             >
               {navigation.map((nav, index) => (
                 <HoverWrapper
@@ -1141,25 +1128,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Initial state content (matches heroCTA exactly) */}
             <motion.div
               id="navdock-cta"
-              className={`button group !border-none !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[11rem]`}
-              style={{
-                background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                backgroundSize: "300% 100%",
-              }}
-              animate={{
-                backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-              }}
-              transition={{
-                duration: 2,
-                ease: "linear",
-                repeat: Infinity,
-              }}
+              className={`button gold pn-regular-22 group !border-none !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]`}
             >
               <HoverWrapper
                 href="#contact"
-                className="flex w-full items-center px-[1.5rem] py-[0.5rem]"
+                className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
               >
-                <FlipLink className={`flex items-center w-full`}>
+                <FlipLink className={`flex items-center w-fit`}>
                   Get In Touch
                 </FlipLink>
 

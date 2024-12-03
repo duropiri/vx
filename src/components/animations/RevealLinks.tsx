@@ -9,19 +9,24 @@ interface FlipLinkProps {
   outside?: string;
   inside?: string;
   id?: string;
+  duration?: number; // New prop for animation duration
+  ease?: string; // New prop for easing function
 }
 
 // Create a context for hover state
 const HoverContext = createContext(false);
 
 // HoverWrapper component
-export const HoverWrapper = ({ children, className, href, id }: FlipLinkProps) => {
+export const HoverWrapper = ({
+  children,
+  className,
+  href,
+  id,
+}: FlipLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const content = (
-    <HoverContext.Provider value={isHovered}>
-      {children}
-    </HoverContext.Provider>
+    <HoverContext.Provider value={isHovered}>{children}</HoverContext.Provider>
   );
 
   const commonProps = {
@@ -46,8 +51,15 @@ export const FlipLink = ({
   className = "",
   outside = "200",
   inside = "0",
+  duration = 0.4, // Default duration
+  ease = "easeOut", // Default easing
 }: FlipLinkProps) => {
   const isHovered = useContext(HoverContext);
+
+  const transition = {
+    duration,
+    ease: [0.4, 0, 0.2, 1], // easeInOut cubic-bezier
+  };
 
   return (
     <motion.div
@@ -56,8 +68,8 @@ export const FlipLink = ({
     >
       <motion.div
         variants={{
-          initial: { y: 0 },
-          hovered: { y: `-${outside}%` },
+          initial: { y: 0, transition },
+          hovered: { y: `-${outside}%`, transition },
         }}
       >
         {children}
@@ -65,8 +77,8 @@ export const FlipLink = ({
       <motion.div
         className="absolute inset-0"
         variants={{
-          initial: { y: `${outside}%` },
-          hovered: { y: `${inside}%` },
+          initial: { y: `${outside}%`, transition },
+          hovered: { y: `${inside}%`, transition },
         }}
       >
         {children}

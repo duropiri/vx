@@ -33,6 +33,7 @@ import brochuredesign from "@/../../public/images/brochure-design.webp";
 import logodesign from "@/../../public/images/logo-design.webp";
 import logoanimation from "@/../../public/images/logo-animation.webp";
 import BasicSection from "@/components/pages/sections/basicSection";
+import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 const services = [
   {
@@ -187,12 +188,14 @@ const ServiceCard = ({
           {/* Header */}
           <SectionHeader subheading={title} className={themeClasses.text} />
           {/* Body */}
-          <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
+          </LetterRevealOnScroll>
           {/* CTA */}
           {darkTheme ? (
-            <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+            <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
               <HoverWrapper
-                className={`button group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5`}
+                className={`button pn-regular-22 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5`}
               >
                 <Link
                   href={href}
@@ -210,10 +213,10 @@ const ServiceCard = ({
               </HoverWrapper>
             </div>
           ) : (
-            <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+            <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
               <div className="flex flex-col sm:flex-row gap-[1rem]">
                 <motion.div
-                  className={`button group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
+                  className={`button pn-regular-22 group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
                   // style={{
                   //   background:
                   //     "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
@@ -228,13 +231,13 @@ const ServiceCard = ({
                   //   repeat: Infinity,
                   // }}
                 >
-                  <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+                  <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
                     <Link
                       href={href}
                       className="flex size-full items-center gap-[1rem]"
                       passHref
                     >
-                      <FlipLink className={`flex items-center w-full`}>
+                      <FlipLink className={`flex items-center w-fit`}>
                         Learn More
                       </FlipLink>
 
@@ -264,14 +267,14 @@ const ServiceCard = ({
 };
 
 const ServicesSection = () => (
-  <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="Our Services"
       subheading="Our Unlimited Services Include"
       className="text-black"
     />
-    <motion.div className="z-[999] relative flex sm:grid size-full max-w-[--section-width] flex-col sm:grid-cols-2 lg:grid-cols-3 items-center sm:items-start justify-center gap-[3rem] sm:gap-[2rem]">
+    <motion.div className="z-10 relative flex sm:grid size-full max-w-[--section-width] flex-col sm:grid-cols-2 lg:grid-cols-3 items-center sm:items-start justify-center gap-[3rem] sm:gap-[2rem]">
       {services.map((service, index) => (
         <motion.div
           key={index + 2}
@@ -286,7 +289,7 @@ const ServicesSection = () => (
           transition={{
             delay: 0.1,
             // staggerChildren: 1,
-            duration: 0.2,
+            duration: 0.4,
             ease: "easeOut",
           }}
         >
@@ -429,8 +432,8 @@ function Body() {
         copy={
           <>
             The gold standard in real estate
-            <span className="text-goldenbrown">media</span>&
-            <span className="text-goldenbrown">marketing</span>
+            <span className="text-goldenbrown gold-text">media</span>&
+            <span className="text-goldenbrown gold-text">marketing</span>
           </>
         }
       />
@@ -451,9 +454,11 @@ function Body() {
           copy={
             <>
               The best real estate professionals have
-              <span className="text-goldenbrown italic">reinvented</span>
+              <span className="text-goldenbrown italic gold-text">
+                reinvented
+              </span>
               themselves and their businesses towards a
-              <span className="text-goldenbrown">
+              <span className="text-goldenbrown gold-text">
                 more substantial online presence
               </span>
             </>
@@ -475,7 +480,7 @@ function Body() {
         transition={{
           delay: 0.1,
           // staggerChildren: 1,
-          duration: 0.2,
+          duration: 0.4,
           ease: "easeOut",
         }}
       >
@@ -499,7 +504,7 @@ function Body() {
         transition={{
           delay: 0.1,
           // staggerChildren: 1,
-          duration: 0.2,
+          duration: 0.4,
           ease: "easeOut",
         }}
       >

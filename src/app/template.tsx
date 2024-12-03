@@ -111,7 +111,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           exit={opacity.exit}
           animate={opacity.enter}
           transition={{
-            duration: 0.2,
+            duration: 0.4,
           }}
         > */}
       {!isAdminPage ? (

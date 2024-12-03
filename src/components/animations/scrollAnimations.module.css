@@ -1,0 +1,39 @@
+@keyframes scrollHorizontal {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+  
+  @keyframes scrollVertical {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+  
+  .scrollContainer {
+    overflow: hidden;
+  }
+  
+  .scrollTrackHorizontal {
+    animation: scrollHorizontal var(--scroll-duration) linear infinite;
+    will-change: transform;
+  }
+  
+  .scrollTrackVertical {
+    animation: scrollVertical var(--scroll-duration) linear infinite;
+    will-change: transform;
+  }
+  
+  .pauseOnHover:hover {
+    animation-play-state: paused;
+  }
+  
+  .slowOnHover:hover {
+    animation-duration: calc(var(--scroll-duration) * 3);
+  }

@@ -77,30 +77,18 @@ export const BenefitsSection = () => (
         ))}
       </div>
       {/* CTA */}
-      <div className="flex justify-center w-full h-[3.313rem]">
+      <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <motion.div
-            className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-            style={{
-              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-              backgroundSize: "300% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 2,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+          <div
+            className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
           >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
               <Link
                 href="https://listings.virtualxposure.com/order"
                 className="flex size-full items-center gap-[1rem]"
                 passHref
               >
-                <FlipLink className={`flex items-center w-full`}>
+                <FlipLink className={`flex items-center w-fit`}>
                   Place An Order
                 </FlipLink>
 
@@ -112,7 +100,7 @@ export const BenefitsSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

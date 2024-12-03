@@ -88,7 +88,10 @@ function RoadmapSection({ className }: SectionProps) {
           heading="Roadmap"
           subheading={
             <>
-              Your <span className="text-goldenbrown">90-Day Growth Plan</span>
+              Your{" "}
+              <span className="text-goldenbrown gold-text">
+                90-Day Growth Plan
+              </span>
             </>
           }
           body="Our 90-Day Growth Plan is designed to rapidly increase your real estate brand's visibility and engagement through a customized content strategy, social media management, and lead generation. In just 90 days, you'll see measurable growth in online presence and leads, giving you a competitive edge in the market."
@@ -154,23 +157,24 @@ function RoadmapSection({ className }: SectionProps) {
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
-                <CharByCharOnScroll
+                <LetterRevealOnScroll
+                  end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  shadow={true}
-                  lineStyles={{
-                    marginTop: "0.6ch", // Custom line height
-                    marginRight: "0.4ch", // Custom character spacing
-                  }}
-                  start={100}
-                  end={85}
+                  // shadow={true}
+                  // lineStyles={{
+                  //   marginTop: "0.6ch", // Custom line height
+                  //   marginRight: "0.4ch", // Custom character spacing
+                  // }}
+                  // start={100}
+                  // end={85}
                 >
                   Step 1
-                </CharByCharOnScroll>
+                </LetterRevealOnScroll>
                 <div className="flex self-stretch justify-start items-start gap-2.5">
-                  <LetterRevealOnScroll end="bottom 60%">
+                  <LetterRevealOnScroll className="relative" end="bottom 60%">
                     <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
                   </LetterRevealOnScroll>
-                  <OpacityOnScroll end={85}>
+                  <LetterRevealOnScroll className="relative" end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
@@ -188,16 +192,16 @@ function RoadmapSection({ className }: SectionProps) {
                         />
                       </svg>
                     </div>
-                  </OpacityOnScroll>
+                  </LetterRevealOnScroll>
                 </div>
-                <OpacityOnScroll end={50}>
+                <LetterRevealOnScroll className="relative" end="bottom 60%">
                   <p className="text-ash pn-regular-16">
                     We kick things off immediately. Your invoice is sent, and
                     you&apos;ll get a streamlined welcome email laying out your
                     next moves, so you can hit the ground running with a clear
                     plan in place.
                   </p>
-                </OpacityOnScroll>
+                </LetterRevealOnScroll>
               </div>
               <div
                 data-speed={1.25}
@@ -223,23 +227,24 @@ function RoadmapSection({ className }: SectionProps) {
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
-                <CharByCharOnScroll
+                <LetterRevealOnScroll
+                  end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  shadow={true}
-                  lineStyles={{
-                    marginTop: "0.6ch", // Custom line height
-                    marginRight: "0.4ch", // Custom character spacing
-                  }}
-                  start={100}
-                  end={85}
+                  // shadow={true}
+                  // lineStyles={{
+                  //   marginTop: "0.6ch", // Custom line height
+                  //   marginRight: "0.4ch", // Custom character spacing
+                  // }}
+                  // start={100}
+                  // end={85}
                 >
                   Step 2
-                </CharByCharOnScroll>
+                </LetterRevealOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
-                  <LetterRevealOnScroll end="bottom 60%">
+                  <LetterRevealOnScroll className="relative" end="bottom 60%">
                     <h2 className="text-ash pn-bold-28">The Power Upload</h2>
                   </LetterRevealOnScroll>
-                  <OpacityOnScroll end={85}>
+                  <LetterRevealOnScroll className="relative" end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
@@ -257,9 +262,9 @@ function RoadmapSection({ className }: SectionProps) {
                         />
                       </svg>
                     </div>
-                  </OpacityOnScroll>
+                  </LetterRevealOnScroll>
                 </div>
-                <OpacityOnScroll end={50}>
+                <LetterRevealOnScroll className="relative" end="bottom 60%">
                   <p className="text-ash pn-regular-16">
                     Provide your business insights and marketing materials, and
                     you&apos;re one step closer to success. Once payment is
@@ -267,7 +272,7 @@ function RoadmapSection({ className }: SectionProps) {
                     the stage for a strategy that&apos;s built to deliver
                     results.
                   </p>
-                </OpacityOnScroll>
+                </LetterRevealOnScroll>
               </div>
               <div
                 data-speed={1.25}
@@ -293,23 +298,24 @@ function RoadmapSection({ className }: SectionProps) {
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
-                <CharByCharOnScroll
+                <LetterRevealOnScroll
+                  end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  shadow={true}
-                  lineStyles={{
-                    marginTop: "0.6ch", // Custom line height
-                    marginRight: "0.4ch", // Custom character spacing
-                  }}
-                  start={100}
-                  end={85}
+                  // shadow={true}
+                  // lineStyles={{
+                  //   marginTop: "0.6ch", // Custom line height
+                  //   marginRight: "0.4ch", // Custom character spacing
+                  // }}
+                  // start={100}
+                  // end={85}
                 >
                   Step 3
-                </CharByCharOnScroll>
+                </LetterRevealOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
                     <h2 className="text-ash pn-bold-28">The Strategy Surge</h2>
                   </LetterRevealOnScroll>
-                  <OpacityOnScroll end={85}>
+                  <LetterRevealOnScroll end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
@@ -327,16 +333,16 @@ function RoadmapSection({ className }: SectionProps) {
                         />
                       </svg>
                     </div>
-                  </OpacityOnScroll>
+                  </LetterRevealOnScroll>
                 </div>
-                <OpacityOnScroll end={50}>
+                <LetterRevealOnScroll end="bottom 60%">
                   <p className="text-ash pn-regular-16">
                     This is where your brand takes off. We audit and optimize
                     your social media accounts, then create a customized
                     strategy designed to drive engagement, boost visibility, and
                     get you real growth fast.
                   </p>
-                </OpacityOnScroll>
+                </LetterRevealOnScroll>
               </div>
               <div
                 data-speed={1.25}
@@ -362,23 +368,24 @@ function RoadmapSection({ className }: SectionProps) {
                 data-speed={1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
-                <CharByCharOnScroll
+                <LetterRevealOnScroll
+                  end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  shadow={true}
-                  lineStyles={{
-                    marginTop: "0.6ch", // Custom line height
-                    marginRight: "0.4ch", // Custom character spacing
-                  }}
-                  start={100}
-                  end={85}
+                  // shadow={true}
+                  // lineStyles={{
+                  //   marginTop: "0.6ch", // Custom line height
+                  //   marginRight: "0.4ch", // Custom character spacing
+                  // }}
+                  // start={100}
+                  // end={85}
                 >
                   Step 4
-                </CharByCharOnScroll>
+                </LetterRevealOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
                     <h2 className="text-ash pn-bold-28">The Content Machine</h2>
                   </LetterRevealOnScroll>
-                  <OpacityOnScroll end={85}>
+                  <LetterRevealOnScroll end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
                       <svg
                         width="23"
@@ -396,16 +403,16 @@ function RoadmapSection({ className }: SectionProps) {
                         />
                       </svg>
                     </div>
-                  </OpacityOnScroll>
+                  </LetterRevealOnScroll>
                 </div>
-                <OpacityOnScroll end={50}>
+                <LetterRevealOnScroll end="bottom 60%">
                   <p className="text-ash pn-regular-16">
                     Our team produces premium content tailored to your
                     brand&apos;s voice. Once you approve, we start posting and
                     get your content live—billing only begins once your
                     brand&apos;s online presence is in action!
                   </p>
-                </OpacityOnScroll>
+                </LetterRevealOnScroll>
               </div>
               <div
                 data-speed={1.25}

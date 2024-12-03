@@ -202,11 +202,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             )}
 
             {/* CTA */}
-            <div className="flex h-[3.313rem] mt-[2rem] w-full">
+            <div className="flex mt-[2rem] w-full">
               <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                 <HoverWrapper
                   href={cta.href}
-                  className="button group cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+                  className="button pn-regular-22 group cursor-select-hover !bg-transparent !border-white"
                 >
                   <FlipLink className="font-semibold text-white">
                     {cta.label}

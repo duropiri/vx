@@ -8,7 +8,7 @@ interface SectionProps {
 
 /**
  * Renders the Contact section of the page.
- * 
+ *
  * This component displays a header with a dynamic "Free" text animation and an iframe for calendar booking.
  *
  * @param {Object} props - The component props.
@@ -21,9 +21,9 @@ function ContactSection({ className }: SectionProps): React.JSX.Element {
 
   useEffect(() => {
     setIsMounted(true);
-    
+
     // Load the external script only after mounting
-    const script = document.createElement('script');
+    const script = document.createElement("script");
     script.src = "https://link.msgsndr.com/js/form_embed.js";
     script.defer = true;
     document.body.appendChild(script);
@@ -50,34 +50,7 @@ function ContactSection({ className }: SectionProps): React.JSX.Element {
           heading="Contact"
           subheading={
             <>
-              Book Your{" "}
-              <span className="text-goldenbrown underline underline-offset-2">
-                {isMounted && ( // Only render motion animation on client
-                  <motion.span
-                    className="text-goldenbrown uppercase"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                      backgroundSize: "200% 100%",
-                      WebkitBackgroundClip: "text",
-                      WebkitTextFillColor: "transparent",
-                    }}
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 5,
-                      ease: "linear",
-                      repeat: Infinity,
-                    }}
-                  >
-                    Free
-                  </motion.span>
-                )}
-                {!isMounted && (
-                  <span className="text-goldenbrown uppercase">Free</span>
-                )}
-              </span>{" "}
+              Book Your <span className="text-goldenbrown uppercase underline">Free</span>{" "}
               Consultation With Us Today!
             </>
           }

@@ -3,6 +3,7 @@ import React, { forwardRef, RefObject } from "react";
 import OpacityOnScroll from "../animations/OpacityOnScroll";
 import { motion } from "framer-motion";
 import { Reveal } from "../animations/Reveal";
+import LetterRevealOnScroll from "../animations/LetterRevealOnScroll";
 
 interface SectionProps {
   className?: string;
@@ -70,7 +71,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {subheading && (
-          <Reveal once slide={false}>
+          <LetterRevealOnScroll end="bottom 60%">
             <div className="contents">
               <motion.h2
                 ref={subheadingRef}
@@ -97,11 +98,11 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                 {subheading}
               </motion.h2>
             </div>
-          </Reveal>
+          </LetterRevealOnScroll>
         )}
 
         {body && (
-          <OpacityOnScroll end={80}>
+          <LetterRevealOnScroll end="bottom 60%">
             <p
               ref={bodyRef}
               className={`${bodyClassName} ${noCenter && "text-start"} ${
@@ -110,7 +111,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
             >
               {body}
             </p>
-          </OpacityOnScroll>
+          </LetterRevealOnScroll>
         )}
       </div>
     );

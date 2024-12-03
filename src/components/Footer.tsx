@@ -204,7 +204,7 @@ export default function Footer({
                       {FooterCompanyLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
-                          className="cursor-select-hover"
+                          className="cursor-select-hover inline-block w-fit"
                         >
                           <Link href={nav.href} passHref>
                             <FlipLink>{nav.title}</FlipLink>
@@ -221,7 +221,7 @@ export default function Footer({
                       {FooterHelpLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
-                          className="cursor-select-hover"
+                          className="cursor-select-hover inline-block w-fit"
                         >
                           <Link href={nav.href} passHref>
                             <FlipLink>{nav.title}</FlipLink>

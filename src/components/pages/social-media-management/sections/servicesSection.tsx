@@ -71,7 +71,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group relative flex flex-col size-full max-h-[31.25rem]"
@@ -484,7 +484,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group relative flex flex-col w-full sm:w-auto h-full max-h-[31.25rem]"
@@ -772,7 +772,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group relative flex sm:hidden lg:flex flex-col size-full max-h-[31.25rem]"
@@ -1183,7 +1183,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group flex relative flex-col w-full sm:w-auto h-full max-h-[31.25rem] justify-center sm:justify-start items-center sm:max-w-[21.875rem]"
@@ -1273,7 +1273,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group flex relative size-full min-w-[65%] max-h-[31.25rem]"
@@ -1597,7 +1597,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group flex sm:hidden lg:flex relative size-full max-h-[31.25rem]"
@@ -1917,7 +1917,7 @@ function ServicesSection({ className }: SectionProps) {
               transition={{
                 delay: 0.1,
                 // staggerChildren: 1,
-                duration: 0.2,
+                duration: 0.4,
                 ease: "easeOut",
               }}
               className="group flex relative size-full h-auto max-h-[31.25rem] sm:h-full"
@@ -1950,7 +1950,7 @@ function ServicesSection({ className }: SectionProps) {
                   <div className="h-[60px] flex-col justify-center items-center flex">
                     <HoverWrapper
                       href="/"
-                      className="button cursor-select-hover !rounded-full !w-[18.75rem] !py-[1.25rem] !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown"
+                      className="button pn-regular-22 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown lg:w-[18.75rem]"
                     >
                       <FlipLink className="pn-semibold-16 leading-[1rem]">
                         Get Started

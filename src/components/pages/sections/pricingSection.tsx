@@ -71,22 +71,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           <div className="w-12 flex flex-col justify-start items-start">
             <div className="text-goldenbrown pn-regular-14 font-medium">
               <motion.span
-                className="text-goldenbrown font-bold"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                  backgroundSize: "200% 100%",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 5,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
+                className="text-goldenbrown gold-text font-bold"
               >
                 Popular
               </motion.span>
@@ -108,22 +93,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           >
             {tier.isPopular ? (
               <motion.span
-                className="text-goldenbrown font-bold"
-                style={{
-                  background:
-                    "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                  backgroundSize: "200% 100%",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                }}
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 5,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
+                className="text-goldenbrown gold-text font-bold"
               >
                 {tier.name}
               </motion.span>
@@ -244,40 +214,26 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
 
       {/* CTA */}
       {tier.isPremium ? (
-        <motion.div
-          className="button !p-0 !border-none !w-[18.75rem]  flex self-center items-center justify-center hover:scale-110 transition-all duration-300 mt-[3rem]  shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
-          style={{
-            background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-            backgroundSize: "300% 100%",
-          }}
-          animate={{
-            backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-          }}
-          transition={{
-            duration: 2,
-            ease: "linear",
-            repeat: Infinity,
-          }}
-        >
+        <div className="button gold size-full pn-regular-22 !p-0 !border-none lg:w-[18.75rem]  flex self-center items-center justify-center hover:scale-110 transition-all duration-300 mt-[3rem]  shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5">
           <HoverWrapper
             href={tier.href || "/"}
             className={`flex items-center justify-center cursor-select-hover w-full px-[1.5rem] py-[1.25rem]`}
           >
-            <FlipLink className={`pn-semibold-16 leading-[1rem]`}>
+            <FlipLink className={`leading-[1rem]`}>
               {tier.cta || "Get Started"}
             </FlipLink>
           </HoverWrapper>
-        </motion.div>
+        </div>
       ) : (
-        <motion.div className="flex self-center items-center justify-center hover:scale-110 transition-all duration-300 mt-[3rem]">
+        <motion.div className="flex self-center items-center justify-center size-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`button cursor-select-hover !w-[18.75rem] !py-[1.25rem] ${
-              tier.isPopular ? "!bg-ash !border-ash" : "!bg-white !border-ash"
+            className={`button pn-regular-22 cursor-select-hover size-full lg:w-[18.75rem] ${
+              tier.isPopular ? "dark !border-ash" : "!bg-white !border-ash"
             } shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
           >
             <FlipLink
-              className={`pn-semibold-16 leading-[1rem] ${
+              className={`leading-[1rem] ${
                 tier.isPopular ? "text-goldenbrown" : ""
               }`}
             >
@@ -364,7 +320,7 @@ function PricingSection({
                         transition={{
                           delay: 0.1,
                           // staggerChildren: 1,
-                          duration: 0.2,
+                          duration: 0.4,
                           ease: "easeOut",
                         }}
                         className="group relative size-full"
@@ -392,7 +348,7 @@ function PricingSection({
                     transition={{
                       delay: 0.1,
                       // staggerChildren: 1,
-                      duration: 0.2,
+                      duration: 0.4,
                       ease: "easeOut",
                     }}
                     className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
@@ -416,7 +372,7 @@ function PricingSection({
                   transition={{
                     delay: 0.1,
                     // staggerChildren: 1,
-                    duration: 0.2,
+                    duration: 0.4,
                     ease: "easeOut",
                   }}
                   className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
@@ -443,7 +399,7 @@ function PricingSection({
                   transition={{
                     delay: 0.1,
                     // staggerChildren: 1,
-                    duration: 0.2,
+                    duration: 0.4,
                     ease: "easeOut",
                   }}
                   className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"

@@ -10,6 +10,7 @@ import service1 from "@/../../public/images/service_2.webp";
 import service2 from "@/../../public/images/print-design-northumberland-min.webp";
 import service3 from "@/../../public/images/service_2-1.webp";
 import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
+import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
@@ -40,42 +41,33 @@ export const WhatIsItSection1 = () => (
             subheading="Logo Design & Animation"
             className="text-black"
           />
-          <p className={`pn-regular-16 max-w-[43.75rem]`}>
-            A visual identification of your real estate service. Bring your
-            personal branding to another level with our custom logo design
-            services.
-          </p>
-          <p className={`pn-regular-16 max-w-[43.75rem]`}>
-            Take it one step further with our logo animation services, and
-            seamlessly integrate your branding into social media content and
-            video production.
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              A visual identification of your real estate service. Bring your
+              personal branding to another level with our custom logo design
+              services.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Take it one step further with our logo animation services, and
+              seamlessly integrate your branding into social media content and
+              video production.
+            </p>
+          </LetterRevealOnScroll>
           {/* CTA */}
-          <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+          <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
             <div className="flex flex-col sm:flex-row gap-[1rem]">
-              <motion.div
-                className={`button group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
-                style={{
-                  background:
-                    "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                  backgroundSize: "300% 100%",
-                }}
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
+              <div
+                className={`button gold pn-regular-22 group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
               >
-                <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+                <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
                   <Link
                     href="https://listings.virtualxposure.com/order"
                     className="flex size-full items-center gap-[1rem]"
                     passHref
                   >
-                    <FlipLink className={`flex items-center w-full`}>
+                    <FlipLink className={`flex items-center w-fit`}>
                       Book a FREE Consultation
                     </FlipLink>
 
@@ -87,7 +79,7 @@ export const WhatIsItSection1 = () => (
                     />
                   </Link>
                 </HoverWrapper>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>
@@ -119,22 +111,28 @@ export const WhatIsItSection2 = () => (
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-ash backdrop-blur-lg transition-all duration-500 rounded-tr-[1rem] text-white">
           <SectionHeader subheading="Brochure Design" className="text-white" />
-          <p className={`pn-regular-16 max-w-[43.75rem]`}>
-            Perfect for advertising high-end residential and commercial
-            properties, provide your prospective customers with a sophisticated
-            yet timelessly designed brochure to advertise your listing.
-          </p>
-          <p className={`pn-regular-16 max-w-[43.75rem]`}>
-            Since the information on there is often limited, it should be unique
-            and engaging. Luckily for you, we specialize in quality content, so
-            we&apos;ll make sure your brochure does not end up in the trash!
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Perfect for advertising high-end residential and commercial
+              properties, provide your prospective customers with a
+              sophisticated yet timelessly designed brochure to advertise your
+              listing.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Since the information on there is often limited, it should be
+              unique and engaging. Luckily for you, we specialize in quality
+              content, so we&apos;ll make sure your brochure does not end up in
+              the trash!
+            </p>
+          </LetterRevealOnScroll>
           {/* CTA */}
-          <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+          <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
             <div className="flex flex-col sm:flex-row gap-[1rem]">
               <HoverWrapper
                 href="https://listings.virtualxposure.com/order"
-                className="button group/cta cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+                className="button pn-regular-22 group/cta cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
               >
                 <FlipLink className="font-semibold">
                   Book a FREE Consultation
@@ -188,43 +186,35 @@ export const WhatIsItSection3 = () => (
             subheading="Custom Graphic Design"
             className="text-black"
           />
-          <p className={`pn-regular-16 max-w-[43.75rem]`}>
-            Having quality graphics is an industry-standard in our ever-changing
-            world, filled with creatives and visual learners. It is no longer
-            enough to have generic graphics; you need to ensure that your
-            graphics are purely customized to your brand. Our team of
-            specialists will ensure that you achieve all this and more!
-          </p>
-          <p className={`pn-regular-16 max-w-[43.75rem]`}>
-            Book a FREE consultation with us today, and we&apos;ll see how we
-            can make your real estate business stand out, a cut above the rest.
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Having quality graphics is an industry-standard in our
+              ever-changing world, filled with creatives and visual learners. It
+              is no longer enough to have generic graphics; you need to ensure
+              that your graphics are purely customized to your brand. Our team
+              of specialists will ensure that you achieve all this and more!
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Book a FREE consultation with us today, and we&apos;ll see how we
+              can make your real estate business stand out, a cut above the
+              rest.
+            </p>
+          </LetterRevealOnScroll>
           {/* CTA */}
-          <div className="flex justify-center sm:justify-start w-full h-[3.313rem] mt-[1rem] sm:mt-[2rem]">
+          <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
             <div className="flex flex-col sm:flex-row gap-[1rem]">
-              <motion.div
-                className={`button group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
-                style={{
-                  background:
-                    "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                  backgroundSize: "300% 100%",
-                }}
-                animate={{
-                  backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                }}
-                transition={{
-                  duration: 2,
-                  ease: "linear",
-                  repeat: Infinity,
-                }}
+              <div
+                className={`button gold pn-regular-22 group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
               >
-                <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+                <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
                   <Link
                     href="https://listings.virtualxposure.com/order"
                     className="flex size-full items-center gap-[1rem]"
                     passHref
                   >
-                    <FlipLink className={`flex items-center w-full`}>
+                    <FlipLink className={`flex items-center w-fit`}>
                       Book a FREE Consultation
                     </FlipLink>
 
@@ -236,7 +226,7 @@ export const WhatIsItSection3 = () => (
                     />
                   </Link>
                 </HoverWrapper>
-              </motion.div>
+              </div>
             </div>
           </div>
         </div>

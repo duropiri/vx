@@ -14,7 +14,7 @@ interface Stat {
 
 interface SectionProps {
   className?: string;
-  scrollYProgress: MotionValue<number>;
+  scrollYProgress?: MotionValue<number>;
   stats?: Stat[];
   shrinkSize?: number;
   rotationAmount?: number;
@@ -54,11 +54,12 @@ function StatsSection({
   });
 
   const sectionRef = useRef<HTMLDivElement>(null);
-  const scale = useTransform(scrollYProgress, [0, 1], [1, shrinkSize]);
+  const scale =
+    scrollYProgress && useTransform(scrollYProgress, [0, 1], [1, shrinkSize]);
 
-  const rotate = useTransform(scrollYProgress, [0, 1], [0, rotationAmount]);
+  const rotate = scrollYProgress && useTransform(scrollYProgress, [0, 1], [0, rotationAmount]);
 
-  const blur = useTransform(
+  const blur = scrollYProgress && useTransform(
     scrollYProgress,
     [0, 1],
     ["blur(0px)", "blur(2.5px)"] // Use actual blur values with units

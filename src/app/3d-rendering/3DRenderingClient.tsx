@@ -11,6 +11,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 import { useEffect } from "react";
+import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -42,23 +43,22 @@ export const WhatIsItSection = () => (
             subheading="What is 3D Rendering?"
             className="text-black"
           />
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            3D rendering is the process of creating 3D models into 3D
-            representations. These renderings are created using sophisticated
-            computer software which precisely simulates real-world textures,
-            lightings, and physics.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            3D renderings enable homeowners and renovators to get a clear
-            picture of how their renovation project or new construction will
-            look before they even begin to break the ground or tear down a wall.
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              3D rendering is the process of creating 3D models into 3D
+              representations. These renderings are created using sophisticated
+              computer software which precisely simulates real-world textures,
+              lightings, and physics.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              3D renderings enable homeowners and renovators to get a clear
+              picture of how their renovation project or new construction will
+              look before they even begin to break the ground or tear down a
+              wall.
+            </p>
+          </LetterRevealOnScroll>
         </div>
       </div>
     </div>
@@ -133,30 +133,18 @@ export const BenefitsSection = () => (
         ))}
       </div>
       {/* CTA */}
-      <div className="flex justify-center w-full h-[3.313rem]">
+      <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <motion.div
-            className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-            style={{
-              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-              backgroundSize: "300% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 2,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+          <div
+            className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
           >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
               <Link
                 href="https://listings.virtualxposure.com/order"
                 className="flex size-full items-center gap-[1rem]"
                 passHref
               >
-                <FlipLink className={`flex items-center w-full`}>
+                <FlipLink className={`flex items-center w-fit`}>
                   Place An Order
                 </FlipLink>
 
@@ -168,7 +156,7 @@ export const BenefitsSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

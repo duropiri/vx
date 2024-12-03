@@ -86,7 +86,7 @@ function WhyUsSection({
                   margin: "50px", // Start animation 50px before element enters viewport
                 }}
                 transition={{
-                  delay: (index + 4) * 0.1,
+                  delay: 0,
                   duration: 0.5,
                   ease: "easeOut",
                 }}

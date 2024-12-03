@@ -8,6 +8,7 @@ import heroImage2 from "@/../../public/images/614d398d1a34a3bb1ceff8b1_Second-fl
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -39,33 +40,30 @@ export const WhatIsItSection = () => (
             subheading="What is a Virtual 3D Tour?"
             className="text-black"
           />
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            Step into a new era of real estate marketing with our 360° virtual
-            tours! These immersive experiences bring listings to life,
-            transforming how properties are showcased.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            With Virtual 3D Tours, real estate agents can save time and money,
-            move properties faster, impress prospective buyers, and win more
-            listings. They help buyers build an immediate and lasting emotional
-            connection to properties by offering an immersive, simulated
-            experience.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            Plus, with faster internet speeds and higher-resolution displays,
-            virtual tours are now more convenient and accessible than ever
-            before. Whether you have a smartphone or a tablet, you can explore
-            properties from anywhere, anytime.
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Step into a new era of real estate marketing with our 360° virtual
+              tours! These immersive experiences bring listings to life,
+              transforming how properties are showcased.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              With Virtual 3D Tours, real estate agents can save time and money,
+              move properties faster, impress prospective buyers, and win more
+              listings. They help buyers build an immediate and lasting
+              emotional connection to properties by offering an immersive,
+              simulated experience.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Plus, with faster internet speeds and higher-resolution displays,
+              virtual tours are now more convenient and accessible than ever
+              before. Whether you have a smartphone or a tablet, you can explore
+              properties from anywhere, anytime.
+            </p>
+          </LetterRevealOnScroll>
         </div>
       </div>
     </div>
@@ -151,30 +149,18 @@ export const BenefitsSection = () => (
         ))}
       </div>
       {/* CTA */}
-      <div className="flex justify-center w-full h-[3.313rem]">
+      <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <motion.div
-            className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-            style={{
-              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-              backgroundSize: "300% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 2,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+          <div
+            className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
           >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
               <Link
                 href="https://listings.virtualxposure.com/order"
                 className="flex size-full items-center gap-[1rem]"
                 passHref
               >
-                <FlipLink className={`flex items-center w-full`}>
+                <FlipLink className={`flex items-center w-fit`}>
                   Place An Order
                 </FlipLink>
 
@@ -186,7 +172,7 @@ export const BenefitsSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

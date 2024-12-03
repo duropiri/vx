@@ -3,6 +3,7 @@
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import heroImage2 from "@/../../public/images/614d398d1a34a3bb1ceff8b1_Second-floor-Masterbedroom-cam-1-1-1.webp";
+import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -34,31 +35,28 @@ export const WhatIsItSection = () => (
             subheading="What is Virtual Renovation and Remodeling?"
             className="text-black"
           />
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            Virtual renovation and remodeling allow you to reimagine the
-            property and renovate it from top to bottom without the time and
-            resource investment of a real-world renovation.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            Our virtual renovation and remodeling process includes updates to
-            structural elements such as flooring, walls, paint, kitchen
-            remodels, drywall or ceiling updates, backyard improvements, and
-            more.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            We understand that preparing a property to appeal to different
-            generations of buyers with varying tastes and design preferences can
-            be challenging, and we&apos;re here to help!
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Virtual renovation and remodeling allow you to reimagine the
+              property and renovate it from top to bottom without the time and
+              resource investment of a real-world renovation.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Our virtual renovation and remodeling process includes updates to
+              structural elements such as flooring, walls, paint, kitchen
+              remodels, drywall or ceiling updates, backyard improvements, and
+              more.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              We understand that preparing a property to appeal to different
+              generations of buyers with varying tastes and design preferences
+              can be challenging, and we&apos;re here to help!
+            </p>
+          </LetterRevealOnScroll>
         </div>
       </div>
     </div>

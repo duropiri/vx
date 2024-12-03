@@ -109,7 +109,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
         <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-between gap-y-[2rem] sm:gap-y-[2rem]">
           {/* Header */}
           <SectionHeader
-            small
+            medium
             className={`${full ? "!hidden" : ""}`}
             heading={heading || "Our Partners"}
             subheading={

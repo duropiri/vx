@@ -133,7 +133,7 @@ function Body() {
         }}
         copy={
           <>
-            We now live in an<span className="text-goldenbrown">online</span>
+            We now live in an<span className="text-goldenbrown gold-text">online</span>
             real estate economy
           </>
         }
@@ -156,15 +156,15 @@ function Body() {
         copy={
           <>
             A shift from person-to-person transactions to a place where almost
-            <span className="text-goldenbrown">100%</span>of buyers start their
-            buying process<span className="text-goldenbrown">online</span>
+            <span className="text-goldenbrown gold-text">100%</span>of buyers start their
+            buying process<span className="text-goldenbrown gold-text">online</span>
           </>
         }
       />
 
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         <motion.div
-          className="flex flex-col items-center justify-center"
+          className="contents flex flex-col items-center justify-center"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{
@@ -175,7 +175,7 @@ function Body() {
           transition={{
             delay: 0.1,
             // staggerChildren: 1,
-            duration: 0.2,
+            duration: 0.4,
             ease: "easeOut",
           }}
         >
@@ -190,9 +190,9 @@ function Body() {
           copy={
             <>
               The best real estate professionals have
-              <span className="text-goldenbrown italic">reinvented</span>
+              <span className="text-goldenbrown italic gold-text">reinvented</span>
               themselves and their businesses towards a
-              <span className="text-goldenbrown">
+              <span className="text-goldenbrown gold-text">
                 more substantial online presence
               </span>
             </>
@@ -221,7 +221,7 @@ function Body() {
         transition={{
           delay: 0.1,
           // staggerChildren: 1,
-          duration: 0.2,
+          duration: 0.4,
           ease: "easeOut",
         }}
       >
@@ -239,7 +239,7 @@ function Body() {
         transition={{
           delay: 0.1,
           // staggerChildren: 1,
-          duration: 0.2,
+          duration: 0.4,
           ease: "easeOut",
         }}
       >

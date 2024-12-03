@@ -258,7 +258,7 @@ function Body({
           transition={{
             delay: 0.1,
             // staggerChildren: 1,
-            duration: 0.2,
+            duration: 0.4,
             ease: "easeOut",
           }}
         >
@@ -290,7 +290,7 @@ function Body({
           transition={{
             delay: 0.1,
             // staggerChildren: 1,
-            duration: 0.2,
+            duration: 0.4,
             ease: "easeOut",
           }}
         >

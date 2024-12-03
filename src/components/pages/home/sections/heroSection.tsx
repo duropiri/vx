@@ -335,352 +335,352 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 ease: "easeInOut",
               }}
             />
-            {/* Icons */}
-            <div className="relative z-10">
-              {/* Top Left */}
-              <motion.div
-                className="size-[5rem] absolute flex left-[20%] top-[20vh] sm:left-[30%] sm:top-[8rem]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-15, -45]),
-                    { stiffness: 500, damping: 20 }
-                  ),
-                }}
-              >
-                <motion.div className="size-full" animate={floatingAnimation}>
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={instagramHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+          </div>
+          {/* Icons */}
+          <div className="relative z-10">
+            {/* Top Left */}
+            <motion.div
+              className="size-[5rem] absolute flex left-[20%] top-[20vh] sm:left-[30%] sm:top-[8rem]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [-15, -45]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
+              <motion.div className="size-full" animate={floatingAnimation}>
+                <motion.div
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
+                >
+                  <Image
+                    alt="icon"
+                    src={instagramHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Repeat the same structure for other icons with different positions and delays */}
-              {/* Top Right */}
+            {/* Repeat the same structure for other icons with different positions and delays */}
+            {/* Top Right */}
+            <motion.div
+              className="size-[5rem] absolute flex right-[10%] top-[10vh] sm:right-[30%] sm:top-[10vh]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [15, 45]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[10vh] sm:right-[30%] sm:top-[10vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [15, 45]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 0.5,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 0.5,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={twitterHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={twitterHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Mid-Left Upper */}
+            {/* Mid-Left Upper */}
+            <motion.div
+              className="size-[5rem] absolute flex left-[10%] top-[50vh] sm:left-[20%] sm:top-[30vh]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [-20, -40]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute flex left-[10%] top-[50vh] sm:left-[20%] sm:top-[30vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-20, -40]),
-                    { stiffness: 500, damping: 20 }
-                  ),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 1.0,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 1.0,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={facebookHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={facebookHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Mid-Right Upper */}
+            {/* Mid-Right Upper */}
+            <motion.div
+              className="size-[5rem] absolute flex right-[10%] top-[40vh] sm:right-[15rem] sm:top-[16rem]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [20, 40]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[40vh] sm:right-[15rem] sm:top-[16rem]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [20, 40]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 1.5,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 1.5,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={tiktokHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={tiktokHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Mid-Left Lower */}
+            {/* Mid-Left Lower */}
+            <motion.div
+              className="size-[5rem] absolute flex left-[5%] top-[65vh] sm:left-[5rem] sm:top-[24rem]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [-30, -60]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute flex left-[5%] top-[65vh] sm:left-[5rem] sm:top-[24rem]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-30, -60]),
-                    { stiffness: 500, damping: 20 }
-                  ),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 2.0,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 2.0,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={linkedinHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={linkedinHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Mid-Right Lower */}
+            {/* Mid-Right Lower */}
+            <motion.div
+              className="size-[5rem] absolute flex right-[5%] top-[70vh] sm:right-[5rem] sm:top-[40vh]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [30, 60]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute flex right-[5%] top-[70vh] sm:right-[5rem] sm:top-[40vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [30, 60]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 2.5,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 2.5,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={pinterestHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={pinterestHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Bottom Left */}
+            {/* Bottom Left */}
+            <motion.div
+              className="size-[5rem] absolute hidden sm:flex left-[20rem] top-[55vh]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [-25, -50]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute hidden sm:flex left-[20rem] top-[55vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-25, -50]),
-                    { stiffness: 500, damping: 20 }
-                  ),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 3.0,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 3.0,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={youtubeHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={youtubeHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
+            </motion.div>
 
-              {/* Bottom Right */}
+            {/* Bottom Right */}
+            <motion.div
+              className="size-[5rem] absolute hidden sm:flex right-[20rem] top-[60vh]"
+              style={{
+                x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+                opacity,
+                rotate: useSpring(useTransform(scrollY, [0, 500], [25, 50]), {
+                  stiffness: 500,
+                  damping: 35,
+                }),
+              }}
+            >
               <motion.div
-                className="size-[5rem] absolute hidden sm:flex right-[20rem] top-[60vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [25, 50]), {
-                    stiffness: 500,
-                    damping: 20,
-                  }),
+                className="size-full"
+                animate={{
+                  ...floatingAnimation,
+                  transition: {
+                    ...floatingAnimation.transition,
+                    delay: 3.5,
+                  },
                 }}
               >
                 <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 3.5,
-                    },
-                  }}
+                  className="size-full rounded-[1rem] shadow-inner"
+                  animate={rotationAnimation}
                 >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={whatsappHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
-                      priority
-                    />
-                  </motion.div>
+                  <Image
+                    alt="icon"
+                    src={whatsappHeroImage}
+                    className="size-full shadow-2xl rounded-[1rem]"
+                    quality={10}
+                    priority
+                  />
                 </motion.div>
               </motion.div>
-            </div>
+            </motion.div>
           </div>
         </div>
 
@@ -692,7 +692,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full max-w-[80vw] sm:max-w-[100vw] gap-[2rem] z-[100] -translate-y-[20%] sm:translate-y-0">
             {/* Main Copy */}
             <Reveal delay={0} slide={false}>
-              <div className="button !gap-[1.5rem] !bg-ash !border-goldenbrown">
+              <div className="button dark thin pn-regular-22 !gap-[1.5rem] !border-goldenbrown">
                 <div className="flex flex-row gap-[0.25rem]">
                   {Array.from({ length: 5 }).map((_, index) => (
                     <Image
@@ -712,12 +712,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
-                    Meet the <GradientText>Gold</GradientText>
+                    Meet the <span className="text-goldenbrown gold-text font-bold">Gold</span>
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
                   <span>
-                    <GradientText>Standard</GradientText> in Real
+                    <span className="text-goldenbrown gold-text font-bold">Standard</span> in Real
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
@@ -728,12 +728,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <h1 className="sm:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
-                    Meet the <GradientText>Gold</GradientText>
+                    Meet the <span className="text-goldenbrown gold-text font-bold">Gold</span>
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
                   <span>
-                    <GradientText>Standard</GradientText> in
+                    <span className="text-goldenbrown gold-text font-bold">Standard</span> in
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
@@ -765,31 +765,20 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               slide={false}
               className="z-[999]"
             >
-              <div className="flex h-[3.313rem] my-[0.625rem]">
+              <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <motion.div
-                    className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
-                    style={{
-                      background:
-                        "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                      backgroundSize: "300% 100%",
-                    }}
-                    animate={{
-                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    }}
-                    transition={{
-                      duration: 2,
-                      ease: "linear",
-                      repeat: Infinity,
-                    }}
+                    className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
                   >
                     <HoverWrapper className="flex size-full items-center">
                       <Link
                         href="/services/listing-media"
-                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[0.5rem] gap-[1rem]"
+                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
                         passHref
                       >
-                        <FlipLink className={`flex items-center pn-semibold-16`}>
+                        <FlipLink
+                          className={`flex items-center pn-semibold-16`}
+                        >
                           Showcase Your Listings
                         </FlipLink>
 
@@ -803,7 +792,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     </HoverWrapper>
                   </motion.div>
                   <motion.div
-                    className={`button group !p-0 h-full cursor-select-hover !bg-ash shadow-customShadow !border-goldenbrown shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
+                    className={`button dark pn-regular-22 group !p-0 h-full cursor-select-hover shadow-customShadow !border-goldenbrown shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
                     // style={{
                     //   background:
                     //     "linear-gradient(90deg, #1B1A17, #434345, #1B1A17)",
@@ -821,10 +810,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     <HoverWrapper className="flex size-full items-center">
                       <Link
                         href="/services/social-media-management"
-                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[0.5rem] gap-[1rem]"
+                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
                         passHref
                       >
-                        <FlipLink className={`flex items-center text-goldenbrown pn-semibold-16`}>
+                        <FlipLink
+                          className={`flex items-center text-goldenbrown pn-semibold-16`}
+                        >
                           Elevate Your Online Presence
                         </FlipLink>
 

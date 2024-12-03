@@ -8,6 +8,7 @@ import heroImage2 from "@/../../public/images/614d398d1a34a3bb1ceff8b1_Second-fl
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
+import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -39,34 +40,32 @@ export const WhatIsItSection = () => (
             subheading="What is Virtual Staging?"
             className="text-black"
           />
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            Virtual staging is a powerful real estate marketing tool in which a
-            home is staged virtually with the help of computer vision
-            technology.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            Virtual staging allows you to quickly and easily create custom
-            designs tailored specifically to each property. Using sophisticated
-            software tools, photos of your property can be virtually staged with
-            high-quality furniture pieces, decor items, artwork, accessories and
-            more- providing prospective buyers or tenants with a detailed
-            preview of what is possible in their desired space.
-          </p>
-          <p
-            className={`pn-regular-16
-              max-w-[43.75rem]`}
-          >
-            In simple words, it means furnishing an empty house virtually,
-            without having to buy a single piece of furniture. When properties
-            are virtually staged, they help prospective clients visualize the
-            space better and perhaps see themselves living there.
-          </p>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Virtual staging is a powerful real estate marketing tool in which
+              a home is staged virtually with the help of computer vision
+              technology.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              Virtual staging allows you to quickly and easily create custom
+              designs tailored specifically to each property. Using
+              sophisticated software tools, photos of your property can be
+              virtually staged with high-quality furniture pieces, decor items,
+              artwork, accessories and more- providing prospective buyers or
+              tenants with a detailed preview of what is possible in their
+              desired space.
+            </p>
+          </LetterRevealOnScroll>
+          <LetterRevealOnScroll end="bottom 90%">
+            <p className={`pn-regular-16 max-w-[43.75rem]`}>
+              In simple words, it means furnishing an empty house virtually,
+              without having to buy a single piece of furniture. When properties
+              are virtually staged, they help prospective clients visualize the
+              space better and perhaps see themselves living there.
+            </p>
+          </LetterRevealOnScroll>
         </div>
       </div>
     </div>
@@ -141,30 +140,18 @@ export const BenefitsSection = () => (
         ))}
       </div>
       {/* CTA */}
-      <div className="flex justify-center w-full h-[3.313rem]">
+      <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <motion.div
-            className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-            style={{
-              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-              backgroundSize: "300% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 2,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+          <div
+            className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
           >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
               <Link
                 href="https://listings.virtualxposure.com/order"
                 className="flex size-full items-center gap-[1rem]"
                 passHref
               >
-                <FlipLink className={`flex items-center w-full`}>
+                <FlipLink className={`flex items-center w-fit`}>
                   Place An Order
                 </FlipLink>
 
@@ -176,7 +163,7 @@ export const BenefitsSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

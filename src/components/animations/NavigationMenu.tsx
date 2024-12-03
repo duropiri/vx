@@ -171,7 +171,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
           {/* Services Grid */}
           <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
             <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
-            <div className="grid gap-2">
+            <div className="grid gap-[1rem]">
               {activeDropdown.dropdown.items.map((item, index) => (
                 <Link
                   key={index}
@@ -189,7 +189,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                       />
                     </div>
                     <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
-                      <div className="inline-block w-fit text-black/80 group-hover:text-black transition-colors duration-200">
+                      <div className="inline-block w-fit text-black/80 group-hover:text-black transition-colors duration-200 pn-regular-22">
                         <FlipLink>{item.title}</FlipLink>
                       </div>
                     </HoverWrapper>
@@ -217,7 +217,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                           <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
                             <Link
                               href={link.href}
-                              className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200"
+                              className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200 pn-regular-22"
                             >
                               <FlipLink>{link.title}</FlipLink>
                             </Link>
@@ -303,7 +303,7 @@ const MobileMenu: React.FC<{
                         width={16}
                         className="opacity-70"
                       /> */}
-                      <span className="pn-regular-16">{item.title}</span>
+                      <span className="pn-regular-22">{item.title}</span>
                     </Link>
                   ))}
 
@@ -316,7 +316,7 @@ const MobileMenu: React.FC<{
                         <Link
                           key={`quick-${idx}`}
                           href={link.href}
-                          className="pl-[2rem] pn-regular-16 text-black/70 hover:text-black"
+                          className="pl-[2rem] pn-regular-22 text-black/70 hover:text-black"
                           onClick={onClose}
                         >
                           {link.title}
@@ -333,7 +333,7 @@ const MobileMenu: React.FC<{
         {/* Mobile CTA */}
         <Link
           href="#contact"
-          className="button !bg-ash text-white text-center pn-regular-16 !mt-4"
+          className="button dark pn-regular-22 text-center pn-regular-22 !mt-4"
           onClick={onClose}
         >
           Get In Touch
@@ -352,7 +352,7 @@ const MobileMenu: React.FC<{
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <div className="flex flex-wrap w-full justify-between mt-10 small-text gap-10 text-black pn-regular-16 ">
+    <div className="flex flex-wrap w-full justify-between mt-10 small-text gap-10 text-black pn-regular-22 ">
       <ul className="w-full md:w-auto mt-2 list-none p-0">
         <motion.li
           custom={[0.3, 0]}
@@ -459,7 +459,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[1rem] lg:p-[0.438rem] lg:pl-[1.5rem] bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0`}
+        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[1rem] lg:p-[1rem] lg:pl-[1.5rem] bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0`}
       >
         {/* Original Header */}
         <div className="relative flex size-full items-center justify-between gap-10 z-[9999]">
@@ -481,7 +481,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden pn-regular-16 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full max-w-[55vw]">
+          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full max-w-[55vw]">
             {navigation.map((nav, index) => (
               <div
                 key={index}
@@ -504,12 +504,12 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               </div>
             ))}
 
-            {/* CTA Button */}
-            <motion.div className="pn-regular-16 relative group hidden md:flex button !p-0 !bg-ash !border-none text-white shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 mix-blend-normal cursor-select-hover">
-              <HoverWrapper>
+            {/* CTA button*/}
+            <div className="pn-regular-22 relative hidden md:flex !border-none shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 transition-all">
+              <HoverWrapper className="group button dark thin cursor-select-hover">
                 <Link
                   href="#contact"
-                  className="flex size-full gap-[1rem] items-center px-[1.5rem] py-[0.5rem]"
+                  className="flex size-full gap-[1rem] items-center"
                 >
                   <FlipLink>{getChars("Get In Touch")}</FlipLink>
                   <Image
@@ -520,10 +520,10 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                   />
                 </Link>
               </HoverWrapper>
-            </motion.div>
+            </div>
           </nav>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu button pn-regular-22 */}
           <div
             onClick={() => setIsActive(!isActive)}
             className="flex md:hidden items-center justify-end gap-2 cursor-pointer"

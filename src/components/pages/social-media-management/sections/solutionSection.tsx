@@ -117,7 +117,7 @@ function SolutionSection({ className }: SectionProps) {
           subheading={
             <>
               That&apos;s Exactly Why{" "}
-              <span className="text-goldenbrown">We Exist</span>
+              <span className="text-goldenbrown gold-text">We Exist</span>
             </>
           }
           body="At Virtual Xposure, we specialize in building your brand's
@@ -146,7 +146,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -210,7 +210,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -255,7 +255,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -317,7 +317,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -411,7 +411,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -464,7 +464,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -510,7 +510,7 @@ function SolutionSection({ className }: SectionProps) {
             transition={{
               delay: 0.1,
               // staggerChildren: 1,
-              duration: 0.2,
+              duration: 0.4,
               ease: "easeOut",
             }}
           >
@@ -587,7 +587,7 @@ function SolutionSection({ className }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full text-white gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button group !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button pn-regular-22 group !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
@@ -598,23 +598,11 @@ function SolutionSection({ className }: SectionProps) {
             />
           </HoverWrapper>
           <motion.div
-            className={`button !w-full lg:!w-auto text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
-            style={{
-              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-              backgroundSize: "300% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 2,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+            className={`button gold pn-regular-22 !w-full lg:!w-auto text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
           >
             <HoverWrapper
               href="#contact"
-              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[0.5rem]"
+              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[1.25rem]"
             >
               <FlipLink className="font-semibold">Get In Touch</FlipLink>
               <Image

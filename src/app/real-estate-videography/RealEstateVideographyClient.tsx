@@ -72,30 +72,18 @@ export const WhatIsItSection = () => (
         ))}
       </div>
       {/* CTA */}
-      <div className="flex justify-center w-full h-[3.313rem]">
+      <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <motion.div
-            className={`button group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-            style={{
-              background: "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-              backgroundSize: "300% 100%",
-            }}
-            animate={{
-              backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-            }}
-            transition={{
-              duration: 2,
-              ease: "linear",
-              repeat: Infinity,
-            }}
+          <div
+            className={`button pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
           >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[0.5rem]">
+            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
               <Link
                 href="https://listings.virtualxposure.com/order"
                 className="flex size-full items-center gap-[1rem]"
                 passHref
               >
-                <FlipLink className={`flex items-center w-full`}>
+                <FlipLink className={`flex items-center w-fit`}>
                   Place An Order
                 </FlipLink>
 
@@ -107,7 +95,7 @@ export const WhatIsItSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>
@@ -125,26 +113,26 @@ export const StepsLeftSection = () => (
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem]">
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          Sell your listings <span className="text-goldenbrown">68%</span>{" "}
+          Sell your listings <span className="text-goldenbrown gold-text">68%</span>{" "}
           faster than your competitors
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          <span className="text-goldenbrown">83%</span> of sellers would prefer
+          <span className="text-goldenbrown gold-text">83%</span> of sellers would prefer
           your service over the competition
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
           Increase your number of listings by up to{" "}
-          <span className="text-goldenbrown">73%</span>
+          <span className="text-goldenbrown gold-text">73%</span>
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
           Experience deal closing increases as high as{" "}
-          <span className="text-goldenbrown">68%</span>
+          <span className="text-goldenbrown gold-text">68%</span>
         </p>
       </li>
     </ul>
@@ -159,7 +147,7 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listings with drone photography and or/videography sell{" "}
-            <span className="text-goldenbrown">68%</span> faster on average than
+            <span className="text-goldenbrown gold-text">68%</span> faster on average than
             those that do not.
           </>
         ),
@@ -168,7 +156,7 @@ export const StepsRightSection = () => (
         heading: "Appeal to more home buyers",
         body: (
           <>
-            <span className="text-goldenbrown">83%</span> of home sellers prefer
+            <span className="text-goldenbrown gold-text">83%</span> of home sellers prefer
             to work with and agent using drone services.
           </>
         ),
@@ -178,9 +166,9 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listing agents who use drones for real estate could see an increase
-            in listing as high as <span className="text-goldenbrown">73%</span>{" "}
+            in listing as high as <span className="text-goldenbrown gold-text">73%</span>{" "}
             and deal closing increases as high as{" "}
-            <span className="text-goldenbrown">68%</span>.
+            <span className="text-goldenbrown gold-text">68%</span>.
           </>
         ),
       },

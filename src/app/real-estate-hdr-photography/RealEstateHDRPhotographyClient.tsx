@@ -43,7 +43,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Homes with professional photography sell on average for{" "}
-                  <span className="text-goldenbrown">9% more money</span>
+                  <span className="text-goldenbrown gold-text">9% more money</span>
                 </>
               ),
             },
@@ -52,7 +52,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   The average ROI on professional real estate photography is{" "}
-                  <span className="text-goldenbrown">approx 826%</span>
+                  <span className="text-goldenbrown gold-text">approx 826%</span>
                 </>
               ),
             },
@@ -61,7 +61,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Homes listed with more than 20 photos{" "}
-                  <span className="text-goldenbrown">
+                  <span className="text-goldenbrown gold-text">
                     spend 32 days less on
                   </span>{" "}
                   the market
@@ -96,7 +96,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Clients feel{" "}
-                  <span className="text-goldenbrown">43% more satisfied</span>{" "}
+                  <span className="text-goldenbrown gold-text">43% more satisfied</span>{" "}
                   with their REALTOR with professional photos
                 </>
               ),
@@ -105,7 +105,7 @@ export const WhatIsItSection = () => (
               icon: ServiceIcons.magnifyingglass,
               text: (
                 <>
-                  <span className="text-goldenbrown">
+                  <span className="text-goldenbrown gold-text">
                     50% of all new home searches
                   </span>{" "}
                   for real estate start online.
@@ -117,7 +117,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Professional photos result in{" "}
-                  <span className="text-goldenbrown">
+                  <span className="text-goldenbrown gold-text">
                     1,200% increase in social shares
                   </span>
                 </>
@@ -157,26 +157,26 @@ export const StepsLeftSection = () => (
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem]">
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          Sell your listings <span className="text-goldenbrown">68%</span>{" "}
+          Sell your listings <span className="text-goldenbrown gold-text">68%</span>{" "}
           faster than your competitors
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          <span className="text-goldenbrown">83%</span> of sellers would prefer
+          <span className="text-goldenbrown gold-text">83%</span> of sellers would prefer
           your service over the competition
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
           Increase your number of listings by up to{" "}
-          <span className="text-goldenbrown">73%</span>
+          <span className="text-goldenbrown gold-text">73%</span>
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
           Experience deal closing increases as high as{" "}
-          <span className="text-goldenbrown">68%</span>
+          <span className="text-goldenbrown gold-text">68%</span>
         </p>
       </li>
     </ul>
@@ -191,7 +191,7 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listings with drone photography and or/videography sell{" "}
-            <span className="text-goldenbrown">68%</span> faster on average than
+            <span className="text-goldenbrown gold-text">68%</span> faster on average than
             those that do not.
           </>
         ),
@@ -200,7 +200,7 @@ export const StepsRightSection = () => (
         heading: "Appeal to more home buyers",
         body: (
           <>
-            <span className="text-goldenbrown">83%</span> of home sellers prefer
+            <span className="text-goldenbrown gold-text">83%</span> of home sellers prefer
             to work with and agent using drone services.
           </>
         ),
@@ -210,9 +210,9 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listing agents who use drones for real estate could see an increase
-            in listing as high as <span className="text-goldenbrown">73%</span>{" "}
+            in listing as high as <span className="text-goldenbrown gold-text">73%</span>{" "}
             and deal closing increases as high as{" "}
-            <span className="text-goldenbrown">68%</span>.
+            <span className="text-goldenbrown gold-text">68%</span>.
           </>
         ),
       },
