@@ -1,5 +1,22 @@
+import { Metadata } from "next";
+import { baseMetadata } from "@/lib/metadata";
 import Page from "@/components/layout/page";
 import React from "react";
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  title: "Privacy Policy | Virtual Xposure",
+  description:
+    "Learn how Virtual Xposure handles and protects your personal information. Our privacy policy details our data collection practices, security measures, and commitment to protecting your privacy in our real estate marketing services.",
+  keywords:
+    "privacy policy, data protection, Virtual Xposure privacy, information security, personal data handling, privacy terms, data collection policy, privacy practices, real estate marketing privacy",
+  openGraph: {
+    ...baseMetadata.openGraph,
+    title: "Privacy Policy | Virtual Xposure",
+    description:
+      "Learn how Virtual Xposure handles and protects your personal information. Our privacy policy details our data collection practices, security measures, and commitment to protecting your privacy in our real estate marketing services.",
+  },
+};
 
 const page = () => {
   const cookieTable = [

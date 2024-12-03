@@ -78,7 +78,22 @@ export const HeaderLinks = [
   },
 ];
 
-export const NavdockLinks = [
+export const LMSNavdockLinks = [
+  {
+    title: "Our Services",
+    href: "/services/listing-media#services",
+  },
+  {
+    title: "Why Us",
+    href: "/services/listing-media#why",
+  },
+  {
+    title: "FAQs",
+    href: "/services/listing-media#faqs",
+  },
+];
+
+export const SMMANavdockLinks = [
   {
     title: "Our Solutions",
     href: "/services/social-media-management#solutions",

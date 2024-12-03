@@ -6,7 +6,7 @@ import React, {
   useState,
 } from "react";
 import HeroSection from "@/components/pages/home/sections/heroSection";
-import { NavdockLinks } from "@/data/navLinks";
+import { SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
 import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
@@ -200,7 +200,7 @@ const Body = () => {
             zIndex: 0,
           }}
         >
-          <source src="/videos/virtual-3d-tours.webm" type="video/mp4" />
+          <source src="/videos/virtual-3d-tours.webm" type="video/webm" />
         </video>
 
         {/* Gradient Overlay */}
@@ -246,7 +246,7 @@ const Body = () => {
             zIndex: 0,
           }}
         >
-          <source src="/videos/blake-vx.webm" type="video/mp4" />
+          <source src="/videos/blake-vx.webm" type="video/webm" />
         </video>
 
         {/* Gradient Overlay */}
@@ -350,7 +350,7 @@ const Body = () => {
               originalColor="#EFE6CF"
               transitionColor="#FFFFFF"
               className="min-h-screen"
-              navigation={NavdockLinks}
+              navigation={SMMANavdockLinks}
             />
           </div>
         </div>

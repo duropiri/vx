@@ -33,7 +33,7 @@ function WhyUsSection({
   return (
     <div
       ref={sectionRef}
-      id="services"
+      id="why"
       className={`sticky top-0 section-container !flex-row ${className} bg-ash relative overflow-hidden`}
     >
       {/* Background Text Parallax */}

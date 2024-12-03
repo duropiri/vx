@@ -7,7 +7,7 @@ import CTASection from "@/components/pages/services/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
 import { useScroll } from "framer-motion";
-import { HeaderLinks, NavdockLinks } from "@/data/navLinks";
+import { HeaderLinks, LMSNavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
 import { listingMediaFAQ } from "@/data/faq";
@@ -392,7 +392,7 @@ function Body() {
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="min-w-[100vw] min-h-[100vh]"
-        navigation={NavdockLinks}
+        navigation={LMSNavdockLinks}
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[0] = el;
         }}
@@ -409,6 +409,7 @@ function Body() {
         body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
       />
       <BasicSection
+        id="services"
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         ref={(el: HTMLDivElement | null) => {

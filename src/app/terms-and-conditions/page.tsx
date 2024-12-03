@@ -1,5 +1,22 @@
+import { Metadata } from "next";
+import { baseMetadata } from "@/lib/metadata";
 import Page from "@/components/layout/page";
 import React from "react";
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  title: "Terms and Conditions | Virtual Xposure",
+  description:
+    "Read Virtual Xposure's terms and conditions for real estate marketing services. Find detailed information about our service agreements, usage rights, payment terms, and policies for all our real estate marketing solutions.",
+  keywords:
+    "terms and conditions, Virtual Xposure terms, service agreement, usage rights, marketing terms, real estate marketing policies, service terms, legal terms, privacy policy",
+  openGraph: {
+    ...baseMetadata.openGraph,
+    title: "Terms and Conditions | Virtual Xposure",
+    description:
+      "Read Virtual Xposure's terms and conditions for real estate marketing services. Find detailed information about our service agreements, usage rights, payment terms, and policies for all our real estate marketing solutions.",
+  },
+};
 
 const page = () => {
   const cookieTable = [

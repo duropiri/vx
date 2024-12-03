@@ -14,7 +14,7 @@ import CTASection from "@/components/pages/social-media-management/sections/ctaS
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
 import { useScroll } from "framer-motion";
-import { HeaderLinks, NavdockLinks } from "@/data/navLinks";
+import { HeaderLinks, SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import { socialMediaPackages } from "@/data/pricingPackages";
 import { HomePageStats } from "@/data/stats";
@@ -110,7 +110,7 @@ function Body() {
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="min-w-[100vw] min-h-[100vh]"
-        navigation={NavdockLinks}
+        navigation={SMMANavdockLinks}
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[0] = el;
         }}

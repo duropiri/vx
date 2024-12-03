@@ -1,5 +1,5 @@
 import Page from "@/components/layout/page";
-import Body from "@/components/pages/social-media-management/body";
+import Body from "@/components/pages/home/body";
 
 export default function Home() {
   return (

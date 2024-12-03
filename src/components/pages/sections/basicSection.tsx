@@ -8,10 +8,14 @@ interface SectionProps {
   content?: React.ReactElement;
   originalColor?: string;
   transitionColor?: string;
+  id?: string;
 }
 
 const BasicSection = forwardRef<HTMLDivElement, SectionProps>(
-  ({ className, content, originalColor, transitionColor }, forwardedRef) => {
+  (
+    { className, content, originalColor, transitionColor, id, ...props },
+    forwardedRef
+  ) => {
     const [color] = useState(originalColor);
     const containerRef =
       useRef() as React.MutableRefObject<HTMLDivElement | null>;
@@ -21,6 +25,10 @@ const BasicSection = forwardRef<HTMLDivElement, SectionProps>(
       target: containerRef,
       offset: ["start start", "end start"],
     });
+
+    const commonProps = {
+      id,
+    };
 
     return (
       <motion.div
@@ -34,6 +42,7 @@ const BasicSection = forwardRef<HTMLDivElement, SectionProps>(
         style={{ backgroundColor: color }}
         data-original-color={originalColor}
         data-transition-color={transitionColor}
+        {...commonProps}
       >
         <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
           {content && <div className="flex flex-col size-full">{content}</div>}

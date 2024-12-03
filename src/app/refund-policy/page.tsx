@@ -1,10 +1,30 @@
+import { Metadata } from "next";
+import { baseMetadata } from "@/lib/metadata";
 import Page from "@/components/layout/page";
 import React from "react";
+
+export const metadata: Metadata = {
+  ...baseMetadata,
+  title: "Refund Policy | Virtual Xposure",
+  description:
+    "Understanding Virtual Xposure's refund policy and our 2X money-back guarantee. Learn about our commitment to customer satisfaction, refund eligibility, and the process for requesting refunds on our real estate marketing services.",
+  keywords:
+    "refund policy, money-back guarantee, Virtual Xposure refunds, service guarantee, satisfaction guarantee, refund terms, 2X money-back guarantee, real estate marketing refunds, customer satisfaction policy",
+  openGraph: {
+    ...baseMetadata.openGraph,
+    title: "Refund Policy | Virtual Xposure",
+    description:
+      "Understanding Virtual Xposure's refund policy and our 2X money-back guarantee. Learn about our commitment to customer satisfaction, refund eligibility, and the process for requesting refunds on our real estate marketing services.",
+  },
+};
 
 const page = () => {
   return (
     <Page>
-      <div id="refund-policy" className={`section-container !flex-row !pt-[6rem] lg:!pt-[3.125rem]`}>
+      <div
+        id="refund-policy"
+        className={`section-container !flex-row !pt-[6rem] lg:!pt-[3.125rem]`}
+      >
         <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-between gap-[1.5rem] sm:gap-[3.75rem]">
           <h1 className="pn-bold-48 text-center mb-8">Refund Policy</h1>
 

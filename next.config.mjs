@@ -14,6 +14,10 @@ const nextConfig = {
   compress: true, // Enables gzip/brotli compression for better performance
   poweredByHeader: false, // Removes the "x-powered-by" header for better security
   swcMinify: true, // Uses the newer, faster SWC compiler for JavaScript minification
+  images: {
+    deviceSizes: [500, 800, 1080, 1600, 2000],
+    formats: ['image/webp'],
+  },
 };
 
 export default nextConfig;
