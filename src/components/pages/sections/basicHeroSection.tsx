@@ -31,7 +31,7 @@ function BasicHeroSection({
           subheading={subheading}
           body={body}
         />
-        {content && <div className="flex flex-col size-full">{content}</div>}
+        {content && <div className="flex flex-col items-center size-full">{content}</div>}
       </div>
     </div>
   );
