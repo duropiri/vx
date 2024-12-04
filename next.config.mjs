@@ -4,45 +4,35 @@ const nextConfig = {
     ignoreDuringBuilds: true,
   },
   reactStrictMode: true,
-  
-  // Compression and optimization
   compress: true,
   swcMinify: true,
   poweredByHeader: false,
   
-  // Image optimization
   images: {
+    unoptimized: true,
     deviceSizes: [500, 800, 1080, 1600, 2000],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256], // For smaller images
+    imageSizes: [16, 32, 48, 64, 96, 128, 256],
     formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60, // Cache images for at least 60 seconds
+    minimumCacheTTL: 60,
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
     ],
+    disableStaticImages: true,
+    dangerouslyAllowSVG: true,
   },
 
-  // Performance optimizations
   compiler: {
-    // Remove console.logs in production
     removeConsole: process.env.NODE_ENV === 'production',
   },
 
-  // Enable HTTP/2 Server Push
   experimental: {
-    serverActions: true,
-    optimizeCss: true, // CSS optimization
-    optimizePackageImports: [
-      '@mui/material',
-      '@mui/icons-material',
-      'lodash',
-      'lucide-react'
-    ],
+    optimizeCss: true,
+    optimizePackageImports: ['lodash', 'lucide-react']
   },
 
-  // Cache and performance headers
   async headers() {
     return [
       {
@@ -66,21 +56,6 @@ const nextConfig = {
         ],
       },
     ];
-  },
-
-  // Webpack optimization
-  webpack: (config, { dev, isServer }) => {
-    // Production optimizations
-    if (!dev && !isServer) {
-      Object.assign(config.resolve.alias, {
-        'react/jsx-runtime.js': 'preact/compat/jsx-runtime',
-        react: 'preact/compat',
-        'react-dom/test-utils': 'preact/test-utils',
-        'react-dom': 'preact/compat',
-      });
-    }
-
-    return config;
   },
 };
 
