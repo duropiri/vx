@@ -1,21 +1,26 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  reactStrictMode: true, // Helps catch potential issues early on
+  reactStrictMode: true,
   images: {
-    // Optimize image loading
-    // domains: ["your-image-domain.com"], // Allow loading images from specific domains
     deviceSizes: [500, 800, 1080, 1600, 2000],
-    formats: ["image/avif", "image/webp"], // Use modern formats
-    disableStaticImages: true,
+    formats: ["image/avif", "image/webp"],
+    disableStaticImages: false
   },
-  compress: true, // Enables gzip/brotli compression for better performance
-  poweredByHeader: false, // Removes the "x-powered-by" header for better security
-  swcMinify: true, // Uses the newer, faster SWC compiler for JavaScript minification
+  compress: true,
+  poweredByHeader: false,
+  swcMinify: true,
+  
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.(webp|jpg|jpeg|png|svg|gif)$/i,
+      type: 'asset/resource',
+    });
+    
+    return config;
+  }
 };
 
 export default nextConfig;
