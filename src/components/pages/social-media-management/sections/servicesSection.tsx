@@ -1,5 +1,4 @@
 import GsapMagnetic from "@/components/animations/GsapMagnetic";
-import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { motion, MotionValue } from "framer-motion";

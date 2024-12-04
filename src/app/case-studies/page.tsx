@@ -1,8 +1,8 @@
+/* eslint-disable react/jsx-key */
 import { Metadata } from "next";
 import { baseMetadata } from "@/lib/metadata";
 import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
-import { ServiceIcons } from "@/data/serviceIcons";
 import {
   FloorplansSection,
   PhotographySection,

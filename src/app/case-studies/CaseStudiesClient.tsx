@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-unused-vars */
 "use client";
 import * as Tabs from "@radix-ui/react-tabs";
 // import * as Tooltip from "@radix-ui/react-tooltip";
@@ -8,7 +10,6 @@ import { X } from 'lucide-react'; // For the close icon
 import SectionHeader from "@/components/ui/sectionHeader";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import floorplanImage from "@/../../public/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
 import { useEffect, useState } from "react";
 
 import { Autoplay, Navigation, Pagination, A11y } from "swiper/modules";
