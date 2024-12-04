@@ -18,9 +18,9 @@
   --section-width: 98vw;
 
   /* Font sizing variables */
-  // --root-size: 37;
-  // --max-font-size: 14px;  /* Default max for HD and below */
-  // font-size: 14px;
+  /* // --root-size: 37; */
+  /* // --max-font-size: 14px;  Default max for HD and below */
+  /* // font-size: 14px; */
   --size: 305;
   font-size: calc((100vw / var(--size)) * 10);
 }
@@ -38,38 +38,6 @@
   }
 }
 
-// @media (min-width: 370px) {
-//   :root {
-//     font-size: 14px;
-//   }
-// }
-
-// @media (min-width: 1024px) {
-//   :root {
-//     font-size: calc(min((100vw / var(--root-size)), var(--max-font-size)));
-//   }
-// }
-
-// @media (min-width: 1024px) {
-//   :root {
-//     --root-size: 90;
-//   }
-// }
-
-// /* 2K displays and above */
-// @media (min-width: 2048px) {
-//   :root {
-//     --max-font-size: 16px;
-//   }
-// }
-
-// /* Ensure font size doesn't exceed 16px on large screens */
-// @media (min-width: 1920px) {
-//   :root {
-//     --root-size: 120;
-//     font-size: var(--max-font-size);
-//   }
-// }
 
 /* @media (prefers-color-scheme: dark) {
   :root {
@@ -429,7 +397,7 @@ body {
 }
 
 .bento-row {
-  // position: sticky;
+  /* // position: sticky; */
   top: 10rem;
   width: 100%;
   height: 100%;
@@ -526,9 +494,9 @@ body {
 .solution-bento {
   display: flex;
   flex-direction: column;
-  // justify-content: flex-start;
-  // align-items: flex-start;
-  // border: 1px solid rgba(#c5a05e, 0.1);
+  /* // justify-content: flex-start; */
+  /* // align-items: flex-start; */
+  /* // border: 1px solid rgba(#c5a05e, 0.1); */
   border-radius: 1rem;
   background-color: rgba(#434345, 0.1);
   position: relative;
@@ -614,7 +582,7 @@ body {
 }
 
 .solution-bento > .bento-content {
-  // background-image: linear-gradient(135deg, #1b1a17, #434345 90%, #434345 100%);
+  /* // background-image: linear-gradient(135deg, #1b1a17, #434345 90%, #434345 100%); */
   background-color: var(--charcoal);
 
   border-radius: inherit;
@@ -668,18 +636,3 @@ body {
     --radius: 0.5rem;
   }
 }
-
-// .swiper {
-//   width: 240px;
-//   height: 320px;
-// }
-
-// .swiper-slide {
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   border-radius: 18px;
-//   font-size: 22px;
-//   font-weight: bold;
-//   color: #fff;
-// }

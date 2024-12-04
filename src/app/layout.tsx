@@ -1,5 +1,5 @@
 // app/layout.tsx
-import "./globals.scss";
+import "./globals.css";
 import { PreloaderProvider } from "@/contexts/PreloaderContext";
 import PageAnimatePresence from "@/components/HOC/PageAnimatePresence";
 import { Metadata } from 'next';
