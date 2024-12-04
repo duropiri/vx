@@ -1,61 +1,22 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
-  reactStrictMode: true,
-  compress: true,
-  swcMinify: true,
-  poweredByHeader: false,
-  
+  reactStrictMode: true, // Helps catch potential issues early on
   images: {
-    unoptimized: true,
+    // Optimize image loading
+    // domains: ["your-image-domain.com"], // Allow loading images from specific domains
+    formats: ["image/avif", "image/webp"], // Use modern formats
+  },
+  compress: true, // Enables gzip/brotli compression for better performance
+  poweredByHeader: false, // Removes the "x-powered-by" header for better security
+  swcMinify: true, // Uses the newer, faster SWC compiler for JavaScript minification
+  images: {
     deviceSizes: [500, 800, 1080, 1600, 2000],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    formats: ['image/avif', 'image/webp'],
-    minimumCacheTTL: 60,
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: '**',
-      },
-    ],
-    disableStaticImages: true,
-    dangerouslyAllowSVG: true,
-  },
-
-  compiler: {
-    removeConsole: process.env.NODE_ENV === 'production',
-  },
-
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lodash', 'lucide-react']
-  },
-
-  async headers() {
-    return [
-      {
-        source: '/:all*(svg|jpg|png|webp|avif|gif)',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          }
-        ],
-      },
-      {
-        source: '/:all*(js|css)',
-        locale: false,
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          }
-        ],
-      },
-    ];
+    formats: ['image/webp'],
   },
 };
 

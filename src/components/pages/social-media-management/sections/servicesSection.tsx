@@ -40,9 +40,9 @@ function ServicesSection({ className }: SectionProps) {
   return (
     <div
       id="services"
-      className={`section-container !pt-[6rem] lg:!pt-[3.125rem] !flex-row ${className} bg-white`}
+      className={`section-container !pt-[6rem] xl:!pt-[3.125rem] !flex-row ${className} bg-white`}
     >
-      <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
           center
@@ -56,8 +56,8 @@ function ServicesSection({ className }: SectionProps) {
         />
 
         <div className="relative flex flex-col w-full justify-start items-start gap-[1.875rem]">
-          {/* sm: Middle Bentos (1) */}
-          <div className="hidden sm:flex lg:hidden relative flex-col sm:flex-row w-full sm:h-[31.25rem] justify-start items-start gap-[1.875rem]">
+          {/* lg: Middle Bentos (1) */}
+          <div className="hidden lg:flex xl:hidden relative flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 2 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -93,7 +93,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] pointer-events-none h-full px-6 py-4 rounded-2xl border border-ash/10 flex-col justify-start items-start gap-5 flex overflow-hidden">
+                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] pointer-events-none size-full px-6 py-4 rounded-2xl border border-ash/10 flex-col justify-start items-start gap-5 flex overflow-hidden">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Scheduled Posts</div>
                       <div className="w-[153px] flex-col justify-start items-start flex">
@@ -469,8 +469,8 @@ function ServicesSection({ className }: SectionProps) {
               </div>
             </motion.div>
           </div>
-          {/* lg: Upper Bentos (3) sm: Upper Bentos (2) */}
-          <div className="relative flex flex-col sm:flex-row w-full sm:h-[31.25rem] justify-start items-start gap-[1.875rem]">
+          {/* xl: Upper Bentos (3) lg: Upper Bentos (2) */}
+          <div className="relative flex flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 1 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -486,7 +486,7 @@ function ServicesSection({ className }: SectionProps) {
                 duration: 0.4,
                 ease: "easeOut",
               }}
-              className="group relative flex flex-col w-full sm:w-auto h-full max-h-[31.25rem]"
+              className="group relative flex flex-col w-full lg:w-auto h-full max-h-[31.25rem]"
             >
               <div
                 className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center size-full"
@@ -494,7 +494,7 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFirstBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex flex-col size-full justify-start items-center sm:items-start gap-[2rem]">
+                <div className="flex flex-col size-full justify-start items-center lg:items-start gap-[2rem]">
                   {/* Header */}
                   <div className="flex flex-col justify-center items-center gap-[0.625rem] size-full">
                     <div className="text-center text-ash pn-bold-20">
@@ -774,7 +774,7 @@ function ServicesSection({ className }: SectionProps) {
                 duration: 0.4,
                 ease: "easeOut",
               }}
-              className="group relative flex sm:hidden lg:flex flex-col size-full max-h-[31.25rem]"
+              className="group relative flex lg:hidden xl:flex flex-col size-full max-h-[31.25rem]"
             >
               <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]">
                 {/* Content */}
@@ -794,7 +794,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] pointer-events-none h-full px-6 py-4 rounded-2xl border border-ash/10 flex-col justify-start items-start gap-5 flex w-auto sm:w-full">
+                  <div className="select-none transition-all duration-500 bg-white group-hover:scale-105 group-hover:shadow-customShadow group-hover:-translate-y-[1.5rem] mt-[1.5rem] pointer-events-none h-full px-6 py-4 rounded-2xl border border-ash/10 flex-col justify-start items-start gap-5 flex w-auto lg:w-full">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Scheduled Posts</div>
                       <div className="w-[153px] flex-col justify-start items-start flex">
@@ -1185,12 +1185,12 @@ function ServicesSection({ className }: SectionProps) {
                 duration: 0.4,
                 ease: "easeOut",
               }}
-              className="group flex relative flex-col w-full sm:w-auto h-full max-h-[31.25rem] justify-center sm:justify-start items-center sm:max-w-[21.875rem]"
+              className="group flex relative flex-col w-full lg:w-auto h-full max-h-[31.25rem] justify-center lg:justify-start items-center lg:max-w-[21.875rem]"
             >
               <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow overflow-hidden size-full max-h-[31.25rem]">
-                <div className="flex-col size-full justify-start items-center sm:items-start gap-[2rem] flex">
+                <div className="flex-col size-full justify-center items-center lg:items-start gap-[2rem] flex">
                   {/* Header */}
-                  <div className="h-[126px] flex-col justify-center items-center gap-[0.625rem] flex">
+                  <div className="h-full flex-col justify-center items-center gap-[0.625rem] flex">
                     <div className="text-center text-ash pn-bold-20">
                       Seamless Collaboration
                     </div>
@@ -1205,12 +1205,12 @@ function ServicesSection({ className }: SectionProps) {
                   </div>
 
                   {/* Graphic */}
-                  <div className="select-none pointer-events-none flex flex-col size-full items-center justify-center relative">
+                  <div className="select-none pointer-events-none flex flex-col size-full max-h-[50%] items-center justify-center relative">
                     <div className="h-full aspect-square left-[1.125rem] bg-ash/5 rounded-full justify-center items-center flex">
                       <div className="flex flex-col items-center justify-center h-full aspect-square rounded-full border border-ash/10">
-                        <div className="w-52 h-52 bg-goldenrod/25 rounded-full justify-center items-center flex">
-                          <span className="group-hover:animate-ping absolute flex size-52 sm:size-full rounded-full group-hover:bg-indigo-300/25 bg-transparent" />
-                          <div className="relative flex flex-col items-center justify-center w-52 h-52 rounded-full border border-ash/10">
+                        <div className="size-[10rem] bg-goldenrod/25 rounded-full justify-center items-center flex">
+                          <span className="group-hover:animate-ping absolute flex size-[10rem] lg:size-full rounded-full group-hover:bg-indigo-300/25 bg-transparent" />
+                          <div className="relative flex flex-col items-center justify-center size-[10rem] rounded-full border border-ash/10">
                             <div className="justify-center items-center flex flex-row space-x-[-1.5rem]">
                               <Image
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[-50%] group-hover:-rotate-45"
@@ -1258,8 +1258,8 @@ function ServicesSection({ className }: SectionProps) {
             </motion.div>
           </div>
 
-          {/* sm: Middle Bentos (1) */}
-          <div className="hidden sm:flex lg:hidden relative flex-col sm:flex-row w-full sm:h-[31.25rem] justify-start items-start gap-[1.875rem]">
+          {/* lg: Middle Bentos (1) */}
+          <div className="hidden lg:flex xl:hidden relative flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 4 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -1283,9 +1283,9 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex-col justify-start items-start sm:items-center sm:items-start gap-2 flex size-full">
+                <div className="flex-col justify-start items-start lg:items-center lg:items-start gap-2 flex size-full">
                   {/* Header */}
-                  <div className="flex-col justify-start items-center sm:items-start gap-[0.625rem] flex text-center sm:text-start">
+                  <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-28">
                       Real Growth & Engagement
                     </div>
@@ -1299,7 +1299,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 sm:w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 lg:w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Followers</div>
                       <div className="flex-col justify-start items-start flex">
@@ -1329,7 +1329,7 @@ function ServicesSection({ className }: SectionProps) {
                       </div>
                     </div>
                     <div className="flex flex-row w-full justify-start items-start gap-4">
-                      <div className="flex flex-col w-[10ch] sm:w-full justify-start items-start gap-px">
+                      <div className="flex flex-col w-[10ch] lg:w-full justify-start items-start gap-px">
                         <div className="text-ash nu-semibold-16">
                           Net Growth
                         </div>
@@ -1337,7 +1337,7 @@ function ServicesSection({ className }: SectionProps) {
                           Jun 2025 - Dec 2025
                         </div>
                       </div>
-                      <div className="flex size-full justify-center items-start gap-2 sm:gap-4">
+                      <div className="flex size-full justify-center items-start gap-2 lg:gap-4">
                         <div className="p-3 bg-ash rounded-lg justify-start items-start gap-2 flex min-w-[30%]">
                           <div className="flex-col justify-center items-start gap-1 flex">
                             <div className="transition-all duration-500 group-hover:scale-125 w-6 h-6 relative">
@@ -1582,8 +1582,8 @@ function ServicesSection({ className }: SectionProps) {
             </motion.div>
           </div>
 
-          {/* lg: Lower Bentos (2) sm: Lower Bentos (1) */}
-          <div className="flex flex-col sm:flex-row w-full sm:h-[31.25rem] justify-start items-start gap-[1.875rem]">
+          {/* xl: Lower Bentos (2) lg: Lower Bentos (1) */}
+          <div className="flex flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 4 */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
@@ -1599,7 +1599,7 @@ function ServicesSection({ className }: SectionProps) {
                 duration: 0.4,
                 ease: "easeOut",
               }}
-              className="group flex sm:hidden lg:flex relative size-full max-h-[31.25rem]"
+              className="group flex lg:hidden xl:flex relative size-full max-h-[31.25rem]"
             >
               <div
                 className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]"
@@ -1607,9 +1607,9 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex-col justify-start items-start sm:items-center sm:items-start gap-2 flex size-full">
+                <div className="flex-col justify-start items-start lg:items-center lg:items-start gap-2 flex size-full">
                   {/* Header */}
-                  <div className="flex-col justify-start items-center sm:items-start gap-[0.625rem] flex text-center sm:text-start">
+                  <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-28">
                       Real Growth & Engagement
                     </div>
@@ -1623,7 +1623,7 @@ function ServicesSection({ className }: SectionProps) {
                     </p>
                   </div>
                   {/* Graphic */}
-                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 sm:w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
+                  <div className="select-none pointer-events-none transition-all duration-500 bg-white group-hover:scale-105 lg:w-full group-hover:shadow-customShadow group-hover:-translate-y-[1rem] mt-[2rem] p-6 rounded-xl border border-ash/10 flex-col justify-start items-start gap-5 flex">
                     <div className="w-full justify-between items-center flex">
                       <div className="text-ash nu-bold-20">Followers</div>
                       <div className="flex-col justify-start items-start flex">
@@ -1653,7 +1653,7 @@ function ServicesSection({ className }: SectionProps) {
                       </div>
                     </div>
                     <div className="flex flex-row w-full justify-start items-start gap-4">
-                      <div className="flex flex-col w-[10ch] sm:w-full justify-start items-start gap-px">
+                      <div className="flex flex-col w-[10ch] lg:w-full justify-start items-start gap-px">
                         <div className="text-ash nu-semibold-16">
                           Net Growth
                         </div>
@@ -1661,7 +1661,7 @@ function ServicesSection({ className }: SectionProps) {
                           Jun 2025 - Dec 2025
                         </div>
                       </div>
-                      <div className="flex size-full justify-center items-start gap-2 sm:gap-4">
+                      <div className="flex size-full justify-center items-start gap-2 lg:gap-4">
                         <div className="p-3 bg-ash rounded-lg justify-start items-start gap-2 flex min-w-[30%]">
                           <div className="flex-col justify-center items-start gap-1 flex">
                             <div className="transition-all duration-500 group-hover:scale-125 w-6 h-6 relative">
@@ -1919,7 +1919,7 @@ function ServicesSection({ className }: SectionProps) {
                 duration: 0.4,
                 ease: "easeOut",
               }}
-              className="group flex relative size-full h-auto max-h-[31.25rem] sm:h-full"
+              className="group flex relative size-full h-auto max-h-[31.25rem] lg:h-full"
             >
               <div className="flex flex-col px-[1.5rem] py-[2rem] bg-transparent rounded-[1.875rem] outline-charcoal/50 outline-dashed justify-center items-center gap-[2.75rem] overflow-hidden hover:outline-goldenrod hover:bg-goldenrod/10 transition-all duration-500 size-full">
                 {/* Content */}
@@ -1949,7 +1949,7 @@ function ServicesSection({ className }: SectionProps) {
                   <div className="h-[60px] flex-col justify-center items-center flex">
                     <HoverWrapper
                       href="/"
-                      className="button pn-regular-22 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown lg:w-[18.75rem]"
+                      className="button pn-regular-22 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown xl:w-[18.75rem]"
                     >
                       <FlipLink className="pn-semibold-16 leading-[1rem]">
                         Get Started
