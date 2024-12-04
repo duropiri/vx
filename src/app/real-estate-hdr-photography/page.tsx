@@ -44,6 +44,7 @@ const page = () => {
         unlimitedSection={[<UnlimitedLeftSection />, <UnlimitedRightSection />]}
         testimonialsSection
         pricing={RealEstateHDRPhotographyPackages}
+        photography
       />
     </Page>
   );

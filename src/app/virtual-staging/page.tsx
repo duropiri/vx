@@ -51,6 +51,7 @@ const page = () => {
         ctaSection
         testimonialsSection
         pricing={VirtualStagingPackages}
+        staging
       />
     </Page>
   );

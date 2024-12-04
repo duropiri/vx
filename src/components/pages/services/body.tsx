@@ -18,6 +18,11 @@ import PricingSection from "@/components/pages/sections/pricingSection";
 import Basic2ColumnSection from "@/components/pages/sections/basic2ColumnSection";
 import BasicSection from "@/components/pages/sections/basicSection";
 import { useScroll } from "framer-motion";
+import {
+  FloorplansSection,
+  PhotographySection,
+  VirtualSection,
+} from "@/app/case-studies/CaseStudiesClient";
 
 interface SectionProps {
   title: string;
@@ -38,6 +43,11 @@ interface SectionProps {
   stepsSection?: any[];
   unlimitedSection?: any[];
   advantageSection?: any;
+
+  staging?: boolean;
+  renovation?: boolean;
+  photography?: boolean;
+  floorplan?: boolean;
 }
 
 interface CTA {
@@ -67,6 +77,10 @@ function Body({
   testimonialsSection,
   pricing,
   faq,
+  staging,
+  renovation,
+  photography,
+  floorplan,
 }: SectionProps) {
   // const heroRef = useRef<HTMLDivElement>(null);
   // const [heroHeight, setHeroHeight] = useState(0);
@@ -202,6 +216,22 @@ function Body({
             <BasicSection content={whatisitSection} />
           ))}
 
+        {floorplan && (
+          <BasicSection
+            content={<FloorplansSection />}
+          />
+        )}
+        {staging && (
+          <BasicSection
+            content={<VirtualSection renovation={false} objremoval={false} />}
+          />
+        )}
+        {renovation && (
+          <BasicSection
+            content={<VirtualSection objremoval={false} staging={false} />}
+          />
+        )}
+
         {/* Benefits? */}
         {benefitsSection && <BasicSection content={benefitsSection} />}
 
@@ -277,6 +307,10 @@ function Body({
       <TestimonialsSection className="bg-white z-10 relative" />
 
       {/* Case Studies? */}
+      {photography && (
+        <BasicSection content={<PhotographySection dark={false} />} />
+      )}
+
       {/* Contact */}
       <div className="bg-white z-10">
         <motion.div

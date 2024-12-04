@@ -48,6 +48,7 @@ const page = () => {
         benefitsSection={<BenefitsSection />}
         advantageSection={<AdvantageSection />}
         whyusSection
+        floorplan
       />
     </Page>
   );

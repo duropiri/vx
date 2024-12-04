@@ -52,6 +52,7 @@ const page = () => {
         ctaSection
         testimonialsSection
         pricing={VirtualRennovationPackages}
+        renovation
       />
     </Page>
   );

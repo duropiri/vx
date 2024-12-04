@@ -84,7 +84,7 @@ export const FloorplansSection = () => {
   );
 };
 
-export const PhotographySection = () => {
+export const PhotographySection = ({ dark = true }) => {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedImage, setSelectedImage] = useState(null);
 
@@ -117,11 +117,12 @@ export const PhotographySection = () => {
   const generateCategoryItems = (category, count) => {
     return Array.from({ length: count }, (_, index) => ({
       id: index + 1,
-      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${index + 1}`,
-      image: getImagePath(category, index + 1)
+      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${
+        index + 1
+      }`,
+      image: getImagePath(category, index + 1),
     }));
   };
-  
 
   const categoryData = {
     interior: generateCategoryItems("interior", 12),
@@ -313,14 +314,14 @@ export const PhotographySection = () => {
           pagination={{
             dynamicBullets: true,
           }}
-          className="overflow-visible relative flex flex-col !pb-[4rem] 
+          className={`overflow-visible relative flex flex-col !pb-[4rem] 
             [&_.swiper-pagination-bullet]:!w-[1.5rem] 
             [&_.swiper-pagination-bullet]:!h-[1.5rem]
-            [&_.swiper-pagination-bullet]:bg-white 
+            ${dark && "[&_.swiper-pagination-bullet]:bg-white"} 
             [&_.swiper-pagination]:!-mt-[5rem]
             [&_.swiper-pagination-bullet-active]:!bg-goldenbrown
             [&_.swiper-pagination]:!top-auto
-          "
+          `}
         >
           {studies.map((study) => (
             <SwiperSlide key={study.id} className="!h-auto">
@@ -340,7 +341,7 @@ export const PhotographySection = () => {
       >
         <SectionHeader
           center
-          dark
+          dark={dark}
           heading="Photography"
           subheading="Examples Of Our Work"
           body="From stunning interiors to sweeping aerial views, our professional photography services capture your property in its best light. Every shot is carefully composed and expertly edited to showcase your property's unique features and appeal to potential buyers."
@@ -358,7 +359,9 @@ export const PhotographySection = () => {
                 <Tabs.Trigger
                   key={tab}
                   value={tab}
-                  className={`cursor-select-hover px-4 py-2 transition-all duration-500 text-white ${
+                  className={`cursor-select-hover px-4 py-2 transition-all duration-500 ${
+                    dark ? "text-white" : "text-black"
+                  } ${
                     activeTab === tab
                       ? "opacity-100 underline! underline-offset-[1rem] decoration-ash gold-text font-bold"
                       : "opacity-75 hover:opacity-100"
@@ -409,7 +412,11 @@ export const PhotographySection = () => {
   );
 };
 
-export const VirtualSection = () => {
+export const VirtualSection = ({
+  renovation = true,
+  objremoval = true,
+  staging = true,
+}) => {
   const commonFeatures = [
     { id: 1, text: "Professional editing by experienced designers" },
     { id: 2, text: "Quick 24-hour turnaround time" },
@@ -420,7 +427,7 @@ export const VirtualSection = () => {
   ];
 
   const services = [
-    {
+    renovation && {
       id: 1,
       title: "Virtual Renovation",
       description:
@@ -430,7 +437,7 @@ export const VirtualSection = () => {
       features: commonFeatures,
       reversed: false,
     },
-    {
+    objremoval && {
       id: 2,
       title: "Object Removal",
       description:
@@ -440,7 +447,7 @@ export const VirtualSection = () => {
       features: commonFeatures,
       reversed: true,
     },
-    {
+    staging && {
       id: 3,
       title: "Virtual Staging",
       description:
@@ -450,7 +457,7 @@ export const VirtualSection = () => {
       features: commonFeatures,
       reversed: false,
     },
-  ];
+  ].filter(Boolean); // Remove falsy values
 
   const CompareSlider = ({ beforeImage, afterImage }) => (
     <ReactCompareSlider
@@ -490,9 +497,9 @@ export const VirtualSection = () => {
 
   const ServiceFeatures = ({ features }) => (
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] w-full">
-      {features.map((feature) => (
+      {features.map((feature, index) => (
         <li
-          key={feature.id}
+          key={index}
           className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]"
         >
           <p className="pn-regular-16 text-black/80 group-hover:text-black">
@@ -538,8 +545,8 @@ export const VirtualSection = () => {
         className="text-black"
       />
       <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[10rem] xl:gap-[3.75rem]">
-        {services.map((service) => (
-          <ServiceSection key={service.id} service={service} />
+        {services.map((service, index) => (
+          <ServiceSection key={index} service={service} />
         ))}
       </div>
     </div>
