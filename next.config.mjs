@@ -11,6 +11,7 @@ const nextConfig = {
     // domains: ["your-image-domain.com"], // Allow loading images from specific domains
     deviceSizes: [500, 800, 1080, 1600, 2000],
     formats: ["image/avif", "image/webp"], // Use modern formats
+    disableStaticImages: true,
   },
   compress: true, // Enables gzip/brotli compression for better performance
   poweredByHeader: false, // Removes the "x-powered-by" header for better security
