@@ -69,6 +69,71 @@ export const HeaderLinks = [
     },
   },
   {
+    title: "Case Studies",
+    href: "/case-studies",
+    dropdown: {
+      // instantLinks: [
+      //   {
+      //     category: "Listing Media",
+      //     title: "Real Estate HDR Photography",
+      //     href: "/real-estate-hdr-photography",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "Virtual 3D Tours",
+      //     href: "/virtual-3d-tours",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "RMS Measurements & Schematic Floor Plans",
+      //     href: "/rms-measurements-schematic-floor-plans",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "Real Estate Videography",
+      //     href: "/real-estate-videography",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "Virtual Staging",
+      //     href: "/virtual-staging",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "Virtual Renovation",
+      //     href: "/virtual-renovation",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "3D Rendering",
+      //     href: "/3d-rendering",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     title: "Graphic Design",
+      //     href: "/graphic-design",
+      //   },
+      // ],
+      items: [
+        {
+          icon: house,
+          title: "Floor Plans & iGUIDE 3D Tours",
+          href: "/case-studies#floorplans",
+        },
+        {
+          icon: bullhorn,
+          title: "Photography",
+          href: "/case-studies#photography",
+        },
+        {
+          icon: skool,
+          title: "Virtual Enhancements",
+          href: "/case-studies#virtual",
+        },
+      ],
+    },
+  },
+  {
     title: "Plans & Pricing",
     href: "/pricing",
   },
@@ -95,6 +160,10 @@ export const LMSNavdockLinks = [
 
 export const SMMANavdockLinks = [
   {
+    title: "Plans & Pricing",
+    href: "/services/social-media-management#pricing",
+  },
+  {
     title: "Our Solutions",
     href: "/services/social-media-management#solutions",
   },
@@ -105,10 +174,6 @@ export const SMMANavdockLinks = [
   {
     title: "Roadmap",
     href: "/services/social-media-management#roadmap",
-  },
-  {
-    title: "Plans & Pricing",
-    href: "/services/social-media-management#pricing",
   },
   {
     title: "FAQs",

@@ -174,7 +174,7 @@ function Body({
       {/* Hero */}
       <div
         // ref={heroRef}
-        className="sticky top-0 left-0 w-full z-0 bg-ash"
+        className="w-full z-0 bg-ash"
       >
         <HeroSection
           title={title}

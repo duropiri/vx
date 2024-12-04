@@ -89,7 +89,7 @@ function RoadmapSection({ className }: SectionProps) {
           subheading={
             <>
               Your{" "}
-              <span className="text-goldenbrown gold-text">
+              <span className="text-goldenbrown">
                 90-Day Growth Plan
               </span>
             </>

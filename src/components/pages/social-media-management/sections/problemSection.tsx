@@ -313,9 +313,9 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           {/* Progress Bar */}
           <div
             id="progressBar"
-            className="sticky top-0 flex flex-col w-[2.875rem] items-center justify-center z-10 h-[100vh] mr-[1rem] lg:mr-[5rem] -mt-[100vh]"
+            className="sticky top-0 flex flex-col w-full items-center justify-center z-10 h-[100vh] -mt-[100vh] section-container"
           >
-            <div ref={progressBarRef} className="absolute w-[2.875rem]">
+            <div ref={progressBarRef} className="absolute right-[1rem] w-[2.875rem]">
               <div className="inset-0 flex flex-col items-center text-ash">
                 <svg
                   width="10"

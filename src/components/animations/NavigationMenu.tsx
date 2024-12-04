@@ -27,7 +27,7 @@ const useScrollDirection = () => {
   useEffect(() => {
     const updateScrollDirection = () => {
       const scrollY = window.scrollY;
-      
+
       // Always show header at the top of the page
       if (scrollY === 0) {
         setScrollDirection("up");
@@ -35,7 +35,7 @@ const useScrollDirection = () => {
       }
 
       const direction = scrollY > lastScrollY ? "down" : "up";
-      
+
       // Only update direction if the scroll is more than 5px to prevent tiny movements
       if (Math.abs(scrollY - lastScrollY) > 5) {
         setScrollDirection(direction);
@@ -167,7 +167,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
         exit="exit"
         className="overflow-hidden flex flex-col items-start justify-center size-full text-white"
       >
-        <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
+        <div className="overflow-hidden flex flex-row items-start justify-end size-full text-white">
           {/* Services Grid */}
           <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
             <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
@@ -200,35 +200,37 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
           </div>
 
           {/* Quick Links Section */}
-          <div className="col-span-5 pr-[2rem] py-[2rem]">
-            <h3 className="text-sm font-medium text-black/40 mb-5">
-              Quick links
-            </h3>
-            <div className="grid gap-6">
-              {groupedLinks &&
-                Object.entries(groupedLinks).map(([category, links]) => (
-                  <div key={category} className="space-y-4">
-                    {/* <h4 className="text-sm font-medium text-black/40">
+          {groupedLinks && (
+            <div className="col-span-5 pr-[2rem] py-[2rem]">
+              <h3 className="text-sm font-medium text-black/40 mb-5">
+                Quick links
+              </h3>
+              <div className="grid gap-6">
+                {groupedLinks &&
+                  Object.entries(groupedLinks).map(([category, links]) => (
+                    <div key={category} className="space-y-4">
+                      {/* <h4 className="text-sm font-medium text-black/40">
                     {category}
                   </h4> */}
-                    <div className="space-y-2">
-                      {links.map((link, index) => (
-                        <div key={index} className="flex">
-                          <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
-                            <Link
-                              href={link.href}
-                              className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200 pn-regular-22"
-                            >
-                              <FlipLink>{link.title}</FlipLink>
-                            </Link>
-                          </HoverWrapper>
-                        </div>
-                      ))}
+                      <div className="space-y-2">
+                        {links.map((link, index) => (
+                          <div key={index} className="flex">
+                            <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
+                              <Link
+                                href={link.href}
+                                className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200 pn-regular-22"
+                              >
+                                <FlipLink>{link.title}</FlipLink>
+                              </Link>
+                            </HoverWrapper>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <Footer />
       </motion.div>
@@ -488,10 +490,10 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 className="flex relative group items-center justify-center self-stretch"
                 onMouseEnter={() => handleMouseEnter(nav)}
               >
-                <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
+                <HoverWrapper className="">
                   <Link
                     href={nav.href}
-                    className="flex h-full items-center justify-center"
+                    className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full"
                   >
                     <FlipLink>{getChars(nav.title)}</FlipLink>
                     {nav.dropdown && (
@@ -505,22 +507,20 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             ))}
 
             {/* CTA button*/}
-            <div className="pn-regular-22 relative hidden md:flex !border-none shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 transition-all">
-              <HoverWrapper className="group button dark thin cursor-select-hover">
-                <Link
-                  href="#contact"
-                  className="flex size-full gap-[1rem] items-center"
-                >
-                  <FlipLink>{getChars("Get In Touch")}</FlipLink>
-                  <Image
-                    alt="arrow"
-                    src={arrowRedirect}
-                    className="text-white group-hover:rotate-45 transition-all duration-300"
-                    quality={80}
-                  />
-                </Link>
-              </HoverWrapper>
-            </div>
+            <HoverWrapper className="">
+              <Link
+                href="#contact"
+                className="group button dark  cursor-select-hover pn-regular-22 relative hidden md:flex !border-none shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 transition-all"
+              >
+                <FlipLink>{getChars("Get In Touch")}</FlipLink>
+                <Image
+                  alt="arrow"
+                  src={arrowRedirect}
+                  className="text-white group-hover:rotate-45 transition-all duration-300"
+                  quality={80}
+                />
+              </Link>
+            </HoverWrapper>
           </nav>
 
           {/* Mobile Menu button pn-regular-22 */}

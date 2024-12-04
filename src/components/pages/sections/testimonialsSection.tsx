@@ -54,7 +54,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
             effect={"cards"}
             grabCursor={true}
             modules={[EffectCards, Pagination, Navigation]}
-            className="mySwiper max-w-[65vw] w-full sm:w-[50rem] h-[32rem] sm:h-[24rem]"
+            className="mySwiper max-w-[65vw] w-full sm:w-[50rem] h-[44rem] sm:h-[35rem]"
           >
             {testimonials.map((item, index) => (
               <SwiperSlide
@@ -75,11 +75,13 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
                   <p className="my-auto text-center pn-regular-16 max-w-[50ch]">
                     {item.quote}
                   </p>
-                  <div className="flex flex-row gap-[0.3rem] text-goldenbrown my-auto">
-                    {renderStars(item.rating)}
+                  <div className="flex flex-col items-center justify-center gap-y-[0.5rem]">
+                    <div className="flex flex-row gap-[0.3rem] text-goldenbrown my-auto">
+                      {renderStars(item.rating)}
+                    </div>
+                    <p className="text-center pn-bold-28">{item.author}</p>
+                    <p className="pn-regular-16">{item.company}</p>
                   </div>
-                  <p className="text-center pn-bold-28">{item.author}</p>
-                  <p className="pn-regular-16">{item.company}</p>
                 </div>
               </SwiperSlide>
             ))}
@@ -89,24 +91,24 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
         {/* CTA */}
         <div className="flex justify-center w-full">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
-            <motion.div
-              className={`button gold pn-regular-22 pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit`}
-            >
-              <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
-                <Link href="/testimonials" className="flex size-full items-center gap-[1rem]" passHref>
-                  <FlipLink className={`flex items-center w-fit`}>
-                    View All Testimonials
-                  </FlipLink>
+            <HoverWrapper className="">
+              <Link
+                href="/testimonials"
+                className="button gold pn-regular-22 pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit"
+                passHref
+              >
+                <FlipLink className={`flex items-center w-fit`}>
+                  View All Testimonials
+                </FlipLink>
 
-                  <Image
-                    alt="arrow"
-                    src={arrowRedirect}
-                    className="text-ash group-hover:rotate-45 transition-all duration-300"
-                    quality={10}
-                  />
-                </Link>
-              </HoverWrapper>
-            </motion.div>
+                <Image
+                  alt="arrow"
+                  src={arrowRedirect}
+                  className="text-ash group-hover:rotate-45 transition-all duration-300"
+                  quality={10}
+                />
+              </Link>
+            </HoverWrapper>
           </div>
         </div>
       </div>

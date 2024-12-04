@@ -21,6 +21,7 @@ function Body() {
   return (
     <>
       <BasicHeroSection
+        className="top"
         heading="Testimonials"
         subheading="Here's What Real Estate Professionals Are Saying"
         content={
@@ -55,7 +56,8 @@ function Body() {
           copy={
             <>
               We are what we repeatedly do. Excellence, therefore, is not an
-              act, but a<span className="text-goldenbrown italic gold-text">habit.</span>
+              act, but a
+              <span className="text-goldenbrown italic gold-text">habit.</span>
               <span className="pn-regular-16">– Aristotle</span>
             </>
           }

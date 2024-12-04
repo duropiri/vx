@@ -1,9 +1,9 @@
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
-import React, { useState } from "react";
+import React, { forwardRef, useRef, useState } from "react";
 // import { Tilt } from "react-tilt";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionValue } from "framer-motion";
 import { Reveal } from "@/components/animations/Reveal";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -25,6 +25,9 @@ interface SectionProps {
   className?: string;
   pricingPackages?: any;
   noSwitch?: boolean;
+  originalColor?: string;
+  transitionColor?: string;
+  scrollYProgress?: MotionValue<number>;
 }
 
 const PricingTier = ({ tier, isYearly, className = "" }) => {
@@ -70,9 +73,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           </div>
           <div className="w-12 flex flex-col justify-start items-start">
             <div className="text-goldenbrown pn-regular-14 font-medium">
-              <motion.span
-                className="text-goldenbrown gold-text font-bold"
-              >
+              <motion.span className="text-goldenbrown gold-text font-bold">
                 Popular
               </motion.span>
             </div>
@@ -92,9 +93,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
             }`}
           >
             {tier.isPopular ? (
-              <motion.span
-                className="text-goldenbrown gold-text font-bold"
-              >
+              <motion.span className="text-goldenbrown gold-text font-bold">
                 {tier.name}
               </motion.span>
             ) : (
@@ -132,7 +131,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         <ul
           className={`custom-bullet-list ${
             tier.isPremium ? "light" : ""
-          } flex flex-col w-full items-start justify-start gap-[0.625rem] !leading-[1.5rem] pn-regular-16`}
+          } flex flex-col w-full items-start justify-start gap-[1rem] !leading-[1.5rem] pn-regular-16`}
         >
           {(() => {
             const firstIncludedFeature = tier.features.find(
@@ -170,18 +169,25 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
                       duration: 0.5,
                       delay: !isVisible ? (index - 8) * 0.1 : 0,
                     }}
-                    className="list flex flex-col items-start justify-start gap-0 pn-regular-16"
+                    className="list flex flex-col items-start justify-start gap-0 pn-regular-16 !text-[1.2rem]"
                   >
                     <p>
                       {feature.quantity && (
-                        <span className="pn-bold-16">{feature.quantity}</span>
+                        <span className="pn-bold-16 !text-[1.2rem]">
+                          {feature.quantity}
+                        </span>
                       )}{" "}
                       {feature.free && (
-                        <span className="pn-bold-16">FREE BONUS</span>
+                        <span className="pn-bold-16 !text-[1.2rem]">
+                          FREE BONUS
+                        </span>
                       )}{" "}
                       {feature.name}
                       {feature.details && (
-                        <span className="pn-bold-16"> {feature.details}</span>
+                        <span className="pn-bold-16 !text-[1.2rem]">
+                          {" "}
+                          {feature.details}
+                        </span>
                       )}
                     </p>
                     {feature.value && (
@@ -203,7 +209,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
                 animate={{ height: "auto", opacity: 1 }}
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex flex-col items-start justify-start gap-0 pn-regular-16 !font-bold"
+                className="flex flex-col items-start justify-start gap-0 pn-regular-16 "
               >
                 <p>and more...</p>
               </motion.li>
@@ -214,10 +220,10 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
 
       {/* CTA */}
       {tier.isPremium ? (
-        <div className="button gold size-full pn-regular-22 !p-0 !border-none lg:w-[18.75rem]  flex self-center items-center justify-center hover:scale-110 transition-all duration-300 mt-[3rem]  shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5">
+        <div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`flex items-center justify-center cursor-select-hover w-full px-[1.5rem] py-[1.25rem]`}
+            className={`button gold pn-regular-22 cursor-select-hover size-full lg:w-[18.75rem]`}
           >
             <FlipLink className={`leading-[1rem]`}>
               {tier.cta || "Get Started"}
@@ -225,7 +231,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           </HoverWrapper>
         </div>
       ) : (
-        <motion.div className="flex self-center items-center justify-center size-full hover:scale-110 transition-all duration-300 mt-[3rem]">
+        <motion.div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
             className={`button pn-regular-22 cursor-select-hover size-full lg:w-[18.75rem] ${
@@ -246,96 +252,173 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
   );
 };
 
-function PricingSection({
-  className,
-  pricingPackages,
-  noSwitch = false,
-}: SectionProps) {
-  const [isYearly, setIsYearly] = useState(false);
+const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
+  (
+    {
+      className,
+      pricingPackages,
+      noSwitch = false,
+      originalColor,
+      transitionColor,
+    },
+    forwardedRef
+  ) => {
+    const [isYearly, setIsYearly] = useState(false);
+    const [color] = useState(originalColor);
+    const containerRef =
+      useRef() as React.MutableRefObject<HTMLDivElement | null>;
+    const stickyRef = useRef() as React.MutableRefObject<HTMLDivElement | null>;
 
-  const togglePricing = () => {
-    setIsYearly(!isYearly);
-  };
+    const togglePricing = () => {
+      setIsYearly(!isYearly);
+    };
 
-  return (
-    <div id="pricing" className={`section-container !flex-row ${className}`}>
-      <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem] text-ash">
-        {/* Header */}
-        <SectionHeader
-          center
-          heading="Pricing"
-          subheading="Find The Right Plan"
-          body="To ensure we deliver top-tier quality designs on time, we work with a limited number of clients."
-        />
+    return (
+      <div
+        ref={(node) => {
+          containerRef.current = node;
+          if (typeof forwardedRef === "function") {
+            forwardedRef(node);
+          }
+        }}
+        id="pricing"
+        className={`section-container !flex-row ${className}`}
+        style={{ backgroundColor: color }}
+        data-original-color={originalColor}
+        data-transition-color={transitionColor}
+      >
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem] text-ash">
+          {/* Header */}
+          <SectionHeader
+            center
+            heading="Pricing"
+            subheading="Find The Right Plan"
+            body="To ensure we deliver top-tier quality designs on time, we work with a limited number of clients."
+          />
 
-        {/* Plan Switch */}
-        {!noSwitch && (
-          <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16">
-            <span className="py-[0.75rem] px-[1.375rem]">Monthly</span>
+          {/* Plan Switch */}
+          {!noSwitch && (
+            <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16">
+              <span className="py-[0.75rem] px-[1.375rem]">Monthly</span>
 
-            <Switch
-              id="toggle-pricing"
-              onClick={togglePricing}
-              className="cursor-select-hover"
-            />
+              <Switch
+                id="toggle-pricing"
+                onClick={togglePricing}
+                className="cursor-select-hover"
+              />
 
-            <span className="py-[0.75rem] px-[1.375rem]">Yearly</span>
+              <span className="py-[0.75rem] px-[1.375rem]">Yearly</span>
 
-            <div
-              className={`${
-                isYearly
-                  ? "bg-goldenbrown text-white"
-                  : "bg-ash text-white line-through"
-              } py-[0.5rem] px-[0.5rem] sm:py-[0.75rem] sm:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
-            >
-              17% Discount
-            </div>
-          </div>
-        )}
-
-        {/* Pricing Plans */}
-        <div className="relative flex flex-col lg:flex-row h-full w-full justify-center items-stretch gap-[2rem]">
-          {Object.keys(pricingPackages).length > 3 ? (
-            <>
-              <div className="hidden lg:contents">
-                <Swiper
-                  effect={"fade"}
-                  slidesPerView={3}
-                  spaceBetween={30}
-                  grabCursor={true}
-                  scrollbar={{ draggable: true }}
-                  modules={[Pagination, Navigation, Scrollbar, A11y]}
-                  className="mySwiper w-full lg:max-w-[95rem] !overflow-visible"
-                >
-                  {Object.values(pricingPackages).map((tier, index) => (
-                    <SwiperSlide key={index} className="cursor-swipe-hover">
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{
-                          // once: true, // Only animate once
-                          amount: 0.2, // Trigger when 30% of element is in view
-                          margin: "50px", // Start animation 50px before element enters viewport
-                        }}
-                        transition={{
-                          delay: 0.1,
-                          // staggerChildren: 1,
-                          duration: 0.4,
-                          ease: "easeOut",
-                        }}
-                        className="group relative size-full"
-                      >
-                        <PricingTier
-                          tier={tier}
-                          isYearly={isYearly}
-                          className=""
-                        />
-                      </motion.div>
-                    </SwiperSlide>
-                  ))}
-                </Swiper>
+              <div
+                className={`${
+                  isYearly
+                    ? "bg-goldenbrown text-white"
+                    : "bg-ash text-white line-through"
+                } py-[0.5rem] px-[0.5rem] sm:py-[0.75rem] sm:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+              >
+                17% Discount
               </div>
-              <div className="lg:hidden contents">
+            </div>
+          )}
+
+          {/* Pricing Plans */}
+          <div className="relative flex flex-col lg:flex-row h-full w-full justify-center items-stretch gap-[2rem]">
+            {Object.keys(pricingPackages).length > 3 ? (
+              <>
+                <div className="hidden lg:contents">
+                  <Swiper
+                    effect={"fade"}
+                    slidesPerView={4}
+                    spaceBetween={30}
+                    grabCursor={true}
+                    scrollbar={{ draggable: true }}
+                    modules={[Pagination, Navigation, Scrollbar, A11y]}
+                    className="mySwiper w-full lg:max-w-[95rem] !overflow-visible"
+                  >
+                    {Object.values(pricingPackages).map((tier, index) => (
+                      <SwiperSlide key={index} className="!cursor-swipe-hover">
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{
+                            // once: true, // Only animate once
+                            amount: 0.2, // Trigger when 30% of element is in view
+                            margin: "50px", // Start animation 50px before element enters viewport
+                          }}
+                          transition={{
+                            delay: 0.1,
+                            // staggerChildren: 1,
+                            duration: 0.4,
+                            ease: "easeOut",
+                          }}
+                          className="group relative size-full"
+                        >
+                          <PricingTier
+                            tier={tier}
+                            isYearly={isYearly}
+                            className=""
+                          />
+                        </motion.div>
+                      </SwiperSlide>
+                    ))}
+                  </Swiper>
+                </div>
+                <div className="lg:hidden contents">
+                  {Object.values(pricingPackages).map((tier, index) => (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      whileInView={{ opacity: 1, scale: 1 }}
+                      viewport={{
+                        // once: true, // Only animate once
+                        amount: 0.2, // Trigger when 30% of element is in view
+                        margin: "50px", // Start animation 50px before element enters viewport
+                      }}
+                      transition={{
+                        delay: 0.1,
+                        // staggerChildren: 1,
+                        duration: 0.4,
+                        ease: "easeOut",
+                      }}
+                      className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
+                    >
+                      <PricingTier
+                        tier={tier}
+                        isYearly={isYearly}
+                        className=""
+                      />
+                    </motion.div>
+                  ))}
+                </div>
+              </>
+            ) : Object.keys(pricingPackages).length > 2 ? (
+              <>
+                {Object.values(pricingPackages).map((tier, index) => (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{
+                      // once: true, // Only animate once
+                      amount: 0.2, // Trigger when 30% of element is in view
+                      margin: "50px", // Start animation 50px before element enters viewport
+                    }}
+                    transition={{
+                      delay: 0.1,
+                      // staggerChildren: 1,
+                      duration: 0.4,
+                      ease: "easeOut",
+                    }}
+                    className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
+                  >
+                    <PricingTier
+                      tier={tier}
+                      isYearly={isYearly}
+                      className="lg:min-h-[67rem]"
+                    />
+                  </motion.div>
+                ))}
+              </>
+            ) : (
+              <>
                 {Object.values(pricingPackages).map((tier, index) => (
                   <motion.div
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -356,63 +439,15 @@ function PricingSection({
                     <PricingTier tier={tier} isYearly={isYearly} className="" />
                   </motion.div>
                 ))}
-              </div>
-            </>
-          ) : Object.keys(pricingPackages).length > 2 ? (
-            <>
-              {Object.values(pricingPackages).map((tier, index) => (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{
-                    // once: true, // Only animate once
-                    amount: 0.2, // Trigger when 30% of element is in view
-                    margin: "50px", // Start animation 50px before element enters viewport
-                  }}
-                  transition={{
-                    delay: 0.1,
-                    // staggerChildren: 1,
-                    duration: 0.4,
-                    ease: "easeOut",
-                  }}
-                  className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
-                >
-                  <PricingTier
-                    tier={tier}
-                    isYearly={isYearly}
-                    className="lg:min-h-[54.013rem]"
-                  />
-                </motion.div>
-              ))}
-            </>
-          ) : (
-            <>
-              {Object.values(pricingPackages).map((tier, index) => (
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{
-                    // once: true, // Only animate once
-                    amount: 0.2, // Trigger when 30% of element is in view
-                    margin: "50px", // Start animation 50px before element enters viewport
-                  }}
-                  transition={{
-                    delay: 0.1,
-                    // staggerChildren: 1,
-                    duration: 0.4,
-                    ease: "easeOut",
-                  }}
-                  className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
-                >
-                  <PricingTier tier={tier} isYearly={isYearly} className="" />
-                </motion.div>
-              ))}
-            </>
-          )}
+              </>
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+);
+
+PricingSection.displayName = "PricingSection";
 
 export default PricingSection;

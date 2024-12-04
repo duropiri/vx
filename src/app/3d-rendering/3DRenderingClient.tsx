@@ -15,7 +15,7 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
+    <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
         <div data-speed={0.95} data-media-wrapper className="size-full">
           <Image
@@ -135,13 +135,10 @@ export const BenefitsSection = () => (
       {/* CTA */}
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <div
-            className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-          >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
+            <HoverWrapper className="">
               <Link
                 href="https://listings.virtualxposure.com/order"
-                className="flex size-full items-center gap-[1rem]"
+                className="group button gold pn-regular-22 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>
@@ -156,7 +153,6 @@ export const BenefitsSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </div>
         </div>
       </div>
     </div>

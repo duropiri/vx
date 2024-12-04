@@ -50,22 +50,19 @@ function CTASection({ className = "" }: SectionProps) {
               quality={80}
             />
           </HoverWrapper>
-          <motion.div
-            className={`button gold pn-regular-22 text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-none w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
+
+          <HoverWrapper
+            href="#contact"
+            className="button gold pn-regular-22 text-ash group cursor-select-hover !bg-goldenbrown !border-none w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
-            <HoverWrapper
-              href="#contact"
-              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[1.25rem] lg:w-[18.75rem]"
-            >
-              <FlipLink className="font-semibold">Get In Touch</FlipLink>
-              <Image
-                alt="arrow"
-                src={arrowRedirect}
-                className="text-white group-hover:rotate-45 transition-all duration-300"
-                quality={80}
-              />
-            </HoverWrapper>
-          </motion.div>
+            <FlipLink className="font-semibold">Get In Touch</FlipLink>
+            <Image
+              alt="arrow"
+              src={arrowRedirect}
+              className="text-white group-hover:rotate-45 transition-all duration-300"
+              quality={80}
+            />
+          </HoverWrapper>
         </div>
       </div>
     </div>

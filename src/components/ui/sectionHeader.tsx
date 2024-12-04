@@ -75,7 +75,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
             <div className="contents">
               <motion.h2
                 ref={subheadingRef}
-                className={`${subheadingClassName} hidden sm:block ${
+                className={`${subheadingClassName} hidden -space-y-[10rem] sm:block ${
                   largeText ? "pn-regular-60" : "pn-semibold-48"
                 } capitalize leading-snug`}
                 initial={{ y: 20 }}

@@ -74,13 +74,10 @@ export const WhatIsItSection = () => (
       {/* CTA */}
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <div
-            className={`button pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full`}
-          >
-            <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
+            <HoverWrapper className="">
               <Link
                 href="https://listings.virtualxposure.com/order"
-                className="flex size-full items-center gap-[1rem]"
+                className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>
@@ -95,7 +92,6 @@ export const WhatIsItSection = () => (
                 />
               </Link>
             </HoverWrapper>
-          </div>
         </div>
       </div>
     </div>

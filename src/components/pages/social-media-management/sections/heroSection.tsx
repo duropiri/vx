@@ -210,7 +210,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             width:
               // isMobile ? "100%" :
               "14rem",
-            height: "3.313rem",
+            height: "4.223rem",
             background:
               // isMobile ? "#1b1a17" :
               "#c5a05e",
@@ -269,8 +269,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               // Animate the navdock (to navdock final style)
               tl.to(navdock, {
                 background: "#1b1a17",
-                width: isMobile ? "16rem" : "54rem",
-                height: "3.313rem",
+                width: isMobile ? "16rem" : "70rem",
+                height: "4.223rem",
                 paddingLeft:
                   // isMobile ? "0px" :
                   "1.5rem",
@@ -356,7 +356,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     display: "flex",
                     padding: 0,
                     width: "14rem",
-                    height: "3.313rem",
+                    height: "4.223rem",
                     background: "#1b1a17",
                     duration: 0.3,
                   });
@@ -385,7 +385,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 display: "flex",
                 padding: 0,
                 width: "14rem",
-                height: "3.313rem",
+                height: "4.223rem",
                 background: "#1b1a17",
                 duration: 0.3,
               });
@@ -413,7 +413,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 });
                 gsap.set(navdock, {
                   width: "14rem",
-                  height: "3.313rem",
+                  height: "4.223rem",
                   padding: 0,
                   background: "#1b1a17",
                   immediate: true,
@@ -976,7 +976,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           id="hero"
           className={`section-container hero-container !justify-center ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
         >
-          <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100] -translate-y-[20%] sm:translate-y-0">
+          <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
             <Reveal delay={0} slide={false}>
               <div className="button dark thin pn-regular-22 !gap-[1.5rem] !border-goldenbrown">
@@ -1005,7 +1005,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
                   <span>
-                    <span className="text-goldenbrown gold-text font-bold">Gold Standard</span>
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Gold Standard
+                    </span>
                   </span>
                 </Reveal>
               </h1>
@@ -1019,15 +1021,22 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
                   <span>
-                    With The <span className="text-goldenbrown gold-text font-bold">Gold</span>
+                    With The{" "}
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Gold
+                    </span>
                   </span>
                 </Reveal>
                 <Reveal delay={0.15} slide={false}>
-                  <span><span className="text-goldenbrown gold-text font-bold">Standard</span></span>
+                  <span>
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Standard
+                    </span>
+                  </span>
                 </Reveal>
               </h1>
 
-              <h2 className="pn-regular-16 text-center !font-bold max-w-[60ch]">
+              <h2 className="pn-regular-16 text-center  max-w-[60ch]">
                 <Reveal delay={0.15} slide={false}>
                   <span>
                     Our expert digital marketing strategies—tailored social
@@ -1049,25 +1058,21 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             >
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
-                  <motion.div
-                    className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]`}
+                  <HoverWrapper
+                    href="#contact"
+                    className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
                   >
-                    <HoverWrapper
-                      href="#contact"
-                      className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
-                    >
-                      <FlipLink className={`flex items-center w-fit`}>
-                        Get In Touch
-                      </FlipLink>
+                    <FlipLink className={`flex items-center w-fit`}>
+                      Get In Touch
+                    </FlipLink>
 
-                      <Image
-                        alt="arrow"
-                        src={arrowRedirect}
-                        className="text-ash group-hover:rotate-45 transition-all duration-300"
-                        quality={10}
-                      />
-                    </HoverWrapper>
-                  </motion.div>
+                    <Image
+                      alt="arrow"
+                      src={arrowRedirect}
+                      className="text-ash group-hover:rotate-45 transition-all duration-300"
+                      quality={10}
+                    />
+                  </HoverWrapper>
                 </div>
               </div>
             </Reveal>
@@ -1105,43 +1110,37 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Navigation Links */}
             <nav
               id="nav"
-              className="nav flex flex-row gap-[1rem] sm:gap-[2rem] items-center justify-between mx-[1.5rem] h-full text-white"
+              className="nav flex flex-row gap-[1rem] sm:gap-[2rem] items-center justify-between mx-[1.5rem] h-full text-white pn-regular-16"
             >
               {navigation.map((nav, index) => (
                 <HoverWrapper
                   key={index}
                   className="nav-item cursor-select-hover text-nowrap transition-all duration-300"
                 >
-                  <div>
-                    <Link key={`l_${index}`} href={nav.href} passHref>
-                      <FlipLink>{getChars(nav.title)}</FlipLink>
-                    </Link>
-                  </div>
+                  <Link key={`l_${index}`} href={nav.href} passHref>
+                    <FlipLink>{getChars(nav.title)}</FlipLink>
+                  </Link>
                 </HoverWrapper>
               ))}
             </nav>
 
             {/* Initial state content (matches heroCTA exactly) */}
-            <motion.div
+            <HoverWrapper
               id="navdock-cta"
-              className={`button gold pn-regular-22 group !border-none !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]`}
+              href="#contact"
+              className="button gold pn-regular-22 group !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
-              <HoverWrapper
-                href="#contact"
-                className="flex flex-row h-full w-[14rem] items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
-              >
-                <FlipLink className={`flex items-center w-fit`}>
-                  Get In Touch
-                </FlipLink>
+              <FlipLink className={`flex items-center w-fit`}>
+                Get In Touch
+              </FlipLink>
 
-                <Image
-                  alt="arrow"
-                  src={arrowRedirect}
-                  className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  quality={10}
-                />
-              </HoverWrapper>
-            </motion.div>
+              <Image
+                alt="arrow"
+                src={arrowRedirect}
+                className="text-ash group-hover:rotate-45 transition-all duration-300"
+                quality={10}
+              />
+            </HoverWrapper>
           </div>
         </div>
       </div>

@@ -67,8 +67,8 @@ function Body() {
         subheading="Where We Come From"
         content={
           <>
-            <div className="flex flex-col items-start justify-start gap-[1rem] text-center pn-regular-16 mb-[3rem] sm:mb-[8rem]">
-              <p className="">
+            <div className="flex flex-row items-start justify-between gap-[10rem] text-start pn-regular-16 mb-[3rem] sm:mb-[8rem]">
+              <p className="max-w-[50ch]">
                 The new digital age of real estate has officially begun,
                 bringing it&apos;s own set of unique challenges. In an era where
                 costly delays, poor communication, and ineffective marketing
@@ -76,7 +76,7 @@ function Body() {
                 remains:{" "}
                 <span className="font-semibold">is there a better way?</span>
               </p>
-              <p className="">
+              <p className="max-w-[50ch]">
                 <span className="font-semibold">
                   Introducing The Next Step in Real Estate Media & Marketing.
                 </span>{" "}
@@ -86,9 +86,12 @@ function Body() {
               </p>
             </div>
             {/* Images */}
-            <div className="flex flex-col sm:flex-row items-center justify-center size-full mb-[3rem] sm:mb-[8rem] gap-y-[2rem]">
+            <div className="flex flex-col sm:flex-row items-center justify-center mb-[3rem] sm:mb-[16rem] sm:mt-[5rem] gap-y-[2rem]">
               <div className="hidden sm:contents">
-                <div data-speed={1.1} className="max-w-[1/3] translate-y-[1rem]">
+                <div
+                  data-speed={1.1}
+                  className="max-w-[1/3] translate-y-[1rem]"
+                >
                   <Image
                     src={heroImage1}
                     alt="hero-image"
@@ -98,7 +101,10 @@ function Body() {
                     quality={80}
                   />
                 </div>
-                <div data-speed={0.9} className="sm:max-w-[40%] sm:scale-150 z-10">
+                <div
+                  data-speed={0.9}
+                  className="sm:max-w-[40%] sm:scale-150 z-10"
+                >
                   <Image
                     src={heroImage2}
                     alt="hero-image"
@@ -108,7 +114,10 @@ function Body() {
                     quality={80}
                   />
                 </div>
-                <div data-speed={1.2} className="max-w-[1/3] translate-y-[1rem]">
+                <div
+                  data-speed={1.2}
+                  className="max-w-[1/3] translate-y-[1rem]"
+                >
                   <Image
                     src={heroImage3}
                     alt="hero-image"

@@ -689,7 +689,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           id="hero"
           className={`section-container hero-container !justify-center ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
         >
-          <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full max-w-[80vw] sm:max-w-[100vw] gap-[2rem] z-[100] -translate-y-[20%] sm:translate-y-0">
+          <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
             <Reveal delay={0} slide={false}>
               <div className="button dark thin pn-regular-22 !gap-[1.5rem] !border-goldenbrown">
@@ -712,12 +712,18 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
-                    Meet the <span className="text-goldenbrown gold-text font-bold">Gold</span>
+                    Meet the{" "}
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Gold
+                    </span>
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
                   <span>
-                    <span className="text-goldenbrown gold-text font-bold">Standard</span> in Real
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Standard
+                    </span>{" "}
+                    in Real
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
@@ -728,12 +734,18 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <h1 className="sm:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
                 <Reveal delay={0} slide={false}>
                   <span>
-                    Meet the <span className="text-goldenbrown gold-text font-bold">Gold</span>
+                    Meet the{" "}
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Gold
+                    </span>
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
                   <span>
-                    <span className="text-goldenbrown gold-text font-bold">Standard</span> in
+                    <span className="text-goldenbrown gold-text font-bold">
+                      Standard
+                    </span>{" "}
+                    in
                   </span>
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
@@ -744,7 +756,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>
               </h1>
 
-              <h2 className="pn-regular-16 text-center !font-bold max-w-[60ch]">
+              <h2 className="pn-regular-16 text-center  max-w-[60ch]">
                 <Reveal delay={0.15} slide={false}>
                   <span>
                     Our premium services combine cutting-edge listing media and
@@ -767,67 +779,45 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             >
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
-                  <motion.div
-                    className={`button gold pn-regular-22 group !p-0 h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
-                  >
-                    <HoverWrapper className="flex size-full items-center">
-                      <Link
-                        href="/services/listing-media"
-                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
-                        passHref
-                      >
-                        <FlipLink
-                          className={`flex items-center pn-semibold-16`}
-                        >
-                          Showcase Your Listings
-                        </FlipLink>
+                  <HoverWrapper className="">
+                    <Link
+                      href="/services/listing-media"
+                      className="button gold pn-regular-22 group h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-auto"
+                      passHref
+                    >
+                      <FlipLink className={`flex items-center pn-semibold-16`}>
+                        Showcase Your Listings
+                      </FlipLink>
 
-                        <Image
-                          alt="arrow"
-                          src={arrowRedirect}
-                          className="text-ash group-hover:rotate-45 transition-all duration-300"
-                          quality={10}
-                        />
-                      </Link>
-                    </HoverWrapper>
-                  </motion.div>
-                  <motion.div
-                    className={`button dark pn-regular-22 group !p-0 h-full cursor-select-hover shadow-customShadow !border-goldenbrown shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-auto`}
-                    // style={{
-                    //   background:
-                    //     "linear-gradient(90deg, #1B1A17, #434345, #1B1A17)",
-                    //   backgroundSize: "300% 100%",
-                    // }}
-                    // animate={{
-                    //   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                    // }}
-                    // transition={{
-                    //   duration: 2,
-                    //   ease: "linear",
-                    //   repeat: Infinity,
-                    // }}
-                  >
-                    <HoverWrapper className="flex size-full items-center">
-                      <Link
-                        href="/services/social-media-management"
-                        className="flex flex-row size-full items-center justify-center px-[1.5rem] py-[1.25rem] gap-[1rem]"
-                        passHref
-                      >
-                        <FlipLink
-                          className={`flex items-center text-goldenbrown pn-semibold-16`}
-                        >
-                          Elevate Your Online Presence
-                        </FlipLink>
+                      <Image
+                        alt="arrow"
+                        src={arrowRedirect}
+                        className="text-ash group-hover:rotate-45 transition-all duration-300"
+                        quality={10}
+                      />
+                    </Link>
+                  </HoverWrapper>
 
-                        <Image
-                          alt="arrow"
-                          src={arrowRedirectGold}
-                          className="text-ash group-hover:rotate-45 transition-all duration-300"
-                          quality={10}
-                        />
-                      </Link>
-                    </HoverWrapper>
-                  </motion.div>
+                  <HoverWrapper className="">
+                    <Link
+                      href="/services/social-media-management"
+                      className="button dark pn-regular-22 group h-fit cursor-select-hover shadow-customShadow !border-goldenbrown shadow-ash/5 hover:shadow-goldenrod/5 w-auto"
+                      passHref
+                    >
+                      <FlipLink
+                        className={`flex items-center text-goldenbrown pn-semibold-16`}
+                      >
+                        Elevate Your Online Presence
+                      </FlipLink>
+
+                      <Image
+                        alt="arrow"
+                        src={arrowRedirectGold}
+                        className="text-ash group-hover:rotate-45 transition-all duration-300"
+                        quality={10}
+                      />
+                    </Link>
+                  </HoverWrapper>
                 </div>
               </div>
             </Reveal>

@@ -131,7 +131,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Video Background */}
         {src.endsWith(".webm") || src.endsWith(".webm") ? (
           <div
-            data-speed={1.5}
+            data-speed={0.8}
             data-media-wrapper
 
             className="absolute inset-0 size-full h-[120%]"
@@ -149,7 +149,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           </div>
         ) : (
           <div
-            data-speed={1.5}
+            data-speed={0.8}
             data-media-wrapper
 
             className="absolute inset-0 size-full h-[120%] pointer-events-none"
@@ -167,7 +167,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
         {/* Content */}
         <div
-          data-speed={1.1}
+          data-speed={0.8}
           className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
         >
           <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">

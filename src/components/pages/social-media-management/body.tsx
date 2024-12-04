@@ -115,13 +115,23 @@ function Body() {
           sectionRefs.current[0] = el;
         }}
       />
+      <PricingSection
+        originalColor="#EFE6CF"
+        transitionColor="#FFFFFF"
+        ref={(el: HTMLDivElement | null) => {
+          sectionRefs.current[1] = el;
+        }}
+        // noSwitch
+        className="bg-white z-10"
+        pricingPackages={socialMediaPackages}
+      />
       <SocialProofSection
         id="socialProof1"
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[1] = el;
+          sectionRefs.current[2] = el;
         }}
       />
       <CopySection
@@ -129,7 +139,7 @@ function Body() {
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[2] = el;
+          sectionRefs.current[3] = el;
         }}
         copy={
           <>
@@ -143,7 +153,7 @@ function Body() {
         transitionColor="#FFFFFF"
         className="z-0 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[3] = el;
+          sectionRefs.current[4] = el;
         }}
       />
       <CopySection
@@ -151,7 +161,7 @@ function Body() {
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[4] = el;
+          sectionRefs.current[5] = el;
         }}
         copy={
           <>
@@ -206,10 +216,6 @@ function Body() {
 
       <RoadmapSection className="bg-white z-10" />
       <SocialProofSection full className="bg-white z-10" />
-      <PricingSection
-        className="bg-white z-10"
-        pricingPackages={socialMediaPackages}
-      />
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}

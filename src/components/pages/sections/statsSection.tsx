@@ -348,7 +348,7 @@ function StatsSection({
                             )}
                             {stat.unit}
                           </h1>
-                          <p className="pn-regular-18">{stat.description}</p>
+                          <p className="pn-regular-16">{stat.description}</p>
                         </div>
                         {stat.source && (
                           <p className="pn-regular-14">{stat.source}</p>
@@ -368,7 +368,7 @@ function StatsSection({
                         {inView ? <CountUp end={stat.value} duration={2} /> : 0}
                         {stat.unit}
                       </h1>
-                      <p className="pn-regular-18">{stat.description}</p>
+                      <p className="pn-regular-16">{stat.description}</p>
                     </div>
                     {stat.source && (
                       <p className="pn-regular-14">{stat.source}</p>

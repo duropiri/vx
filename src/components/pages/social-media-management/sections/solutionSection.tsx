@@ -117,7 +117,7 @@ function SolutionSection({ className }: SectionProps) {
           subheading={
             <>
               That&apos;s Exactly Why{" "}
-              <span className="text-goldenbrown gold-text">We Exist</span>
+              <span className="text-goldenbrown">We Exist</span>
             </>
           }
           body="At Virtual Xposure, we specialize in building your brand's
@@ -597,22 +597,19 @@ function SolutionSection({ className }: SectionProps) {
               quality={80}
             />
           </HoverWrapper>
-          <motion.div
-            className={`button gold pn-regular-22 !w-full lg:!w-auto text-ash !p-0 group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
+
+          <HoverWrapper
+            href="#contact"
+            className="button gold pn-regular-22 !w-full lg:!w-auto text-ash group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
-            <HoverWrapper
-              href="#contact"
-              className="flex size-full items-center justify-center gap-[1rem] px-[1.5rem] py-[1.25rem]"
-            >
-              <FlipLink className="font-semibold">Get In Touch</FlipLink>
-              <Image
-                alt="arrow"
-                src={arrowRedirect}
-                className="text-white group-hover:rotate-45 transition-all duration-300"
-                quality={80}
-              />
-            </HoverWrapper>
-          </motion.div>
+            <FlipLink className="font-semibold">Get In Touch</FlipLink>
+            <Image
+              alt="arrow"
+              src={arrowRedirect}
+              className="text-white group-hover:rotate-45 transition-all duration-300"
+              quality={80}
+            />
+          </HoverWrapper>
         </div>
       </div>
     </motion.div>

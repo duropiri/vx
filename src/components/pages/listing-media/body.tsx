@@ -34,6 +34,9 @@ import logodesign from "@/../../public/images/logo-design.webp";
 import logoanimation from "@/../../public/images/logo-animation.webp";
 import BasicSection from "@/components/pages/sections/basicSection";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+import PricingSection from "../sections/pricingSection";
+
+import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 
 const services = [
   {
@@ -61,19 +64,19 @@ const services = [
     darkTheme: false,
   },
   {
-    title: "Real Estate Videography",
-    description:
-      "Dynamic property videos that tell your listing's unique story. From aerial drone shots to interior walk-throughs, our professional videography services combine cinematic techniques with strategic storytelling to create compelling content that captures viewer attention and drives inquiries.",
-    image: highproductionvideotours,
-    href: "/real-estate-videography",
-    darkTheme: false,
-  },
-  {
     title: "Virtual Staging",
     description:
       "Transform empty spaces into beautifully furnished environments with our virtual staging service. Using advanced digital technology, we create realistic, professionally designed interiors that help buyers envision the full potential of any property, at a fraction of the cost of traditional staging.",
     image: virtualstaging,
     href: "/virtual-staging",
+    darkTheme: false,
+  },
+  {
+    title: "Real Estate Videography",
+    description:
+      "Dynamic property videos that tell your listing's unique story. From aerial drone shots to interior walk-throughs, our professional videography services combine cinematic techniques with strategic storytelling to create compelling content that captures viewer attention and drives inquiries.",
+    image: highproductionvideotours,
+    href: "/real-estate-videography",
     darkTheme: false,
   },
   {
@@ -97,6 +100,14 @@ const services = [
     description:
       "Stand out in the real estate market with professional graphic design services. From property brochures and marketing materials to social media content and brand identity, we create compelling visual assets that enhance your property's presentation and strengthen your marketing strategy.",
     image: customgraphicdesign,
+    href: "/graphic-design",
+    darkTheme: false,
+  },
+  {
+    title: "Brochure Design",
+    description:
+      "Perfect for advertising high-end residential and commercial properties, provide your prospective customers with a sophisticated yet timelessly designed brochure to advertise your listing.",
+    image: brochuredesign,
     href: "/graphic-design",
     darkTheme: false,
   },
@@ -195,11 +206,11 @@ const ServiceCard = ({
           {darkTheme ? (
             <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
               <HoverWrapper
-                className={`button pn-regular-22 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5`}
+                className={``}
               >
                 <Link
                   href={href}
-                  className="flex size-full items-center gap-[1rem]"
+                  className="button pn-regular-22 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5"
                   passHref
                 >
                   <FlipLink className="font-semibold">Learn More</FlipLink>
@@ -215,41 +226,24 @@ const ServiceCard = ({
           ) : (
             <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
               <div className="flex flex-col sm:flex-row gap-[1rem]">
-                <motion.div
-                  className={`button pn-regular-22 group/cta !p-0 h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full`}
-                  // style={{
-                  //   background:
-                  //     "linear-gradient(90deg, #C5A05E, #FDD98A, #C5A05E)",
-                  //   backgroundSize: "300% 100%",
-                  // }}
-                  // animate={{
-                  //   backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  // }}
-                  // transition={{
-                  //   duration: 2,
-                  //   ease: "linear",
-                  //   repeat: Infinity,
-                  // }}
-                >
-                  <HoverWrapper className="flex size-full items-center px-[1.5rem] py-[1.25rem]">
-                    <Link
-                      href={href}
-                      className="flex size-full items-center gap-[1rem]"
-                      passHref
-                    >
-                      <FlipLink className={`flex items-center w-fit`}>
-                        Learn More
-                      </FlipLink>
+                <HoverWrapper className="">
+                  <Link
+                    href={href}
+                    className="button pn-regular-22 group/cta h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full"
+                    passHref
+                  >
+                    <FlipLink className={`flex items-center w-fit`}>
+                      Learn More
+                    </FlipLink>
 
-                      <Image
-                        alt="arrow"
-                        src={themeClasses.arrow}
-                        className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
-                        quality={80}
-                      />
-                    </Link>
-                  </HoverWrapper>
-                </motion.div>
+                    <Image
+                      alt="arrow"
+                      src={themeClasses.arrow}
+                      className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
+                      quality={80}
+                    />
+                  </Link>
+                </HoverWrapper>
               </div>
             </div>
           )}
@@ -400,13 +394,23 @@ function Body() {
           sectionRefs.current[0] = el;
         }}
       />
+      <PricingSection
+        originalColor="#EFE6CF"
+        transitionColor="#FFFFFF"
+        ref={(el: HTMLDivElement | null) => {
+          sectionRefs.current[1] = el;
+        }}
+        noSwitch
+        className="bg-white z-10"
+        pricingPackages={RealEstateVideographyPackages}
+      />
       <SocialProofSection
         id="socialProof1"
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[1] = el;
+          sectionRefs.current[2] = el;
         }}
         subheading="Trusted By The Best"
         body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
@@ -416,7 +420,7 @@ function Body() {
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[2] = el;
+          sectionRefs.current[3] = el;
         }}
         className={``}
         content={<ServicesSection />}
@@ -427,7 +431,7 @@ function Body() {
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
-          sectionRefs.current[3] = el;
+          sectionRefs.current[4] = el;
         }}
         copy={
           <>
