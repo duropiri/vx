@@ -6,27 +6,27 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 
-import socmedPostImage from "@/../../public/images/VirtualXposure-ExteriorImage.webp";
-import person1Image from "@/../../public/images/team.webp";
-import person2Image from "@/../../public/images/team_1.webp";
-import person3Image from "@/../../public/images/team_2.webp";
-import person4Image from "@/../../public/images/team_3.webp";
-import person5Image from "@/../../public/images/team_4.webp";
+import socmedPostImage from "@/assets/images/VirtualXposure-ExteriorImage.webp";
+import person1Image from "@/assets/images/team.webp";
+import person2Image from "@/assets/images/team_1.webp";
+import person3Image from "@/assets/images/team_2.webp";
+import person4Image from "@/assets/images/team_3.webp";
+import person5Image from "@/assets/images/team_4.webp";
 
-import instagramImage from "@/../../public/svgs/instagram.svg";
-import facebookImage from "@/../../public/svgs/facebook.svg";
-import tiktokImage from "@/../../public/svgs/tiktok.svg";
-import linkedinImage from "@/../../public/svgs/linkedin.svg";
+import instagramImage from "@/assets/svgs/instagram.svg";
+import facebookImage from "@/assets/svgs/facebook.svg";
+import tiktokImage from "@/assets/svgs/tiktok.svg";
+import linkedinImage from "@/assets/svgs/linkedin.svg";
 
-import arrowURImage from "@/../../public/svgs/arrow-up-right.svg";
-import arrowURBlackImage from "@/../../public/svgs/arrow-up-right-black.svg";
-import chevdownImage from "@/../../public/svgs/chevron-down.svg";
-import infoImage from "@/../../public/svgs/info.svg";
-import calendarImage from "@/../../public/svgs/calendar.svg";
-import clockImage from "@/../../public/svgs/clock.svg";
-import growthImage from "@/../../public/svgs/growth.svg";
-import followersImage from "@/../../public/svgs/followers.svg";
-import unfollowImage from "@/../../public/svgs/unfollow.svg";
+import arrowURImage from "@/assets/svgs/arrow-up-right.svg";
+import arrowURBlackImage from "@/assets/svgs/arrow-up-right-black.svg";
+import chevdownImage from "@/assets/svgs/chevron-down.svg";
+import infoImage from "@/assets/svgs/info.svg";
+import calendarImage from "@/assets/svgs/calendar.svg";
+import clockImage from "@/assets/svgs/clock.svg";
+import growthImage from "@/assets/svgs/growth.svg";
+import followersImage from "@/assets/svgs/followers.svg";
+import unfollowImage from "@/assets/svgs/unfollow.svg";
 
 interface SectionProps {
   className?: string;

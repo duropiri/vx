@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
-import logo from "@/../../public/images/logo2-nospace.webp";
-import amex from "@/../../public/svgs/amex.svg";
-import applePay from "@/../../public/svgs/apple-pay.svg";
-import dinersClub from "@/../../public/svgs/diners-club.svg";
-import discover from "@/../../public/svgs/discover.svg";
-import googlePay from "@/../../public/svgs/google-pay.svg";
-import masterCard from "@/../../public/svgs/mastercard.svg";
-import shopPay from "@/../../public/svgs/shop-pay.svg";
-import visa from "@/../../public/svgs/visa.svg";
+import logo from "@/assets/images/logo2-nospace.webp";
+import amex from "@/assets/svgs/amex.svg";
+import applePay from "@/assets/svgs/apple-pay.svg";
+import dinersClub from "@/assets/svgs/diners-club.svg";
+import discover from "@/assets/svgs/discover.svg";
+import googlePay from "@/assets/svgs/google-pay.svg";
+import masterCard from "@/assets/svgs/mastercard.svg";
+import shopPay from "@/assets/svgs/shop-pay.svg";
+import visa from "@/assets/svgs/visa.svg";
 import { FooterCompanyLinks, FooterHelpLinks } from "@/data/navLinks";
 import Link from "next/link";
 

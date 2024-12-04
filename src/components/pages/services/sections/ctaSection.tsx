@@ -5,8 +5,8 @@ import Image from "next/image";
 import React from "react";
 import { motion } from "framer-motion";
 
-import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
-import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
+import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
+import arrowRedirectWhite from "@/assets/svgs/arrow-redirect-cta-white.svg";
 
 interface SectionProps {
   className?: string;

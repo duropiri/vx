@@ -8,7 +8,7 @@ import { TestimonialsStats } from "@/data/stats";
 import CopySection from "@/components/pages/sections/copySection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
 import Image from "next/image";
-import csImage from "@/../../public/svgs/VX-Website-CS-Bar-1.svg";
+import csImage from "@/assets/svgs/VX-Website-CS-Bar-1.svg";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);

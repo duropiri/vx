@@ -4,7 +4,7 @@ import React, { useRef } from "react";
 import { WhyUsItems } from "@/data/whyUsItems";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import Image from "next/image";
-import vxImage from "@/../../public/svgs/virtual-xposure-text.svg";
+import vxImage from "@/assets/svgs/virtual-xposure-text.svg";
 
 interface SectionProps {
   className?: string;

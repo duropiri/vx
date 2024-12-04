@@ -10,10 +10,10 @@ import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { getChars } from "@/components/animations/GetChars";
 
-import logo from "@/../../public/images/logo-black-black.webp";
-// import chevronDown from "@/../../public/svgs/chevron-down.svg";
-import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta-white.svg";
-// import arrowRedirectBlack from "@/../../public/svgs/arrow-redirect-cta.svg";
+import logo from "@/assets/images/logo-black-black.webp";
+// import chevronDown from "@/assets/svgs/chevron-down.svg";
+import arrowRedirect from "@/assets/svgs/arrow-redirect-cta-white.svg";
+// import arrowRedirectBlack from "@/assets/svgs/arrow-redirect-cta.svg";
 import { usePathname } from "next/navigation";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";
@@ -484,7 +484,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full">
+          <nav className="hidden pn-regular-22 items-center justify-center gap-[1.313rem] transition-all duration-1000 md:flex size-full">
             {navigation.map((nav, index) => (
               <div
                 key={index}

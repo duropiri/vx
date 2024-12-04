@@ -7,8 +7,8 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import Image from "next/image";
-import heroImage2 from "@/../../public/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
-import unlimitedImage from "@/../../public/images/6685889-copy-1-e1670628501382-584x1024.webp";
+import heroImage2 from "@/assets/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
+import unlimitedImage from "@/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
 import { useEffect } from "react";
 
 export const WhatIsItSection = () => (

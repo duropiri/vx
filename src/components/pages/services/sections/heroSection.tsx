@@ -12,7 +12,7 @@ import React, {
 } from "react";
 // import { motion } from "framer-motion";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
+import arrowRedirectWhite from "@/assets/svgs/arrow-redirect-cta-white.svg";
 
 interface SectionProps {
   className?: string;
