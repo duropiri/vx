@@ -484,7 +484,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden pn-regular-22 items-center justify-center gap-[1.313rem] transition-all duration-1000 md:flex size-full">
+          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full">
             {navigation.map((nav, index) => (
               <div
                 key={index}
