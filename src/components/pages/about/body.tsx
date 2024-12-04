@@ -6,9 +6,9 @@ import ContactSection from "@/components/pages/sections/contactSection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
 import Image from "next/image";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
-import heroImage1 from "@/images/virtual-xposure-aerial-drone-image-3-1652931128668-1024x683.webp";
-import heroImage2 from "@/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
-import heroImage3 from "@/images/Virtual-Xposure-Exterior-Image-8-min-768x512.webp";
+import heroImage1 from "@/../../public/images/virtual-xposure-aerial-drone-image-3-1652931128668-1024x683.webp";
+import heroImage2 from "@/../../public/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
+import heroImage3 from "@/../../public/images/Virtual-Xposure-Exterior-Image-8-min-768x512.webp";
 
 function Body() {
   // GSAP Animations

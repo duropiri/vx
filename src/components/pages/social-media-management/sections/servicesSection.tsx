@@ -6,12 +6,12 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 
-import socmedPostImage from "@/images/VirtualXposure-ExteriorImage.webp";
-import person1Image from "@/images/team.webp";
-import person2Image from "@/images/team_1.webp";
-import person3Image from "@/images/team_2.webp";
-import person4Image from "@/images/team_3.webp";
-import person5Image from "@/images/team_4.webp";
+import socmedPostImage from "@/../../public/images/VirtualXposure-ExteriorImage.webp";
+import person1Image from "@/../../public/images/team.webp";
+import person2Image from "@/../../public/images/team_1.webp";
+import person3Image from "@/../../public/images/team_2.webp";
+import person4Image from "@/../../public/images/team_3.webp";
+import person5Image from "@/../../public/images/team_4.webp";
 
 import instagramImage from "@/../../public/svgs/instagram.svg";
 import facebookImage from "@/../../public/svgs/facebook.svg";

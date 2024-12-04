@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
-import logo from "@/images/logo2-nospace.webp";
+import logo from "@/../../public/images/logo2-nospace.webp";
 import amex from "@/../../public/svgs/amex.svg";
 import applePay from "@/../../public/svgs/apple-pay.svg";
 import dinersClub from "@/../../public/svgs/diners-club.svg";

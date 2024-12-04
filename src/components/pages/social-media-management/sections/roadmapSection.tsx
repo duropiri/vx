@@ -7,10 +7,10 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React, { useEffect } from "react";
 
-import launchImage from "@/images/instant-launch.webp";
-import powerUploadImage from "@/images/power-upload.webp";
-import strategyImage from "@/images/strategy-surge.webp";
-import machineImage from "@/images/content-machine.webp";
+import launchImage from "@/../../public/images/instant-launch.webp";
+import powerUploadImage from "@/../../public/images/power-upload.webp";
+import strategyImage from "@/../../public/images/strategy-surge.webp";
+import machineImage from "@/../../public/images/content-machine.webp";
 
 interface SectionProps {
   className?: string;
