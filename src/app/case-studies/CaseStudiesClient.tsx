@@ -4,8 +4,7 @@
 import * as Tabs from "@radix-ui/react-tabs";
 // import * as Tooltip from "@radix-ui/react-tooltip";
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from 'lucide-react'; // For the close icon
-
+import { X } from "lucide-react"; // For the close icon
 
 import SectionHeader from "@/components/ui/sectionHeader";
 import { motion } from "framer-motion";
@@ -31,7 +30,7 @@ export const FloorplansSection = () => {
   return (
     <div
       id="floorplans"
-      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]"
+      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem] xl:gap-y-[6rem]"
     >
       <SectionHeader
         center
@@ -39,35 +38,35 @@ export const FloorplansSection = () => {
         subheading="iGUIDE 3D Tours, Measurements & Floor Plans"
         className="text-black"
       />
-      <div className="relative flex size-full max-w-[--section-width] flex-col-reverse sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
-        <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+      <div className="relative flex size-full max-w-[--section-width] flex-col-reverse xl:flex-row items-center justify-center gap-[3rem] xl:gap-[3.75rem]">
+        <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
           <SectionHeader
             subheading="Showcase your home layout in detail."
             body="The 3D basic floor plan is the best kind of virtual property tour, which shows the home to a potential buyer in greater detail. From demonstrating the flooring transitions to the door swings directions, a 3D basic floor plan will effectively exhibit a home or property and help attract potential buyers to make a decision easier."
             className="text-black"
           />
           <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] w-full">
-            <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+            <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
                 Verified RMS Measurements
               </p>
             </li>
-            <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+            <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
                 Accurate to RECA Standards
               </p>
             </li>
-            <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+            <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
                 24 Hour Turnaround
               </p>
             </li>
-            <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+            <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
                 SSL Encrypted Checkout
               </p>
             </li>
-            <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+            <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
                 2X Money Back Guarantee
               </p>
@@ -101,7 +100,7 @@ export const PhotographySection = () => {
     return `/portfolio/images/${formattedCategory}/Virtual Xposure - ${capitalizedCategory} Image - (${index}).webp`;
   };
 
-  const generateCategoryItems = (category, count) => {
+  const generateCategoryItemsRandom = (category, count) => {
     // Generate a larger pool of items first (e.g., 30)
     const allItems = Array.from({ length: 19 }, (_, index) => ({
       id: index + 1,
@@ -117,86 +116,95 @@ export const PhotographySection = () => {
       .slice(0, count); // Take first 10 items
   };
 
+  const generateCategoryItems = (category, count) => {
+    return Array.from({ length: count }, (_, index) => ({
+      id: index + 1,
+      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${index + 1}`,
+      image: getImagePath(category, index + 1)
+    }));
+  };
+  
+
   const categoryData = {
     interior: generateCategoryItems("interior", 12),
     exterior: generateCategoryItems("exterior", 12),
     "aerial drone": generateCategoryItems("aerial drone", 12),
   };
 
-  //   const categoryData = {
-  //     interior: [
-  //       {
-  //         id: 1,
-  //         title: "Modern Minimalist Home",
-  //         description:
-  //           "A sleek 2,500 sq ft contemporary residence featuring clean lines, neutral color palette, and expansive natural light.",
-  //         challenge:
-  //           "Capturing the subtle textures and spatial relationships of minimalist design.",
-  //         solution:
-  //           "Used soft, diffused lighting and strategic wide-angle compositions to emphasize spatial flow.",
-  //         image: getImagePath("interior", 1),
-  //       },
-  //       {
-  //         id: 2,
-  //         title: "Corporate Office Spaces",
-  //         description:
-  //           "A cutting-edge tech company's open-plan workspace with collaborative zones and innovative design elements.",
-  //         challenge:
-  //           "Showcasing the dynamic work environment while maintaining professional aesthetics.",
-  //         solution:
-  //           "Employed architectural photography techniques to highlight spatial design and workplace culture.",
-  //         image: getImagePath("interior", 2),
-  //       },
-  //     ],
-  //     exterior: [
-  //       {
-  //         id: 1,
-  //         title: "Coastal Luxury Villa",
-  //         description:
-  //           "An expansive oceanfront property with seamless indoor-outdoor living design.",
-  //         challenge:
-  //           "Capturing the property's grandeur while maintaining natural lighting and scenic backdrop.",
-  //         solution:
-  //           "Utilized golden hour timing and multiple exposure techniques to balance architectural details with landscape.",
-  //         image: getImagePath("exterior", 1),
-  //       },
-  //       {
-  //         id: 2,
-  //         title: "Modern Commercial Complex",
-  //         description:
-  //           "A sophisticated commercial property showcasing contemporary architectural design.",
-  //         challenge:
-  //           "Highlighting architectural uniqueness during varying light conditions.",
-  //         solution:
-  //           "Captured multiple shots throughout the day, focusing on geometric lines and material textures.",
-  //         image: getImagePath("exterior", 2),
-  //       },
-  //     ],
-  //     "aerial drone": [
-  //       {
-  //         id: 1,
-  //         title: "Urban Development Overview",
-  //         description:
-  //           "Comprehensive aerial documentation of a developing urban district.",
-  //         challenge:
-  //           "Creating a cohesive visual narrative of urban transformation.",
-  //         solution:
-  //           "Planned flight paths to capture progressive development stages and urban infrastructure.",
-  //         image: getImagePath("aerial drone", 1),
-  //       },
-  //       {
-  //         id: 2,
-  //         title: "Luxury Estate Aerial Tour",
-  //         description:
-  //           "Bird's-eye perspective of a prestigious residential property.",
-  //         challenge:
-  //           "Capturing the scale and grandeur of the estate from multiple angles.",
-  //         solution:
-  //           "Utilized various drone flight patterns and heights to showcase the property's features.",
-  //         image: getImagePath("aerial drone", 2),
-  //       },
-  //     ],
-  //   };
+  // const categoryData = {
+  //   interior: [
+  //     {
+  //       id: 1,
+  //       title: "Modern Minimalist Home",
+  //       description:
+  //         "A sleek 2,500 sq ft contemporary residence featuring clean lines, neutral color palette, and expansive natural light.",
+  //       challenge:
+  //         "Capturing the subtle textures and spatial relationships of minimalist design.",
+  //       solution:
+  //         "Used soft, diffused lighting and strategic wide-angle compositions to emphasize spatial flow.",
+  //       image: getImagePath("interior", 1),
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Corporate Office Spaces",
+  //       description:
+  //         "A cutting-edge tech company's open-plan workspace with collaborative zones and innovative design elements.",
+  //       challenge:
+  //         "Showcasing the dynamic work environment while maintaining professional aesthetics.",
+  //       solution:
+  //         "Employed architectural photography techniques to highlight spatial design and workplace culture.",
+  //       image: getImagePath("interior", 2),
+  //     },
+  //   ],
+  //   exterior: [
+  //     {
+  //       id: 1,
+  //       title: "Coastal Luxury Villa",
+  //       description:
+  //         "An expansive oceanfront property with seamless indoor-outdoor living design.",
+  //       challenge:
+  //         "Capturing the property's grandeur while maintaining natural lighting and scenic backdrop.",
+  //       solution:
+  //         "Utilized golden hour timing and multiple exposure techniques to balance architectural details with landscape.",
+  //       image: getImagePath("exterior", 1),
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Modern Commercial Complex",
+  //       description:
+  //         "A sophisticated commercial property showcasing contemporary architectural design.",
+  //       challenge:
+  //         "Highlighting architectural uniqueness during varying light conditions.",
+  //       solution:
+  //         "Captured multiple shots throughout the day, focusing on geometric lines and material textures.",
+  //       image: getImagePath("exterior", 2),
+  //     },
+  //   ],
+  //   "aerial drone": [
+  //     {
+  //       id: 1,
+  //       title: "Urban Development Overview",
+  //       description:
+  //         "Comprehensive aerial documentation of a developing urban district.",
+  //       challenge:
+  //         "Creating a cohesive visual narrative of urban transformation.",
+  //       solution:
+  //         "Planned flight paths to capture progressive development stages and urban infrastructure.",
+  //       image: getImagePath("aerial drone", 1),
+  //     },
+  //     {
+  //       id: 2,
+  //       title: "Luxury Estate Aerial Tour",
+  //       description:
+  //         "Bird's-eye perspective of a prestigious residential property.",
+  //       challenge:
+  //         "Capturing the scale and grandeur of the estate from multiple angles.",
+  //       solution:
+  //         "Utilized various drone flight patterns and heights to showcase the property's features.",
+  //       image: getImagePath("aerial drone", 2),
+  //     },
+  //   ],
+  // };
 
   // Generate the 'all' category by combining items from other categories
 
@@ -330,7 +338,7 @@ export const PhotographySection = () => {
     <>
       <div
         id="photography"
-        className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]"
+        className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem] xl:gap-y-[6rem]"
       >
         <SectionHeader
           center
@@ -340,14 +348,14 @@ export const PhotographySection = () => {
           body="From stunning interiors to sweeping aerial views, our professional photography services capture your property in its best light. Every shot is carefully composed and expertly edited to showcase your property's unique features and appeal to potential buyers."
           className="text-black"
         />
-        <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
+        <div className="relative flex size-full max-w-[--section-width] flex-col xl:flex-row items-center justify-center gap-[3rem] xl:gap-[3.75rem]">
           <Tabs.Root
             defaultValue="all"
             value={activeTab}
             onValueChange={(value) => setActiveTab(value)}
             className="flex flex-col size-full"
           >
-            <Tabs.List className="pn-semibold-40 flex flex-col sm:flex-row items-start justify-between py-[2rem] border-b mb-[2rem]">
+            <Tabs.List className="pn-semibold-40 flex flex-col xl:flex-row items-start justify-between py-[2rem] border-b mb-[2rem]">
               {["all", "interior", "exterior", "aerial drone"].map((tab) => (
                 <Tabs.Trigger
                   key={tab}
@@ -487,7 +495,7 @@ export const VirtualSection = () => {
       {features.map((feature) => (
         <li
           key={feature.id}
-          className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
+          className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]"
         >
           <p className="pn-regular-16 text-black/80 group-hover:text-black">
             {feature.text}
@@ -500,10 +508,10 @@ export const VirtualSection = () => {
   const ServiceSection = ({ service }) => (
     <div
       className={`flex flex-col-reverse ${
-        service.reversed ? "sm:flex-row-reverse" : "sm:flex-row"
-      } size-full items-center justify-between gap-[3rem] sm:gap-[3.75rem]`}
+        service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
+      } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem]`}
     >
-      <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+      <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
         <SectionHeader
           subheading={service.title}
           body={service.description}
@@ -523,7 +531,7 @@ export const VirtualSection = () => {
   return (
     <div
       id="virtual"
-      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]"
+      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem] xl:gap-y-[6rem]"
     >
       <SectionHeader
         center
@@ -531,7 +539,7 @@ export const VirtualSection = () => {
         subheading="Virtual Enhancements On-Demand"
         className="text-black"
       />
-      <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[10rem] sm:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[10rem] xl:gap-[3.75rem]">
         {services.map((service) => (
           <ServiceSection key={service.id} service={service} />
         ))}
