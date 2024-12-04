@@ -8,55 +8,55 @@ import React, { forwardRef, RefObject, useState } from "react";
 const logos = [
   [
     {
-      src: "/images/partner-logos/marcus-and-millichap.webp",
+      src: "/assets/images/partner-logos/marcus-and-millichap.webp",
       alt: "Bedrock Homes",
     },
     {
-      src: "/images/partner-logos/REMAX.webp",
+      src: "/assets/images/partner-logos/REMAX.webp",
       alt: "Century 21 All Stars Realty Ltd.",
     },
     {
-      src: "/images/partner-logos/CIR Realty.webp",
+      src: "/assets/images/partner-logos/CIR Realty.webp",
       alt: "Mutti Homes",
     },
     // {
-    //   src: "/images/partner-logos/CIR Realty.webp",
+    //   src: "/assets/images/partner-logos/CIR Realty.webp",
     //   alt: "CIR Realty",
     // },
   ],
   [
     {
-      src: "/images/partner-logos/Century-21.webp",
+      src: "/assets/images/partner-logos/Century-21.webp",
       alt: "EXP Realty",
     },
     {
-      src: "/images/partner-logos/Royal_LePage.webp",
+      src: "/assets/images/partner-logos/Royal_LePage.webp",
       alt: "Century 21 Leading",
     },
     {
-      src: "/images/partner-logos/EXP-Realty.webp",
+      src: "/assets/images/partner-logos/EXP-Realty.webp",
       alt: "Klair Custom Homes LTD.",
     },
     // {
-    //   src: "/images/partner-logos/Century 21 Urban.webp",
+    //   src: "/assets/images/partner-logos/Century 21 Urban.webp",
     //   alt: "Century 21 Urban",
     // },
   ],
   [
     {
-      src: "/images/partner-logos/Qualico Properties.webp",
+      src: "/assets/images/partner-logos/Qualico Properties.webp",
       alt: "Qualico Properties",
     },
     {
-      src: "/images/partner-logos/real-broker.webp",
+      src: "/assets/images/partner-logos/real-broker.webp",
       alt: "Royal LePage Noralta",
     },
     {
-      src: "/images/partner-logos/maxwell.webp",
+      src: "/assets/images/partner-logos/maxwell.webp",
       alt: "Sable Realty",
     },
     // {
-    //   src: "/images/partner-logos/MaxWell Central.webp",
+    //   src: "/assets/images/partner-logos/MaxWell Central.webp",
     //   alt: "MaxWell Central",
     // },
   ],

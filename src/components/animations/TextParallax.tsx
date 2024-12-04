@@ -123,27 +123,27 @@ const Phrase: React.FC<PhraseProps> = ({ text, src }) => {
 // const phrases = [
 //     {
 //       items: [
-//         { text: "empathetic", src: "/images/1.webp" },
-//         { text: "useful", src: "/images/2.webp" },
-//         { text: "intuitive", src: "/images/3.webp" },
+//         { text: "empathetic", src: "/assets/images/1.webp" },
+//         { text: "useful", src: "/assets/images/2.webp" },
+//         { text: "intuitive", src: "/assets/images/3.webp" },
 //       ],
 //       direction: "left",
 //       left: "-40%",
 //     },
 //     {
 //       items: [
-//         { text: "empathetic", src: "/images/4.webp" },
-//         { text: "useful", src: "/images/5.webp" },
-//         { text: "intuitive", src: "/images/6.webp" },
+//         { text: "empathetic", src: "/assets/images/4.webp" },
+//         { text: "useful", src: "/assets/images/5.webp" },
+//         { text: "intuitive", src: "/assets/images/6.webp" },
 //       ],
 //       direction: "right",
 //       left: "-25%",
 //     },
 //     {
 //       items: [
-//         { text: "empathetic", src: "/images/7.webp" },
-//         { text: "useful", src: "/images/8.webp" },
-//         { text: "intuitive", src: "/images/9.webp" },
+//         { text: "empathetic", src: "/assets/images/7.webp" },
+//         { text: "useful", src: "/assets/images/8.webp" },
+//         { text: "intuitive", src: "/assets/images/9.webp" },
 //       ],
 //       direction: "left",
 //       left: "-70%",

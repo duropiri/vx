@@ -10,10 +10,10 @@ import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { getChars } from "@/components/animations/GetChars";
 
-import logo from "@/assets/images/logo-black-black.webp";
-// import chevronDown from "@/assets/svgs/chevron-down.svg";
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta-white.svg";
-// import arrowRedirectBlack from "@/assets/svgs/arrow-redirect-cta.svg";
+import logo from "@/../../public/assets/images/logo-black-black.webp";
+// import chevronDown from "@/../../public/assets/svgs/chevron-down.svg";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
+// import arrowRedirectBlack from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { usePathname } from "next/navigation";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";

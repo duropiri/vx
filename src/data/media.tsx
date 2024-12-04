@@ -1,6 +1,6 @@
 export const media = [
   {
-    src: "/images/old-era.webp",
+    src: "/assets/images/old-era.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -13,7 +13,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/rise-of-websites.webp",
+    src: "/assets/images/rise-of-websites.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -26,7 +26,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/early-social-media.webp",
+    src: "/assets/images/early-social-media.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -39,7 +39,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/content-creation.webp",
+    src: "/assets/images/content-creation.webp",
     alt: "image",
     type: "image",
     top: null,
@@ -52,7 +52,7 @@ export const media = [
     ],
   },
   {
-    src: "/images/modern-era.webp",
+    src: "/assets/images/modern-era.webp",
     alt: "image",
     type: "image",
     top: null,

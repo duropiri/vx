@@ -5,11 +5,11 @@ import Image from "next/image";
 import Link from "next/link";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
-import service1 from "@/assets/images/service_2.webp";
-import service2 from "@/assets/images/print-design-northumberland-min.webp";
-import service3 from "@/assets/images/service_2-1.webp";
-import arrowRedirectWhite from "@/assets/svgs/arrow-redirect-cta-white.svg";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import service1 from "@/../../public/assets/images/service_2.webp";
+import service2 from "@/../../public/assets/images/print-design-northumberland-min.webp";
+import service3 from "@/../../public/assets/images/service_2-1.webp";
+import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection1 = () => (

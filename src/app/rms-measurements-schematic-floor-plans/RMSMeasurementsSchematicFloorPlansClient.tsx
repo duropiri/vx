@@ -7,10 +7,10 @@ import { ServiceIcons } from "@/data/serviceIcons";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
-import floorplanImage from "@/assets/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
-import threedimensionalfloorplanImage from "@/assets/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
-import siteplanImage from "@/assets/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import floorplanImage from "@/../../public/assets/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
+import threedimensionalfloorplanImage from "@/../../public/assets/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
+import siteplanImage from "@/../../public/assets/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">

@@ -36,7 +36,7 @@ const page = () => {
           label: "Start Your Success Story",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp"
+        src="/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(8).webp"
         whatisitSection={[
           <FloorplansSection />,
           <PhotographySection />,

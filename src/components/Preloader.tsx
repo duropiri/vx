@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import { usePreloader } from "@/contexts/PreloaderContext";
 import Image from "next/image";
-import logo from "@/assets/images/logo-black-black.webp";
+import logo from "@/../../public/assets/images/logo-black-black.webp";
 
 interface PreloaderProps {
   finishLoading: () => void;

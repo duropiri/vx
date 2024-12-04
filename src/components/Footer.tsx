@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
-import logo from "@/assets/images/logo2-nospace.webp";
-import amex from "@/assets/svgs/amex.svg";
-import applePay from "@/assets/svgs/apple-pay.svg";
-import dinersClub from "@/assets/svgs/diners-club.svg";
-import discover from "@/assets/svgs/discover.svg";
-import googlePay from "@/assets/svgs/google-pay.svg";
-import masterCard from "@/assets/svgs/mastercard.svg";
-import shopPay from "@/assets/svgs/shop-pay.svg";
-import visa from "@/assets/svgs/visa.svg";
+import logo from "@/../../public/assets/images/logo2-nospace.webp";
+import amex from "@/../../public/assets/svgs/amex.svg";
+import applePay from "@/../../public/assets/svgs/apple-pay.svg";
+import dinersClub from "@/../../public/assets/svgs/diners-club.svg";
+import discover from "@/../../public/assets/svgs/discover.svg";
+import googlePay from "@/../../public/assets/svgs/google-pay.svg";
+import masterCard from "@/../../public/assets/svgs/mastercard.svg";
+import shopPay from "@/../../public/assets/svgs/shop-pay.svg";
+import visa from "@/../../public/assets/svgs/visa.svg";
 import { FooterCompanyLinks, FooterHelpLinks } from "@/data/navLinks";
 import Link from "next/link";
 

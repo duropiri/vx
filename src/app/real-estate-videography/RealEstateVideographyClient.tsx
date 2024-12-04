@@ -6,10 +6,10 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import Image from "next/image";
 import SectionHeader from "@/components/ui/sectionHeader";
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
-import unlimitedImage from "@/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
+import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">

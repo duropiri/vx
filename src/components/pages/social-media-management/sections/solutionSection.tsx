@@ -6,14 +6,14 @@ import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
-import completeDMSImage from "@/assets/images/complete-dms.webp";
-import highQCCImage from "@/assets/images/high-quality-cc.webp";
-import stratGrowthImage from "@/assets/images/strategic-growth.webp";
+import completeDMSImage from "@/../../public/assets/images/complete-dms.webp";
+import highQCCImage from "@/../../public/assets/images/high-quality-cc.webp";
+import stratGrowthImage from "@/../../public/assets/images/strategic-growth.webp";
 
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
-import arrowRedirectWhite from "@/assets/svgs/arrow-redirect-cta-white.svg";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 
-import vxImage from "@/assets/svgs/virtual-xposure-text.svg";
+import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 
 interface SectionProps {
   className?: string;

@@ -15,7 +15,7 @@ import { renderStars } from "@/components/ui/renderStars";
 // import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import Link from "next/link";
 
 interface SectionProps {

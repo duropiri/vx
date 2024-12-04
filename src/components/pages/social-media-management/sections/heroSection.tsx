@@ -24,18 +24,18 @@ import { Reveal } from "@/components/animations/Reveal";
 import { GradientText } from "@/components/ui/gradientText";
 // import CircleCTA from "@/components/ui/circleCTA";
 
-import logo from "@/assets/images/logo2.webp";
-import arrowRedirect from "@/assets/svgs/arrow-redirect-cta.svg";
-import instagramHeroImage from "@/assets/svgs/hero-svgs/Instagram.svg";
-import twitterHeroImage from "@/assets/svgs/hero-svgs/Twitter.svg";
-import facebookHeroImage from "@/assets/svgs/hero-svgs/Facebook.svg";
-import tiktokHeroImage from "@/assets/svgs/hero-svgs/TikTok.svg";
-import linkedinHeroImage from "@/assets/svgs/hero-svgs/LinkedIn.svg";
-import pinterestHeroImage from "@/assets/svgs/hero-svgs/Pinterest.svg";
-import youtubeHeroImage from "@/assets/svgs/hero-svgs/Youtube.svg";
-import whatsappHeroImage from "@/assets/svgs/hero-svgs/WhatsApp.svg";
+import logo from "@/../../public/assets/images/logo2.webp";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import instagramHeroImage from "@/../../public/assets/svgs/hero-svgs/Instagram.svg";
+import twitterHeroImage from "@/../../public/assets/svgs/hero-svgs/Twitter.svg";
+import facebookHeroImage from "@/../../public/assets/svgs/hero-svgs/Facebook.svg";
+import tiktokHeroImage from "@/../../public/assets/svgs/hero-svgs/TikTok.svg";
+import linkedinHeroImage from "@/../../public/assets/svgs/hero-svgs/LinkedIn.svg";
+import pinterestHeroImage from "@/../../public/assets/svgs/hero-svgs/Pinterest.svg";
+import youtubeHeroImage from "@/../../public/assets/svgs/hero-svgs/Youtube.svg";
+import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg";
 
-import starImage from "@/assets/svgs/star.svg";
+import starImage from "@/../../public/assets/svgs/star.svg";
 
 interface LinkDetails {
   title: string;

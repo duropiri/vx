@@ -6,27 +6,27 @@ import Image from "next/image";
 import React, { useState } from "react";
 import CountUp from "react-countup";
 
-import socmedPostImage from "@/assets/images/VirtualXposure-ExteriorImage.webp";
-import person1Image from "@/assets/images/team.webp";
-import person2Image from "@/assets/images/team_1.webp";
-import person3Image from "@/assets/images/team_2.webp";
-import person4Image from "@/assets/images/team_3.webp";
-import person5Image from "@/assets/images/team_4.webp";
+import socmedPostImage from "@/../../public/assets/images/VirtualXposure-ExteriorImage.webp";
+import person1Image from "@/../../public/assets/images/team.webp";
+import person2Image from "@/../../public/assets/images/team_1.webp";
+import person3Image from "@/../../public/assets/images/team_2.webp";
+import person4Image from "@/../../public/assets/images/team_3.webp";
+import person5Image from "@/../../public/assets/images/team_4.webp";
 
-import instagramImage from "@/assets/svgs/instagram.svg";
-import facebookImage from "@/assets/svgs/facebook.svg";
-import tiktokImage from "@/assets/svgs/tiktok.svg";
-import linkedinImage from "@/assets/svgs/linkedin.svg";
+import instagramImage from "@/../../public/assets/svgs/instagram.svg";
+import facebookImage from "@/../../public/assets/svgs/facebook.svg";
+import tiktokImage from "@/../../public/assets/svgs/tiktok.svg";
+import linkedinImage from "@/../../public/assets/svgs/linkedin.svg";
 
-import arrowURImage from "@/assets/svgs/arrow-up-right.svg";
-import arrowURBlackImage from "@/assets/svgs/arrow-up-right-black.svg";
-import chevdownImage from "@/assets/svgs/chevron-down.svg";
-import infoImage from "@/assets/svgs/info.svg";
-import calendarImage from "@/assets/svgs/calendar.svg";
-import clockImage from "@/assets/svgs/clock.svg";
-import growthImage from "@/assets/svgs/growth.svg";
-import followersImage from "@/assets/svgs/followers.svg";
-import unfollowImage from "@/assets/svgs/unfollow.svg";
+import arrowURImage from "@/../../public/assets/svgs/arrow-up-right.svg";
+import arrowURBlackImage from "@/../../public/assets/svgs/arrow-up-right-black.svg";
+import chevdownImage from "@/../../public/assets/svgs/chevron-down.svg";
+import infoImage from "@/../../public/assets/svgs/info.svg";
+import calendarImage from "@/../../public/assets/svgs/calendar.svg";
+import clockImage from "@/../../public/assets/svgs/clock.svg";
+import growthImage from "@/../../public/assets/svgs/growth.svg";
+import followersImage from "@/../../public/assets/svgs/followers.svg";
+import unfollowImage from "@/../../public/assets/svgs/unfollow.svg";
 
 interface SectionProps {
   className?: string;
@@ -160,11 +160,11 @@ function ServicesSection({ className }: SectionProps) {
                       </div>
                       <div className="pt-4 flex-col justify-start items-start gap-2 flex size-full overflow-hidden">
                         {/* IG */}
-                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] group-hover:scale-[25%]">
+                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] group-hover:scale-[25%] w-full">
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
-                            <div className="justify-start items-start gap-[0.625rem] flex">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                            <div className="justify-start items-start gap-[0.625rem] flex w-full">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -235,11 +235,11 @@ function ServicesSection({ className }: SectionProps) {
                           </div>
                         </div>
                         {/* FB */}
-                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] group-hover:scale-[50%]">
+                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] group-hover:scale-[50%] w-full">
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
-                            <div className="justify-start items-start gap-[0.625rem] flex">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                            <div className="justify-start items-start gap-[0.625rem] flex w-full">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -310,11 +310,11 @@ function ServicesSection({ className }: SectionProps) {
                           </div>
                         </div>
                         {/* TikTok */}
-                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] group-hover:scale-[90%]">
+                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] group-hover:scale-[90%] w-full">
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
-                            <div className="justify-start items-start gap-[0.625rem] flex">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                            <div className="justify-start items-start gap-[0.625rem] flex w-full">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -385,11 +385,11 @@ function ServicesSection({ className }: SectionProps) {
                           </div>
                         </div>
                         {/* LinkedIn */}
-                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%]">
+                        <div className="transition-all duration-500 pb-3 border-b border-[#e5e6ea] justify-start items-start gap-3 flex group-hover:-translate-y-[325%] w-full">
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
-                            <div className="justify-start items-start gap-[0.625rem] flex">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                            <div className="justify-start items-start gap-[0.625rem] flex w-full">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -865,7 +865,7 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
                             <div className="justify-between items-start gap-[0.625rem] flex w-full">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -940,7 +940,7 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
                             <div className="justify-between items-start gap-[0.625rem] flex w-full">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -1015,7 +1015,7 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
                             <div className="justify-between items-start gap-[0.625rem] flex w-full">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
@@ -1090,7 +1090,7 @@ function ServicesSection({ className }: SectionProps) {
                           <div className="w-1 h-full bg-goldenbrown rounded-2xl" />
                           <div className="flex-col justify-start items-start gap-2 flex size-full">
                             <div className="justify-between items-start gap-[0.625rem] flex w-full">
-                              <div className="flex-col justify-start items-start gap-[0.625rem] flex">
+                              <div className="flex-col justify-start items-start gap-[0.625rem] flex w-full">
                                 <div className="justify-start items-center gap-2 flex h-[1.125rem]">
                                   <div className="w-4 h-4 justify-center items-center flex">
                                     <Image
