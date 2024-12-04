@@ -7,17 +7,17 @@ const baseMetadata = {
     canonical: '/',
   },
   icons: {
-    icon: '/images/favicon.ico',
-    apple: '/images/favicon.webp',
+    icon: '/assets/images/favicon.ico',
+    apple: '/assets/images/favicon.webp',
   },
   openGraph: {
     type: 'website',
     url: 'https://virtualxposure.com',
-    images: '/images/social-media-share-preview.webp',
+    images: '/assets/images/social-media-share-preview.webp',
   },
   twitter: {
     card: 'summary_large_image',
-    images: '/images/social-media-share-preview.webp',
+    images: '/assets/images/social-media-share-preview.webp',
   },
   verification: {
     google: 'FyVoyIhh_-5JEVZ3uQxsFMTLWF5UlcETjN7uZ_iC-eE',

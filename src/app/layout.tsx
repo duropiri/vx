@@ -1,5 +1,5 @@
 // app/layout.tsx
-import "./globals.css";
+import "./globals.scss";
 import { PreloaderProvider } from "@/contexts/PreloaderContext";
 import PageAnimatePresence from "@/components/HOC/PageAnimatePresence";
 import { Metadata } from 'next';
@@ -17,25 +17,25 @@ export const metadata: Metadata = {
     url: 'https://virtualxposure.com',
     title: 'Virtual Xposure | Meet the Gold Standard in Real Estate Marketing',
     description: 'Virtual Xposure delivers cutting-edge digital marketing solutions tailored for real estate professionals...',
-    images: '/images/social-media-share-preview.webp',
+    images: '/assets/images/social-media-share-preview.webp',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Virtual Xposure | Meet the Gold Standard in Real Estate Marketing',
     description: 'Virtual Xposure delivers cutting-edge digital marketing solutions...',
-    images: '/images/social-media-share-preview.webp',
+    images: '/assets/images/social-media-share-preview.webp',
   },
   verification: {
     google: 'FyVoyIhh_-5JEVZ3uQxsFMTLWF5UlcETjN7uZ_iC-eE',
   },
   icons: {
-    icon: '/images/favicon.ico',
+    icon: '/assets/images/favicon.ico',
     apple: [
-      { url: '/images/favicon.webp', sizes: '180x180' },
+      { url: '/assets/images/favicon.webp', sizes: '180x180' },
     ],
     other: [
-      { rel: 'icon', url: '/images/favicon.webp', sizes: '32x32', type: 'image/webp' },
-      { rel: 'icon', url: '/images/favicon.webp', sizes: '16x16', type: 'image/webp' },
+      { rel: 'icon', url: '/assets/images/favicon.webp', sizes: '32x32', type: 'image/webp' },
+      { rel: 'icon', url: '/assets/images/favicon.webp', sizes: '16x16', type: 'image/webp' },
     ],
   },
 };

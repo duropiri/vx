@@ -87,6 +87,28 @@ export const FloorplansSection = () => {
 export const PhotographySection = ({ dark = true }) => {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedImage, setSelectedImage] = useState(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Screen Size checking (previous useEffect remains the same)
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    // Initial setup
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Screen Size checking
+  useEffect(() => {
+    console.log("Is Mobile:", isMobile);
+  }, [isMobile]); // This will run whenever isMobile changes
 
   const getImagePath = (category, index) => {
     const formattedCategory =
@@ -98,21 +120,21 @@ export const PhotographySection = ({ dark = true }) => {
     return `/assets/portfolio/images/${formattedCategory}/Virtual_Xposure_-_${capitalizedCategory}_Image_-_(${index}).webp`;
   };
 
-  const generateCategoryItemsRandom = (category, count) => {
-    // Generate a larger pool of items first (e.g., 30)
-    const allItems = Array.from({ length: 19 }, (_, index) => ({
-      id: index + 1,
-      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${
-        index + 1
-      }`,
-      image: getImagePath(category, index + 1),
-    }));
+  // const generateCategoryItemsRandom = (category, count) => {
+  //   // Generate a larger pool of items first (e.g., 30)
+  //   const allItems = Array.from({ length: 19 }, (_, index) => ({
+  //     id: index + 1,
+  //     title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${
+  //       index + 1
+  //     }`,
+  //     image: getImagePath(category, index + 1),
+  //   }));
 
-    // Randomly select 10 items
-    return allItems
-      .sort(() => Math.random() - 0.5) // Shuffle array
-      .slice(0, count); // Take first 10 items
-  };
+  //   // Randomly select 10 items
+  //   return allItems
+  //     .sort(() => Math.random() - 0.5) // Shuffle array
+  //     .slice(0, count); // Take first 10 items
+  // };
 
   const generateCategoryItems = (category, count) => {
     return Array.from({ length: count }, (_, index) => ({
@@ -223,11 +245,11 @@ export const PhotographySection = ({ dark = true }) => {
   };
 
   // Function to chunk array into groups of 9
-  const chunkArray = (arr, size) => {
-    return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
-      arr.slice(i * size, i * size + size)
-    );
-  };
+  // const chunkArray = (arr, size) => {
+  //   return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
+  //     arr.slice(i * size, i * size + size)
+  //   );
+  // };
 
   const renderCaseStudyCard = (study) => (
     <motion.div
@@ -278,26 +300,7 @@ export const PhotographySection = ({ dark = true }) => {
     </motion.div>
   );
 
-  const useIsMobile = () => {
-    const [isMobile, setIsMobile] = useState(false);
-
-    useEffect(() => {
-      const checkMobile = () => {
-        setIsMobile(window.innerWidth < 768);
-      };
-
-      checkMobile();
-      window.addEventListener("resize", checkMobile);
-
-      return () => window.removeEventListener("resize", checkMobile);
-    }, []);
-
-    return isMobile;
-  };
-
   const renderSwiperContent = (studies) => {
-    const isMobile = useIsMobile();
-
     return (
       <div className="pb-[5rem]">
         <Swiper

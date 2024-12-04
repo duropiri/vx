@@ -23,7 +23,7 @@ const page = () => {
     <Page>
       <div
         id="refund-policy"
-        className={`section-container !flex-row !pt-[6rem] lg:!pt-[3.125rem]`}
+        className={`section-container top !flex-row`}
       >
         <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-between gap-[1.5rem] sm:gap-[3.75rem]">
           <h1 className="pn-bold-48 text-center mb-8">Refund Policy</h1>

@@ -56,7 +56,7 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
   // };
 
   return (
-    <div id="faqs" className={`section-container !flex-row ${className}`}>
+    <div id="faqs" className={`${className} section-container !flex-row`}>
       <div
         className={`relative flex flex-col ${
           vertical ? "items-center" : "lg:flex-row items-start"
