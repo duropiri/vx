@@ -56,7 +56,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
       }}
     >
       {tier.isPopular && (
-        <div className="relative self-center sm:absolute sm:top-[1.5rem] sm:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] sm:mt-0 sm:mb-0 bg-ash rounded-b-[1rem] sm:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
+        <div className="relative self-center lg:absolute lg:top-[1.5rem] lg:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] lg:mt-0 lg:mb-0 bg-ash rounded-b-[1rem] lg:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
           <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
             <svg
               width="15"
@@ -86,7 +86,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         }`}
       >
         {/* Heading */}
-        <div className="flex flex-col w-full items-center justify-start gap-[1rem] sm:gap-0">
+        <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
           <h1
             className={`text-center pn-regular-32 ${
               tier.isPopular ? "text-goldenbrown" : ""
@@ -223,7 +223,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         <div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`button gold pn-regular-22 cursor-select-hover size-full lg:w-[18.75rem]`}
+            className={`button gold pn-regular-22 cursor-select-hover size-full xl:w-[18.75rem]`}
           >
             <FlipLink className={`leading-[1rem]`}>
               {tier.cta || "Get Started"}
@@ -234,7 +234,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         <motion.div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`button pn-regular-22 cursor-select-hover size-full lg:w-[18.75rem] ${
+            className={`button pn-regular-22 cursor-select-hover size-full xl:w-[18.75rem] ${
               tier.isPopular ? "dark !border-ash" : "!bg-white !border-ash"
             } shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
           >
@@ -287,7 +287,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem] text-ash">
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem] text-ash">
           {/* Header */}
           <SectionHeader
             center
@@ -314,7 +314,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                   isYearly
                     ? "bg-goldenbrown text-white"
                     : "bg-ash text-white line-through"
-                } py-[0.5rem] px-[0.5rem] sm:py-[0.75rem] sm:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+                } py-[0.5rem] px-[0.5rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
               >
                 17% Discount
               </div>
@@ -322,10 +322,10 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           )}
 
           {/* Pricing Plans */}
-          <div className="relative flex flex-col lg:flex-row h-full w-full justify-center items-stretch gap-[2rem]">
+          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-stretch gap-[2rem]">
             {Object.keys(pricingPackages).length > 3 ? (
               <>
-                <div className="hidden lg:contents">
+                <div className="hidden xl:contents">
                   <Swiper
                     effect={"fade"}
                     slidesPerView={4}
@@ -333,7 +333,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     grabCursor={true}
                     scrollbar={{ draggable: true }}
                     modules={[Pagination, Navigation, Scrollbar, A11y]}
-                    className="mySwiper w-full lg:max-w-[95rem] !overflow-visible"
+                    className="mySwiper w-full xl:max-w-[95rem] !overflow-visible"
                   >
                     {Object.values(pricingPackages).map((tier, index) => (
                       <SwiperSlide key={index} className="!cursor-swipe-hover">
@@ -363,7 +363,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     ))}
                   </Swiper>
                 </div>
-                <div className="lg:hidden contents">
+                <div className="xl:hidden contents">
                   {Object.values(pricingPackages).map((tier, index) => (
                     <motion.div
                       initial={{ opacity: 0, scale: 0.9 }}
@@ -379,7 +379,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                         duration: 0.4,
                         ease: "easeOut",
                       }}
-                      className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
+                      className="group relative size-full xl:w-[30rem] xl:max-w-[33.333333%]"
                     >
                       <PricingTier
                         tier={tier}
@@ -407,12 +407,12 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                       duration: 0.4,
                       ease: "easeOut",
                     }}
-                    className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
+                    className="group relative size-full xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier
                       tier={tier}
                       isYearly={isYearly}
-                      className="lg:min-h-[67rem]"
+                      className="xl:min-h-[67rem]"
                     />
                   </motion.div>
                 ))}
@@ -434,7 +434,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                       duration: 0.4,
                       ease: "easeOut",
                     }}
-                    className="group relative size-full lg:w-[30rem] lg:max-w-[33.333333%]"
+                    className="group relative size-full xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier tier={tier} isYearly={isYearly} className="" />
                   </motion.div>

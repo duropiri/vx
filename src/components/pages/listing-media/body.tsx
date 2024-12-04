@@ -139,13 +139,17 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col sm:flex-row ${
+      className={`relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col xl:flex-row ${
         isRight ? "justify-start" : "justify-end"
-      } items-end gap-[3rem] sm:gap-0`}
+      } items-end gap-[3rem] xl:gap-0`}
     >
       {/* Background Image */}
-      <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
-        <div data-speed={0.95} data-media-wrapper className="size-full">
+      <div className="relative aspect-video xl:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
+        <div
+          data-speed={0.95}
+          data-media-wrapper
+          className="size-full pointer-events-none"
+        >
           <Image
             src={image}
             alt={title}
@@ -158,7 +162,7 @@ const ServiceCard = ({
       </div>
       {/* Inverted Border Radius: Outside */}
       {!isRight && (
-        <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+        <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
           <div
             className={`absolute top-0 left-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4`}
           />
@@ -169,17 +173,17 @@ const ServiceCard = ({
       <div
         className={`relative flex flex-col items-${
           isRight ? "start" : "end"
-        } size-auto justify-end max-h-full sm:max-h-[80%] sm:max-w-[90%] md:max-w-auto`}
+        } size-auto justify-end max-h-full xl:max-h-[80%] xl:max-w-[90%] xl:max-w-auto`}
       >
         {/* Inverted Border Radius: Inside Left */}
         {isRight ? (
-          <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+          <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
             <div
               className={`absolute top-0 right-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-r-4`}
             />
           </div>
         ) : (
-          <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+          <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
             <div
               className={`absolute top-0 left-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4`}
             />
@@ -190,7 +194,7 @@ const ServiceCard = ({
         <div
           className={`${
             themeClasses.text
-          } relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] ${
+          } relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 xl:p-[2rem] ${
             themeClasses.bg
           } backdrop-blur-sm transition-all duration-500 rounded-t${
             isRight ? "r" : "l"
@@ -204,13 +208,11 @@ const ServiceCard = ({
           </LetterRevealOnScroll>
           {/* CTA */}
           {darkTheme ? (
-            <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
-              <HoverWrapper
-                className={``}
-              >
+            <div className="flex justify-center xl:justify-start w-full">
+              <HoverWrapper className={``}>
                 <Link
                   href={href}
-                  className="button pn-regular-22 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full lg:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5"
+                  className="button pn-regular-22 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full xl:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5"
                   passHref
                 >
                   <FlipLink className="font-semibold">Learn More</FlipLink>
@@ -224,8 +226,8 @@ const ServiceCard = ({
               </HoverWrapper>
             </div>
           ) : (
-            <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
-              <div className="flex flex-col sm:flex-row gap-[1rem]">
+            <div className="flex justify-center xl:justify-start w-full">
+              <div className="flex flex-col xl:flex-row gap-[1rem]">
                 <HoverWrapper className="">
                   <Link
                     href={href}
@@ -250,7 +252,7 @@ const ServiceCard = ({
         </div>
       </div>
       {isRight && (
-        <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+        <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
           <div
             className={`absolute top-0 right-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-r-4`}
           />
@@ -261,14 +263,14 @@ const ServiceCard = ({
 };
 
 const ServicesSection = () => (
-  <div className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
+  <div className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       center
       heading="Our Services"
       subheading="Our Unlimited Services Include"
       className="text-black"
     />
-    <motion.div className="z-10 relative flex sm:grid size-full max-w-[--section-width] flex-col sm:grid-cols-2 lg:grid-cols-3 items-center sm:items-start justify-center gap-[3rem] sm:gap-[2rem]">
+    <motion.div className="z-10 relative flex md:grid size-full max-w-[--section-width] flex-col md:grid-cols-2 xl:grid-cols-3 items-center md:items-start justify-center gap-[3rem] xl:gap-[2rem]">
       {services.map((service, index) => (
         <motion.div
           key={index + 2}
