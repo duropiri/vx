@@ -2,7 +2,7 @@
 
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import heroImage2 from "@/../../public/images/614d398d1a34a3bb1ceff8b1_Second-floor-Masterbedroom-cam-1-1-1.webp";
+import heroImage2 from "@/images/614d398d1a34a3bb1ceff8b1_Second-floor-Masterbedroom-cam-1-1-1.webp";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 
 export const WhatIsItSection = () => (

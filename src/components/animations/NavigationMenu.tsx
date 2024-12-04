@@ -10,7 +10,7 @@ import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { getChars } from "@/components/animations/GetChars";
 
-import logo from "@/../../public/images/logo-black-black.webp";
+import logo from "@/images/logo-black-black.webp";
 // import chevronDown from "@/../../public/svgs/chevron-down.svg";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta-white.svg";
 // import arrowRedirectBlack from "@/../../public/svgs/arrow-redirect-cta.svg";

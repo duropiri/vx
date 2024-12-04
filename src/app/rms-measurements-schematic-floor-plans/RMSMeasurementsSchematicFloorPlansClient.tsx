@@ -8,9 +8,9 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
-import floorplanImage from "@/../../public/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
-import threedimensionalfloorplanImage from "@/../../public/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
-import siteplanImage from "@/../../public/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
+import floorplanImage from "@/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
+import threedimensionalfloorplanImage from "@/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
+import siteplanImage from "@/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">

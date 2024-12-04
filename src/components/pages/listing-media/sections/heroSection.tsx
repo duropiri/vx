@@ -24,7 +24,7 @@ import { Reveal } from "@/components/animations/Reveal";
 import { GradientText } from "@/components/ui/gradientText";
 // import CircleCTA from "@/components/ui/circleCTA";
 
-import logo from "@/../../public/images/logo2.webp";
+import logo from "@/images/logo2.webp";
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 import instagramHeroImage from "@/../../public/svgs/hero-svgs/Instagram.svg";
 import twitterHeroImage from "@/../../public/svgs/hero-svgs/Twitter.svg";

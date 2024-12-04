@@ -6,9 +6,9 @@ import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
-import completeDMSImage from "@/../../public/images/complete-dms.webp";
-import highQCCImage from "@/../../public/images/high-quality-cc.webp";
-import stratGrowthImage from "@/../../public/images/strategic-growth.webp";
+import completeDMSImage from "@/images/complete-dms.webp";
+import highQCCImage from "@/images/high-quality-cc.webp";
+import stratGrowthImage from "@/images/strategic-growth.webp";
 
 import arrowRedirect from "@/../../public/svgs/arrow-redirect-cta.svg";
 import arrowRedirectWhite from "@/../../public/svgs/arrow-redirect-cta-white.svg";
