@@ -7,7 +7,7 @@ const nextConfig = {
   images: {
     deviceSizes: [500, 800, 1080, 1600, 2000],
     formats: ["image/avif", "image/webp"],
-    disableStaticImages: true,
+    disableStaticImages: false,
   },
   compress: true,
   poweredByHeader: false,
