@@ -7,46 +7,49 @@ const nextConfig = {
   images: {
     deviceSizes: [500, 800, 1080, 1600, 2000],
     formats: ["image/avif", "image/webp"],
-    disableStaticImages: false,
+    disableStaticImages: true,
   },
   compress: true,
   poweredByHeader: false,
   swcMinify: true,
 
-  webpack: (config) => {
-    // Asset modules configuration
-    config.module.rules.push({
-      test: /\.(webp|svg|webm|png|jpe?g|gif)$/i,
-      type: 'asset/resource',
-      generator: {
-        filename: 'static/media/[name].[hash][ext]'
-      },
-      parser: {
-        dataUrlCondition: {
-          maxSize: 8 * 1024 // 8kb
-        }
+  webpack: (config, { isServer }) => {
+    // Disable webpack cache
+    config.cache = false;
+
+    // Remove default asset handling
+    config.module.rules = config.module.rules.map(rule => {
+      if (rule.test && rule.test.toString().includes('webp|svg|webm|png|jpe?g|gif')) {
+        return {
+          ...rule,
+          type: 'javascript/auto'
+        };
       }
+      return rule;
     });
 
-    // Ensure proper asset tracing
-    if (config.plugins) {
-      config.plugins = config.plugins.filter(plugin => 
-        plugin.constructor.name !== 'TraceEntryPointsPlugin'
-      );
-    }
+    // Add our own asset handling
+    config.module.rules.push({
+      test: /\.(webp|svg|webm|png|jpe?g|gif)$/i,
+      use: [
+        {
+          loader: 'file-loader',
+          options: {
+            name: '[name].[hash].[ext]',
+            outputPath: 'static/media/',
+            publicPath: '/_next/static/media/'
+          }
+        }
+      ]
+    });
 
     return config;
   },
 
-  // Turn off experimental features that might cause issues
+  // Minimal experimental features
   experimental: {
-    webpackBuildWorker: false,
-    caseSensitiveRoutes: false,
-    forceSwcTransforms: true,
+    forceSwcTransforms: true
   },
-
-  // Adjust output configuration
-  output: 'standalone',
 };
 
 export default nextConfig;

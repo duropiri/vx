@@ -31,19 +31,19 @@ const NewsletterFormClient: React.FC<{
 
   if (!mounted) {
     return (
-      <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] w-full lg:w-auto opacity-0">
+      <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto opacity-0">
         <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
-        <div className="flex w-full lg:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
+        <div className="flex w-full xl:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
       </div>
     );
   }
 
   return (
-    <div className="my-auto lg:my-0 flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] w-full lg:w-auto">
+    <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto">
       <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
       <form
         onSubmit={onSubmit}
-        className="flex w-full lg:w-[30.469rem] rounded-[0.5rem] overflow-hidden"
+        className="flex w-full xl:w-[30.469rem] rounded-[0.5rem] overflow-hidden"
       >
         <input
           type="email"
@@ -83,20 +83,20 @@ export default function Footer({
   return (
     <footer>
       <div
-        className="relative h-[50rem] lg:h-[40rem] select-none"
+        className="relative h-[50rem] xl:h-[40rem] select-none"
         style={{
           clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
           // zIndex: 99999999999999,
         }}
       >
-        <div className="relative h-[calc(100vh+50rem)] lg:h-[calc(100vh+40rem)] -top-[100vh]">
+        <div className="relative h-[calc(100vh+50rem)] xl:h-[calc(100vh+40rem)] -top-[100vh]">
           <div
-            className={`${className} h-[50rem] lg:h-[40rem] sticky top-[calc(100vh-50rem)] lg:top-[calc(100vh-40rem)] bg-ash text-white`}
+            className={`${className} h-[50rem] xl:h-[40rem] sticky top-[calc(100vh-50rem)] xl:top-[calc(100vh-40rem)] bg-ash text-white`}
           >
-            <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] lg:gap-[3.125rem]">
-              <div className="flex flex-col lg:flex-row items-start justify-start lg:justify-between size-full max-w-[100dvw] gap-y-[1rem] lg:gap-y-[2rem]">
+            <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] xl:gap-[3.125rem]">
+              <div className="flex flex-col xl:flex-row items-start justify-start xl:justify-between size-full max-w-[100dvw] gap-y-[1rem] xl:gap-y-[2rem]">
                 {/* Branding section */}
-                <div className="flex flex-col items-start justify-start gap-[1rem] lg:gap-[2rem] sm:max-w-[30%]">
+                <div className="flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] xl:max-w-[30%]">
                   <nav className="flex flex-row items-center gap-[0.5rem]">
                     <Image
                       src={logo}
@@ -107,12 +107,12 @@ export default function Footer({
                     />
                     <h1 className="pn-semibold-24">Virtual Xposure</h1>
                   </nav>
-                  <div className="flex flex-col items-start justify-start gap-[1rem] lg:gap-[1.5rem]">
+                  <div className="flex flex-col items-start justify-start gap-[1rem] xl:gap-[1.5rem]">
                     <div>
                       <p className="pn-regular-20 text-white/75 pb-[1rem]">
                         The Gold Standard in Real Estate Marketing
                       </p>
-                      <p className="pn-regular-20 text-white pb-[1rem] lg:pb-[2.5rem]">
+                      <p className="pn-regular-20 text-white pb-[1rem] xl:pb-[2.5rem]">
                         We are a group of curious, innovative and like-minded
                         people, now stepping up to fill the gap in the industry
                         with the highest level of convenience, reliability,
@@ -202,14 +202,14 @@ export default function Footer({
                   </div>
                 </div>
 
-                <div className="flex lg:hidden h-[0.055rem] w-full bg-charcoal" />
+                <div className="flex xl:hidden h-[0.055rem] w-full bg-charcoal" />
 
                 {/* Links section */}
-                <div className="flex flex-row w-full items-start justify-between lg:contents">
+                <div className="flex flex-row w-full items-start justify-between xl:contents">
                   {/* Company Links */}
-                  <div className="flex flex-col w-full lg:w-auto items-start justify-start gap-[1rem] lg:gap-[2rem]">
+                  <div className="flex flex-col w-full xl:w-auto items-start justify-start gap-[1rem] xl:gap-[2rem]">
                     <h2 className="pn-bold-20">Company</h2>
-                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] lg:gap-[1.5rem]">
+                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
                       {FooterCompanyLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
@@ -224,9 +224,9 @@ export default function Footer({
                   </div>
 
                   {/* Help Links */}
-                  <div className="flex flex-col w-full lg:w-auto items-end text-end lg:text-start lg:items-start lg:justify-start gap-[1rem] lg:gap-[2rem]">
+                  <div className="flex flex-col w-full xl:w-auto items-end text-end xl:text-start xl:items-start xl:justify-start gap-[1rem] xl:gap-[2rem]">
                     <h2 className="pn-bold-20">Help</h2>
-                    <ul className="flex flex-col items-end lg:items-start pn-regular-16 text-white/75 gap-[1rem] lg:gap-[1.5rem]">
+                    <ul className="flex flex-col items-end xl:items-start pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
                       {FooterHelpLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
@@ -241,7 +241,7 @@ export default function Footer({
                   </div>
                 </div>
 
-                <div className="flex lg:hidden h-[0.055rem] w-full bg-charcoal" />
+                <div className="flex xl:hidden h-[0.055rem] w-full bg-charcoal" />
 
                 {/* Newsletter Form - Now client-side only */}
                 <NewsletterFormClient
@@ -251,7 +251,7 @@ export default function Footer({
                 />
               </div>
 
-              <div className="hidden lg:flex h-[0.055rem] w-full bg-charcoal" />
+              <div className="hidden xl:flex h-[0.055rem] w-full bg-charcoal" />
             </div>
           </div>
         </div>
@@ -259,14 +259,14 @@ export default function Footer({
 
       {/* Footer bottom section */}
       <div
-        className="flex flex-col lg:flex-row w-full !justify-between items-center gap-y-[1rem] lg:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] lg:!py-[2rem] select-none"
+        className="flex flex-col xl:flex-row w-full !justify-between items-center gap-y-[1rem] xl:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] xl:!py-[2rem] select-none"
         style={{ zIndex: 99999999999999 }}
       >
-        <p className="pn-regular-14 text-center lg:text-start">
+        <p className="pn-regular-14 text-center xl:text-start">
           © Copyright 2024, All Rights Reserved by VirtualXposure
         </p>
 
-        <div className="flex flex-row items-center gap-[0.375rem] lg:pr-[2rem]">
+        <div className="flex flex-row items-center gap-[0.375rem] xl:pr-[2rem]">
           {/* Payment method icons */}
           <Image
             alt="amex"
