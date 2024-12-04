@@ -86,7 +86,7 @@ export const WhatIsItSection1 = () => (
 
 export const WhatIsItSection2 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row-reverse items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
-    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
+    <div className="relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
         <div data-speed={0.95} data-media-wrapper className="size-full">
           <Image

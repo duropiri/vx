@@ -52,4 +52,6 @@ const BasicSection = forwardRef<HTMLDivElement, SectionProps>(
   }
 );
 
+BasicSection.displayName = "BasicSection";
+
 export default BasicSection;

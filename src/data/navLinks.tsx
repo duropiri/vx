@@ -1,6 +1,9 @@
 import house from "@/../../public/assets/svgs/real-estate.svg";
 import bullhorn from "@/../../public/assets/svgs/bullhorn.svg";
 import skool from "@/../../public/assets/svgs/skool-icon.svg";
+import camera from "@/../../public/assets/svgs/camera-shutter.svg";
+import enhance from "@/../../public/assets/svgs/enhance.svg";
+import virtualrealityimage from "@/../../public/assets/svgs/virtual-reality-image.svg";
 
 export const HeaderLinks = [
   {
@@ -116,17 +119,17 @@ export const HeaderLinks = [
       // ],
       items: [
         {
-          icon: house,
+          icon: virtualrealityimage,
           title: "Floor Plans & iGUIDE 3D Tours",
           href: "/case-studies#floorplans",
         },
         {
-          icon: bullhorn,
+          icon: camera,
           title: "Photography",
           href: "/case-studies#photography",
         },
         {
-          icon: skool,
+          icon: enhance,
           title: "Virtual Enhancements",
           href: "/case-studies#virtual",
         },

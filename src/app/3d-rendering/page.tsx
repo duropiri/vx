@@ -46,7 +46,7 @@ const page = () => {
           label: "Order Now",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/videos/"
+        src="/assets/videos/"
         whatisitSection={<WhatIsItSection />}
         benefitsSection={<BenefitsSection />}
         whyusSection

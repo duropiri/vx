@@ -52,7 +52,7 @@ const page = () => {
           label: "Order Now",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/videos/real-estate-videography.webm"
+        src="/assets/videos/real-estate-videography.webm"
         whatisitSection={<WhatIsItSection />}
         whyusSection
         stepsSection={[<StepsLeftSection />, <StepsRightSection />]}

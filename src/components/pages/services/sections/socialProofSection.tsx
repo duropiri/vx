@@ -97,7 +97,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-between gap-y-[2rem] sm:gap-y-[2rem]">
+        <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-between gap-[2rem] sm:gap-[2rem]">
           {/* Header */}
           <SectionHeader
             small

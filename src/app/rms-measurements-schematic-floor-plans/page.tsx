@@ -45,7 +45,7 @@ const page = () => {
           label: "Book Now",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/images/rms-measurements-schematic-floor-plans.webp"
+        src="/assets/images/rms-measurements-schematic-floor-plans.webp"
         benefitsSection={<BenefitsSection />}
         whatisitSection={[
           <WhatIsItSection1 />,

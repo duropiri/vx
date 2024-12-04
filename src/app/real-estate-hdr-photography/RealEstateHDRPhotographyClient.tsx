@@ -19,7 +19,7 @@ export const WhatIsItSection = () => (
       subheading="Why does the quality of your photos matter?"
       className="text-black"
     />
-    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col lg:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] p-[2rem]">
+    <div className="relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col xl:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] p-[2rem]">
       <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
         <div data-speed={0.95} data-media-wrapper className="size-full">
           <Image
@@ -32,7 +32,7 @@ export const WhatIsItSection = () => (
           />
         </div>
       </div>
-      <div className="relative flex size-full flex-col sm:flex-row items-start justify-between gap-[1.5rem] max-h-[70%] sm:max-w-[40%]">
+      <div className="relative flex size-full flex-col xl:flex-row items-start justify-between gap-[1.5rem] max-h-[70%] sm:max-w-[40%]">
         <ul
           // data-speed={1.02}
           className="group opacity-90 backdrop-blur-lg scale-100 group-hover:opacity-100 sm:hover:-translate-y-[2rem] sm:hover:scale-105 transition-all duration-500 flex flex-col size-full items-start justify-center space-y-[10%] bg-ash rounded-[1rem] p-[1.5rem]"
@@ -219,7 +219,7 @@ export const StepsRightSection = () => (
     ].map((item, index) => (
       <li
         key={index}
-        className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-row items-center justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-x-[1rem] lg:gap-x-[2rem] text-white text-start"
+        className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-row items-center justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-x-[1rem] xl:gap-x-[2rem] text-white text-start"
       >
         <div className="flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
           <h1 className="text-goldenbrown pn-semibold-48">{index + 1}</h1>

@@ -35,7 +35,7 @@ const page = () => {
           label: "Order Now",
           href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
         }}
-        src="/images/real-estate-hdr-photography.webp"
+        src="/assets/images/real-estate-hdr-photography.webp"
         whatisitSection={<WhatIsItSection />}
         whyusSection
         stepsSection={[<StepsLeftSection />, <StepsRightSection />]}

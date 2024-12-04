@@ -108,7 +108,7 @@ function RoadmapSection({ className }: SectionProps) {
           {/* Road SVG */}
           {/* <Image
             alt="road"
-            src="/svgs/curved-road.svg"
+            src="/assets/svgs/curved-road.svg"
             className="pointer-events-none absolute top-0 left-0 w-full"
             height={4370}
             width={1420}

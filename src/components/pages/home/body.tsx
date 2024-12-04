@@ -74,7 +74,7 @@ const HINT_TRANSITION = `transform ${HINT_TIMING} ${TRANSITION_EASING}`;
 //           zIndex: 0,
 //         }}
 //       >
-//         <source src="/videos/blake-vx.webm" type="video/mp4" />
+//         <source src="/assets/videos/blake-vx.webm" type="video/mp4" />
 //       </video>
 
 //       {/* Gradient Overlay */}
@@ -200,7 +200,7 @@ const Body = () => {
             zIndex: 0,
           }}
         >
-          <source src="/videos/virtual-3d-tours.webm" type="video/webm" />
+          <source src="/assets/videos/virtual-3d-tours.webm" type="video/webm" />
         </video>
 
         {/* Gradient Overlay */}
@@ -246,7 +246,7 @@ const Body = () => {
             zIndex: 0,
           }}
         >
-          <source src="/videos/blake-vx.webm" type="video/webm" />
+          <source src="/assets/videos/blake-vx.webm" type="video/webm" />
         </video>
 
         {/* Gradient Overlay */}

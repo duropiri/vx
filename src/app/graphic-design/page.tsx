@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     ...baseMetadata.openGraph,
     title: "Real Estate Graphic Design Services | Logo & Brochure Design | Virtual Xposure",
     description: "Professional real estate graphic design services including custom logo design, logo animation, brochure design, and marketing materials. Transform your real estate brand with high-quality, customized graphics that capture attention and drive results.",
-    images: "/images/social-media-share-preview.webp",
+    images: "/assets/images/social-media-share-preview.webp",
   },
 };
 
@@ -33,7 +33,7 @@ export default function GraphicDesign() {
           label: "Book a FREE Consultation",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/images/graphic-design.webp"
+        src="/assets/images/graphic-design.webp"
         whatisitSection={[
           <WhatIsItSection1 />,
           <WhatIsItSection2 />,

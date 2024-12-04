@@ -183,10 +183,10 @@ export const AdvantageSection = () => (
       subheading="The 3D Advantage"
       className="text-black"
     />
-    <div className="relative group flex size-full lg:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
+    <div className="relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
         <video
-          src="/videos/virtual-3d-tours.webm"
+          src="/assets/videos/virtual-3d-tours.webm"
           autoPlay
           loop
           muted
