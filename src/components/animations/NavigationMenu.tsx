@@ -167,7 +167,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
         exit="exit"
         className="overflow-hidden flex flex-col items-start justify-center size-full text-white"
       >
-        <div className="overflow-hidden flex flex-row items-start justify-end size-full text-white">
+        <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
           {/* Services Grid */}
           <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
             <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
@@ -370,6 +370,7 @@ const Footer: React.FC<FooterProps> = () => {
       <ul className="flex flex-row gap-[0.5rem] w-full md:w-auto mt-2 list-none p-0">
         {FooterHelpLinks.map((link, index) => (
           <motion.li
+            key={index}
             custom={[0.3, 0]}
             variants={translate}
             initial="initial"
@@ -483,7 +484,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full max-w-[55vw]">
+          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full">
             {navigation.map((nav, index) => (
               <div
                 key={index}

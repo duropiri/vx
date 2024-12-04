@@ -7,14 +7,14 @@ const nextConfig = {
   images: {
     deviceSizes: [500, 800, 1080, 1600, 2000],
     formats: ["image/avif", "image/webp"],
-    disableStaticImages: true,
+    disableStaticImages: false,
   },
   compress: true,
   poweredByHeader: false,
   swcMinify: true,
 
   // Add webpack configuration
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev }) => {
     // Clear cache for production builds
     if (!dev) {
       config.cache = false;
