@@ -107,6 +107,7 @@ export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
     <SectionHeader
       center
+      largeText
       subheading="2D Schematic Floor Plan"
       className="text-black"
     />

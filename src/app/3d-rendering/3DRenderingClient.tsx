@@ -120,7 +120,7 @@ export const BenefitsSection = () => (
                 <div className="flex flex-col p-[1rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white text-ash/80 group-hover:text-goldenbrown shadow-ash/5 shadow-customShadow transition-all duration-300">
                   {item.icon}
                 </div>
-                <h1 className="text-black/80 group-hover:text-black pn-semibold-24 transition-all duration-300">
+                <h1 className="text-black/80 group-hover:text-black pn-semibold-22 transition-all duration-300">
                   {item.heading}
                 </h1>
               </div>
