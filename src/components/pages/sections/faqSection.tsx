@@ -26,6 +26,7 @@ interface FAQProps {
 }
 
 import { FAQ } from "@/data/faq";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
   const ref = useRef(null);
@@ -97,22 +98,7 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
               className="flex flex-col size-full gap-[0.5rem]"
             >
               {faq.map((_, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{
-                    // once: true, // Only animate once
-                    amount: 0.2, // Trigger when 30% of element is in view
-                    margin: "50px", // Start animation 50px before element enters viewport
-                  }}
-                  transition={{
-                    delay: 0.1,
-                    // staggerChildren: 1,
-                    duration: 0.4,
-                    ease: "easeOut",
-                  }}
-                >
+                <ScaleInVisible key={index}>
                   <AccordionItem
                     value={`item-${index}`}
                     className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125]"
@@ -125,7 +111,7 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
                       {_.answer}
                     </AccordionContent>
                   </AccordionItem>
-                </motion.div>
+                </ScaleInVisible>
               ))}
             </motion.div>
           </Accordion>

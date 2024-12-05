@@ -1,15 +1,10 @@
-"use client";
-import Page from "@/components/layout/services/page";
-import Body from "@/components/pages/services/body";
 import { ServiceIcons } from "@/data/serviceIcons";
-import { RealEstateHDRPhotographyPackages } from "@/data/pricingPackages";
 import SectionHeader from "@/components/ui/sectionHeader";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import Image from "next/image";
-import heroImage2 from "@/../../public/assets/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
+import whatisitImage from "@/../../public/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(13).webp";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
-import { useEffect } from "react";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -23,7 +18,7 @@ export const WhatIsItSection = () => (
       <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
         <div data-speed={0.95} data-media-wrapper className="size-full">
           <Image
-            src={heroImage2}
+            src={whatisitImage}
             alt="hero-image"
             width={1200}
             height={600}

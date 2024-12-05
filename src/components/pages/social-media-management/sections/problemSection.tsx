@@ -6,8 +6,6 @@ import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { motion } from "framer-motion";
 
-gsap.registerPlugin(ScrollTrigger);
-
 interface SectionProps {
   className?: string;
   originalColor?: string;
@@ -40,21 +38,18 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     // const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
 
     useEffect(() => {
-      if (!svgRef.current || !lineRef.current) return;
+      if (!svgRef.current || !lineRef.current || !containerRef.current) return;
 
       const line = lineRef.current;
 
       // Set up the dashed stroke
-      const dashLength = 60; // Adjust this value to change the dash length
-      const dashGap = 30; // Adjust this value to change the gap between dashes
+      const dashLength = 60;
+      const dashGap = 30;
       const patternLength = dashLength + dashGap;
-      line.style.strokeDasharray = `${dashLength} ${dashGap}`;
-
-      // Slowdown factor - increase this value to slow down the animation
       const slowdownFactor = 30;
-
-      // Calculate total "virtual" length
       const virtualLength = patternLength * slowdownFactor;
+
+      line.style.strokeDasharray = `${dashLength} ${dashGap}`;
 
       // Set initial position
       gsap.set(line, { strokeDashoffset: virtualLength });
@@ -76,33 +71,6 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
     }, [svgRef, lineRef]);
-
-    // Enhanced Snap Scrolling
-    // useEffect(() => {
-    //   ScrollTrigger.create({
-    //     trigger: containerRef.current,
-    //     start: "top top",
-    //     end: "bottom bottom",
-    //     snap: {
-    //       snapTo: 1 / (media.length - 1),
-    //       duration: { min: 0.2, max: 0.5 },
-    //       delay: 0,
-    //       ease: "power1.inOut",
-    //       directional: true,
-    //       inertia: true,
-    //     },
-    //     onUpdate: (self) => {
-    //       const newStep = Math.round(self.progress * (media.length - 1)) + 1;
-    //       if (newStep !== activeStep) {
-    //         setActiveStep(newStep);
-    //       }
-    //     },
-    //   });
-
-    //   return () => {
-    //     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    //   };
-    // }, [activeStep]);
 
     useEffect(() => {
       if (!progressBarRef.current || !textRef.current) return;
@@ -153,10 +121,6 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
 
       // Set the text translation based on the step (odd/even index)
       const isEven = (activeStep - 1) % 2 === 0;
-      // const translateX = isEven ? "translate-x-[100%]" : "-translate-x-[100%]";
-
-      // Create a timeline for better control
-      // const tl = gsap.timeline();
 
       // First animate the text out
       gsap.to(textRef.current, {
@@ -211,11 +175,13 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
             );
           }
           // Animate the text back in
-          gsap.fromTo(
-            textRef.current,
-            { x: isEven ? "100%" : "-100%", opacity: 0 }, // Start offscreen
-            { x: "0%", opacity: 1, duration: 0.5 } // Bring it back
-          );
+          if (textRef.current) {
+            gsap.fromTo(
+              textRef.current,
+              { x: isEven ? "100%" : "-100%", opacity: 0 }, // Start offscreen
+              { x: "0%", opacity: 1, duration: 0.5 } // Bring it back
+            );
+          }
         },
       });
     }, [activeStep]); // Re-run the effect when activeStep or media length changes
@@ -232,6 +198,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           ref={containerRef}
           className="relative flex flex-col w-full items-end justify-start snap-section overflow-clip"
         >
+          {/* Road SVG */}
           <div
             id="road"
             className="sticky top-0 flex flex-col h-[100vh] w-[100dvw] items-center justify-end"
@@ -290,9 +257,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                   x2="179"
                   y2="215"
                   stroke="white"
-                  stroke-width="34"
-                  // strokeDasharray="60 30"
-                  // style={{ strokeDashoffset: dashOffset }}
+                  strokeWidth="34"
                 />
                 <path
                   d="M162 214.996L174.769 0H157L162 214.996Z"
@@ -305,17 +270,16 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
               </svg>
             </div>
           </div>
-          {/* Spline Animation Layer */}
-          {/* <div className="sticky top-0 left-0 w-full h-[100vh] -mt-[100vh] z-0">
-          <SplineWrapper />
-        </div> */}
 
           {/* Progress Bar */}
           <div
             id="progressBar"
             className="sticky top-0 flex flex-col w-full items-center justify-center z-10 h-[100vh] -mt-[100vh] section-container"
           >
-            <div ref={progressBarRef} className="absolute right-[1rem] w-[2.875rem]">
+            <div
+              ref={progressBarRef}
+              className="absolute right-[1rem] w-[2.875rem]"
+            >
               <div className="inset-0 flex flex-col items-center text-ash">
                 <svg
                   width="10"

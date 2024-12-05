@@ -1,7 +1,4 @@
-"use client";
-
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion } from "framer-motion";
 import { ServiceIcons } from "@/data/serviceIcons";
 import Image from "next/image";
 import heroImage2 from "@/../../public/assets/images/614d398d1a34a3bb1ceff8b1_Second-floor-Masterbedroom-cam-1-1-1.webp";
@@ -9,12 +6,17 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+import FadeInUp from "@/components/animations/FadeInUp";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div data-speed={0.95} data-media-wrapper className="size-full pointer-events-none">
+        <div
+          data-speed={0.95}
+          data-media-wrapper
+          className="size-full pointer-events-none"
+        >
           <Image
             src={heroImage2}
             alt="hero-image"
@@ -112,21 +114,10 @@ export const BenefitsSection = () => (
             body: "Virtual 3D Tours provide viewers with an instant preview of the property, helping them narrow down their favorites for in-person viewings. This saves time and money for both agents and clients.",
           },
         ].map((item, index) => (
-          <motion.div
+          <FadeInUp
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true, // Only animate once
-              amount: 0.3, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: (index + 2) * 0.1,
-              duration: 0.5,
-              ease: "easeOut",
-            }}
+            once={false}
           >
             <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
               <div
@@ -145,7 +136,7 @@ export const BenefitsSection = () => (
                 <p className="pn-regular-16">{item.body}</p>
               </div>
             </div>
-          </motion.div>
+          </FadeInUp>
         ))}
       </div>
       {/* CTA */}

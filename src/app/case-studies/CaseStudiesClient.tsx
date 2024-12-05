@@ -5,7 +5,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { X } from "lucide-react"; // For the close icon
 
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -19,6 +18,7 @@ import {
   ReactCompareSlider,
   //   ReactCompareSliderImage,
 } from "react-compare-slider";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 // Create a mapping of all images using the imported assets
 const PORTFOLIO_IMAGES = {
@@ -193,29 +193,19 @@ export const PhotographySection = ({ dark = true }) => {
   };
 
   const renderCaseStudyCard = (study) => (
-    <motion.div
-      key={study.id}
+    <ScaleInVisible
+      key={"case-study-" + study.id}
       className="relative group cursor-select-hover rounded-[1rem] overflow-hidden flex flex-col"
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      viewport={{
-        amount: 0.3,
-        margin: "50px",
-      }}
-      transition={{
-        delay: 0.1,
-        duration: 0.4,
-        ease: "easeOut",
-      }}
       onClick={() => setSelectedImage(study.image)}
     >
       <div className="relative aspect-square">
         <div className="flex flex-col size-full items-center justify-center overflow-hidden bg-ash pointer-events-none">
-          <div className="size-full">
+          <div className="relative size-full">
             <Image
               src={study.image}
               alt={study.title}
               fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
               className="w-full scale-125 group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
               quality={80}
             />
@@ -238,7 +228,7 @@ export const PhotographySection = ({ dark = true }) => {
           )}
         </div>
       )}
-    </motion.div>
+    </ScaleInVisible>
   );
 
   const renderSwiperContent = (studies) => {
@@ -263,7 +253,10 @@ export const PhotographySection = ({ dark = true }) => {
           `}
         >
           {studies.map((study) => (
-            <SwiperSlide key={study.id} className="!h-auto">
+            <SwiperSlide
+              key={`study-slide-${study.id}-${study.title}`}
+              className="!h-auto"
+            >
               {renderCaseStudyCard(study)}
             </SwiperSlide>
           ))}
@@ -296,7 +289,7 @@ export const PhotographySection = ({ dark = true }) => {
             <Tabs.List className="pn-semibold-40 flex flex-col xl:flex-row items-start justify-between py-[2rem] border-b mb-[2rem]">
               {["all", "interior", "exterior", "aerial drone"].map((tab) => (
                 <Tabs.Trigger
-                  key={tab}
+                  key={"tab-" + tab}
                   value={tab}
                   className={`cursor-select-hover px-4 py-2 transition-all duration-500 ${
                     dark ? "text-white" : "text-black"
@@ -336,6 +329,7 @@ export const PhotographySection = ({ dark = true }) => {
                   src={selectedImage}
                   alt="Full size image"
                   fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                   className="object-contain"
                   quality={100}
                 />
@@ -438,7 +432,7 @@ export const VirtualSection = ({
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] w-full">
       {features.map((feature, index) => (
         <li
-          key={index}
+          key={"service-" + index}
           className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]"
         >
           <p className="pn-regular-16 text-black/80 group-hover:text-black">
@@ -485,7 +479,7 @@ export const VirtualSection = ({
       />
       <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[10rem] xl:gap-[3.75rem]">
         {services.map((service, index) => (
-          <ServiceSection key={index} service={service} />
+          <ServiceSection key={"services-" + index} service={service} />
         ))}
       </div>
     </div>

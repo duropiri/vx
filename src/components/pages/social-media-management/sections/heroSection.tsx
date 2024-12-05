@@ -36,6 +36,9 @@ import youtubeHeroImage from "@/../../public/assets/svgs/hero-svgs/Youtube.svg";
 import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg";
 
 import starImage from "@/../../public/assets/svgs/star.svg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 interface LinkDetails {
   title: string;
@@ -151,341 +154,331 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     // GSAP Animations
     useEffect(() => {
-      const loadGSAP = async () => {
-        const { gsap } = await import("gsap");
-        const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Parallax effect
-        const effectElements = gsap.utils.toArray("[data-speed]");
-        (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
-          const speed = parseFloat(el.getAttribute("data-speed") || "0");
-          gsap.fromTo(
-            el,
-            { y: 0 },
-            {
-              y: 0,
-              ease: "none",
-              scrollTrigger: {
-                trigger: el,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                onRefresh: (self) => {
-                  const start = Math.max(0, self.start); // ensure no negative values
-                  const distance = self.end - start;
-                  const end = start + distance / speed;
-                  (self as any).setPositions(start, end);
-                  if (self.animation) {
-                    // Check if self.animation is defined
-                    (self as any).animation.vars.y =
-                      (end - start) * (1 - speed);
-                    self.animation
-                      .invalidate()
-                      .progress(1)
-                      .progress(self.progress);
-                  }
-                },
+      // Parallax effect
+      const effectElements = gsap.utils.toArray("[data-speed]");
+      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
+        const speed = parseFloat(el.getAttribute("data-speed") || "0");
+        gsap.fromTo(
+          el,
+          { y: 0 },
+          {
+            y: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+              onRefresh: (self) => {
+                const start = Math.max(0, self.start); // ensure no negative values
+                const distance = self.end - start;
+                const end = start + distance / speed;
+                (self as any).setPositions(start, end);
+                if (self.animation) {
+                  // Check if self.animation is defined
+                  (self as any).animation.vars.y = (end - start) * (1 - speed);
+                  self.animation
+                    .invalidate()
+                    .progress(1)
+                    .progress(self.progress);
+                }
               },
-            }
-          );
+            },
+          }
+        );
+      });
+
+      // Hero CTA to Navdock transition
+      if (
+        !(window.innerWidth <= 768) &&
+        heroCTARef.current &&
+        navdockRef.current
+      ) {
+        const heroCTA = heroCTARef.current;
+        const navdock = navdockRef.current;
+
+        // const heroBounds = heroCTA.getBoundingClientRect();
+
+        // START
+        // Set navdock initial state (SIZE AND COLOR)
+        gsap.set(navdock, {
+          display: "none",
+          padding: 0,
+          width:
+            // isMobile ? "100%" :
+            "14rem",
+          height: "4.223rem",
+          background:
+            // isMobile ? "#1b1a17" :
+            "#c5a05e",
+          borderRadius: "9999px",
+          opacity: 0,
         });
 
-        // Hero CTA to Navdock transition
-        if (
-          !(window.innerWidth <= 768) &&
-          heroCTARef.current &&
-          navdockRef.current
-        ) {
-          const heroCTA = heroCTARef.current;
-          const navdock = navdockRef.current;
+        // Hide elements on desktop, visible on mobile
+        gsap.set(["#logo", "#nav"], {
+          display: "none",
+        });
 
-          // const heroBounds = heroCTA.getBoundingClientRect();
+        // Set initial position for the CTA
+        gsap.set("#navdock-cta", {
+          x: 0,
+        });
+        // END START
 
-          // START
-          // Set navdock initial state (SIZE AND COLOR)
-          gsap.set(navdock, {
-            display: "none",
-            padding: 0,
-            width:
-              // isMobile ? "100%" :
-              "14rem",
-            height: "4.223rem",
-            background:
-              // isMobile ? "#1b1a17" :
-              "#c5a05e",
-            borderRadius: "9999px",
-            opacity: 0,
-          });
+        // PHASE 1
+        // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
+        ScrollTrigger.create({
+          trigger: heroCTA,
+          start: isMobile ? `top 20px` : `top 40px`, // When heroCTA reaches navdock position
+          // end: "+=50",
+          // markers: true,
+          onEnter: () => {
+            gsap.set(heroCTA, {
+              opacity: 0,
+            }); // Hide heroCTA
+            gsap.set(navdock, { opacity: 1, display: "flex" }); // Show navdock
+          },
+          onLeaveBack: () => {
+            gsap.set(navdock, { opacity: 0, display: "none" }); // Hide navdock
+            gsap.set(heroCTA, { opacity: 1 }); // Show heroCTA
+          },
+        });
+        // END PHASE 1
 
-          // Hide elements on desktop, visible on mobile
-          gsap.set(["#logo", "#nav"], {
-            display: "none",
-          });
+        // PHASE 2
+        // Second ScrollTrigger (Navdock): Handle navdock transformation and element animations
+        ScrollTrigger.create({
+          trigger: heroCTA,
+          start: "200px 40px", // Slightly after the first trigger
+          // end: "+=50vh",
+          // markers: true,
+          onEnter: () => {
+            const tl = gsap.timeline();
 
-          // Set initial position for the CTA
-          gsap.set("#navdock-cta", {
-            x: 0,
-          });
-          // END START
+            gsap.set("#navdock-cta", {
+              opacity: 0,
+              display: "none",
+              x: "12rem",
+              duration: 0,
+            });
 
-          // PHASE 1
-          // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
-          ScrollTrigger.create({
-            trigger: heroCTA,
-            start: isMobile ? `top 20px` : `top 40px`, // When heroCTA reaches navdock position
-            // end: "+=50",
-            // markers: true,
-            onEnter: () => {
-              gsap.set(heroCTA, {
-                opacity: 0,
-              }); // Hide heroCTA
-              gsap.set(navdock, { opacity: 1, display: "flex" }); // Show navdock
-            },
-            onLeaveBack: () => {
-              gsap.set(navdock, { opacity: 0, display: "none" }); // Hide navdock
-              gsap.set(heroCTA, { opacity: 1 }); // Show heroCTA
-            },
-          });
-          // END PHASE 1
+            // Animate the navdock (to navdock final style)
+            tl.to(navdock, {
+              background: "#1b1a17",
+              width: isMobile ? "16rem" : "70rem",
+              height: "4.223rem",
+              paddingLeft:
+                // isMobile ? "0px" :
+                "1.5rem",
+              paddingRight: "0px",
+              paddingTop: "0px",
+              paddingBottom: "0px",
+              // gap: "1.313rem",
+              border: "0.125rem solid #1b1a17",
+              borderRadius:
+                // isMobile ? "0px" :
+                "9999px",
 
-          // PHASE 2
-          // Second ScrollTrigger (Navdock): Handle navdock transformation and element animations
-          ScrollTrigger.create({
-            trigger: heroCTA,
-            start: "200px 40px", // Slightly after the first trigger
-            // end: "+=50vh",
-            // markers: true,
-            onEnter: () => {
-              const tl = gsap.timeline();
+              duration: 0.5,
+            });
 
-              gsap.set("#navdock-cta", {
+            // Animate the logo (from hidden to expanded)
+            tl.fromTo(
+              "#logo",
+              {
+                y: 0,
                 opacity: 0,
                 display: "none",
-                x: "12rem",
-                duration: 0,
-              });
-
-              // Animate the navdock (to navdock final style)
-              tl.to(navdock, {
-                background: "#1b1a17",
-                width: isMobile ? "16rem" : "70rem",
-                height: "4.223rem",
-                paddingLeft:
-                  // isMobile ? "0px" :
-                  "1.5rem",
-                paddingRight: "0px",
-                paddingTop: "0px",
-                paddingBottom: "0px",
-                // gap: "1.313rem",
-                border: "0.125rem solid #1b1a17",
-                borderRadius:
-                  // isMobile ? "0px" :
-                  "9999px",
-
+              },
+              {
+                opacity: 1,
+                display: "flex",
                 duration: 0.5,
-              });
+              },
+              "-=0.25" // Start slightly before the navdock animation finishes
+            );
 
-              // Animate the logo (from hidden to expanded)
-              tl.fromTo(
-                "#logo",
-                {
-                  y: 0,
-                  opacity: 0,
+            // Animate nav items (from hidden to visible)
+            tl.fromTo(
+              "#nav",
+              { y: 10, opacity: 0, display: "none" }, // Hidden state
+              {
+                y: 0,
+                opacity: 1,
+                display: "flex",
+                duration: 0.3,
+                stagger: 0.1,
+              }, // Visible state
+              "-=0.25" // Start slightly before the navdock animation finishes
+            );
+
+            // Animate the navdock cta (from transparent to goldenbrown)
+            tl.to(
+              "#navdock-cta",
+              {
+                x: 0,
+                display: "flex",
+                opacity: 1,
+                backgroundColor: "#c5a05e",
+                duration: 0.3,
+              },
+              "-=0.5" // Start at the same time as the nav items
+            );
+          },
+          onLeaveBack: () => {
+            // Kill any ongoing animations for these elements
+            gsap.killTweensOf(["#logo", "#nav"]);
+
+            // Immediately hide logo and nav with zero duration
+            gsap.set(["#logo", "#nav"], {
+              display: "none",
+              opacity: 0,
+              y: 0,
+              duration: 0,
+            });
+
+            // Create timeline for navdock transition
+            const tl = gsap.timeline({
+              onStart: () => {
+                // Double-check elements are hidden at start
+                gsap.set(["#logo", "#nav"], {
                   display: "none",
-                },
-                {
-                  opacity: 1,
+                  opacity: 0,
+                  duration: 0,
+                });
+                // Reset navdock
+                tl.to(navdock, {
                   display: "flex",
-                  duration: 0.5,
-                },
-                "-=0.25" // Start slightly before the navdock animation finishes
-              );
-
-              // Animate nav items (from hidden to visible)
-              tl.fromTo(
-                "#nav",
-                { y: 10, opacity: 0, display: "none" }, // Hidden state
-                {
-                  y: 0,
-                  opacity: 1,
-                  display: "flex",
+                  padding: 0,
+                  width: "14rem",
+                  height: "4.223rem",
+                  background: "#1b1a17",
                   duration: 0.3,
-                  stagger: 0.1,
-                }, // Visible state
-                "-=0.25" // Start slightly before the navdock animation finishes
-              );
+                });
+              },
+              onComplete: () => {
+                // Triple-check elements are hidden after completion
+                gsap.set(["#logo", "#nav"], {
+                  display: "none",
+                  opacity: 0,
+                  duration: 0,
+                });
+              },
+            });
 
-              // Animate the navdock cta (from transparent to goldenbrown)
-              tl.to(
-                "#navdock-cta",
-                {
-                  x: 0,
-                  display: "flex",
-                  opacity: 1,
-                  backgroundColor: "#c5a05e",
-                  duration: 0.3,
-                },
-                "-=0.5" // Start at the same time as the nav items
-              );
-            },
-            onLeaveBack: () => {
-              // Kill any ongoing animations for these elements
-              gsap.killTweensOf(["#logo", "#nav"]);
+            // Set initial states immediately
+            gsap.set("#navdock-cta", {
+              opacity: 0,
+              display: "none",
+              x: 0,
+              y: "3.5rem",
+              duration: 0,
+            });
 
-              // Immediately hide logo and nav with zero duration
+            // Reset navdock
+            tl.to(navdock, {
+              display: "flex",
+              padding: 0,
+              width: "14rem",
+              height: "4.223rem",
+              background: "#1b1a17",
+              duration: 0.3,
+            });
+
+            // Reset CTA
+            tl.to(
+              "#navdock-cta",
+              {
+                display: "flex",
+                opacity: 1,
+                y: 0,
+                backgroundColor: "transparent",
+                duration: 0.3,
+              },
+              "-=0.3"
+            );
+
+            // Add safety timeout to force reset if issues persist
+            setTimeout(() => {
+              // Final force reset of all elements
               gsap.set(["#logo", "#nav"], {
                 display: "none",
                 opacity: 0,
-                y: 0,
                 duration: 0,
-                immediate: true,
               });
-
-              // Create timeline for navdock transition
-              const tl = gsap.timeline({
-                onStart: () => {
-                  // Double-check elements are hidden at start
-                  gsap.set(["#logo", "#nav"], {
-                    display: "none",
-                    opacity: 0,
-                    immediate: true,
-                  });
-                  // Reset navdock
-                  tl.to(navdock, {
-                    display: "flex",
-                    padding: 0,
-                    width: "14rem",
-                    height: "4.223rem",
-                    background: "#1b1a17",
-                    duration: 0.3,
-                  });
-                },
-                onComplete: () => {
-                  // Triple-check elements are hidden after completion
-                  gsap.set(["#logo", "#nav"], {
-                    display: "none",
-                    opacity: 0,
-                    immediate: true,
-                  });
-                },
-              });
-
-              // Set initial states immediately
-              gsap.set("#navdock-cta", {
-                opacity: 0,
-                display: "none",
-                x: 0,
-                y: "3.5rem",
-                immediate: true,
-              });
-
-              // Reset navdock
-              tl.to(navdock, {
-                display: "flex",
-                padding: 0,
+              gsap.set(navdock, {
                 width: "14rem",
                 height: "4.223rem",
+                padding: 0,
                 background: "#1b1a17",
-                duration: 0.3,
+                duration: 0,
               });
+              gsap.set("#navdock-cta", {
+                display: "flex",
+                opacity: 1,
+                x: 0,
+                y: 0,
+                backgroundColor: "transparent",
+                duration: 0,
+              });
+            }, 500); // 500ms delay
+            // Add safety timeout to force reset if issues persist
+            setTimeout(() => {
+              // Final force reset of all elements
+              gsap.set(["#logo", "#nav"], {
+                display: "none",
+                opacity: 0,
+                duration: 0,
+              });
+              gsap.set("#navdock-cta", {
+                display: "flex",
+                opacity: 1,
+                x: 0,
+                y: 0,
+                backgroundColor: "transparent",
+                duration: 0,
+              });
+            }, 1000); // 500ms delay
+          },
+        });
+        // END PHASE 2
+      }
 
-              // Reset CTA
-              tl.to(
-                "#navdock-cta",
-                {
-                  display: "flex",
-                  opacity: 1,
-                  y: 0,
-                  backgroundColor: "transparent",
-                  duration: 0.3,
+      // Add new ScrollTrigger for mobile navdock fade out
+      if (navdockRef.current) {
+        ScrollTrigger.create({
+          trigger: document.documentElement, // Use the entire document as trigger
+          start: "bottom bottom+=100vh", // Start trigger 100vh before document bottom
+          end: "bottom bottom",
+          onUpdate: (self) => {
+            if (isMobile) {
+              // Calculate opacity based on scroll position
+              const progress = self.progress;
+              gsap.to(navdockRef.current, {
+                opacity: 1 - progress,
+                duration: 0.5,
+                onComplete: () => {
+                  setShouldHideNavdock(progress === 1);
                 },
-                "-=0.3"
-              );
+              });
+            } else {
+              // Ensure navdock is visible on desktop
+              gsap.to(navdockRef.current, {
+                opacity: 1,
+                duration: 0.5,
+                onComplete: () => {
+                  setShouldHideNavdock(false);
+                },
+              });
+            }
+          },
+        });
+      }
 
-              // Add safety timeout to force reset if issues persist
-              setTimeout(() => {
-                // Final force reset of all elements
-                gsap.set(["#logo", "#nav"], {
-                  display: "none",
-                  opacity: 0,
-                  immediate: true,
-                });
-                gsap.set(navdock, {
-                  width: "14rem",
-                  height: "4.223rem",
-                  padding: 0,
-                  background: "#1b1a17",
-                  immediate: true,
-                });
-                gsap.set("#navdock-cta", {
-                  display: "flex",
-                  opacity: 1,
-                  x: 0,
-                  y: 0,
-                  backgroundColor: "transparent",
-                  immediate: true,
-                });
-              }, 500); // 500ms delay
-              // Add safety timeout to force reset if issues persist
-              setTimeout(() => {
-                // Final force reset of all elements
-                gsap.set(["#logo", "#nav"], {
-                  display: "none",
-                  opacity: 0,
-                  immediate: true,
-                });
-                gsap.set("#navdock-cta", {
-                  display: "flex",
-                  opacity: 1,
-                  x: 0,
-                  y: 0,
-                  backgroundColor: "transparent",
-                  immediate: true,
-                });
-              }, 1000); // 500ms delay
-            },
-          });
-          // END PHASE 2
-        }
-
-        // Add new ScrollTrigger for mobile navdock fade out
-        if (navdockRef.current) {
-          ScrollTrigger.create({
-            trigger: document.documentElement, // Use the entire document as trigger
-            start: "bottom bottom+=100vh", // Start trigger 100vh before document bottom
-            end: "bottom bottom",
-            onUpdate: (self) => {
-              if (isMobile) {
-                // Calculate opacity based on scroll position
-                const progress = self.progress;
-                gsap.to(navdockRef.current, {
-                  opacity: 1 - progress,
-                  duration: 0.5,
-                  onComplete: () => {
-                    setShouldHideNavdock(progress === 1);
-                  },
-                });
-              } else {
-                // Ensure navdock is visible on desktop
-                gsap.to(navdockRef.current, {
-                  opacity: 1,
-                  duration: 0.5,
-                  onComplete: () => {
-                    setShouldHideNavdock(false);
-                  },
-                });
-              }
-            },
-          });
-        }
-
-        return () => {
-          ScrollTrigger.getAll().forEach((st) => st.kill());
-        };
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-
-      loadGSAP();
     }, [isMobile]);
 
     return (

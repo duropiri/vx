@@ -13,6 +13,8 @@ import React, {
 // import { motion } from "framer-motion";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 interface SectionProps {
   className?: string;
@@ -57,73 +59,64 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     // const [color] = useState(originalColor);
     // GSAP Animations
     useEffect(() => {
-      const loadGSAP = async () => {
-        const { gsap } = await import("gsap");
-        const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Parallax effect
-        const effectElements = gsap.utils.toArray("[data-speed]");
-        (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
-          const speed = parseFloat(el.getAttribute("data-speed") || "0");
-          gsap.fromTo(
-            el,
-            { y: 0 },
-            {
-              y: 0,
-              ease: "none",
-              scrollTrigger: {
-                trigger: el,
-                start: "top bottom",
-                end: "bottom top",
-                scrub: true,
-                onRefresh: (self) => {
-                  const start = Math.max(0, self.start); // ensure no negative values
-                  const distance = self.end - start;
-                  const end = start + distance / speed;
-                  (self as any).setPositions(start, end);
-                  if (self.animation) {
-                    // Check if self.animation is defined
-                    (self as any).animation.vars.y =
-                      (end - start) * (1 - speed);
-                    self.animation
-                      .invalidate()
-                      .progress(1)
-                      .progress(self.progress);
-                  }
-                },
+      // Parallax effect
+      const effectElements = gsap.utils.toArray("[data-speed]");
+      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
+        const speed = parseFloat(el.getAttribute("data-speed") || "0");
+        gsap.fromTo(
+          el,
+          { y: 0 },
+          {
+            y: 0,
+            ease: "none",
+            scrollTrigger: {
+              trigger: el,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: true,
+              onRefresh: (self) => {
+                const start = Math.max(0, self.start); // ensure no negative values
+                const distance = self.end - start;
+                const end = start + distance / speed;
+                (self as any).setPositions(start, end);
+                if (self.animation) {
+                  // Check if self.animation is defined
+                  (self as any).animation.vars.y = (end - start) * (1 - speed);
+                  self.animation
+                    .invalidate()
+                    .progress(1)
+                    .progress(self.progress);
+                }
               },
-            }
-          );
-        });
-
-        // Scale effect for background media
-        const mediaWrapper = document.querySelector("[data-media-wrapper]");
-        if (mediaWrapper) {
-          gsap.fromTo(
-            mediaWrapper,
-            {
-              scale: 1,
             },
-            {
-              scale: 1.15,
-              ease: "none",
-              scrollTrigger: {
-                trigger: mediaWrapper,
-                start: "top top",
-                end: "bottom top",
-                scrub: true,
-              },
-            }
-          );
-        }
+          }
+        );
+      });
 
-        return () => {
-          ScrollTrigger.getAll().forEach((st) => st.kill());
-        };
+      // Scale effect for background media
+      const mediaWrapper = document.querySelector("[data-media-wrapper]");
+      if (mediaWrapper) {
+        gsap.fromTo(
+          mediaWrapper,
+          {
+            scale: 1,
+          },
+          {
+            scale: 1.15,
+            ease: "none",
+            scrollTrigger: {
+              trigger: mediaWrapper,
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
+          }
+        );
+      }
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-
-      loadGSAP();
     }, []);
 
     return (
@@ -133,7 +126,6 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             data-speed={0.8}
             data-media-wrapper
-
             className="absolute inset-0 size-full h-[120%]"
           >
             <video
@@ -151,7 +143,6 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             data-speed={0.8}
             data-media-wrapper
-
             className="absolute inset-0 size-full h-[120%] pointer-events-none"
           >
             <Image
@@ -160,6 +151,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               fill
               className="object-cover"
               quality={80}
+              priority
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none" />
           </div>

@@ -1,5 +1,3 @@
-"use client";
-import { motion } from "framer-motion";
 import { ServiceIcons } from "@/data/serviceIcons";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
@@ -8,12 +6,17 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+import FadeInUp from "@/components/animations/FadeInUp";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div data-speed={0.95} data-media-wrapper className="size-full pointer-events-none">
+        <div
+          data-speed={0.95}
+          data-media-wrapper
+          className="size-full pointer-events-none"
+        >
           <Image
             src={heroImage2}
             alt="hero-image"
@@ -97,21 +100,10 @@ export const BenefitsSection = () => (
             heading: "Improved quality of marketing",
           },
         ].map((item, index) => (
-          <motion.div
+          <FadeInUp
+            once={false}
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true, // Only animate once
-              amount: 0.3, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: (index + 2) * 0.1,
-              duration: 0.5,
-              ease: "easeOut",
-            }}
           >
             <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
               <div
@@ -125,30 +117,30 @@ export const BenefitsSection = () => (
                 </h1>
               </div>
             </div>
-          </motion.div>
+          </FadeInUp>
         ))}
       </div>
       {/* CTA */}
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-            <HoverWrapper className="">
-              <Link
-                href="https://listings.virtualxposure.com/order"
-                className="group button gold pn-regular-22 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
-                passHref
-              >
-                <FlipLink className={`flex items-center w-fit`}>
-                  Place An Order
-                </FlipLink>
+          <HoverWrapper className="">
+            <Link
+              href="https://listings.virtualxposure.com/order"
+              className="group button gold pn-regular-22 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
+              passHref
+            >
+              <FlipLink className={`flex items-center w-fit`}>
+                Place An Order
+              </FlipLink>
 
-                <Image
-                  alt="arrow"
-                  src={arrowRedirect}
-                  className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  quality={10}
-                />
-              </Link>
-            </HoverWrapper>
+              <Image
+                alt="arrow"
+                src={arrowRedirect}
+                className="text-ash group-hover:rotate-45 transition-all duration-300"
+                quality={10}
+              />
+            </Link>
+          </HoverWrapper>
         </div>
       </div>
     </div>

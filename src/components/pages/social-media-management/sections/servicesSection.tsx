@@ -27,6 +27,7 @@ import clockImage from "@/../../public/assets/svgs/clock.svg";
 import growthImage from "@/../../public/assets/svgs/growth.svg";
 import followersImage from "@/../../public/assets/svgs/followers.svg";
 import unfollowImage from "@/../../public/assets/svgs/unfollow.svg";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface SectionProps {
   className?: string;
@@ -59,22 +60,7 @@ function ServicesSection({ className }: SectionProps) {
           {/* lg: Middle Bentos (1) */}
           <div className="hidden lg:flex xl:hidden relative flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 2 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group relative flex flex-col size-full max-h-[31.25rem]"
-            >
+            <ScaleInVisible className="group relative flex flex-col size-full max-h-[31.25rem]">
               <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]">
                 {/* Content */}
                 <div className="h-full w-full flex-col justify-start items-start gap-2 flex relative">
@@ -467,27 +453,12 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Gradient */}
                 <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem] " />
               </div>
-            </motion.div>
+            </ScaleInVisible>
           </div>
           {/* xl: Upper Bentos (3) lg: Upper Bentos (2) */}
           <div className="relative flex flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 1 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group relative flex flex-col w-full lg:w-auto h-full max-h-[31.25rem]"
-            >
+            <ScaleInVisible className="group relative flex flex-col w-full lg:w-auto h-full max-h-[31.25rem]">
               <div
                 className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center size-full"
                 onMouseEnter={() => setFirstBentoHovered(true)}
@@ -758,24 +729,9 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Gradient */}
                 <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem] " />
               </div>
-            </motion.div>
+            </ScaleInVisible>
             {/* Bento 2 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group relative flex lg:hidden xl:flex flex-col size-full max-h-[31.25rem]"
-            >
+            <ScaleInVisible className="group relative flex lg:hidden xl:flex flex-col size-full max-h-[31.25rem]">
               <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]">
                 {/* Content */}
                 <div className="h-full w-full flex-col justify-start items-start gap-2 flex relative">
@@ -1168,25 +1124,10 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Gradient */}
                 <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem] " />
               </div>
-            </motion.div>
+            </ScaleInVisible>
 
             {/* Bento 3 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group flex relative flex-col w-full lg:w-auto h-full max-h-[31.25rem] justify-center lg:justify-start items-center lg:max-w-[21.875rem]"
-            >
+            <ScaleInVisible className="group flex relative flex-col w-full lg:w-auto h-full max-h-[31.25rem] justify-center lg:justify-start items-center lg:max-w-[21.875rem]">
               <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow overflow-hidden size-full max-h-[31.25rem]">
                 <div className="flex-col size-full justify-center items-center lg:items-start gap-[2rem] flex">
                   {/* Header */}
@@ -1255,28 +1196,13 @@ function ServicesSection({ className }: SectionProps) {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </ScaleInVisible>
           </div>
 
           {/* lg: Middle Bentos (1) */}
           <div className="hidden lg:flex xl:hidden relative flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 4 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group flex relative size-full min-w-[65%] max-h-[31.25rem]"
-            >
+            <ScaleInVisible className="group flex relative size-full min-w-[65%] max-h-[31.25rem]">
               <div
                 className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]"
                 onMouseEnter={() => setFourthBentoHovered(true)}
@@ -1579,28 +1505,13 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Gradient */}
                 <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem]" />
               </div>
-            </motion.div>
+            </ScaleInVisible>
           </div>
 
           {/* xl: Lower Bentos (2) lg: Lower Bentos (1) */}
           <div className="flex flex-col lg:flex-row w-full lg:h-[31.25rem] justify-start items-start gap-[1.875rem]">
             {/* Bento 4 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group flex lg:hidden xl:flex relative size-full max-h-[31.25rem]"
-            >
+            <ScaleInVisible className="group flex lg:hidden xl:flex relative size-full max-h-[31.25rem]">
               <div
                 className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]"
                 onMouseEnter={() => setFourthBentoHovered(true)}
@@ -1903,24 +1814,9 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Gradient */}
                 <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem]" />
               </div>
-            </motion.div>
+            </ScaleInVisible>
             {/* Bento 5 */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{
-                // once: true, // Only animate once
-                amount: 0.2, // Trigger when 30% of element is in view
-                margin: "50px", // Start animation 50px before element enters viewport
-              }}
-              transition={{
-                delay: 0.1,
-                // staggerChildren: 1,
-                duration: 0.4,
-                ease: "easeOut",
-              }}
-              className="group flex relative size-full h-auto max-h-[31.25rem] lg:h-full"
-            >
+            <ScaleInVisible className="group flex relative size-full h-auto max-h-[31.25rem] lg:h-full">
               <div className="flex flex-col px-[1.5rem] py-[2rem] bg-transparent rounded-[1.875rem] outline-charcoal/50 outline-dashed justify-center items-center gap-[2.75rem] overflow-hidden hover:outline-goldenrod hover:bg-goldenrod/10 transition-all duration-500 size-full">
                 {/* Content */}
                 <div className="flex flex-col justify-center items-center gap-[2.75rem] text-center text-ash">
@@ -1958,7 +1854,7 @@ function ServicesSection({ className }: SectionProps) {
                   </div>
                 </GsapMagnetic>
               </div>
-            </motion.div>
+            </ScaleInVisible>
           </div>
         </div>
       </div>

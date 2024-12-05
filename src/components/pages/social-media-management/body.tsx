@@ -18,6 +18,9 @@ import { HeaderLinks, SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import { socialMediaPackages } from "@/data/pricingPackages";
 import { HomePageStats } from "@/data/stats";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
@@ -32,75 +35,67 @@ function Body() {
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
     // const heroSection = sectionRefs.current[0];
 
-    const loadGSAP = async () => {
-      const { gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
+    if (triggerSection) {
+      const updateColors = (change: boolean) => {
+        sectionRefs.current.forEach((section) => {
+          if (section) {
+            const originalColor = section.dataset.originalColor;
+            const transitionColor = section.dataset.transitionColor;
 
-      if (triggerSection) {
-        const updateColors = (change: boolean) => {
-          sectionRefs.current.forEach((section) => {
-            if (section) {
-              const originalColor = section.dataset.originalColor;
-              const transitionColor = section.dataset.transitionColor;
+            if (!originalColor || !transitionColor) {
+              console.warn(
+                "Original or transition color not set for section:",
+                section
+              );
+              return;
+            }
 
-              if (!originalColor || !transitionColor) {
-                console.warn(
-                  "Original or transition color not set for section:",
-                  section
-                );
-                return;
-              }
+            const newColor = change ? transitionColor : originalColor;
 
-              const newColor = change ? transitionColor : originalColor;
+            // Animate background color for each section
+            gsap.to(section, {
+              backgroundColor: newColor,
+              duration: 0.5,
+              ease: "power1.inOut",
+            });
 
-              // Animate background color for each section
-              gsap.to(section, {
-                backgroundColor: newColor,
+            // Update the color state of the ColorChangeSection component
+            const sectionComponent = section as unknown as {
+              setColor: (color: string) => void;
+            };
+            if (sectionComponent.setColor) {
+              sectionComponent.setColor(newColor);
+            }
+
+            // Animate gradient colors
+            const gradientElements = section.querySelectorAll(
+              ".bg-gradient-to-b, .bg-gradient-to-t"
+            ) as NodeListOf<HTMLElement>;
+            gradientElements.forEach((el) => {
+              gsap.to(el, {
+                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
                 duration: 0.5,
                 ease: "power1.inOut",
               });
-
-              // Update the color state of the ColorChangeSection component
-              const sectionComponent = section as unknown as {
-                setColor: (color: string) => void;
-              };
-              if (sectionComponent.setColor) {
-                sectionComponent.setColor(newColor);
-              }
-
-              // Animate gradient colors
-              const gradientElements = section.querySelectorAll(
-                ".bg-gradient-to-b, .bg-gradient-to-t"
-              ) as NodeListOf<HTMLElement>;
-              gradientElements.forEach((el) => {
-                gsap.to(el, {
-                  "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                  duration: 0.5,
-                  ease: "power1.inOut",
-                });
-              });
-            }
-          });
-        };
-
-        // Create ScrollTrigger for the section at index 1 only
-        ScrollTrigger.create({
-          trigger: triggerSection,
-          start: "top-=400px top",
-          end: "bottom top",
-          onEnter: () => updateColors(true),
-          onLeaveBack: () => updateColors(false),
-          // markers: true, // Remove in production
+            });
+          }
         });
-      }
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
-    };
 
-    loadGSAP();
+      // Create ScrollTrigger for the section at index 1 only
+      ScrollTrigger.create({
+        trigger: triggerSection,
+        start: "top-=400px top",
+        end: "bottom top",
+        onEnter: () => updateColors(true),
+        onLeaveBack: () => updateColors(false),
+        // markers: true, // Remove in production
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
@@ -143,7 +138,8 @@ function Body() {
         }}
         copy={
           <>
-            We now live in an<span className="text-goldenbrown gold-text">online</span>
+            We now live in an
+            <span className="text-goldenbrown gold-text">online</span>
             real estate economy
           </>
         }
@@ -166,41 +162,29 @@ function Body() {
         copy={
           <>
             A shift from person-to-person transactions to a place where almost
-            <span className="text-goldenbrown gold-text">100%</span>of buyers start their
-            buying process<span className="text-goldenbrown gold-text">online</span>
+            <span className="text-goldenbrown gold-text">100%</span>of buyers
+            start their buying process
+            <span className="text-goldenbrown gold-text">online</span>
           </>
         }
       />
 
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
-        <motion.div
-          className="contents flex flex-col items-center justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{
-            // once: true, // Only animate once
-            amount: 0.1, // Trigger when 30% of element is in view
-            margin: "50px", // Start animation 50px before element enters viewport
-          }}
-          transition={{
-            delay: 0.1,
-            // staggerChildren: 1,
-            duration: 0.4,
-            ease: "easeOut",
-          }}
-        >
+        <ScaleInVisible className="contents flex flex-col items-center justify-center">
           <StatsSection
             stats={HomePageStats}
             className=""
             scrollYProgress={scrollYProgress}
           />
-        </motion.div>
+        </ScaleInVisible>
         <CopySection
           className="bg-white z-10"
           copy={
             <>
               The best real estate professionals have
-              <span className="text-goldenbrown italic gold-text">reinvented</span>
+              <span className="text-goldenbrown italic gold-text">
+                reinvented
+              </span>
               themselves and their businesses towards a
               <span className="text-goldenbrown gold-text">
                 more substantial online presence
@@ -216,41 +200,13 @@ function Body() {
 
       <RoadmapSection className="bg-white z-10" />
       <SocialProofSection full className="bg-white z-10" />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{
-          // once: true, // Only animate once
-          amount: 0.2, // Trigger when 30% of element is in view
-          margin: "50px", // Start animation 50px before element enters viewport
-        }}
-        transition={{
-          delay: 0.1,
-          // staggerChildren: 1,
-          duration: 0.4,
-          ease: "easeOut",
-        }}
-      >
+      <ScaleInVisible>
         <CTASection className="bg-white z-10" />
-      </motion.div>
+      </ScaleInVisible>
       <FAQSection className="bg-white z-10" />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{
-          // once: true, // Only animate once
-          amount: 0.2, // Trigger when 30% of element is in view
-          margin: "50px", // Start animation 50px before element enters viewport
-        }}
-        transition={{
-          delay: 0.1,
-          // staggerChildren: 1,
-          duration: 0.4,
-          ease: "easeOut",
-        }}
-      >
+      <ScaleInVisible>
         <ContactSection className="bg-white z-10" />
-      </motion.div>
+      </ScaleInVisible>
     </>
   );
 }

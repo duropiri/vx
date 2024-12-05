@@ -23,6 +23,9 @@ import {
   PhotographySection,
   VirtualSection,
 } from "@/app/case-studies/CaseStudiesClient";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface SectionProps {
   title: string;
@@ -97,89 +100,67 @@ function Body({
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
     // const heroSection = sectionRefs.current[0];
 
-    const loadGSAP = async () => {
-      const { gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
+    if (triggerSection) {
+      const updateColors = (change: boolean) => {
+        sectionRefs.current.forEach((section) => {
+          if (section) {
+            const originalColor = section.dataset.originalColor;
+            const transitionColor = section.dataset.transitionColor;
 
-      if (triggerSection) {
-        const updateColors = (change: boolean) => {
-          sectionRefs.current.forEach((section) => {
-            if (section) {
-              const originalColor = section.dataset.originalColor;
-              const transitionColor = section.dataset.transitionColor;
+            if (!originalColor || !transitionColor) {
+              console.warn(
+                "Original or transition color not set for section:",
+                section
+              );
+              return;
+            }
 
-              if (!originalColor || !transitionColor) {
-                console.warn(
-                  "Original or transition color not set for section:",
-                  section
-                );
-                return;
-              }
+            const newColor = change ? transitionColor : originalColor;
 
-              const newColor = change ? transitionColor : originalColor;
+            // Animate background color for each section
+            gsap.to(section, {
+              backgroundColor: newColor,
+              duration: 0.5,
+              ease: "power1.inOut",
+            });
 
-              // Animate background color for each section
-              gsap.to(section, {
-                backgroundColor: newColor,
+            // Update the color state of the ColorChangeSection component
+            const sectionComponent = section as unknown as {
+              setColor: (color: string) => void;
+            };
+            if (sectionComponent.setColor) {
+              sectionComponent.setColor(newColor);
+            }
+
+            // Animate gradient colors
+            const gradientElements = section.querySelectorAll(
+              ".bg-gradient-to-b, .bg-gradient-to-t"
+            ) as NodeListOf<HTMLElement>;
+            gradientElements.forEach((el) => {
+              gsap.to(el, {
+                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
                 duration: 0.5,
                 ease: "power1.inOut",
               });
-
-              // Update the color state of the ColorChangeSection component
-              const sectionComponent = section as unknown as {
-                setColor: (color: string) => void;
-              };
-              if (sectionComponent.setColor) {
-                sectionComponent.setColor(newColor);
-              }
-
-              // Animate gradient colors
-              const gradientElements = section.querySelectorAll(
-                ".bg-gradient-to-b, .bg-gradient-to-t"
-              ) as NodeListOf<HTMLElement>;
-              gradientElements.forEach((el) => {
-                gsap.to(el, {
-                  "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                  duration: 0.5,
-                  ease: "power1.inOut",
-                });
-              });
-            }
-          });
-        };
-
-        // Create ScrollTrigger for the section at index 1 only
-        ScrollTrigger.create({
-          trigger: triggerSection,
-          start: "top-=400px top",
-          end: "bottom top",
-          onEnter: () => updateColors(true),
-          onLeaveBack: () => updateColors(false),
-          // markers: true, // Remove in production
+            });
+          }
         });
-      }
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
+
+      // Create ScrollTrigger for the section at index 1 only
+      ScrollTrigger.create({
+        trigger: triggerSection,
+        start: "top-=400px top",
+        end: "bottom top",
+        onEnter: () => updateColors(true),
+        onLeaveBack: () => updateColors(false),
+        // markers: true, // Remove in production
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-
-    // if (heroRef.current) {
-    //   const updateHeight = () => {
-    //     setHeroHeight(heroRef.current?.offsetHeight || 0);
-    //   };
-
-    //   // Initial measurement
-    //   updateHeight();
-
-    //   // Update on window resize
-    //   window.addEventListener("resize", updateHeight);
-
-    //   return () => window.removeEventListener("resize", updateHeight);
-    // }
-
-    loadGSAP();
   }, []);
 
   return (
@@ -216,11 +197,7 @@ function Body({
             <BasicSection content={whatisitSection} />
           ))}
 
-        {floorplan && (
-          <BasicSection
-            content={<FloorplansSection />}
-          />
-        )}
+        {floorplan && <BasicSection content={<FloorplansSection />} />}
         {staging && (
           <BasicSection
             content={<VirtualSection renovation={false} objremoval={false} />}
@@ -277,23 +254,9 @@ function Body({
       </div>
       {/* CTA */}
       <div className="bg-white z-10">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{
-            // once: true, // Only animate once
-            amount: 0.2, // Trigger when 30% of element is in view
-            margin: "50px", // Start animation 50px before element enters viewport
-          }}
-          transition={{
-            delay: 0.1,
-            // staggerChildren: 1,
-            duration: 0.4,
-            ease: "easeOut",
-          }}
-        >
+        <ScaleInVisible>
           <CTASection className="bg-white z-10" />
-        </motion.div>
+        </ScaleInVisible>
       </div>
       {/* Unlimited? */}
       {unlimitedSection && (
@@ -313,23 +276,9 @@ function Body({
 
       {/* Contact */}
       <div className="bg-white z-10">
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{
-            // once: true, // Only animate once
-            amount: 0.2, // Trigger when 30% of element is in view
-            margin: "50px", // Start animation 50px before element enters viewport
-          }}
-          transition={{
-            delay: 0.1,
-            // staggerChildren: 1,
-            duration: 0.4,
-            ease: "easeOut",
-          }}
-        >
+        <ScaleInVisible>
           <ContactSection className="bg-white z-10" />
-        </motion.div>
+        </ScaleInVisible>
       </div>
       {/* FAQ */}
       <FAQSection

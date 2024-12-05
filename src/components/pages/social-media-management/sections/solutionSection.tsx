@@ -14,6 +14,7 @@ import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface SectionProps {
   className?: string;
@@ -134,22 +135,7 @@ function SolutionSection({ className }: SectionProps) {
           className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[0.5rem]"
         >
           {/* Top Row (1) */}
-          <motion.div
-            className="bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="bento-row !gap-y-[1rem]">
             <div
               className="solution-bento"
               ref={(el: HTMLDivElement | null) => {
@@ -196,24 +182,9 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
 
-          <motion.div
-            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
             <div
               className="solution-bento bento-center lg:max-w-[29%]"
               ref={(el: HTMLDivElement | null) => {
@@ -241,24 +212,9 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
 
-          <motion.div
-            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
             <div
               className="solution-bento"
               ref={(el: HTMLDivElement | null) => {
@@ -303,24 +259,9 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
           {/* sm: Middle Row (2)*/}
-          <motion.div
-            className="!hidden sm:!flex bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="!hidden sm:!flex bento-row !gap-y-[1rem]">
             <div className="bento-row !gap-y-[1rem]">
               {/* First Bento */}
               <div
@@ -397,24 +338,9 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
 
-          <motion.div
-            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
             <div
               className="solution-bento"
               ref={(el: HTMLDivElement | null) => {
@@ -450,24 +376,9 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
 
-          <motion.div
-            className="sm:!hidden !flex bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
             <div
               className="solution-bento bento-center lg:max-w-[28%]"
               ref={(el: HTMLDivElement | null) => {
@@ -495,25 +406,10 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
 
           {/* sm: Bottom Row (2)*/}
-          <motion.div
-            className="!hidden sm:!flex bento-row !gap-y-[1rem]"
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{
-              // once: true, // Only animate once
-              amount: 0.2, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: 0.1,
-              // staggerChildren: 1,
-              duration: 0.4,
-              ease: "easeOut",
-            }}
-          >
+          <ScaleInVisible className="!hidden sm:!flex bento-row !gap-y-[1rem]">
             <div className="bento-row !gap-y-[1rem]">
               {/* First Bento */}
               <div
@@ -580,7 +476,7 @@ function SolutionSection({ className }: SectionProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </ScaleInVisible>
         </div>
 
         {/* CTA */}

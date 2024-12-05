@@ -11,6 +11,8 @@ import launchImage from "@/../../public/assets/images/instant-launch.webp";
 import powerUploadImage from "@/../../public/assets/images/power-upload.webp";
 import strategyImage from "@/../../public/assets/images/strategy-surge.webp";
 import machineImage from "@/../../public/assets/images/content-machine.webp";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
 
 interface SectionProps {
   className?: string;
@@ -19,61 +21,50 @@ interface SectionProps {
 function RoadmapSection({ className }: SectionProps) {
   // GSAP Animations
   useEffect(() => {
-    const loadGSAP = async () => {
-      const { gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Parallax effect
-      const effectElements = gsap.utils.toArray("[data-speed]");
-      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
-        const speed = parseFloat(el.getAttribute("data-speed") || "0");
-        gsap.fromTo(
-          el,
-          { y: 0 },
-          {
-            y: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-              onRefresh: (self: any) => {
-                const start = Math.max(0, self.start); // ensure no negative values
-                const distance = self.end - start;
-                const end = start + distance / speed;
-                self.setPositions(start, end);
-                if (self.animation) {
-                  // Check if self.animation is defined
-                  self.animation.vars.y = (end - start) * (1 - speed);
-                  self.animation
-                    .invalidate()
-                    .progress(1)
-                    .progress(self.progress);
-                }
-              },
+    // Parallax effect
+    const effectElements = gsap.utils.toArray("[data-speed]");
+    (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
+      const speed = parseFloat(el.getAttribute("data-speed") || "0");
+      gsap.fromTo(
+        el,
+        { y: 0 },
+        {
+          y: 0,
+          ease: "none",
+          scrollTrigger: {
+            trigger: el,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+            onRefresh: (self: any) => {
+              const start = Math.max(0, self.start); // ensure no negative values
+              const distance = self.end - start;
+              const end = start + distance / speed;
+              self.setPositions(start, end);
+              if (self.animation) {
+                // Check if self.animation is defined
+                self.animation.vars.y = (end - start) * (1 - speed);
+                self.animation.invalidate().progress(1).progress(self.progress);
+              }
             },
-          }
-        );
-      });
-      const sections = document.querySelectorAll(".snap-start");
-      ScrollTrigger.create({
-        trigger: ".snap-y",
-        start: "top top",
-        end: "bottom bottom",
-        // markers: true,
-        snap: {
-          snapTo: 1 / (sections.length - 1),
-          duration: { min: 2, max: 1.5 },
-          delay: 0,
-          ease: "power2.inOut",
-          inertia: false,
-        },
-      });
-    };
-
-    loadGSAP();
+          },
+        }
+      );
+    });
+    const sections = document.querySelectorAll(".snap-start");
+    ScrollTrigger.create({
+      trigger: ".snap-y",
+      start: "top top",
+      end: "bottom bottom",
+      // markers: true,
+      snap: {
+        snapTo: 1 / (sections.length - 1),
+        duration: { min: 2, max: 1.5 },
+        delay: 0,
+        ease: "power2.inOut",
+        inertia: false,
+      },
+    });
   }, []);
 
   return (
@@ -88,10 +79,7 @@ function RoadmapSection({ className }: SectionProps) {
           heading="Roadmap"
           subheading={
             <>
-              Your{" "}
-              <span className="text-goldenbrown">
-                90-Day Growth Plan
-              </span>
+              Your <span className="text-goldenbrown">90-Day Growth Plan</span>
             </>
           }
           body="Our 90-Day Growth Plan is designed to rapidly increase your real estate brand's visibility and engagement through a customized content strategy, social media management, and lead generation. In just 90 days, you'll see measurable growth in online presence and leads, giving you a competitive edge in the market."

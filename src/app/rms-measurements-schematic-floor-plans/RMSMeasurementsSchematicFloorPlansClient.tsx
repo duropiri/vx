@@ -1,16 +1,15 @@
-"use client";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 
 import SectionHeader from "@/components/ui/sectionHeader";
 
 import { ServiceIcons } from "@/data/serviceIcons";
-import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import floorplanImage from "@/../../public/assets/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
 import threedimensionalfloorplanImage from "@/../../public/assets/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
 import siteplanImage from "@/../../public/assets/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
+import FadeInUp from "@/components/animations/FadeInUp";
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -44,21 +43,10 @@ export const BenefitsSection = () => (
             body: "Let buyers visualize their future home with ease and stand out in a crowded market.",
           },
         ].map((item, index) => (
-          <motion.div
+          <FadeInUp
+            once={false}
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true, // Only animate once
-              amount: 0.3, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: (index + 2) * 0.1,
-              duration: 0.5,
-              ease: "easeOut",
-            }}
           >
             <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
               <div
@@ -73,7 +61,7 @@ export const BenefitsSection = () => (
                 <p className="pn-regular-16">{item.body}</p>
               </div>
             </div>
-          </motion.div>
+          </FadeInUp>
         ))}
       </div>
       {/* CTA */}

@@ -28,20 +28,8 @@ interface TemplateProps {
 
 const Template: React.FC<TemplateProps> = ({ children }) => {
   const pathname = usePathname();
-  // const [isVisible, setIsVisible] = useState(true);
-  // const [isEnter, setIsEnter] = useState(false);
-  // const [isExit, setIsExit] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  // const [isVisible2, setIsVisible2] = useState(true);
-  // const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
-  
-  // const handleInitialAnimationComplete = () => {
-  //   setIsInitialAnimationDone(true);
-  // };
 
-  // const handleExitAnimationComplete = () => {
-  //   setIsVisible(false);
-  // };
 
   const handleAnimationComplete = () => {
     setIsVisible(false); // Set isVisible to false after the animation completes

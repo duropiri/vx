@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ServiceIcons } from "@/data/serviceIcons";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
@@ -9,6 +6,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+import FadeInUp from "@/components/animations/FadeInUp";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -112,21 +110,10 @@ export const BenefitsSection = () => (
             heading: "VARIETY OF DESIGN OPTIONS",
           },
         ].map((item, index) => (
-          <motion.div
+          <FadeInUp
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true, // Only animate once
-              amount: 0.3, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: (index + 2) * 0.1,
-              duration: 0.5,
-              ease: "easeOut",
-            }}
+            once={false}
           >
             <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
               <div
@@ -140,7 +127,7 @@ export const BenefitsSection = () => (
                 </h1>
               </div>
             </div>
-          </motion.div>
+          </FadeInUp>
         ))}
       </div>
       {/* CTA */}

@@ -34,6 +34,9 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import PricingSection from "../sections/pricingSection";
 
 import { RealEstateVideographyPackages } from "@/data/pricingPackages";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import gsap from "gsap";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 const services = [
   {
@@ -269,29 +272,16 @@ const ServicesSection = () => (
     />
     <motion.div className="z-10 relative flex md:grid size-full max-w-[--section-width] flex-col md:grid-cols-2 xl:grid-cols-3 items-center md:items-start justify-center gap-[3rem] xl:gap-[2rem]">
       {services.map((service, index) => (
-        <motion.div
+        <ScaleInVisible
           key={index + 2}
           className="flex flex-col items-center justify-center"
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{
-            // once: true, // Only animate once
-            amount: 0.3, // Trigger when 30% of element is in view
-            margin: "50px", // Start animation 50px before element enters viewport
-          }}
-          transition={{
-            delay: 0.1,
-            // staggerChildren: 1,
-            duration: 0.4,
-            ease: "easeOut",
-          }}
         >
           <ServiceCard
             key={service.title}
             {...service}
             isRight={index % 1 !== 0}
           />
-        </motion.div>
+        </ScaleInVisible>
       ))}
     </motion.div>
   </div>
@@ -310,75 +300,67 @@ function Body() {
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
     // const heroSection = sectionRefs.current[0];
 
-    const loadGSAP = async () => {
-      const { gsap } = await import("gsap");
-      const { ScrollTrigger } = await import("gsap/ScrollTrigger");
-      gsap.registerPlugin(ScrollTrigger);
+    if (triggerSection) {
+      const updateColors = (change: boolean) => {
+        sectionRefs.current.forEach((section) => {
+          if (section) {
+            const originalColor = section.dataset.originalColor;
+            const transitionColor = section.dataset.transitionColor;
 
-      if (triggerSection) {
-        const updateColors = (change: boolean) => {
-          sectionRefs.current.forEach((section) => {
-            if (section) {
-              const originalColor = section.dataset.originalColor;
-              const transitionColor = section.dataset.transitionColor;
+            if (!originalColor || !transitionColor) {
+              console.warn(
+                "Original or transition color not set for section:",
+                section
+              );
+              return;
+            }
 
-              if (!originalColor || !transitionColor) {
-                console.warn(
-                  "Original or transition color not set for section:",
-                  section
-                );
-                return;
-              }
+            const newColor = change ? transitionColor : originalColor;
 
-              const newColor = change ? transitionColor : originalColor;
+            // Animate background color for each section
+            gsap.to(section, {
+              backgroundColor: newColor,
+              duration: 0.5,
+              ease: "power1.inOut",
+            });
 
-              // Animate background color for each section
-              gsap.to(section, {
-                backgroundColor: newColor,
+            // Update the color state of the ColorChangeSection component
+            const sectionComponent = section as unknown as {
+              setColor: (color: string) => void;
+            };
+            if (sectionComponent.setColor) {
+              sectionComponent.setColor(newColor);
+            }
+
+            // Animate gradient colors
+            const gradientElements = section.querySelectorAll(
+              ".bg-gradient-to-b, .bg-gradient-to-t"
+            ) as NodeListOf<HTMLElement>;
+            gradientElements.forEach((el) => {
+              gsap.to(el, {
+                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
                 duration: 0.5,
                 ease: "power1.inOut",
               });
-
-              // Update the color state of the ColorChangeSection component
-              const sectionComponent = section as unknown as {
-                setColor: (color: string) => void;
-              };
-              if (sectionComponent.setColor) {
-                sectionComponent.setColor(newColor);
-              }
-
-              // Animate gradient colors
-              const gradientElements = section.querySelectorAll(
-                ".bg-gradient-to-b, .bg-gradient-to-t"
-              ) as NodeListOf<HTMLElement>;
-              gradientElements.forEach((el) => {
-                gsap.to(el, {
-                  "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                  duration: 0.5,
-                  ease: "power1.inOut",
-                });
-              });
-            }
-          });
-        };
-
-        // Create ScrollTrigger for the section at index 1 only
-        ScrollTrigger.create({
-          trigger: triggerSection,
-          start: "top-=400px top",
-          end: "bottom top",
-          onEnter: () => updateColors(true),
-          onLeaveBack: () => updateColors(false),
-          // markers: true, // Remove in production
+            });
+          }
         });
-      }
-
-      return () => {
-        ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
-    };
 
-    loadGSAP();
+      // Create ScrollTrigger for the section at index 1 only
+      ScrollTrigger.create({
+        trigger: triggerSection,
+        start: "top-=400px top",
+        end: "bottom top",
+        onEnter: () => updateColors(true),
+        onLeaveBack: () => updateColors(false),
+        // markers: true, // Remove in production
+      });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
   }, []);
 
   return (
@@ -471,48 +453,18 @@ function Body() {
 
       <SocialProofSection full className="bg-white z-10" />
       {/* CTA */}
-      <motion.div
-        className="flex flex-col items-center justify-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{
-          // once: true, // Only animate once
-          amount: 0.3, // Trigger when 30% of element is in view
-          margin: "50px", // Start animation 50px before element enters viewport
-        }}
-        transition={{
-          delay: 0.1,
-          // staggerChildren: 1,
-          duration: 0.4,
-          ease: "easeOut",
-        }}
-      >
+      <ScaleInVisible className="flex flex-col items-center justify-center">
         <CTASection className="bg-white z-10" />
-      </motion.div>
+      </ScaleInVisible>
 
       {/* Testimonials */}
       <TestimonialsSection className="bg-white z-10 relative" />
 
       {/* Case Studies? */}
       {/* Contact */}
-      <motion.div
-        className="flex flex-col items-center justify-center"
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{
-          // once: true, // Only animate once
-          amount: 0.3, // Trigger when 30% of element is in view
-          margin: "50px", // Start animation 50px before element enters viewport
-        }}
-        transition={{
-          delay: 0.1,
-          // staggerChildren: 1,
-          duration: 0.4,
-          ease: "easeOut",
-        }}
-      >
+      <ScaleInVisible className="flex flex-col items-center justify-center">
         <ContactSection className="bg-white z-10" />
-      </motion.div>
+      </ScaleInVisible>
       {/* FAQ */}
       <FAQSection faq={listingMediaFAQ} vertical className="bg-white z-10" />
     </>

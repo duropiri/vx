@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { ServiceIcons } from "@/data/serviceIcons";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
@@ -10,6 +7,7 @@ import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
+import FadeInUp from "@/components/animations/FadeInUp";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -40,21 +38,10 @@ export const WhatIsItSection = () => (
             heading: "Attract a young audience",
           },
         ].map((item, index) => (
-          <motion.div
+          <FadeInUp
+            once={false}
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{
-              once: true, // Only animate once
-              amount: 0.3, // Trigger when 30% of element is in view
-              margin: "50px", // Start animation 50px before element enters viewport
-            }}
-            transition={{
-              delay: (index + 2) * 0.1,
-              duration: 0.5,
-              ease: "easeOut",
-            }}
           >
             <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
               <div
@@ -68,30 +55,30 @@ export const WhatIsItSection = () => (
                 </h1>
               </div>
             </div>
-          </motion.div>
+          </FadeInUp>
         ))}
       </div>
       {/* CTA */}
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-            <HoverWrapper className="">
-              <Link
-                href="https://listings.virtualxposure.com/order"
-                className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
-                passHref
-              >
-                <FlipLink className={`flex items-center w-fit`}>
-                  Place An Order
-                </FlipLink>
+          <HoverWrapper className="">
+            <Link
+              href="https://listings.virtualxposure.com/order"
+              className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
+              passHref
+            >
+              <FlipLink className={`flex items-center w-fit`}>
+                Place An Order
+              </FlipLink>
 
-                <Image
-                  alt="arrow"
-                  src={arrowRedirect}
-                  className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  quality={10}
-                />
-              </Link>
-            </HoverWrapper>
+              <Image
+                alt="arrow"
+                src={arrowRedirect}
+                className="text-ash group-hover:rotate-45 transition-all duration-300"
+                quality={10}
+              />
+            </Link>
+          </HoverWrapper>
         </div>
       </div>
     </div>
@@ -109,14 +96,15 @@ export const StepsLeftSection = () => (
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem]">
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          Sell your listings <span className="text-goldenbrown gold-text">68%</span>{" "}
-          faster than your competitors
+          Sell your listings{" "}
+          <span className="text-goldenbrown gold-text">68%</span> faster than
+          your competitors
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          <span className="text-goldenbrown gold-text">83%</span> of sellers would prefer
-          your service over the competition
+          <span className="text-goldenbrown gold-text">83%</span> of sellers
+          would prefer your service over the competition
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
@@ -143,8 +131,8 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listings with drone photography and or/videography sell{" "}
-            <span className="text-goldenbrown gold-text">68%</span> faster on average than
-            those that do not.
+            <span className="text-goldenbrown gold-text">68%</span> faster on
+            average than those that do not.
           </>
         ),
       },
@@ -152,8 +140,8 @@ export const StepsRightSection = () => (
         heading: "Appeal to more home buyers",
         body: (
           <>
-            <span className="text-goldenbrown gold-text">83%</span> of home sellers prefer
-            to work with and agent using drone services.
+            <span className="text-goldenbrown gold-text">83%</span> of home
+            sellers prefer to work with and agent using drone services.
           </>
         ),
       },
@@ -162,8 +150,9 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listing agents who use drones for real estate could see an increase
-            in listing as high as <span className="text-goldenbrown gold-text">73%</span>{" "}
-            and deal closing increases as high as{" "}
+            in listing as high as{" "}
+            <span className="text-goldenbrown gold-text">73%</span> and deal
+            closing increases as high as{" "}
             <span className="text-goldenbrown gold-text">68%</span>.
           </>
         ),

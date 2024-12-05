@@ -20,6 +20,7 @@ import {
   Scrollbar,
   A11y,
 } from "swiper/modules";
+import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface Feature {
   name: string;
@@ -383,49 +384,21 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                   >
                     {Object.values(packages).map((tier, index) => (
                       <SwiperSlide key={index} className="!cursor-swipe-hover">
-                        <motion.div
-                          initial={{ opacity: 0, scale: 0.9 }}
-                          whileInView={{ opacity: 1, scale: 1 }}
-                          viewport={{
-                            // once: true, // Only animate once
-                            amount: 0.2, // Trigger when 30% of element is in view
-                            margin: "50px", // Start animation 50px before element enters viewport
-                          }}
-                          transition={{
-                            delay: 0.1,
-                            // staggerChildren: 1,
-                            duration: 0.4,
-                            ease: "easeOut",
-                          }}
-                          className="group relative size-full"
-                        >
+                        <ScaleInVisible className="group relative size-full">
                           <PricingTier
                             tier={tier}
                             isYearly={isYearly}
                             className=""
                           />
-                        </motion.div>
+                        </ScaleInVisible>
                       </SwiperSlide>
                     ))}
                   </Swiper>
                 </div>
                 <div className="xl:hidden contents">
                   {Object.values(packages).map((tier, index) => (
-                    <motion.div
+                    <ScaleInVisible
                       key={index}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{
-                        // once: true, // Only animate once
-                        amount: 0.2, // Trigger when 30% of element is in view
-                        margin: "50px", // Start animation 50px before element enters viewport
-                      }}
-                      transition={{
-                        delay: 0.1,
-                        // staggerChildren: 1,
-                        duration: 0.4,
-                        ease: "easeOut",
-                      }}
                       className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                     >
                       <PricingTier
@@ -433,28 +406,15 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                         isYearly={isYearly}
                         className=""
                       />
-                    </motion.div>
+                    </ScaleInVisible>
                   ))}
                 </div>
               </>
             ) : packageCount > 2 ? (
               <>
                 {Object.values(packages).map((tier, index) => (
-                  <motion.div
+                  <ScaleInVisible
                     key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{
-                      // once: true, // Only animate once
-                      amount: 0.2, // Trigger when 30% of element is in view
-                      margin: "50px", // Start animation 50px before element enters viewport
-                    }}
-                    transition={{
-                      delay: 0.1,
-                      // staggerChildren: 1,
-                      duration: 0.4,
-                      ease: "easeOut",
-                    }}
                     className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier
@@ -462,31 +422,18 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                       isYearly={isYearly}
                       className="xl:min-h-[68rem]"
                     />
-                  </motion.div>
+                  </ScaleInVisible>
                 ))}
               </>
             ) : (
               <>
                 {Object.values(packages).map((tier, index) => (
-                  <motion.div
+                  <ScaleInVisible
                     key={index}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{
-                      // once: true, // Only animate once
-                      amount: 0.2, // Trigger when 30% of element is in view
-                      margin: "50px", // Start animation 50px before element enters viewport
-                    }}
-                    transition={{
-                      delay: 0.1,
-                      // staggerChildren: 1,
-                      duration: 0.4,
-                      ease: "easeOut",
-                    }}
                     className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier tier={tier} isYearly={isYearly} className="" />
-                  </motion.div>
+                  </ScaleInVisible>
                 ))}
               </>
             )}

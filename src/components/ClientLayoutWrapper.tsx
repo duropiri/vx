@@ -1,9 +1,16 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { initGSAP } from '@/utils/gsap';
+
 
 interface ClientLayoutWrapperProps {
   children: React.ReactNode;
+}
+
+// Initialize GSAP once when the app starts
+if (typeof window !== 'undefined') {
+  initGSAP();
 }
 
 export default function ClientLayoutWrapper({

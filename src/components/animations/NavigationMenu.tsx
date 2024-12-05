@@ -198,7 +198,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                         alt={item.title}
                         height={20}
                         width={20}
-                        className="transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-ash"
+                        className="aspect-square transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-ash"
                       />
                     </div>
                     <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
@@ -439,12 +439,16 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     pathname === "/" ||
     pathname === "/services/listing-media" ||
     pathname === "/services/social-media-management";
-    const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(null);
-    const [previousDropdown, setPreviousDropdown] = useState<LinkDetails | null>(null);
-    const [isAnimating, setIsAnimating] = useState(false);
-    const [isMouseInHeader, setIsMouseInHeader] = useState(false);
-    const [isActive, setIsActive] = useState(false);
-    const scrollDirection = useScrollDirection();
+  const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
+    null
+  );
+  const [previousDropdown, setPreviousDropdown] = useState<LinkDetails | null>(
+    null
+  );
+  const [isAnimating, setIsAnimating] = useState(false);
+  const [isMouseInHeader, setIsMouseInHeader] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+  const scrollDirection = useScrollDirection();
 
   useEffect(() => {
     if (!isMouseInHeader) {
@@ -456,16 +460,16 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const handleMouseEnter = async (nav: LinkDetails) => {
     if (nav.dropdown) {
       setIsMouseInHeader(true);
-      
+
       if (activeDropdown && activeDropdown !== nav) {
         // If there's an active dropdown and it's different from the new one
         setIsAnimating(true);
         setPreviousDropdown(activeDropdown);
         setActiveDropdown(null);
-        
+
         // Wait for exit animation to complete
-        await new Promise(resolve => setTimeout(resolve, 300));
-        
+        await new Promise((resolve) => setTimeout(resolve, 300));
+
         // Start enter animation for new dropdown
         setActiveDropdown(nav);
         setPreviousDropdown(null);
@@ -529,12 +533,20 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </div>
 
           {/* Navigation */}
-          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full">
+          <nav
+            className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full w-fit"
+          >
             {navigation.map((nav, index) => (
               <div
                 key={index}
                 className="flex relative group items-center justify-center self-stretch"
-                onMouseEnter={() => handleMouseEnter(nav)}
+                onMouseEnter={() => {
+                  if (nav.dropdown) {
+                    handleMouseEnter(nav);
+                  } else {
+                    handleMouseLeave();
+                  }
+                }}
               >
                 <HoverWrapper className="">
                   <Link
@@ -598,12 +610,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
         {/* Dropdown Menu using Nav component */}
         <AnimatePresence mode="sync">
-          {(activeDropdown || previousDropdown) && scrollDirection !== "down" && (
-            <Nav 
-              key={activeDropdown?.title || previousDropdown?.title} 
-              activeDropdown={activeDropdown || previousDropdown} 
-            />
-          )}
+          {(activeDropdown || previousDropdown) &&
+            scrollDirection !== "down" && (
+              <Nav
+                key={activeDropdown?.title || previousDropdown?.title}
+                activeDropdown={activeDropdown || previousDropdown}
+              />
+            )}
         </AnimatePresence>
       </div>
 
