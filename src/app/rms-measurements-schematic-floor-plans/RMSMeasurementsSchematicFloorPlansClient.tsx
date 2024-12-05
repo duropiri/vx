@@ -81,7 +81,7 @@ export const BenefitsSection = () => (
                 alt="arrow"
                 src={arrowRedirect}
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={10}
+                quality={75}
               />
             </Link>
           </HoverWrapper>
@@ -142,7 +142,7 @@ export const WhatIsItSection1 = () => (
           width={1200}
           height={600}
           className="w-full h-full object-cover pointer-events-none"
-          quality={80}
+          quality={75}
         />
       </div>
     </div>
@@ -165,7 +165,7 @@ export const WhatIsItSection2 = () => (
           width={1200}
           height={600}
           className="w-full h-full object-cover pointer-events-none"
-          quality={80}
+          quality={75}
         />
       </div>
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -251,7 +251,7 @@ export const WhatIsItSection3 = () => (
           width={1200}
           height={600}
           className="w-full h-full object-cover pointer-events-none"
-          quality={80}
+          quality={75}
         />
       </div>
     </div>

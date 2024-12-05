@@ -156,7 +156,7 @@ const ServiceCard = ({
             width={1200}
             height={600}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={80}
+            quality={75}
           />
         </div>
       </div>
@@ -220,7 +220,7 @@ const ServiceCard = ({
                     alt="arrow"
                     src={themeClasses.arrow}
                     className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
-                    quality={80}
+                    quality={75}
                   />
                 </Link>
               </HoverWrapper>
@@ -242,7 +242,7 @@ const ServiceCard = ({
                       alt="arrow"
                       src={themeClasses.arrow}
                       className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
-                      quality={80}
+                      quality={75}
                     />
                   </Link>
                 </HoverWrapper>

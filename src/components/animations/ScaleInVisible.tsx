@@ -29,7 +29,7 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
       margin = "50px",
       id,
       key,
-      once = false,
+      once = true,
       onClick,
       whileHover,
       whileTap,

@@ -8,18 +8,28 @@ import React from "react";
 interface SectionProps {
   className?: string;
   scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
+  largeText?: boolean;
   heading?: string;
   subheading?: string;
   body?: string;
   content?: React.ReactElement;
+  headingClassName?: string;
+  subheadingClassName?: string;
+  bodyClassName?: string;
+  dark?: boolean;
 }
 
 function BasicHeroSection({
   className,
+  largeText,
   heading,
+  headingClassName,
   subheading,
+  subheadingClassName,
   body,
+  bodyClassName,
   content,
+  dark
 }: SectionProps) {
   return (
     <div className={`section-container top !flex-col ${className} bg-white`}>
@@ -27,11 +37,18 @@ function BasicHeroSection({
         {/* Header */}
         <SectionHeader
           center
+          dark={dark}
+          largeText={largeText}
           heading={heading}
+          headingClassName={headingClassName}
           subheading={subheading}
+          subheadingClassName={subheadingClassName}
           body={body}
+          bodyClassName={bodyClassName}
         />
-        {content && <div className="flex flex-col items-center size-full">{content}</div>}
+        {content && (
+          <div className="flex flex-col items-center size-full">{content}</div>
+        )}
       </div>
     </div>
   );

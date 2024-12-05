@@ -10,7 +10,7 @@ export const getChars = (word: string) => {
           variants={translate}
           initial="initial"
           animate="enter"
-          exit="exit"
+          // exit="exit"
           key={char + i}
           style={{ whiteSpace: char === " " ? "pre" : "normal" }}
         >

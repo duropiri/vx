@@ -48,7 +48,7 @@ function WhyUsSection({
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={80}
+            quality={75}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -60,7 +60,7 @@ function WhyUsSection({
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={80}
+            quality={75}
           />
         </ScrollingBanner>
       </div>

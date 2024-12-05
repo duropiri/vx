@@ -108,7 +108,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
                   alt="arrow"
                   src={arrowRedirect}
                   className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  quality={10}
+                  quality={75}
                 />
               </Link>
             </HoverWrapper>

@@ -194,6 +194,7 @@ export const PhotographySection = ({ dark = true }) => {
 
   const renderCaseStudyCard = (study) => (
     <ScaleInVisible
+      once={false}
       key={"case-study-" + study.id}
       className="relative group cursor-select-hover rounded-[1rem] overflow-hidden flex flex-col"
       onClick={() => setSelectedImage(study.image)}
@@ -207,7 +208,7 @@ export const PhotographySection = ({ dark = true }) => {
               fill
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
               className="w-full scale-125 group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
-              quality={80}
+              quality={75}
             />
           </div>
         </div>
@@ -331,7 +332,7 @@ export const PhotographySection = ({ dark = true }) => {
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
                   className="object-contain"
-                  quality={100}
+                  quality={75}
                 />
               )}
               <Dialog.Close className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/75 transition-colors cursor-select-hover">
@@ -403,7 +404,7 @@ export const VirtualSection = ({
             width={1200}
             height={600}
             className="w-full h-full object-cover pointer-events-none"
-            quality={80}
+            quality={75}
           />
           <span className="absolute bottom-[1rem] left-[1rem] subheading pn-semibold-16 bg-charcoal text-white opacity-80">
             Before
@@ -418,7 +419,7 @@ export const VirtualSection = ({
             width={1200}
             height={600}
             className="w-full h-full object-cover pointer-events-none"
-            quality={80}
+            quality={75}
           />
           <span className="absolute bottom-[1rem] right-[1rem] subheading pn-semibold-16 bg-ash text-goldenrod opacity-80">
             <span className="gold-text">After</span>

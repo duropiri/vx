@@ -21,7 +21,7 @@ export const WhatIsItSection1 = () => (
             width={1200}
             height={600}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={80}
+            quality={75}
           />
         </div>
       </div>
@@ -70,7 +70,7 @@ export const WhatIsItSection1 = () => (
                     alt="arrow"
                     src={arrowRedirect}
                     className="text-ash group-hover/cta:rotate-45 transition-all duration-300"
-                    quality={10}
+                    quality={75}
                   />
                 </Link>
               </HoverWrapper>
@@ -93,7 +93,7 @@ export const WhatIsItSection2 = () => (
             width={1200}
             height={600}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={80}
+            quality={75}
           />
         </div>
       </div>
@@ -135,7 +135,7 @@ export const WhatIsItSection2 = () => (
                   alt="arrow"
                   src={arrowRedirectWhite}
                   className="text-white group-hover/cta:rotate-45 transition-all duration-300"
-                  quality={80}
+                  quality={75}
                 />
               </HoverWrapper>
             </div>
@@ -162,7 +162,7 @@ export const WhatIsItSection3 = () => (
             width={1200}
             height={600}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={80}
+            quality={75}
           />
         </div>
       </div>
@@ -213,7 +213,7 @@ export const WhatIsItSection3 = () => (
                     alt="arrow"
                     src={arrowRedirect}
                     className="text-ash group-hover/cta:rotate-45 transition-all duration-300"
-                    quality={10}
+                    quality={75}
                   />
                 </Link>
               </HoverWrapper>

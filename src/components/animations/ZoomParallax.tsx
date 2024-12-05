@@ -224,7 +224,7 @@ export default function ZoomParallax({
                   objectFit={item.fit || "contain"}
                   sizes="(max-width: 640px) 600px, (max-width: 1024px) 600px, 600px" // Adjust these sizes based on your layout
                   // placeholder="blur"
-                  quality={80}
+                  quality={75}
                 />
               </div>
             )}

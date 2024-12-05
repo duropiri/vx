@@ -112,7 +112,7 @@ const Phrase: React.FC<PhraseProps> = ({ text, src }) => {
           alt="image"
           fill
           placeholder="blur"
-          quality={80}
+          quality={75}
         />
       </span>
     </div>

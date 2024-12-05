@@ -67,7 +67,7 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={80}
+            quality={75}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -79,7 +79,7 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={80}
+            quality={75}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -91,7 +91,7 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={80}
+            quality={75}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -103,7 +103,7 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={80}
+            quality={75}
           />
         </ScrollingBanner>
       </div>
@@ -177,7 +177,7 @@ function SolutionSection({ className }: SectionProps) {
                     src={completeDMSImage}
                     className="size-[80%] h-full object-cover"
                     placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 </div>
               </div>
@@ -254,7 +254,7 @@ function SolutionSection({ className }: SectionProps) {
                     src={highQCCImage}
                     className="size-[80%] h-full object-cover"
                     placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 </div>
               </div>
@@ -332,7 +332,7 @@ function SolutionSection({ className }: SectionProps) {
                       src={highQCCImage}
                       className="size-[80%] h-full object-cover"
                       placeholder="blur"
-                      quality={80}
+                      quality={75}
                     />
                   </div>
                 </div>
@@ -371,7 +371,7 @@ function SolutionSection({ className }: SectionProps) {
                     src={stratGrowthImage}
                     className="size-[70%] h-full object-cover"
                     placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 </div>
               </div>
@@ -442,7 +442,7 @@ function SolutionSection({ className }: SectionProps) {
                       src={stratGrowthImage}
                       className="size-[70%] h-full object-cover"
                       placeholder="blur"
-                      quality={80}
+                      quality={75}
                     />
                   </div>
                 </div>
@@ -490,7 +490,7 @@ function SolutionSection({ className }: SectionProps) {
               alt="arrow"
               src={arrowRedirectWhite}
               className="text-white group-hover:rotate-45 transition-all duration-300"
-              quality={80}
+              quality={75}
             />
           </HoverWrapper>
 
@@ -503,7 +503,7 @@ function SolutionSection({ className }: SectionProps) {
               alt="arrow"
               src={arrowRedirect}
               className="text-white group-hover:rotate-45 transition-all duration-300"
-              quality={80}
+              quality={75}
             />
           </HoverWrapper>
         </div>

@@ -204,7 +204,7 @@ function RoadmapSection({ className }: SectionProps) {
                   alt="vx"
                   className="pointer-events-none size-full object-cover z-10"
                   placeholder="blur"
-                  quality={80}
+                  quality={75}
                 />
               </div>
             </div>
@@ -275,7 +275,7 @@ function RoadmapSection({ className }: SectionProps) {
                   alt="vx"
                   className="pointer-events-none size-full object-cover z-10"
                   placeholder="blur"
-                  quality={80}
+                  quality={75}
                 />
               </div>
             </div>
@@ -345,7 +345,7 @@ function RoadmapSection({ className }: SectionProps) {
                   alt="vx"
                   className="pointer-events-none size-full object-cover z-10"
                   placeholder="blur"
-                  quality={80}
+                  quality={75}
                 />
               </div>
             </div>
@@ -415,7 +415,7 @@ function RoadmapSection({ className }: SectionProps) {
                   alt="vx"
                   className="pointer-events-none size-full object-cover z-10"
                   placeholder="blur"
-                  quality={80}
+                  quality={75}
                 />
               </div>
             </div>

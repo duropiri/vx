@@ -89,7 +89,7 @@ function Body() {
                     width={1200}
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all point"
-                    quality={80}
+                    quality={75}
                     priority
                   />
                 </div>
@@ -103,7 +103,7 @@ function Body() {
                     width={1200}
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
-                    quality={80}
+                    quality={75}
                     priority
                   />
                 </div>
@@ -117,7 +117,7 @@ function Body() {
                     width={1200}
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
-                    quality={80}
+                    quality={75}
                     priority
                   />
                 </div>
@@ -130,7 +130,7 @@ function Body() {
                     width={1200}
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
-                    quality={80}
+                    quality={75}
                     priority
                   />
                 </div>
@@ -141,7 +141,7 @@ function Body() {
                     width={1200}
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
-                    quality={80}
+                    quality={75}
                   />
                 </div>
                 <div className="max-w-[1/3] rounded-[1rem] overflow-hidden">
@@ -151,7 +151,7 @@ function Body() {
                     width={1200}
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
-                    quality={80}
+                    quality={75}
                   />
                 </div>
               </div>

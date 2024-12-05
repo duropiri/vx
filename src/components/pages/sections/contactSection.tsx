@@ -1,3 +1,4 @@
+"use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
@@ -50,7 +51,8 @@ function ContactSection({ className }: SectionProps): React.JSX.Element {
           heading="Contact"
           subheading={
             <>
-              Book Your <span className="text-goldenbrown uppercase underline">Free</span>{" "}
+              Book Your{" "}
+              <span className="text-goldenbrown uppercase underline">Free</span>{" "}
               Consultation With Us Today!
             </>
           }

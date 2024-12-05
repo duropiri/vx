@@ -150,7 +150,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               alt={title}
               fill
               className="object-cover"
-              quality={80}
+              quality={75}
               priority
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none" />
@@ -207,7 +207,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     alt="arrow"
                     src={arrowRedirectWhite}
                     className="text-white group-hover:rotate-45 transition-all duration-300"
-                    quality={80}
+                    quality={75}
                   />
                 </HoverWrapper>
               </div>

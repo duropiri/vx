@@ -47,7 +47,7 @@ function CTASection({ className = "" }: SectionProps) {
               alt="arrow"
               src={arrowRedirectWhite}
               className="text-white group-hover:rotate-45 transition-all duration-300"
-              quality={80}
+              quality={75}
             />
           </HoverWrapper>
 
@@ -60,7 +60,7 @@ function CTASection({ className = "" }: SectionProps) {
               alt="arrow"
               src={arrowRedirect}
               className="text-white group-hover:rotate-45 transition-all duration-300"
-              quality={80}
+              quality={75}
             />
           </HoverWrapper>
         </div>

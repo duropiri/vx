@@ -103,7 +103,7 @@ export default function Footer({
                       alt="logo"
                       className="w-[2.25rem]"
                       placeholder="blur"
-                      quality={80}
+                      quality={75}
                     />
                     <h1 className="pn-semibold-24">Virtual Xposure</h1>
                   </nav>
@@ -272,49 +272,49 @@ export default function Footer({
             alt="amex"
             src={amex}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="apple-pay"
             src={applePay}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="diners-club"
             src={dinersClub}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="discover"
             src={discover}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="google-pay"
             src={googlePay}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="mastercard"
             src={masterCard}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="shop-pay"
             src={shopPay}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
           <Image
             alt="visa"
             src={visa}
             className="size-full max-w-[2rem]"
-            quality={80}
+            quality={75}
           />
         </div>
       </div>

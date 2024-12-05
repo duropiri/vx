@@ -23,7 +23,7 @@ export const WhatIsItSection = () => (
             width={1200}
             height={600}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={80}
+            quality={75}
           />
         </div>
       </div>
@@ -281,7 +281,7 @@ export const UnlimitedRightSection = () => (
         width={1200}
         height={600}
         className=""
-        quality={80}
+        quality={75}
       />
     </div>
     {/* Gradient */}

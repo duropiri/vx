@@ -161,7 +161,7 @@ const Preloader: React.FC<PreloaderProps> = ({
             className="w-[9.375rem] h-auto mix-blend-difference"
             priority
             placeholder="blur"
-            quality={80}
+            quality={75}
           />
         </div>
 

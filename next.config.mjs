@@ -8,7 +8,7 @@ const nextConfig = {
   reactStrictMode: true, // Helps catch potential issues early on
   images: {
     // Optimize image loading
-    // domains: ["your-image-domain.com"], // Allow loading images from specific domains
+    domains: ["virtualxposure.com"], // Allow loading images from specific domains
     formats: ["image/avif", "image/webp"], // Use modern formats
   },
   compress: true, // Enables gzip/brotli compression for better performance

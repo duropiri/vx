@@ -94,7 +94,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="chevron"
                                 src={chevdownImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                           </div>
@@ -156,7 +156,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="instagram"
                                       src={instagramImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -173,7 +173,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -183,7 +183,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -197,7 +197,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -209,7 +209,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -231,7 +231,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="facebook"
                                       src={facebookImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -248,7 +248,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -258,7 +258,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -272,7 +272,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -284,7 +284,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -306,7 +306,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="tiktok"
                                       src={tiktokImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -323,7 +323,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -333,7 +333,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -347,7 +347,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -359,7 +359,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -381,7 +381,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="linkedin"
                                       src={linkedinImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -398,7 +398,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -408,7 +408,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -422,7 +422,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -434,7 +434,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -490,7 +490,7 @@ function ServicesSection({ className }: SectionProps) {
                             <Image
                               alt="instagram"
                               src={instagramImage}
-                              quality={80}
+                              quality={75}
                               className="group-hover:animate-bounce"
                             />
                           </div>
@@ -521,7 +521,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="arrow"
                                   src={arrowURBlackImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -549,7 +549,7 @@ function ServicesSection({ className }: SectionProps) {
                           <Image
                             alt="facebook"
                             src={facebookImage}
-                            quality={80}
+                            quality={75}
                             className="group-hover:animate-bounce"
                           />
                           <div className="text-ash nu-semibold-12">
@@ -580,7 +580,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="arrow"
                                   src={arrowURBlackImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -611,7 +611,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="tiktok"
                                 src={tiktokImage}
-                                quality={80}
+                                quality={75}
                                 className="group-hover:animate-bounce"
                               />
                             </div>
@@ -641,7 +641,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="arrow"
                                   src={arrowURBlackImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -670,7 +670,7 @@ function ServicesSection({ className }: SectionProps) {
                             <Image
                               alt="linkedin"
                               src={linkedinImage}
-                              quality={80}
+                              quality={75}
                               className="group-hover:animate-bounce"
                             />
                           </div>
@@ -702,7 +702,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="arrow"
                                   src={arrowURBlackImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                               <div className="text-goldenbrown nu-semibold-12">
@@ -765,7 +765,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="chevron"
                                 src={chevdownImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                           </div>
@@ -827,7 +827,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="instagram"
                                       src={instagramImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -844,7 +844,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -854,7 +854,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -868,7 +868,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -880,7 +880,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -902,7 +902,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="facebook"
                                       src={facebookImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -919,7 +919,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -929,7 +929,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -943,7 +943,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -955,7 +955,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -977,7 +977,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="tiktok"
                                       src={tiktokImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -994,7 +994,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -1004,7 +1004,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -1018,7 +1018,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -1030,7 +1030,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -1052,7 +1052,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="linkedin"
                                       src={linkedinImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -1069,7 +1069,7 @@ function ServicesSection({ className }: SectionProps) {
                                 className="w-[70px] h-[70px] rounded-[5px] border border-white"
                                 src={socmedPostImage}
                                 alt="post-image"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="w-full justify-between items-center flex">
@@ -1079,7 +1079,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="info"
                                       src={infoImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-center text-goldenbrown nu-semibold-12">
@@ -1093,7 +1093,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="calendar"
                                       src={calendarImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -1105,7 +1105,7 @@ function ServicesSection({ className }: SectionProps) {
                                     <Image
                                       alt="clock"
                                       src={clockImage}
-                                      quality={80}
+                                      quality={75}
                                     />
                                   </div>
                                   <div className="text-ash nu-regular-12">
@@ -1158,35 +1158,35 @@ function ServicesSection({ className }: SectionProps) {
                                 src={person1Image}
                                 alt="team-image"
                                 placeholder="blur"
-                                quality={80}
+                                quality={75}
                               />
                               <Image
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[-25%] group-hover:-rotate-12 group-hover:translate-y-[-25%]"
                                 src={person2Image}
                                 alt="team-image"
                                 placeholder="blur"
-                                quality={80}
+                                quality={75}
                               />
                               <Image
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-y-[-35%]"
                                 src={person3Image}
                                 alt="team-image"
                                 placeholder="blur"
-                                quality={80}
+                                quality={75}
                               />
                               <Image
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[25%] group-hover:rotate-12 group-hover:translate-y-[-25%]"
                                 src={person4Image}
                                 alt="team-image"
                                 placeholder="blur"
-                                quality={80}
+                                quality={75}
                               />
                               <Image
                                 className="transition-all duration-500 w-12 h-12 relative rounded-full group-hover:translate-x-[50%] group-hover:rotate-45"
                                 src={person5Image}
                                 alt="team-image"
                                 placeholder="blur"
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                           </div>
@@ -1235,7 +1235,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="instagram"
                                 src={instagramImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="flex-col justify-start items-start flex">
@@ -1247,7 +1247,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="chevron"
                                 src={chevdownImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                           </div>
@@ -1270,7 +1270,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="growth"
                                 src={growthImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="text-white nu-semibold-12">
@@ -1299,7 +1299,7 @@ function ServicesSection({ className }: SectionProps) {
                                   <Image
                                     alt="arrow"
                                     src={arrowURImage}
-                                    quality={80}
+                                    quality={75}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -1327,7 +1327,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="followers"
                                   src={followersImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                             </div>
@@ -1357,7 +1357,7 @@ function ServicesSection({ className }: SectionProps) {
                                   <Image
                                     alt="arrow"
                                     src={arrowURBlackImage}
-                                    quality={80}
+                                    quality={75}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -1385,7 +1385,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="unfollow"
                                   src={unfollowImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                             </div>
@@ -1415,7 +1415,7 @@ function ServicesSection({ className }: SectionProps) {
                                   <Image
                                     alt="arrow"
                                     src={arrowURBlackImage}
-                                    quality={80}
+                                    quality={75}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -1544,7 +1544,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="instagram"
                                 src={instagramImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="flex-col justify-start items-start flex">
@@ -1556,7 +1556,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="chevron"
                                 src={chevdownImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                           </div>
@@ -1579,7 +1579,7 @@ function ServicesSection({ className }: SectionProps) {
                               <Image
                                 alt="growth"
                                 src={growthImage}
-                                quality={80}
+                                quality={75}
                               />
                             </div>
                             <div className="text-white nu-semibold-12">
@@ -1608,7 +1608,7 @@ function ServicesSection({ className }: SectionProps) {
                                   <Image
                                     alt="arrow"
                                     src={arrowURImage}
-                                    quality={80}
+                                    quality={75}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -1636,7 +1636,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="followers"
                                   src={followersImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                             </div>
@@ -1666,7 +1666,7 @@ function ServicesSection({ className }: SectionProps) {
                                   <Image
                                     alt="arrow"
                                     src={arrowURBlackImage}
-                                    quality={80}
+                                    quality={75}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">
@@ -1694,7 +1694,7 @@ function ServicesSection({ className }: SectionProps) {
                                 <Image
                                   alt="unfollow"
                                   src={unfollowImage}
-                                  quality={80}
+                                  quality={75}
                                 />
                               </div>
                             </div>
@@ -1724,7 +1724,7 @@ function ServicesSection({ className }: SectionProps) {
                                   <Image
                                     alt="arrow"
                                     src={arrowURBlackImage}
-                                    quality={80}
+                                    quality={75}
                                   />
                                 </div>
                                 <div className="text-goldenbrown nu-semibold-12">

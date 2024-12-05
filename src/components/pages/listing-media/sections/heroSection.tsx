@@ -644,7 +644,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={instagramHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -689,7 +689,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={twitterHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -733,7 +733,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={facebookHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -777,7 +777,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={tiktokHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -821,7 +821,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={linkedinHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -865,7 +865,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={pinterestHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -909,7 +909,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={youtubeHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -953,7 +953,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="icon"
                       src={whatsappHeroImage}
                       className="size-full shadow-2xl rounded-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   </motion.div>
@@ -979,7 +979,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       alt="start"
                       src={starImage}
                       className="w-[1rem]"
-                      quality={10}
+                      quality={75}
                       priority
                     />
                   ))}
@@ -1063,7 +1063,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                         alt="arrow"
                         src={arrowRedirect}
                         className="text-ash group-hover:rotate-45 transition-all duration-300"
-                        quality={10}
+                        quality={75}
                       />
                     </Link>
                   </HoverWrapper>
@@ -1096,7 +1096,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   alt="logo"
                   className="size-full"
                   placeholder="blur"
-                  quality={10}
+                  quality={75}
                 />
               </Link>
             </div>
@@ -1133,7 +1133,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 alt="arrow"
                 src={arrowRedirect}
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={10}
+                quality={75}
               />
             </HoverWrapper>
           </div>

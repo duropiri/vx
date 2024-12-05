@@ -32,7 +32,7 @@ function Body() {
               width={1200}
               height={600}
               className="pointer-events-none"
-              quality={80}
+              quality={75}
               priority
             />
             <TestimonialsSection

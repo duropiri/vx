@@ -163,7 +163,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     height={48}
                     className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
                     // placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 ))}
               </ScrollingBanner>
@@ -184,7 +184,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     height={48}
                     className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
                     // placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 ))}
               </ScrollingBanner>
@@ -205,7 +205,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     height={48}
                     className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
                     // placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 ))}
               </ScrollingBanner>
@@ -230,7 +230,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     height={48}
                     className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
                     // placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 ))}
               </ScrollingBanner>
@@ -255,7 +255,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     height={48}
                     className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
                     // placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 ))}
               </ScrollingBanner>
@@ -280,7 +280,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
                     height={48}
                     className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
                     // placeholder="blur"
-                    quality={80}
+                    quality={75}
                   />
                 ))}
               </ScrollingBanner>

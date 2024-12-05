@@ -83,11 +83,11 @@ export const translate = {
     opacity: 1,
     transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: i[0] },
   }),
-  exit: (i: [number, number]) => ({
-    y: "100%",
-    opacity: 0,
-    transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: i[1] },
-  }),
+  // exit: (i: [number, number]) => ({
+  //   y: "100%",
+  //   opacity: 0,
+  //   transition: { duration: 0.7, ease: [0.76, 0, 0.24, 1], delay: i[1] },
+  // }),
 };
 
 interface DropdownItem {
@@ -276,7 +276,7 @@ const MobileMenu: React.FC<{
         opacity: isActive ? 1 : 0,
       }}
       transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed left-0 top-[3.85rem] w-full bg-white/80 backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
+      className="fixed left-0 top-[3.85rem] w-full bg-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
     >
       <div className="p-6 flex flex-col gap-6">
         {navigation.map((nav, index) => (
@@ -511,7 +511,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[1rem] lg:p-[1rem] lg:pl-[1.5rem] bg-white/80 backdrop-blur-sm fixed top-0 left-0 right-0`}
+        className={`transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto p-[1rem] lg:p-[1rem] lg:pl-[1.5rem] bg-white backdrop-blur-sm fixed top-0 left-0 right-0`}
       >
         {/* Original Header */}
         <div className="relative flex size-full items-center justify-between gap-10 z-[9999]">
@@ -527,7 +527,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 alt="logo"
                 className="w-[3rem] sm:w-[5rem]"
                 placeholder="blur"
-                quality={80}
+                quality={75}
               />
             </Link>
           </div>
@@ -575,7 +575,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                   alt="arrow"
                   src={arrowRedirect}
                   className="text-white group-hover:rotate-45 transition-all duration-300"
-                  quality={80}
+                  quality={75}
                 />
               </Link>
             </HoverWrapper>

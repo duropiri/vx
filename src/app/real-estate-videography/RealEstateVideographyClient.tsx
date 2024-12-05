@@ -75,7 +75,7 @@ export const WhatIsItSection = () => (
                 alt="arrow"
                 src={arrowRedirect}
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={10}
+                quality={75}
               />
             </Link>
           </HoverWrapper>
@@ -227,7 +227,7 @@ export const UnlimitedRightSection = () => (
         width={1200}
         height={600}
         className=""
-        quality={80}
+        quality={75}
       />
     </div>
     {/* Gradient */}
