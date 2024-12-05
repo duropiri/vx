@@ -20,6 +20,28 @@ import {
   //   ReactCompareSliderImage,
 } from "react-compare-slider";
 
+// Create a mapping of all images using the imported assets
+const PORTFOLIO_IMAGES = {
+  interior: Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    src: `/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(${
+      i + 1
+    }).webp`,
+  })),
+  exterior: Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    src: `/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(${
+      i + 1
+    }).webp`,
+  })),
+  "aerial drone": Array.from({ length: 12 }, (_, i) => ({
+    id: i + 1,
+    src: `/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(${
+      i + 1
+    }).webp`,
+  })),
+};
+
 export const FloorplansSection = () => {
   // const iGuideUrl = "https://youriguide.com/11408_167a_ave_edmonton_ab";
   const iGuideUrl =
@@ -105,137 +127,63 @@ export const PhotographySection = ({ dark = true }) => {
     };
   }, []);
 
-  // Screen Size checking
-  useEffect(() => {
-    console.log("Is Mobile:", isMobile);
-  }, [isMobile]); // This will run whenever isMobile changes
+  // const getImagePath = (category, index) => {
+  //   const formattedCategory =
+  //     category === "aerial drone" ? "aerial drone" : category;
+  //   const capitalizedCategory = formattedCategory
+  //     .split(" ")
+  //     .map((word) => word.charAt(0) + word.slice(1))
+  //     .join("_");
+  //   return `/assets/portfolio/images/${formattedCategory}/Virtual_Xposure_-_${capitalizedCategory}_Image_-_(${index}).webp`;
+  // };
 
-  const getImagePath = (category, index) => {
-    const formattedCategory =
-      category === "aerial drone" ? "aerial drone" : category;
-    const capitalizedCategory = formattedCategory
-      .split(" ")
-      .map((word) => word.charAt(0) + word.slice(1))
-      .join("_");
-    return `/assets/portfolio/images/${formattedCategory}/Virtual_Xposure_-_${capitalizedCategory}_Image_-_(${index}).webp`;
-  };
-
-  // const generateCategoryItemsRandom = (category, count) => {
-  //   // Generate a larger pool of items first (e.g., 30)
-  //   const allItems = Array.from({ length: 19 }, (_, index) => ({
+  // const generateCategoryItems = (category, count) => {
+  //   return Array.from({ length: count }, (_, index) => ({
   //     id: index + 1,
   //     title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${
   //       index + 1
   //     }`,
   //     image: getImagePath(category, index + 1),
   //   }));
-
-  //   // Randomly select 10 items
-  //   return allItems
-  //     .sort(() => Math.random() - 0.5) // Shuffle array
-  //     .slice(0, count); // Take first 10 items
   // };
-
-  const generateCategoryItems = (category, count) => {
-    return Array.from({ length: count }, (_, index) => ({
-      id: index + 1,
-      title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${
-        index + 1
-      }`,
-      image: getImagePath(category, index + 1),
-    }));
-  };
-
-  const categoryData = {
-    interior: generateCategoryItems("interior", 12),
-    exterior: generateCategoryItems("exterior", 12),
-    "aerial drone": generateCategoryItems("aerial drone", 12),
-  };
 
   // const categoryData = {
-  //   interior: [
-  //     {
-  //       id: 1,
-  //       title: "Modern Minimalist Home",
-  //       description:
-  //         "A sleek 2,500 sq ft contemporary residence featuring clean lines, neutral color palette, and expansive natural light.",
-  //       challenge:
-  //         "Capturing the subtle textures and spatial relationships of minimalist design.",
-  //       solution:
-  //         "Used soft, diffused lighting and strategic wide-angle compositions to emphasize spatial flow.",
-  //       image: getImagePath("interior", 1),
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Corporate Office Spaces",
-  //       description:
-  //         "A cutting-edge tech company's open-plan workspace with collaborative zones and innovative design elements.",
-  //       challenge:
-  //         "Showcasing the dynamic work environment while maintaining professional aesthetics.",
-  //       solution:
-  //         "Employed architectural photography techniques to highlight spatial design and workplace culture.",
-  //       image: getImagePath("interior", 2),
-  //     },
-  //   ],
-  //   exterior: [
-  //     {
-  //       id: 1,
-  //       title: "Coastal Luxury Villa",
-  //       description:
-  //         "An expansive oceanfront property with seamless indoor-outdoor living design.",
-  //       challenge:
-  //         "Capturing the property's grandeur while maintaining natural lighting and scenic backdrop.",
-  //       solution:
-  //         "Utilized golden hour timing and multiple exposure techniques to balance architectural details with landscape.",
-  //       image: getImagePath("exterior", 1),
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Modern Commercial Complex",
-  //       description:
-  //         "A sophisticated commercial property showcasing contemporary architectural design.",
-  //       challenge:
-  //         "Highlighting architectural uniqueness during varying light conditions.",
-  //       solution:
-  //         "Captured multiple shots throughout the day, focusing on geometric lines and material textures.",
-  //       image: getImagePath("exterior", 2),
-  //     },
-  //   ],
-  //   "aerial drone": [
-  //     {
-  //       id: 1,
-  //       title: "Urban Development Overview",
-  //       description:
-  //         "Comprehensive aerial documentation of a developing urban district.",
-  //       challenge:
-  //         "Creating a cohesive visual narrative of urban transformation.",
-  //       solution:
-  //         "Planned flight paths to capture progressive development stages and urban infrastructure.",
-  //       image: getImagePath("aerial drone", 1),
-  //     },
-  //     {
-  //       id: 2,
-  //       title: "Luxury Estate Aerial Tour",
-  //       description:
-  //         "Bird's-eye perspective of a prestigious residential property.",
-  //       challenge:
-  //         "Capturing the scale and grandeur of the estate from multiple angles.",
-  //       solution:
-  //         "Utilized various drone flight patterns and heights to showcase the property's features.",
-  //       image: getImagePath("aerial drone", 2),
-  //     },
-  //   ],
+  //   interior: generateCategoryItems("interior", 12),
+  //   exterior: generateCategoryItems("exterior", 12),
+  //   "aerial drone": generateCategoryItems("aerial drone", 12),
   // };
 
-  // Generate the 'all' category by combining items from other categories
+  // const allCategory = Object.entries(categoryData).flatMap(
+  //   ([category, items]) =>
+  //     items.map((item) => ({
+  //       id: item.id,
+  //       title: item.title,
+  //       category: category,
+  //       image: item.image,
+  //     }))
+  // );
 
+  // Create category data using the image mapping
+  const categoryData = Object.entries(PORTFOLIO_IMAGES).reduce(
+    (acc, [category, images]) => {
+      acc[category] = images.map(({ id, src }) => ({
+        id,
+        title: `${
+          category.charAt(0).toUpperCase() + category.slice(1)
+        } Photo ${id}`,
+        image: src,
+      }));
+      return acc;
+    },
+    {} as Record<string, any[]>
+  );
+
+  // Create the all category
   const allCategory = Object.entries(categoryData).flatMap(
     ([category, items]) =>
       items.map((item) => ({
-        id: item.id,
-        title: item.title,
-        category: category,
-        image: item.image,
+        ...item,
+        category,
       }))
   );
 
@@ -243,13 +191,6 @@ export const PhotographySection = ({ dark = true }) => {
     all: allCategory,
     ...categoryData,
   };
-
-  // Function to chunk array into groups of 9
-  // const chunkArray = (arr, size) => {
-  //   return Array.from({ length: Math.ceil(arr.length / size) }, (_, i) =>
-  //     arr.slice(i * size, i * size + size)
-  //   );
-  // };
 
   const renderCaseStudyCard = (study) => (
     <motion.div
