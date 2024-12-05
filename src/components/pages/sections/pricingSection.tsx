@@ -59,7 +59,9 @@ interface DualPriceTier extends BasePricingTier {
 type PricingTier = SinglePriceTier | DualPriceTier;
 
 // Instead of defining each package, we use a more generic structure
-type PricingPackages = Record<string, Record<string, PricingTier>>;
+interface PricingPackages {
+  [key: string]: PricingTier;
+}
 
 interface SectionProps {
   className?: string;
