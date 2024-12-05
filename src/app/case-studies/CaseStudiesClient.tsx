@@ -404,7 +404,7 @@ export const VirtualSection = ({
 
   const ServiceSection = ({ service }) => (
     <div
-      className={`flex flex-col-reverse h-[50vh] ${
+      className={`flex flex-col-reverse ${
         service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
       } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem]`}
     >
@@ -416,7 +416,7 @@ export const VirtualSection = ({
         />
         <ServiceFeatures features={service.features} />
       </div>
-      <div className="relative flex flex-col size-full items-start justify-center rounded-[1rem]">
+      <div className="relative flex flex-col aspect-video size-full items-start justify-center rounded-[1rem]">
         <CompareSlider
           beforeImage={service.beforeImage}
           afterImage={service.afterImage}
