@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
 import HeroSection from "@/components/pages/social-media-management/sections/heroSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 import CopySection from "@/components/pages/sections/copySection";

@@ -18,10 +18,12 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === "production",
   },
+  pageExtensions: ["js", "jsx", "ts", "tsx"],
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
     optimizePackageImports: ["framer-motion"],
+    largePageDataBytes: 128 * 1000, // 128KB
   },
   webpack: (config) => {
     // Only modify if splitChunks exists

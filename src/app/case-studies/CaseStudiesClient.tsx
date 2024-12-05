@@ -158,7 +158,7 @@ export const PhotographySection = ({ dark = true }) => {
               src={study.image}
               alt={study.title}
               fill
-              sizes="(max-width: 640px) 50vw, 384px"
+              sizes="(max-width: 640px) 50vw, 500px"
               priority={false}
               loading={false ? "eager" : "lazy"}
               className="w-full scale-125 group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
@@ -356,7 +356,7 @@ export const VirtualSection = ({
             src={beforeImage}
             alt="before-image"
             fill
-            sizes="(max-width: 640px) 100vw, 384px"
+            sizes="(max-width: 640px) 100vw, 50vw"
             priority={false}
             loading={false ? "eager" : "lazy"}
             className="w-full h-full object-cover pointer-events-none"
@@ -373,7 +373,7 @@ export const VirtualSection = ({
             src={afterImage}
             alt="after-image"
             fill
-            sizes="(max-width: 640px) 100vw, 384px"
+            sizes="(max-width: 640px) 100vw, 50vw"
             priority={false}
             loading={false ? "eager" : "lazy"}
             className="w-full h-full object-cover pointer-events-none"
