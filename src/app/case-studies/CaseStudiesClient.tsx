@@ -6,7 +6,7 @@ import { X } from "lucide-react"; // For the close icon
 
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { Autoplay, Navigation, Pagination, A11y } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -319,8 +319,8 @@ export const VirtualSection = ({
       title: "Virtual Renovation",
       description:
         "Transform your space without the mess. Our virtual renovation service helps you visualize potential upgrades and modernizations to your property with stunning before-and-after previews. Perfect for planning bathroom remodels, kitchen updates, or whole-home makeovers. Our advanced digital tools allow you to experiment with different styles, colors, and fixtures to create your ideal look—all without lifting a hammer.",
-      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(3).webp",
-      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(4).webp",
+      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(1).webp",
+      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(2).webp",
       features: commonFeatures,
       reversed: false,
     },
@@ -358,7 +358,7 @@ export const VirtualSection = ({
             sizes="(max-width: 640px) 100vw, 50vw"
             priority={false}
             loading={false ? "eager" : "lazy"}
-            className="w-full h-full object-cover pointer-events-none"
+            className="size-full object-cover pointer-events-none aspect-[3/2]"
             quality={75}
           />
           <span className="absolute bottom-[1rem] left-[1rem] subheading pn-semibold-16 bg-charcoal text-white opacity-80">
@@ -375,7 +375,7 @@ export const VirtualSection = ({
             sizes="(max-width: 640px) 100vw, 50vw"
             priority={false}
             loading={false ? "eager" : "lazy"}
-            className="w-full h-full object-cover pointer-events-none"
+            className="size-full object-cover pointer-events-none aspect-[3/2]"
             quality={75}
           />
           <span className="absolute bottom-[1rem] right-[1rem] subheading pn-semibold-16 bg-ash text-goldenrod opacity-80">

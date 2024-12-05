@@ -1,5 +1,7 @@
-// contexts/ViewportContext.tsx
 import { createContext, useContext, useEffect, useState } from "react";
+import gsap from "gsap";
+import { initGSAP } from "@/utils/gsap";
+import { ParallaxProvider } from "./ParallaxContext";
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -9,14 +11,25 @@ interface ViewportContextType {
 
 const ViewportContext = createContext<ViewportContextType>({ isMobile: false });
 
-export function ViewportProvider({ children }) {
+export function ViewportProvider({ children }: { children: React.ReactNode }) {
   const [isMobile, setIsMobile] = useState(false);
   const [previousWidth, setPreviousWidth] = useState(0);
 
   useEffect(() => {
     const handleResize = () => {
       const newWidth = window.innerWidth;
-      setIsMobile(newWidth <= MOBILE_BREAKPOINT);
+      const isMobileView = newWidth <= MOBILE_BREAKPOINT;
+      setIsMobile(isMobileView);
+
+      if (isMobileView) {
+        gsap.globalTimeline.clear();
+        document.querySelectorAll<HTMLElement>("[data-gsap]").forEach((el) => {
+          el.style.opacity = "1";
+          el.style.transform = "none";
+        });
+      } else {
+        initGSAP();
+      }
 
       if (!previousWidth) {
         setPreviousWidth(newWidth);
@@ -30,18 +43,16 @@ export function ViewportProvider({ children }) {
         window.location.reload();
       }
       setPreviousWidth(newWidth);
-
-      console.log("isMobile: " + isMobile);
     };
 
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [previousWidth]);
+  }, [isMobile, previousWidth]);
 
   return (
     <ViewportContext.Provider value={{ isMobile }}>
-      {children}
+      <ParallaxProvider>{children}</ParallaxProvider>
     </ViewportContext.Provider>
   );
 }

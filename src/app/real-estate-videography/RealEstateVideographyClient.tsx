@@ -5,7 +5,6 @@ import Image from "next/image";
 import SectionHeader from "@/components/ui/sectionHeader";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
-import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
 import FadeInUp from "@/components/animations/FadeInUp";
 
@@ -168,9 +167,9 @@ export const StepsRightSection = () => (
           <LetterRevealOnScroll className="relative">
             <h1 className="pn-semibold-24 capitalize">{item.heading}</h1>
           </LetterRevealOnScroll>
-          <OpacityOnScroll start={100} end={90}>
+          <LetterRevealOnScroll className="relative">
             <p className="pn-regular-16">{item.body}</p>
-          </OpacityOnScroll>
+          </LetterRevealOnScroll>
         </div>
       </li>
     ))}
@@ -218,7 +217,7 @@ export const UnlimitedRightSection = () => (
   <div className="relative flex size-full flex-col sm:flex-row items-start justify-center gap-[3rem] sm:gap-[3.75rem] max-h-[40vh] overflow-hidden rounded-[1.875rem]">
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
-    <div className="flex flex-col size-full items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
+    <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
       <Image
         data-speed={1.2}
         src={unlimitedImage}
@@ -227,7 +226,7 @@ export const UnlimitedRightSection = () => (
         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
         priority={false}
         loading={false ? "eager" : "lazy"}
-        className=""
+        className="size-full object-contain aspect-[73/128]"
         quality={75}
       />
     </div>

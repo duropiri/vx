@@ -44,7 +44,6 @@ export const BenefitsSection = () => (
           },
         ].map((item, index) => (
           <FadeInUp
-            
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
           >
@@ -134,7 +133,7 @@ export const WhatIsItSection1 = () => (
           </li>
         </ul>
       </div>
-      <div className="relative flex flex-col size-full items-start justify-center rounded-[1rem]">
+      <div className="relative flex flex-col size-full aspect-[4/3] items-start justify-center rounded-[1rem]">
         <Image
           // data-speed={0.95}
           src={floorplanImage}
@@ -143,7 +142,7 @@ export const WhatIsItSection1 = () => (
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}
           loading={false ? "eager" : "lazy"}
-          className="w-full h-full object-cover pointer-events-none"
+          className="w-full h-full object-contain pointer-events-none"
           quality={75}
         />
       </div>
@@ -159,7 +158,7 @@ export const WhatIsItSection2 = () => (
       className="text-white"
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
-      <div className="relative flex flex-col size-full items-start justify-center rounded-[1rem]">
+      <div className="relative flex flex-col size-full aspect-[4/3] items-start justify-center rounded-[1rem]">
         <Image
           // data-speed={0.95}
           src={threedimensionalfloorplanImage}
@@ -168,7 +167,7 @@ export const WhatIsItSection2 = () => (
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}
           loading={false ? "eager" : "lazy"}
-          className="w-full h-full object-cover pointer-events-none"
+          className="w-full h-full object-contain pointer-events-none"
           quality={75}
         />
       </div>
@@ -247,7 +246,7 @@ export const WhatIsItSection3 = () => (
           </li>
         </ul>
       </div>
-      <div className="relative flex flex-col size-full items-start justify-center rounded-[1rem]">
+      <div className="relative flex flex-col size-full aspect-[4/3] items-start justify-center rounded-[1rem]">
         <Image
           // data-speed={0.95}
           src={siteplanImage}
@@ -256,7 +255,7 @@ export const WhatIsItSection3 = () => (
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}
           loading={false ? "eager" : "lazy"}
-          className="w-full h-full object-cover pointer-events-none"
+          className="w-full h-full object-contain pointer-events-none"
           quality={75}
         />
       </div>

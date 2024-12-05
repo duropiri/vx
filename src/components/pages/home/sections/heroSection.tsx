@@ -21,7 +21,6 @@ import Image from "next/image";
 // import { getChars } from "@/components/animations/GetChars";
 // import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { Reveal } from "@/components/animations/Reveal";
-import { GradientText } from "@/components/ui/gradientText";
 // import CircleCTA from "@/components/ui/circleCTA";
 
 // import logo from "@/../../public/assets/images/logo2.webp";
@@ -38,8 +37,6 @@ import youtubeHeroImage from "@/../../public/assets/svgs/hero-svgs/Youtube.svg";
 import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg";
 
 import starImage from "@/../../public/assets/svgs/star.svg";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useViewport } from "@/contexts/ViewportContext";
 
 interface LinkDetails {
@@ -117,52 +114,6 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         window.removeEventListener("popstate", handleNavigation);
       };
     }, []);
-
-    // Screen Size checking
-    useEffect(() => {
-      // console.log("Is Mobile:", isMobile);
-    }, [isMobile]); // This will run whenever isMobile changes
-
-    // GSAP Animations
-    useEffect(() => {
-      // Parallax effect
-      const effectElements = gsap.utils.toArray("[data-speed]");
-      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
-        const speed = parseFloat(el.getAttribute("data-speed") || "0");
-        gsap.fromTo(
-          el,
-          { y: 0 },
-          {
-            y: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-              onRefresh: (self) => {
-                const start = Math.max(0, self.start); // ensure no negative values
-                const distance = self.end - start;
-                const end = start + distance / speed;
-                (self as any).setPositions(start, end);
-                if (self.animation) {
-                  // Check if self.animation is defined
-                  (self as any).animation.vars.y = (end - start) * (1 - speed);
-                  self.animation
-                    .invalidate()
-                    .progress(1)
-                    .progress(self.progress);
-                }
-              },
-            },
-          }
-        );
-      });
-
-      return () => {
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-      };
-    }, [isMobile]);
 
     return (
       <div

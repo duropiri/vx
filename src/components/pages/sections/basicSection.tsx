@@ -44,7 +44,7 @@ const BasicSection = forwardRef<HTMLDivElement, SectionProps>(
         data-transition-color={transitionColor}
         {...commonProps}
       >
-        <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
+        <div className="relative flex size-full min-h-fit max-w-[--section-width] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
           {content && <div className="flex flex-col size-full">{content}</div>}
         </div>
       </motion.div>

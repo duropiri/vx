@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-"use client";
-import React, { useEffect } from "react";
+import React from "react";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
@@ -9,48 +8,9 @@ import TestimonialsSection from "@/components/pages/sections/testimonialsSection
 import heroImage1 from "@/../../public/assets/images/virtual-xposure-aerial-drone-image-3-1652931128668-1024x683.webp";
 import heroImage2 from "@/../../public/assets/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
 import heroImage3 from "@/../../public/assets/images/Virtual-Xposure-Exterior-Image-8-min-768x512.webp";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+
 
 function Body() {
-  // GSAP Animations
-  useEffect(() => {
-    // Parallax effect
-    const effectElements = gsap.utils.toArray("[data-speed]");
-    (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
-      const speed = parseFloat(el.getAttribute("data-speed") || "0");
-      gsap.fromTo(
-        el,
-        { y: 0 },
-        {
-          y: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: el,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: true,
-            onRefresh: (self) => {
-              const start = Math.max(0, self.start); // ensure no negative values
-              const distance = self.end - start;
-              const end = start + distance / speed;
-              (self as any).setPositions(start, end);
-              if (self.animation) {
-                // Check if self.animation is defined
-                (self as any).animation.vars.y = (end - start) * (1 - speed);
-                self.animation.invalidate().progress(1).progress(self.progress);
-              }
-            },
-          },
-        }
-      );
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
-  }, []);
-
   return (
     <>
       <BasicHeroSection

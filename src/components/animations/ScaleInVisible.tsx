@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, TargetAndTransition, VariantLabels } from "framer-motion";
 import React, { forwardRef } from "react";
 
 interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -14,8 +14,8 @@ interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
   key?: string | number;
   once?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  whileHover?: any;
-  whileTap?: any;
+  whileHover?: VariantLabels | TargetAndTransition | undefined;
+  whileTap?: VariantLabels | TargetAndTransition | undefined;
 }
 
 const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(

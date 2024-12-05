@@ -21,7 +21,7 @@ function Basic2ColumnSection({
     <div
       className={`section-container !flex-col ${className} bg-white overflow-hidden`}
     >
-      <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
+      <div className="relative flex size-full min-h-fit max-w-[--section-width] flex-col sm:flex-row items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
         {/* Left Panel */}
         {leftContent && (
           <div className="flex flex-col size-full">{leftContent}</div>

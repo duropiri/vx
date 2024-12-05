@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useState } from "react";
 import {
   // AnimatePresence,
   motion,
@@ -20,7 +20,7 @@ import {
 } from "@/components/layout/transitions/transitions";
 // import ChatWidget from "@/components/ui/chatWidget";
 
-const MOBILE_BREAKPOINT = 1024;
+// const MOBILE_BREAKPOINT = 1024;
 
 interface TemplateProps {
   children: ReactNode;
@@ -29,7 +29,6 @@ interface TemplateProps {
 const Template: React.FC<TemplateProps> = ({ children }) => {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState(true);
-
 
   const handleAnimationComplete = () => {
     setIsVisible(false); // Set isVisible to false after the animation completes
@@ -56,7 +55,11 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           ease: [0.76, 0, 0.24, 1],
         }}
         style={{ zIndex: 99999999999999 }}
-      />
+      >
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin" />
+        </div>
+      </motion.div>
       {/* <motion.div
         variants={perspective}
         initial={perspective.initial}
@@ -92,7 +95,11 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
               }}
               onAnimationComplete={handleAnimationComplete} // Call handleAnimationComplete when the animation is done
               style={{ zIndex: 99999999999999 }}
-            />
+            >
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="w-16 h-16 border-4 border-goldenbrown rounded-full animate-spin" />
+              </div>
+            </motion.div>
           )}
           <SmoothScrolling>
             <Header className="absolute" navigation={HeaderLinks} />

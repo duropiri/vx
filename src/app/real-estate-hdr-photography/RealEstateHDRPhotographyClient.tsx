@@ -1,7 +1,6 @@
 import { ServiceIcons } from "@/data/serviceIcons";
 import SectionHeader from "@/components/ui/sectionHeader";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
-import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(13).webp";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
@@ -80,9 +79,9 @@ export const WhatIsItSection = () => (
                 </div>
               </div>
               <div className="flex flex-col">
-                <OpacityOnScroll start={100} end={90}>
+                <LetterRevealOnScroll className="relative">
                   <p className="pn-regular-16">{item.text}</p>
-                </OpacityOnScroll>
+                </LetterRevealOnScroll>
               </div>
             </li>
           ))}
@@ -137,9 +136,9 @@ export const WhatIsItSection = () => (
                 </div>
               </div>
               <div className="flex flex-col">
-                <OpacityOnScroll start={100} end={90}>
+                <LetterRevealOnScroll className="relative">
                   <p className="pn-regular-16">{item.text}</p>
-                </OpacityOnScroll>
+                </LetterRevealOnScroll>
               </div>
             </li>
           ))}
@@ -233,9 +232,9 @@ export const StepsRightSection = () => (
           <LetterRevealOnScroll className="relative">
             <h1 className="pn-semibold-24 capitalize">{item.heading}</h1>
           </LetterRevealOnScroll>
-          <OpacityOnScroll start={100} end={90}>
+          <LetterRevealOnScroll className="relative">
             <p className="pn-regular-16">{item.body}</p>
-          </OpacityOnScroll>
+          </LetterRevealOnScroll>
         </div>
       </li>
     ))}

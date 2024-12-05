@@ -1,5 +1,5 @@
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
-import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
+import OpacityOnScroll from "@/components/animations/unused/OpacityOnScroll";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import React from "react";

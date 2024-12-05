@@ -59,40 +59,6 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     // const [color] = useState(originalColor);
     // GSAP Animations
     useEffect(() => {
-      // Parallax effect
-      const effectElements = gsap.utils.toArray("[data-speed]");
-      (effectElements as HTMLElement[]).forEach((el: HTMLElement) => {
-        const speed = parseFloat(el.getAttribute("data-speed") || "0");
-        gsap.fromTo(
-          el,
-          { y: 0 },
-          {
-            y: 0,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-              onRefresh: (self) => {
-                const start = Math.max(0, self.start); // ensure no negative values
-                const distance = self.end - start;
-                const end = start + distance / speed;
-                (self as any).setPositions(start, end);
-                if (self.animation) {
-                  // Check if self.animation is defined
-                  (self as any).animation.vars.y = (end - start) * (1 - speed);
-                  self.animation
-                    .invalidate()
-                    .progress(1)
-                    .progress(self.progress);
-                }
-              },
-            },
-          }
-        );
-      });
-
       // Scale effect for background media
       const mediaWrapper = document.querySelector("[data-media-wrapper]");
       if (mediaWrapper) {

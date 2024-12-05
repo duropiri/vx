@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import logo from "@/../../public/assets/images/logo2-nospace.webp";
@@ -23,20 +23,20 @@ const NewsletterFormClient: React.FC<{
   setEmail: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }> = ({ email, setEmail, onSubmit }) => {
-  const [mounted, setMounted] = useState(false);
+  // const [mounted, setMounted] = useState(false);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  // useEffect(() => {
+  //   setMounted(true);
+  // }, []);
 
-  if (!mounted) {
-    return (
-      <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto opacity-0">
-        <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
-        <div className="flex w-full xl:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
-      </div>
-    );
-  }
+  // if (!mounted) {
+  //   return (
+  //     <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto opacity-0">
+  //       <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
+  //       <div className="flex w-full xl:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto">

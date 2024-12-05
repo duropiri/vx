@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from "react";
 import { initGSAP } from "@/utils/gsap";
 import { ViewportProvider } from "@/contexts/ViewportContext";
+import { PreloaderProvider } from "@/contexts/PreloaderContext";
+import PageAnimatePresence from "./HOC/PageAnimatePresence";
 
 interface ClientLayoutWrapperProps {
   children: React.ReactNode;
@@ -31,8 +33,12 @@ export default function ClientLayoutWrapper({
   }
 
   return (
-    <ViewportProvider>
-      <div className="antialiased">{children}</div>
-    </ViewportProvider>
+    <PreloaderProvider>
+      <PageAnimatePresence>
+        <ViewportProvider>
+          <div className="antialiased">{children}</div>
+        </ViewportProvider>
+      </PageAnimatePresence>
+    </PreloaderProvider>
   );
 }
