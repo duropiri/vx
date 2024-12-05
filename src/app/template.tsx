@@ -32,7 +32,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
   // const [isEnter, setIsEnter] = useState(false);
   // const [isExit, setIsExit] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
-  const [isVisible2, setIsVisible2] = useState(true);
+  // const [isVisible2, setIsVisible2] = useState(true);
   // const [isInitialAnimationDone, setIsInitialAnimationDone] = useState(false);
   
   // const handleInitialAnimationComplete = () => {
@@ -54,13 +54,13 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
 
     const handleResize = () => {
       const newWidth = window.innerWidth;
-      console.log("New width: " + newWidth);
+      // console.log("New width: " + newWidth);
 
       if (
         (previousWidth < MOBILE_BREAKPOINT && newWidth >= MOBILE_BREAKPOINT) ||
         (previousWidth >= MOBILE_BREAKPOINT && newWidth < MOBILE_BREAKPOINT)
       ) {
-        console.log("Crossing breakpoint, reloading page...");
+        // console.log("Crossing breakpoint, reloading page...");
         window.location.reload();
       }
 

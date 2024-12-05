@@ -24,7 +24,7 @@ export default function OpacityOnScroll({
   });
 
   // useEffect(() => {
-  //   scrollYProgress.on("change", (e) => console.log(e));
+  //   scrollYProgress.on("change", (e) => // console.log(e));
   // }, []);
 
   return (

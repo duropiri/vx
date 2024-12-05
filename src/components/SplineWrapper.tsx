@@ -26,7 +26,7 @@
     
 //     // Listen for any custom events your Spline scene might emit
 //     splineRef.current.addEventListener('mouseDown', (e) => {
-//       console.log('Spline mouse down:', e);
+//       // console.log('Spline mouse down:', e);
 //     });
 //   }
 

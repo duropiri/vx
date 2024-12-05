@@ -75,7 +75,7 @@ export default function Footer({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      console.log("Submitted email:", email);
+      // console.log("Submitted email:", email);
       setEmail("");
     }
   };

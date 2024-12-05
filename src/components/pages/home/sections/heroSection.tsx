@@ -148,7 +148,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     // Screen Size checking
     useEffect(() => {
-      console.log("Is Mobile:", isMobile);
+      // console.log("Is Mobile:", isMobile);
     }, [isMobile]); // This will run whenever isMobile changes
 
     // GSAP Animations
