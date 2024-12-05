@@ -460,7 +460,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     <PricingTier
                       tier={tier}
                       isYearly={isYearly}
-                      className="xl:min-h-[67rem]"
+                      className="xl:min-h-[68rem]"
                     />
                   </motion.div>
                 ))}
