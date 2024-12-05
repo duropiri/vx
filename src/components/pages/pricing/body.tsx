@@ -11,7 +11,7 @@ function body() {
   return (
     <>
       <PricingSection
-        className="bg-white z-10 !pt-[6rem]"
+        className="bg-white z-10 top"
         pricingPackages={socialMediaPackages}
       />
       <SocialProofSection full className="bg-white z-10" />
