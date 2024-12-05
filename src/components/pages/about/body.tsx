@@ -90,7 +90,7 @@ function Body() {
               <div className="hidden sm:contents">
                 <div
                   data-speed={1.1}
-                  className="max-w-[1/3] translate-y-[1rem]"
+                  className="max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden"
                 >
                   <Image
                     src={heroImage1}
@@ -103,7 +103,7 @@ function Body() {
                 </div>
                 <div
                   data-speed={0.9}
-                  className="sm:max-w-[40%] sm:scale-150 z-10"
+                  className="sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden"
                 >
                   <Image
                     src={heroImage2}
@@ -116,7 +116,7 @@ function Body() {
                 </div>
                 <div
                   data-speed={1.2}
-                  className="max-w-[1/3] translate-y-[1rem]"
+                  className="max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden"
                 >
                   <Image
                     src={heroImage3}
@@ -129,7 +129,7 @@ function Body() {
                 </div>
               </div>
               <div className="sm:hidden contents">
-                <div className="max-w-[1/3]">
+                <div className="max-w-[1/3] rounded-[1rem] overflow-hidden">
                   <Image
                     src={heroImage1}
                     alt="hero-image"

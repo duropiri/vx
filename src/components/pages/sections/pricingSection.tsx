@@ -368,7 +368,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           )}
 
           {/* Pricing Plans */}
-          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center gap-[2rem]">
+          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center sm:items-start gap-[2rem]">
             {packageCount > 3 ? (
               <>
                 <div className="hidden xl:contents">
