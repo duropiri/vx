@@ -22,7 +22,7 @@ function BasicHeroSection({
   content,
 }: SectionProps) {
   return (
-    <div className={`section-container !flex-col ${className} bg-white`}>
+    <div className={`section-container top !flex-col ${className} bg-white`}>
       <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader

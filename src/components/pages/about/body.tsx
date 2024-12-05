@@ -67,7 +67,7 @@ function Body() {
         subheading="Where We Come From"
         content={
           <>
-            <div className="flex flex-row items-start justify-between gap-[10rem] text-start pn-regular-16 mb-[3rem] sm:mb-[8rem]">
+            <div className="flex flex-col sm:flex-row items-start justify-between gap-[2rem] sm:gap-[10rem] text-start pn-regular-16 mb-[3rem] sm:mb-[8rem]">
               <p className="max-w-[50ch]">
                 The new digital age of real estate has officially begun,
                 bringing it&apos;s own set of unique challenges. In an era where
