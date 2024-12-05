@@ -1,27 +1,30 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: {
-    // Warning: This allows production builds to successfully complete even if
-    // your project has ESLint errors.
-    ignoreDuringBuilds: true,
-  },
-  reactStrictMode: true, // Helps catch potential issues early on
+  eslint: { ignoreDuringBuilds: true },
+  reactStrictMode: true,
   images: {
-    // Optimize image loading
-    domains: ["virtualxposure.com"], // Allow loading images from specific domains
-    formats: ["image/avif", "image/webp"], // Use modern formats
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "virtualxposure.com",
+    }],
+    deviceSizes: [384, 640, 960, 1200, 1920],
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 604800,
   },
-  compress: true, // Enables gzip/brotli compression for better performance
-  poweredByHeader: false, // Removes the "x-powered-by" header for better security
-  swcMinify: true, // Uses the newer, faster SWC compiler for JavaScript minification
-  optimizeFonts: true,
+  compress: true,
+  poweredByHeader: false,
+  swcMinify: true,
   experimental: {
-    optimizeCss: true, // Enable CSS optimization
+    optimizeCss: true,
+    optimizePackageImports: ["framer-motion"]
   },
-  images: {
-    deviceSizes: [500, 800, 1080, 1600, 2000],
-    formats: ['image/webp'],
-  },
+  headers: async () => [{
+    source: "/:path*",
+    headers: [{
+      key: "Cache-Control",
+      value: "public, max-age=31536000, immutable"
+    }]
+  }]
 };
 
 export default nextConfig;
