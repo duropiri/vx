@@ -37,31 +37,6 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
 
   const isAdminPage = pathname.startsWith("/admin");
 
-  useEffect(() => {
-    let previousWidth = window.innerWidth;
-
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      // console.log("New width: " + newWidth);
-
-      if (
-        (previousWidth < MOBILE_BREAKPOINT && newWidth >= MOBILE_BREAKPOINT) ||
-        (previousWidth >= MOBILE_BREAKPOINT && newWidth < MOBILE_BREAKPOINT)
-      ) {
-        // console.log("Crossing breakpoint, reloading page...");
-        window.location.reload();
-      }
-
-      previousWidth = newWidth;
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
   return (
     <div
       id="template"

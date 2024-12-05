@@ -224,8 +224,10 @@ export const UnlimitedRightSection = () => (
         data-speed={1.2}
         src={unlimitedImage}
         alt="unlimited-image"
-        width={1200}
-        height={600}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        priority={false}
+        loading={false ? "eager" : "lazy"}
         className=""
         quality={75}
       />

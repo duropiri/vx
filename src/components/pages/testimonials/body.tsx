@@ -29,11 +29,12 @@ function Body() {
             <Image
               src={csImage}
               alt="hero-image"
-              width={1200}
-              height={600}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={true}
+              loading={true ? "eager" : "lazy"}
               className="pointer-events-none"
               quality={75}
-              priority
             />
             <TestimonialsSection
               noHeader

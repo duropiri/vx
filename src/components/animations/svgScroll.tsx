@@ -15,7 +15,6 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
   useEffect(() => {
     // Check if the screen is mobile using window.matchMedia
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
-
     // Get the <g> element inside the rocketRef
     const gElement = rocketRef.current?.querySelector("g");
 

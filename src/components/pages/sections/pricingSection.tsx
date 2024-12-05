@@ -71,6 +71,7 @@ interface SectionProps {
   originalColor?: string;
   transitionColor?: string;
   scrollYProgress?: MotionValue<number>;
+  noAnimation?: boolean;
 }
 
 const PricingTier = ({ tier, isYearly, className = "" }) => {
@@ -303,6 +304,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       noSwitch = false,
       originalColor,
       transitionColor,
+      noAnimation = false,
     },
     forwardedRef
   ) => {
@@ -337,6 +339,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem] text-ash">
           {/* Header */}
           <SectionHeader
+            noAnimation={noAnimation}
             center
             heading="Pricing"
             subheading="Find The Right Plan"

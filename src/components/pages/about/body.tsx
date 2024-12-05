@@ -86,11 +86,12 @@ function Body() {
                   <Image
                     src={heroImage1}
                     alt="hero-image"
-                    width={1200}
-                    height={600}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={true}
+                    loading={true ? "eager" : "lazy"}
                     className="cursor-select-hover hover:scale-110 transition-all point"
                     quality={75}
-                    priority
                   />
                 </div>
                 <div
@@ -100,11 +101,12 @@ function Body() {
                   <Image
                     src={heroImage2}
                     alt="hero-image"
-                    width={1200}
-                    height={600}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={true}
+                    loading={true ? "eager" : "lazy"}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={75}
-                    priority
                   />
                 </div>
                 <div
@@ -114,11 +116,12 @@ function Body() {
                   <Image
                     src={heroImage3}
                     alt="hero-image"
-                    width={1200}
-                    height={600}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={true}
+                    loading={true ? "eager" : "lazy"}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={75}
-                    priority
                   />
                 </div>
               </div>
@@ -127,19 +130,22 @@ function Body() {
                   <Image
                     src={heroImage1}
                     alt="hero-image"
-                    width={1200}
-                    height={600}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={true}
+                    loading={true ? "eager" : "lazy"}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={75}
-                    priority
                   />
                 </div>
                 <div className="sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden">
                   <Image
                     src={heroImage2}
                     alt="hero-image"
-                    width={1200}
-                    height={600}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={true}
+                    loading={true ? "eager" : "lazy"}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={75}
                   />
@@ -148,8 +154,10 @@ function Body() {
                   <Image
                     src={heroImage3}
                     alt="hero-image"
-                    width={1200}
-                    height={600}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    priority={true}
+                    loading={true ? "eager" : "lazy"}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={75}
                   />

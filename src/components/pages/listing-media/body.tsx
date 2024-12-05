@@ -153,8 +153,10 @@ const ServiceCard = ({
           <Image
             src={image}
             alt={title}
-            width={1200}
-            height={600}
+            fill
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            priority={false}
+            loading={false ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />

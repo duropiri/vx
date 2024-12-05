@@ -1,15 +1,15 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { initGSAP } from '@/utils/gsap';
-
+import { initGSAP } from "@/utils/gsap";
+import { ViewportProvider } from "@/contexts/ViewportContext";
 
 interface ClientLayoutWrapperProps {
   children: React.ReactNode;
 }
 
 // Initialize GSAP once when the app starts
-if (typeof window !== 'undefined') {
+if (typeof window !== "undefined") {
   initGSAP();
 }
 
@@ -31,8 +31,8 @@ export default function ClientLayoutWrapper({
   }
 
   return (
-    <div className="antialiased">
-      {children}
-    </div>
+    <ViewportProvider>
+      <div className="antialiased">{children}</div>
+    </ViewportProvider>
   );
 }

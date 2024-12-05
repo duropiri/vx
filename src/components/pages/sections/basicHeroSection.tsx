@@ -37,6 +37,7 @@ function BasicHeroSection({
         {/* Header */}
         <SectionHeader
           center
+          noAnimation
           dark={dark}
           largeText={largeText}
           heading={heading}

@@ -19,9 +19,11 @@ export const WhatIsItSection = () => (
         <div data-speed={0.95} data-media-wrapper className="size-full">
           <Image
             src={whatisitImage}
-            alt="hero-image"
-            width={1200}
-            height={600}
+            alt="what-is-it-image"
+            fill
+            sizes="(max-width: 640px) 100vw, 1200px"
+            priority={true}
+            loading={true ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
@@ -38,7 +40,9 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Homes with professional photography sell on average for{" "}
-                  <span className="text-goldenbrown gold-text">9% more money</span>
+                  <span className="text-goldenbrown gold-text">
+                    9% more money
+                  </span>
                 </>
               ),
             },
@@ -47,7 +51,9 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   The average ROI on professional real estate photography is{" "}
-                  <span className="text-goldenbrown gold-text">approx 826%</span>
+                  <span className="text-goldenbrown gold-text">
+                    approx 826%
+                  </span>
                 </>
               ),
             },
@@ -91,7 +97,9 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Clients feel{" "}
-                  <span className="text-goldenbrown gold-text">43% more satisfied</span>{" "}
+                  <span className="text-goldenbrown gold-text">
+                    43% more satisfied
+                  </span>{" "}
                   with their REALTOR with professional photos
                 </>
               ),
@@ -152,14 +160,15 @@ export const StepsLeftSection = () => (
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem]">
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          Sell your listings <span className="text-goldenbrown gold-text">68%</span>{" "}
-          faster than your competitors
+          Sell your listings{" "}
+          <span className="text-goldenbrown gold-text">68%</span> faster than
+          your competitors
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          <span className="text-goldenbrown gold-text">83%</span> of sellers would prefer
-          your service over the competition
+          <span className="text-goldenbrown gold-text">83%</span> of sellers
+          would prefer your service over the competition
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
@@ -186,8 +195,8 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listings with drone photography and or/videography sell{" "}
-            <span className="text-goldenbrown gold-text">68%</span> faster on average than
-            those that do not.
+            <span className="text-goldenbrown gold-text">68%</span> faster on
+            average than those that do not.
           </>
         ),
       },
@@ -195,8 +204,8 @@ export const StepsRightSection = () => (
         heading: "Appeal to more home buyers",
         body: (
           <>
-            <span className="text-goldenbrown gold-text">83%</span> of home sellers prefer
-            to work with and agent using drone services.
+            <span className="text-goldenbrown gold-text">83%</span> of home
+            sellers prefer to work with and agent using drone services.
           </>
         ),
       },
@@ -205,8 +214,9 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listing agents who use drones for real estate could see an increase
-            in listing as high as <span className="text-goldenbrown gold-text">73%</span>{" "}
-            and deal closing increases as high as{" "}
+            in listing as high as{" "}
+            <span className="text-goldenbrown gold-text">73%</span> and deal
+            closing increases as high as{" "}
             <span className="text-goldenbrown gold-text">68%</span>.
           </>
         ),
@@ -278,8 +288,10 @@ export const UnlimitedRightSection = () => (
         data-speed={1.2}
         src={unlimitedImage}
         alt="unlimited-image"
-        width={1200}
-        height={600}
+        fill
+        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+        priority={false}
+        loading={false ? "eager" : "lazy"}
         className=""
         quality={75}
       />

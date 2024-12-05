@@ -38,6 +38,7 @@ import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg
 import starImage from "@/../../public/assets/svgs/star.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface LinkDetails {
   title: string;
@@ -86,8 +87,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [isBottom, setIsBottom] = useState(false);
-    const [isMobile, setIsMobile] = useState(false);
-    // const [hasPassedHero, setHasPassedHero] = useState(false);
+    const { isMobile } = useViewport();    // const [hasPassedHero, setHasPassedHero] = useState(false);
     // const [isTransforming, setIsTransforming] = useState(false);
     const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
 
@@ -113,36 +113,6 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
       return () => {
         window.removeEventListener("popstate", handleNavigation);
-      };
-    }, []);
-
-    // Screen Size checking (previous useEffect remains the same)
-    useEffect(() => {
-      const handleResize = () => {
-        setIsMobile(window.innerWidth <= 768);
-      };
-
-      const handleScroll = () => {
-        const scrollTop = window.scrollY;
-        const windowHeight = window.innerHeight;
-        const documentHeight = document.documentElement.scrollHeight;
-
-        setIsBottom(scrollTop + windowHeight >= documentHeight - windowHeight);
-        setIsScrolled(
-          scrollTop > 50 && scrollTop + windowHeight < documentHeight
-        );
-      };
-
-      // Initial setup
-      handleResize();
-      handleScroll();
-
-      window.addEventListener("resize", handleResize);
-      window.addEventListener("scroll", handleScroll);
-
-      return () => {
-        window.removeEventListener("resize", handleResize);
-        window.removeEventListener("scroll", handleScroll);
       };
     }, []);
 

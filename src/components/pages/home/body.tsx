@@ -13,6 +13,7 @@ import SocialMediaManagementSection from "@/components/pages/home/sections/socia
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 // import { Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
+import { useViewport } from "@/contexts/ViewportContext";
 
 const TRANSITION_TIMING = "0.6s";
 const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -26,27 +27,11 @@ const Body = () => {
   const [isHeroHovered, setIsHeroHovered] = useState(false);
   const [showLeftHint, setShowLeftHint] = useState(false);
   const [showRightHint, setShowRightHint] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
+  const { isMobile } = useViewport();
   // Refs to store timeouts and intervals
   const hintIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const initialDelayRef = useRef<NodeJS.Timeout | null>(null);
 
-  // Resize checker
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768); // Standard mobile breakpoint
-    };
-
-    // Initial check
-    checkMobile();
-
-    // Add listener for window resize
-    window.addEventListener("resize", checkMobile);
-
-    // Cleanup
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
 
   // Clear all animations and timers
   const clearAllAnimations = () => {

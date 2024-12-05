@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/all";
+import { useViewport } from "@/contexts/ViewportContext";
 
 gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(CustomEase)
+gsap.registerPlugin(CustomEase);
 
 interface AnimationProps {
   children?: React.ReactNode;
@@ -33,24 +34,7 @@ export default function ZoomParallax({
   id,
   onStepChange, // Pass this as a prop
 }: AnimationProps) {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768); // Set a breakpoint for mobile
-    };
-
-    // Initial setup
-    handleResize();
-
-    // Event listeners for scroll and resize
-    window.addEventListener("resize", handleResize);
-
-    // Cleanup event listeners
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  const { isMobile } = useViewport();
 
   const containerRef = useRef(null);
   const elementsRef = useRef<HTMLDivElement[]>([]);

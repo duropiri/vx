@@ -19,6 +19,7 @@ interface SectionProps {
   className?: string;
   vertical?: boolean;
   faq?: FAQProps[];
+  noAnimation?: boolean;
 }
 
 interface FAQProps {
@@ -29,7 +30,12 @@ interface FAQProps {
 import { FAQ } from "@/data/faq";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
-function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
+function FAQSection({
+  className,
+  vertical = false,
+  faq = FAQ,
+  noAnimation = false,
+}: SectionProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, amount: 0.2 });
   const controls = useAnimation();
@@ -66,6 +72,7 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
       >
         {/* Header */}
         <SectionHeader
+          noAnimation={noAnimation}
           center={vertical}
           small={!vertical}
           heading="Got Questions?"

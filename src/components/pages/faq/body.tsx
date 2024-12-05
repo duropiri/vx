@@ -6,7 +6,7 @@ import ContactSection from "@/components/pages/sections/contactSection";
 function body() {
   return (
     <>
-      <FAQSection vertical className="bg-white z-10 top" />
+      <FAQSection noAnimation vertical className="bg-white z-10 top" />
       <ContactSection className="bg-white z-10" />
     </>
   );

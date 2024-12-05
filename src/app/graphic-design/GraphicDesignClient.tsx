@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import SectionHeader from "@/components/ui/sectionHeader";
@@ -14,12 +13,18 @@ export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div data-speed={0.95} data-media-wrapper className="size-full pointer-events-none">
+        <div
+          data-speed={0.95}
+          data-media-wrapper
+          className="size-full pointer-events-none"
+        >
           <Image
             src={service1}
-            alt="hero-image"
-            width={1200}
-            height={600}
+            alt="what-is-it-image"
+            fill
+            sizes="(max-width: 640px) 100vw, 1200px"
+            priority={true}
+            loading={true ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
@@ -86,12 +91,18 @@ export const WhatIsItSection2 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row-reverse items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
     <div className="relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div data-speed={0.95} data-media-wrapper className="size-full pointer-events-none">
+        <div
+          data-speed={0.95}
+          data-media-wrapper
+          className="size-full pointer-events-none"
+        >
           <Image
             src={service2}
-            alt="hero-image"
-            width={1200}
-            height={600}
+            alt="what-is-it-image"
+            fill
+            sizes="(max-width: 640px) 100vw, 1200px"
+            priority={false}
+            loading={false ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
@@ -155,12 +166,18 @@ export const WhatIsItSection3 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div data-speed={0.95} data-media-wrapper className="size-full pointer-events-none">
+        <div
+          data-speed={0.95}
+          data-media-wrapper
+          className="size-full pointer-events-none"
+        >
           <Image
             src={service3}
-            alt="service3"
-            width={1200}
-            height={600}
+            alt="what-is-it-image"
+            fill
+            sizes="(max-width: 640px) 100vw, 1200px"
+            priority={false}
+            loading={false ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />

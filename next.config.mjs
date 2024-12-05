@@ -9,9 +9,10 @@ const nextConfig = {
         hostname: "virtualxposure.com",
       },
     ],
-    deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048],
+    deviceSizes: [384, 640, 960, 1200, 1920], // Simplified sizes
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 604800, // Increase cache to 1 week
+    imageSizes: [16, 32, 48, 64, 96, 128, 256], // Add smaller sizes
     dangerouslyAllowSVG: true,
   },
   compiler: {

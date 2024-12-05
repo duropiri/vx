@@ -23,6 +23,7 @@ interface SectionProps {
   subheadingRef?: RefObject<HTMLHeadingElement>;
   subheadingMobileRef?: RefObject<HTMLHeadingElement>; // New ref for mobile
   bodyRef?: RefObject<HTMLParagraphElement>;
+  noAnimation?: boolean;
 }
 
 const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
@@ -45,6 +46,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       subheadingRef,
       subheadingMobileRef, // Add the new ref
       bodyRef,
+      noAnimation = false, // New prop to disable animations
     }: SectionProps,
     ref
   ) => {
@@ -70,7 +72,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
           </span>
         )}
 
-        {subheading && (
+        {subheading && !noAnimation ? (
           <LetterRevealOnScroll end="bottom 60%">
             <div className="contents">
               <motion.h2
@@ -99,9 +101,30 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               </motion.h2>
             </div>
           </LetterRevealOnScroll>
+        ) : (
+          <div className="contents">
+            <h2
+              ref={subheadingRef}
+              className={`${subheadingClassName} hidden -space-y-[10rem] sm:block ${
+                largeText ? "pn-regular-60" : "pn-semibold-48"
+              } capitalize leading-snug`}
+            >
+              {subheading}
+            </h2>
+            <h2
+              ref={subheadingMobileRef}
+              className={`${subheadingClassName} ${
+                noCenter && "text-center sm:text-start"
+              } sm:hidden ${largeText ? "pn-semibold-40" : "pn-semibold-24"} ${
+                medium ? "sm:max-w-[24ch]" : ""
+              } capitalize leading-snug`}
+            >
+              {subheading}
+            </h2>
+          </div>
         )}
 
-        {body && (
+        {body && !noAnimation ? (
           <LetterRevealOnScroll end="bottom 60%">
             <p
               ref={bodyRef}
@@ -112,6 +135,15 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               {body}
             </p>
           </LetterRevealOnScroll>
+        ) : (
+          <p
+            ref={bodyRef}
+            className={`${bodyClassName} ${noCenter && "text-start"} ${
+              largeText ? "pn-regular-22" : "pn-regular-16"
+            } max-w-[43.75rem]`}
+          >
+            {body}
+          </p>
         )}
       </div>
     );

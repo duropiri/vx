@@ -1,7 +1,7 @@
 import { ServiceIcons } from "@/data/serviceIcons";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import heroImage2 from "@/../../public/assets/images/614d398d1a34a3bb1ceff8b1_Second-floor-Masterbedroom-cam-1-1-1.webp";
+import whatisitImage from "@/../../public/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(61).webp";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
@@ -18,10 +18,12 @@ export const WhatIsItSection = () => (
           className="size-full pointer-events-none"
         >
           <Image
-            src={heroImage2}
-            alt="hero-image"
-            width={1200}
-            height={600}
+            src={whatisitImage}
+            alt="what-is-it-image"
+            fill
+            sizes="(max-width: 640px) 100vw, 1200px"
+            priority={true}
+            loading={true ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />

@@ -166,6 +166,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Header with light text */}
             <SectionHeader
               medium
+              noAnimation
               noCenter
               largeText
               subheading={title}

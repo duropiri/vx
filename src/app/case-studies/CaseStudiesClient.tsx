@@ -19,6 +19,7 @@ import {
   //   ReactCompareSliderImage,
 } from "react-compare-slider";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
+import { useViewport } from "@/contexts/ViewportContext";
 
 // Create a mapping of all images using the imported assets
 const PORTFOLIO_IMAGES = {
@@ -99,6 +100,9 @@ export const FloorplansSection = () => {
             title="iGuide 3D Tour"
             className="w-full h-full border-0"
             allowFullScreen
+            loading="lazy"
+            sandbox="allow-scripts allow-same-origin"
+            referrerPolicy="no-referrer-when-downgrade"
           />
         </div>
       </div>
@@ -109,59 +113,7 @@ export const FloorplansSection = () => {
 export const PhotographySection = ({ dark = true }) => {
   const [activeTab, setActiveTab] = useState("all");
   const [selectedImage, setSelectedImage] = useState(null);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Screen Size checking (previous useEffect remains the same)
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-
-    // Initial setup
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  // const getImagePath = (category, index) => {
-  //   const formattedCategory =
-  //     category === "aerial drone" ? "aerial drone" : category;
-  //   const capitalizedCategory = formattedCategory
-  //     .split(" ")
-  //     .map((word) => word.charAt(0) + word.slice(1))
-  //     .join("_");
-  //   return `/assets/portfolio/images/${formattedCategory}/Virtual_Xposure_-_${capitalizedCategory}_Image_-_(${index}).webp`;
-  // };
-
-  // const generateCategoryItems = (category, count) => {
-  //   return Array.from({ length: count }, (_, index) => ({
-  //     id: index + 1,
-  //     title: `${category.charAt(0).toUpperCase() + category.slice(1)} Photo ${
-  //       index + 1
-  //     }`,
-  //     image: getImagePath(category, index + 1),
-  //   }));
-  // };
-
-  // const categoryData = {
-  //   interior: generateCategoryItems("interior", 12),
-  //   exterior: generateCategoryItems("exterior", 12),
-  //   "aerial drone": generateCategoryItems("aerial drone", 12),
-  // };
-
-  // const allCategory = Object.entries(categoryData).flatMap(
-  //   ([category, items]) =>
-  //     items.map((item) => ({
-  //       id: item.id,
-  //       title: item.title,
-  //       category: category,
-  //       image: item.image,
-  //     }))
-  // );
+  const { isMobile } = useViewport();
 
   // Create category data using the image mapping
   const categoryData = Object.entries(PORTFOLIO_IMAGES).reduce(
@@ -206,7 +158,9 @@ export const PhotographySection = ({ dark = true }) => {
               src={study.image}
               alt={study.title}
               fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+              sizes="(max-width: 640px) 50vw, 384px"
+              priority={false}
+              loading={false ? "eager" : "lazy"}
               className="w-full scale-125 group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
               quality={75}
             />
@@ -395,14 +349,16 @@ export const VirtualSection = ({
 
   const CompareSlider = ({ beforeImage, afterImage }) => (
     <ReactCompareSlider
-      className="cursor-none-hover cursor-default rounded-[1rem] overflow-hidden shadow-customShadow"
+      className="cursor-none-hover cursor-default rounded-[1rem] overflow-hidden shadow-customShadow size-full"
       itemOne={
-        <div className="relative flex">
+        <div className="relative flex size-full">
           <Image
             src={beforeImage}
             alt="before-image"
-            width={1200}
-            height={600}
+            fill
+            sizes="(max-width: 640px) 100vw, 384px"
+            priority={false}
+            loading={false ? "eager" : "lazy"}
             className="w-full h-full object-cover pointer-events-none"
             quality={75}
           />
@@ -412,12 +368,14 @@ export const VirtualSection = ({
         </div>
       }
       itemTwo={
-        <div className="relative flex">
+        <div className="relative flex size-full">
           <Image
             src={afterImage}
             alt="after-image"
-            width={1200}
-            height={600}
+            fill
+            sizes="(max-width: 640px) 100vw, 384px"
+            priority={false}
+            loading={false ? "eager" : "lazy"}
             className="w-full h-full object-cover pointer-events-none"
             quality={75}
           />
@@ -446,7 +404,7 @@ export const VirtualSection = ({
 
   const ServiceSection = ({ service }) => (
     <div
-      className={`flex flex-col-reverse ${
+      className={`flex flex-col-reverse h-[50vh] ${
         service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
       } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem]`}
     >

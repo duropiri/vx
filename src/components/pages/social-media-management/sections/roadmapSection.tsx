@@ -94,13 +94,6 @@ function RoadmapSection({ className }: SectionProps) {
           <div className="pointer-events-none absolute z-10 bottom-0 w-[100dvw] h-[7.5rem] bg-gradient-to-t from-white to-transparent" />
 
           {/* Road SVG */}
-          {/* <Image
-            alt="road"
-            src="/assets/svgs/curved-road.svg"
-            className="pointer-events-none absolute top-0 left-0 w-full"
-            height={4370}
-            width={1420}
-          /> */}
           <div className="pointer-events-none absolute -top-[10rem] scrollPath">
             <SVGScroll>
               <svg

@@ -139,8 +139,10 @@ export const WhatIsItSection1 = () => (
           // data-speed={0.95}
           src={floorplanImage}
           alt="floorplan-image"
-          width={1200}
-          height={600}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          loading={false ? "eager" : "lazy"}
           className="w-full h-full object-cover pointer-events-none"
           quality={75}
         />
@@ -162,8 +164,10 @@ export const WhatIsItSection2 = () => (
           // data-speed={0.95}
           src={threedimensionalfloorplanImage}
           alt="3d-floorplan-image"
-          width={1200}
-          height={600}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          loading={false ? "eager" : "lazy"}
           className="w-full h-full object-cover pointer-events-none"
           quality={75}
         />
@@ -248,8 +252,10 @@ export const WhatIsItSection3 = () => (
           // data-speed={0.95}
           src={siteplanImage}
           alt="siteplan-image"
-          width={1200}
-          height={600}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          loading={false ? "eager" : "lazy"}
           className="w-full h-full object-cover pointer-events-none"
           quality={75}
         />
