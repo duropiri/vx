@@ -12,14 +12,14 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
-      <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
-        <div data-speed={0.95} data-media-wrapper className="size-full">
+      <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
+        <div data-speed={0.95} data-media-wrapper className="size-full pointer-events-none">
           <Image
             src={heroImage2}
             alt="hero-image"
             width={1200}
             height={600}
-            className="w-full h-[125%] scale-125 -translate-y-[10%] group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
+            className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={80}
           />
         </div>
@@ -70,7 +70,7 @@ export const BenefitsSection = () => (
       className="text-black"
     />
     <div className="relative flex size-full flex-col items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
-      <div className="grid grid-cols-2 sm:grid-cols-3 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
         {[
           {
             icon: ServiceIcons.lightbulb,

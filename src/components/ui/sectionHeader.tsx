@@ -1,8 +1,8 @@
 "use client";
 import React, { forwardRef, RefObject } from "react";
-import OpacityOnScroll from "../animations/OpacityOnScroll";
+// import OpacityOnScroll from "../animations/OpacityOnScroll";
 import { motion } from "framer-motion";
-import { Reveal } from "../animations/Reveal";
+// import { Reveal } from "../animations/Reveal";
 import LetterRevealOnScroll from "../animations/LetterRevealOnScroll";
 
 interface SectionProps {
@@ -60,7 +60,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         {heading && (
           <span
             ref={headingRef}
-            className={`subheading ${
+            className={`subheading mb-[1rem] ${
               largeText ? "pn-semibold-24" : "pn-semibold-16"
             } ${headingClassName} ${
               dark ? "bg-charcoal text-goldenrod" : "bg-goldenbrown/25"
@@ -87,7 +87,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
               <motion.h2
                 ref={subheadingMobileRef}
                 className={`${subheadingClassName} ${
-                  noCenter && "text-start"
+                  noCenter && "text-center sm:text-start"
                 } sm:hidden ${
                   largeText ? "pn-semibold-40" : "pn-semibold-24"
                 } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug`}

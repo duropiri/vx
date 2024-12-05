@@ -21,7 +21,7 @@ export const BenefitsSection = () => (
       className="text-black"
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-12 mt-[2.5rem] sm:mt-[5rem]">
         {[
           {
             icon: ServiceIcons.eye,

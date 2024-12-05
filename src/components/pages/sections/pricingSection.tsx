@@ -4,7 +4,7 @@ import { Switch } from "@/components/ui/switch";
 import React, { forwardRef, useRef, useState } from "react";
 // import { Tilt } from "react-tilt";
 import { AnimatePresence, motion, MotionValue } from "framer-motion";
-import { Reveal } from "@/components/animations/Reveal";
+// import { Reveal } from "@/components/animations/Reveal";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -14,16 +14,56 @@ import "swiper/css/effect-cards";
 
 // import required modules
 import {
-  EffectCards,
+  // EffectCards,
   Pagination,
   Navigation,
   Scrollbar,
   A11y,
 } from "swiper/modules";
 
+interface Feature {
+  name: string;
+  quantity?: string;
+  value?: string;
+  details?: string;
+  inclusion?: boolean;
+  free?: boolean;
+}
+
+interface BasePricingTier {
+  name: string;
+  features: Feature[];
+  isPopular?: boolean;
+  isPremium?: boolean;
+  href?: string;
+  cta?: string;
+  billingCycle?: string;
+}
+
+interface SinglePriceTier extends BasePricingTier {
+  price: string;
+  commitment?: string;
+}
+
+interface DualPriceTier extends BasePricingTier {
+  price: {
+    monthly: string;
+    yearly: string;
+  };
+  commitment: {
+    monthly: string;
+    yearly: string;
+  };
+}
+
+type PricingTier = SinglePriceTier | DualPriceTier;
+
+// Instead of defining each package, we use a more generic structure
+type PricingPackages = Record<string, Record<string, PricingTier>>;
+
 interface SectionProps {
   className?: string;
-  pricingPackages?: any;
+  pricingPackages?: PricingPackages;
   noSwitch?: boolean;
   originalColor?: string;
   transitionColor?: string;
@@ -267,11 +307,15 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const [color] = useState(originalColor);
     const containerRef =
       useRef() as React.MutableRefObject<HTMLDivElement | null>;
-    const stickyRef = useRef() as React.MutableRefObject<HTMLDivElement | null>;
+    // const stickyRef = useRef() as React.MutableRefObject<HTMLDivElement | null>;
 
     const togglePricing = () => {
       setIsYearly(!isYearly);
     };
+
+    // Get packages safely
+    const packages = pricingPackages ?? {};
+    const packageCount = Object.keys(packages).length;
 
     return (
       <div
@@ -322,8 +366,8 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           )}
 
           {/* Pricing Plans */}
-          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-stretch gap-[2rem]">
-            {Object.keys(pricingPackages).length > 3 ? (
+          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center gap-[2rem]">
+            {packageCount > 3 ? (
               <>
                 <div className="hidden xl:contents">
                   <Swiper
@@ -335,7 +379,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     modules={[Pagination, Navigation, Scrollbar, A11y]}
                     className="mySwiper w-full xl:max-w-[95rem] !overflow-visible"
                   >
-                    {Object.values(pricingPackages).map((tier, index) => (
+                    {Object.values(packages).map((tier, index) => (
                       <SwiperSlide key={index} className="!cursor-swipe-hover">
                         <motion.div
                           initial={{ opacity: 0, scale: 0.9 }}
@@ -364,8 +408,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                   </Swiper>
                 </div>
                 <div className="xl:hidden contents">
-                  {Object.values(pricingPackages).map((tier, index) => (
+                  {Object.values(packages).map((tier, index) => (
                     <motion.div
+                      key={index}
                       initial={{ opacity: 0, scale: 0.9 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{
@@ -379,7 +424,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                         duration: 0.4,
                         ease: "easeOut",
                       }}
-                      className="group relative size-full xl:w-[30rem] xl:max-w-[33.333333%]"
+                      className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                     >
                       <PricingTier
                         tier={tier}
@@ -390,10 +435,11 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                   ))}
                 </div>
               </>
-            ) : Object.keys(pricingPackages).length > 2 ? (
+            ) : packageCount > 2 ? (
               <>
-                {Object.values(pricingPackages).map((tier, index) => (
+                {Object.values(packages).map((tier, index) => (
                   <motion.div
+                    key={index}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{
@@ -407,7 +453,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                       duration: 0.4,
                       ease: "easeOut",
                     }}
-                    className="group relative size-full xl:w-[30rem] xl:max-w-[33.333333%]"
+                    className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier
                       tier={tier}
@@ -419,8 +465,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
               </>
             ) : (
               <>
-                {Object.values(pricingPackages).map((tier, index) => (
+                {Object.values(packages).map((tier, index) => (
                   <motion.div
+                    key={index}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{
@@ -434,7 +481,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                       duration: 0.4,
                       ease: "easeOut",
                     }}
-                    className="group relative size-full xl:w-[30rem] xl:max-w-[33.333333%]"
+                    className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier tier={tier} isYearly={isYearly} className="" />
                   </motion.div>

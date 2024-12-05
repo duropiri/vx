@@ -21,7 +21,7 @@ export const WhatIsItSection = () => (
       className="text-black"
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3rem] sm:gap-[3.75rem]">
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
+      <div className="grid grid-cols-1 sm:grid-cols-4 gap-12 mt-[2.5rem] sm:mt-[5rem]">
         {[
           {
             icon: ServiceIcons.eye,
@@ -173,7 +173,7 @@ export const StepsRightSection = () => (
         key={index}
         className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-row items-center justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-x-[1rem] lg:gap-x-[2rem] text-white text-start"
       >
-        <div className="flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
+        <div className="aspect-square flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
           <h1 className="text-goldenbrown pn-semibold-48">{index + 1}</h1>
         </div>
         <div className="flex flex-col gap-y-[1rem]">

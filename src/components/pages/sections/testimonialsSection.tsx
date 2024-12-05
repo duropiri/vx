@@ -1,5 +1,8 @@
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion, MotionValue } from "framer-motion";
+import {
+  // motion,
+  MotionValue,
+} from "framer-motion";
 import React from "react";
 import { testimonials } from "@/data/testimonials";
 // Import Swiper React components
@@ -54,7 +57,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
             effect={"cards"}
             grabCursor={true}
             modules={[EffectCards, Pagination, Navigation]}
-            className="mySwiper max-w-[65vw] w-full sm:w-[50rem] h-[44rem] sm:h-[35rem]"
+            className="mySwiper max-w-[65vw] w-full sm:w-[50rem] h-[30rem] sm:h-[35rem]"
           >
             {testimonials.map((item, index) => (
               <SwiperSlide

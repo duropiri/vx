@@ -475,7 +475,7 @@ export const VirtualSection = ({
             className="w-full h-full object-cover pointer-events-none"
             quality={80}
           />
-          <span className="absolute bottom-[1rem] left-[1rem] subheading pn-semibold-16 bg-charcoal text-white border-[2px] border-ash opacity-80">
+          <span className="absolute bottom-[1rem] left-[1rem] subheading pn-semibold-16 bg-charcoal text-white opacity-80">
             Before
           </span>
         </div>
@@ -490,7 +490,7 @@ export const VirtualSection = ({
             className="w-full h-full object-cover pointer-events-none"
             quality={80}
           />
-          <span className="absolute bottom-[1rem] right-[1rem] subheading pn-semibold-16 bg-ash text-goldenrod border-[2px] border-goldenbrown opacity-80">
+          <span className="absolute bottom-[1rem] right-[1rem] subheading pn-semibold-16 bg-ash text-goldenrod opacity-80">
             <span className="gold-text">After</span>
           </span>
         </div>

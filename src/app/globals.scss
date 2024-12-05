@@ -38,7 +38,6 @@
   }
 }
 
-
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #1b1a17;
@@ -110,8 +109,8 @@ body {
 .pn-semibold-40 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: 600;
-  font-size: 2.5rem; /* 40px */
-  line-height: 2rem; /* 32px */
+  font-size: 3rem; /* 40px */
+  line-height: 3rem; /* 32px */
 }
 
 @media (min-width: 768px) {
@@ -156,18 +155,20 @@ body {
 .pn-semibold-24 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: 600;
-  font-size: 1.5rem; /* 24px */
-  line-height: 1.5rem; /* 16.2px */
+  font-size: 2.25rem; /* 24px */
+  line-height: 2.25rem; /* 16.2px */
 }
 
 .pn-regular-22 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: normal;
+  font-size: 1.3rem; /* 22px */
 }
 
 .pn-semibold-22 {
   font-family: "Proxima Nova", sans-serif;
   font-weight: 600;
+  font-size: 1.3rem; /* 22px */
 }
 
 .pn-bold-20 {
@@ -175,6 +176,42 @@ body {
   font-weight: 700;
   font-size: 1.25rem; /* 20px */
   line-height: 1rem; /* 100% */
+}
+
+.pn-bold-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem; /* 16px *
+  line-height: 1.4rem; /* 22.4px */
+}
+
+.pn-semibold-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem; /* 16px */
+  line-height: 1.25rem; /* 22.4px */
+}
+
+.pn-regular-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 1.1rem; /* 16px */
+  line-height: 1.25rem; /* 22.4px */
+}
+
+.pn-light-16 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem; /* 16px */
+  line-height: 1.75rem; /* 22.4px */
+}
+
+.pn-regular-14 {
+  font-family: "Proxima Nova", sans-serif;
+  font-weight: normal;
+  font-size: 0.875rem; /* 14px */
+  letter-spacing: 0.03125rem; /* 0.5px */
+  line-height: 1.25rem; /* 20px */
 }
 
 @media (min-width: 768px) {
@@ -194,48 +231,18 @@ body {
 
   .pn-regular-22,
   .pn-semibold-22 {
-    font-size: 1.375rem; /* 22px */
+    font-size: 1.5rem; /* 22px */
     line-height: 2.25rem; /* 36px */
   }
 
   .pn-bold-20 {
   }
-}
 
-.pn-bold-16 {
-  font-family: "Proxima Nova", sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem; /* 16px *
-  line-height: 1.4rem; /* 22.4px */
-}
-
-.pn-semibold-16 {
-  font-family: "Proxima Nova", sans-serif;
-  font-weight: 600;
-  font-size: 1.5rem; /* 16px */
-  line-height: 1.75rem; /* 22.4px */
-}
-
-.pn-regular-16 {
-  font-family: "Proxima Nova", sans-serif;
-  font-weight: normal;
-  font-size: 1.5rem; /* 16px */
-  line-height: 1.75rem; /* 22.4px */
-}
-
-.pn-light-16 {
-  font-family: "Proxima Nova", sans-serif;
-  font-weight: 300;
-  font-size: 1.5rem; /* 16px */
-  line-height: 1.75rem; /* 22.4px */
-}
-
-.pn-regular-14 {
-  font-family: "Proxima Nova", sans-serif;
-  font-weight: normal;
-  font-size: 0.875rem; /* 14px */
-  letter-spacing: 0.03125rem; /* 0.5px */
-  line-height: 1.25rem; /* 20px */
+  .pn-semibold-16,
+  .pn-regular-16 {
+    font-size: 1.5rem; /* 16px */
+    line-height: 1.75rem; /* 22.4px */
+  }
 }
 
 /* Nunito */
@@ -302,7 +309,6 @@ body {
 .section-container.top {
   padding-top: 10rem;
 }
-
 
 @media (max-width: 768px) {
   .section-container {

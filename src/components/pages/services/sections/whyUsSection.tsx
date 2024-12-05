@@ -73,7 +73,7 @@ function WhyUsSection({
             subheading="Why Choose Virtual Xposure?"
             body="We deliver excellence at every level, combining cutting-edge technology with unmatched customer service. Our proven track record and comprehensive solutions ensure your success, backed by industry-leading guarantees and lightning-fast delivery."
           />
-          <div className="grid grid-cols-4 sm:grid-cols-4 gap-[1rem] sm:gap-12 mt-[2.5rem] sm:mt-[5rem]">
+          <div className="hidden sm:grid grid-cols-4 gap-[1rem] sm:gap-[2rem] sm:mt-[5rem]">
             {WhyUsItems.map((item, index) => (
               <motion.div
                 key={index + 4}
@@ -91,19 +91,55 @@ function WhyUsSection({
                   ease: "easeOut",
                 }}
               >
-                <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
-                  <div className="flex flex-col items-center justify-center gap-[2rem]">
-                    <div className="transition-all duration-300 group-hover:scale-110 group-hover:text-goldenbrown group-hover:grayscale-0 text-white/90 size-[4rem]">
+                <div className="cursor-select-hover group flex flex-grow flex-col items-center sm:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
+                  <div className="flex flex-col items-center justify-center gap-[1rem] sm:gap-[2rem]">
+                    <div className="transition-all duration-300 group-hover:scale-110 group-hover:text-goldenbrown group-hover:grayscale-0 text-white/90 size-[3rem] sm:size-[4rem]">
                       {item.icon}
                     </div>
-                    <div className="w-full text-center pn-semibold-22 text-white/90 group-hover:text-white transition-all duration-300 !leading-[1.3rem]">
+                    <div className="w-full text-center pn-semibold-16 text-white/90 group-hover:text-white transition-all duration-300 !leading-[1.3rem] max-w-[20ch] text-wrap">
                       {item.title}
                     </div>
                   </div>
                 </div>
               </motion.div>
             ))}
+            
           </div>
+          <ScrollingBanner
+              baseVelocity={-250}
+              className="sm:hidden flex flex-row"
+              innerChild="flex flex-row gap-[3rem]"
+            >
+              {WhyUsItems.map((item, index) => (
+                <motion.div
+                  key={index + 4}
+                  className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{
+                    once: true, // Only animate once
+                    amount: 0.3, // Trigger when 30% of element is in view
+                    margin: "50px", // Start animation 50px before element enters viewport
+                  }}
+                  transition={{
+                    delay: 0,
+                    duration: 0.5,
+                    ease: "easeOut",
+                  }}
+                >
+                  <div className="cursor-select-hover group flex flex-grow flex-col items-center sm:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
+                    <div className="flex flex-col items-center justify-center gap-[1rem] sm:gap-[2rem]">
+                      <div className="transition-all duration-300 group-hover:scale-110 group-hover:text-goldenbrown group-hover:grayscale-0 text-white/90 size-[3rem] sm:size-[4rem]">
+                        {item.icon}
+                      </div>
+                      <div className="w-full text-center pn-semibold-16 text-white/90 group-hover:text-white transition-all duration-300 !leading-[1.3rem] text-wrap">
+                        {item.title}
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </ScrollingBanner>
         </div>
       </motion.div>
     </div>

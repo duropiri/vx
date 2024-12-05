@@ -27,7 +27,7 @@ export const WhatIsItSection = () => (
             alt="hero-image"
             width={1200}
             height={600}
-            className="w-full h-[125%] scale-125 -translate-y-[10%] group-hover:scale-110 opacity-100 group-hover:opacity-50 transition-all duration-500 object-cover"
+            className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={80}
           />
         </div>
@@ -219,9 +219,9 @@ export const StepsRightSection = () => (
     ].map((item, index) => (
       <li
         key={index}
-        className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-row items-center justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-x-[1rem] xl:gap-x-[2rem] text-white text-start"
+        className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-col sm:flex-row items-center justify-center sm:justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-y-[2rem] gap-x-[1rem] xl:gap-x-[2rem] text-white text-center sm:text-start"
       >
-        <div className="flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
+        <div className="aspect-square flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
           <h1 className="text-goldenbrown pn-semibold-48">{index + 1}</h1>
         </div>
         <div className="flex flex-col gap-y-[1rem]">

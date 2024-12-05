@@ -126,27 +126,29 @@ interface NavProps {
 //   >;
 // }
 
-interface FooterProps {}
-
-interface ImageProps {
-  src: string;
-  isActive: boolean;
+interface FooterProps {
+  className?: string;
 }
+
+// interface ImageProps {
+//   src: string;
+//   isActive: boolean;
+// }
 
 interface HeaderProps {
   className?: string;
   navigation: LinkDetails[];
 }
 
+const slideTransition = {
+  initial: { opacity: 0, x: -20 },
+  enter: { opacity: 1, x: 0, transition },
+  exit: { opacity: 0, x: 20, transition: { ...transition, duration: 0.3 } },
+};
+
 const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
   if (!activeDropdown?.dropdown) return null;
 
-  // const [selectedLink, setSelectedLink] = useState({
-  //   isActive: false,
-  //   index: 0,
-  // });
-
-  // Group instant links by category
   const groupedLinks = activeDropdown.dropdown.instantLinks?.reduce(
     (acc, link) => {
       if (!acc[link.category]) {
@@ -159,22 +161,33 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
   );
 
   return (
-    <>
-      <motion.div
-        variants={height}
-        initial="initial"
-        animate="enter"
-        exit="exit"
-        className="overflow-hidden flex flex-col items-start justify-center size-full text-white"
-      >
-        <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
-          {/* Services Grid */}
-          <div className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
-            <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
-            <div className="grid gap-[1rem]">
-              {activeDropdown.dropdown.items.map((item, index) => (
+    <motion.div
+      variants={height}
+      initial="initial"
+      animate="enter"
+      exit="exit"
+      className="overflow-hidden flex flex-col items-start justify-center size-full text-white"
+    >
+      <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
+        {/* Services Grid */}
+        <motion.div
+          variants={slideTransition}
+          initial="initial"
+          animate="enter"
+          exit="exit"
+          className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch"
+        >
+          <h3 className="text-sm font-medium text-black/40 mb-5">Services</h3>
+          <div className="grid gap-[1rem]">
+            {activeDropdown.dropdown.items.map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ delay: index * 0.05 }}
+              >
                 <Link
-                  key={index}
                   href={item.href}
                   className="cursor-select-hover group inline-block w-fit"
                 >
@@ -195,46 +208,56 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                     </HoverWrapper>
                   </div>
                 </Link>
-              ))}
-            </div>
+              </motion.div>
+            ))}
           </div>
+        </motion.div>
 
-          {/* Quick Links Section */}
-          {groupedLinks && (
-            <div className="col-span-5 pr-[2rem] py-[2rem]">
-              <h3 className="text-sm font-medium text-black/40 mb-5">
-                Quick links
-              </h3>
-              <div className="grid gap-6">
-                {groupedLinks &&
-                  Object.entries(groupedLinks).map(([category, links]) => (
-                    <div key={category} className="space-y-4">
-                      {/* <h4 className="text-sm font-medium text-black/40">
-                    {category}
-                  </h4> */}
-                      <div className="space-y-2">
-                        {links.map((link, index) => (
-                          <div key={index} className="flex">
-                            <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
-                              <Link
-                                href={link.href}
-                                className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200 pn-regular-22"
-                              >
-                                <FlipLink>{link.title}</FlipLink>
-                              </Link>
-                            </HoverWrapper>
-                          </div>
-                        ))}
-                      </div>
+        {/* Quick Links Section */}
+        {groupedLinks && (
+          <motion.div
+            variants={slideTransition}
+            initial="initial"
+            animate="enter"
+            exit="exit"
+            className="col-span-5 pr-[2rem] py-[2rem]"
+          >
+            <h3 className="text-sm font-medium text-black/40 mb-5">
+              Quick links
+            </h3>
+            <div className="grid gap-6">
+              {groupedLinks &&
+                Object.entries(groupedLinks).map(([category, links]) => (
+                  <div key={category} className="space-y-4">
+                    <div className="space-y-2">
+                      {links.map((link, index) => (
+                        <motion.div
+                          key={index}
+                          initial={{ opacity: 0, y: 20 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -20 }}
+                          transition={{ delay: index * 0.05 }}
+                          className="flex"
+                        >
+                          <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full">
+                            <Link
+                              href={link.href}
+                              className="inline-block w-fit cursor-select-hover text-black/80 hover:text-black transition-colors duration-200 pn-regular-22"
+                            >
+                              <FlipLink>{link.title}</FlipLink>
+                            </Link>
+                          </HoverWrapper>
+                        </motion.div>
+                      ))}
                     </div>
-                  ))}
-              </div>
+                  </div>
+                ))}
             </div>
-          )}
-        </div>
-        <Footer />
-      </motion.div>
-    </>
+          </motion.div>
+        )}
+      </div>
+      <Footer />
+    </motion.div>
   );
 };
 
@@ -390,25 +413,25 @@ const Footer: React.FC<FooterProps> = () => {
   );
 };
 
-const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
-  return (
-    <>
-      {src && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: isActive ? 1 : 0 }}
-          className=" inset-0 -z-10"
-        >
-          <Image
-            src={`/img/${src}`}
-            alt="Selected link image"
-            className="size-full object-cover"
-          />
-        </motion.div>
-      )}
-    </>
-  );
-};
+// const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
+//   return (
+//     <>
+//       {src && (
+//         <motion.div
+//           initial={{ opacity: 0 }}
+//           animate={{ opacity: isActive ? 1 : 0 }}
+//           className=" inset-0 -z-10"
+//         >
+//           <Image
+//             src={`/img/${src}`}
+//             alt="Selected link image"
+//             className="size-full object-cover"
+//           />
+//         </motion.div>
+//       )}
+//     </>
+//   );
+// };
 
 const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const pathname = usePathname();
@@ -416,23 +439,45 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     pathname === "/" ||
     pathname === "/services/listing-media" ||
     pathname === "/services/social-media-management";
-  const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
-    null
-  );
-  const [isMouseInHeader, setIsMouseInHeader] = useState(false);
-  const [isActive, setIsActive] = useState(false);
-  const scrollDirection = useScrollDirection();
+    const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(null);
+    const [previousDropdown, setPreviousDropdown] = useState<LinkDetails | null>(null);
+    const [isAnimating, setIsAnimating] = useState(false);
+    const [isMouseInHeader, setIsMouseInHeader] = useState(false);
+    const [isActive, setIsActive] = useState(false);
+    const scrollDirection = useScrollDirection();
 
   useEffect(() => {
     if (!isMouseInHeader) {
+      setPreviousDropdown(activeDropdown);
       setActiveDropdown(null);
     }
-  }, [isMouseInHeader, setIsMouseInHeader]);
+  }, [isMouseInHeader, activeDropdown, isAnimating]);
 
-  const handleMouseEnter = (nav: LinkDetails) => {
-    // If nav has dropdown, show it; otherwise close any open dropdown
-    setActiveDropdown(nav.dropdown ? nav : null);
-    setIsMouseInHeader(true);
+  const handleMouseEnter = async (nav: LinkDetails) => {
+    if (nav.dropdown) {
+      setIsMouseInHeader(true);
+      
+      if (activeDropdown && activeDropdown !== nav) {
+        // If there's an active dropdown and it's different from the new one
+        setIsAnimating(true);
+        setPreviousDropdown(activeDropdown);
+        setActiveDropdown(null);
+        
+        // Wait for exit animation to complete
+        await new Promise(resolve => setTimeout(resolve, 300));
+        
+        // Start enter animation for new dropdown
+        setActiveDropdown(nav);
+        setPreviousDropdown(null);
+        setIsAnimating(false);
+      } else {
+        // If no active dropdown or same dropdown
+        setActiveDropdown(nav);
+      }
+    } else {
+      setPreviousDropdown(activeDropdown);
+      setActiveDropdown(null);
+    }
   };
 
   const handleMouseLeave = () => {
@@ -552,9 +597,12 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
         </div>
 
         {/* Dropdown Menu using Nav component */}
-        <AnimatePresence>
-          {activeDropdown && scrollDirection !== "down" && (
-            <Nav activeDropdown={activeDropdown} />
+        <AnimatePresence mode="sync">
+          {(activeDropdown || previousDropdown) && scrollDirection !== "down" && (
+            <Nav 
+              key={activeDropdown?.title || previousDropdown?.title} 
+              activeDropdown={activeDropdown || previousDropdown} 
+            />
           )}
         </AnimatePresence>
       </div>
