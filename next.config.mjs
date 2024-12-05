@@ -1,47 +1,27 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  eslint: { ignoreDuringBuilds: true },
-  reactStrictMode: true,
+  eslint: {
+    // Warning: This allows production builds to successfully complete even if
+    // your project has ESLint errors.
+    ignoreDuringBuilds: true,
+  },
+  reactStrictMode: true, // Helps catch potential issues early on
   images: {
+    // Optimize image loading
     domains: ["virtualxposure.com"], // Allow loading images from specific domains
-    deviceSizes: [384, 640, 960, 1200, 1920], // Simplified sizes
-    formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 604800, // Increase cache to 1 week
-    imageSizes: [16, 32, 48, 64, 96, 128, 256], // Add smaller sizes
-    dangerouslyAllowSVG: true,
+    formats: ["image/avif", "image/webp"], // Use modern formats
   },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
-  pageExtensions: ["js", "jsx", "ts", "tsx"],
+  compress: true, // Enables gzip/brotli compression for better performance
+  poweredByHeader: false, // Removes the "x-powered-by" header for better security
+  swcMinify: true, // Uses the newer, faster SWC compiler for JavaScript minification
+  optimizeFonts: true,
   experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-    optimizePackageImports: ["framer-motion"],
-    largePageDataBytes: 128 * 1000, // 128KB
+    optimizeCss: true, // Enable CSS optimization
   },
-  webpack: (config) => {
-    // Only modify if splitChunks exists
-    if (config.optimization?.splitChunks) {
-      config.optimization.splitChunks = {
-        chunks: "all",
-        minSize: 20000,
-        maxSize: 244000,
-      };
-    }
-    return config;
+  images: {
+    deviceSizes: [500, 800, 1080, 1600, 2000],
+    formats: ['image/webp'],
   },
-  headers: async () => [
-    {
-      source: "/:path*",
-      headers: [
-        {
-          key: "Cache-Control",
-          value: "public, max-age=31536000, immutable",
-        },
-      ],
-    },
-  ],
 };
 
 export default nextConfig;
