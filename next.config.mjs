@@ -3,12 +3,7 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "virtualxposure.com",
-      },
-    ],
+    domains: ["virtualxposure.com"], // Allow loading images from specific domains
     deviceSizes: [384, 640, 960, 1200, 1920], // Simplified sizes
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 604800, // Increase cache to 1 week
@@ -36,6 +31,17 @@ const nextConfig = {
     }
     return config;
   },
+  headers: async () => [
+    {
+      source: "/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+  ],
 };
 
 export default nextConfig;
