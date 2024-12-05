@@ -515,13 +515,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           <div className="cursor-select-hover relative lg:max-w-[10vw] ">
             <Link
               href={"/"}
-              className="flex size-full h-[1.85rem] lg:h-[1.375rem] overflow-hidden"
+              className="flex size-full aspect-[1748/1072] overflow-hidden"
               passHref
             >
               <Image
                 src={logo}
                 alt="logo"
-                className="w-[3rem] lg:w-[2.25rem]"
+                className="w-[4rem] sm:w-[5rem]"
                 placeholder="blur"
                 quality={80}
               />
