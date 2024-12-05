@@ -309,11 +309,6 @@ export const PhotographySection = ({ dark = true }) => {
           loop={true}
           slidesPerView={isMobile ? 2 : 6}
           slidesPerGroup={isMobile ? 2 : 6}
-          autoplay={{
-            delay: 5000,
-            pauseOnMouseEnter: true,
-            disableOnInteraction: false,
-          }}
           pagination={{
             dynamicBullets: true,
           }}
