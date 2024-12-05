@@ -980,6 +980,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       src={starImage}
                       className="w-[1rem]"
                       quality={10}
+                      priority
                     />
                   ))}
                 </div>

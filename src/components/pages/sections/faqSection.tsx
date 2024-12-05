@@ -85,36 +85,30 @@ function FAQSection({ className, vertical = false, faq = FAQ }: SectionProps) {
           ref={ref}
           className={`relative flex size-full flex-row items-center`}
         >
-          <Accordion
+          <Accordion.Root
             type="single"
             collapsible
             className="flex flex-col size-full gap-[0.5rem]"
           >
-            <motion.div
-              // variants={containerVariants}
-              // initial="hidden"
-              // animate={controls}
-              // whileInView="visible"
-              className="flex flex-col size-full gap-[0.5rem]"
-            >
-              {faq.map((_, index) => (
-                <ScaleInVisible key={index}>
-                  <AccordionItem
-                    value={`item-${index}`}
-                    className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125]"
-                  >
+            {faq.map((_, index) => (
+              <ScaleInVisible key={index}>
+                <Accordion.Item
+                  value={`item-${index}`}
+                  className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125]"
+                >
+                  <Accordion.Header>
                     <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline gap-[1rem] py-[2.5rem] px-[2rem]">
                       {_.question}
                     </AccordionTrigger>
-                    <AccordionContent className="pn-regular-16 pb-[2.5rem] px-[2rem]">
-                      <div className="w-full h-[0.055rem] bg-ash/10 mb-[2.5rem]" />
-                      {_.answer}
-                    </AccordionContent>
-                  </AccordionItem>
-                </ScaleInVisible>
-              ))}
-            </motion.div>
-          </Accordion>
+                  </Accordion.Header>
+                  <AccordionContent className="pn-regular-16 pb-[2.5rem] px-[2rem]">
+                    <div className="w-full h-[0.055rem] bg-ash/10 mb-[2.5rem]" />
+                    {_.answer}
+                  </AccordionContent>
+                </Accordion.Item>
+              </ScaleInVisible>
+            ))}
+          </Accordion.Root>
         </div>
       </div>
     </div>

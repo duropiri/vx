@@ -33,6 +33,7 @@ function Body() {
               height={600}
               className="pointer-events-none"
               quality={80}
+              priority
             />
             <TestimonialsSection
               noHeader

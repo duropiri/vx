@@ -90,6 +90,7 @@ function Body() {
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all point"
                     quality={80}
+                    priority
                   />
                 </div>
                 <div
@@ -103,6 +104,7 @@ function Body() {
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={80}
+                    priority
                   />
                 </div>
                 <div
@@ -116,6 +118,7 @@ function Body() {
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={80}
+                    priority
                   />
                 </div>
               </div>
@@ -128,9 +131,10 @@ function Body() {
                     height={600}
                     className="cursor-select-hover hover:scale-110 transition-all"
                     quality={80}
+                    priority
                   />
                 </div>
-                <div className="sm:max-w-[40%] sm:scale-150 z-10">
+                <div className="sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden">
                   <Image
                     src={heroImage2}
                     alt="hero-image"
@@ -140,7 +144,7 @@ function Body() {
                     quality={80}
                   />
                 </div>
-                <div className="max-w-[1/3]">
+                <div className="max-w-[1/3] rounded-[1rem] overflow-hidden">
                   <Image
                     src={heroImage3}
                     alt="hero-image"
