@@ -521,7 +521,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               <Image
                 src={logo}
                 alt="logo"
-                className="w-[4rem] sm:w-[5rem]"
+                className="w-[3rem] sm:w-[5rem]"
                 placeholder="blur"
                 quality={80}
               />
