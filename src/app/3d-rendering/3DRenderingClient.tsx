@@ -103,7 +103,6 @@ export const BenefitsSection = () => (
           },
         ].map((item, index) => (
           <FadeInUp
-            once={false}
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
           >

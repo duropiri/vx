@@ -146,7 +146,6 @@ export const PhotographySection = ({ dark = true }) => {
 
   const renderCaseStudyCard = (study) => (
     <ScaleInVisible
-      once={false}
       key={"case-study-" + study.id}
       className="relative group cursor-select-hover rounded-[1rem] overflow-hidden flex flex-col"
       onClick={() => setSelectedImage(study.image)}

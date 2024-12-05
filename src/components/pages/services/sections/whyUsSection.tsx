@@ -79,7 +79,7 @@ function WhyUsSection({
               <FadeInUp
                 key={index + 4}
                 className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-                once={false}
+                
               >
                 <div className="cursor-select-hover group flex flex-grow flex-col items-center sm:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
                   <div className="flex flex-col items-center justify-center gap-[1rem] sm:gap-[2rem]">
@@ -103,7 +103,7 @@ function WhyUsSection({
               <FadeInUp
                 key={index + 4}
                 className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-                once={false}
+                
               >
                 <div className="cursor-select-hover group flex flex-grow flex-col items-center sm:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
                   <div className="flex flex-col items-center justify-center gap-[1rem] sm:gap-[2rem]">
