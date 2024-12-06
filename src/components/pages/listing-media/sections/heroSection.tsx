@@ -86,7 +86,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [isBottom, setIsBottom] = useState(false);
-    const { isMobile } = useViewport();    // const [hasPassedHero, setHasPassedHero] = useState(false);
+    const { isMobile } = useViewport(); // const [hasPassedHero, setHasPassedHero] = useState(false);
     // const [isTransforming, setIsTransforming] = useState(false);
     const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
 
@@ -925,7 +925,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
               <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
-                <Reveal delay={0} slide={false}>
+                {/* <Reveal delay={0} slide={false}>
                   <span>Showcase</span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
@@ -938,11 +938,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>{" "}
                 <Reveal delay={0.1} slide={false}>
                   <span>Estate Marketing</span>
-                </Reveal>
+                </Reveal> */}
+                Showcase{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Excellence
+                </span>{" "}
+                In Real Estate Marketing
               </h1>
 
               <h1 className="sm:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
-                <Reveal delay={0} slide={false}>
+                {/* <Reveal delay={0} slide={false}>
                   <span>Showcase</span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
@@ -958,28 +963,33 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </Reveal>
                 <Reveal delay={0.15} slide={false}>
                   <span>Marketing</span>
-                </Reveal>
+                </Reveal> */}
+                Showcase{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Excellence
+                </span>{" "}
+                In Real Estate Marketing
               </h1>
 
               <h2 className="pn-regular-16 text-center  max-w-[60ch]">
-                <Reveal delay={0.15} slide={false}>
-                  <span>
-                    Our premium listing media services deliver tailored social
-                    media strategies, high-impact visuals, and expert content
-                    creation—designed to attract quality leads, boost
-                    engagement, and close deals faster.
-                  </span>
-                </Reveal>
+                {/* <Reveal delay={0.15} slide={false}> */}
+                <span>
+                  Our premium listing media services deliver tailored social
+                  media strategies, high-impact visuals, and expert content
+                  creation—designed to attract quality leads, boost engagement,
+                  and close deals faster.
+                </span>
+                {/* </Reveal> */}
               </h2>
             </div>
             {/* Hero CTA */}
             <Reveal
-              once
+              // once
               ref={heroCTARef}
-              delay={revealDelay}
-              xOverflow={false}
-              yOverflow={false}
-              slide={false}
+              // delay={revealDelay}
+              // xOverflow={false}
+              // yOverflow={false}
+              // slide={false}
               className="z-[999]"
             >
               <div className="flex my-[0.625rem]">

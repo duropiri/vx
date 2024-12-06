@@ -39,7 +39,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useViewport } from "@/contexts/ViewportContext";
 
-
 interface LinkDetails {
   title: string;
   href: string;
@@ -87,7 +86,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     const [isScrolled, setIsScrolled] = useState(false);
     const [isBottom, setIsBottom] = useState(false);
-    const { isMobile } = useViewport();    // const [hasPassedHero, setHasPassedHero] = useState(false);
+    const { isMobile } = useViewport(); // const [hasPassedHero, setHasPassedHero] = useState(false);
     // const [isTransforming, setIsTransforming] = useState(false);
     const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
 
@@ -921,7 +920,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
               <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
-                <Reveal delay={0} slide={false}>
+                {/* <Reveal delay={0} slide={false}>
                   <span>Dominate social</span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
@@ -933,11 +932,17 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       Gold Standard
                     </span>
                   </span>
-                </Reveal>
+                </Reveal> */}
+                Dominate Social
+                <br />
+                Media With The{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Gold Standard
+                </span>
               </h1>
 
               <h1 className="sm:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
-                <Reveal delay={0} slide={false}>
+                {/* <Reveal delay={0} slide={false}>
                   <span>Dominate</span>
                 </Reveal>{" "}
                 <Reveal delay={0.05} slide={false}>
@@ -957,28 +962,34 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       Standard
                     </span>
                   </span>
-                </Reveal>
+                </Reveal> */}
+                Dominate
+                <br /> Social Media
+                <br /> With The{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Gold
+                  <br /> Standard
+                </span>
               </h1>
 
               <h2 className="pn-regular-16 text-center  max-w-[60ch]">
-                <Reveal delay={0.15} slide={false}>
-                  <span>
-                    Our expert digital marketing strategies—tailored social
-                    media management and high-impact content—help you generate
-                    valuable leads, boost visibility, and close deals
-                    effortlessly.
-                  </span>
-                </Reveal>
+                {/* <Reveal delay={0.15} slide={false}> */}
+                <span>
+                  Our expert digital marketing strategies—tailored social media
+                  management and high-impact content—help you generate valuable
+                  leads, boost visibility, and close deals effortlessly.
+                </span>
+                {/* </Reveal> */}
               </h2>
             </div>
             {/* Hero CTA */}
             <Reveal
-              once
+              // once
               ref={heroCTARef}
-              delay={revealDelay}
-              xOverflow={false}
-              yOverflow={false}
-              slide={false}
+              // delay={revealDelay}
+              // xOverflow={false}
+              // yOverflow={false}
+              // slide={false}
             >
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
