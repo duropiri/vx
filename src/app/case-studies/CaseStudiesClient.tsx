@@ -275,7 +275,7 @@ export const PhotographySection = ({ dark = true }) => {
         onOpenChange={() => setSelectedImage(null)}
       >
         <Dialog.Portal>
-          <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[9999]" />
+          <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[99999] cursor-none-hover" />
           <Dialog.Content className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]">
             <div className="relative w-[90vw] h-[90vh] bg-transparent">
               {selectedImage && (
