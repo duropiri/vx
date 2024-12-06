@@ -1,7 +1,5 @@
-"use client";
 import SectionHeader from "@/components/ui/sectionHeader";
-import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import React from "react";
 
 interface SectionProps {
   className?: string;
@@ -18,22 +16,6 @@ interface SectionProps {
  */
 function ContactSection({ className }: SectionProps): React.JSX.Element {
   // Add client-side only mounting state
-  const [isMounted, setIsMounted] = useState(false);
-
-  useEffect(() => {
-    setIsMounted(true);
-
-    // Load the external script only after mounting
-    const script = document.createElement("script");
-    script.src = "https://link.msgsndr.com/js/form_embed.js";
-    script.defer = true;
-    document.body.appendChild(script);
-
-    return () => {
-      // Cleanup script on unmount
-      document.body.removeChild(script);
-    };
-  }, []);
 
   // Define static iframe styles to ensure consistency
   const iframeStyles = {

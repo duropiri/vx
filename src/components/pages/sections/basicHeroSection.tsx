@@ -1,3 +1,4 @@
+"use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import {
   // motion,
@@ -29,7 +30,7 @@ function BasicHeroSection({
   body,
   bodyClassName,
   content,
-  dark
+  dark,
 }: SectionProps) {
   return (
     <div className={`section-container top !flex-col ${className} bg-white`}>

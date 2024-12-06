@@ -5,9 +5,9 @@ import ContactSection from "@/components/pages/sections/contactSection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
 import Image from "next/image";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
-import heroImage1 from "@/../../public/assets/images/virtual-xposure-aerial-drone-image-3-1652931128668-1024x683.webp";
-import heroImage2 from "@/../../public/assets/images/Virtual-Xposure-Exterior-Image-16-min-scaled-1024x576.webp";
-import heroImage3 from "@/../../public/assets/images/Virtual-Xposure-Exterior-Image-8-min-768x512.webp";
+import heroImage1 from "@/../../public/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(1).webp";
+import heroImage2 from "@/../../public/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(2).webp";
+import heroImage3 from "@/../../public/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(3).webp";
 
 
 function Body() {
@@ -37,11 +37,11 @@ function Body() {
               </p>
             </div>
             {/* Images */}
-            <div className="flex flex-col sm:flex-row items-center justify-center mb-[3rem] sm:mb-[16rem] sm:mt-[5rem] gap-y-[2rem]">
-              <div className="hidden sm:contents">
+            <div className="flex flex-col sm:flex-row items-center justify-center mb-[3rem] sm:mb-[16rem] sm:mt-[5rem] gap-y-[2rem] w-full sm:h-[50vh]">
+              <div className="hidden sm:contents aspect-[4/3]">
                 <div
                   data-speed={1.1}
-                  className="max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden"
+                  className="relative w-full max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
                 >
                   <Image
                     src={heroImage1}
@@ -50,13 +50,13 @@ function Body() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={true}
                     loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover hover:scale-110 transition-all point"
+                    className="group-hover:scale-110 transition-all object-contain pointer-events-none"
                     quality={75}
                   />
                 </div>
                 <div
                   data-speed={0.9}
-                  className="sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden"
+                  className="relative w-full sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
                 >
                   <Image
                     src={heroImage2}
@@ -65,13 +65,13 @@ function Body() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={true}
                     loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover hover:scale-110 transition-all"
+                    className="cursor-select-hover group-hover:scale-110 transition-all object-contain pointer-events-none"
                     quality={75}
                   />
                 </div>
                 <div
                   data-speed={1.2}
-                  className="max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden"
+                  className="relative w-full max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
                 >
                   <Image
                     src={heroImage3}
@@ -80,13 +80,13 @@ function Body() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={true}
                     loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover hover:scale-110 transition-all"
+                    className="cursor-select-hover group-hover:scale-110 transition-all object-contain pointer-events-none"
                     quality={75}
                   />
                 </div>
               </div>
-              <div className="sm:hidden contents">
-                <div className="max-w-[1/3] rounded-[1rem] overflow-hidden">
+              <div className="sm:hidden contents aspect-[4/3]">
+                <div className="relative max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
                   <Image
                     src={heroImage1}
                     alt="hero-image"
@@ -94,11 +94,11 @@ function Body() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={true}
                     loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover hover:scale-110 transition-all"
+                    className="cursor-select-hover group-hover:scale-110 transition-all pointer-events-none"
                     quality={75}
                   />
                 </div>
-                <div className="sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden">
+                <div className="relative sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
                   <Image
                     src={heroImage2}
                     alt="hero-image"
@@ -106,11 +106,11 @@ function Body() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={true}
                     loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover hover:scale-110 transition-all"
+                    className="cursor-select-hover group-hover:scale-110 transition-all pointer-events-none"
                     quality={75}
                   />
                 </div>
-                <div className="max-w-[1/3] rounded-[1rem] overflow-hidden">
+                <div className="relative max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
                   <Image
                     src={heroImage3}
                     alt="hero-image"
@@ -118,7 +118,7 @@ function Body() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     priority={true}
                     loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover hover:scale-110 transition-all"
+                    className="cursor-select-hover group-hover:scale-110 transition-all pointer-events-none"
                     quality={75}
                   />
                 </div>

@@ -1,3 +1,4 @@
+"use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import {
   // motion,

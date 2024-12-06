@@ -1,3 +1,4 @@
+"use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import gsap from "gsap";
 import { initGSAP } from "@/utils/gsap";
