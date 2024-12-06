@@ -3,50 +3,28 @@ const nextConfig = {
   eslint: { ignoreDuringBuilds: true },
   reactStrictMode: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "virtualxposure.com",
-      },
-    ],
-    deviceSizes: [384, 640, 960, 1200, 1920], // Simplified sizes
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "virtualxposure.com",
+    }],
+    deviceSizes: [384, 640, 960, 1200, 1920],
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 604800, // Increase cache to 1 week
-    imageSizes: [16, 32, 48, 64, 96, 128, 256], // Add smaller sizes
-    dangerouslyAllowSVG: true,
+    minimumCacheTTL: 604800,
   },
-  compiler: {
-    removeConsole: process.env.NODE_ENV === "production",
-  },
-  pageExtensions: ["js", "jsx", "ts", "tsx"],
+  compress: true,
+  poweredByHeader: false,
+  swcMinify: true,
   experimental: {
     optimizeCss: true,
-    scrollRestoration: true,
-    optimizePackageImports: ["framer-motion"],
-    largePageDataBytes: 128 * 1000, // 128KB
+    optimizePackageImports: ["framer-motion"]
   },
-  webpack: (config) => {
-    // Only modify if splitChunks exists
-    if (config.optimization?.splitChunks) {
-      config.optimization.splitChunks = {
-        chunks: "all",
-        minSize: 20000,
-        maxSize: 244000,
-      };
-    }
-    return config;
-  },
-  headers: async () => [
-    {
-      source: "/:path*",
-      headers: [
-        {
-          key: "Cache-Control",
-          value: "public, max-age=31536000, immutable",
-        },
-      ],
-    },
-  ],
+  headers: async () => [{
+    source: "/:path*",
+    headers: [{
+      key: "Cache-Control",
+      value: "public, max-age=31536000, immutable"
+    }]
+  }]
 };
 
 export default nextConfig;
