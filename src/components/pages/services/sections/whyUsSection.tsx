@@ -41,7 +41,7 @@ function WhyUsSection({
       <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
         <ScrollingBanner
           baseVelocity={10}
-          child="flex flex-row h-full items-center gap-x-[9.375rem]"
+          child="flex flex-row items-center gap-x-[9.375rem]"
           innerChild="size-max"
         >
           <Image
@@ -53,7 +53,7 @@ function WhyUsSection({
         </ScrollingBanner>
         <ScrollingBanner
           baseVelocity={-10}
-          child="flex flex-row h-full items-center gap-x-[9.375rem]"
+          child="flex flex-row items-center gap-x-[9.375rem]"
           innerChild="size-max"
         >
           <Image
@@ -70,6 +70,7 @@ function WhyUsSection({
           <SectionHeader
             dark
             center
+            noBodyAnimation
             heading="Why Us?"
             subheading="Why Choose Virtual Xposure?"
             body="We deliver excellence at every level, combining cutting-edge technology with unmatched customer service. Our proven track record and comprehensive solutions ensure your success, backed by industry-leading guarantees and lightning-fast delivery."
@@ -79,7 +80,6 @@ function WhyUsSection({
               <FadeInUp
                 key={index + 4}
                 className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-                
               >
                 <div className="cursor-select-hover group flex flex-grow flex-col items-center sm:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
                   <div className="flex flex-col items-center justify-center gap-[1rem] sm:gap-[2rem]">
@@ -103,7 +103,6 @@ function WhyUsSection({
               <FadeInUp
                 key={index + 4}
                 className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-                
               >
                 <div className="cursor-select-hover group flex flex-grow flex-col items-center sm:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
                   <div className="flex flex-col items-center justify-center gap-[1rem] sm:gap-[2rem]">

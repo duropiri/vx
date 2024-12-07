@@ -1,10 +1,15 @@
 "use client";
-import { motion, TargetAndTransition, VariantLabels } from "framer-motion";
-import React, { forwardRef } from "react";
+import React, { forwardRef, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  index?: number;
   className?: string;
   delay?: number;
   duration?: number;
@@ -14,8 +19,8 @@ interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
   key?: string | number;
   once?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  whileHover?: VariantLabels | TargetAndTransition | undefined;
-  whileTap?: VariantLabels | TargetAndTransition | undefined;
+  hoverScale?: number;
+  tapScale?: number;
 }
 
 const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
@@ -31,38 +36,97 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
       key,
       once = true,
       onClick,
-      whileHover,
-      whileTap,
-      //   ...props
+      hoverScale,
+      tapScale,
     },
     ref
   ) => {
+    const elementRef = useRef<HTMLDivElement>(null);
+    const actualRef = (ref as React.MutableRefObject<HTMLDivElement>) || elementRef;
+    
+    useEffect(() => {
+      const element = actualRef.current;
+      if (!element) return;
+
+      // Initial state
+      gsap.set(element, {
+        opacity: 0,
+        scale: 0.9
+      });
+
+      // Scroll trigger animation
+      const scrollTrigger = ScrollTrigger.create({
+        trigger: element,
+        start: `top bottom-=${margin}`,
+        end: "bottom top",
+        toggleActions: once ? "play none none none" : "play reverse play reverse",
+        onEnter: () => {
+          gsap.to(element, {
+            opacity: 1,
+            scale: 1,
+            duration: duration,
+            delay: delay,
+            ease: "power2.out"
+          });
+        }
+      });
+
+      // Hover animation
+      if (hoverScale) {
+        element.addEventListener("mouseenter", () => {
+          gsap.to(element, {
+            scale: hoverScale,
+            duration: 0.2
+          });
+        });
+
+        element.addEventListener("mouseleave", () => {
+          gsap.to(element, {
+            scale: 1,
+            duration: 0.2
+          });
+        });
+      }
+
+      // Click/tap animation
+      if (tapScale) {
+        element.addEventListener("mousedown", () => {
+          gsap.to(element, {
+            scale: tapScale,
+            duration: 0.1
+          });
+        });
+
+        element.addEventListener("mouseup", () => {
+          gsap.to(element, {
+            scale: hoverScale || 1,
+            duration: 0.1
+          });
+        });
+      }
+
+      // Cleanup
+      return () => {
+        scrollTrigger.kill();
+        if (hoverScale || tapScale) {
+          element.removeEventListener("mouseenter", () => {});
+          element.removeEventListener("mouseleave", () => {});
+          element.removeEventListener("mousedown", () => {});
+          element.removeEventListener("mouseup", () => {});
+        }
+      };
+    }, [actualRef, delay, duration, margin, once, hoverScale, tapScale]);
+
     return (
-      <motion.div
+      <div
         id={id}
-        ref={ref}
+        ref={actualRef}
         key={key}
         className={className}
-        initial={{ opacity: 0, scale: 0.9 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{
-          once: once,
-          amount: amount,
-          margin: margin,
-        }}
-        transition={{
-          delay: delay,
-          // staggerChildren: 1,
-          duration: duration,
-          ease: "easeOut",
-        }}
         onClick={onClick}
-        whileHover={whileHover}
-        whileTap={whileTap}
-        // {...props}
       >
-        <>{children}</>
-      </motion.div>
+        {children}
+      </div>
     );
   }
 );

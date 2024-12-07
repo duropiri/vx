@@ -18,7 +18,7 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { getChars } from "@/components/animations/GetChars";
+// import { AnimatedText } from "@/components/animations/GetChars";
 // import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { Reveal } from "@/components/animations/Reveal";
 // import CircleCTA from "@/components/ui/circleCTA";
@@ -1053,7 +1053,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   className="nav-item cursor-select-hover text-nowrap transition-all duration-300"
                 >
                   <Link key={`l_${index}`} href={nav.href} passHref>
-                    <FlipLink>{getChars(nav.title)}</FlipLink>
+                    <FlipLink>
+                      {/* <AnimatedText text={nav.title} /> */}
+                      {nav.title}
+                    </FlipLink>
                   </Link>
                 </HoverWrapper>
               ))}

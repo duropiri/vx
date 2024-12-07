@@ -48,6 +48,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
             center
             heading="Testimonials"
             subheading="Here's what real estate professionals are saying"
+            noBodyAnimation
             body="Not yet 100% convinced? Hear what a few of the top real estate professionals have to say about us."
           />
         )}

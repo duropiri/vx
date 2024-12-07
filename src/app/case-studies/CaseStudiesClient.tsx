@@ -62,6 +62,7 @@ export const FloorplansSection = () => {
       <div className="relative flex size-full max-w-[--section-width] flex-col-reverse xl:flex-row items-center justify-center gap-[3rem] xl:gap-[3.75rem]">
         <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
           <SectionHeader
+            noBodyAnimation
             subheading="Showcase your home layout in detail."
             body="The 3D basic floor plan is the best kind of virtual property tour, which shows the home to a potential buyer in greater detail. From demonstrating the flooring transitions to the door swings directions, a 3D basic floor plan will effectively exhibit a home or property and help attract potential buyers to make a decision easier."
             className="text-black"
@@ -230,6 +231,7 @@ export const PhotographySection = ({ dark = true }) => {
           dark={dark}
           heading="Photography"
           subheading="Examples Of Our Work"
+          noBodyAnimation
           body="From stunning interiors to sweeping aerial views, our professional photography services capture your property in its best light. Every shot is carefully composed and expertly edited to showcase your property's unique features and appeal to potential buyers."
           className="text-black"
         />
@@ -410,6 +412,7 @@ export const VirtualSection = ({
       <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
         <SectionHeader
           subheading={service.title}
+          noBodyAnimation
           body={service.description}
           className="text-black"
         />

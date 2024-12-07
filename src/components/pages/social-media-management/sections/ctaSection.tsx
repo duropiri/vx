@@ -20,15 +20,13 @@ function CTASection({ className = "" }: SectionProps) {
         <LetterRevealOnScroll className="relative" end="bottom 60%">
           <h1 className="pn-regular-96">90 Day 2X Money Back Guarantee</h1>
         </LetterRevealOnScroll>
-        <LetterRevealOnScroll className="relative" end="bottom 60%">
-          <p className="pn-regular-16 max-w-[45ch] text-center">
-            Yes. if you aren&apos;t completely blown away we&apos;ll{" "}
-            <span className="text-goldenbrown underline pn-bold-16">
-              double
-            </span>{" "}
-            your initial investment in our services.
-          </p>
-        </LetterRevealOnScroll>
+        {/* <LetterRevealOnScroll className="relative" end="bottom 60%"> */}
+        <p className="pn-regular-16 max-w-[45ch] text-center">
+          Yes. if you aren&apos;t completely blown away we&apos;ll{" "}
+          <span className="text-goldenbrown underline pn-bold-16">double</span>{" "}
+          your initial investment in our services.
+        </p>
+        {/* </LetterRevealOnScroll> */}
         <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"

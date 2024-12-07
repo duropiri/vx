@@ -1,6 +1,6 @@
 "use client";
-import React, { createContext, useContext, useState } from "react";
-import { motion } from "framer-motion";
+import React, { createContext, useContext, useState, useRef, useEffect } from "react";
+import { gsap } from "gsap";
 
 interface FlipLinkProps {
   children: React.ReactNode;
@@ -9,14 +9,14 @@ interface FlipLinkProps {
   outside?: string;
   inside?: string;
   id?: string;
-  duration?: number; // New prop for animation duration
-  ease?: string; // New prop for easing function
+  duration?: number;
+  ease?: string;
 }
 
 // Create a context for hover state
 const HoverContext = createContext(false);
 
-// HoverWrapper component
+// HoverWrapper component stays mostly the same
 export const HoverWrapper = ({
   children,
   className,
@@ -45,44 +45,81 @@ export const HoverWrapper = ({
   );
 };
 
-// Modified FlipLink component
+// Modified FlipLink component using GSAP
 export const FlipLink = ({
   children,
   className = "",
   outside = "200",
   inside = "0",
-  duration = 0.4, // Default duration
-  ease = "easeOut", // Default easing
+  duration = 0.4,
+  ease = "power2.inOut",
 }: FlipLinkProps) => {
   const isHovered = useContext(HoverContext);
+  const topTextRef = useRef<HTMLDivElement>(null);
+  const bottomTextRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<gsap.Context | null>(null);
 
-  const transition = {
-    duration,
-    ease: [0.4, 0, 0.2, 1], // easeInOut cubic-bezier
-  };
+  useEffect(() => {
+    // Clean up previous context if it exists
+    if (animationRef.current) {
+      animationRef.current.kill();
+    }
+
+    // Create a new GSAP context
+    animationRef.current = gsap.context(() => {
+      const tl = gsap.timeline();
+      
+      if (isHovered) {
+        tl.to(topTextRef.current, {
+          y: `-${outside}%`,
+          duration,
+          ease,
+        })
+        .to(bottomTextRef.current, {
+          y: `${inside}%`,
+          duration,
+          ease,
+        }, "<"); // Start at the same time as the first animation
+      } else {
+        tl.to(topTextRef.current, {
+          y: "0%",
+          duration,
+          ease,
+        })
+        .to(bottomTextRef.current, {
+          y: `${outside}%`,
+          duration,
+          ease,
+        }, "<");
+      }
+    });
+
+    // Cleanup function
+    return () => {
+      if (animationRef.current) {
+        animationRef.current.kill();
+      }
+    };
+  }, [isHovered, outside, inside, duration, ease]);
+
+  // Set initial position
+  useEffect(() => {
+    gsap.set(bottomTextRef.current, {
+      y: `${outside}%`,
+    });
+  }, [outside]);
 
   return (
-    <motion.div
-      animate={isHovered ? "hovered" : "initial"}
-      className={`relative block overflow-hidden ${className}`}
-    >
-      <motion.div
-        variants={{
-          initial: { y: 0, transition },
-          hovered: { y: `-${outside}%`, transition },
-        }}
-      >
+    <div className={`relative block overflow-hidden ${className}`}>
+      <div ref={topTextRef}>
         {children}
-      </motion.div>
-      <motion.div
+      </div>
+      <div 
+        ref={bottomTextRef}
         className="absolute inset-0"
-        variants={{
-          initial: { y: `${outside}%`, transition },
-          hovered: { y: `${inside}%`, transition },
-        }}
       >
         {children}
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };

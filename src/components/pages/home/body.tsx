@@ -10,7 +10,7 @@ import { SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
 import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
+import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 // import { Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
 import { useViewport } from "@/contexts/ViewportContext";
@@ -31,7 +31,6 @@ const Body = () => {
   // Refs to store timeouts and intervals
   const hintIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const initialDelayRef = useRef<NodeJS.Timeout | null>(null);
-
 
   // Clear all animations and timers
   const clearAllAnimations = () => {
@@ -103,9 +102,9 @@ const Body = () => {
   };
 
   const leftContent = (
-    <div className="relative section-container flex-col !items-end justify-start !pr-0 !w-auto h-full overflow-hidden bg-goldenbrown">
+    <div className="section-container flex-col !items-end justify-start !pr-0 !w-auto h-full overflow-hidden bg-goldenbrown">
       {/* Video Background Container */}
-      <div className="absolute inset-0">
+      <div className="pointer-events-none absolute inset-0">
         {/* Video Element */}
         <video
           autoPlay
@@ -117,12 +116,15 @@ const Body = () => {
             zIndex: 0,
           }}
         >
-          <source src="/assets/videos/virtual-3d-tours.webm" type="video/webm" />
+          <source
+            src="/assets/videos/virtual-3d-tours.webm"
+            type="video/webm"
+          />
         </video>
 
         {/* Gradient Overlay */}
         <div
-          className="absolute inset-0 bg-gradient-to-r from-transparent to-goldenbrown to-80%"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-r from-transparent to-goldenbrown to-80%"
           style={{
             zIndex: 1,
             // mixBlendMode: "multiply",
@@ -130,19 +132,20 @@ const Body = () => {
         />
       </div>
       {/* Gradient */}
-      <div
+      {/* <div
         style={{
           opacity: `${isLeftHovered ? "50%" : "100%"}`,
           transition: "all 0.6s ease-in-out",
         }}
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
-      />
+      /> */}
       <ScrollingBanner
-        vertical
-        baseVelocity={10000}
-        className="bg-goldenbrown z-10 w-auto"
+        baseVelocity={1000}
+        className="!absolute rotate-90 left-0 !h-[5rem] !w-[100vh] bg-goldenbrown z-10"
       >
-        <h2 className="pn-regular-32 uppercase text-white">Listing Media</h2>
+        <h2 className="pn-regular-32 uppercase text-white">
+          Listing Media Management
+        </h2>
       </ScrollingBanner>
     </div>
   );
@@ -151,7 +154,7 @@ const Body = () => {
     <div className="section-container flex-col !items-start justify-start !pl-0 !w-auto h-full overflow-hidden bg-ash">
       {/* Video Background Container */}
       {/* <VideoBackground className="ml-[7.5rem]" /> */}
-      <div className="absolute inset-0">
+      <div className="pointer-events-none absolute inset-0">
         {/* Video Element */}
         <video
           autoPlay
@@ -168,7 +171,7 @@ const Body = () => {
 
         {/* Gradient Overlay */}
         <div
-          className="absolute inset-0 bg-gradient-to-l from-transparent to-ash to-80%"
+          className="pointer-events-none absolute inset-0 bg-gradient-to-l from-transparent to-ash to-80%"
           style={{
             zIndex: 1,
             // mixBlendMode: "multiply",
@@ -176,14 +179,17 @@ const Body = () => {
         />
       </div>
       {/* Gradient */}
-      <div
+      {/* <div
         style={{
           opacity: `${isRightHovered ? "50%" : "100%"}`,
           transition: "all 0.6s ease-in-out",
         }}
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
-      />
-      <ScrollingBanner vertical baseVelocity={10000} className="bg-ash z-10">
+      /> */}
+      <ScrollingBanner
+        baseVelocity={1000}
+        className="!absolute -rotate-90 right-0 !h-[5rem] !w-[100vh] bg-ash z-10"
+      >
         <h2 className="pn-regular-32 uppercase text-white">
           Social Media Management
         </h2>

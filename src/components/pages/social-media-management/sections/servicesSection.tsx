@@ -49,6 +49,7 @@ function ServicesSection({ className }: SectionProps) {
           center
           heading="Our Services"
           subheading="Here's what we do for our clients"
+          noBodyAnimation
           body="At Virtual Xposure, we specialize in building your brand's
       digital presence, empowering realtors to thrive in today's
       competitive online marketplace. Our services cover everything from

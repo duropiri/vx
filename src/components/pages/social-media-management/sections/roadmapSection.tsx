@@ -50,6 +50,7 @@ function RoadmapSection({ className }: SectionProps) {
               Your <span className="text-goldenbrown">90-Day Growth Plan</span>
             </>
           }
+          noBodyAnimation
           body="Our 90-Day Growth Plan is designed to rapidly increase your real estate brand's visibility and engagement through a customized content strategy, social media management, and lead generation. In just 90 days, you'll see measurable growth in online presence and leads, giving you a competitive edge in the market."
           className="bg-white z-10 pb-[10rem] sm:pb-[3.75rem]"
         />

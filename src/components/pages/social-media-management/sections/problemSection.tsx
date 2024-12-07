@@ -334,6 +334,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
             <SectionHeader
               ref={textRef}
               medium
+              noAnimation
               heading={media[0].text[0]}
               subheading={media[0].text[1]}
               headingRef={headingRef}

@@ -115,6 +115,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             subheading={
               subheading || "A Few Of Our Clients In The Real Estate Industry"
             }
+            noBodyAnimation
             body={body}
           />
 
@@ -150,7 +151,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative flex w-[11.25rem] max-h-[22.5rem]">
               <ScrollingBanner
                 direction="vertical"
-                baseVelocity={250}
+                baseVelocity={600}
                 className="flex flex-col"
                 innerChild="flex flex-col gap-[3rem]"
               >
@@ -171,7 +172,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="flex flex-col w-[11.25rem] max-h-[22.5rem]">
               <ScrollingBanner
                 direction="vertical"
-                baseVelocity={-250}
+                baseVelocity={-600}
                 className="flex flex-col"
                 innerChild="flex flex-col gap-[3rem]"
               >
@@ -192,7 +193,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="flex flex-col w-[11.25rem] max-h-[22.5rem]">
               <ScrollingBanner
                 direction="vertical"
-                baseVelocity={250}
+                baseVelocity={600}
                 className="flex flex-col"
                 innerChild="flex flex-col gap-[3rem]"
               >

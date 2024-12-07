@@ -206,9 +206,9 @@ const ServiceCard = ({
           {/* Header */}
           <SectionHeader subheading={title} className={themeClasses.text} />
           {/* Body */}
-          <LetterRevealOnScroll end="bottom 90%">
+          {/* <LetterRevealOnScroll end="bottom 90%"> */}
             <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
-          </LetterRevealOnScroll>
+          {/* </LetterRevealOnScroll> */}
           {/* CTA */}
           {darkTheme ? (
             <div className="flex justify-center xl:justify-start w-full">

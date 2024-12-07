@@ -15,6 +15,7 @@ export const WhatIsItSection = () => (
       center
       heading="Why"
       subheading="Why is Real Estate Video Effective?"
+      noBodyAnimation
       body="In today’s world of short attention spans, standing out in the crowded real estate market requires a fresh approach. Consider creating engaging real estate videos to give clients a realistic feel for the property and capture their interest in a unique way."
       className="text-black"
     />
@@ -89,6 +90,7 @@ export const StepsLeftSection = () => (
     <SectionHeader
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"
+      noBodyAnimation
       body="The good news is… we include it at no additional cost in all of our packages, so rest assured your listing will get in front of the right eyes regardless of your budget."
       className="text-black"
     />

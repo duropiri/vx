@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import { getChars } from "@/components/animations/GetChars";
 
 import logo from "@/../../public/assets/images/logo-black-black.webp";
 // import chevronDown from "@/../../public/assets/svgs/chevron-down.svg";
@@ -18,6 +17,7 @@ import { usePathname } from "next/navigation";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { FooterHelpLinks } from "@/data/navLinks";
+// import { AnimatedText } from "@/components/animations/GetChars";
 
 // Custom hook to track scroll direction
 const useScrollDirection = () => {
@@ -533,9 +533,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           </div>
 
           {/* Navigation */}
-          <nav
-            className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full w-fit"
-          >
+          <nav className="hidden pn-regular-22 items-center justify-end gap-[1.313rem] transition-all duration-1000 md:flex size-full w-fit">
             {navigation.map((nav, index) => (
               <div
                 key={index}
@@ -553,7 +551,10 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                     href={nav.href}
                     className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full"
                   >
-                    <FlipLink>{getChars(nav.title)}</FlipLink>
+                    <FlipLink>
+                      {/* <AnimatedText text={nav.title} /> */}
+                      {nav.title}
+                    </FlipLink>
                     {nav.dropdown && (
                       <span className="ml-1 inline-block transition-transform duration-200">
                         <ChevronDownIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
@@ -570,7 +571,10 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 href="#contact"
                 className="group button dark  cursor-select-hover pn-regular-22 relative hidden md:flex !border-none shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 transition-all"
               >
-                <FlipLink>{getChars("Get In Touch")}</FlipLink>
+                <FlipLink>
+                  {/* <AnimatedText text="Get In Touch" /> */}
+                  Get In Touch
+                </FlipLink>
                 <Image
                   alt="arrow"
                   src={arrowRedirect}

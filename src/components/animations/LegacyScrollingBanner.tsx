@@ -1,100 +1,126 @@
-import {
-    motion,
-    useAnimationFrame,
-    useMotionValue,
-    useScroll,
-    useSpring,
-    useTransform,
-    useVelocity,
-    wrap,
-  } from "framer-motion";
-  import React, { useRef, useState } from "react";
+import React, { useRef, useEffect } from "react";
+import { gsap } from "gsap";
+
+interface ScrollingBannerProps {
+  children: React.ReactNode;
+  baseVelocity?: number;
+  length?: number;
+  className?: string;
+  child?: string;
+  innerChild?: string;
+  slowOnHover?: boolean;
+  direction?: "horizontal" | "vertical";
+}
+
+export default function ScrollingBanner({
+  children,
+  baseVelocity = 600,
+  length = 6,
+  className = "",
+  child = "",
+  innerChild = "",
+  slowOnHover = false,
+  direction = "horizontal",
+}: ScrollingBannerProps) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const innerRef = useRef<HTMLDivElement>(null);
+  const tweenRef = useRef<gsap.core.Tween | null>(null);
+  const currentScroll = useRef(0);
+  const isScrollingDown = useRef(true);
   
-  interface ScrollingBannerProps {
-    children: React.ReactNode;
-    baseVelocity?: number;
-    length?: number;
-    className?: string;
-    child?: string;
-    innerChild?: string;
-    slowOnHover?: boolean;
-    direction?: "horizontal" | "vertical";
-  }
+  const isVertical = direction === "vertical";
+  const isNegative = baseVelocity < 0;
   
-  export default function ScrollingBanner({
-    children,
-    baseVelocity = 600,
-    length = 25,
-    className,
-    child,
-    innerChild,
-    slowOnHover = false,
-    direction = "horizontal",
-  }: ScrollingBannerProps) {
-    const basePosition = useMotionValue(0);
-    const { scrollY } = useScroll();
-    const scrollVelocity = useVelocity(scrollY);
-    const smoothVelocity = useSpring(scrollVelocity, {
-      damping: 50,
-      stiffness: 400,
-    });
-    const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 2], {
-      clamp: false,
-    });
+  useEffect(() => {
+    let ctx = gsap.context(() => {
+      if (!innerRef.current) return;
   
-    const [isHovered, setIsHovered] = useState(false);
+      // Use viewport dimensions instead of content size
+      const distance = isVertical ? window.innerHeight : window.innerWidth;
+      
+      gsap.set(innerRef.current, { 
+        [isVertical ? 'yPercent' : 'xPercent']: -50 
+      });
   
-    const adjustedBaseVelocity =
-      slowOnHover && isHovered ? baseVelocity / 3 : baseVelocity;
-  
-    const isVertical = direction === "vertical";
-  
-    const position = useTransform(basePosition, (v) => `${wrap(-20, -45, v)}%`);
-  
-    const directionFactor = useRef(1);
-    useAnimationFrame((_t, delta) => {
-      let moveBy =
-        directionFactor.current * (adjustedBaseVelocity / 1000) * (delta / 1000);
-  
-      if (velocityFactor.get() < 0) {
-        directionFactor.current = -1;
-      } else if (velocityFactor.get() > 0) {
-        directionFactor.current = 1;
+      tweenRef.current = gsap.to(".scroll-banner-part", {
+        [isVertical ? 'yPercent' : 'xPercent']: isNegative ? 100 : -100,
+        repeat: -1,
+        duration: (distance / Math.abs(baseVelocity)) * 2, // Multiply by 2 for smoother scrolling
+        ease: "none",
+      }).totalProgress(0.5);
+
+      // Handle scroll direction
+      const handleScroll = () => {
+        if (window.pageYOffset > currentScroll.current) {
+          isScrollingDown.current = true;
+        } else {
+          isScrollingDown.current = false;
+        }
+
+        gsap.to(tweenRef.current, {
+          timeScale: isScrollingDown.current ? 1 : -1
+        });
+
+        currentScroll.current = window.pageYOffset;
+      };
+
+      window.addEventListener("scroll", handleScroll);
+
+      // Handle hover effect
+      if (slowOnHover) {
+        const handleMouseEnter = () => {
+          if (tweenRef.current) {
+            gsap.to(tweenRef.current, { timeScale: 0.2 });
+          }
+        };
+
+        const handleMouseLeave = () => {
+          if (tweenRef.current) {
+            gsap.to(tweenRef.current, { 
+              timeScale: isScrollingDown.current ? 1 : -1 
+            });
+          }
+        };
+
+        containerRef.current?.addEventListener("mouseenter", handleMouseEnter);
+        containerRef.current?.addEventListener("mouseleave", handleMouseLeave);
+
+        return () => {
+          window.removeEventListener("scroll", handleScroll);
+          containerRef.current?.removeEventListener("mouseenter", handleMouseEnter);
+          containerRef.current?.removeEventListener("mouseleave", handleMouseLeave);
+        };
       }
-  
-      moveBy += directionFactor.current * moveBy * velocityFactor.get();
-  
-      basePosition.set(basePosition.get() + moveBy);
-    });
-  
-    const styles = {
-      banner: isVertical
-        ? "relative m-0 flex flex-col flex-nowrap items-center whitespace-nowrap min-h-[100vh]"
-        : "relative m-0 flex flex-nowrap items-center whitespace-nowrap h-full",
-      child: isVertical
-        ? "flex flex-col flex-nowrap items-center whitespace-nowrap"
-        : "flex flex-row flex-nowrap items-center whitespace-nowrap",
-      innerChild: isVertical ? "my-4" : "mx-4",
-    };
-  
-    return (
-      <div
-        className={`${className} ${styles.banner}`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }, containerRef);
+
+    return () => ctx.revert();
+  }, [baseVelocity, slowOnHover, isVertical, isNegative]);
+
+  return (
+    <div 
+      ref={containerRef}
+      className={`relative ${className}`}
+    >
+      <div 
+        ref={innerRef}
+        className={`w-fit ${isVertical ? 'flex-col' : 'flex-row'} flex flex-auto ${child}`}
+        aria-hidden="true"
       >
-        <motion.div
-          style={{
-            [isVertical ? "y" : "x"]: position,
-          }}
-          className={`${child} ${styles.child}`}
-        >
-          {Array.from({ length }).map((_, index) => (
-            <span className={`${innerChild} ${styles.innerChild}`} key={index}>
-              {children}
-            </span>
-          ))}
-        </motion.div>
+        {Array.from({ length }).map((_, index) => (
+          <div 
+            key={index}
+            className={`scroll-banner-part flex-shrink-0 ${
+              isVertical ? 'py-1' : 'px-1'
+            } ${innerChild}`}
+          >
+            {children}
+          </div>
+        ))}
       </div>
-    );
-  }
+    </div>
+  );
+}

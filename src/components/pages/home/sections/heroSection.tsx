@@ -18,7 +18,6 @@ import {
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-// import { getChars } from "@/components/animations/GetChars";
 // import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { Reveal } from "@/components/animations/Reveal";
 // import CircleCTA from "@/components/ui/circleCTA";

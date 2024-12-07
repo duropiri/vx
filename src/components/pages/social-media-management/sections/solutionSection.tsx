@@ -121,6 +121,7 @@ function SolutionSection({ className }: SectionProps) {
               <span className="text-goldenbrown">We Exist</span>
             </>
           }
+          noBodyAnimation
           body="At Virtual Xposure, we specialize in building your brand's
             digital presence, empowering realtors to thrive in today's
             competitive online marketplace. Our services cover everything from

@@ -20,7 +20,7 @@ function CTASection({ className = "" }: SectionProps) {
         <LetterRevealOnScroll className="relative">
           <h1 className="pn-regular-96">90 Day 2X Money Back Guarantee</h1>
         </LetterRevealOnScroll>
-        <LetterRevealOnScroll className="relative">
+        {/* <LetterRevealOnScroll className="relative"> */}
           <p className="pn-regular-16 text-center">
             To take it one step further, we also believe in what we do, and we
             back that up with a{" "}
@@ -36,7 +36,7 @@ function CTASection({ className = "" }: SectionProps) {
             . We even give you 90 days to think about it. I know right, finally…
             a service that puts their money where their mouth is.
           </p>
-        </LetterRevealOnScroll>
+        {/* </LetterRevealOnScroll> */}
         <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
