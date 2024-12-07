@@ -2,7 +2,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import gsap from "gsap";
 import { initGSAP } from "@/utils/gsap";
-import { ParallaxProvider } from "./ParallaxContext";
+// import { ParallaxProvider } from "./ParallaxContext";
 
 const MOBILE_BREAKPOINT = 768;
 
@@ -53,7 +53,9 @@ export function ViewportProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ViewportContext.Provider value={{ isMobile }}>
-      <ParallaxProvider>{children}</ParallaxProvider>
+      {/* <ParallaxProvider> */}
+      {children}
+      {/* </ParallaxProvider> */}
     </ViewportContext.Provider>
   );
 }

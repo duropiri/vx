@@ -59,6 +59,12 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Proxima Nova, sans-serif;
+  // perspective: 1px;
+  // transform-style: preserve-3d;
+}
+
+.parallax {
+  transform: translateZ(-1px) scale(2.2);
 }
 
 .no-scroll {

@@ -8,13 +8,14 @@ import service2 from "@/../../public/assets/images/print-design-northumberland-m
 import service3 from "@/../../public/assets/images/service_2-1.webp";
 import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div
-          data-speed={0.95}
+        <ParallaxSection
+          speed={1 - 0.95}
           data-media-wrapper
           className="size-full pointer-events-none"
         >
@@ -28,7 +29,7 @@ export const WhatIsItSection1 = () => (
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
-        </div>
+        </ParallaxSection>
       </div>
       {/* Inverted Border Radius */}
       <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
@@ -91,8 +92,8 @@ export const WhatIsItSection2 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row-reverse items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
     <div className="relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-start gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div
-          data-speed={0.95}
+        <ParallaxSection
+          speed={1 - 0.95}
           data-media-wrapper
           className="size-full pointer-events-none"
         >
@@ -106,7 +107,7 @@ export const WhatIsItSection2 = () => (
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
-        </div>
+        </ParallaxSection>
       </div>
 
       <div className="relative flex flex-col items-start h-full justify-end max-h-full sm:max-h-[80%] sm:max-w-[40%]">
@@ -166,8 +167,8 @@ export const WhatIsItSection3 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div
-          data-speed={0.95}
+        <ParallaxSection
+          speed={1 - 0.95}
           data-media-wrapper
           className="size-full pointer-events-none"
         >
@@ -181,7 +182,7 @@ export const WhatIsItSection3 = () => (
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
-        </div>
+        </ParallaxSection>
       </div>
       {/* Inverted Border Radius */}
       <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">

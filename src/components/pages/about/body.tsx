@@ -8,7 +8,7 @@ import TestimonialsSection from "@/components/pages/sections/testimonialsSection
 import heroImage1 from "@/../../public/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(1).webp";
 import heroImage2 from "@/../../public/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(2).webp";
 import heroImage3 from "@/../../public/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(3).webp";
-
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 function Body() {
   return (
@@ -39,8 +39,8 @@ function Body() {
             {/* Images */}
             <div className="flex flex-col sm:flex-row items-center justify-center mb-[3rem] sm:mb-[16rem] sm:mt-[5rem] gap-y-[2rem] w-full sm:h-[50vh]">
               <div className="hidden sm:contents aspect-[4/3]">
-                <div
-                  data-speed={1.1}
+                <ParallaxSection
+                  speed={1 - 1.1}
                   className="relative w-full max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
                 >
                   <Image
@@ -53,9 +53,9 @@ function Body() {
                     className="group-hover:scale-110 transition-all object-contain pointer-events-none"
                     quality={75}
                   />
-                </div>
-                <div
-                  data-speed={0.9}
+                </ParallaxSection>
+                <ParallaxSection
+                  speed={1 - 0.9}
                   className="relative w-full sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
                 >
                   <Image
@@ -68,9 +68,9 @@ function Body() {
                     className="cursor-select-hover group-hover:scale-110 transition-all object-contain pointer-events-none"
                     quality={75}
                   />
-                </div>
-                <div
-                  data-speed={1.2}
+                </ParallaxSection>
+                <ParallaxSection
+                  speed={1 - 1.2}
                   className="relative w-full max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
                 >
                   <Image
@@ -83,7 +83,7 @@ function Body() {
                     className="cursor-select-hover group-hover:scale-110 transition-all object-contain pointer-events-none"
                     quality={75}
                   />
-                </div>
+                </ParallaxSection>
               </div>
               <div className="sm:hidden contents aspect-[4/3]">
                 <div className="relative max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">

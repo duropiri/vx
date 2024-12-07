@@ -15,6 +15,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 interface SectionProps {
   className?: string;
@@ -86,11 +87,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     }, []);
 
     return (
-      <div ref={ref} id={id} className="relative w-full overflow-hidden">
+      <div ref={ref} id={id} className="relative flex w-full overflow-hidden">
         {/* Video Background */}
         {src.endsWith(".webm") || src.endsWith(".webm") ? (
-          <div
-            data-speed={0.8}
+          <ParallaxSection
+            isHero
+            speed={1 - 0.8}
             data-media-wrapper
             className="absolute inset-0 size-full h-[120%]"
           >
@@ -104,12 +106,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             />
             {/* Dark overlay for better text readability */}
             <div className="absolute inset-0 bg-black/10" />
-          </div>
+          </ParallaxSection>
         ) : (
-          <div
-            data-speed={0.8}
+          <ParallaxSection
+            isHero
+            speed={1 - 0.8}
             data-media-wrapper
-            className="absolute inset-0 size-full h-[120%] pointer-events-none"
+            className="absolute flex size-full h-[120%] pointer-events-none"
           >
             <Image
               src={src}
@@ -120,12 +123,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               priority
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-          </div>
+          </ParallaxSection>
         )}
 
         {/* Content */}
-        <div
-          data-speed={0.8}
+        <ParallaxSection
+          isHero
+          speed={1 - 0.8}
           className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
         >
           <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">
@@ -182,7 +186,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           </div>
           {/* Gradient */}
           <div className="absolute inset-0 flex flex-col w-full h-[120%] origin-top-left bg-gradient-to-l from-transparent from-30% via-ash/50 via-45% to-ash to-100%  pointer-events-none" />
-        </div>
+        </ParallaxSection>
       </div>
     );
   }

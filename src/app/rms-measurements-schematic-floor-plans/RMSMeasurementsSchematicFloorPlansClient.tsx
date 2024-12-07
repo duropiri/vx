@@ -135,7 +135,7 @@ export const WhatIsItSection1 = () => (
       </div>
       <div className="relative flex flex-col size-full aspect-[4/3] items-start justify-center rounded-[1rem]">
         <Image
-          // data-speed={0.95}
+          // speed={1-0.95}
           src={floorplanImage}
           alt="floorplan-image"
           fill
@@ -160,7 +160,7 @@ export const WhatIsItSection2 = () => (
     <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="relative flex flex-col size-full aspect-[4/3] items-start justify-center rounded-[1rem]">
         <Image
-          // data-speed={0.95}
+          // speed={1-0.95}
           src={threedimensionalfloorplanImage}
           alt="3d-floorplan-image"
           fill
@@ -248,7 +248,7 @@ export const WhatIsItSection3 = () => (
       </div>
       <div className="relative flex flex-col size-full aspect-[4/3] items-start justify-center rounded-[1rem]">
         <Image
-          // data-speed={0.95}
+          // speed={1-0.95}
           src={siteplanImage}
           alt="siteplan-image"
           fill

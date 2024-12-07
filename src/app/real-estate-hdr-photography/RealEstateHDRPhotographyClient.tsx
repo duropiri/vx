@@ -1,9 +1,10 @@
 import { ServiceIcons } from "@/data/serviceIcons";
 import SectionHeader from "@/components/ui/sectionHeader";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
+// import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(13).webp";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -13,9 +14,13 @@ export const WhatIsItSection = () => (
       subheading="Why does the quality of your photos matter?"
       className="text-black"
     />
-    <div className="relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col xl:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] p-[2rem]">
+    <div className="relative group flex size-full xl:h-fit max-w-[--section-width] flex-col xl:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] pt-[10rem] p-[2rem]">
       <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
-        <div data-speed={0.95} data-media-wrapper className="size-full">
+        <ParallaxSection
+          // speed={1-0.95}
+          speed={1 - 0.95}
+          className="size-full"
+        >
           <Image
             src={whatisitImage}
             alt="what-is-it-image"
@@ -26,12 +31,12 @@ export const WhatIsItSection = () => (
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
-        </div>
+        </ParallaxSection>
       </div>
-      <div className="relative flex size-full flex-col xl:flex-row items-start justify-between gap-[1.5rem] max-h-[70%] sm:max-w-[40%]">
+      <div className="relative flex size-full flex-col xl:flex-row items-end justify-between gap-[1.5rem] h-fit sm:max-w-[40%]">
         <ul
-          // data-speed={1.02}
-          className="group opacity-90 backdrop-blur-lg scale-100 group-hover:opacity-100 sm:hover:-translate-y-[2rem] sm:hover:scale-105 transition-all duration-500 flex flex-col size-full items-start justify-center space-y-[10%] bg-ash rounded-[1rem] p-[1.5rem]"
+          // speed={1-1.02}
+          className="flex flex-col grow basis-0 gap-[1.5rem] rounded-[1rem] p-[1.5rem] group bg-ash backdrop-blur-lg opacity-90 scale-100 group-hover:opacity-100 sm:hover:scale-105 sm:hover:-translate-y-[2rem] transition-all duration-500"
         >
           {[
             {
@@ -39,9 +44,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Homes with professional photography sell on average for{" "}
-                  <span className="text-goldenbrown gold-text">
-                    9% more money
-                  </span>
+                  <span className="text-goldenbrown">9% more money</span>
                 </>
               ),
             },
@@ -50,9 +53,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   The average ROI on professional real estate photography is{" "}
-                  <span className="text-goldenbrown gold-text">
-                    approx 826%
-                  </span>
+                  <span className="text-goldenbrown">approx 826%</span>
                 </>
               ),
             },
@@ -61,7 +62,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Homes listed with more than 20 photos{" "}
-                  <span className="text-goldenbrown gold-text">
+                  <span className="text-goldenbrown">
                     spend 32 days less on
                   </span>{" "}
                   the market
@@ -79,16 +80,14 @@ export const WhatIsItSection = () => (
                 </div>
               </div>
               <div className="flex flex-col">
-                <LetterRevealOnScroll className="relative">
-                  <p className="pn-regular-16">{item.text}</p>
-                </LetterRevealOnScroll>
+                <p className="pn-regular-16">{item.text}</p>
               </div>
             </li>
           ))}
         </ul>
         <ul
-          // data-speed={1.08}
-          className="group opacity-90 backdrop-blur-lg scale-100 group-hover:opacity-100 sm:hover:-translate-y-[2rem] sm:hover:scale-105 transition-all duration-500 flex flex-col size-full items-start justify-center space-y-[10%] bg-ash rounded-[1rem] p-[1.5rem]"
+          // speed={1-1.08}
+          className="flex flex-col grow basis-0 gap-[1.5rem] rounded-[1rem] p-[1.5rem] group bg-ash backdrop-blur-lg opacity-90 scale-100 group-hover:opacity-100 sm:hover:scale-105 sm:hover:-translate-y-[2rem] transition-all duration-500"
         >
           {[
             {
@@ -96,9 +95,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Clients feel{" "}
-                  <span className="text-goldenbrown gold-text">
-                    43% more satisfied
-                  </span>{" "}
+                  <span className="text-goldenbrown">43% more satisfied</span>{" "}
                   with their REALTOR with professional photos
                 </>
               ),
@@ -107,7 +104,7 @@ export const WhatIsItSection = () => (
               icon: ServiceIcons.magnifyingglass,
               text: (
                 <>
-                  <span className="text-goldenbrown gold-text">
+                  <span className="text-goldenbrown">
                     50% of all new home searches
                   </span>{" "}
                   for real estate start online.
@@ -119,7 +116,7 @@ export const WhatIsItSection = () => (
               text: (
                 <>
                   Professional photos result in{" "}
-                  <span className="text-goldenbrown gold-text">
+                  <span className="text-goldenbrown">
                     1,200% increase in social shares
                   </span>
                 </>
@@ -136,9 +133,7 @@ export const WhatIsItSection = () => (
                 </div>
               </div>
               <div className="flex flex-col">
-                <LetterRevealOnScroll className="relative">
-                  <p className="pn-regular-16">{item.text}</p>
-                </LetterRevealOnScroll>
+                <p className="pn-regular-16">{item.text}</p>
               </div>
             </li>
           ))}
@@ -159,27 +154,26 @@ export const StepsLeftSection = () => (
     <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem]">
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          Sell your listings{" "}
-          <span className="text-goldenbrown gold-text">68%</span> faster than
-          your competitors
+          Sell your listings <span className="text-goldenbrown">68%</span>{" "}
+          faster than your competitors
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
-          <span className="text-goldenbrown gold-text">83%</span> of sellers
-          would prefer your service over the competition
+          <span className="text-goldenbrown">83%</span> of sellers would prefer
+          your service over the competition
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
           Increase your number of listings by up to{" "}
-          <span className="text-goldenbrown gold-text">73%</span>
+          <span className="text-goldenbrown">73%</span>
         </p>
       </li>
       <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
         <p className="pn-regular-16 text-black/80 group-hover:text-black">
           Experience deal closing increases as high as{" "}
-          <span className="text-goldenbrown gold-text">68%</span>
+          <span className="text-goldenbrown">68%</span>
         </p>
       </li>
     </ul>
@@ -194,8 +188,8 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listings with drone photography and or/videography sell{" "}
-            <span className="text-goldenbrown gold-text">68%</span> faster on
-            average than those that do not.
+            <span className="text-goldenbrown">68%</span> faster on average than
+            those that do not.
           </>
         ),
       },
@@ -203,8 +197,8 @@ export const StepsRightSection = () => (
         heading: "Appeal to more home buyers",
         body: (
           <>
-            <span className="text-goldenbrown gold-text">83%</span> of home
-            sellers prefer to work with and agent using drone services.
+            <span className="text-goldenbrown">83%</span> of home sellers prefer
+            to work with and agent using drone services.
           </>
         ),
       },
@@ -213,10 +207,9 @@ export const StepsRightSection = () => (
         body: (
           <>
             Listing agents who use drones for real estate could see an increase
-            in listing as high as{" "}
-            <span className="text-goldenbrown gold-text">73%</span> and deal
-            closing increases as high as{" "}
-            <span className="text-goldenbrown gold-text">68%</span>.
+            in listing as high as <span className="text-goldenbrown">73%</span>{" "}
+            and deal closing increases as high as{" "}
+            <span className="text-goldenbrown">68%</span>.
           </>
         ),
       },
@@ -229,12 +222,9 @@ export const StepsRightSection = () => (
           <h1 className="text-goldenbrown pn-semibold-48">{index + 1}</h1>
         </div>
         <div className="flex flex-col gap-y-[1rem]">
-          <LetterRevealOnScroll className="relative">
-            <h1 className="pn-semibold-24 capitalize">{item.heading}</h1>
-          </LetterRevealOnScroll>
-          <LetterRevealOnScroll className="relative">
-            <p className="pn-regular-16">{item.body}</p>
-          </LetterRevealOnScroll>
+          <h1 className="pn-semibold-24 capitalize">{item.heading}</h1>
+
+          <p className="pn-regular-16">{item.body}</p>
         </div>
       </li>
     ))}
@@ -283,17 +273,18 @@ export const UnlimitedRightSection = () => (
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
     <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
-      <Image
-        data-speed={1.2}
-        src={unlimitedImage}
-        alt="unlimited-image"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        priority={false}
-        loading={false ? "eager" : "lazy"}
-        className=""
-        quality={75}
-      />
+      <ParallaxSection speed={1 - 1.2}>
+        <Image
+          src={unlimitedImage}
+          alt="unlimited-image"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          loading={false ? "eager" : "lazy"}
+          className=""
+          quality={75}
+        />
+      </ParallaxSection>
     </div>
     {/* Gradient */}
     <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem] z-10" />

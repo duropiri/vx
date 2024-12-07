@@ -10,6 +10,7 @@ import powerUploadImage from "@/../../public/assets/images/power-upload.webp";
 import strategyImage from "@/../../public/assets/images/strategy-surge.webp";
 import machineImage from "@/../../public/assets/images/content-machine.webp";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 interface SectionProps {
   className?: string;
@@ -101,20 +102,13 @@ function RoadmapSection({ className }: SectionProps) {
           <div className="flex flex-col size-full sm:min-h-[400vh] max-w-[--section-width] items-start justify-between z-10 snap-y">
             {/* Step 1 */}
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] sm:pt-[7.5rem] py-[1.875rem]">
-              <div
-                data-speed={1.1}
+              <ParallaxSection
+                speed={1 - 1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
                 <LetterRevealOnScroll
                   end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  // shadow={true}
-                  // lineStyles={{
-                  //   marginTop: "0.6ch", // Custom line height
-                  //   marginRight: "0.4ch", // Custom character spacing
-                  // }}
-                  // start={100}
-                  // end={85}
                 >
                   Step 1
                 </LetterRevealOnScroll>
@@ -150,15 +144,14 @@ function RoadmapSection({ className }: SectionProps) {
                     plan in place.
                   </p>
                 </LetterRevealOnScroll>
-              </div>
-              <div
-                data-speed={1.25}
+              </ParallaxSection>
+              <ParallaxSection
+                speed={1 - 1.25}
                 className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] -translate-x-[2rem] sm:translate-x-0 rounded-r-[2.5rem]"
               >
-                <div
-                  data-speed={0.9}
-                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
-                />
+                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
+                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
+                </ParallaxSection>
                 <Image
                   src={launchImage}
                   alt="vx"
@@ -166,13 +159,13 @@ function RoadmapSection({ className }: SectionProps) {
                   placeholder="blur"
                   quality={75}
                 />
-              </div>
+              </ParallaxSection>
             </div>
 
             {/* Step 2 */}
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem]">
-              <div
-                data-speed={1.1}
+              <ParallaxSection
+                speed={1 - 1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
                 <LetterRevealOnScroll
@@ -221,15 +214,14 @@ function RoadmapSection({ className }: SectionProps) {
                     results.
                   </p>
                 </LetterRevealOnScroll>
-              </div>
-              <div
-                data-speed={1.25}
+              </ParallaxSection>
+              <ParallaxSection
+                speed={1 - 1.25}
                 className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] translate-x-[2rem] sm:translate-x-0 rounded-l-[2.5rem]"
               >
-                <div
-                  data-speed={0.9}
-                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
-                />
+                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
+                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
+                </ParallaxSection>
                 <Image
                   src={powerUploadImage}
                   alt="vx"
@@ -237,13 +229,13 @@ function RoadmapSection({ className }: SectionProps) {
                   placeholder="blur"
                   quality={75}
                 />
-              </div>
+              </ParallaxSection>
             </div>
 
             {/* Step 3 */}
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] py-[1.875rem]">
-              <div
-                data-speed={1.1}
+              <ParallaxSection
+                speed={1 - 1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
                 <LetterRevealOnScroll
@@ -291,15 +283,14 @@ function RoadmapSection({ className }: SectionProps) {
                     get you real growth fast.
                   </p>
                 </LetterRevealOnScroll>
-              </div>
-              <div
-                data-speed={1.25}
+              </ParallaxSection>
+              <ParallaxSection
+                speed={1 - 1.25}
                 className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] -translate-x-[2rem] sm:translate-x-0 rounded-r-[2.5rem]"
               >
-                <div
-                  data-speed={0.9}
-                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
-                />
+                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
+                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
+                </ParallaxSection>
                 <Image
                   src={strategyImage}
                   alt="vx"
@@ -307,13 +298,13 @@ function RoadmapSection({ className }: SectionProps) {
                   placeholder="blur"
                   quality={75}
                 />
-              </div>
+              </ParallaxSection>
             </div>
 
             {/* Step 4 */}
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem] sm:pb-[7.5rem]">
-              <div
-                data-speed={1.1}
+              <ParallaxSection
+                speed={1 - 1.1}
                 className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
               >
                 <LetterRevealOnScroll
@@ -361,15 +352,14 @@ function RoadmapSection({ className }: SectionProps) {
                     brand&apos;s online presence is in action!
                   </p>
                 </LetterRevealOnScroll>
-              </div>
-              <div
-                data-speed={1.25}
+              </ParallaxSection>
+              <ParallaxSection
+                speed={1 - 1.25}
                 className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] translate-x-[2rem] sm:translate-x-0 rounded-l-[2.5rem]"
               >
-                <div
-                  data-speed={0.9}
-                  className="absolute w-[60%] aspect-square bg-goldenrod/60 rounded-full"
-                />
+                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
+                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
+                </ParallaxSection>
                 <Image
                   src={machineImage}
                   alt="vx"
@@ -377,7 +367,7 @@ function RoadmapSection({ className }: SectionProps) {
                   placeholder="blur"
                   quality={75}
                 />
-              </div>
+              </ParallaxSection>
             </div>
           </div>
         </div>

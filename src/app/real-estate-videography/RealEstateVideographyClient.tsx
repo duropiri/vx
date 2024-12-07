@@ -7,6 +7,7 @@ import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
 import FadeInUp from "@/components/animations/FadeInUp";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -218,17 +219,18 @@ export const UnlimitedRightSection = () => (
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
     <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
-      <Image
-        data-speed={1.2}
-        src={unlimitedImage}
-        alt="unlimited-image"
-        fill
-        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-        priority={false}
-        loading={false ? "eager" : "lazy"}
-        className="size-full object-contain aspect-[73/128]"
-        quality={75}
-      />
+      <ParallaxSection speed={1 - 1.2}>
+        <Image
+          src={unlimitedImage}
+          alt="unlimited-image"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          loading={false ? "eager" : "lazy"}
+          className="size-full object-contain aspect-[73/128]"
+          quality={75}
+        />
+      </ParallaxSection>
     </div>
     {/* Gradient */}
     <div className="absolute left-0 bottom-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-b from-transparent to-white to-85% pointer-events-none rounded-b-[1.875rem] z-10" />

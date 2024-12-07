@@ -373,9 +373,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
 
           {/* Pricing Plans */}
           <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center sm:items-start gap-[2rem]">
-            {packageCount > 3 ? (
+            {packageCount > 4 ? (
               <>
-                <div className="hidden xl:contents">
+                <div className="hidden xl:contents bg-red-500">
                   <Swiper
                     effect={"fade"}
                     slidesPerView={4}
@@ -383,10 +383,10 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     grabCursor={true}
                     scrollbar={{ draggable: true }}
                     modules={[Pagination, Navigation, Scrollbar, A11y]}
-                    className="mySwiper w-full xl:max-w-[95rem] !overflow-visible"
+                    className="relative mySwiper size-full xl:max-w-[95rem] !overflow-visible"
                   >
                     {Object.values(packages).map((tier, index) => (
-                      <SwiperSlide key={index} className="!cursor-swipe-hover">
+                      <SwiperSlide key={index} className="!cursor-swipe-hover grow shrink basis-0 h-full">
                         <ScaleInVisible className="group relative size-full">
                           <PricingTier
                             tier={tier}
@@ -423,7 +423,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     <PricingTier
                       tier={tier}
                       isYearly={isYearly}
-                      className="xl:min-h-[68rem]"
+                      className=""
                     />
                   </ScaleInVisible>
                 ))}

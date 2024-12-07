@@ -7,13 +7,14 @@ import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import FadeInUp from "@/components/animations/FadeInUp";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
-        <div
-          data-speed={0.95}
+        <ParallaxSection
+          speed={1 - 0.95}
           data-media-wrapper
           className="size-full pointer-events-none"
         >
@@ -27,7 +28,7 @@ export const WhatIsItSection = () => (
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />
-        </div>
+        </ParallaxSection>
       </div>
       {/* Inverted Border Radius */}
       <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
@@ -119,7 +120,6 @@ export const BenefitsSection = () => (
           <FadeInUp
             key={index + 2}
             className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem]"
-            
           >
             <div className="cursor-select-hover group flex flex-grow flex-col items-center p-4 hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
               <div

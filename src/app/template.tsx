@@ -60,26 +60,7 @@ const Template: React.FC<TemplateProps> = ({ children }) => {
           <div className="w-16 h-16 border-4 border-white border-t-transparent rounded-full animate-spin" />
         </div>
       </motion.div>
-      {/* <motion.div
-        variants={perspective}
-        initial={perspective.initial}
-        exit={perspective.exit}
-        animate={perspective.enter}
-        transition={{
-          duration: 1.2,
-          ease: [0.76, 0, 0.24, 1],
-        }}
-      > */}
-      {/* <motion.div
-          className=""
-          variants={opacity}
-          initial={opacity.initial}
-          exit={opacity.exit}
-          animate={opacity.enter}
-          transition={{
-            duration: 0.4,
-          }}
-        > */}
+
       {!isAdminPage ? (
         <>
           {isVisible && (
