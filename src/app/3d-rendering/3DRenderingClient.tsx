@@ -44,22 +44,22 @@ export const WhatIsItSection = () => (
             subheading="What is 3D Rendering?"
             className="text-black"
           />
-          <LetterRevealOnScroll end="bottom 90%">
+          {/* <LetterRevealOnScroll end="bottom 90%"> */}
             <p className={`pn-regular-16 max-w-[43.75rem]`}>
               3D rendering is the process of creating 3D models into 3D
               representations. These renderings are created using sophisticated
               computer software which precisely simulates real-world textures,
               lightings, and physics.
             </p>
-          </LetterRevealOnScroll>
-          <LetterRevealOnScroll end="bottom 90%">
+          {/* </LetterRevealOnScroll> */}
+          {/* <LetterRevealOnScroll end="bottom 90%"> */}
             <p className={`pn-regular-16 max-w-[43.75rem]`}>
               3D renderings enable homeowners and renovators to get a clear
               picture of how their renovation project or new construction will
               look before they even begin to break the ground or tear down a
               wall.
             </p>
-          </LetterRevealOnScroll>
+          {/* </LetterRevealOnScroll> */}
         </div>
       </div>
     </div>

@@ -140,8 +140,8 @@ const Body = () => {
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
       /> */}
       <ScrollingBanner
-        baseVelocity={1000}
-        className="!absolute rotate-90 left-0 !h-[5rem] !w-[100vh] bg-goldenbrown z-10"
+        baseVelocity={-500}
+        className="!absolute -rotate-90 right-0 translate-x-[49.5%] !h-[rem] !w-[100vh] bg-goldenbrown z-10"
       >
         <h2 className="pn-regular-32 uppercase text-white">
           Listing Media Management
@@ -154,7 +154,7 @@ const Body = () => {
     <div className="section-container flex-col !items-start justify-start !pl-0 !w-auto h-full overflow-hidden bg-ash">
       {/* Video Background Container */}
       {/* <VideoBackground className="ml-[7.5rem]" /> */}
-      <div className="pointer-events-none absolute inset-0">
+      <div className="pointer-events-none inset-0">
         {/* Video Element */}
         <video
           autoPlay
@@ -187,8 +187,8 @@ const Body = () => {
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
       /> */}
       <ScrollingBanner
-        baseVelocity={1000}
-        className="!absolute -rotate-90 right-0 !h-[5rem] !w-[100vh] bg-ash z-10"
+        baseVelocity={500}
+        className="!absolute -rotate-90 left-0 -translate-x-[49.5%] !h-[2rem] !w-[100vh] bg-ash z-10"
       >
         <h2 className="pn-regular-32 uppercase text-white">
           Social Media Management

@@ -33,7 +33,7 @@ export default function GraphicDesign() {
           label: "Book a FREE Consultation",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/assets/images/graphic-design.webp"
+        src="/assets/images/pexels-tranmautritam-326501.jpg"
         whatisitSection={[
           <WhatIsItSection1 />,
           <WhatIsItSection2 />,

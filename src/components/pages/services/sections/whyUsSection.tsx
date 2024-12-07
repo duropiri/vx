@@ -65,7 +65,7 @@ function WhyUsSection({
         </ScrollingBanner>
       </div>
       <motion.div style={{ scale, rotate, filter: blur }}>
-        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[5rem] sm:gap-[3.75rem]">
           {/* Header */}
           <SectionHeader
             dark
@@ -95,7 +95,7 @@ function WhyUsSection({
             ))}
           </div>
           <ScrollingBanner
-            baseVelocity={-250}
+            baseVelocity={-25}
             className="sm:hidden flex flex-row"
             innerChild="flex flex-row gap-[3rem]"
           >

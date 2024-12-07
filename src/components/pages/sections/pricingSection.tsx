@@ -343,6 +343,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
             center
             heading="Pricing"
             subheading="Find The Right Plan"
+            noBodyAnimation
             body="To ensure we deliver top-tier quality designs on time, we work with a limited number of clients."
           />
 

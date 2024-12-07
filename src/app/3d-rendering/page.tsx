@@ -46,7 +46,7 @@ const page = () => {
           label: "Order Now",
           href: "https://listings.virtualxposure.com/order",
         }}
-        src="/assets/videos/virtual-3d-tours.webm"
+        src="/assets/portfolio/virtual renovation images/DEMO_(35).webp"
         whatisitSection={<WhatIsItSection />}
         benefitsSection={<BenefitsSection />}
         whyusSection

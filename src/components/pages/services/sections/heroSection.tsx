@@ -16,6 +16,7 @@ import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-wh
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
+import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 
 interface SectionProps {
   className?: string;
@@ -130,9 +131,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         <ParallaxSection
           isHero
           speed={1 - 0.8}
-          className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
+          className="relative z-10 section-container sm:!flex-row min-h-[60vh] max-h-[100vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
         >
-          <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[2rem]">
+          <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
               medium
@@ -146,23 +147,47 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             />
 
             {/* Detail List */}
-            {detailList && (
-              <ul className="flex flex-col size-full items-start space-y-[1rem]">
-                {detailList.map((detail, index) => (
-                  <li
-                    key={index}
-                    className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
-                  >
-                    <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
-                      {detail.icon}
+            <div className="hidden sm:contents">
+              {detailList && (
+                <ul className="flex flex-col size-full items-start space-y-[1rem]">
+                  {detailList.map((detail, index) => (
+                    <li
+                      key={index}
+                      className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
+                    >
+                      <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
+                        {detail.icon}
+                      </div>
+                      <p className="pn-regular-16 text-white/80 group-hover:text-white">
+                        {detail.text}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+            <div className="contents sm:hidden">
+              {detailList && (
+                <ScrollingBanner
+                  baseVelocity={25}
+                  innerChild="flex flex-row gap-[1rem] !px-[0] !pr-[1rem]"
+                >
+                  {detailList.map((detail, index) => (
+                    <div
+                      key={index}
+                      className="group flex flex-col items-center gap-[1rem] sm:gap-[0.5rem] max-w-[30ch] text-center"
+                    >
+                      <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
+                        {detail.icon}
+                      </div>
+                      <p className="pn-regular-16 text-white/80 group-hover:text-white">
+                        {detail.text}
+                      </p>
                     </div>
-                    <p className="pn-regular-16 text-white/80 group-hover:text-white">
-                      {detail.text}
-                    </p>
-                  </li>
-                ))}
-              </ul>
-            )}
+                  ))}
+                </ScrollingBanner>
+              )}
+            </div>
 
             {/* CTA */}
             <div className="flex mt-[2rem] w-full">
@@ -185,7 +210,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
           </div>
           {/* Gradient */}
-          <div className="absolute inset-0 flex flex-col w-full h-[120%] origin-top-left bg-gradient-to-l from-transparent from-30% via-ash/50 via-45% to-ash to-100%  pointer-events-none" />
+          <div className="absolute inset-0 flex flex-col w-full h-[120%] origin-top-left bg-gradient-to-b sm:bg-gradient-to-l from-transparent from-30% via-ash/50 via-45% to-ash to-100%  pointer-events-none" />
         </ParallaxSection>
       </div>
     );

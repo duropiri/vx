@@ -305,6 +305,8 @@ export const VirtualSection = ({
   renovation = true,
   objremoval = true,
   staging = true,
+  image1,
+  image2,
 }) => {
   const commonFeatures = [
     { id: 1, text: "Professional editing by experienced designers" },
@@ -354,7 +356,7 @@ export const VirtualSection = ({
       itemOne={
         <div className="relative flex size-full">
           <Image
-            src={beforeImage}
+            src={image1 || beforeImage}
             alt="before-image"
             fill
             sizes="(max-width: 640px) 100vw, 50vw"
@@ -371,7 +373,7 @@ export const VirtualSection = ({
       itemTwo={
         <div className="relative flex size-full">
           <Image
-            src={afterImage}
+            src={image2 || afterImage}
             alt="after-image"
             fill
             sizes="(max-width: 640px) 100vw, 50vw"

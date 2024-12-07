@@ -45,14 +45,14 @@ export const WhatIsItSection = () => (
             subheading="What is Virtual Staging?"
             className="text-black"
           />
-          <LetterRevealOnScroll end="bottom 90%">
+          {/* <LetterRevealOnScroll end="bottom 90%"> */}
             <p className={`pn-regular-16 max-w-[43.75rem]`}>
               Virtual staging is a powerful real estate marketing tool in which
               a home is staged virtually with the help of computer vision
               technology.
             </p>
-          </LetterRevealOnScroll>
-          <LetterRevealOnScroll end="bottom 90%">
+          {/* </LetterRevealOnScroll> */}
+          {/* <LetterRevealOnScroll end="bottom 90%"> */}
             <p className={`pn-regular-16 max-w-[43.75rem]`}>
               Virtual staging allows you to quickly and easily create custom
               designs tailored specifically to each property. Using
@@ -62,15 +62,15 @@ export const WhatIsItSection = () => (
               tenants with a detailed preview of what is possible in their
               desired space.
             </p>
-          </LetterRevealOnScroll>
-          <LetterRevealOnScroll end="bottom 90%">
+          {/* </LetterRevealOnScroll> */}
+          {/* <LetterRevealOnScroll end="bottom 90%"> */}
             <p className={`pn-regular-16 max-w-[43.75rem]`}>
               In simple words, it means furnishing an empty house virtually,
               without having to buy a single piece of furniture. When properties
               are virtually staged, they help prospective clients visualize the
               space better and perhaps see themselves living there.
             </p>
-          </LetterRevealOnScroll>
+          {/* </LetterRevealOnScroll> */}
         </div>
       </div>
     </div>
