@@ -305,8 +305,8 @@ export const VirtualSection = ({
   renovation = true,
   objremoval = true,
   staging = true,
-  image1,
-  image2,
+  image1 = null,
+  image2 = null,
 }) => {
   const commonFeatures = [
     { id: 1, text: "Professional editing by experienced designers" },

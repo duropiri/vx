@@ -10,7 +10,7 @@ import { SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
 import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
-import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
+import ScrollingBanner from "@/components/animations/ScrollingBanner";
 // import { Volume2, VolumeX } from "lucide-react";
 import Link from "next/link";
 import { useViewport } from "@/contexts/ViewportContext";
@@ -140,8 +140,9 @@ const Body = () => {
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
       /> */}
       <ScrollingBanner
-        baseVelocity={-500}
-        className="!absolute -rotate-90 right-0 translate-x-[49.5%] !h-[rem] !w-[100vh] bg-goldenbrown z-10"
+        baseVelocity={-20000}
+        vertical
+        className="bg-goldenbrown z-10"
       >
         <h2 className="pn-regular-32 uppercase text-white">
           Listing Media Management
@@ -187,8 +188,9 @@ const Body = () => {
         className="absolute left-0 top-0 flex flex-col w-full h-[50vh] origin-top-left bg-gradient-to-t from-transparent to-white to-75% pointer-events-none z-20"
       /> */}
       <ScrollingBanner
-        baseVelocity={500}
-        className="!absolute -rotate-90 left-0 -translate-x-[49.5%] !h-[2rem] !w-[100vh] bg-ash z-10"
+        baseVelocity={20000}
+        vertical
+        className="bg-ash z-10"
       >
         <h2 className="pn-regular-32 uppercase text-white">
           Social Media Management

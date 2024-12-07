@@ -1,12 +1,6 @@
-// ScrollingBanner.tsx
 "use client";
-import {
-  motion,
-  useMotionValue,
-  useTransform,
-  wrap,
-} from "framer-motion";
 import React, { useEffect, useRef, useState } from "react";
+import gsap from "gsap";
 
 interface ScrollingBannerProps {
   children: React.ReactNode;
@@ -23,22 +17,21 @@ export default function ScrollingBanner({
   children,
   baseVelocity = 300,
   length = 180,
-  className,
-  child,
-  innerChild,
+  className = "",
+  child = "",
+  innerChild = "",
   slowOnHover = false,
   vertical = false,
 }: ScrollingBannerProps) {
-  const basePosition = useMotionValue(0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
   const bannerRef = useRef<HTMLDivElement>(null);
-  const childRef = useRef<HTMLSpanElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const childRef = useRef<HTMLSpanElement>(null);
+  const [isHovered, setIsHovered] = useState(false);
   const [maxWidth, setMaxWidth] = useState("auto");
   const [maxHeight, setMaxHeight] = useState("auto");
-  const animationRef = useRef<number>();
+  const animationRef = useRef<gsap.core.Tween>();
+  const [isVisible, setIsVisible] = useState(false);
 
-  // Intersection Observer setup
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -63,46 +56,48 @@ export default function ScrollingBanner({
     }
   }, [vertical]);
 
-  const adjustedBaseVelocity =
-    slowOnHover && isHovered ? baseVelocity / 3 : baseVelocity;
-  const totalScrollableSize = vertical ? 45 * length : 45;
-  const position = useTransform(
-    basePosition,
-    (v) => `${wrap(-20, -totalScrollableSize, v)}%`
-  );
-
-  // Optimized animation
   useEffect(() => {
-    let lastTime = performance.now();
-    const directionFactor = 1;
+    if (!containerRef.current || !isVisible) return;
 
-    const animate = (time: number) => {
-      if (!isVisible) return;
-      
-      const deltaTime = time - lastTime;
-      lastTime = time;
-
-      const moveBy = directionFactor * (adjustedBaseVelocity / 1000) * (deltaTime / 1000);
-      basePosition.set(basePosition.get() + moveBy);
-
-      animationRef.current = requestAnimationFrame(animate);
-    };
-
-    if (isVisible) {
-      animationRef.current = requestAnimationFrame(animate);
+    const container = containerRef.current;
+    const adjustedVelocity = baseVelocity;
+    
+    // Convert velocity to duration (higher velocity = lower duration)
+    const duration = Math.abs(100000 / adjustedVelocity);
+    
+    // Determine direction based on velocity sign
+    const direction = Math.sign(baseVelocity);
+    
+    // Kill any existing animation
+    if (animationRef.current) {
+      animationRef.current.kill();
     }
+
+    // Set initial position based on direction
+    gsap.set(container, {
+      [vertical ? 'y' : 'x']: direction > 0 ? 0 : '-100%',
+    });
+
+    // Create the infinite scroll animation
+    animationRef.current = gsap.to(container, {
+      [vertical ? 'y' : 'x']: direction > 0 ? '-100%' : '0%',
+      duration: duration,
+      ease: "none",
+      repeat: -1,
+      paused: !isVisible,
+    });
 
     return () => {
       if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+        animationRef.current.kill();
       }
     };
-  }, [isVisible, adjustedBaseVelocity, basePosition]);
+  }, [baseVelocity, isHovered, slowOnHover, vertical, isVisible]);
 
   const styles = {
     banner: vertical
-      ? `relative m-0 flex flex-col flex-nowrap items-center whitespace-nowrap min-h-[100vh]`
-      : "relative m-0 flex flex-nowrap items-center whitespace-nowrap",
+      ? `relative m-0 flex flex-col flex-nowrap items-center whitespace-nowrap overflow-hidden min-h-[100vh]`
+      : "relative m-0 flex flex-nowrap items-center whitespace-nowrap overflow-hidden",
     child: vertical
       ? "flex flex-col flex-nowrap items-center whitespace-nowrap"
       : "flex flex-row flex-nowrap items-center whitespace-nowrap",
@@ -112,33 +107,32 @@ export default function ScrollingBanner({
   return (
     <div
       ref={bannerRef}
-      className={className + " " + styles.banner}
+      className={`${className} ${styles.banner}`}
       style={{
         maxWidth: vertical ? maxWidth : "100%",
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <motion.div
+      <div
+        ref={containerRef}
+        className={`${child} ${styles.child}`}
         style={{
-          [vertical ? "y" : "x"]: position,
-          transform: vertical ? "translateY(0)" : "none",
           width: vertical ? maxWidth : "100%",
           height: vertical ? maxHeight : "100%",
           gap: vertical ? maxHeight : "",
         }}
-        className={child + " " + styles.child}
       >
         {Array.from({ length }).map((_, index) => (
           <span
-            className={innerChild + " " + styles.innerChild}
+            className={`${innerChild} ${styles.innerChild}`}
             key={index}
             ref={index === 0 ? childRef : null}
           >
             {children}
           </span>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }
