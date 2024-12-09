@@ -33,7 +33,7 @@ const page = () => {
         detailList={detailList}
         cta={{
           label: "Order Now",
-          href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+          href: "https://listings.virtualxposure.com/order",
         }}
         src="/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(12).webp"
         whatisitSection={<WhatIsItSection />}

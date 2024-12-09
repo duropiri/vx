@@ -4,6 +4,7 @@ import skool from "@/../../public/assets/svgs/skool-icon.svg";
 import camera from "@/../../public/assets/svgs/camera-shutter.svg";
 import enhance from "@/../../public/assets/svgs/enhance.svg";
 import virtualrealityimage from "@/../../public/assets/svgs/virtual-reality-image.svg";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 export const HeaderLinks = [
   {
@@ -54,17 +55,17 @@ export const HeaderLinks = [
       ],
       items: [
         {
-          icon: house,
+          icon: ServiceIcons.house,
           title: "Listing Media",
           href: "/services/listing-media",
         },
         {
-          icon: bullhorn,
+          icon: ServiceIcons.share,
           title: "Social Media Management",
           href: "/services/social-media-management",
         },
         {
-          icon: skool,
+          icon: ServiceIcons.skool,
           title: "Exclusive Community",
           href: "https://www.skool.com",
         },
@@ -75,61 +76,19 @@ export const HeaderLinks = [
     title: "Case Studies",
     href: "/case-studies",
     dropdown: {
-      // instantLinks: [
-      //   {
-      //     category: "Listing Media",
-      //     title: "Real Estate HDR Photography",
-      //     href: "/real-estate-hdr-photography",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "Virtual 3D Tours",
-      //     href: "/virtual-3d-tours",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "RMS Measurements & Schematic Floor Plans",
-      //     href: "/rms-measurements-schematic-floor-plans",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "Real Estate Videography",
-      //     href: "/real-estate-videography",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "Virtual Staging",
-      //     href: "/virtual-staging",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "Virtual Renovation",
-      //     href: "/virtual-renovation",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "3D Rendering",
-      //     href: "/3d-rendering",
-      //   },
-      //   {
-      //     category: "Listing Media",
-      //     title: "Graphic Design",
-      //     href: "/graphic-design",
-      //   },
-      // ],
       items: [
         {
-          icon: virtualrealityimage,
+          icon: ServiceIcons.vr,
           title: "Floor Plans & iGUIDE 3D Tours",
           href: "/case-studies#floorplans",
         },
         {
-          icon: camera,
+          icon: ServiceIcons.camerashutter,
           title: "Photography",
           href: "/case-studies#photography",
         },
         {
-          icon: enhance,
+          icon: ServiceIcons.enhance,
           title: "Virtual Enhancements",
           href: "/case-studies#virtual",
         },

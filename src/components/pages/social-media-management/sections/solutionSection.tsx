@@ -1,8 +1,6 @@
-import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { useEffect, useRef } from "react";
 
@@ -18,7 +16,6 @@ import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface SectionProps {
   className?: string;
-  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
 }
 
 function SolutionSection({ className }: SectionProps) {
@@ -52,7 +49,7 @@ function SolutionSection({ className }: SectionProps) {
   }, []);
 
   return (
-    <motion.div
+    <div
       id="solutions"
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
@@ -150,10 +147,10 @@ function SolutionSection({ className }: SectionProps) {
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
                     Your Complete Digital Marketing Solution
                   </span>
-                  <h1 className="pn-regular-28">
+                  <h1 className="pn-regular-24">
                     Everything You Need to Succeed Online.
                   </h1>
-                  <p className="pn-regular-22">
+                  <p className="pn-regular-16">
                     Virtual Xposure provides a full-service digital marketing
                     solution for real estate professionals, from social media
                     management to high-quality content creation. We handle every
@@ -229,10 +226,10 @@ function SolutionSection({ className }: SectionProps) {
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     High-Quality Content Creation
                   </span>
-                  <h1 className="pn-regular-28">
+                  <h1 className="pn-regular-24">
                     Professional Content Designed to Convert.
                   </h1>
-                  <p className="pn-regular-22">
+                  <p className="pn-regular-16">
                     In today&apos;s market, content is everything. Our in-house
                     team produces high-quality videos, photos, and social media
                     assets that resonate with your audience and help you close
@@ -307,10 +304,10 @@ function SolutionSection({ className }: SectionProps) {
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       High-Quality Content Creation
                     </span>
-                    <h1 className="pn-regular-28">
+                    <h1 className="pn-regular-24">
                       Professional Content Designed to Convert.
                     </h1>
-                    <p className="pn-regular-22">
+                    <p className="pn-regular-16">
                       In today&apos;s market, content is everything. Our
                       in-house team produces high-quality videos, photos, and
                       social media assets that resonate with your audience and
@@ -355,10 +352,10 @@ function SolutionSection({ className }: SectionProps) {
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     Strategic Growth for Realtors{" "}
                   </span>
-                  <h1 className="pn-regular-28">
+                  <h1 className="pn-regular-24">
                     Grow Your Business with Proven Strategies.{" "}
                   </h1>
-                  <p className="pn-regular-22">
+                  <p className="pn-regular-16">
                     At VX, we don&apos;t just post content—we help your business
                     grow. Our custom social media strategies are designed
                     specifically for real estate professionals, ensuring
@@ -426,10 +423,10 @@ function SolutionSection({ className }: SectionProps) {
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       Strategic Growth for Realtors{" "}
                     </span>
-                    <h1 className="pn-regular-28">
+                    <h1 className="pn-regular-24">
                       Grow Your Business with Proven Strategies.{" "}
                     </h1>
-                    <p className="pn-regular-22">
+                    <p className="pn-regular-16">
                       At VX, we don&apos;t just post content—we help your
                       business grow. Our custom social media strategies are
                       designed specifically for real estate professionals,
@@ -484,7 +481,7 @@ function SolutionSection({ className }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full text-white gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button pn-regular-22 group !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button pn-regular-16 group !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
@@ -496,10 +493,10 @@ function SolutionSection({ className }: SectionProps) {
           </HoverWrapper>
 
           <HoverWrapper
-            href="#contact"
-            className="button gold pn-regular-22 !w-full lg:!w-auto text-ash group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            href="https://listings.virtualxposure.com/order"
+            className="button gold pn-regular-16 !w-full lg:!w-auto text-ash group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
-            <FlipLink className="font-semibold">Get In Touch</FlipLink>
+            <FlipLink className="font-semibold">Book Now</FlipLink>
             <Image
               alt="arrow"
               src={arrowRedirect}
@@ -509,7 +506,7 @@ function SolutionSection({ className }: SectionProps) {
           </HoverWrapper>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }
 

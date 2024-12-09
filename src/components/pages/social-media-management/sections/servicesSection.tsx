@@ -1,7 +1,6 @@
 import GsapMagnetic from "@/components/animations/GsapMagnetic";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion, MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { useState } from "react";
 import CountUp from "react-countup";
@@ -31,7 +30,6 @@ import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface SectionProps {
   className?: string;
-  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
 }
 
 function ServicesSection({ className }: SectionProps) {
@@ -67,11 +65,11 @@ function ServicesSection({ className }: SectionProps) {
                 <div className="h-full w-full flex-col justify-start items-start gap-2 flex relative">
                   {/* Header */}
                   <div className="flex flex-col justify-center items-center gap-[0.625rem] size-full">
-                    <div className="text-center text-ash pn-bold-28">
+                    <div className="text-center text-ash pn-bold-24">
                       All-Inclusive Content Creation
                     </div>
-                    <p className="text-center text-ash pn-regular-22">
-                      <span className="pn-semibold-22 italic">
+                    <p className="text-center text-ash pn-regular-16">
+                      <span className="pn-semibold-20 italic">
                         Engage your audience with premium content.
                       </span>
                       <br />
@@ -738,11 +736,11 @@ function ServicesSection({ className }: SectionProps) {
                 <div className="h-full w-full flex-col justify-start items-start gap-2 flex relative">
                   {/* Header */}
                   <div className="flex flex-col justify-center items-center gap-[0.625rem] size-full">
-                    <div className="text-center text-ash pn-bold-28">
+                    <div className="text-center text-ash pn-bold-24">
                       All-Inclusive Content Creation
                     </div>
-                    <p className="text-center text-ash pn-regular-22">
-                      <span className="pn-semibold-22 italic">
+                    <p className="text-center text-ash pn-regular-16">
+                      <span className="pn-semibold-20 italic">
                         Engage your audience with premium content.
                       </span>
                       <br />
@@ -1213,11 +1211,11 @@ function ServicesSection({ className }: SectionProps) {
                 <div className="flex-col justify-start items-start lg:items-center lg:items-start gap-2 flex size-full">
                   {/* Header */}
                   <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
-                    <div className="text-ash pn-bold-28">
+                    <div className="text-ash pn-bold-24">
                       Real Growth & Engagement
                     </div>
-                    <p className="text-ash pn-regular-22">
-                      <span className="pn-semibold-22 italic">
+                    <p className="text-ash pn-regular-16">
+                      <span className="pn-semibold-20 italic">
                         See results within 90 days.
                       </span>
                       <br />
@@ -1522,11 +1520,11 @@ function ServicesSection({ className }: SectionProps) {
                 <div className="flex-col justify-start items-start lg:items-center lg:items-start gap-2 flex size-full">
                   {/* Header */}
                   <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
-                    <div className="text-ash pn-bold-28">
+                    <div className="text-ash pn-bold-24">
                       Real Growth & Engagement
                     </div>
-                    <p className="text-ash pn-regular-22">
-                      <span className="pn-semibold-22 italic">
+                    <p className="text-ash pn-regular-16">
+                      <span className="pn-semibold-20 italic">
                         See results within 90 days.
                       </span>
                       <br />
@@ -1822,7 +1820,7 @@ function ServicesSection({ className }: SectionProps) {
                 {/* Content */}
                 <div className="flex flex-col justify-center items-center gap-[2.75rem] text-center text-ash">
                   {/* Header */}
-                  <div className="pn-bold-48">
+                  <div className="pn-bold-40">
                     <span className="group-hover:text-charcoalNavy transition-all duration-500">
                       Optimized
                     </span>{" "}
@@ -1832,8 +1830,8 @@ function ServicesSection({ className }: SectionProps) {
                     </span>
                   </div>
                   {/* Body */}
-                  <div className="pn-regular-22 max-w-[40ch]">
-                    <span className="pn-semibold-22 italic">
+                  <div className="pn-regular-16 max-w-[40ch]">
+                    <span className="pn-semibold-20 italic">
                       Adapt as your business grows.
                     </span>
                     <br />
@@ -1846,7 +1844,7 @@ function ServicesSection({ className }: SectionProps) {
                   <div className="h-[60px] flex-col justify-center items-center flex">
                     <HoverWrapper
                       href="/"
-                      className="button pn-regular-22 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown xl:w-[18.75rem]"
+                      className="button pn-regular-16 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown xl:w-[18.75rem]"
                     >
                       <FlipLink className="pn-semibold-16 leading-[1rem]">
                         Get Started

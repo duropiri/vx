@@ -99,7 +99,7 @@ const page = () => {
         className={`section-container top !flex-row`}
       >
         <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-between gap-[1.5rem] sm:gap-[3.75rem]">
-          <h1 className="pn-bold-48 text-center mb-8">Privacy Policy</h1>
+          <h1 className="pn-bold-40 text-center mb-8">Privacy Policy</h1>
 
           <p className="mb-8">
             This Privacy Policy describes how virtual exposure.ca (the

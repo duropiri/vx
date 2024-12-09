@@ -1,12 +1,10 @@
 "use client";
-import React, { useEffect, useRef } from "react";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 import HeroSection from "@/components/pages/listing-media/sections/heroSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 import CTASection from "@/components/pages/services/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
-import { useScroll } from "framer-motion";
 import { LMSNavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
@@ -16,7 +14,6 @@ import CopySection from "@/components/pages/sections/copySection";
 import Image from "next/image";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 
@@ -38,6 +35,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
+import { TransitionLink } from "@/components/TransitionLink";
 
 const services = [
   {
@@ -207,15 +205,15 @@ const ServiceCard = ({
           <SectionHeader subheading={title} className={themeClasses.text} />
           {/* Body */}
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
+          <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
           {/* </LetterRevealOnScroll> */}
           {/* CTA */}
           {darkTheme ? (
             <div className="flex justify-center xl:justify-start w-full">
               <HoverWrapper className={``}>
-                <Link
+                <TransitionLink
                   href={href}
-                  className="button pn-regular-22 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full xl:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5"
+                  className="button pn-regular-16 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full xl:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5"
                   passHref
                 >
                   <FlipLink className="font-semibold">Learn More</FlipLink>
@@ -225,16 +223,16 @@ const ServiceCard = ({
                     className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
                     quality={75}
                   />
-                </Link>
+                </TransitionLink>
               </HoverWrapper>
             </div>
           ) : (
             <div className="flex justify-center xl:justify-start w-full">
               <div className="flex flex-col xl:flex-row gap-[1rem]">
                 <HoverWrapper className="">
-                  <Link
+                  <TransitionLink
                     href={href}
-                    className="button pn-regular-22 group/cta h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full"
+                    className="button pn-regular-16 group/cta h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full"
                     passHref
                   >
                     <FlipLink className={`flex items-center w-fit`}>
@@ -247,7 +245,7 @@ const ServiceCard = ({
                       className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
                       quality={75}
                     />
-                  </Link>
+                  </TransitionLink>
                 </HoverWrapper>
               </div>
             </div>
@@ -273,7 +271,7 @@ const ServicesSection = () => (
       subheading="Our Unlimited Services Include"
       className="text-black"
     />
-    <motion.div className="z-10 relative flex md:grid size-full max-w-[--section-width] flex-col md:grid-cols-2 xl:grid-cols-3 items-center md:items-start justify-center gap-[3rem] xl:gap-[2rem]">
+    <div className="z-10 relative flex md:grid size-full max-w-[--section-width] flex-col md:grid-cols-2 xl:grid-cols-3 items-center md:items-start justify-center gap-[3rem] xl:gap-[2rem]">
       {services.map((service, index) => (
         <ScaleInVisible
           key={index + 2}
@@ -286,22 +284,48 @@ const ServicesSection = () => (
           />
         </ScaleInVisible>
       ))}
-    </motion.div>
+    </div>
   </div>
 );
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-
-    offset: ["start start", "end end"],
-  });
-
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
+
+  //   offset: ["start start", "end end"],
+  // });
+  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    if (!container.current) return;
+
+    scrollAnimationRef.current = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        onUpdate: (self) => {
+          const newProgress = self.progress;
+          // Remove references to scrollAnimationRef.current as a prop or state
+          // Instead, animate the WhyUsSection content element directly:
+          gsap.to(contentRef.current, {
+            scale: gsap.utils.interpolate(1, 0.5, newProgress),
+            rotation: gsap.utils.interpolate(0, -45, newProgress),
+            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
+            duration: 0,
+            overwrite: "auto",
+          });
+        },
+      },
+    });
+
+    // Color Change Animation
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-    // const heroSection = sectionRefs.current[0];
 
     if (triggerSection) {
       const updateColors = (change: boolean) => {
@@ -429,7 +453,8 @@ function Body() {
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         {/* Why Us? */}
         <WhyUsSection
-          scrollYProgress={scrollYProgress}
+          // scrollProgress={scrollAnimationRef.current}
+          ref={contentRef}
           shrinkSize={0.75}
           rotationAmount={-20}
           className="z-0"
@@ -442,12 +467,16 @@ function Body() {
           copy={
             <>
               The best real estate professionals have
+              <br />
               <span className="text-goldenbrown italic gold-text">
                 reinvented
               </span>
               themselves and their businesses towards a
-              <span className="text-goldenbrown gold-text">
-                more substantial online presence
+              <span className="text-goldenbrown gold-text text-nowrap">
+                more substantial
+              </span>
+              <span className="text-goldenbrown gold-text text-nowrap">
+                online presence
               </span>
             </>
           }

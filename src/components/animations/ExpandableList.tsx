@@ -150,7 +150,7 @@ function ExpandableList<T>({
  *         <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
  *           {detail.icon}
  *         </div>
- *         <p className="pn-regular-16 text-white/80 group-hover:text-white">
+ *         <p className="pn-regular-20 text-white/80 group-hover:text-white">
  *           {detail.text}
  *         </p>
  *       </>

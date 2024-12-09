@@ -1,9 +1,7 @@
-import { MotionValue } from "framer-motion";
 import React, { forwardRef } from "react";
 
 interface SectionProps {
     className?: string;
-    scrollYProgress?: MotionValue<number>;
     content?: React.ReactElement;
     onMouseEnter?: () => void;
     onMouseLeave?: () => void;

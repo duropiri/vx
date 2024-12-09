@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
-// import { Reveal } from "@/components/animations/Reveal";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React, {
@@ -9,9 +8,8 @@ import React, {
   useEffect,
   // useState
 } from "react";
-// import { motion } from "framer-motion";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
@@ -92,7 +90,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {src.endsWith(".webm") || src.endsWith(".webm") ? (
           <ParallaxSection
             isHero
-            speed={1 - 0.8}
+            speed={1 - 0.3}
             data-media-wrapper
             className="absolute inset-0 size-full h-[120%]"
           >
@@ -110,7 +108,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         ) : (
           <ParallaxSection
             isHero
-            speed={1 - 0.8}
+            speed={1 - 0.3}
             data-media-wrapper
             className="absolute flex size-full h-[120%] pointer-events-none"
           >
@@ -129,8 +127,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Content */}
         <ParallaxSection
           isHero
-          speed={1 - 0.8}
-          className="relative z-10 section-container sm:!flex-row min-h-[60vh] max-h-[100vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
+          speed={1 - 0.5}
+          className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
         >
           <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
             {/* Header with light text */}
@@ -141,7 +139,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               largeText
               subheading={title}
               body={<>{copy}</>}
-              bodyClassName="mt-[1rem]"
+              bodyClassName="mt-[1rem] !leading-[1.6em]"
               className="text-white" // Add light text color
             />
 
@@ -154,10 +152,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       key={index}
                       className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
                     >
-                      <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
+                      <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
                         {detail.icon}
                       </div>
-                      <p className="pn-regular-16 text-white/80 group-hover:text-white">
+                      <p className="pn-regular-20 text-white/80 group-hover:text-white">
                         {detail.text}
                       </p>
                     </li>
@@ -169,17 +167,17 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {detailList && (
                 <ScrollingBanner
                   baseVelocity={25}
-                  innerChild="flex flex-row gap-[1rem] !px-[0] !pr-[1rem]"
+                  innerChild="flex flex-row gap-[1rem] !px-[0] !pr-[1rem]  mt-[4rem]"
                 >
                   {detailList.map((detail, index) => (
                     <div
                       key={index}
                       className="group flex flex-col items-center gap-[1rem] sm:gap-[0.5rem] max-w-[30ch] text-center"
                     >
-                      <div className="size-[2rem] sm:size-[1rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1rem] text-white/80 group-hover:text-white">
+                      <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
                         {detail.icon}
                       </div>
-                      <p className="pn-regular-16 text-white/80 group-hover:text-white">
+                      <p className="pn-regular-20 text-white/80 group-hover:text-white">
                         {detail.text}
                       </p>
                     </div>
@@ -193,15 +191,15 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                 <HoverWrapper
                   href={cta.href}
-                  className="button pn-regular-22 group cursor-select-hover !bg-transparent !border-white"
+                  className="button gold pn-regular-16 group cursor-select-hover"
                 >
-                  <FlipLink className="font-semibold text-white">
+                  <FlipLink className="font-semibold">
                     {cta.label}
                   </FlipLink>
                   <Image
                     alt="arrow"
-                    src={arrowRedirectWhite}
-                    className="text-white group-hover:rotate-45 transition-all duration-300"
+                    src={arrowRedirect}
+                    className="group-hover:rotate-45 transition-all duration-300"
                     quality={75}
                   />
                 </HoverWrapper>

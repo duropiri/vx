@@ -4,7 +4,6 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
-import { motion } from "framer-motion";
 
 interface SectionProps {
   className?: string;
@@ -20,13 +19,6 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     const roadRef = useRef<HTMLDivElement>(null);
     const svgRef = useRef<SVGSVGElement | null>(null);
     const lineRef = useRef<SVGLineElement | null>(null);
-
-    // const { scrollYProgress } = useScroll({
-    //   target: roadRef,
-    //   offset: ["start start", "end end"]
-    // });
-
-    // const dashOffset = useTransform(scrollYProgress, [0, 1], [2700, 0]);
 
     const [activeStep, setActiveStep] = useState(1);
     const progressBarRef = useRef<HTMLDivElement>(null);
@@ -250,7 +242,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
                   d="M205.879 0.0078125H151.11L27.4805 215.004L329.543 214.989L205.879 0.0078125Z"
                   fill="#C5A05E"
                 />
-                <motion.line
+                <line
                   ref={lineRef}
                   x1="179"
                   y1="-7.43094e-07"
@@ -329,7 +321,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             id="problemCopy"
             ref={textContainerRef}
-            className="sticky top-[2.5rem] sm:top-0 left-0 w-full max-w-[--section-width] -mt-[100vh] h-[100vh] flex pt-[7.5rem] pb-[5rem] items-start lg:items-center self-center md:pr-[10rem] 2xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
+            className="sticky top-[2.5rem] sm:top-0 left-0 w-full max-w-[--section-width] -mt-[100vh] h-[100vh] flex pt-[7.5rem] pb-[5rem] items-start lg:items-center self-center md:pr-[10rem] xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
           >
             <SectionHeader
               ref={textRef}

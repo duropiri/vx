@@ -181,7 +181,7 @@ export const RealEstateHDRPhotographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   deluxePackage: {
@@ -206,7 +206,7 @@ export const RealEstateHDRPhotographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   socialMediaPackage: {
@@ -234,7 +234,7 @@ export const RealEstateHDRPhotographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
   cinematicPackage: {
@@ -262,7 +262,7 @@ export const RealEstateHDRPhotographyPackages = {
         name: "2X Money Back Guarantee",
       },
     ],
-    href: "https://listings.virtualxposure.com/order-forms/018e5ff1-0bc6-707e-9947-bc385f21a938",
+    href: "https://listings.virtualxposure.com/order",
     cta: "Order Now",
   },
 };

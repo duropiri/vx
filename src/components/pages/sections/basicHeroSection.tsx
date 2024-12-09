@@ -1,14 +1,9 @@
 "use client";
 import SectionHeader from "@/components/ui/sectionHeader";
-import {
-  // motion,
-  MotionValue,
-} from "framer-motion";
 import React from "react";
 
 interface SectionProps {
   className?: string;
-  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
   largeText?: boolean;
   heading?: string;
   subheading?: string;
@@ -49,7 +44,7 @@ function BasicHeroSection({
           bodyClassName={bodyClassName}
         />
         {content && (
-          <div className="flex flex-col items-center size-full">{content}</div>
+          <div className="relative flex flex-col items-center size-full">{content}</div>
         )}
       </div>
     </div>

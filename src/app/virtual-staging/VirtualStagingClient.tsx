@@ -3,20 +3,20 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/virtual staging images/Virtual_Xposure_-_Virtual_Staging_Image_-_4.webp";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
+import { TransitionLink } from "@/components/TransitionLink";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
+    <div className="relative group flex size-full sm:pt-[5rem] max-w-[--section-width] flex-col-reverse sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
         <ParallaxSection
           speed={1 - 0.95}
           data-media-wrapper
-          className="size-full pointer-events-none"
+          className="size-full min-h-[30vh] pointer-events-none"
         >
           <Image
             src={whatisitImage}
@@ -40,7 +40,7 @@ export const WhatIsItSection = () => (
           <div className="absolute top-0 left-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4 " />
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
-          <SectionHeader
+          <SectionHeader noAnimation
             heading="GROW WITH TECHNOLOGY"
             subheading="What is Virtual Staging?"
             className="text-black"
@@ -79,7 +79,7 @@ export const WhatIsItSection = () => (
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <SectionHeader
+    <SectionHeader noAnimation
       center
       heading="Benefits"
       subheading="Why do you need Virtual Staging?"
@@ -124,7 +124,7 @@ export const BenefitsSection = () => (
                 <div className="flex flex-col p-[1rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white text-ash/80 group-hover:text-goldenbrown shadow-ash/5 shadow-customShadow transition-all duration-300">
                   {item.icon}
                 </div>
-                <h1 className="text-black/80 group-hover:text-black pn-semibold-22 transition-all duration-300">
+                <h1 className="text-black/80 group-hover:text-black pn-semibold-20 transition-all duration-300">
                   {item.heading}
                 </h1>
               </div>
@@ -136,9 +136,9 @@ export const BenefitsSection = () => (
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <HoverWrapper className="">
-            <Link
+            <TransitionLink
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
+              className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>
@@ -151,7 +151,7 @@ export const BenefitsSection = () => (
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
                 quality={75}
               />
-            </Link>
+            </TransitionLink>
           </HoverWrapper>
         </div>
       </div>

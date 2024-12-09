@@ -29,7 +29,7 @@ export function ViewportProvider({ children }: { children: React.ReactNode }) {
           el.style.transform = "none";
         });
       } else {
-        initGSAP();
+        // initGSAP();
       }
 
       if (!previousWidth) {

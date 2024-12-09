@@ -1,9 +1,5 @@
 "use client";
 import SectionHeader from "@/components/ui/sectionHeader";
-import {
-  // motion,
-  MotionValue,
-} from "framer-motion";
 import React from "react";
 import { testimonials } from "@/data/testimonials";
 // Import Swiper React components
@@ -16,15 +12,13 @@ import "swiper/css/effect-cards";
 // import required modules
 import { EffectCards, Pagination, Navigation } from "swiper/modules";
 import { renderStars } from "@/components/ui/renderStars";
-// import { Reveal } from "@/components/animations/Reveal";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import Link from "next/link";
+import { TransitionLink } from "@/components/TransitionLink";
 
 interface SectionProps {
   className?: string;
-  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
   noHeader?: boolean;
 }
 
@@ -77,15 +71,15 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
                       <path d="M22.22,26.06c.09,0,8.78-.14,8.78-11.89a7.22,7.22,0,1,0-9.78,6.73v4.16A1,1,0,0,0,22.22,26.06ZM18.56,14.17a5.22,5.22,0,1,1,10.44,0c0,7.5-3.89,9.31-5.78,9.75V20.17a1,1,0,0,0-.75-1A5.21,5.21,0,0,1,18.56,14.17Z" />
                     </svg>
                   </div>
-                  <p className="my-auto text-center pn-regular-16 max-w-[50ch]">
+                  <p className="my-auto text-center pn-regular-24 max-w-[50ch] truncate text-wrap line-clamp-5">
                     {item.quote}
                   </p>
                   <div className="flex flex-col items-center justify-center gap-y-[0.5rem]">
                     <div className="flex flex-row gap-[0.3rem] text-goldenbrown my-auto">
                       {renderStars(item.rating)}
                     </div>
-                    <p className="text-center pn-bold-28">{item.author}</p>
-                    <p className="pn-regular-16">{item.company}</p>
+                    <p className="text-center pn-bold-24">{item.author}</p>
+                    <p className="pn-regular-14">{item.company}</p>
                   </div>
                 </div>
               </SwiperSlide>
@@ -97,9 +91,9 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
         <div className="flex justify-center w-full">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
             <HoverWrapper className="">
-              <Link
+              <TransitionLink
                 href="/testimonials"
-                className="button gold pn-regular-22 pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit"
+                className="button gold pn-regular-16 pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>
@@ -112,7 +106,7 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
                   className="text-ash group-hover:rotate-45 transition-all duration-300"
                   quality={75}
                 />
-              </Link>
+              </TransitionLink>
             </HoverWrapper>
           </div>
         </div>

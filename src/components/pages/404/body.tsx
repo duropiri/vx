@@ -7,7 +7,7 @@ import Image from "next/image";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import ContactSection from "../sections/contactSection";
 import FAQSection from "../sections/faqSection";
-import Link from "next/link";
+import { TransitionLink } from "@/components/TransitionLink";
 
 function Body({}) {
   return (
@@ -22,9 +22,9 @@ function Body({}) {
         content={
           <>
             <HoverWrapper className="">
-              <Link
+              <TransitionLink
                 href="/"
-                className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
+                className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>
@@ -37,7 +37,7 @@ function Body({}) {
                   className="text-ash group-hover:rotate-45 transition-all duration-300"
                   quality={75}
                 />
-              </Link>
+              </TransitionLink>
             </HoverWrapper>
           </>
         }

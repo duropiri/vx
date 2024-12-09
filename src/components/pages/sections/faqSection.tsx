@@ -8,12 +8,7 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SectionHeader from "@/components/ui/sectionHeader";
-import {
-  motion,
-  // AnimatePresence,
-  useInView,
-  useAnimation,
-} from "framer-motion";
+
 
 interface SectionProps {
   className?: string;
@@ -37,31 +32,16 @@ function FAQSection({
   noAnimation = false,
 }: SectionProps) {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: false, amount: 0.2 });
-  const controls = useAnimation();
+  // const isInView = useInView(ref, { once: false, amount: 0.2 });
+  // const controls = useAnimation();
 
-  React.useEffect(() => {
-    if (isInView) {
-      controls.start("visible");
-    } else {
-      controls.start("hidden");
-    }
-  }, [isInView, controls]);
-
-  // const containerVariants = {
-  //   hidden: { opacity: 0 },
-  //   visible: {
-  //     opacity: 1,
-  //     transition: {
-  //       staggerChildren: 0.1,
-  //     },
-  //   },
-  // };
-
-  // const itemVariants = {
-  //   hidden: { opacity: 0, y: 20 },
-  //   visible: { opacity: 1, y: 0 },
-  // };
+  // React.useEffect(() => {
+  //   if (isInView) {
+  //     controls.start("visible");
+  //   } else {
+  //     controls.start("hidden");
+  //   }
+  // }, [isInView, controls]);
 
   return (
     <div id="faqs" className={`${className} section-container !flex-row`}>
@@ -77,6 +57,7 @@ function FAQSection({
           small={!vertical}
           heading="Got Questions?"
           subheading="Frequently Asked Questions"
+          noBodyAnimation
           body={
             <>
               If you have any further questions, please don&apos;t hesitate to
@@ -105,7 +86,7 @@ function FAQSection({
                   className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125]"
                 >
                   <Accordion.Header>
-                    <AccordionTrigger className="pn-regular-32 !text-[1.714rem] lg:!text-[2rem] text-start hover:no-underline gap-[1rem] py-[2.5rem] px-[2rem]">
+                    <AccordionTrigger className="pn-regular-24 text-start hover:no-underline gap-[1rem] py-[2.5rem] px-[2rem]">
                       {_.question}
                     </AccordionTrigger>
                   </Accordion.Header>

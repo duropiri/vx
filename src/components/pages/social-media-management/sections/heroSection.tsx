@@ -1,43 +1,21 @@
-/* eslint-disable unused-imports/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import React, {
-  forwardRef,
-  RefObject,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  easeInOut,
-  useSpring,
-} from "framer-motion";
-import Link from "next/link";
+import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
 // import { AnimatedText } from "@/components/animations/GetChars";
 // import GsapMagnetic from "@/components/animations/GsapMagnetic";
-import { Reveal } from "@/components/animations/Reveal";
 // import CircleCTA from "@/components/ui/circleCTA";
 
 import logo from "@/../../public/assets/images/logo2.webp";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import instagramHeroImage from "@/../../public/assets/svgs/hero-svgs/Instagram.svg";
-import twitterHeroImage from "@/../../public/assets/svgs/hero-svgs/Twitter.svg";
-import facebookHeroImage from "@/../../public/assets/svgs/hero-svgs/Facebook.svg";
-import tiktokHeroImage from "@/../../public/assets/svgs/hero-svgs/TikTok.svg";
-import linkedinHeroImage from "@/../../public/assets/svgs/hero-svgs/LinkedIn.svg";
-import pinterestHeroImage from "@/../../public/assets/svgs/hero-svgs/Pinterest.svg";
-import youtubeHeroImage from "@/../../public/assets/svgs/hero-svgs/Youtube.svg";
-import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg";
-
-import starImage from "@/../../public/assets/svgs/star.svg";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useViewport } from "@/contexts/ViewportContext";
+
+// Import all the SVG assets
+import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import starImage from "@/../../public/assets/svgs/star.svg";
+import HeroDecorations from "@/components/heroDecorations";
+import { TransitionLink } from "@/components/TransitionLink";
+import Link from "next/link";
 
 interface LinkDetails {
   title: string;
@@ -56,66 +34,14 @@ interface SectionProps {
 
 const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ className = "", navigation, originalColor, transitionColor }, ref) => {
-    const [color] = useState(originalColor);
-    const { scrollY } = useScroll();
-    const opacity = useTransform(scrollY, [0, 500], [1, 0], {
-      ease: easeInOut,
-    });
-
-    const floatingAnimation = {
-      y: [0, -15, 0],
-      transition: {
-        duration: 3,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    };
-
-    const rotationAnimation = {
-      rotate: [-3, 3, -3],
-      transition: {
-        duration: 4,
-        repeat: Infinity,
-        ease: "easeInOut",
-      },
-    };
+    const navdockWidth = "50rem";
+    const navdockHeight = "2.8125rem";
 
     const heroCTARef = useRef<HTMLDivElement>(null);
     const navdockRef = useRef<HTMLDivElement>(null);
-    // const heroSectionRef = useRef<HTMLDivElement>(null);
+    const { isMobile } = useViewport();
 
-    const [isScrolled, setIsScrolled] = useState(false);
-    const [isBottom, setIsBottom] = useState(false);
-    const { isMobile } = useViewport(); // const [hasPassedHero, setHasPassedHero] = useState(false);
-    // const [isTransforming, setIsTransforming] = useState(false);
-    const [shouldHideNavdock, setShouldHideNavdock] = useState(false);
-
-    const [revealDelay, setRevealDelay] = useState(0);
-
-    useEffect(() => {
-      const handleNavigation = (event) => {
-        if (
-          event.type === "popstate" ||
-          document.referrer.includes(window.location.origin)
-        ) {
-          setRevealDelay(0);
-        } else {
-          setRevealDelay(3.5);
-        }
-      };
-
-      // Set initial delay
-      handleNavigation({ type: "initial" });
-
-      // Listen for navigation events
-      window.addEventListener("popstate", handleNavigation);
-
-      return () => {
-        window.removeEventListener("popstate", handleNavigation);
-      };
-    }, []);
-
-    // GSAP Animations
+    // Navdock Animations
     useEffect(() => {
       // Hero CTA to Navdock transition
       if (
@@ -136,7 +62,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           width:
             // isMobile ? "100%" :
             "14rem",
-          height: "4.223rem",
+          height: navdockHeight,
           background:
             // isMobile ? "#1b1a17" :
             "#c5a05e",
@@ -195,8 +121,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             // Animate the navdock (to navdock final style)
             tl.to(navdock, {
               background: "#1b1a17",
-              width: isMobile ? "16rem" : "70rem",
-              height: "4.223rem",
+              width: navdockWidth,
+              height: navdockHeight,
               paddingLeft:
                 // isMobile ? "0px" :
                 "1.5rem",
@@ -281,7 +207,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   display: "flex",
                   padding: 0,
                   width: "14rem",
-                  height: "4.223rem",
+                  height: navdockHeight,
                   background: "#1b1a17",
                   duration: 0.3,
                 });
@@ -310,7 +236,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               display: "flex",
               padding: 0,
               width: "14rem",
-              height: "4.223rem",
+              height: navdockHeight,
               background: "#1b1a17",
               duration: 0.3,
             });
@@ -338,7 +264,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               });
               gsap.set(navdock, {
                 width: "14rem",
-                height: "4.223rem",
+                height: navdockHeight,
                 padding: 0,
                 background: "#1b1a17",
                 duration: 0,
@@ -387,18 +313,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               gsap.to(navdockRef.current, {
                 opacity: 1 - progress,
                 duration: 0.5,
-                onComplete: () => {
-                  setShouldHideNavdock(progress === 1);
-                },
               });
             } else {
               // Ensure navdock is visible on desktop
               gsap.to(navdockRef.current, {
                 opacity: 1,
                 duration: 0.5,
-                onComplete: () => {
-                  setShouldHideNavdock(false);
-                },
               });
             }
           },
@@ -417,481 +337,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        {/* Assemble Icons */}
-        <div
-          id="icons"
-          className="pointer-events-none absolute !bg-transparent top-0 h-[100vh] w-[100vw] !p-0 overflow-hidden"
-        >
-          {/* Light Rays */}
-          <div className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden">
-            <div
-              className="pointer-events-none absolute flex h-[100vh] w-[100vw] bg-gradient-to-t from-10% to-transparent to-30% transition-all z-30"
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                } as React.CSSProperties
-              }
-            />
-            {/* Ray 1 */}
-            <motion.div
-              className="absolute left-[15%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-t to-transparent animate-pulse"
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                  rotate: "-25",
-                } as React.CSSProperties
-              }
-              animate={{
-                rotate: [-25, -20, -25],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Ray 2 */}
-            <motion.div
-              className="absolute left-[30%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-t to-transparent animate-pulse"
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                  rotate: "-15",
-                } as React.CSSProperties
-              }
-              animate={{
-                rotate: [-15, -10, -15],
-              }}
-              transition={{
-                duration: 7,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Ray 3 */}
-            <motion.div
-              className="absolute left-[45%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-t to-transparent animate-pulse"
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                  rotate: "0",
-                } as React.CSSProperties
-              }
-              animate={{
-                rotate: [0, 7, 0],
-              }}
-              transition={{
-                duration: 6,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Ray 4 */}
-            <motion.div
-              className="absolute left-[55%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-t to-transparent animate-pulse"
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                  rotate: "15",
-                } as React.CSSProperties
-              }
-              animate={{
-                rotate: [15, 20, 15],
-              }}
-              transition={{
-                duration: 8,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-
-            {/* Ray 5 */}
-            <motion.div
-              className="absolute left-[75%] -bottom-[10rem] h-[120vh] w-[10rem] origin-bottom bg-gradient-to-t to-transparent animate-pulse"
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                  rotate: "25",
-                } as React.CSSProperties
-              }
-              animate={{
-                rotate: [25, 30, 25],
-              }}
-              transition={{
-                duration: 6.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
-            {/* Icons */}
-            <div className="relative z-10">
-              {/* Top Left */}
-              <motion.div
-                className="size-[5rem] absolute flex left-[20%] top-[20vh] sm:left-[30%] sm:top-[8rem]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-15, -45]),
-                    { stiffness: 500, damping: 20 }
-                  ),
-                }}
-              >
-                <motion.div className="size-full" animate={floatingAnimation}>
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={instagramHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Repeat the same structure for other icons with different positions and delays */}
-              {/* Top Right */}
-              <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[10vh] sm:right-[30%] sm:top-[10vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1200]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [15, 45]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 0.5,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={twitterHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Mid-Left Upper */}
-              <motion.div
-                className="size-[5rem] absolute flex left-[10%] top-[50vh] sm:left-[20%] sm:top-[30vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-20, -40]),
-                    { stiffness: 500, damping: 20 }
-                  ),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 1.0,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={facebookHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Mid-Right Upper */}
-              <motion.div
-                className="size-[5rem] absolute flex right-[10%] top-[40vh] sm:right-[15rem] sm:top-[16rem]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 1000]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [20, 40]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 1.5,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={tiktokHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Mid-Left Lower */}
-              <motion.div
-                className="size-[5rem] absolute flex left-[5%] top-[65vh] sm:left-[5rem] sm:top-[24rem]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 400]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-30, -60]),
-                    { stiffness: 500, damping: 20 }
-                  ),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 2.0,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={linkedinHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Mid-Right Lower */}
-              <motion.div
-                className="size-[5rem] absolute flex right-[5%] top-[70vh] sm:right-[5rem] sm:top-[40vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -400]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 800]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [30, 60]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 2.5,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={pinterestHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Bottom Left */}
-              <motion.div
-                className="size-[5rem] absolute hidden sm:flex left-[20rem] top-[55vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, 300]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(
-                    useTransform(scrollY, [0, 500], [-25, -50]),
-                    { stiffness: 500, damping: 20 }
-                  ),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 3.0,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={youtubeHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-
-              {/* Bottom Right */}
-              <motion.div
-                className="size-[5rem] absolute hidden sm:flex right-[20rem] top-[60vh]"
-                style={{
-                  x: useSpring(useTransform(scrollY, [0, 500], [0, -300]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  y: useSpring(useTransform(scrollY, [0, 500], [0, 600]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                  opacity,
-                  rotate: useSpring(useTransform(scrollY, [0, 500], [25, 50]), {
-                    stiffness: 500,
-                    damping: 35,
-                  }),
-                }}
-              >
-                <motion.div
-                  className="size-full"
-                  animate={{
-                    ...floatingAnimation,
-                    transition: {
-                      ...floatingAnimation.transition,
-                      delay: 3.5,
-                    },
-                  }}
-                >
-                  <motion.div
-                    className="size-full rounded-[1rem] shadow-inner"
-                    animate={rotationAnimation}
-                  >
-                    <Image
-                      alt="icon"
-                      src={whatsappHeroImage}
-                      className="size-full shadow-2xl rounded-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  </motion.div>
-                </motion.div>
-              </motion.div>
-            </div>
-          </div>
-        </div>
+        {/* Hero Decorations */}
+        <HeroDecorations originalColor={originalColor} />
 
         {/* Hero */}
         <div
@@ -900,105 +347,59 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         >
           <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
-            <Reveal delay={0} slide={false}>
-              <div className="button dark thin pn-regular-22 !gap-[1.5rem] !border-goldenbrown">
-                <div className="flex flex-row gap-[0.25rem]">
-                  {Array.from({ length: 5 }).map((_, index) => (
-                    <Image
-                      key={index}
-                      alt="start"
-                      src={starImage}
-                      className="w-[1rem]"
-                      quality={75}
-                      priority
-                    />
-                  ))}
-                </div>
-                <p className="pn-regular-16 text-white">500+ Agents Trust Us</p>
+            <div className="button dark thin pn-regular-16 !gap-[1rem] !border-goldenbrown">
+              <div className="flex flex-row gap-[0.25rem]">
+                {Array.from({ length: 5 }).map((_, index) => (
+                  <Image
+                    key={index}
+                    alt="start"
+                    src={starImage}
+                    className="w-[1rem]"
+                    quality={75}
+                    priority
+                  />
+                ))}
               </div>
-            </Reveal>
+              <p className="pn-regular-12 text-white">500+ Agents Trust Us</p>
+            </div>
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
-              <h1 className="hidden pn-regular-96 uppercase text-center max-w-[20ch] my-[0.625rem] sm:flex flex-col items-center">
-                {/* <Reveal delay={0} slide={false}>
-                  <span>Dominate social</span>
-                </Reveal>{" "}
-                <Reveal delay={0.05} slide={false}>
-                  <span>Media With The</span>
-                </Reveal>{" "}
-                <Reveal delay={0.1} slide={false}>
-                  <span>
-                    <span className="text-goldenbrown gold-text font-bold">
-                      Gold Standard
-                    </span>
+              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] my-[0.625rem] sm:flex flex-col items-center">
+                <span>
+                  Dominate Social Media With The{" "}
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Gold Standard
                   </span>
-                </Reveal> */}
-                Dominate Social
-                <br />
-                Media With The{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Gold Standard
                 </span>
               </h1>
 
-              <h1 className="sm:hidden pn-regular-96 uppercase text-center my-[0.625rem] flex flex-col items-center">
-                {/* <Reveal delay={0} slide={false}>
-                  <span>Dominate</span>
-                </Reveal>{" "}
-                <Reveal delay={0.05} slide={false}>
-                  <span>Social Media</span>
-                </Reveal>{" "}
-                <Reveal delay={0.1} slide={false}>
-                  <span>
-                    With The{" "}
-                    <span className="text-goldenbrown gold-text font-bold">
-                      Gold
-                    </span>
+              <h1 className="sm:hidden pn-regular-72 uppercase text-center my-[0.625rem] flex flex-col items-center">
+                <span>
+                  Dominate Social Media With The{" "}
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Gold Standard
                   </span>
-                </Reveal>
-                <Reveal delay={0.15} slide={false}>
-                  <span>
-                    <span className="text-goldenbrown gold-text font-bold">
-                      Standard
-                    </span>
-                  </span>
-                </Reveal> */}
-                Dominate
-                <br /> Social Media
-                <br /> With The{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Gold
-                  <br /> Standard
                 </span>
               </h1>
 
-              <h2 className="pn-regular-16 text-center  max-w-[60ch]">
-                {/* <Reveal delay={0.15} slide={false}> */}
+              <h2 className="pn-regular-20 text-center sm:max-w-[45vw]">
                 <span>
                   Our expert digital marketing strategies—tailored social media
                   management and high-impact content—help you generate valuable
                   leads, boost visibility, and close deals effortlessly.
                 </span>
-                {/* </Reveal> */}
               </h2>
             </div>
             {/* Hero CTA */}
-            <Reveal
-              // once
-              ref={heroCTARef}
-              // delay={revealDelay}
-              // xOverflow={false}
-              // yOverflow={false}
-              // slide={false}
-            >
+            <div ref={heroCTARef}>
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <HoverWrapper
-                    href="#contact"
-                    className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
+                    href="https://listings.virtualxposure.com/order"
+                    className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
                   >
                     <FlipLink className={`flex items-center w-fit`}>
-                      Get In Touch
+                      Book Now
                     </FlipLink>
 
                     <Image
@@ -1010,7 +411,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   </HoverWrapper>
                 </div>
               </div>
-            </Reveal>
+            </div>
             {/* </div> */}
           </div>
         </div>
@@ -1027,7 +428,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           >
             {/* Navdock Final Form */}
             <div id="logo" className="flex items-center h-full">
-              <Link
+              <TransitionLink
                 href="/"
                 passHref
                 className="cursor-select-hover flex w-[2.25rem] aspect-square overflow-hidden"
@@ -1039,7 +440,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   placeholder="blur"
                   quality={75}
                 />
-              </Link>
+              </TransitionLink>
             </div>
 
             {/* Navigation Links */}
@@ -1065,11 +466,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Initial state content (matches heroCTA exactly) */}
             <HoverWrapper
               id="navdock-cta"
-              href="#contact"
-              className="button gold pn-regular-22 group !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
+              href="https://listings.virtualxposure.com/order"
+              className="button gold pn-regular-16 group !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
-                Get In Touch
+                Book Now
               </FlipLink>
 
               <Image

@@ -9,6 +9,7 @@ import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       center
       heading="Why"
       subheading="Why does the quality of your photos matter?"
@@ -146,6 +147,7 @@ export const WhatIsItSection = () => (
 export const StepsLeftSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"
       noBodyAnimation
@@ -220,7 +222,7 @@ export const StepsRightSection = () => (
         className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-col sm:flex-row items-center justify-center sm:justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-y-[2rem] gap-x-[1rem] xl:gap-x-[2rem] text-white text-center sm:text-start"
       >
         <div className="aspect-square flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
-          <h1 className="text-goldenbrown pn-semibold-48">{index + 1}</h1>
+          <h1 className="text-goldenbrown pn-semibold-32">{index + 1}</h1>
         </div>
         <div className="flex flex-col gap-y-[1rem]">
           <h1 className="pn-semibold-24 capitalize">{item.heading}</h1>
@@ -235,6 +237,7 @@ export const StepsRightSection = () => (
 export const UnlimitedLeftSection = () => (
   <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       heading="DON'T WORRY ABOUT GOING OVER BUDGET."
       subheading="Simply, unlimited."
       className="text-black"
@@ -274,7 +277,10 @@ export const UnlimitedRightSection = () => (
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
     <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
-      <ParallaxSection speed={1 - 1.2} className="w-[80vw] sm:w-[30vw] aspect-[73/128]">
+      <ParallaxSection
+        speed={1 - 1.2}
+        className="w-[80vw] sm:w-[30vw] aspect-[73/128]"
+      >
         <Image
           src={unlimitedImage}
           alt="unlimited-image"

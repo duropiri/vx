@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import HeroSection from "@/components/pages/social-media-management/sections/heroSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 import CopySection from "@/components/pages/sections/copySection";
@@ -12,7 +12,6 @@ import PricingSection from "@/components/pages/sections/pricingSection";
 import CTASection from "@/components/pages/social-media-management/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
-import { useScroll } from "framer-motion";
 import { HeaderLinks, SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import { socialMediaPackages } from "@/data/pricingPackages";
@@ -23,16 +22,43 @@ import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-
-    offset: ["start start", "end end"],
-  });
-
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
+
+  //   offset: ["start start", "end end"],
+  // });
+
+  const contentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    if (!container.current) return;
+
+    scrollAnimationRef.current = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        onUpdate: (self) => {
+          const newProgress = self.progress;
+          // Remove references to scrollAnimationRef.current as a prop or state
+          // Instead, animate the WhyUsSection content element directly:
+          gsap.to(contentRef.current, {
+            scale: gsap.utils.interpolate(1, 0.5, newProgress),
+            rotation: gsap.utils.interpolate(0, -45, newProgress),
+            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
+            duration: 0,
+            overwrite: "auto",
+          });
+        },
+      },
+    });
+
+    // Color Change Animation
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-    // const heroSection = sectionRefs.current[0];
 
     if (triggerSection) {
       const updateColors = (change: boolean) => {
@@ -171,9 +197,10 @@ function Body() {
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         <ScaleInVisible className="contents flex flex-col items-center justify-center">
           <StatsSection
+            ref={contentRef}
             stats={HomePageStats}
             className=""
-            scrollYProgress={scrollYProgress}
+            // scrollProgress={scrollProgressRef.current}
           />
         </ScaleInVisible>
         <CopySection
@@ -181,12 +208,16 @@ function Body() {
           copy={
             <>
               The best real estate professionals have
+              <br />
               <span className="text-goldenbrown italic gold-text">
                 reinvented
               </span>
               themselves and their businesses towards a
-              <span className="text-goldenbrown gold-text">
-                more substantial online presence
+              <span className="text-goldenbrown gold-text text-nowrap">
+                more substantial
+              </span>
+              <span className="text-goldenbrown gold-text text-nowrap">
+                online presence
               </span>
             </>
           }

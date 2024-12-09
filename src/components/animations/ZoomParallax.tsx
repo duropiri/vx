@@ -6,9 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { CustomEase } from "gsap/all";
 import { useViewport } from "@/contexts/ViewportContext";
 
-gsap.registerPlugin(ScrollTrigger);
-gsap.registerPlugin(CustomEase);
-
 interface AnimationProps {
   children?: React.ReactNode;
   className?: string;

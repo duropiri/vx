@@ -3,19 +3,19 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(61).webp";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
+import { TransitionLink } from "@/components/TransitionLink";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <div className="relative group flex size-full pt-[5rem] max-w-[--section-width] flex-col sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
+    <div className="relative group flex size-full sm:pt-[5rem] max-w-[--section-width] flex-col-reverse sm:flex-row items-end justify-end gap-[3rem] sm:gap-0">
       <div className="relative sm:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
         <ParallaxSection
           speed={1 - 0.95}
-          className="size-full pointer-events-none"
+          className="size-full min-h-[30vh] pointer-events-none"
         >
           <Image
             src={whatisitImage}
@@ -40,25 +40,25 @@ export const WhatIsItSection = () => (
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
           <SectionHeader
+            noAnimation
             heading="GROW WITH TECHNOLOGY"
             subheading="What is 3D Rendering?"
             className="text-black"
           />
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              3D rendering is the process of creating 3D models into 3D
-              representations. These renderings are created using sophisticated
-              computer software which precisely simulates real-world textures,
-              lightings, and physics.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            3D rendering is the process of creating 3D models into 3D
+            representations. These renderings are created using sophisticated
+            computer software which precisely simulates real-world textures,
+            lightings, and physics.
+          </p>
           {/* </LetterRevealOnScroll> */}
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              3D renderings enable homeowners and renovators to get a clear
-              picture of how their renovation project or new construction will
-              look before they even begin to break the ground or tear down a
-              wall.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            3D renderings enable homeowners and renovators to get a clear
+            picture of how their renovation project or new construction will
+            look before they even begin to break the ground or tear down a wall.
+          </p>
           {/* </LetterRevealOnScroll> */}
         </div>
       </div>
@@ -69,6 +69,7 @@ export const WhatIsItSection = () => (
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       center
       heading="Benefits"
       subheading="Why do you need Virtual Staging?"
@@ -113,7 +114,7 @@ export const BenefitsSection = () => (
                 <div className="flex flex-col p-[1rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white text-ash/80 group-hover:text-goldenbrown shadow-ash/5 shadow-customShadow transition-all duration-300">
                   {item.icon}
                 </div>
-                <h1 className="text-black/80 group-hover:text-black pn-semibold-22 transition-all duration-300">
+                <h1 className="text-black/80 group-hover:text-black pn-semibold-20 transition-all duration-300">
                   {item.heading}
                 </h1>
               </div>
@@ -125,9 +126,9 @@ export const BenefitsSection = () => (
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <HoverWrapper className="">
-            <Link
+            <TransitionLink
               href="https://listings.virtualxposure.com/order"
-              className="group button gold pn-regular-22 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
+              className="group button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>
@@ -140,7 +141,7 @@ export const BenefitsSection = () => (
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
                 quality={75}
               />
-            </Link>
+            </TransitionLink>
           </HoverWrapper>
         </div>
       </div>

@@ -1,10 +1,9 @@
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
-import React, { forwardRef, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 // import { Tilt } from "react-tilt";
-import { AnimatePresence, motion, MotionValue } from "framer-motion";
-// import { Reveal } from "@/components/animations/Reveal";
+import gsap from "gsap";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -70,37 +69,130 @@ interface SectionProps {
   noSwitch?: boolean;
   originalColor?: string;
   transitionColor?: string;
-  scrollYProgress?: MotionValue<number>;
   noAnimation?: boolean;
+  showAllFeatures?: boolean;
 }
 
-const PricingTier = ({ tier, isYearly, className = "" }) => {
+const PricingTier = ({
+  tier,
+  isYearly,
+  className = "",
+  showAllFeatures = false,
+}) => {
   const [isHovered, setIsHovered] = useState(false);
+  const featureRefs = useRef<(HTMLLIElement | null)[]>([]);
+  const moreTextRef = useRef<HTMLLIElement | null>(null);
 
-  // const isPopular = tier.name === "Scaling Maestro";
-  // const tier.isPremium = tier.name === "Absolute Domination";
+  useEffect(() => {
+    if (!showAllFeatures) {
+      const ctx = gsap.context(() => {
+        // Create a timeline for smoother coordination
+        const tl = gsap.timeline({
+          defaults: {
+            ease: "power2.inOut",
+            duration: 0.25,
+          },
+        });
+
+        featureRefs.current.forEach((feature, index) => {
+          if (feature && index >= 8) {
+            if (isHovered) {
+              // First set display to flex but keep it invisible
+              gsap.set(feature, {
+                display: "flex",
+                visibility: "hidden",
+              });
+
+              // Get the natural height
+              const naturalHeight = feature.scrollHeight;
+
+              // Set initial state
+              gsap.set(feature, {
+                height: 0,
+                opacity: 0,
+                visibility: "visible",
+                overflow: "hidden",
+              });
+
+              // Animate to natural height
+              tl.to(feature, {
+                height: naturalHeight,
+                opacity: 1,
+                delay: (index - 8) * 0.1,
+                clearProps: "height,overflow", // Clear height after animation
+              });
+            } else {
+              // Animate closing
+              tl.to(feature, {
+                height: 0,
+                opacity: 0,
+                onComplete: () => {
+                  gsap.set(feature, { display: "none" });
+                },
+              });
+            }
+          }
+        });
+
+        // Handle "and more..." text
+        if (moreTextRef.current) {
+          if (isHovered) {
+            tl.to(
+              moreTextRef.current,
+              {
+                height: 0,
+                opacity: 0,
+                onComplete: () => {
+                  gsap.set(moreTextRef.current, { display: "none" });
+                },
+              },
+              "<"
+            ); // Start at same time as other animations
+          } else {
+            gsap.set(moreTextRef.current, {
+              display: "flex",
+              visibility: "hidden",
+            });
+
+            const naturalHeight = moreTextRef.current.scrollHeight;
+
+            gsap.set(moreTextRef.current, {
+              height: 0,
+              opacity: 0,
+              visibility: "visible",
+              overflow: "hidden",
+            });
+
+            tl.to(
+              moreTextRef.current,
+              {
+                height: naturalHeight,
+                opacity: 1,
+                clearProps: "height,overflow",
+              },
+              "<"
+            ); // Start at same time as other animations
+          }
+        }
+      });
+
+      return () => ctx.revert();
+    }
+  }, [isHovered, showAllFeatures]);
 
   const hiddenFeatures = tier.features.slice(8);
 
   return (
-    <motion.div
+    <div
       // options={{ axis: "x", scale: 1.025, max: 8, reverse: true }}
       className={`pricing-box shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/50 hover:scale-105 hover:z-10 h-full ${
         tier.isPremium ? "bg-ash" : "bg-white"
       } ${className}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      animate={{
-        scale: isHovered ? 1.05 : 1,
-        zIndex: isHovered ? 10 : 0,
-      }}
-      transition={{
-        duration: 0.3,
-        ease: "easeInOut",
-      }}
     >
       {tier.isPopular && (
-        <div className="relative self-center lg:absolute lg:top-[1.5rem] lg:right-[1.5rem] flex px-[0.75rem] py-[0.5rem] mb-[2rem] -mt-[2rem] lg:mt-0 lg:mb-0 bg-ash rounded-b-[1rem] lg:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
+        <div className="relative self-center lg:absolute lg:top-[1.5rem] lg:right-[1.5rem] flex px-[0.5rem] py-[0.5rem] mb-[2rem] -mt-[2rem] lg:mt-0 lg:mb-0 bg-ash rounded-b-[1rem] lg:rounded-full border border-goldenbrown justify-center items-center gap-[0.25rem]">
           <div className="flex flex-col size-[1rem] justify-center items-center text-goldenbrown">
             <svg
               width="15"
@@ -117,15 +209,16 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           </div>
           <div className="w-12 flex flex-col justify-start items-start">
             <div className="text-goldenbrown pn-regular-14 font-medium">
-              <motion.span className="text-goldenbrown gold-text font-bold">
+              <span className="text-goldenbrown gold-text font-bold">
                 Popular
-              </motion.span>
+              </span>
             </div>
           </div>
         </div>
       )}
+
       <div
-        className={`flex flex-col w-full items-center justify-start gap-[1.5rem] ${
+        className={`flex flex-col w-full items-center justify-start gap-[1rem] ${
           tier.isPremium ? "text-white" : "text-ash"
         }`}
       >
@@ -137,9 +230,9 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
             }`}
           >
             {tier.isPopular ? (
-              <motion.span className="text-goldenbrown gold-text font-bold">
+              <span className="text-goldenbrown gold-text font-bold">
                 {tier.name}
-              </motion.span>
+              </span>
             ) : (
               <span>{tier.name}</span>
             )}
@@ -152,6 +245,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
             </p>
           )}
         </div>
+        {/* Separator */}
         <div
           className={`flex w-full h-[0.055rem] ${
             tier.isPremium ? "bg-white" : "bg-ash"
@@ -159,7 +253,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         />
         {/* Price */}
         <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-          <h2 className="text-center pn-semibold-40">
+          <h2 className="text-center pn-semibold-32">
             $
             {isYearly
               ? tier.price.yearly || tier.price
@@ -172,92 +266,86 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           )}
         </div>
         {/* Features */}
-        <ul
-          className={`custom-bullet-list ${
-            tier.isPremium ? "light" : ""
-          } flex flex-col w-full items-start justify-start gap-[1rem] !leading-[1.5rem] pn-regular-16`}
-        >
-          {(() => {
-            const firstIncludedFeature = tier.features.find(
-              (feature) => feature.inclusion
+        {(() => {
+          const firstIncludedFeature = tier.features.find(
+            (feature) => feature.inclusion
+          );
+
+          if (firstIncludedFeature) {
+            return (
+              <div className="w-full pn-bold-20">
+                {firstIncludedFeature.name}&nbsp;
+                <span className="underline">
+                  {firstIncludedFeature.details}
+                </span>
+                &nbsp;+
+              </div>
             );
+          }
 
-            if (firstIncludedFeature) {
-              return (
-                <li className="w-full pn-bold-20 !leading-[2.25rem] !tracking-tight">
-                  {firstIncludedFeature.name}&nbsp;
-                  <span className="underline">
-                    {firstIncludedFeature.details}
-                  </span>
-                  &nbsp;+
-                </li>
-              );
-            }
-
-            return null;
-          })()}
-
+          return null;
+        })()}
+        <ul
+          className={`relative custom-bullet-list ${
+            tier.isPremium ? "gold" : "gold"
+          } flex flex-col w-full items-start justify-start gap-[1rem] pn-regular-16`}
+        >
+          {/* Other features */}
           {tier.features.map((feature, index) => {
-            const isVisible = index < 8;
+            if (feature.inclusion) return null;
+            const isHidden = !showAllFeatures && index >= 8 && !isHovered;
 
             return (
-              <AnimatePresence key={index}>
-                {!feature.inclusion && (isVisible || isHovered) && (
-                  <motion.li
-                    initial={
-                      !isVisible ? { height: 0, opacity: 0 } : { opacity: 1 }
-                    }
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={!isVisible ? { height: 0, opacity: 0 } : {}}
-                    transition={{
-                      duration: 0.5,
-                      delay: !isVisible ? (index - 8) * 0.1 : 0,
-                    }}
-                    className="list flex flex-col items-start justify-start gap-0 pn-regular-16 !text-[1.2rem]"
-                  >
-                    <p>
-                      {feature.quantity && (
-                        <span className="pn-bold-16 !text-[1.2rem]">
-                          {feature.quantity}
-                        </span>
-                      )}{" "}
-                      {feature.free && (
-                        <span className="pn-bold-16 !text-[1.2rem]">
-                          FREE BONUS
-                        </span>
-                      )}{" "}
-                      {feature.name}
-                      {feature.details && (
-                        <span className="pn-bold-16 !text-[1.2rem]">
-                          {" "}
-                          {feature.details}
-                        </span>
-                      )}
-                    </p>
-                    {feature.value && (
-                      <span className="li-subtext">
-                        ({feature.value} value)
-                      </span>
-                    )}
-                  </motion.li>
+              <li
+                key={index}
+                ref={(el) => {
+                  if (featureRefs.current) {
+                    featureRefs.current[index] = el;
+                  }
+                }}
+                className="relative list flex flex-col items-start justify-start gap-0 pn-regular-16"
+                style={{
+                  display: showAllFeatures
+                    ? "flex"
+                    : index >= 8 && !isHovered
+                    ? "none"
+                    : "flex",
+                  opacity: showAllFeatures
+                    ? 1
+                    : index >= 8 && !isHovered
+                    ? 0
+                    : 1,
+                  willChange: "height, opacity", // Optimize for animations
+                  overflow: "hidden", // Ensure smooth height transitions
+                }}
+              >
+                <p>
+                  {feature.quantity && (
+                    <span className="pn-bold-16">{feature.quantity}</span>
+                  )}{" "}
+                  {feature.free && (
+                    <span className="pn-bold-16">FREE BONUS</span>
+                  )}{" "}
+                  {feature.name}
+                  {feature.details && (
+                    <span className="pn-bold-16"> {feature.details}</span>
+                  )}
+                </p>
+                {feature.value && (
+                  <span className="li-subtext">({feature.value} value)</span>
                 )}
-              </AnimatePresence>
+              </li>
             );
           })}
 
-          {hiddenFeatures.length > 0 && !isHovered && (
-            <AnimatePresence>
-              <motion.li
-                key="and-more"
-                initial={{ height: "auto", opacity: 1 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="flex flex-col items-start justify-start gap-0 pn-regular-16 "
-              >
-                <p>and more...</p>
-              </motion.li>
-            </AnimatePresence>
+          {/* "and more..." text - only show if not showing all features */}
+          {!showAllFeatures && hiddenFeatures.length > 0 && !isHovered && (
+            <li
+              ref={moreTextRef}
+              className="flex flex-col items-start justify-start gap-0 pn-regular-16"
+            >
+              <p>and more...</p>
+            </li>
           )}
         </ul>
       </div>
@@ -267,7 +355,7 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
         <div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`button gold pn-regular-22 cursor-select-hover size-full xl:w-[18.75rem]`}
+            className={`button gold pn-regular-16 cursor-select-hover size-full xl:w-[18.75rem]`}
           >
             <FlipLink className={`leading-[1rem]`}>
               {tier.cta || "Get Started"}
@@ -275,10 +363,10 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
           </HoverWrapper>
         </div>
       ) : (
-        <motion.div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
+        <div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`button pn-regular-22 cursor-select-hover size-full xl:w-[18.75rem] ${
+            className={`button pn-regular-16 cursor-select-hover size-full xl:w-[18.75rem] ${
               tier.isPopular ? "dark !border-ash" : "!bg-white !border-ash"
             } shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
           >
@@ -290,9 +378,9 @@ const PricingTier = ({ tier, isYearly, className = "" }) => {
               {tier.cta || "Get Started"}
             </FlipLink>
           </HoverWrapper>
-        </motion.div>
+        </div>
       )}
-    </motion.div>
+    </div>
   );
 };
 
@@ -305,6 +393,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       originalColor,
       transitionColor,
       noAnimation = false,
+      showAllFeatures = false,
     },
     forwardedRef
   ) => {
@@ -336,7 +425,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem] text-ash">
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1rem] lg:gap-[3.75rem] text-ash">
           {/* Header */}
           <SectionHeader
             noAnimation={noAnimation}
@@ -349,34 +438,46 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
 
           {/* Plan Switch */}
           {!noSwitch && (
-            <div className="flex flex-row items-center justify-between bg-white mt-[3rem] px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16">
-              <span className="py-[0.75rem] px-[1.375rem]">Monthly</span>
-
-              <Switch
-                id="toggle-pricing"
-                onClick={togglePricing}
-                className="cursor-select-hover"
-              />
-
-              <span className="py-[0.75rem] px-[1.375rem]">Yearly</span>
-
+            <div className="relative mt-[3rem] flex flex-col items-center justify-center w-full gap-y-[1rem]">
               <div
                 className={`${
                   isYearly
                     ? "bg-goldenbrown text-white"
                     : "bg-ash text-white line-through"
-                } py-[0.5rem] px-[0.5rem] lg:py-[0.75rem] lg:px-[1.375rem] rounded-[2.5rem] transition-all duration-300`}
+                } flex sm:hidden py-[0.5rem] px-[0.5rem] lg:py-[0.5rem] lg:px-[1rem] rounded-[2.5rem] transition-all duration-300`}
               >
                 17% Discount
+              </div>
+              <div className="flex flex-row items-center justify-between bg-white px-[0.5rem] py-[0.375rem] shadow-customShadow rounded-[3rem] mx-auto pn-regular-16">
+                <div className="flex flex-row items-center justify-center sm:contents">
+                  <span className="py-[0.5rem] px-[1rem]">Monthly</span>
+
+                  <Switch
+                    id="toggle-pricing"
+                    onClick={togglePricing}
+                    className="cursor-select-hover"
+                  />
+
+                  <span className="py-[0.5rem] px-[1rem]">Yearly</span>
+                </div>
+                <div
+                  className={`${
+                    isYearly
+                      ? "bg-goldenbrown text-white"
+                      : "bg-ash text-white line-through"
+                  } hidden sm:flex py-[0.5rem] px-[0.5rem] lg:py-[0.5rem] lg:px-[1rem] rounded-[2.5rem] transition-all duration-300`}
+                >
+                  17% Discount
+                </div>
               </div>
             </div>
           )}
 
           {/* Pricing Plans */}
-          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center sm:items-start gap-[2rem]">
+          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center xl:items-start gap-[2rem]">
             {packageCount > 4 ? (
               <>
-                <div className="hidden xl:contents bg-red-500">
+                <div className="hidden xl:contents">
                   <Swiper
                     effect={"fade"}
                     slidesPerView={4}
@@ -387,9 +488,13 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     className="relative mySwiper size-full xl:max-w-[95rem] !overflow-visible"
                   >
                     {Object.values(packages).map((tier, index) => (
-                      <SwiperSlide key={index} className="!cursor-swipe-hover grow shrink basis-0 h-full">
+                      <SwiperSlide
+                        key={index}
+                        className="!cursor-swipe-hover grow shrink basis-0 h-full"
+                      >
                         <ScaleInVisible className="group relative size-full">
                           <PricingTier
+                            showAllFeatures={showAllFeatures}
                             tier={tier}
                             isYearly={isYearly}
                             className=""
@@ -406,6 +511,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                       className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                     >
                       <PricingTier
+                        showAllFeatures={showAllFeatures}
                         tier={tier}
                         isYearly={isYearly}
                         className=""
@@ -422,6 +528,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
                   >
                     <PricingTier
+                      showAllFeatures={showAllFeatures}
                       tier={tier}
                       isYearly={isYearly}
                       className=""

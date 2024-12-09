@@ -4,16 +4,17 @@ import SectionHeader from "@/components/ui/sectionHeader";
 
 import { ServiceIcons } from "@/data/serviceIcons";
 import Image from "next/image";
-import Link from "next/link";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import floorplanImage from "@/../../public/assets/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
 import threedimensionalfloorplanImage from "@/../../public/assets/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
 import siteplanImage from "@/../../public/assets/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
 import FadeInUp from "@/components/animations/FadeInUp";
+import { TransitionLink } from "@/components/TransitionLink";
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       center
       heading="3D Floor Plans"
       subheading="Why are they worth it?"
@@ -54,7 +55,7 @@ export const BenefitsSection = () => (
                 <div className="flex flex-col p-[1rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white text-goldenbrown shadow-ash/5 shadow-customShadow">
                   {item.icon}
                 </div>
-                <h1 className="text-goldenbrown pn-semibold-24">
+                <h1 className="text-goldenbrown pn-semibold-32">
                   {item.heading}
                 </h1>
                 <p className="pn-regular-16">{item.body}</p>
@@ -67,9 +68,9 @@ export const BenefitsSection = () => (
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <HoverWrapper className="">
-            <Link
+            <TransitionLink
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
+              className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>
@@ -82,7 +83,7 @@ export const BenefitsSection = () => (
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
                 quality={75}
               />
-            </Link>
+            </TransitionLink>
           </HoverWrapper>
         </div>
       </div>
@@ -93,6 +94,7 @@ export const BenefitsSection = () => (
 export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
     <SectionHeader
+      noAnimation
       center
       largeText
       subheading="2D Schematic Floor Plan"
@@ -100,7 +102,7 @@ export const WhatIsItSection1 = () => (
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-        <SectionHeader
+        <SectionHeader noAnimation
           subheading="Showcase your home layout in detail."
           noBodyAnimation
           body="The 3D basic floor plan is the best kind of virtual property tour, which shows the home to a potential buyer in greater detail. From demonstrating the flooring transitions to the door swings directions, a 3D basic floor plan will effectively exhibit a home or property and help attract potential buyers to make a decision easier."
@@ -153,7 +155,7 @@ export const WhatIsItSection1 = () => (
 
 export const WhatIsItSection2 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
-    <SectionHeader
+    <SectionHeader noAnimation
       center
       subheading="3D Premium Floor Plan"
       className="text-white"
@@ -173,7 +175,7 @@ export const WhatIsItSection2 = () => (
         />
       </div>
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-        <SectionHeader
+        <SectionHeader noAnimation
           subheading="Transform your listing with a custom 3D Rendered Floor Plan, as prospective buyers watch their dream home come to life."
           noBodyAnimation
           body="The 3D Floor Plan enables real estate marketers and architects to present floor plans to clients with remarkable detail. By incorporating elements like cabinets, flooring, bathroom fixtures, paint colors, wall tiles, and various interior finishes, potential buyers gain a comprehensive view of the home or property."
@@ -181,27 +183,27 @@ export const WhatIsItSection2 = () => (
         />
         <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] w-full">
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-white/80 group-hover:text-white">
+            <p className="pn-regular-20 text-white/80 group-hover:text-white">
               Custom 3D Floor Plan
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-white/80 group-hover:text-white">
+            <p className="pn-regular-20 text-white/80 group-hover:text-white">
               Unlimited Revisions
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-white/80 group-hover:text-white">
+            <p className="pn-regular-20 text-white/80 group-hover:text-white">
               48 Hour Turnaround
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-white/80 group-hover:text-white">
+            <p className="pn-regular-20 text-white/80 group-hover:text-white">
               SSL Encrypted Checkout
             </p>
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
-            <p className="pn-regular-16 text-white/80 group-hover:text-white">
+            <p className="pn-regular-20 text-white/80 group-hover:text-white">
               2X Money Back Guarantee
             </p>
           </li>
@@ -213,14 +215,14 @@ export const WhatIsItSection2 = () => (
 
 export const WhatIsItSection3 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
-    <SectionHeader
+    <SectionHeader noAnimation
       center
       subheading="Add-on: Exclusive Site plan"
       className="text-black"
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-        <SectionHeader
+        <SectionHeader noAnimation
           subheading="Showcase the landscaping & the exterior elements of your listing."
           noBodyAnimation
           body="A site plan complements your floor plan by providing potential buyers with a comprehensive view of the property and its surroundings. It highlights external features like landscaping, pools, lot sizes, and multiple dwellings, offering a complete picture of the entire property."

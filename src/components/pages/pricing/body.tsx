@@ -11,6 +11,7 @@ function body() {
   return (
     <>
       <PricingSection
+        showAllFeatures
         noAnimation
         className="bg-white z-10 top"
         pricingPackages={socialMediaPackages}

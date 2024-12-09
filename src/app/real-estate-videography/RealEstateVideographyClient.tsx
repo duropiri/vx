@@ -1,6 +1,5 @@
 import { ServiceIcons } from "@/data/serviceIcons";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import Link from "next/link";
 import Image from "next/image";
 import SectionHeader from "@/components/ui/sectionHeader";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
@@ -8,10 +7,12 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
+import { TransitionLink } from "@/components/TransitionLink";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       center
       heading="Why"
       subheading="Why is Real Estate Video Effective?"
@@ -62,9 +63,9 @@ export const WhatIsItSection = () => (
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <HoverWrapper className="">
-            <Link
+            <TransitionLink
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-22 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
+              className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>
@@ -77,7 +78,7 @@ export const WhatIsItSection = () => (
                 className="text-ash group-hover:rotate-45 transition-all duration-300"
                 quality={75}
               />
-            </Link>
+            </TransitionLink>
           </HoverWrapper>
         </div>
       </div>
@@ -88,6 +89,7 @@ export const WhatIsItSection = () => (
 export const StepsLeftSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noAnimation
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"
       noBodyAnimation
@@ -164,7 +166,7 @@ export const StepsRightSection = () => (
         className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-row items-center justify-start w-full bg-ash rounded-[1rem] p-[1.5rem] gap-x-[1rem] lg:gap-x-[2rem] text-white text-start"
       >
         <div className="aspect-square flex flex-col p-[2rem] w-[5rem] h-[5rem] items-center justify-center rounded-full bg-white">
-          <h1 className="text-goldenbrown pn-semibold-48">{index + 1}</h1>
+          <h1 className="text-goldenbrown pn-semibold-32">{index + 1}</h1>
         </div>
         <div className="flex flex-col gap-y-[1rem]">
           <LetterRevealOnScroll className="relative">
@@ -181,7 +183,7 @@ export const StepsRightSection = () => (
 
 export const UnlimitedLeftSection = () => (
   <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <SectionHeader
+    <SectionHeader noAnimation
       heading="DON'T WORRY ABOUT GOING OVER BUDGET."
       subheading="Simply, unlimited."
       className="text-black"

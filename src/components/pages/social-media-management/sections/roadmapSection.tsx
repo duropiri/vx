@@ -105,7 +105,7 @@ function RoadmapSection({ className }: SectionProps) {
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] sm:pt-[7.5rem] py-[1.875rem]">
               <ParallaxSection
                 speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
+                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
               >
                 <LetterRevealOnScroll
                   end="bottom 60%"
@@ -115,7 +115,7 @@ function RoadmapSection({ className }: SectionProps) {
                 </LetterRevealOnScroll>
                 <div className="flex self-stretch justify-start items-start gap-2.5">
                   <LetterRevealOnScroll className="relative" end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Instant Launch</h2>
+                    <h2 className="text-ash pn-bold-24">The Instant Launch</h2>
                   </LetterRevealOnScroll>
                   <LetterRevealOnScroll className="relative" end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
@@ -138,7 +138,7 @@ function RoadmapSection({ className }: SectionProps) {
                   </LetterRevealOnScroll>
                 </div>
                 <LetterRevealOnScroll className="relative" end="bottom 60%">
-                  <p className="text-ash pn-regular-16">
+                  <p className="text-ash pn-regular-20">
                     We kick things off immediately. Your invoice is sent, and
                     you&apos;ll get a streamlined welcome email laying out your
                     next moves, so you can hit the ground running with a clear
@@ -167,24 +167,17 @@ function RoadmapSection({ className }: SectionProps) {
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem]">
               <ParallaxSection
                 speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
+                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
               >
                 <LetterRevealOnScroll
                   end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  // shadow={true}
-                  // lineStyles={{
-                  //   marginTop: "0.6ch", // Custom line height
-                  //   marginRight: "0.4ch", // Custom character spacing
-                  // }}
-                  // start={100}
-                  // end={85}
                 >
                   Step 2
                 </LetterRevealOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll className="relative" end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Power Upload</h2>
+                    <h2 className="text-ash pn-bold-24">The Power Upload</h2>
                   </LetterRevealOnScroll>
                   <LetterRevealOnScroll className="relative" end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
@@ -207,7 +200,7 @@ function RoadmapSection({ className }: SectionProps) {
                   </LetterRevealOnScroll>
                 </div>
                 <LetterRevealOnScroll className="relative" end="bottom 60%">
-                  <p className="text-ash pn-regular-16">
+                  <p className="text-ash pn-regular-20">
                     Provide your business insights and marketing materials, and
                     you&apos;re one step closer to success. Once payment is
                     secured, we&apos;ll schedule your onboarding call, setting
@@ -237,24 +230,17 @@ function RoadmapSection({ className }: SectionProps) {
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] py-[1.875rem]">
               <ParallaxSection
                 speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
+                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
               >
                 <LetterRevealOnScroll
                   end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  // shadow={true}
-                  // lineStyles={{
-                  //   marginTop: "0.6ch", // Custom line height
-                  //   marginRight: "0.4ch", // Custom character spacing
-                  // }}
-                  // start={100}
-                  // end={85}
                 >
                   Step 3
                 </LetterRevealOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Strategy Surge</h2>
+                    <h2 className="text-ash pn-bold-24">The Strategy Surge</h2>
                   </LetterRevealOnScroll>
                   <LetterRevealOnScroll end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
@@ -277,7 +263,7 @@ function RoadmapSection({ className }: SectionProps) {
                   </LetterRevealOnScroll>
                 </div>
                 <LetterRevealOnScroll end="bottom 60%">
-                  <p className="text-ash pn-regular-16">
+                  <p className="text-ash pn-regular-20">
                     This is where your brand takes off. We audit and optimize
                     your social media accounts, then create a customized
                     strategy designed to drive engagement, boost visibility, and
@@ -306,24 +292,17 @@ function RoadmapSection({ className }: SectionProps) {
             <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem] sm:pb-[7.5rem]">
               <ParallaxSection
                 speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] max-w-[48ch]"
+                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
               >
                 <LetterRevealOnScroll
                   end="bottom 60%"
                   className="text-ash pn-regular-16 uppercase leading-normal"
-                  // shadow={true}
-                  // lineStyles={{
-                  //   marginTop: "0.6ch", // Custom line height
-                  //   marginRight: "0.4ch", // Custom character spacing
-                  // }}
-                  // start={100}
-                  // end={85}
                 >
                   Step 4
                 </LetterRevealOnScroll>
                 <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
                   <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-28">The Content Machine</h2>
+                    <h2 className="text-ash pn-bold-24">The Content Machine</h2>
                   </LetterRevealOnScroll>
                   <LetterRevealOnScroll end="bottom 60%">
                     <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
@@ -346,7 +325,7 @@ function RoadmapSection({ className }: SectionProps) {
                   </LetterRevealOnScroll>
                 </div>
                 <LetterRevealOnScroll end="bottom 60%">
-                  <p className="text-ash pn-regular-16">
+                  <p className="text-ash pn-regular-20">
                     Our team produces premium content tailored to your
                     brand&apos;s voice. Once you approve, we start posting and
                     get your content live—billing only begins once your

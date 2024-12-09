@@ -11,7 +11,7 @@ import masterCard from "@/../../public/assets/svgs/mastercard.svg";
 import shopPay from "@/../../public/assets/svgs/shop-pay.svg";
 import visa from "@/../../public/assets/svgs/visa.svg";
 import { FooterCompanyLinks, FooterHelpLinks } from "@/data/navLinks";
-import Link from "next/link";
+import { TransitionLink } from "./TransitionLink";
 
 interface ComponentProps {
   className?: string;
@@ -23,21 +23,6 @@ const NewsletterFormClient: React.FC<{
   setEmail: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
 }> = ({ email, setEmail, onSubmit }) => {
-  // const [mounted, setMounted] = useState(false);
-
-  // useEffect(() => {
-  //   setMounted(true);
-  // }, []);
-
-  // if (!mounted) {
-  //   return (
-  //     <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto opacity-0">
-  //       <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
-  //       <div className="flex w-full xl:w-[30.469rem] rounded-[0.5rem] overflow-hidden" />
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto">
       <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
@@ -72,6 +57,12 @@ export default function Footer({
 }: ComponentProps): React.JSX.Element {
   const [email, setEmail] = useState("");
 
+  // Define these as CSS custom properties (variables)
+  const footerStyles = {
+    "--footer-height-mobile": "50rem",
+    "--footer-height-desktop": "27rem",
+  } as React.CSSProperties;
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
@@ -81,17 +72,19 @@ export default function Footer({
   };
 
   return (
-    <footer>
+    <footer style={footerStyles}>
       <div
-        className="relative h-[50rem] xl:h-[40rem] select-none"
+        className={`relative h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] select-none`}
         style={{
           clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
           // zIndex: 99999999999999,
         }}
       >
-        <div className="relative h-[calc(100vh+50rem)] xl:h-[calc(100vh+40rem)] -top-[100vh]">
+        <div
+          className={`relative h-[calc(100vh+var(--footer-height-mobile))] xl:h-[calc(100vh+var(--footer-height-desktop))] -top-[100vh]`}
+        >
           <div
-            className={`${className} h-[50rem] xl:h-[40rem] sticky top-[calc(100vh-50rem)] xl:top-[calc(100vh-40rem)] bg-ash text-white`}
+            className={`${className} h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] sticky top-[calc(100vh-var(--footer-height-mobile))] xl:top-[calc(100vh-var(--footer-height-desktop))] bg-ash text-white`}
           >
             <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] xl:gap-[3.125rem]">
               <div className="flex flex-col xl:flex-row items-start justify-start xl:justify-between size-full max-w-[100dvw] gap-y-[1rem] xl:gap-y-[2rem]">
@@ -112,7 +105,7 @@ export default function Footer({
                       <p className="pn-regular-20 text-white/75 pb-[1rem]">
                         The Gold Standard in Real Estate Marketing
                       </p>
-                      <p className="pn-regular-20 text-white pb-[1rem] xl:pb-[2.5rem]">
+                      <p className="pn-regular-16 text-white pb-[1rem] xl:pb-[2.5rem]">
                         We are a group of curious, innovative and like-minded
                         people, now stepping up to fill the gap in the industry
                         with the highest level of convenience, reliability,
@@ -123,7 +116,7 @@ export default function Footer({
                     {/* Social links */}
                     <div className="flex flex-row items-center gap-[0.75rem] text-charcoal">
                       {/* Twitter */}
-                      <Link
+                      <TransitionLink
                         href="https://x.com/virtualxposur3"
                         passHref
                         className="size-[3rem]"
@@ -143,10 +136,10 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </Link>
+                      </TransitionLink>
 
                       {/* Facebook */}
-                      <Link
+                      <TransitionLink
                         href="https://www.facebook.com/virtualxposureofficial/"
                         passHref
                         className="size-[3rem]"
@@ -166,10 +159,10 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </Link>
+                      </TransitionLink>
 
                       {/* Instagram */}
-                      <Link
+                      <TransitionLink
                         href="https://www.instagram.com/virtualxposure/?hl=en"
                         passHref
                         className="size-[3rem]"
@@ -197,7 +190,7 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </Link>
+                      </TransitionLink>
                     </div>
                   </div>
                 </div>
@@ -215,9 +208,9 @@ export default function Footer({
                           key={index}
                           className="cursor-select-hover inline-block w-fit"
                         >
-                          <Link href={nav.href} passHref>
+                          <TransitionLink href={nav.href} passHref>
                             <FlipLink>{nav.title}</FlipLink>
-                          </Link>
+                          </TransitionLink>
                         </HoverWrapper>
                       ))}
                     </ul>
@@ -232,9 +225,9 @@ export default function Footer({
                           key={index}
                           className="cursor-select-hover inline-block w-fit"
                         >
-                          <Link href={nav.href} passHref>
+                          <TransitionLink href={nav.href} passHref>
                             <FlipLink>{nav.title}</FlipLink>
-                          </Link>
+                          </TransitionLink>
                         </HoverWrapper>
                       ))}
                     </ul>

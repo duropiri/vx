@@ -135,7 +135,7 @@ const Preloader: React.FC<PreloaderProps> = ({
     >
       <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
         <div
-          className="pn-regular-28 relative text-lg sm:text-2xl uppercase overflow-hidden"
+          className="pn-regular-24 relative text-lg sm:text-2xl uppercase overflow-hidden"
           ref={textRef}
         >
           {"Virtual Xposure".split("").map((char, index) => (
@@ -166,7 +166,7 @@ const Preloader: React.FC<PreloaderProps> = ({
         </div>
 
         <div className="absolute bottom-0 left-[1.5rem] text-start">
-          <div className="pn-regular-28 mr-[1rem] mb-[1.5rem] mix-blend-difference">
+          <div className="pn-regular-24 mr-[1rem] mb-[1.5rem] mix-blend-difference">
             {loadingPercentage}%
           </div>
         </div>

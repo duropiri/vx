@@ -3,8 +3,6 @@ import OpacityOnScroll from "@/components/animations/unused/OpacityOnScroll";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import React from "react";
-import { motion } from "framer-motion";
-
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 
@@ -16,9 +14,9 @@ interface SectionProps {
 function CTASection({ className = "" }: SectionProps) {
   return (
     <div className={`section-container ${className}`}>
-      <div className="flex flex-col items-center justify-center w-full max-w-[--section-width] bg-ash rounded-[1rem] px-[2.5rem] lg:px-[12.5rem] py-[2.5rem] lg:py-[5rem] gap-y-[1rem] lg:gap-y-[2rem] text-white text-center">
+      <div className="flex flex-col items-center justify-center w-full bg-ash rounded-[1rem] px-[2.5rem] py-[2.5rem] gap-y-[1rem] lg:gap-y-[2rem] text-white text-center">
         <LetterRevealOnScroll className="relative">
-          <h1 className="pn-regular-96">90 Day 2X Money Back Guarantee</h1>
+          <h1 className="pn-regular-40">90 Day 2X Money Back Guarantee</h1>
         </LetterRevealOnScroll>
         {/* <LetterRevealOnScroll className="relative"> */}
           <p className="pn-regular-16 text-center">
@@ -40,7 +38,7 @@ function CTASection({ className = "" }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button pn-regular-22 group cursor-select-hover !bg-transparent !border-white w-full lg:w-[18.75rem] shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5 !px-[1.5rem] !py-[1.25rem]"
+            className="button pn-regular-16 group cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
             <Image
@@ -52,10 +50,10 @@ function CTASection({ className = "" }: SectionProps) {
           </HoverWrapper>
 
           <HoverWrapper
-            href="#contact"
-            className="button gold pn-regular-22 text-ash group cursor-select-hover !bg-goldenbrown !border-none w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            href="https://listings.virtualxposure.com/order"
+            className="button gold pn-regular-16 text-ash group cursor-select-hover !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
-            <FlipLink className="font-semibold">Get In Touch</FlipLink>
+            <FlipLink className="font-semibold">Book Now</FlipLink>
             <Image
               alt="arrow"
               src={arrowRedirect}

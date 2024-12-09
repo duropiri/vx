@@ -3,12 +3,9 @@
 "use client";
 import React, { useEffect, useRef } from "react";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
-import { motion } from "framer-motion";
 import CTASection from "@/components/pages/services/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
-// import { useScroll } from "framer-motion";
-// import { HeaderLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import WhyUsSection from "@/components/pages/services/sections/whyUsSection";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
@@ -17,7 +14,6 @@ import { listingMediaFAQ } from "@/data/faq";
 import PricingSection from "@/components/pages/sections/pricingSection";
 import Basic2ColumnSection from "@/components/pages/sections/basic2ColumnSection";
 import BasicSection from "@/components/pages/sections/basicSection";
-import { useScroll } from "framer-motion";
 import {
   FloorplansSection,
   PhotographySection,
@@ -85,20 +81,44 @@ function Body({
   photography,
   floorplan,
 }: SectionProps) {
-  // const heroRef = useRef<HTMLDivElement>(null);
-  // const [heroHeight, setHeroHeight] = useState(0);
-
   const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-
-    offset: ["start start", "end end"],
-  });
-
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+
+  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
+
+  //   offset: ["start start", "end end"],
+  // });
+
+  const contentRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
+    if (!container.current) return;
+
+    scrollAnimationRef.current = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        onUpdate: (self) => {
+          const newProgress = self.progress;
+          // Remove references to scrollAnimationRef.current as a prop or state
+          // Instead, animate the WhyUsSection content element directly:
+          gsap.to(contentRef.current, {
+            scale: gsap.utils.interpolate(1, 0.5, newProgress),
+            rotation: gsap.utils.interpolate(0, -45, newProgress),
+            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
+            duration: 0,
+            overwrite: "auto",
+          });
+        },
+      },
+    });
+
+    // Color Change Animation
     const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-    // const heroSection = sectionRefs.current[0];
 
     if (triggerSection) {
       const updateColors = (change: boolean) => {
@@ -228,7 +248,8 @@ function Body({
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         {/* Why Us? */}
         <WhyUsSection
-          scrollYProgress={scrollYProgress}
+          ref={contentRef}
+          // scrollProgress={scrollProgress}
           shrinkSize={0.75}
           rotationAmount={-20}
           className="z-0"

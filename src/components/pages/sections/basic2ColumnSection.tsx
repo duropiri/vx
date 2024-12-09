@@ -1,13 +1,8 @@
 // import SectionHeader from "@/components/ui/sectionHeader";
-import {
-  // motion,
-  MotionValue,
-} from "framer-motion";
 import React from "react";
 
 interface SectionProps {
   className?: string;
-  scrollYProgress?: MotionValue<number>; // Proper type for scrollYProgress
   leftContent?: React.ReactElement;
   rightContent?: React.ReactElement;
 }

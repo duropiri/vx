@@ -1,22 +1,54 @@
 "use client";
-import React, { useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ContactSection from "@/components/pages/sections/contactSection";
 import StatsSection from "@/components/pages/sections/statsSection";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
-import { useScroll } from "framer-motion";
 import { TestimonialsStats } from "@/data/stats";
 import CopySection from "@/components/pages/sections/copySection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
 import Image from "next/image";
 import csImage from "@/../../public/assets/svgs/VX-Website-CS-Bar-1.svg";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
+  // const { scrollYProgress } = useScroll({
+  //   target: container,
 
-    offset: ["start start", "end end"],
-  });
+  //   offset: ["start start", "end end"],
+  // });
+
+  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!container.current) return;
+
+    scrollAnimationRef.current = gsap.timeline({
+      scrollTrigger: {
+        trigger: container.current,
+        start: "top top",
+        end: "bottom center",
+        scrub: 1,
+        onUpdate: (self) => {
+          const newProgress = self.progress;
+          // Remove references to scrollAnimationRef.current as a prop or state
+          // Instead, animate the WhyUsSection content element directly:
+          gsap.to(contentRef.current, {
+            scale: gsap.utils.interpolate(1, 0.5, newProgress),
+            rotation: gsap.utils.interpolate(0, -45, newProgress),
+            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
+            duration: 0,
+            overwrite: "auto",
+          });
+        },
+      },
+    });
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   return (
     <>
@@ -46,14 +78,14 @@ function Body() {
 
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         <StatsSection
+          ref={contentRef}
           shrinkSize={0.75}
           rotationAmount={-15}
           stats={TestimonialsStats}
           className="z-0"
-          scrollYProgress={scrollYProgress}
+          // scrollYProgress={scrollYProgress}
         />
         <CopySection
-          scrollYProgress={scrollYProgress}
           className="bg-white"
           copy={
             <>

@@ -1,8 +1,6 @@
 // import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
-// import { Reveal } from "@/components/animations/Reveal";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
-import { MotionValue } from "framer-motion";
 import Image from "next/image";
 import React, { forwardRef, RefObject, useState } from "react";
 
@@ -64,7 +62,6 @@ const logos = [
 ];
 
 interface SectionProps {
-  scrollYProgress?: MotionValue<number>;
   className?: string;
   full?: boolean;
   originalColor?: string;
@@ -109,7 +106,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
         <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-between gap-[2rem] sm:gap-[2rem]">
           {/* Header */}
           <SectionHeader
-            medium
+            small
             className={`${full ? "!hidden" : ""}`}
             heading={heading || "Our Partners"}
             subheading={
