@@ -1,7 +1,7 @@
 import ZoomParallax from "@/components/animations/ZoomParallax";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
 

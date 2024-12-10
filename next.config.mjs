@@ -9,56 +9,70 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig = {
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
-      config.optimization.splitChunks = {
-        chunks: 'all',
-        minSize: 10000,
-        maxSize: 50000,
-        cacheGroups: {
-          // Core React dependencies
-          framework: {
-            name: 'framework',
-            chunks: 'all',
-            test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
-            priority: 50,
-            enforce: true,
-          },
-          // GSAP animations
-          animations: {
-            name: 'animations',
-            test: /[\\/]node_modules[\\/](gsap|framer-motion)[\\/]/,
-            chunks: 'async',
-            priority: 40,
-          },
-          // UI components
-          ui: {
-            name: 'ui',
-            test: /[\\/]node_modules[\\/](@radix-ui|@headlessui)[\\/]/,
-            chunks: 'async',
-            priority: 30,
-          },
-          // Shared components between pages
-          shared: {
-            name: 'shared',
-            test: /[\\/]components[\\/]shared[\\/]/,
-            chunks: 'async',
-            minChunks: 2,
-            priority: 20,
-            reuseExistingChunk: true,
-          },
-          // Default vendor bundle
-          vendors: {
-            name: 'vendors',
-            test: /[\\/]node_modules[\\/]/,
-            chunks: 'async',
-            priority: 10,
-            reuseExistingChunk: true,
+      config.optimization = {
+        ...config.optimization,
+        moduleIds: "deterministic",
+        runtimeChunk: "single",
+        splitChunks: {
+          chunks: "all",
+          minSize: 10000,
+          maxSize: 50000,
+          cacheGroups: {
+            // Core React dependencies
+            framework: {
+              name: "framework",
+              chunks: "all",
+              test: /[\\/]node_modules[\\/](react|react-dom|scheduler)[\\/]/,
+              priority: 50,
+              enforce: true,
+            },
+            // GSAP animations
+            animations: {
+              name: "animations",
+              test: /[\\/]node_modules[\\/](gsap|framer-motion)[\\/]/,
+              chunks: "async",
+              priority: 40,
+            },
+            // Swiper animations
+            swiper: {
+              test: /[\\/]node_modules[\\/]swiper[\\/]/,
+              name: "swiper",
+              chunks: "all",
+              priority: 10,
+              enforce: true,
+            },
+            // UI components
+            ui: {
+              name: "ui",
+              test: /[\\/]node_modules[\\/](@radix-ui|@headlessui)[\\/]/,
+              chunks: "async",
+              priority: 30,
+            },
+            // Shared components between pages
+            shared: {
+              name: "shared",
+              test: /[\\/]components[\\/]shared[\\/]/,
+              chunks: "async",
+              minChunks: 2,
+              priority: 20,
+              reuseExistingChunk: true,
+            },
+            // Default vendor bundle
+            vendors: {
+              name: "vendors",
+              test: /[\\/]node_modules[\\/]/,
+              chunks: "async",
+              priority: 10,
+              reuseExistingChunk: true,
+            },
           },
         },
       };
 
       // Additional production optimizations
-      config.optimization.moduleIds = 'deterministic';
-      config.optimization.runtimeChunk = 'single';
+      config.optimization.concatenateModules = true;
+      config.optimization.moduleIds = "deterministic";
+      config.optimization.runtimeChunk = "single";
     }
     return config;
   },

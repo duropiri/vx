@@ -1,8 +1,8 @@
 // /* eslint-disable @typescript-eslint/no-explicit-any */
 // import { useEffect } from "react";
 // import { useViewport } from "./ViewportContext";
-// import gsap from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import { gsap } from "@/utils/gsap";
+// import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 
 // // Register ScrollTrigger
 // gsap.registerPlugin(ScrollTrigger);

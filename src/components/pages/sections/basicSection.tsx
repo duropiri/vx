@@ -1,5 +1,6 @@
 // import SectionHeader from "@/components/ui/sectionHeader";
-import React, { forwardRef, useRef, useState } from "react";
+"use client";
+import React, { forwardRef, useRef } from "react";
 
 interface SectionProps {
   className?: string;

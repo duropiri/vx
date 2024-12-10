@@ -1,12 +1,29 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
-import BasicHeroSection from "../sections/basicHeroSection";
+// @/components/pages/404/body.tsx
+"use client";
+import React, { useEffect, useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
+
+// above-thefold static components
+import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
+
+// below-the-fold dynamic components
+const Dynamic = {
+  FAQSection: dynamic(() => import("@/components/pages/sections/faqSection"), {
+    loading: () => <div className="min-h-[60vh]" />,
+  }),
+
+  ContactSection: dynamic(
+    () => import("@/components/pages/sections/contactSection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
+};
+
+// Complex compponents
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import ContactSection from "../sections/contactSection";
-import FAQSection from "../sections/faqSection";
 import { TransitionLink } from "@/components/TransitionLink";
 
 function Body({}) {
@@ -42,8 +59,8 @@ function Body({}) {
           </>
         }
       />
-      <ContactSection className="bg-white z-10" />
-      <FAQSection vertical className="bg-white z-10" />
+      <Dynamic.ContactSection className="bg-white z-10" />
+      <Dynamic.FAQSection vertical className="bg-white z-10" />
     </>
   );
 }

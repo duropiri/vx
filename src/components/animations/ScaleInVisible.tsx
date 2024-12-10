@@ -1,7 +1,7 @@
 "use client";
 import React, { forwardRef, useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 
 interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

@@ -9,7 +9,8 @@ import launchImage from "@/../../public/assets/images/instant-launch.webp";
 import powerUploadImage from "@/../../public/assets/images/power-upload.webp";
 import strategyImage from "@/../../public/assets/images/strategy-surge.webp";
 import machineImage from "@/../../public/assets/images/content-machine.webp";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 interface SectionProps {
@@ -62,7 +63,7 @@ function RoadmapSection({ className }: SectionProps) {
           {/* Gradient Bottom */}
           <div className="pointer-events-none absolute z-10 bottom-0 w-[100dvw] h-[7.5rem] bg-gradient-to-t from-white to-transparent" />
 
-          {/* Road SVG */}
+          {/* Trail SVG */}
           <div className="pointer-events-none absolute -top-[10rem] scrollPath">
             <SVGScroll>
               <svg

@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { gsap } from "@/utils/gsap";
 
 interface ScrollingBannerProps {
   children: React.ReactNode;

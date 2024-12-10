@@ -3,22 +3,18 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
 import React, { forwardRef, useEffect, useRef, useState } from "react";
 // import { Tilt } from "react-tilt";
-import gsap from "gsap";
-// Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import { gsap } from "@/utils/gsap";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-cards";
-
-// import required modules
 import {
-  // EffectCards,
+  Swiper,
+  SwiperSlide,
+  EffectCards,
   Pagination,
   Navigation,
   Scrollbar,
   A11y,
-} from "swiper/modules";
+} from "@/utils/swiper";
+
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 interface Feature {

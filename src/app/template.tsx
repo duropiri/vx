@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import gsap from "gsap";
+import { gsap } from "@/utils/gsap";
 import Header from "@/components/animations/NavigationMenu";
 import { HeaderLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";

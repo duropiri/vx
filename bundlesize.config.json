@@ -1,0 +1,12 @@
+{
+  "files": [
+    {
+      "path": ".next/static/chunks/4417-e77bac688d348990.js",
+      "maxSize": "5 kB"
+    },
+    {
+      "path": ".next/static/chunks/framework-a8f8b4de-9623e74d6341eaf9.js",
+      "maxSize": "50 kB"
+    }
+  ]
+}

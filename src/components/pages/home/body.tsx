@@ -1,37 +1,67 @@
+// @/components/pages/home/body.tsx
 "use client";
-import React, {
-  useEffect,
-  useRef,
-  // useRef,
-  // useState,
-} from "react";
+import React, { useEffect, useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
+
+// above-thefold static components
 import HeroSection from "@/components/pages/home/sections/heroSection";
-import { SMMANavdockLinks } from "@/data/navLinks";
+import PricingSection from "@/components/pages/sections/pricingSection";
+import SocialProofSection from "@/components/pages/sections/socialProofSection";
+
+// below-the-fold dynamic components
+const Dynamic = {
+  TestimonialsSection: dynamic(
+    () => import("@/components/pages/sections/testimonialsSection"),
+    {
+      loading: () => <div className="min-h-[110vh]" />,
+    }
+  ),
+
+  BasicHeroSection: dynamic(
+    () => import("@/components/pages/sections/basicHeroSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
+
+  BasicSection: dynamic(
+    () => import("@/components/pages/sections/basicSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
+
+  VirtualSection: dynamic(
+    () => import("@/components/pages/services/sections/virtualSection"),
+    {
+      loading: () => <div className="min-h-[180vh]" />,
+    }
+  ),
+};
+
+// Complex components
 import ChatWidget from "@/components/ui/chatWidget";
+import { TransitionLink } from "@/components/TransitionLink";
+import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
+import {
+  setupScrollAnimation,
+  setupColorAnimation,
+  cleanupGSAPAnimations,
+} from "@/components/pages/sections/animations/Animations";
+
+// Data
+import { SMMANavdockLinks } from "@/data/navLinks";
 // import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
 // import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
 // import ScrollingBanner from "@/components/animations/ScrollingBanner";
 // import { useViewport } from "@/contexts/ViewportContext";
-import PricingSection from "../sections/pricingSection";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { RealEstateVideographyPackages } from "@/data/pricingPackages";
-import { TransitionLink } from "@/components/TransitionLink";
-import SocialProofSection from "../sections/socialProofSection";
-import BasicSection from "../sections/basicSection";
-import {
-  // FloorplansSection,
-  VirtualSection,
-} from "@/app/case-studies/CaseStudiesClient";
-import TestimonialsSection from "../sections/testimonialsSection";
-import BasicHeroSection from "../sections/basicHeroSection";
+
+
 import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
-import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import {
-  setupColorAnimation,
-  // setupScrollAnimation,
-} from "../sections/animations/Animations";
+
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -214,29 +244,26 @@ const Body = () => {
   // );
 
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!sectionRefs.current) return;
 
-    // Setup color animation for section at index 1
     const triggerSection = sectionRefs.current[1];
     if (triggerSection) {
       setupColorAnimation(triggerSection, sectionRefs.current as HTMLElement[]);
     }
 
-    // Cleanup
     return () => {
-      if (scrollAnimationRef.current) {
-        scrollAnimationRef.current.kill();
-      }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      cleanupGSAPAnimations();
     };
   }, []);
 
   return (
     <>
-      <ChatWidget />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
+
       {/* <div className="relative flex flex-row min-h-screen overflow-hidden bg-ash">
         
         {!isMobile && (
@@ -378,6 +405,7 @@ const Body = () => {
         className="bg-white z-10 !pt-0"
         pricingPackages={RealEstateVideographyPackages}
       />
+
       <SocialProofSection
         id="socialProof1"
         originalColor="#EFE6CF"
@@ -389,11 +417,11 @@ const Body = () => {
         subheading="Trusted By The Best"
         body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
       />
-      <BasicSection
+      <Dynamic.BasicSection
         content={
           <div className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]">
             {/* <FloorplansSection /> */}
-            <VirtualSection />
+            <Dynamic.VirtualSection />
             {/* CTA */}
             <div className="flex justify-center w-full">
               <div className="flex flex-col sm:flex-row gap-[1rem]">
@@ -420,8 +448,8 @@ const Body = () => {
           </div>
         }
       />
-      <TestimonialsSection />
-      <BasicHeroSection
+      <Dynamic.TestimonialsSection />
+      <Dynamic.BasicHeroSection
         className="!pb-0"
         heading="Download the App"
         subheading="Try the New VirtualXposure App!"

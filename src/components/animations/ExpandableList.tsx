@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { gsap } from "@/utils/gsap";
 
 // Generic interface for list items - this can be extended based on needs
 export interface ExpandableListProps<T> {

@@ -1,6 +1,5 @@
-import gsap from "gsap";
-import MotionPathPlugin from "gsap/MotionPathPlugin";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 import React, { useEffect, useRef, ReactElement, RefCallback } from "react";
 
 interface SVGScrollProps {

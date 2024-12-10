@@ -1,13 +1,34 @@
 /* eslint-disable react/jsx-key */
 import { Metadata } from "next";
 import { baseMetadata } from "@/lib/metadata";
+import dynamic from "next/dynamic";
+
 import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
-import {
-  FloorplansSection,
-  PhotographySection,
-  VirtualSection,
-} from "./CaseStudiesClient";
+
+// below-the-fold dynamic components
+const Dynamic = {
+  FloorplansSection: dynamic(
+    () => import("@/components/pages/services/sections/floorplansSection"),
+    {
+      loading: () => <div className="min-h-[80vh]" />,
+    }
+  ),
+
+  PhotographySection: dynamic(
+    () => import("@/components/pages/services/sections/photographySection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
+
+  VirtualSection: dynamic(
+    () => import("@/components/pages/services/sections/virtualSection"),
+    {
+      loading: () => <div className="min-h-[180vh]" />,
+    }
+  ),
+};
 
 export const metadata: Metadata = {
   ...baseMetadata,
@@ -38,9 +59,9 @@ const page = () => {
         }}
         src="/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(8).webp"
         whatisitSection={[
-          <FloorplansSection />,
-          <PhotographySection />,
-          <VirtualSection />,
+          <Dynamic.FloorplansSection />,
+          <Dynamic.PhotographySection />,
+          <Dynamic.VirtualSection />,
         ]}
       />
     </Page>

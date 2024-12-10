@@ -6,9 +6,11 @@ import Image from "next/image";
 // import CircleCTA from "@/components/ui/circleCTA";
 
 import logo from "@/../../public/assets/images/logo2.webp";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
 import { useViewport } from "@/contexts/ViewportContext";
+
+// Register ScrollTrigger with GSAP
+gsap.registerPlugin(ScrollTrigger);
 
 // Import all the SVG assets
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";

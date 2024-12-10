@@ -1,43 +1,76 @@
 // @/components/pages/social-media-management/body.tsx
 "use client";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
+
+// above-thefold static components
 import HeroSection from "@/components/pages/social-media-management/sections/heroSection";
-import SocialProofSection from "@/components/pages/sections/socialProofSection";
-import CopySection from "@/components/pages/sections/copySection";
+import PricingSection from "@/components/pages/sections/pricingSection";
+
+const Dynamic = {
+  SocialProofSection: dynamic(
+    () => import("@/components/pages/sections/socialProofSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
+
+  CopySection: dynamic(
+    () => import("@/components/pages/sections/copySection"),
+    {
+      loading: () => <div className="min-h-[400vh]" />,
+    }
+  ),
+
+  CTASection: dynamic(() => import("@/components/pages/sections/ctaSection"), {
+    loading: () => <div className="min-h-[45vh]" />,
+  }),
+
+  FAQSection: dynamic(() => import("@/components/pages/sections/faqSection"), {
+    loading: () => <div className="min-h-[60vh]" />,
+  }),
+
+  ContactSection: dynamic(
+    () => import("@/components/pages/sections/contactSection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
+
+  ServicesSection: dynamic(
+    () => import("@/components/pages/listing-media/sections/servicesSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
+};
+
+// Complex components
 import ProblemSection from "@/components/pages/social-media-management/sections/problemSection";
 import StatsSection from "@/components/pages/sections/statsSection";
 import SolutionSection from "@/components/pages/social-media-management/sections/solutionSection";
 import ServicesSection from "@/components/pages/social-media-management/sections/servicesSection";
 import RoadmapSection from "@/components/pages/social-media-management/sections/roadmapSection";
-import PricingSection from "@/components/pages/sections/pricingSection";
-import CTASection from "@/components/pages/social-media-management/sections/ctaSection";
-import FAQSection from "@/components/pages/sections/faqSection";
-import ContactSection from "@/components/pages/sections/contactSection";
-import { SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
-import { socialMediaPackages } from "@/data/pricingPackages";
-import { HomePageStats } from "@/data/stats";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
-  setupColorAnimation,
   setupScrollAnimation,
+  setupColorAnimation,
+  cleanupGSAPAnimations,
 } from "@/components/pages/sections/animations/Animations";
 
-// Instead of grouping components, optimize through webpack configuration
+// Data
+import { SMMANavdockLinks } from "@/data/navLinks";
+import { socialMediaPackages } from "@/data/pricingPackages";
+import { HomePageStats } from "@/data/stats";
+
 export default function Body() {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const contentRef = useRef<HTMLDivElement>(null);
-  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  // const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!container.current) return;
-
-    scrollAnimationRef.current = setupScrollAnimation(
-      container.current,
-      contentRef.current
-    );
 
     const triggerSection = sectionRefs.current[1];
     if (triggerSection) {
@@ -45,16 +78,15 @@ export default function Body() {
     }
 
     return () => {
-      if (scrollAnimationRef.current) {
-        scrollAnimationRef.current.kill();
-      }
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      cleanupGSAPAnimations();
     };
   }, []);
 
   return (
     <>
-      <ChatWidget />
+      <Suspense fallback={null}>
+        <ChatWidget />
+      </Suspense>
 
       {/* Critical above-the-fold content */}
       <HeroSection
@@ -66,7 +98,6 @@ export default function Body() {
           sectionRefs.current[0] = el;
         }}
       />
-
       <PricingSection
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
@@ -77,17 +108,17 @@ export default function Body() {
         pricingPackages={socialMediaPackages}
       />
 
-      <SocialProofSection
+      <Dynamic.SocialProofSection
         id="socialProof1"
-        originalColor="#EFE6CF"
+        // originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[2] = el;
         }}
       />
-      <CopySection
-        originalColor="#EFE6CF"
+      <Dynamic.CopySection
+        // originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
@@ -109,8 +140,8 @@ export default function Body() {
           sectionRefs.current[4] = el;
         }}
       />
-      <CopySection
-        originalColor="#EFE6CF"
+      <Dynamic.CopySection
+        // originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="z-10 min-w-[100vw]"
         ref={(el: HTMLDivElement | null) => {
@@ -128,12 +159,11 @@ export default function Body() {
 
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
         <StatsSection
-          ref={contentRef}
+          // ref={contentRef}
           stats={HomePageStats}
           className=""
-          // scrollProgress={scrollProgressRef.current}
         />
-        <CopySection
+        <Dynamic.CopySection
           className="bg-white z-10"
           copy={
             <>
@@ -154,18 +184,18 @@ export default function Body() {
         />
       </div>
 
-      <SocialProofSection full className="bg-white z-10" />
+      <Dynamic.SocialProofSection full className="bg-white z-10" />
       <SolutionSection className="bg-ash z-10" />
       <ServicesSection className="bg-white z-10" />
       <RoadmapSection className="bg-white z-10" />
 
-      <SocialProofSection full className="bg-white z-10" />
+      <Dynamic.SocialProofSection full className="bg-white z-10" />
       <ScaleInVisible>
-        <CTASection className="bg-white z-10" />
+        <Dynamic.CTASection className="bg-white z-10" />
       </ScaleInVisible>
-      <FAQSection className="bg-white z-10" />
+      <Dynamic.FAQSection className="bg-white z-10" />
       <ScaleInVisible>
-        <ContactSection className="bg-white z-10" />
+        <Dynamic.ContactSection className="bg-white z-10" />
       </ScaleInVisible>
     </>
   );

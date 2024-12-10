@@ -44,7 +44,7 @@ function FAQSection({
   // }, [isInView, controls]);
 
   return (
-    <div id="faqs" className={`${className} section-container !flex-row`}>
+    <div id="faqs" className={`${className} section-container !flex-row !min-h-[60vh]`}>
       <div
         className={`relative flex flex-col ${
           vertical ? "items-center" : "lg:flex-row items-start"

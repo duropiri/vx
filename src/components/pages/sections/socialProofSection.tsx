@@ -1,63 +1,64 @@
-// import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
+"use client";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React, { forwardRef, RefObject, useState } from "react";
 
+const LOGO_DIMENSIONS = {
+  height: 48,
+} as const;
+
 const logos = [
   [
     {
       src: "/assets/images/partner-logos/marcus-and-millichap.webp",
-      alt: "Bedrock Homes",
+      alt: "marcus-and-millichap",
+      ...LOGO_DIMENSIONS,
     },
     {
       src: "/assets/images/partner-logos/REMAX.webp",
-      alt: "Century 21 All Stars Realty Ltd.",
+      alt: "REMAX",
+      ...LOGO_DIMENSIONS,
     },
     {
       src: "/assets/images/partner-logos/CIR Realty.webp",
-      alt: "Mutti Homes",
+      alt: "CIR Realty",
+      ...LOGO_DIMENSIONS,
     },
-    // {
-    //   src: "/assets/images/partner-logos/CIR Realty.webp",
-    //   alt: "CIR Realty",
-    // },
   ],
   [
     {
       src: "/assets/images/partner-logos/Century-21.webp",
-      alt: "EXP Realty",
+      alt: "Century-21",
+      ...LOGO_DIMENSIONS,
     },
     {
       src: "/assets/images/partner-logos/Royal_LePage.webp",
-      alt: "Century 21 Leading",
+      alt: "Royal_LePage",
+      ...LOGO_DIMENSIONS,
     },
     {
       src: "/assets/images/partner-logos/EXP-Realty.webp",
-      alt: "Klair Custom Homes LTD.",
+      alt: "EXP-Realty",
+      ...LOGO_DIMENSIONS,
     },
-    // {
-    //   src: "/assets/images/partner-logos/Century 21 Urban.webp",
-    //   alt: "Century 21 Urban",
-    // },
   ],
   [
     {
       src: "/assets/images/partner-logos/Qualico Properties.webp",
       alt: "Qualico Properties",
+      ...LOGO_DIMENSIONS,
     },
     {
       src: "/assets/images/partner-logos/real-broker.webp",
-      alt: "Royal LePage Noralta",
+      alt: "real-broker",
+      ...LOGO_DIMENSIONS,
     },
     {
       src: "/assets/images/partner-logos/maxwell.webp",
-      alt: "Sable Realty",
+      alt: "maxwell",
+      ...LOGO_DIMENSIONS,
     },
-    // {
-    //   src: "/assets/images/partner-logos/MaxWell Central.webp",
-    //   alt: "MaxWell Central",
-    // },
   ],
 ];
 
@@ -73,6 +74,77 @@ interface SectionProps {
   subheading?: string;
   body?: string;
 }
+
+// Extracted Logo component for better reusability and optimization
+const LogoImage = React.memo(({ src, alt }: { src: string; alt: string }) => (
+  <div className="relative flex justify-center w-full h-12 mb-12">
+    <Image
+      src={src}
+      alt={alt}
+      height={LOGO_DIMENSIONS.height}
+      width={500}
+      className="pointer-events-none object-contain grayscale saturate-0 h-full w-auto"
+      loading="lazy"
+      quality={75}
+    />
+  </div>
+));
+
+LogoImage.displayName = "LogoImage";
+
+// Extracted ScrollingLogoColumn component for better organization
+const ScrollingLogoColumn = React.memo(
+  ({
+    logo,
+    velocity,
+    className = "",
+  }: {
+    logo: (typeof logos)[0];
+    velocity: number;
+    className?: string;
+  }) => (
+    <div className={`flex flex-col w-[11.25rem] max-h-[22.5rem] ${className}`}>
+      <ScrollingBanner
+        direction="vertical"
+        baseVelocity={velocity}
+        className="relative flex w-[11.25rem] max-h-[22.5rem]"
+        innerChild="flex flex-col"
+      >
+        {logo.map((logo, index) => (
+          <LogoImage
+            key={`${logo.alt}-${index}`}
+            src={logo.src}
+            alt={logo.alt}
+          />
+        ))}
+      </ScrollingBanner>
+    </div>
+  )
+);
+
+ScrollingLogoColumn.displayName = "ScrollingLogoColumn";
+
+// Gradient overlay component
+const GradientOverlay = React.memo(
+  ({ position, color }: { position: "top" | "bottom"; color: string }) => (
+    <div
+      className={`absolute z-10 ${position}-0 w-full h-[7.5rem] bg-gradient-to-${
+        position === "top" ? "b" : "t"
+      } to-transparent transition-all duration-500`}
+      style={
+        {
+          "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
+          "--tw-gradient-to":
+            "rgb(255 255 255 / 0) var(--tw-gradient-to-position)",
+          "--tw-gradient-stops":
+            "var(--tw-gradient-from), var(--tw-gradient-to)",
+        } as React.CSSProperties
+      }
+    />
+  )
+);
+
+GradientOverlay.displayName = "GradientOverlay";
 
 const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
   (
@@ -90,6 +162,8 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
   ) => {
     const [color] = useState(originalColor);
 
+    const velocities = [600, -600, 600, -600, 600, -600];
+
     const commonProps = {
       id,
     };
@@ -105,184 +179,45 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
       >
         <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-between gap-[2rem] sm:gap-[2rem]">
           {/* Header */}
-          <SectionHeader
-            small
-            className={`${full ? "!hidden" : ""}`}
-            heading={heading || "Our Partners"}
-            subheading={
-              subheading || "A Few Of Our Clients In The Real Estate Industry"
-            }
-            noBodyAnimation
-            body={body}
-          />
+          {!full && (
+            <SectionHeader
+              small
+              heading={heading || "Our Partners"}
+              subheading={
+                subheading || "A Few Of Our Clients In The Real Estate Industry"
+              }
+              noBodyAnimation
+              body={body}
+            />
+          )}
 
           <div
             className={`select-none relative flex size-full flex-row items-center gap-[2.5rem] max-h-[22.5rem] overflow-hidden ${
               full ? "justify-center" : "justify-end sm:max-w-[50%]"
             }`}
           >
-            {/* Gradient Top */}
-            <div
-              className={`absolute z-10 top-0 w-full h-[7.5rem] bg-gradient-to-b to-transparent transition-all duration-500`}
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                } as React.CSSProperties
-              }
-            />
-            {/* Gradient Bottom */}
-            <div
-              className={`absolute z-10 bottom-0 w-full h-[7.5rem] bg-gradient-to-t to-transparent transition-all duration-500`}
-              style={
-                {
-                  "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
-                  "--tw-gradient-to": `rgb(255 255 255 / 0) var(--tw-gradient-to-position)`,
-                  "--tw-gradient-stops":
-                    "var(--tw-gradient-from), var(--tw-gradient-to)",
-                } as React.CSSProperties
-              }
-            />
-            <div className="relative flex w-[11.25rem] max-h-[22.5rem]">
-              <ScrollingBanner
-                direction="vertical"
-                baseVelocity={600}
-                className="flex flex-col"
-                innerChild="flex flex-col gap-[3rem]"
-              >
-                {logos[0].map((logo, index) => (
-                  <Image
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={200}
-                    height={48}
-                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
-                    // placeholder="blur"
-                    quality={75}
-                  />
-                ))}
-              </ScrollingBanner>
-            </div>
-            <div className="flex flex-col w-[11.25rem] max-h-[22.5rem]">
-              <ScrollingBanner
-                direction="vertical"
-                baseVelocity={-600}
-                className="flex flex-col"
-                innerChild="flex flex-col gap-[3rem]"
-              >
-                {logos[1].map((logo, index) => (
-                  <Image
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={200}
-                    height={48}
-                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
-                    // placeholder="blur"
-                    quality={75}
-                  />
-                ))}
-              </ScrollingBanner>
-            </div>
-            <div className="flex flex-col w-[11.25rem] max-h-[22.5rem]">
-              <ScrollingBanner
-                direction="vertical"
-                baseVelocity={600}
-                className="flex flex-col"
-                innerChild="flex flex-col gap-[3rem]"
-              >
-                {logos[2].map((logo, index) => (
-                  <Image
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={200}
-                    height={48}
-                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
-                    // placeholder="blur"
-                    quality={75}
-                  />
-                ))}
-              </ScrollingBanner>
-            </div>
-            <div
-              className={`${
-                full ? "hidden sm:flex" : "hidden"
-              } flex-col w-[11.25rem] max-h-[22.5rem]`}
-            >
-              <ScrollingBanner
-                direction="vertical"
-                baseVelocity={-250}
-                className="flex flex-col"
-                innerChild="flex flex-col gap-[3rem]"
-              >
-                {logos[0].map((logo, index) => (
-                  <Image
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={200}
-                    height={48}
-                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
-                    // placeholder="blur"
-                    quality={75}
-                  />
-                ))}
-              </ScrollingBanner>
-            </div>
-            <div
-              className={`${
-                full ? "hidden sm:flex" : "hidden"
-              } flex-col w-[11.25rem] max-h-[22.5rem]`}
-            >
-              <ScrollingBanner
-                direction="vertical"
-                baseVelocity={250}
-                className="flex flex-col"
-                innerChild="flex flex-col gap-[3rem]"
-              >
-                {logos[1].map((logo, index) => (
-                  <Image
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={200}
-                    height={48}
-                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
-                    // placeholder="blur"
-                    quality={75}
-                  />
-                ))}
-              </ScrollingBanner>
-            </div>
-            <div
-              className={`${
-                full ? "hidden sm:flex" : "hidden"
-              } flex-col w-[11.25rem] max-h-[22.5rem]`}
-            >
-              <ScrollingBanner
-                direction="vertical"
-                baseVelocity={-250}
-                className="flex flex-col"
-                innerChild="flex flex-col gap-[3rem]"
-              >
-                {logos[2].map((logo, index) => (
-                  <Image
-                    key={index}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={200}
-                    height={48}
-                    className="pointer-events-none h-[3rem] w-full aspect-auto object-contain grayscale saturate-0"
-                    // placeholder="blur"
-                    quality={75}
-                  />
-                ))}
-              </ScrollingBanner>
-            </div>
+            <GradientOverlay position="top" color={color} />
+            <GradientOverlay position="bottom" color={color} />
+
+            {/* First three columns always visible */}
+            {logos.map((logoSet, index) => (
+              <ScrollingLogoColumn
+                key={`column-${index}`}
+                logo={logoSet}
+                velocity={velocities[index]}
+              />
+            ))}
+
+            {/* Additional columns for full view */}
+            {full &&
+              logos.map((logoSet, index) => (
+                <ScrollingLogoColumn
+                  key={`full-column-${index}`}
+                  logo={logoSet}
+                  velocity={velocities[index + 3]}
+                  className="hidden sm:flex"
+                />
+              ))}
           </div>
         </div>
       </div>

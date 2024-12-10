@@ -1,9 +1,9 @@
 // CopySection.tsx
 "use client";
 import React, { forwardRef, useRef, useEffect } from "react";
-import gsap from "gsap";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 import WordByWordOnScroll from "@/components/animations/WordByWordOnScroll";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 interface SectionProps {
   className?: string;

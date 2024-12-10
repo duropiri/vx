@@ -1,11 +1,75 @@
 "use client";
 import React from "react";
-import SocialProofSection from "@/components/pages/sections/socialProofSection";
+import dynamic from "next/dynamic";
+
 import PricingSection from "@/components/pages/sections/pricingSection";
-import CTASection from "@/components/pages/social-media-management/sections/ctaSection";
-import FAQSection from "@/components/pages/sections/faqSection";
-import ContactSection from "@/components/pages/sections/contactSection";
 import { socialMediaPackages } from "@/data/pricingPackages";
+
+const Dynamic = {
+  SocialProofSection: dynamic(
+    () => import("@/components/pages/sections/socialProofSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
+
+  CTASection: dynamic(() => import("@/components/pages/sections/ctaSection"), {
+    loading: () => <div className="min-h-[45vh]" />,
+  }),
+
+  FAQSection: dynamic(() => import("@/components/pages/sections/faqSection"), {
+    loading: () => <div className="min-h-[60vh]" />,
+  }),
+
+  ContactSection: dynamic(
+    () => import("@/components/pages/sections/contactSection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
+
+  TestimonialsSection: dynamic(
+    () => import("@/components/pages/sections/testimonialsSection"),
+    {
+      loading: () => <div className="min-h-[110vh]" />,
+    }
+  ),
+
+  BasicSection: dynamic(
+    () => import("@/components/pages/sections/basicSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
+
+  Basic2ColumnSection: dynamic(
+    () => import("@/components/pages/sections/basic2ColumnSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
+
+  FloorplansSection: dynamic(
+    () => import("@/components/pages/services/sections/floorplansSection"),
+    {
+      loading: () => <div className="min-h-[80vh]" />,
+    }
+  ),
+
+  PhotographySection: dynamic(
+    () => import("@/components/pages/services/sections/photographySection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
+
+  VirtualSection: dynamic(
+    () => import("@/components/pages/services/sections/virtualSection"),
+    {
+      loading: () => <div className="min-h-[180vh]" />,
+    }
+  ),
+};
 
 function body() {
   return (
@@ -16,10 +80,10 @@ function body() {
         className="bg-white z-10 top"
         pricingPackages={socialMediaPackages}
       />
-      <SocialProofSection full className="bg-white z-10" />
-      <CTASection className="bg-white z-10" />
-      <FAQSection className="bg-white z-10" />
-      <ContactSection className="bg-white z-10" />
+      <Dynamic.SocialProofSection full className="bg-white z-10" />
+      <Dynamic.CTASection className="bg-white z-10" />
+      <Dynamic.FAQSection className="bg-white z-10" />
+      <Dynamic.ContactSection className="bg-white z-10" />
     </>
   );
 }

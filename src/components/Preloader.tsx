@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
+import { gsap } from "@/utils/gsap";
 import logo from "@/../../public/assets/images/logo-black-black.webp";
 
 interface PreloaderProps {

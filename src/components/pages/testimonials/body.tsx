@@ -1,52 +1,98 @@
+// @/components/pages/testimonials/body.tsx
 "use client";
-import React, { useEffect, useRef } from "react";
-import ContactSection from "@/components/pages/sections/contactSection";
-import StatsSection from "@/components/pages/sections/statsSection";
-import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
-import { TestimonialsStats } from "@/data/stats";
-import CopySection from "@/components/pages/sections/copySection";
+import React, { useEffect, useRef, Suspense } from "react";
+import dynamic from "next/dynamic";
+
+// above-thefold static components
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
+
+const Dynamic = {
+  SocialProofSection: dynamic(
+    () => import("@/components/pages/sections/socialProofSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
+
+  CopySection: dynamic(
+    () => import("@/components/pages/sections/copySection"),
+    {
+      loading: () => <div className="min-h-[400vh]" />,
+    }
+  ),
+
+  CTASection: dynamic(() => import("@/components/pages/sections/ctaSection"), {
+    loading: () => <div className="min-h-[45vh]" />,
+  }),
+
+  FAQSection: dynamic(() => import("@/components/pages/sections/faqSection"), {
+    loading: () => <div className="min-h-[60vh]" />,
+  }),
+
+  ContactSection: dynamic(
+    () => import("@/components/pages/sections/contactSection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
+
+  TestimonialsSection: dynamic(
+    () => import("@/components/pages/sections/testimonialsSection"),
+    {
+      loading: () => <div className="min-h-[110vh]" />,
+    }
+  ),
+
+  BasicSection: dynamic(
+    () => import("@/components/pages/sections/basicSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
+
+  ServicesSection: dynamic(
+    () => import("@/components/pages/listing-media/sections/servicesSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
+
+  Basic2ColumnSection: dynamic(
+    () => import("@/components/pages/sections/basic2ColumnSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
+};
+
+// Complex components
 import Image from "next/image";
 import csImage from "@/../../public/assets/svgs/VX-Website-CS-Bar-1.svg";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import StatsSection from "@/components/pages/sections/statsSection";
+import {
+  setupScrollAnimation,
+  setupColorAnimation,
+  cleanupGSAPAnimations,
+} from "@/components/pages/sections/animations/Animations";
+
+// Data
+import { TestimonialsStats } from "@/data/stats";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-
-  //   offset: ["start start", "end end"],
-  // });
-
-  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
+  const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!container.current) return;
 
-    scrollAnimationRef.current = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top top",
-        end: "bottom center",
-        scrub: 1,
-        onUpdate: (self) => {
-          const newProgress = self.progress;
-          // Remove references to scrollAnimationRef.current as a prop or state
-          // Instead, animate the WhyUsSection content element directly:
-          gsap.to(contentRef.current, {
-            scale: gsap.utils.interpolate(1, 0.5, newProgress),
-            rotation: gsap.utils.interpolate(0, -45, newProgress),
-            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
-            duration: 0,
-            overwrite: "auto",
-          });
-        },
-      },
-    });
+    const triggerSection = sectionRefs.current[1];
+    if (triggerSection) {
+      setupColorAnimation(triggerSection, sectionRefs.current as HTMLElement[]);
+    }
+
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      cleanupGSAPAnimations();
     };
   }, []);
 
@@ -68,7 +114,7 @@ function Body() {
               className="pointer-events-none"
               quality={75}
             />
-            <TestimonialsSection
+            <Dynamic.TestimonialsSection
               noHeader
               className="bg-white z-20 !p-0 !w-[100vw] sm:!w-full !-mx-[2rem] sm:!mx-0"
             />
@@ -85,7 +131,7 @@ function Body() {
           className="z-0"
           // scrollYProgress={scrollYProgress}
         />
-        <CopySection
+        <Dynamic.CopySection
           className="bg-white"
           copy={
             <>
@@ -97,7 +143,7 @@ function Body() {
           }
         />
       </div>
-      <ContactSection className="bg-white z-10" />
+      <Dynamic.ContactSection className="bg-white z-10" />
     </>
   );
 }

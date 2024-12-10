@@ -3,14 +3,9 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import React from "react";
 import { testimonials } from "@/data/testimonials";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-cards";
+import { Swiper, SwiperSlide, EffectCards, Pagination, Navigation } from "@/utils/swiper";
 
 // import required modules
-import { EffectCards, Pagination, Navigation } from "swiper/modules";
 import { renderStars } from "@/components/ui/renderStars";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";

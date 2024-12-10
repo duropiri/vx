@@ -1,7 +1,7 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
-import gsap from "gsap";
-import { initGSAP } from "@/utils/gsap";
+import { gsap } from "@/utils/gsap";
+// import { initGSAP } from "@/utils/gsap";
 // import { ParallaxProvider } from "./ParallaxContext";
 
 const MOBILE_BREAKPOINT = 768;

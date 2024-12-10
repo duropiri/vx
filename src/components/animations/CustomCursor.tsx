@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import gsap from "gsap";
+import { gsap } from "@/utils/gsap";
 import { usePathname } from "next/navigation";
 
 export default function CustomCursor() {

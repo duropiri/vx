@@ -1,9 +1,9 @@
 import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
-import gsap from "gsap";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 import dynamic from "next/dynamic";
 
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import logo from "@/../../public/assets/images/logo2.webp";
 import { useViewport } from "@/contexts/ViewportContext";

@@ -1,6 +1,6 @@
 "use client";
 import React, { createContext, useContext, useState, useRef, useEffect } from "react";
-import { gsap } from "gsap";
+import { gsap } from "@/utils/gsap";
 
 interface FlipLinkProps {
   children: React.ReactNode;

@@ -1,8 +1,8 @@
 import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
 
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger)
 
 // Import all the SVG assets
 import instagramHeroImage from "@/../../public/assets/svgs/hero-svgs/Instagram.svg";

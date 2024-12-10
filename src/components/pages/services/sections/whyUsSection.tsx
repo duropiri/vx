@@ -5,7 +5,7 @@ import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import Image from "next/image";
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import FadeInUp from "@/components/animations/FadeInUp";
-import gsap from "gsap";
+import { gsap } from "@/utils/gsap";
 
 interface SectionProps {
   className?: string;

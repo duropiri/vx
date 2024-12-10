@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import gsap from "gsap";
+import { gsap } from "@/utils/gsap";
 
 import logo from "@/../../public/assets/images/logo2-nospace.webp";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
