@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import HeroSection from "@/components/pages/listing-media/sections/heroSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 import CTASection from "@/components/pages/services/sections/ctaSection";
@@ -27,15 +27,17 @@ import socialmediacontentcreation from "@/../../public/assets/images/social-medi
 import brochuredesign from "@/../../public/assets/images/brochure-design.webp";
 import logodesign from "@/../../public/assets/images/logo-design.webp";
 import BasicSection from "@/components/pages/sections/basicSection";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import PricingSection from "../sections/pricingSection";
 
 import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import { TransitionLink } from "@/components/TransitionLink";
+import {
+  setupColorAnimation,
+  setupScrollAnimation,
+} from "../sections/animations/Animations";
 
 const services = [
   {
@@ -291,101 +293,29 @@ const ServicesSection = () => (
 function Body() {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-
-  //   offset: ["start start", "end end"],
-  // });
-  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
   const contentRef = useRef<HTMLDivElement>(null);
+  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!container.current) return;
 
-    scrollAnimationRef.current = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top top",
-        end: "bottom center",
-        scrub: 1,
-        onUpdate: (self) => {
-          const newProgress = self.progress;
-          // Remove references to scrollAnimationRef.current as a prop or state
-          // Instead, animate the WhyUsSection content element directly:
-          gsap.to(contentRef.current, {
-            scale: gsap.utils.interpolate(1, 0.5, newProgress),
-            rotation: gsap.utils.interpolate(0, -45, newProgress),
-            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
-            duration: 0,
-            overwrite: "auto",
-          });
-        },
-      },
-    });
+    // Setup scroll animation
+    scrollAnimationRef.current = setupScrollAnimation(
+      container.current,
+      contentRef.current
+    );
 
-    // Color Change Animation
-    const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-
+    // Setup color animation for section at index 1
+    const triggerSection = sectionRefs.current[1];
     if (triggerSection) {
-      const updateColors = (change: boolean) => {
-        sectionRefs.current.forEach((section) => {
-          if (section) {
-            const originalColor = section.dataset.originalColor;
-            const transitionColor = section.dataset.transitionColor;
-
-            if (!originalColor || !transitionColor) {
-              console.warn(
-                "Original or transition color not set for section:",
-                section
-              );
-              return;
-            }
-
-            const newColor = change ? transitionColor : originalColor;
-
-            // Animate background color for each section
-            gsap.to(section, {
-              backgroundColor: newColor,
-              duration: 0.5,
-              ease: "power1.inOut",
-            });
-
-            // Update the color state of the ColorChangeSection component
-            const sectionComponent = section as unknown as {
-              setColor: (color: string) => void;
-            };
-            if (sectionComponent.setColor) {
-              sectionComponent.setColor(newColor);
-            }
-
-            // Animate gradient colors
-            const gradientElements = section.querySelectorAll(
-              ".bg-gradient-to-b, .bg-gradient-to-t"
-            ) as NodeListOf<HTMLElement>;
-            gradientElements.forEach((el) => {
-              gsap.to(el, {
-                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                duration: 0.5,
-                ease: "power1.inOut",
-              });
-            });
-          }
-        });
-      };
-
-      // Create ScrollTrigger for the section at index 1 only
-      ScrollTrigger.create({
-        trigger: triggerSection,
-        start: "top-=400px top",
-        end: "bottom top",
-        onEnter: () => updateColors(true),
-        onLeaveBack: () => updateColors(false),
-        // markers: true, // Remove in production
-      });
+      setupColorAnimation(triggerSection, sectionRefs.current as HTMLElement[]);
     }
 
+    // Cleanup
     return () => {
+      if (scrollAnimationRef.current) {
+        scrollAnimationRef.current.kill();
+      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

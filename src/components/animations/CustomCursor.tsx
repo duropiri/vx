@@ -291,7 +291,7 @@ export default function CustomCursor() {
     <div id="cursor">
       <div
         ref={cursorRef}
-        className="fixed pointer-events-none flex items-center justify-center rounded-full text-white border border-white mix-blend-difference size-[4.688rem]"
+        className="fixed pointer-events-none flex items-center justify-center rounded-full text-white border border-white mix-blend-difference size-[3rem]"
         style={{ zIndex: 99999999999999 }}
       >
         <span
@@ -301,7 +301,7 @@ export default function CustomCursor() {
       </div>
       <div
         ref={innerDotRef}
-        className="fixed pointer-events-none rounded-full bg-white mix-blend-difference size-[0.469rem]"
+        className="fixed pointer-events-none rounded-full bg-white mix-blend-difference size-[0.35rem]"
         style={{ zIndex: 99999999999999 }}
       ></div>
     </div>

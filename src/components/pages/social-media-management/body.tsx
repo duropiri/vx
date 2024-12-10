@@ -1,5 +1,6 @@
+// @/components/pages/social-media-management/body.tsx
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import HeroSection from "@/components/pages/social-media-management/sections/heroSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 import CopySection from "@/components/pages/sections/copySection";
@@ -12,113 +13,41 @@ import PricingSection from "@/components/pages/sections/pricingSection";
 import CTASection from "@/components/pages/social-media-management/sections/ctaSection";
 import FAQSection from "@/components/pages/sections/faqSection";
 import ContactSection from "@/components/pages/sections/contactSection";
-import { HeaderLinks, SMMANavdockLinks } from "@/data/navLinks";
+import { SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
 import { socialMediaPackages } from "@/data/pricingPackages";
 import { HomePageStats } from "@/data/stats";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
+import {
+  setupColorAnimation,
+  setupScrollAnimation,
+} from "@/components/pages/sections/animations/Animations";
 
-function Body() {
+// Instead of grouping components, optimize through webpack configuration
+export default function Body() {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-
-  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-
-  //   offset: ["start start", "end end"],
-  // });
-
   const contentRef = useRef<HTMLDivElement>(null);
+  const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
 
   useEffect(() => {
     if (!container.current) return;
 
-    scrollAnimationRef.current = gsap.timeline({
-      scrollTrigger: {
-        trigger: container.current,
-        start: "top top",
-        end: "bottom center",
-        scrub: 1,
-        onUpdate: (self) => {
-          const newProgress = self.progress;
-          // Remove references to scrollAnimationRef.current as a prop or state
-          // Instead, animate the WhyUsSection content element directly:
-          gsap.to(contentRef.current, {
-            scale: gsap.utils.interpolate(1, 0.5, newProgress),
-            rotation: gsap.utils.interpolate(0, -45, newProgress),
-            filter: `blur(${gsap.utils.interpolate(0, 2.5, newProgress)}px)`,
-            duration: 0,
-            overwrite: "auto",
-          });
-        },
-      },
-    });
+    scrollAnimationRef.current = setupScrollAnimation(
+      container.current,
+      contentRef.current
+    );
 
-    // Color Change Animation
-    const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
-
+    const triggerSection = sectionRefs.current[1];
     if (triggerSection) {
-      const updateColors = (change: boolean) => {
-        sectionRefs.current.forEach((section) => {
-          if (section) {
-            const originalColor = section.dataset.originalColor;
-            const transitionColor = section.dataset.transitionColor;
-
-            if (!originalColor || !transitionColor) {
-              console.warn(
-                "Original or transition color not set for section:",
-                section
-              );
-              return;
-            }
-
-            const newColor = change ? transitionColor : originalColor;
-
-            // Animate background color for each section
-            gsap.to(section, {
-              backgroundColor: newColor,
-              duration: 0.5,
-              ease: "power1.inOut",
-            });
-
-            // Update the color state of the ColorChangeSection component
-            const sectionComponent = section as unknown as {
-              setColor: (color: string) => void;
-            };
-            if (sectionComponent.setColor) {
-              sectionComponent.setColor(newColor);
-            }
-
-            // Animate gradient colors
-            const gradientElements = section.querySelectorAll(
-              ".bg-gradient-to-b, .bg-gradient-to-t"
-            ) as NodeListOf<HTMLElement>;
-            gradientElements.forEach((el) => {
-              gsap.to(el, {
-                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                duration: 0.5,
-                ease: "power1.inOut",
-              });
-            });
-          }
-        });
-      };
-
-      // Create ScrollTrigger for the section at index 1 only
-      ScrollTrigger.create({
-        trigger: triggerSection,
-        start: "top-=400px top",
-        end: "bottom top",
-        onEnter: () => updateColors(true),
-        onLeaveBack: () => updateColors(false),
-        // markers: true, // Remove in production
-      });
+      setupColorAnimation(triggerSection, sectionRefs.current as HTMLElement[]);
     }
 
     return () => {
+      if (scrollAnimationRef.current) {
+        scrollAnimationRef.current.kill();
+      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
@@ -126,25 +55,28 @@ function Body() {
   return (
     <>
       <ChatWidget />
+
+      {/* Critical above-the-fold content */}
       <HeroSection
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="min-w-[100vw] min-h-[100vh]"
         navigation={SMMANavdockLinks}
-        ref={(el: HTMLDivElement | null) => {
+        ref={(el) => {
           sectionRefs.current[0] = el;
         }}
       />
+
       <PricingSection
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
-        ref={(el: HTMLDivElement | null) => {
+        ref={(el) => {
           sectionRefs.current[1] = el;
         }}
-        // noSwitch
         className="bg-white z-10"
         pricingPackages={socialMediaPackages}
       />
+
       <SocialProofSection
         id="socialProof1"
         originalColor="#EFE6CF"
@@ -195,14 +127,12 @@ function Body() {
       />
 
       <div ref={container} className="relative h-full bg-white min-w-[100vw]">
-        <ScaleInVisible className="contents flex flex-col items-center justify-center">
-          <StatsSection
-            ref={contentRef}
-            stats={HomePageStats}
-            className=""
-            // scrollProgress={scrollProgressRef.current}
-          />
-        </ScaleInVisible>
+        <StatsSection
+          ref={contentRef}
+          stats={HomePageStats}
+          className=""
+          // scrollProgress={scrollProgressRef.current}
+        />
         <CopySection
           className="bg-white z-10"
           copy={
@@ -223,12 +153,12 @@ function Body() {
           }
         />
       </div>
-      <SocialProofSection full className="bg-white z-10" />
 
+      <SocialProofSection full className="bg-white z-10" />
       <SolutionSection className="bg-ash z-10" />
       <ServicesSection className="bg-white z-10" />
-
       <RoadmapSection className="bg-white z-10" />
+
       <SocialProofSection full className="bg-white z-10" />
       <ScaleInVisible>
         <CTASection className="bg-white z-10" />
@@ -240,5 +170,3 @@ function Body() {
     </>
   );
 }
-
-export default Body;

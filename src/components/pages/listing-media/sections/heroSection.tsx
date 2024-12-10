@@ -1,6 +1,8 @@
 import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
+import dynamic from "next/dynamic";
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import logo from "@/../../public/assets/images/logo2.webp";
@@ -13,6 +15,10 @@ import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
 
+// const DynamicHeroDecorations = dynamic(
+//   () => import("@/components/heroDecorations"),
+//   { ssr: false }
+// );
 interface LinkDetails {
   title: string;
   href: string;
@@ -473,7 +479,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               className="button gold pn-regular-16 group !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
-              Book Now
+                Book Now
               </FlipLink>
 
               <Image

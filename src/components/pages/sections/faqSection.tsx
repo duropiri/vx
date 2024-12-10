@@ -86,11 +86,11 @@ function FAQSection({
                   className="cursor-select-hover bg-white border-none rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125]"
                 >
                   <Accordion.Header>
-                    <AccordionTrigger className="pn-regular-24 text-start hover:no-underline gap-[1rem] py-[2.5rem] px-[2rem]">
+                    <AccordionTrigger className="pn-regular-24 text-start hover:no-underline gap-[1rem] p-[1.5rem]">
                       {_.question}
                     </AccordionTrigger>
                   </Accordion.Header>
-                  <AccordionContent className="pn-regular-16 pb-[2.5rem] px-[2rem]">
+                  <AccordionContent className="pn-regular-16 pb-[1.5rem] px-[1.5rem]">
                     <div className="w-full h-[0.055rem] bg-ash/10 mb-[2.5rem]" />
                     {_.answer}
                   </AccordionContent>

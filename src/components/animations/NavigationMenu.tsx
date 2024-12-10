@@ -246,7 +246,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                   className="cursor-select-hover group inline-block w-fit"
                 >
                   <div className="flex flex-row items-center justify-center gap-[0.5rem]">
-                    <div className="flex-col items-center p-2 rounded-lg bg-ash/80 border-none border group-hover:bg-charcoal/80 transition-all duration-200">
+                    <div className="flex-col items-center p-2 rounded-lg bg-charcoal/20 border-none border group-hover:bg-charcoal/80 transition-all duration-200">
                       {/* <Image
                         src={item.icon}
                         alt={item.title}
@@ -558,7 +558,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] bg-ash/90 backdrop-blur-sm fixed top-0 left-0 right-0 ${
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${isHomePage ? "bg-ash" : "bg-ash/90"} backdrop-blur-sm fixed top-0 left-0 right-0 ${
           isHomePage || isMobile ? "" : "opacity-60 hover:opacity-100"
         }`}
       >

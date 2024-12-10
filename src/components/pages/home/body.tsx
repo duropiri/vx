@@ -3,24 +3,23 @@ import React, {
   useEffect,
   useRef,
   // useRef,
-  useState,
+  // useState,
 } from "react";
 import HeroSection from "@/components/pages/home/sections/heroSection";
 import { SMMANavdockLinks } from "@/data/navLinks";
 import ChatWidget from "@/components/ui/chatWidget";
-import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
-import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
-import ScrollingBanner from "@/components/animations/ScrollingBanner";
-import { useViewport } from "@/contexts/ViewportContext";
+// import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
+// import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
+// import ScrollingBanner from "@/components/animations/ScrollingBanner";
+// import { useViewport } from "@/contexts/ViewportContext";
 import PricingSection from "../sections/pricingSection";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import gsap from "gsap";
 import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 import { TransitionLink } from "@/components/TransitionLink";
 import SocialProofSection from "../sections/socialProofSection";
 import BasicSection from "../sections/basicSection";
 import {
-  FloorplansSection,
+  // FloorplansSection,
   VirtualSection,
 } from "@/app/case-studies/CaseStudiesClient";
 import TestimonialsSection from "../sections/testimonialsSection";
@@ -29,12 +28,16 @@ import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import {
+  setupColorAnimation,
+  // setupScrollAnimation,
+} from "../sections/animations/Animations";
 
-const TRANSITION_TIMING = "0.6s";
-const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
-const HINT_TIMING = "0.3s";
-const BASE_TRANSITION = `all ${TRANSITION_TIMING} ${TRANSITION_EASING}`;
-const HINT_TRANSITION = `transform ${HINT_TIMING} ${TRANSITION_EASING}`;
+// const TRANSITION_TIMING = "0.6s";
+// const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
+// const HINT_TIMING = "0.3s";
+// const BASE_TRANSITION = `all ${TRANSITION_TIMING} ${TRANSITION_EASING}`;
+// const HINT_TRANSITION = `transform ${HINT_TIMING} ${TRANSITION_EASING}`;
 
 const Body = () => {
   // const [isLeftHovered, setIsLeftHovered] = useState(false);
@@ -210,80 +213,23 @@ const Body = () => {
   //   </div>
   // );
 
-  const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-
-  // const { scrollYProgress } = useScroll({
-  //   target: container,
-
-  //   offset: ["start start", "end end"],
-  // });
   const scrollAnimationRef = useRef<gsap.core.Timeline | null>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Color Change Animation
-    const triggerSection = sectionRefs.current[1]; // Only section at index 1 will be the trigger
+    if (!sectionRefs.current) return;
 
+    // Setup color animation for section at index 1
+    const triggerSection = sectionRefs.current[1];
     if (triggerSection) {
-      const updateColors = (change: boolean) => {
-        sectionRefs.current.forEach((section) => {
-          if (section) {
-            const originalColor = section.dataset.originalColor;
-            const transitionColor = section.dataset.transitionColor;
-
-            if (!originalColor || !transitionColor) {
-              console.warn(
-                "Original or transition color not set for section:",
-                section
-              );
-              return;
-            }
-
-            const newColor = change ? transitionColor : originalColor;
-
-            // Animate background color for each section
-            gsap.to(section, {
-              backgroundColor: newColor,
-              duration: 0.5,
-              ease: "power1.inOut",
-            });
-
-            // Update the color state of the ColorChangeSection component
-            const sectionComponent = section as unknown as {
-              setColor: (color: string) => void;
-            };
-            if (sectionComponent.setColor) {
-              sectionComponent.setColor(newColor);
-            }
-
-            // Animate gradient colors
-            const gradientElements = section.querySelectorAll(
-              ".bg-gradient-to-b, .bg-gradient-to-t"
-            ) as NodeListOf<HTMLElement>;
-            gradientElements.forEach((el) => {
-              gsap.to(el, {
-                "--tw-gradient-from": `${newColor} var(--tw-gradient-from-position)`,
-                duration: 0.5,
-                ease: "power1.inOut",
-              });
-            });
-          }
-        });
-      };
-
-      // Create ScrollTrigger for the section at index 1 only
-      ScrollTrigger.create({
-        trigger: triggerSection,
-        start: "top-=400px top",
-        end: "bottom top",
-        onEnter: () => updateColors(true),
-        onLeaveBack: () => updateColors(false),
-        // markers: true, // Remove in production
-      });
+      setupColorAnimation(triggerSection, sectionRefs.current as HTMLElement[]);
     }
 
+    // Cleanup
     return () => {
+      if (scrollAnimationRef.current) {
+        scrollAnimationRef.current.kill();
+      }
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);

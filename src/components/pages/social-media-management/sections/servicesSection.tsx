@@ -1208,7 +1208,7 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex-col justify-start items-start lg:items-center lg:items-start gap-2 flex size-full">
+                <div className="flex-col justify-start items-start lg:items-center gap-2 flex size-full">
                   {/* Header */}
                   <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-24">
@@ -1517,7 +1517,7 @@ function ServicesSection({ className }: SectionProps) {
                 onMouseLeave={() => setFourthBentoHovered(false)}
               >
                 {/* Content */}
-                <div className="flex-col justify-start items-start lg:items-center lg:items-start gap-2 flex size-full">
+                <div className="flex-col justify-start items-start lg:items-center gap-2 flex size-full">
                   {/* Header */}
                   <div className="flex-col justify-start items-center lg:items-start gap-[0.625rem] flex text-center lg:text-start">
                     <div className="text-ash pn-bold-24">
