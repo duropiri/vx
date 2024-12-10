@@ -11,7 +11,7 @@ import React, {
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 
@@ -142,67 +142,66 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               bodyClassName="mt-[1rem] !leading-[1.6em]"
               className="text-white" // Add light text color
             />
-
-            {/* Detail List */}
-            <div className="hidden sm:contents">
-              {detailList && (
-                <ul className="flex flex-col size-full items-start space-y-[1rem]">
-                  {detailList.map((detail, index) => (
-                    <li
-                      key={index}
-                      className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
-                    >
-                      <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
-                        {detail.icon}
+            <div className="sm:contents flex flex-col-reverse size-full gap-y-[2rem]">
+              {/* Detail List */}
+              <div className="hidden sm:contents">
+                {detailList && (
+                  <ul className="flex flex-col size-full items-start space-y-[1rem]">
+                    {detailList.map((detail, index) => (
+                      <li
+                        key={index}
+                        className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]"
+                      >
+                        <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
+                          {detail.icon}
+                        </div>
+                        <p className="pn-regular-20 text-white/80 group-hover:text-white">
+                          {detail.text}
+                        </p>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+              <div className="contents sm:hidden">
+                {detailList && (
+                  <ScrollingBanner
+                    baseVelocity={25}
+                    innerChild="flex flex-row gap-[1rem] !px-[0] !pr-[1rem] "
+                  >
+                    {detailList.map((detail, index) => (
+                      <div
+                        key={index}
+                        className="group flex flex-col items-center gap-[1rem] sm:gap-[0.5rem] max-w-[30ch] text-center"
+                      >
+                        <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
+                          {detail.icon}
+                        </div>
+                        <p className="pn-regular-20 text-white/80 group-hover:text-white">
+                          {detail.text}
+                        </p>
                       </div>
-                      <p className="pn-regular-20 text-white/80 group-hover:text-white">
-                        {detail.text}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="contents sm:hidden">
-              {detailList && (
-                <ScrollingBanner
-                  baseVelocity={25}
-                  innerChild="flex flex-row gap-[1rem] !px-[0] !pr-[1rem]  mt-[4rem]"
-                >
-                  {detailList.map((detail, index) => (
-                    <div
-                      key={index}
-                      className="group flex flex-col items-center gap-[1rem] sm:gap-[0.5rem] max-w-[30ch] text-center"
-                    >
-                      <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
-                        {detail.icon}
-                      </div>
-                      <p className="pn-regular-20 text-white/80 group-hover:text-white">
-                        {detail.text}
-                      </p>
-                    </div>
-                  ))}
-                </ScrollingBanner>
-              )}
-            </div>
+                    ))}
+                  </ScrollingBanner>
+                )}
+              </div>
 
-            {/* CTA */}
-            <div className="flex mt-[2rem] w-full">
-              <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
-                <HoverWrapper
-                  href={cta.href}
-                  className="button gold pn-regular-16 group cursor-select-hover"
-                >
-                  <FlipLink className="font-semibold">
-                    {cta.label}
-                  </FlipLink>
-                  <Image
-                    alt="arrow"
-                    src={arrowRedirect}
-                    className="group-hover:rotate-45 transition-all duration-300"
-                    quality={75}
-                  />
-                </HoverWrapper>
+              {/* CTA */}
+              <div className="flex mt-[2rem] w-full">
+                <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
+                  <HoverWrapper
+                    href={cta.href}
+                    className="button gold pn-regular-16 group cursor-select-hover"
+                  >
+                    <FlipLink className="font-semibold">{cta.label}</FlipLink>
+                    <Image
+                      alt="arrow"
+                      src={arrowRedirect}
+                      className="group-hover:rotate-45 transition-all duration-300"
+                      quality={75}
+                    />
+                  </HoverWrapper>
+                </div>
               </div>
             </div>
           </div>
