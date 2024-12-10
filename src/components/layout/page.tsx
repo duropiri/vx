@@ -12,8 +12,10 @@ interface PageProps {
 const Page = ({ children }: PageProps) => {
   const pathname = usePathname();
   const isAdminPage = pathname.startsWith("/admin");
+  const isHomePage = pathname === "/";
 
-  const { isLoaded, finishLoading, isAnimating, finishAnimation } =  usePreloader();
+  const { isLoaded, finishLoading, isAnimating, finishAnimation } =
+    usePreloader();
 
   useEffect(() => {
     if (!isLoaded) {
@@ -25,7 +27,7 @@ const Page = ({ children }: PageProps) => {
     <PreloaderProvider>
       <div className="relative flex size-full min-w-[100vw] max-w-[100vw] min-h-screen flex-col items-center justify-start select-none">
         {/* Splash Screen Overlay */}
-        {!isAdminPage && (!isLoaded || isAnimating) && (
+        {isHomePage && !isAdminPage && (!isLoaded || isAnimating) && (
           <>
             <Preloader
               finishLoading={finishLoading}
