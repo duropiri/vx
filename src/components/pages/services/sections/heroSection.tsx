@@ -139,7 +139,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               largeText
               subheading={title}
               body={<>{copy}</>}
-              bodyClassName="mt-[1rem] !leading-[1.6em]"
+              bodyClassName="sm:mt-[1rem] !leading-[1.6em]"
               className="text-white" // Add light text color
             />
             <div className="sm:contents flex flex-col-reverse size-full gap-y-[2rem]">
@@ -172,7 +172,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     {detailList.map((detail, index) => (
                       <div
                         key={index}
-                        className="group flex flex-col items-center gap-[1rem] sm:gap-[0.5rem] max-w-[30ch] text-center"
+                        className="group flex flex-col items-center gap-[0.5rem] max-w-[30ch] text-center"
                       >
                         <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
                           {detail.icon}
@@ -187,7 +187,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               </div>
 
               {/* CTA */}
-              <div className="flex mt-[2rem] w-full">
+              <div className="flex sm:mt-[2rem] w-full">
                 <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                   <HoverWrapper
                     href={cta.href}
