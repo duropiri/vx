@@ -85,6 +85,7 @@ import {
 
 // Data
 import { listingMediaFAQ } from "@/data/faq";
+import VirtualSection from "@/components/pages/services/sections/virtualSection";
 
 interface SectionProps {
   title: string;
@@ -203,12 +204,12 @@ function Body({
         {floorplan && <Dynamic.BasicSection content={<Dynamic.FloorplansSection />} />}
         {staging && (
           <Dynamic.BasicSection
-            content={<Dynamic.VirtualSection renovation={false} objremoval={false} />}
+            content={<VirtualSection renovation={false} objremoval={false} />}
           />
         )}
         {renovation && (
           <Dynamic.BasicSection
-            content={<Dynamic.VirtualSection objremoval={false} staging={false} />}
+            content={<VirtualSection objremoval={false} staging={false} />}
           />
         )}
 

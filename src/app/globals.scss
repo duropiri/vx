@@ -522,19 +522,19 @@ body {
 .button.gold {
   background: linear-gradient(90deg, #c5a05e, #fdd98a, #c5a05e);
   background-size: 300% 100%;
-  animation: gradientShift 2s linear infinite;
+  // animation: gradientShift 2s linear infinite;
 
-  @keyframes gradientShift {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  // @keyframes gradientShift {
+  //   0% {
+  //     background-position: 0% 50%;
+  //   }
+  //   50% {
+  //     background-position: 100% 50%;
+  //   }
+  //   100% {
+  //     background-position: 0% 50%;
+  //   }
+  // }
 }
 
 .gold-text {
@@ -543,19 +543,19 @@ body {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradientText 5s linear infinite;
+  // animation: gradientText 5s linear infinite;
 
-  @keyframes gradientText {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
-  }
+  // @keyframes gradientText {
+  //   0% {
+  //     background-position: 0% 50%;
+  //   }
+  //   50% {
+  //     background-position: 100% 50%;
+  //   }
+  //   100% {
+  //     background-position: 0% 50%;
+  //   }
+  // }
 }
 
 .bento-row {
@@ -789,6 +789,102 @@ body {
 .animate-spin-slow {
   animation: spin 5s linear infinite;
   animation-timing-function: linear; /* Ensures smooth linear timing */
+}
+
+/* Base transitions */
+.nav-dropdown {
+  transform-origin: top;
+}
+
+/* Slide animations */
+.slide-in-left {
+  animation: slideInLeft 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.slide-in-right {
+  animation: slideInRight 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+}
+
+.slide-in-up {
+  opacity: 0;
+  animation: slideInUp 0.5s cubic-bezier(0.76, 0, 0.24, 1) forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+.fade-in-up {
+  opacity: 0;
+  animation: fadeInUp 0.3s ease forwards;
+  animation-delay: var(--delay, 0s);
+}
+
+/* Mobile menu transitions */
+.mobile-menu {
+  height: 0;
+  opacity: 0;
+  transition: height 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.mobile-menu-active {
+  height: auto;
+  opacity: 1;
+}
+
+.mobile-submenu {
+  height: 0;
+  opacity: 0;
+  transition: height 0.5s cubic-bezier(0.76, 0, 0.24, 1),
+              opacity 0.5s cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+.mobile-submenu-active {
+  height: auto;
+  opacity: 1;
+}
+
+/* Keyframe definitions */
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* End Animations */

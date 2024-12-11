@@ -2,7 +2,6 @@
 import * as Tabs from "@radix-ui/react-tabs";
 // import * as Tooltip from "@radix-ui/react-tooltip";
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react"; // For the close icon
 
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
@@ -21,6 +20,7 @@ import {
 
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { useViewport } from "@/contexts/ViewportContext";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 // Create a mapping of all images using the imported assets
 const PORTFOLIO_IMAGES = {
@@ -225,7 +225,7 @@ const PhotographySection = ({ dark = true }) => {
                 />
               )}
               <Dialog.Close className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/75 transition-colors cursor-select-hover">
-                <X className="w-6 h-6" />
+                <div className="size-6">{ServiceIcons.close}</div>
               </Dialog.Close>
             </div>
           </Dialog.Content>

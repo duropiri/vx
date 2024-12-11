@@ -6,7 +6,6 @@ import {
   // useEffect,
   useState,
 } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 import Image from "next/image";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
@@ -21,7 +20,6 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { FooterHelpLinks } from "@/data/navLinks";
 import { TransitionLink } from "../TransitionLink";
 import { useViewport } from "@/contexts/ViewportContext";
-// import { AnimatedText } from "@/components/animations/GetChars";
 
 // Custom hook to track scroll direction
 const useScrollDirection = () => {
@@ -50,123 +48,26 @@ const useScrollDirection = () => {
   return scrollDirection;
 };
 
-const transition = { duration: 0.5, ease: [0.76, 0, 0.24, 1] };
-
-const height = {
-  initial: { height: 0 },
-  enter: { height: "auto", transition },
-  exit: { height: 0, transition },
-};
-
-export const translate = {
-  initial: { y: "100%", opacity: 0 },
-  enter: (i: [number, number]) => ({
-    y: 0,
-    opacity: 1,
-    transition: { duration: 1, ease: [0.76, 0, 0.24, 1], delay: i[0] },
-  }),
-};
-
-const slideTransition = {
-  initial: { opacity: 0, x: -20 },
-  enter: { opacity: 1, x: 0, transition },
-  exit: { opacity: 0, x: 20, transition: { ...transition, duration: 0.3 } },
-};
-
-// Custom ease that matches [0.76, 0, 0.24, 1]
-const customEase = "custom-ease";
-gsap.registerEase(customEase, function (progress) {
-  return gsap.parseEase("power4.inOut")(progress); // This is close to the cubic-bezier curve
-});
-
-// Height animation
-export const animateHeight = {
-  initial: (element) => {
-    gsap.set(element, {
-      height: 0,
-    });
-  },
-  enter: (element) => {
-    return gsap.to(element, {
-      height: "auto",
-      duration: 0.5,
-      ease: customEase,
-    });
-  },
-  exit: (element) => {
-    return gsap.to(element, {
-      height: 0,
-      duration: 0.5,
-      ease: customEase,
-    });
-  },
-};
-
-// Translate animation
-export const animateTranslate = {
-  initial: (element) => {
-    gsap.set(element, {
-      yPercent: 100,
-      opacity: 0,
-    });
-  },
-  enter: (element, delay = 0) => {
-    return gsap.to(element, {
-      yPercent: 0,
-      opacity: 1,
-      duration: 1,
-      ease: customEase,
-      delay,
-    });
-  },
-};
-
-// Slide animation
-export const animateSlide = {
-  initial: (element) => {
-    gsap.set(element, {
-      opacity: 0,
-      x: -20,
-    });
-  },
-  enter: (element) => {
-    return gsap.to(element, {
-      opacity: 1,
-      x: 0,
-      duration: 0.5,
-      ease: customEase,
-    });
-  },
-  exit: (element) => {
-    return gsap.to(element, {
-      opacity: 0,
-      x: 20,
-      duration: 0.3,
-      ease: customEase,
-    });
-  },
-};
-
 // interface ImageProps {
 //   src: string;
 //   isActive: boolean;
 // }
-//
+
 // const ImageModal: React.FC<ImageProps> = ({ src, isActive }) => {
 //   return (
 //     <>
 //       {src && (
-//         <motion.div
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: isActive ? 1 : 0 }}
-//           className=" inset-0 -z-10"
+//         <div
+//           className={`inset-0 -z-10 transition-opacity duration-300 ${
+//             isActive ? "opacity-100" : "opacity-0"
+//           }`}
 //         >
 //           <Image
 //             src={`/img/${src}`}
 //             alt="Selected link image"
 //             className="size-full object-cover"
 //           />
-//         </motion.div>
+//         </div>
 //       )}
 //     </>
 //   );
@@ -201,59 +102,155 @@ interface NavProps {
 }
 
 const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
-  if (!activeDropdown?.dropdown) return null;
-
-  const groupedLinks = activeDropdown.dropdown.instantLinks?.reduce(
-    (acc, link) => {
-      if (!acc[link.category]) {
-        acc[link.category] = [];
-      }
-      acc[link.category].push(link);
-      return acc;
-    },
-    {} as Record<string, InstantLink[]>
+  const containerRef = useRef<HTMLDivElement>(null);
+  const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const linksRef = useRef<(HTMLDivElement | null)[]>([]);
+  const heightRef = useRef<number>(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [currentDropdown, setCurrentDropdown] = useState<LinkDetails | null>(
+    null
   );
 
+  useEffect(() => {
+    if (activeDropdown?.dropdown) {
+      setCurrentDropdown(activeDropdown);
+      setIsVisible(true);
+    } else {
+      animateOut().then(() => {
+        setCurrentDropdown(null);
+        setIsVisible(false);
+      });
+    }
+  }, [activeDropdown]);
+
+  const animateOut = async () => {
+    const container = containerRef.current;
+    if (!container) return Promise.resolve();
+
+    const tl = gsap.timeline();
+
+    // Fade out items and links first
+    const elements = [...itemsRef.current, ...linksRef.current].filter(Boolean);
+    tl.to(elements, {
+      opacity: 0,
+      y: -20,
+      duration: 0.1,
+      ease: "power2.in",
+      stagger: 0.01,
+    });
+
+    // Then collapse the container
+    tl.to(
+      container,
+      {
+        height: 0,
+        duration: 0.2,
+        ease: "power2.inOut",
+      },
+      "-=0.2"
+    );
+
+    return new Promise((resolve) => {
+      tl.eventCallback("onComplete", resolve);
+    });
+  };
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container || !isVisible) return;
+
+    // Set height to auto temporarily to measure
+    gsap.set(container, { height: "auto", visibility: "hidden" });
+    heightRef.current = container.offsetHeight;
+    gsap.set(container, { height: 0, visibility: "visible" });
+
+    // Animate opening
+    const tl = gsap.timeline();
+
+    tl.to(container, {
+      height: heightRef.current,
+      duration: 0.25,
+      ease: "power2.inOut",
+    });
+
+    // Animate items
+    itemsRef.current.forEach((item, index) => {
+      if (item) {
+        tl.fromTo(
+          item,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.15,
+            ease: "power2.out",
+          },
+          "-=0.1"
+        );
+      }
+    });
+
+    // Animate links
+    linksRef.current.forEach((link, index) => {
+      if (link) {
+        tl.fromTo(
+          link,
+          { opacity: 0, y: 20 },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.1,
+            ease: "power2.out",
+          },
+          "-=0.05"
+        );
+      }
+    });
+
+    return () => {
+      gsap.killTweensOf([container, ...itemsRef.current, ...linksRef.current]);
+    };
+  }, [isVisible]);
+
+  if (!isVisible && !currentDropdown?.dropdown) return null;
+
+  const dropdown = currentDropdown?.dropdown;
+  if (!dropdown) return null;
+
+  const groupedLinks = dropdown.instantLinks?.reduce((acc, link) => {
+    if (!acc[link.category]) {
+      acc[link.category] = [];
+    }
+    acc[link.category].push(link);
+    return acc;
+  }, {} as Record<string, InstantLink[]>);
+
+  const setItemRef = (index: number) => (el: HTMLDivElement | null) => {
+    itemsRef.current[index] = el;
+  };
+
+  const setLinkRef = (index: number) => (el: HTMLDivElement | null) => {
+    linksRef.current[index] = el;
+  };
+
   return (
-    <motion.div
-      variants={height}
-      initial="initial"
-      animate="enter"
-      exit="exit"
-      className="overflow-hidden flex flex-col items-start justify-center size-full text-white"
+    <div
+      ref={containerRef}
+      className="nav-dropdown overflow-hidden flex flex-col items-start justify-center size-full text-white"
     >
       <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
         {/* Services Grid */}
-        <motion.div
-          variants={slideTransition}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch"
-        >
+        <div className="slide-in-left flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
           <h3 className="text-sm font-medium text-white/40 mb-5">Services</h3>
           <div className="grid gap-[1rem]">
-            {activeDropdown.dropdown.items.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ delay: index * 0.05 }}
-              >
+            {dropdown.items.map((item, index) => (
+              <div key={index} ref={setItemRef(index)}>
                 <TransitionLink
                   href={item.href}
                   className="cursor-select-hover group inline-block w-fit"
                 >
                   <div className="flex flex-row items-center justify-center gap-[0.5rem]">
                     <div className="flex-col items-center p-2 rounded-lg bg-charcoal/20 border-none border group-hover:bg-charcoal/80 transition-all duration-200">
-                      {/* <Image
-                        src={item.icon}
-                        alt={item.title}
-                        height={20}
-                        width={20}
-                        className="aspect-square transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white"
-                      /> */}
                       <div className="aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
                         {item.icon}
                       </div>
@@ -265,75 +262,153 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                     </HoverWrapper>
                   </div>
                 </TransitionLink>
-              </motion.div>
+              </div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Quick Links Section */}
         {groupedLinks && (
-          <motion.div
-            variants={slideTransition}
-            initial="initial"
-            animate="enter"
-            exit="exit"
-            className="col-span-5 pr-[2rem] py-[2rem]"
-          >
+          <div className="slide-in-left col-span-5 pr-[2rem] py-[2rem]">
             <h3 className="text-sm font-medium text-white/40 mb-5">
               Quick links
             </h3>
             <div className="grid gap-6">
-              {groupedLinks &&
-                Object.entries(groupedLinks).map(([category, links]) => (
-                  <div key={category} className="space-y-4">
-                    <div className="space-y-2">
-                      {links.map((link, index) => (
-                        <motion.div
-                          key={index}
-                          initial={{ opacity: 0, y: 20 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -20 }}
-                          transition={{ delay: index * 0.05 }}
-                          className="flex"
-                        >
-                          <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white">
-                            <TransitionLink
-                              href={link.href}
-                              className="inline-block w-fit cursor-select-hover text-white/80 hover:text-white transition-colors duration-200 pn-regular-16"
-                            >
-                              <FlipLink>{link.title}</FlipLink>
-                            </TransitionLink>
-                          </HoverWrapper>
-                        </motion.div>
-                      ))}
-                    </div>
+              {Object.entries(groupedLinks).map(([category, links]) => (
+                <div key={category} className="space-y-4">
+                  <div className="space-y-2">
+                    {links.map((link, index) => (
+                      <div key={index} ref={setLinkRef(index)} className="flex">
+                        <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white">
+                          <TransitionLink
+                            href={link.href}
+                            className="inline-block w-fit cursor-select-hover text-white/80 hover:text-white transition-colors duration-200 pn-regular-16"
+                          >
+                            <FlipLink>{link.title}</FlipLink>
+                          </TransitionLink>
+                        </HoverWrapper>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                </div>
+              ))}
             </div>
-          </motion.div>
+          </div>
         )}
       </div>
-      <Footer />
-    </motion.div>
+    </div>
   );
 };
 
-const MobileMenu: React.FC<{
+interface MobileMenuProps {
   navigation: LinkDetails[];
   isActive: boolean;
   onClose: () => void;
-}> = ({ navigation, isActive, onClose }) => {
-  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+}
 
-  return (
-    <motion.div
-      initial={{ height: 0, opacity: 0 }}
-      animate={{
+const MobileMenu: React.FC<MobileMenuProps> = ({
+  navigation,
+  isActive,
+  onClose,
+}) => {
+  const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const submenuHeights = useRef<Record<string, number>>({});
+  const isInitialMount = useRef(true);
+
+  // Main menu animation
+  useEffect(() => {
+    if (!menuRef.current || isInitialMount.current) {
+      isInitialMount.current = false;
+      return;
+    }
+
+    const ctx = gsap.context(() => {
+      if (isActive) {
+        gsap.to(menuRef.current, {
+          height: "auto",
+          opacity: 1,
+          duration: 0.5,
+          ease: "power3.inOut",
+        });
+      } else {
+        gsap.to(menuRef.current, {
+          height: 0,
+          opacity: 0,
+          duration: 0.5,
+          ease: "power3.inOut",
+        });
+      }
+    }, menuRef);
+
+    return () => ctx.revert();
+  }, [isActive]);
+
+  // Initialize menu state
+  useEffect(() => {
+    if (menuRef.current) {
+      gsap.set(menuRef.current, {
         height: isActive ? "auto" : 0,
         opacity: isActive ? 1 : 0,
-      }}
-      transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
-      className="fixed left-0 top-[71.23px] w-full bg-ash/90 text-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
+      });
+    }
+  }, []);
+
+  // Submenu animations
+  useEffect(() => {
+    if (!menuRef.current) return;
+
+    const ctx = gsap.context(() => {
+      // Store and set initial heights
+      navigation.forEach((nav) => {
+        if (nav.dropdown && submenuRefs.current[nav.title]) {
+          const submenu = submenuRefs.current[nav.title];
+          if (submenu) {
+            // Temporarily set to auto and measure
+            gsap.set(submenu, {
+              height: "auto",
+              opacity: 1,
+              visibility: "hidden",
+            });
+            submenuHeights.current[nav.title] = submenu.offsetHeight;
+
+            // Set initial state
+            gsap.set(submenu, {
+              height:
+                activeSubmenu === nav.title
+                  ? submenuHeights.current[nav.title]
+                  : 0,
+              opacity: activeSubmenu === nav.title ? 1 : 0,
+              visibility: "visible",
+            });
+
+            // Animate to new state
+            gsap.to(submenu, {
+              height:
+                activeSubmenu === nav.title
+                  ? submenuHeights.current[nav.title]
+                  : 0,
+              opacity: activeSubmenu === nav.title ? 1 : 0,
+              duration: 0.5,
+              ease: "power3.inOut",
+            });
+          }
+        }
+      });
+    }, menuRef);
+
+    return () => ctx.revert();
+  }, [activeSubmenu, navigation]);
+
+  const setSubmenuRef = (title: string) => (el: HTMLDivElement | null) => {
+    submenuRefs.current[title] = el;
+  };
+
+  return (
+    <div
+      ref={menuRef}
+      className="fixed left-0 top-[71.23px] w-full bg-ash text-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
     >
       <div className="p-6 flex flex-col gap-6">
         {navigation.map((nav, index) => (
@@ -362,12 +437,8 @@ const MobileMenu: React.FC<{
 
             {/* Dropdown Content */}
             {nav.dropdown && (
-              <motion.div
-                initial={{ height: 0 }}
-                animate={{
-                  height: activeSubmenu === nav.title ? "auto" : 0,
-                }}
-                transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] }}
+              <div
+                ref={setSubmenuRef(nav.title)}
                 className="overflow-hidden pl-4"
               >
                 <div className="flex flex-col mt-4 gap-4">
@@ -378,13 +449,6 @@ const MobileMenu: React.FC<{
                       className="flex items-center gap-3 text-white/70 hover:text-white"
                       onClick={onClose}
                     >
-                      {/* <Image
-                        src={item.icon}
-                        alt={item.title}
-                        height={16}
-                        width={16}
-                        className="opacity-70"
-                      /> */}
                       <span className="pn-regular-16">{item.title}</span>
                     </TransitionLink>
                   ))}
@@ -407,7 +471,7 @@ const MobileMenu: React.FC<{
                     </>
                   )}
                 </div>
-              </motion.div>
+              </div>
             )}
           </div>
         ))}
@@ -428,7 +492,7 @@ const MobileMenu: React.FC<{
           />
         </TransitionLink>
       </div>
-    </motion.div>
+    </div>
   );
 };
 
@@ -438,36 +502,25 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = () => {
   return (
-    <div className="flex flex-wrap w-full justify-between mt-10 small-text gap-10 text-white pn-regular-16 ">
+    <div className="flex flex-wrap w-full justify-between gap-10 text-white pn-regular-16 ">
       <ul className="w-full md:w-auto mt-2 list-none p-0">
-        <motion.li
-          custom={[0.3, 0]}
-          variants={translate}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          className="flex items-end justify-end text-white/10 text-[0.5rem]"
-        >
+        <li className="flex items-end justify-end text-white/10 text-[0.5rem]">
           <span className="mr-2">Made by:</span> @relaydigitalmktg
-        </motion.li>
+        </li>
       </ul>
       <ul className="flex flex-row gap-[0.5rem] w-full md:w-auto mt-2 list-none p-0">
         {FooterHelpLinks.map((link, index) => (
-          <motion.li
+          <li
             key={index}
-            custom={[0.3, 0]}
-            variants={translate}
-            initial="initial"
-            animate="enter"
-            exit="exit"
             className="flex items-end justify-end cursor-select-hover text-[0.8rem] text-white/70 hover:text-white transition-all"
+            style={{ "--delay": `${index * 0.05}s` } as React.CSSProperties}
           >
             <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white">
               <TransitionLink href={link.href} aria-label={link.title} passHref>
                 <FlipLink>{link.title}</FlipLink>
               </TransitionLink>
             </HoverWrapper>
-          </motion.li>
+          </li>
         ))}
       </ul>
     </div>
@@ -497,6 +550,21 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const [isActive, setIsActive] = useState(false);
   const scrollDirection = useScrollDirection();
 
+  const headerRef = useRef<HTMLDivElement>(null);
+  const backdropRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  // Handle header slide animation on scroll
+  useEffect(() => {
+    if (!headerRef.current) return;
+
+    gsap.to(headerRef.current, {
+      y: scrollDirection === "down" ? -100 : 0,
+      duration: 0.3,
+      ease: "power2.inOut",
+    });
+  }, [scrollDirection]);
+
   useEffect(() => {
     if (!isMouseInHeader) {
       setPreviousDropdown(activeDropdown);
@@ -509,20 +577,16 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       setIsMouseInHeader(true);
 
       if (activeDropdown && activeDropdown !== nav) {
-        // If there's an active dropdown and it's different from the new one
         setIsAnimating(true);
         setPreviousDropdown(activeDropdown);
         setActiveDropdown(null);
 
-        // Wait for exit animation to complete
         await new Promise((resolve) => setTimeout(resolve, 300));
 
-        // Start enter animation for new dropdown
         setActiveDropdown(nav);
         setPreviousDropdown(null);
         setIsAnimating(false);
       } else {
-        // If no active dropdown or same dropdown
         setActiveDropdown(nav);
       }
     } else {
@@ -533,61 +597,97 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
   const handleMouseLeave = () => {
     setIsMouseInHeader(false);
-    // const headerElement = document.getElementById("header");
-    // const relatedTarget = e.relatedTarget as Element;
-
-    // if (headerElement && !headerElement.contains(relatedTarget)) {
-    //   setActiveDropdown(null);
-    // }
   };
 
+  // Handle backdrop animation
+  useEffect(() => {
+    if (!backdropRef.current) return;
+
+    if (isActive) {
+      gsap.fromTo(
+        backdropRef.current,
+        { opacity: 0 },
+        { opacity: 1, duration: 0.3, ease: "power2.out" }
+      );
+    } else {
+      gsap.to(backdropRef.current, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+    }
+  }, [isActive]);
+
+  // Handle footer animation
+  useEffect(() => {
+    if (!footerRef.current) return;
+
+    if (activeDropdown || previousDropdown) {
+      gsap.fromTo(
+        footerRef.current,
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.3,
+          delay: 0.1,
+          ease: "power2.out",
+        }
+      );
+    } else {
+      gsap.to(footerRef.current, {
+        opacity: 0,
+        y: 20,
+        duration: 0.3,
+        ease: "power2.in",
+      });
+    }
+  }, [activeDropdown, previousDropdown]);
+
   return (
-    <motion.div
+    <div
+      ref={headerRef}
       className={`${
         isHomePage ? "fixed sm:relative" : "fixed"
       } flex z-[99999] w-full max-w-[100vw]`}
-      initial={{ y: 0 }}
-      animate={{
-        y: scrollDirection === "down" ? -100 : 0,
-        transition: {
-          duration: 0.3,
-          ease: "easeInOut",
-        },
-      }}
     >
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${isHomePage ? "bg-ash" : "bg-ash/90"} backdrop-blur-sm fixed top-0 left-0 right-0 ${
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
+          isHomePage || isMobile ? "bg-ash" : "bg-ash/90"
+        } backdrop-blur-sm fixed top-0 left-0 right-0 ${
           isHomePage || isMobile ? "" : "opacity-60 hover:opacity-100"
         }`}
       >
         {/* Inverted Border Radius */}
         {isHomePage && (
-          <>
-            <div className="absolute flex flex-row items-start justify-between w-full left-0 -bottom-[1rem]">
-              <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
-                <div
-                  className={`absolute bottom-0 right-0 flex flex-col bg-ash/90 backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-b-r-4 ${
-                    isMouseInHeader ? "" : "opacity-0"
-                  }`}
-                />
-              </div>
-              <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
-                <div
-                  className={`absolute bottom-0 left-0 flex flex-col bg-ash/90 backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-b-l-4 ${
-                    isMouseInHeader ? "" : "opacity-0"
-                  }`}
-                />
-              </div>
+          <div className="absolute flex flex-row items-start justify-between w-full left-0 -bottom-[1rem]">
+            <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+              <div
+                className={`absolute bottom-0 right-0 flex flex-col bg-ash/90 backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-b-r-4 ${
+                  isMouseInHeader ? "" : "opacity-0"
+                }`}
+              />
             </div>
-          </>
+            <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
+              <div
+                className={`absolute bottom-0 left-0 flex flex-col bg-ash/90 backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-b-l-4 ${
+                  isMouseInHeader ? "" : "opacity-0"
+                }`}
+              />
+            </div>
+          </div>
         )}
 
-        {/* Original Header */}
-        <div className="relative flex items-center justify-between gap-10 z-[9999]">
+        {/* Header Content */}
+        <div
+          className={`relative flex items-center justify-between gap-10 z-[9999] ${
+            isHomePage ? "bg-ash" : ""
+          }`}
+        >
           {/* Logo */}
-          <div className="cursor-select-hover relative lg:max-w-[10vw] ">
+          <div className="cursor-select-hover relative lg:max-w-[10vw]">
             <TransitionLink
               href={"/"}
               className="flex size-full aspect-[1748/1072] overflow-hidden"
@@ -617,15 +717,12 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                   }
                 }}
               >
-                <HoverWrapper className="">
+                <HoverWrapper>
                   <TransitionLink
                     href={nav.href}
                     className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white"
                   >
-                    <FlipLink>
-                      {/* <AnimatedText text={nav.title} /> */}
-                      {nav.title}
-                    </FlipLink>
+                    <FlipLink>{nav.title}</FlipLink>
                     {nav.dropdown && (
                       <span className="ml-1 inline-block transition-transform duration-200">
                         <ChevronDownIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
@@ -636,16 +733,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               </div>
             ))}
 
-            {/* CTA button*/}
-            <HoverWrapper className="">
+            {/* CTA button */}
+            <HoverWrapper>
               <TransitionLink
                 href="https://listings.virtualxposure.com/order"
                 className="group button !bg-transparent !text-white cursor-select-hover pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 transition-all"
               >
-                <FlipLink>
-                  {/* <AnimatedText text="Book Now" /> */}
-                  Book Now
-                </FlipLink>
+                <FlipLink>Book Now</FlipLink>
                 <Image
                   alt="arrow"
                   src={arrowRedirectWhite}
@@ -656,7 +750,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             </HoverWrapper>
           </nav>
 
-          {/* Mobile Menu button pn-regular-16 */}
+          {/* Mobile Menu button */}
           <div
             onClick={() => setIsActive(!isActive)}
             className="flex md:hidden items-center justify-end gap-2 cursor-pointer"
@@ -683,31 +777,29 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           />
         </div>
 
-        {/* Dropdown Menu using Nav component */}
-        <AnimatePresence mode="sync">
-          {(activeDropdown || previousDropdown) &&
-            scrollDirection !== "down" && (
-              <Nav
-                key={activeDropdown?.title || previousDropdown?.title}
-                activeDropdown={activeDropdown || previousDropdown}
-              />
-            )}
-        </AnimatePresence>
+        {/* Dropdown Menu */}
+        {(activeDropdown || previousDropdown) && scrollDirection !== "down" && (
+          <>
+            <Nav
+              key={`nav-${activeDropdown?.title || previousDropdown?.title}`}
+              activeDropdown={activeDropdown || previousDropdown}
+            />
+            <div ref={footerRef}>
+              <Footer />
+            </div>
+          </>
+        )}
       </div>
 
       {/* Backdrop */}
-      <AnimatePresence>
-        {isActive && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-[1998]"
-            onClick={() => setIsActive(false)}
-          />
-        )}
-      </AnimatePresence>
-    </motion.div>
+      {isActive && (
+        <div
+          ref={backdropRef}
+          className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-[1998]"
+          onClick={() => setIsActive(false)}
+        />
+      )}
+    </div>
   );
 };
 

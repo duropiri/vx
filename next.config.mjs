@@ -97,8 +97,6 @@ const nextConfig = {
       "@radix-ui/react-dialog",
       "@radix-ui/react-switch",
       "@radix-ui/react-tabs",
-      "framer-motion",
-      "lucide-react",
       "gsap",
       "swiper",
     ],

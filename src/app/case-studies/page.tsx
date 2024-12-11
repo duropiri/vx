@@ -5,6 +5,7 @@ import dynamic from "next/dynamic";
 
 import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
+import VirtualSection from "@/components/pages/services/sections/virtualSection";
 
 // below-the-fold dynamic components
 const Dynamic = {
@@ -61,7 +62,7 @@ const page = () => {
         whatisitSection={[
           <Dynamic.FloorplansSection />,
           <Dynamic.PhotographySection />,
-          <Dynamic.VirtualSection />,
+          <VirtualSection />,
         ]}
       />
     </Page>

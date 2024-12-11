@@ -61,6 +61,7 @@ import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+import VirtualSection from "@/components/pages/services/sections/virtualSection";
 
 
 // const TRANSITION_TIMING = "0.6s";
@@ -421,7 +422,7 @@ const Body = () => {
         content={
           <div className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]">
             {/* <FloorplansSection /> */}
-            <Dynamic.VirtualSection />
+            <VirtualSection />
             {/* CTA */}
             <div className="flex justify-center w-full">
               <div className="flex flex-col sm:flex-row gap-[1rem]">

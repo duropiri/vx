@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import {
   ReactCompareSlider,
-  //   ReactCompareSliderImage,
+    ReactCompareSliderImage,
 } from "react-compare-slider";
 
 const VirtualSection = ({
