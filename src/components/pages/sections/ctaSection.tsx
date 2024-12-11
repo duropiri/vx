@@ -93,8 +93,8 @@ const CTASection = ({
             <HoverWrapper
               key={index}
               href={button.href}
-              className={`button pn-regular-16 group/cta cursor-select-hover !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5 ${
-                button.variant === "gold" ? "gold text-ash" : "!bg-transparent"
+              className={`button pn-regular-16 group/cta cursor-select-hover w-full lg:w-auto shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5 ${
+                button.variant === "gold" ? "gold !border-none text-ash" : "!border-white !bg-transparent"
               }`}
             >
               <FlipLink className="font-semibold">{button.text}</FlipLink>
