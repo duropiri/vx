@@ -43,7 +43,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Hero */}
         <div
           id="hero"
-          className={`section-container hero-container !min-h-[60vh] xl:!h-[70vh] !justify-center ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
+          className={`section-container hero-container !min-h-[60vh] xl:!h-[70vh] !justify-start sm:!justify-center ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
         >
           <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             {/* Main Copy */}
