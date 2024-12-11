@@ -221,7 +221,10 @@ export const UnlimitedRightSection = () => (
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
     <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
-      <ParallaxSection speed={1 - 1.2}>
+      <ParallaxSection
+        speed={1 - 1.2}
+        className="w-[80vw] sm:w-[30vw] aspect-[73/128]"
+      >
         <Image
           src={unlimitedImage}
           alt="unlimited-image"
@@ -229,7 +232,7 @@ export const UnlimitedRightSection = () => (
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           priority={false}
           loading={false ? "eager" : "lazy"}
-          className="size-full object-contain aspect-[73/128]"
+          className=""
           quality={75}
         />
       </ParallaxSection>

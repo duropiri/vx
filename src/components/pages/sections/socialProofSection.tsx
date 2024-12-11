@@ -103,11 +103,11 @@ const ScrollingLogoColumn = React.memo(
     velocity: number;
     className?: string;
   }) => (
-    <div className={`flex flex-col w-[11.25rem] max-h-[22.5rem] ${className}`}>
+    <div className={`flex flex-col w-full sm:w-[11.25rem] max-h-[22.5rem] ${className}`}>
       <ScrollingBanner
         direction="vertical"
         baseVelocity={velocity}
-        className="relative flex w-[11.25rem] max-h-[22.5rem]"
+        className="relative flex w-full sm:w-[11.25rem] max-h-[22.5rem]"
         innerChild="flex flex-col"
       >
         {logo.map((logo, index) => (
