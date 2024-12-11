@@ -20,6 +20,7 @@ import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { FooterHelpLinks } from "@/data/navLinks";
 import { TransitionLink } from "../TransitionLink";
 import { useViewport } from "@/contexts/ViewportContext";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 // Custom hook to track scroll direction
 const useScrollDirection = () => {
@@ -483,13 +484,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           onClick={onClose}
         >
           Book Now
-          <Image
-            alt="arrow"
-            src={arrowRedirect}
-            className="ml-2"
-            width={20}
-            height={20}
-          />
+          <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+            {ServiceIcons.arrow}
+          </div>
         </TransitionLink>
       </div>
     </div>
@@ -734,18 +731,15 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             ))}
 
             {/* CTA button */}
-            <HoverWrapper>
+            <HoverWrapper className="group/cta cursor-select-hover">
               <TransitionLink
                 href="https://listings.virtualxposure.com/order"
-                className="group button !bg-transparent !text-white cursor-select-hover pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-105 transition-all"
+                className="button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 group-hover/cta:!bg-white group-hover/cta:!text-ash transition-all"
               >
                 <FlipLink>Book Now</FlipLink>
-                <Image
-                  alt="arrow"
-                  src={arrowRedirectWhite}
-                  className="text-white group-hover:rotate-45 transition-all duration-300"
-                  quality={75}
-                />
+                <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                  {ServiceIcons.arrow}
+                </div>
               </TransitionLink>
             </HoverWrapper>
           </nav>

@@ -13,6 +13,7 @@ import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-wh
 
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface SectionProps {
   className?: string;
@@ -481,28 +482,22 @@ function SolutionSection({ className }: SectionProps) {
         <div className="flex flex-col lg:flex-row items-center justify-center w-full text-white gap-[1rem] my-[0.625rem]">
           <HoverWrapper
             href="/"
-            className="button pn-regular-16 group !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button pn-regular-16 group/cta !w-full lg:!w-auto cursor-select-hover !bg-transparent !border-white shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">See More</FlipLink>
-            <Image
-              alt="arrow"
-              src={arrowRedirectWhite}
-              className="text-white group-hover:rotate-45 transition-all duration-300"
-              quality={75}
-            />
+            <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+              {ServiceIcons.arrow}
+            </div>
           </HoverWrapper>
 
           <HoverWrapper
             href="https://listings.virtualxposure.com/order"
-            className="button gold pn-regular-16 !w-full lg:!w-auto text-ash group cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+            className="button gold pn-regular-16 !w-full lg:!w-auto text-ash group/cta cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">Book Now</FlipLink>
-            <Image
-              alt="arrow"
-              src={arrowRedirect}
-              className="text-white group-hover:rotate-45 transition-all duration-300"
-              quality={75}
-            />
+            <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+              {ServiceIcons.arrow}
+            </div>
           </HoverWrapper>
         </div>
       </div>

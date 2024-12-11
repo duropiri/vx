@@ -1,6 +1,4 @@
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger)
+import { gsap, ScrollTrigger } from "@/utils/gsap";
 
 // Cache selector results to avoid repeated DOM queries
 const getGradientElements = (section: HTMLElement) => 

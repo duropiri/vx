@@ -3,7 +3,13 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import React from "react";
 import { testimonials } from "@/data/testimonials";
 // Import Swiper React components
-import { Swiper, SwiperSlide, EffectCards, Pagination, Navigation } from "@/utils/swiper";
+import {
+  Swiper,
+  SwiperSlide,
+  EffectCards,
+  Pagination,
+  Navigation,
+} from "@/utils/swiper";
 
 // import required modules
 import { renderStars } from "@/components/ui/renderStars";
@@ -11,6 +17,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { TransitionLink } from "@/components/TransitionLink";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface SectionProps {
   className?: string;
@@ -85,22 +92,19 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
         {/* CTA */}
         <div className="flex justify-center w-full">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
-            <HoverWrapper className="">
+            <HoverWrapper className="group/cta cursor-select-hover">
               <TransitionLink
                 href="/testimonials"
-                className="button gold pn-regular-16 pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit"
+                className="button gold pn-regular-16 pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-fit"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>
                   View All Testimonials
                 </FlipLink>
 
-                <Image
-                  alt="arrow"
-                  src={arrowRedirect}
-                  className="text-ash group-hover:rotate-45 transition-all duration-300"
-                  quality={75}
-                />
+                <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                  {ServiceIcons.arrow}
+                </div>
               </TransitionLink>
             </HoverWrapper>
           </div>

@@ -57,12 +57,11 @@ import { SMMANavdockLinks } from "@/data/navLinks";
 // import { useViewport } from "@/contexts/ViewportContext";
 import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 
-
 import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import VirtualSection from "@/components/pages/services/sections/virtualSection";
-
+import { ServiceIcons } from "@/data/serviceIcons";
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -426,22 +425,18 @@ const Body = () => {
             {/* CTA */}
             <div className="flex justify-center w-full">
               <div className="flex flex-col sm:flex-row gap-[1rem]">
-                <HoverWrapper className="">
+                <HoverWrapper className="group/cta cursor-select-hover">
                   <TransitionLink
                     href="/case-studies"
-                    className="button gold pn-regular-16 pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-fit"
+                    className="button gold pn-regular-16 pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-fit"
                     passHref
                   >
                     <FlipLink className={`flex items-center w-fit`}>
                       See More of Our Work
                     </FlipLink>
-
-                    <Image
-                      alt="arrow"
-                      src={arrowRedirect}
-                      className="text-ash group-hover:rotate-45 transition-all duration-300"
-                      quality={75}
-                    />
+                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                      {ServiceIcons.arrow}
+                    </div>
                   </TransitionLink>
                 </HoverWrapper>
               </div>

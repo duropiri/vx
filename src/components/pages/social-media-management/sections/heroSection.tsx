@@ -9,15 +9,13 @@ import logo from "@/../../public/assets/images/logo2.webp";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 import { useViewport } from "@/contexts/ViewportContext";
 
-// Register ScrollTrigger with GSAP
-gsap.registerPlugin(ScrollTrigger);
-
 // Import all the SVG assets
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import starImage from "@/../../public/assets/svgs/star.svg";
 import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface LinkDetails {
   title: string;
@@ -398,18 +396,15 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <HoverWrapper
                     href="https://listings.virtualxposure.com/order"
-                    className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
+                    className="button gold pn-regular-16 group/cta h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 group/cta:shadow-goldenrod/5 w-[14rem]"
                   >
                     <FlipLink className={`flex items-center w-fit`}>
                       Book Now
                     </FlipLink>
 
-                    <Image
-                      alt="arrow"
-                      src={arrowRedirect}
-                      className="text-ash group-hover:rotate-45 transition-all duration-300"
-                      quality={75}
-                    />
+                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                      {ServiceIcons.arrow}
+                    </div>
                   </HoverWrapper>
                 </div>
               </div>
@@ -469,18 +464,15 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <HoverWrapper
               id="navdock-cta"
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-16 group !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
+              className="button gold pn-regular-16 group/cta !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover/cta:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
                 Book Now
               </FlipLink>
 
-              <Image
-                alt="arrow"
-                src={arrowRedirect}
-                className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={75}
-              />
+              <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                {ServiceIcons.arrow}
+              </div>
             </HoverWrapper>
           </div>
         </div>

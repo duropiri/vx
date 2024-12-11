@@ -35,7 +35,7 @@ const ScalabilityBento = () => {
           <div className="h-[60px] flex-col justify-center items-center flex">
             <HoverWrapper
               href="/"
-              className="button pn-regular-16 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-goldenbrown xl:w-[18.75rem]"
+              className="button pn-regular-16 cursor-select-hover !rounded-full !bg-transparent !border-charcoal/50 group-hover:!border-goldenbrown group-hover:text-white group-hover:!bg-goldenbrown xl:w-[18.75rem]"
             >
               <FlipLink className="pn-semibold-16 leading-[1rem]">
                 Get Started

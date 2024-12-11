@@ -2,7 +2,6 @@
 "use client";
 import React, { forwardRef, useRef, useEffect } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
-gsap.registerPlugin(ScrollTrigger)
 import WordByWordOnScroll from "@/components/animations/WordByWordOnScroll";
 
 interface SectionProps {

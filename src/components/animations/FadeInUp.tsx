@@ -1,7 +1,6 @@
 "use client";
 import React, { forwardRef, useEffect, useRef, MutableRefObject } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
-gsap.registerPlugin(ScrollTrigger)
 
 interface FadeInUpProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -88,29 +87,31 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
       });
 
       const handleMouseEnter = () => onHover && gsap.to(element, onHover);
-      const handleMouseLeave = () => onHover && gsap.to(element, { ...onHover, reverse: true });
+      const handleMouseLeave = () =>
+        onHover && gsap.to(element, { ...onHover, reverse: true });
       const handleMouseDown = () => onTap && gsap.to(element, onTap);
-      const handleMouseUp = () => onTap && gsap.to(element, { ...onTap, reverse: true });
+      const handleMouseUp = () =>
+        onTap && gsap.to(element, { ...onTap, reverse: true });
 
       if (onHover) {
-        element.addEventListener('mouseenter', handleMouseEnter);
-        element.addEventListener('mouseleave', handleMouseLeave);
+        element.addEventListener("mouseenter", handleMouseEnter);
+        element.addEventListener("mouseleave", handleMouseLeave);
       }
 
       if (onTap) {
-        element.addEventListener('mousedown', handleMouseDown);
-        element.addEventListener('mouseup', handleMouseUp);
+        element.addEventListener("mousedown", handleMouseDown);
+        element.addEventListener("mouseup", handleMouseUp);
       }
 
       return () => {
         scrollTrigger.kill();
         if (onHover) {
-          element.removeEventListener('mouseenter', handleMouseEnter);
-          element.removeEventListener('mouseleave', handleMouseLeave);
+          element.removeEventListener("mouseenter", handleMouseEnter);
+          element.removeEventListener("mouseleave", handleMouseLeave);
         }
         if (onTap) {
-          element.removeEventListener('mousedown', handleMouseDown);
-          element.removeEventListener('mouseup', handleMouseUp);
+          element.removeEventListener("mousedown", handleMouseDown);
+          element.removeEventListener("mouseup", handleMouseUp);
         }
       };
     }, [delay, duration, index, margin, once, onHover, onTap]);
@@ -120,7 +121,7 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
         id={id}
         ref={(node) => {
           elementRef.current = node;
-          if (typeof ref === 'function') {
+          if (typeof ref === "function") {
             ref(node);
           } else if (ref) {
             (ref as MutableRefObject<HTMLDivElement | null>).current = node;

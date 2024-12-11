@@ -7,6 +7,7 @@ import arrowRedirectGold from "@/../../public/assets/svgs/arrow-redirect-cta-gol
 import starImage from "@/../../public/assets/svgs/star.svg";
 import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface LinkDetails {
   title: string;
@@ -96,43 +97,35 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="z-[999]">
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
-                  <HoverWrapper className="">
+                  <HoverWrapper className="group/cta cursor-select-hover">
                     <TransitionLink
                       href="/services/listing-media"
-                      className="button gold pn-regular-16 group h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-auto"
+                      className="button gold pn-regular-16 h-fit !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto"
                       passHref
                     >
                       <FlipLink className={`flex items-center pn-semibold-16`}>
                         Showcase Your Listings
                       </FlipLink>
 
-                      <Image
-                        alt="arrow"
-                        src={arrowRedirect}
-                        className="text-ash group-hover:rotate-45 transition-all duration-300"
-                        quality={75}
-                      />
+                      <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                        {ServiceIcons.arrow}
+                      </div>
                     </TransitionLink>
                   </HoverWrapper>
 
-                  <HoverWrapper className="">
+                  <HoverWrapper className="group/cta cursor-select-hover">
                     <TransitionLink
                       href="/services/social-media-management"
-                      className="button dark pn-regular-16 group h-fit cursor-select-hover shadow-customShadow !border-goldenbrown shadow-ash/5 hover:shadow-goldenrod/5 w-auto"
+                      className="button dark pn-regular-16 h-fit cursor-select-hover shadow-customShadow !border-goldenbrown shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto !text-goldenbrown"
                       passHref
                     >
-                      <FlipLink
-                        className={`flex items-center text-goldenbrown pn-semibold-16`}
-                      >
+                      <FlipLink className={`flex items-center pn-semibold-16`}>
                         Elevate Your Online Presence
                       </FlipLink>
 
-                      <Image
-                        alt="arrow"
-                        src={arrowRedirectGold}
-                        className="text-ash group-hover:rotate-45 transition-all duration-300"
-                        quality={75}
-                      />
+                      <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                        {ServiceIcons.arrow}
+                      </div>
                     </TransitionLink>
                   </HoverWrapper>
                 </div>

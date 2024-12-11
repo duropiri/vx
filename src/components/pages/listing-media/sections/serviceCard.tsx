@@ -7,6 +7,7 @@ import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-wh
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import { TransitionLink } from "@/components/TransitionLink";
 import SectionHeader from "@/components/ui/sectionHeader";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 const ServiceCard = ({
   title,
@@ -106,41 +107,35 @@ const ServiceCard = ({
           {/* CTA */}
           {darkTheme ? (
             <div className="flex justify-center xl:justify-start w-full">
-              <HoverWrapper className={``}>
+              <HoverWrapper className={`group/cta cursor-select-hover`}>
                 <TransitionLink
                   href={href}
-                  className="button pn-regular-16 group/cta cursor-select-hover !bg-transparent ${themeClasses.button} w-full xl:w-auto shadow-none ${themeClasses.shadow} hover:shadow-goldenrod/5"
+                  className={`button pn-regular-16 !bg-transparent ${themeClasses.button} w-full xl:w-auto shadow-none ${themeClasses.shadow} group-hover/cta:shadow-goldenrod/5`}
                   passHref
                 >
                   <FlipLink className="font-semibold">Learn More</FlipLink>
-                  <Image
-                    alt="arrow"
-                    src={themeClasses.arrow}
-                    className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
-                    quality={75}
-                  />
+                  <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                    {ServiceIcons.arrow}
+                  </div>
                 </TransitionLink>
               </HoverWrapper>
             </div>
           ) : (
             <div className="flex justify-center xl:justify-start w-full">
               <div className="flex flex-col xl:flex-row gap-[1rem]">
-                <HoverWrapper className="">
+                <HoverWrapper className="group/cta cursor-select-hover">
                   <TransitionLink
                     href={href}
-                    className="button pn-regular-16 group/cta h-full cursor-select-hover !bg-transparent shadow-none shadow-ash/5 hover:shadow-goldenrod/5 w-full"
+                    className="button pn-regular-16 h-full !bg-transparent shadow-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
                     passHref
                   >
                     <FlipLink className={`flex items-center w-fit`}>
                       Learn More
                     </FlipLink>
 
-                    <Image
-                      alt="arrow"
-                      src={themeClasses.arrow}
-                      className={`${themeClasses.text} group-hover/cta:rotate-45 transition-all duration-300`}
-                      quality={75}
-                    />
+                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                      {ServiceIcons.arrow}
+                    </div>
                   </TransitionLink>
                 </HoverWrapper>
               </div>

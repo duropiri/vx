@@ -3,6 +3,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import Image from "next/image";
 import { HoverWrapper } from "@/components/animations/RevealLinks";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 // Dynamically import heavy components
 const LetterRevealOnScroll = dynamic(
@@ -92,14 +93,14 @@ const CTASection = ({
             <HoverWrapper
               key={index}
               href={button.href}
-              className={`button pn-regular-16 group cursor-select-hover !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5 ${
+              className={`button pn-regular-16 group/cta cursor-select-hover !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5 ${
                 button.variant === "gold" ? "gold text-ash" : "!bg-transparent"
               }`}
             >
               <FlipLink className="font-semibold">{button.text}</FlipLink>
-              <ArrowImage
-                variant={button.variant === "transparent" ? "white" : "default"}
-              />
+              <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                {ServiceIcons.arrow}
+              </div>
             </HoverWrapper>
           ))}
         </div>

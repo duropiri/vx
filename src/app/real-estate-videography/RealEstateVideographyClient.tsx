@@ -62,22 +62,19 @@ export const WhatIsItSection = () => (
       {/* CTA */}
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <HoverWrapper className="">
+          <HoverWrapper className="group/cta cursor-select-hover">
             <TransitionLink
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
+              className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>
                 Place An Order
               </FlipLink>
 
-              <Image
-                alt="arrow"
-                src={arrowRedirect}
-                className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={75}
-              />
+              <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                {ServiceIcons.arrow}
+              </div>
             </TransitionLink>
           </HoverWrapper>
         </div>
@@ -183,7 +180,8 @@ export const StepsRightSection = () => (
 
 export const UnlimitedLeftSection = () => (
   <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <SectionHeader noAnimation
+    <SectionHeader
+      noAnimation
       heading="DON'T WORRY ABOUT GOING OVER BUDGET."
       subheading="Simply, unlimited."
       className="text-black"

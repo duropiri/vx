@@ -40,36 +40,36 @@ export const WhatIsItSection = () => (
           <div className="absolute top-0 left-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4 " />
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
-          <SectionHeader noAnimation
+          <SectionHeader
+            noAnimation
             heading="GROW WITH TECHNOLOGY"
             subheading="What is Virtual Staging?"
             className="text-black"
           />
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              Virtual staging is a powerful real estate marketing tool in which
-              a home is staged virtually with the help of computer vision
-              technology.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            Virtual staging is a powerful real estate marketing tool in which a
+            home is staged virtually with the help of computer vision
+            technology.
+          </p>
           {/* </LetterRevealOnScroll> */}
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              Virtual staging allows you to quickly and easily create custom
-              designs tailored specifically to each property. Using
-              sophisticated software tools, photos of your property can be
-              virtually staged with high-quality furniture pieces, decor items,
-              artwork, accessories and more- providing prospective buyers or
-              tenants with a detailed preview of what is possible in their
-              desired space.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            Virtual staging allows you to quickly and easily create custom
+            designs tailored specifically to each property. Using sophisticated
+            software tools, photos of your property can be virtually staged with
+            high-quality furniture pieces, decor items, artwork, accessories and
+            more- providing prospective buyers or tenants with a detailed
+            preview of what is possible in their desired space.
+          </p>
           {/* </LetterRevealOnScroll> */}
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              In simple words, it means furnishing an empty house virtually,
-              without having to buy a single piece of furniture. When properties
-              are virtually staged, they help prospective clients visualize the
-              space better and perhaps see themselves living there.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            In simple words, it means furnishing an empty house virtually,
+            without having to buy a single piece of furniture. When properties
+            are virtually staged, they help prospective clients visualize the
+            space better and perhaps see themselves living there.
+          </p>
           {/* </LetterRevealOnScroll> */}
         </div>
       </div>
@@ -79,7 +79,8 @@ export const WhatIsItSection = () => (
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <SectionHeader noAnimation
+    <SectionHeader
+      noAnimation
       center
       heading="Benefits"
       subheading="Why do you need Virtual Staging?"
@@ -135,22 +136,19 @@ export const BenefitsSection = () => (
       {/* CTA */}
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
-          <HoverWrapper className="">
+          <HoverWrapper className="group/cta cursor-select-hover">
             <TransitionLink
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full"
+              className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>
                 Place An Order
               </FlipLink>
 
-              <Image
-                alt="arrow"
-                src={arrowRedirect}
-                className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={75}
-              />
+              <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                {ServiceIcons.arrow}
+              </div>
             </TransitionLink>
           </HoverWrapper>
         </div>

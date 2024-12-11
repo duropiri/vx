@@ -1,7 +1,6 @@
 "use client";
 import React, { forwardRef, useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
-gsap.registerPlugin(ScrollTrigger)
 
 interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -37,8 +36,9 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
     ref
   ) => {
     const elementRef = useRef<HTMLDivElement>(null);
-    const actualRef = (ref as React.MutableRefObject<HTMLDivElement>) || elementRef;
-    
+    const actualRef =
+      (ref as React.MutableRefObject<HTMLDivElement>) || elementRef;
+
     useEffect(() => {
       const element = actualRef.current;
       if (!element) return;
@@ -46,7 +46,7 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
       // Initial state
       gsap.set(element, {
         opacity: 0,
-        scale: 0.9
+        scale: 0.9,
       });
 
       // Scroll trigger animation
@@ -54,16 +54,18 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
         trigger: element,
         start: `top bottom-=${margin}`,
         end: "bottom top",
-        toggleActions: once ? "play none none none" : "play reverse play reverse",
+        toggleActions: once
+          ? "play none none none"
+          : "play reverse play reverse",
         onEnter: () => {
           gsap.to(element, {
             opacity: 1,
             scale: 1,
             duration: duration,
             delay: delay,
-            ease: "power2.out"
+            ease: "power2.out",
           });
-        }
+        },
       });
 
       // Hover animation
@@ -71,14 +73,14 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
         element.addEventListener("mouseenter", () => {
           gsap.to(element, {
             scale: hoverScale,
-            duration: 0.2
+            duration: 0.2,
           });
         });
 
         element.addEventListener("mouseleave", () => {
           gsap.to(element, {
             scale: 1,
-            duration: 0.2
+            duration: 0.2,
           });
         });
       }
@@ -88,14 +90,14 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
         element.addEventListener("mousedown", () => {
           gsap.to(element, {
             scale: tapScale,
-            duration: 0.1
+            duration: 0.1,
           });
         });
 
         element.addEventListener("mouseup", () => {
           gsap.to(element, {
             scale: hoverScale || 1,
-            duration: 0.1
+            duration: 0.1,
           });
         });
       }

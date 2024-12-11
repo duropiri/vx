@@ -11,9 +11,9 @@ import React, {
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
-gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface SectionProps {
   className?: string;
@@ -191,15 +191,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                   <HoverWrapper
                     href={cta.href}
-                    className="button gold pn-regular-16 group cursor-select-hover"
+                    className="button gold pn-regular-16 group/cta cursor-select-hover"
                   >
                     <FlipLink className="font-semibold">{cta.label}</FlipLink>
-                    <Image
-                      alt="arrow"
-                      src={arrowRedirect}
-                      className="group-hover:rotate-45 transition-all duration-300"
-                      quality={75}
-                    />
+                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                      {ServiceIcons.arrow}
+                    </div>
                   </HoverWrapper>
                 </div>
               </div>

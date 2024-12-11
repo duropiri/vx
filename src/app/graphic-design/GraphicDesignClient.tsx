@@ -9,6 +9,7 @@ import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-wh
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import { TransitionLink } from "@/components/TransitionLink";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
@@ -66,19 +67,16 @@ export const WhatIsItSection1 = () => (
               <HoverWrapper className="">
                 <TransitionLink
                   href="https://listings.virtualxposure.com/order"
-                  className="group button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
+                  className="group/cta button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
                   passHref
                 >
                   <FlipLink className={`flex items-center w-fit`}>
                     Book a FREE Consultation
                   </FlipLink>
 
-                  <Image
-                    alt="arrow"
-                    src={arrowRedirect}
-                    className="text-ash group-hover/cta:rotate-45 transition-all duration-300"
-                    quality={75}
-                  />
+                  <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                    {ServiceIcons.arrow}
+                  </div>
                 </TransitionLink>
               </HoverWrapper>
             </div>
@@ -146,12 +144,9 @@ export const WhatIsItSection2 = () => (
                 <FlipLink className="font-semibold">
                   Book a FREE Consultation
                 </FlipLink>
-                <Image
-                  alt="arrow"
-                  src={arrowRedirectWhite}
-                  className="text-white group-hover/cta:rotate-45 transition-all duration-300"
-                  quality={75}
-                />
+                <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                  {ServiceIcons.arrow}
+                </div>
               </HoverWrapper>
             </div>
           </div>
@@ -223,19 +218,16 @@ export const WhatIsItSection3 = () => (
               <HoverWrapper className="">
                 <TransitionLink
                   href="https://listings.virtualxposure.com/order"
-                  className="group button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-full  cursor-select-hover"
+                  className="group/cta button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
                   passHref
                 >
                   <FlipLink className={`flex items-center w-fit`}>
                     Book a FREE Consultation
                   </FlipLink>
 
-                  <Image
-                    alt="arrow"
-                    src={arrowRedirect}
-                    className="text-ash group-hover/cta:rotate-45 transition-all duration-300"
-                    quality={75}
-                  />
+                  <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                    {ServiceIcons.arrow}
+                  </div>
                 </TransitionLink>
               </HoverWrapper>
             </div>

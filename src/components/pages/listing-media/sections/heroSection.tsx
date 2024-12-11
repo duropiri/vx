@@ -1,8 +1,7 @@
 import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
-gsap.registerPlugin(ScrollTrigger)
-import dynamic from "next/dynamic";
+// import dynamic from "next/dynamic";
 
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import logo from "@/../../public/assets/images/logo2.webp";
@@ -14,6 +13,7 @@ import starImage from "@/../../public/assets/svgs/star.svg";
 import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 // const DynamicHeroDecorations = dynamic(
 //   () => import("@/components/heroDecorations"),
@@ -399,22 +399,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div ref={heroCTARef} className="z-[999]">
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
-                  <HoverWrapper className="">
+                  <HoverWrapper className="group/cta cursor-select-hover">
                     <Link
                       href="https://listings.virtualxposure.com/order"
-                      className="button gold pn-regular-16 group h-full cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 hover:scale-110 w-[14rem]"
+                      className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
                       passHref
                     >
                       <FlipLink className={`flex items-center w-fit`}>
                         Book Now
                       </FlipLink>
 
-                      <Image
-                        alt="arrow"
-                        src={arrowRedirect}
-                        className="text-ash group-hover:rotate-45 transition-all duration-300"
-                        quality={75}
-                      />
+                      <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                        {ServiceIcons.arrow}
+                      </div>
                     </Link>
                   </HoverWrapper>
                 </div>
@@ -476,18 +473,15 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <HoverWrapper
               id="navdock-cta"
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-16 group !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
+              className="button gold pn-regular-16 group/cta !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
                 Book Now
               </FlipLink>
 
-              <Image
-                alt="arrow"
-                src={arrowRedirect}
-                className="text-ash group-hover:rotate-45 transition-all duration-300"
-                quality={75}
-              />
+              <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                {ServiceIcons.arrow}
+              </div>
             </HoverWrapper>
           </div>
         </div>
