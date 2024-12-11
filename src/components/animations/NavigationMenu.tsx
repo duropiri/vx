@@ -652,10 +652,8 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
         id="header"
         onMouseLeave={handleMouseLeave}
         className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
-          isHomePage || isMobile ? "bg-ash" : "bg-ash/90"
-        } backdrop-blur-sm fixed top-0 left-0 right-0 ${
-          isHomePage || isMobile ? "" : "opacity-60 hover:opacity-100"
-        }`}
+          isHomePage || isMobile ? "bg-ash" : "bg-ash/60 hover:bg-ash/90"
+        } backdrop-blur-sm fixed top-0 left-0 right-0`}
       >
         {/* Inverted Border Radius */}
         {isHomePage && (

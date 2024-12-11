@@ -18,8 +18,8 @@ function Body() {
         subheading="Where We Come From"
         content={
           <>
-            <div className="flex flex-col sm:flex-row items-start justify-between gap-[2rem] sm:gap-[10rem] text-start pn-regular-16 mb-[3rem] sm:mb-[8rem]">
-              <p className="max-w-[50ch]">
+            <div className="flex flex-col items-start justify-between gap-[2rem] text-start pn-regular-16">
+              <p className="">
                 The new digital age of real estate has officially begun,
                 bringing it&apos;s own set of unique challenges. In an era where
                 costly delays, poor communication, and ineffective marketing
@@ -27,7 +27,7 @@ function Body() {
                 remains:{" "}
                 <span className="font-semibold">is there a better way?</span>
               </p>
-              <p className="max-w-[50ch]">
+              <p className="">
                 <span className="font-semibold">
                   Introducing The Next Step in Real Estate Media & Marketing.
                 </span>{" "}
@@ -37,26 +37,30 @@ function Body() {
               </p>
             </div>
             {/* Images */}
-            <div className="flex flex-col sm:flex-row items-center justify-center mb-[3rem] sm:mb-[16rem] sm:mt-[5rem] gap-y-[2rem] w-full sm:h-[50vh]">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-y-[2rem] w-full sm:h-[50vh] my-[2rem] sm:my-[4rem]">
               <div className="hidden sm:contents aspect-[4/3]">
+                <div className="relative w-full max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group shadow-customShadow">
+                  <ParallaxSection
+                    isHero
+                    speed={1 - 1.05}
+                    className="relative size-full"
+                  >
+                    <Image
+                      src={heroImage1}
+                      alt="hero-image"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={true}
+                      loading={true ? "eager" : "lazy"}
+                      className="cursor-select-hover group-hover:scale-125 transition-all object-contain pointer-events-none scale-150"
+                      quality={75}
+                    />
+                  </ParallaxSection>
+                </div>
                 <ParallaxSection
+                  isHero
                   speed={1 - 1.1}
-                  className="relative w-full max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
-                >
-                  <Image
-                    src={heroImage1}
-                    alt="hero-image"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={true}
-                    loading={true ? "eager" : "lazy"}
-                    className="group-hover:scale-110 transition-all object-contain pointer-events-none"
-                    quality={75}
-                  />
-                </ParallaxSection>
-                <ParallaxSection
-                  speed={1 - 0.9}
-                  className="relative w-full sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
+                  className="relative w-full sm:!scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group shadow-customShadow"
                 >
                   <Image
                     src={heroImage2}
@@ -69,24 +73,27 @@ function Body() {
                     quality={75}
                   />
                 </ParallaxSection>
-                <ParallaxSection
-                  speed={1 - 1.2}
-                  className="relative w-full max-w-[1/3] translate-y-[1rem] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group"
-                >
-                  <Image
-                    src={heroImage3}
-                    alt="hero-image"
-                    fill
-                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    priority={true}
-                    loading={true ? "eager" : "lazy"}
-                    className="cursor-select-hover group-hover:scale-110 transition-all object-contain pointer-events-none"
-                    quality={75}
-                  />
-                </ParallaxSection>
+                <div className="relative w-full max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group shadow-customShadow">
+                  <ParallaxSection
+                    isHero
+                    speed={1 - 1.05}
+                    className="relative size-full"
+                  >
+                    <Image
+                      src={heroImage3}
+                      alt="hero-image"
+                      fill
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      priority={true}
+                      loading={true ? "eager" : "lazy"}
+                      className="cursor-select-hover group-hover:scale-125 transition-all object-contain pointer-events-none scale-150"
+                      quality={75}
+                    />
+                  </ParallaxSection>
+                </div>
               </div>
               <div className="sm:hidden contents aspect-[4/3]">
-                <div className="relative max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
+                <div className="relative flex size-full max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
                   <Image
                     src={heroImage1}
                     alt="hero-image"
@@ -98,7 +105,7 @@ function Body() {
                     quality={75}
                   />
                 </div>
-                <div className="relative sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
+                <div className="relative flex size-full sm:max-w-[40%] sm:scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
                   <Image
                     src={heroImage2}
                     alt="hero-image"
@@ -110,7 +117,7 @@ function Body() {
                     quality={75}
                   />
                 </div>
-                <div className="relative max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
+                <div className="relative flex size-full max-w-[1/3] rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group">
                   <Image
                     src={heroImage3}
                     alt="hero-image"
