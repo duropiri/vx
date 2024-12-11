@@ -22,6 +22,8 @@ import { ServiceIcons } from "@/data/serviceIcons";
 interface SectionProps {
   className?: string;
   noHeader?: boolean;
+  noAnimation?: boolean;
+  noSubheadingAnimation?: boolean;
 }
 
 export interface Testimonial {
@@ -31,7 +33,12 @@ export interface Testimonial {
   rating: number;
 }
 
-function TestimonialsSection({ className, noHeader = false }: SectionProps) {
+function TestimonialsSection({
+  className,
+  noHeader = false,
+  noAnimation = true,
+  noSubheadingAnimation = false,
+}: SectionProps) {
   return (
     <div
       id="testimonials"
@@ -42,7 +49,9 @@ function TestimonialsSection({ className, noHeader = false }: SectionProps) {
         {!noHeader && (
           <SectionHeader
             center
+            noAnimation={noAnimation}
             heading="Testimonials"
+            noSubheadingAnimation={noSubheadingAnimation}
             subheading="Here's what real estate professionals are saying"
             noBodyAnimation
             body="Not yet 100% convinced? Hear what a few of the top real estate professionals have to say about us."

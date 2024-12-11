@@ -16,6 +16,7 @@ import {
 } from "@/utils/swiper";
 
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface Feature {
   name: string;
@@ -397,7 +398,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const [color] = useState(originalColor);
     const containerRef =
       useRef() as React.MutableRefObject<HTMLDivElement | null>;
-    // const stickyRef = useRef() as React.MutableRefObject<HTMLDivElement | null>;
+    const pricingRef = useRef<HTMLDivElement>(null);
+    const [containerHeight, setContainerHeight] = useState<string>("auto");
+    const { isMobile } = useViewport();
 
     const togglePricing = () => {
       setIsYearly(!isYearly);
@@ -406,6 +409,71 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     // Get packages safely
     const packages = pricingPackages ?? {};
     const packageCount = Object.keys(packages).length;
+
+    useEffect(() => {
+      const calculateHeight = () => {
+        if (!pricingRef.current || isMobile) return;
+
+        // Reset any previously set heights to get true content height
+        pricingRef.current.style.height = "auto";
+
+        // Get all direct child elements
+        const children = Array.from(pricingRef.current.children);
+
+        // Measure each child's height
+        let maxChildHeight = 0;
+        children.forEach((child) => {
+          const height = child.getBoundingClientRect().height;
+          maxChildHeight = Math.max(maxChildHeight, height);
+        });
+
+        // Set fixed height on parent
+        if (maxChildHeight > 0) {
+          pricingRef.current.style.height = `${maxChildHeight}px`;
+        }
+      };
+
+      // Calculate on mount and when dependencies change
+      const timer = setTimeout(calculateHeight, 100);
+
+      // Recalculate on window resize
+      window.addEventListener("resize", calculateHeight);
+
+      // Watch for content changes
+      const observer = new MutationObserver(() => {
+        setTimeout(calculateHeight, 100);
+      });
+
+      if (pricingRef.current) {
+        observer.observe(pricingRef.current, {
+          childList: true,
+          subtree: true,
+          attributes: true,
+        });
+      }
+
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener("resize", calculateHeight);
+        observer.disconnect();
+      };
+    }, [packages, showAllFeatures, isYearly, packageCount]);
+
+    const renderPricingTier = (tier: any, index: number) => (
+      <ScaleInVisible
+        key={index}
+        className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
+      >
+        <div className="pricing-tier-wrapper h-full">
+          <PricingTier
+            showAllFeatures={showAllFeatures}
+            tier={tier}
+            isYearly={isYearly}
+            className="flex-1 flex flex-col"
+          />
+        </div>
+      </ScaleInVisible>
+    );
 
     return (
       <div
@@ -470,7 +538,11 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           )}
 
           {/* Pricing Plans */}
-          <div className="relative flex flex-col xl:flex-row h-full w-full justify-center items-center xl:items-start gap-[2rem]">
+          <div
+            ref={pricingRef}
+            className="relative flex flex-col xl:flex-row w-full justify-center items-center xl:items-start gap-[2rem]"
+            style={{ height: containerHeight }}
+          >
             {packageCount > 4 ? (
               <>
                 <div className="hidden xl:contents">
@@ -481,67 +553,36 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                     grabCursor={true}
                     scrollbar={{ draggable: true }}
                     modules={[Pagination, Navigation, Scrollbar, A11y]}
-                    className="relative mySwiper size-full xl:max-w-[95rem] !overflow-visible"
+                    className="relative mySwiper w-full xl:max-w-[95rem] !overflow-visible"
+                    style={{ height: containerHeight }}
                   >
                     {Object.values(packages).map((tier, index) => (
                       <SwiperSlide
                         key={index}
-                        className="!cursor-swipe-hover grow shrink basis-0 h-full"
+                        className="!cursor-swipe-hover h-full"
                       >
-                        <ScaleInVisible className="group relative size-full">
-                          <PricingTier
-                            showAllFeatures={showAllFeatures}
-                            tier={tier}
-                            isYearly={isYearly}
-                            className=""
-                          />
-                        </ScaleInVisible>
+                        {renderPricingTier(tier, index)}
                       </SwiperSlide>
                     ))}
                   </Swiper>
                 </div>
                 <div className="xl:hidden contents">
-                  {Object.values(packages).map((tier, index) => (
-                    <ScaleInVisible
-                      key={index}
-                      className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
-                    >
-                      <PricingTier
-                        showAllFeatures={showAllFeatures}
-                        tier={tier}
-                        isYearly={isYearly}
-                        className=""
-                      />
-                    </ScaleInVisible>
-                  ))}
+                  {Object.values(packages).map((tier, index) =>
+                    renderPricingTier(tier, index)
+                  )}
                 </div>
               </>
             ) : packageCount > 2 ? (
               <>
-                {Object.values(packages).map((tier, index) => (
-                  <ScaleInVisible
-                    key={index}
-                    className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
-                  >
-                    <PricingTier
-                      showAllFeatures={showAllFeatures}
-                      tier={tier}
-                      isYearly={isYearly}
-                      className=""
-                    />
-                  </ScaleInVisible>
-                ))}
+                {Object.values(packages).map((tier, index) =>
+                  renderPricingTier(tier, index)
+                )}
               </>
             ) : (
               <>
-                {Object.values(packages).map((tier, index) => (
-                  <ScaleInVisible
-                    key={index}
-                    className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
-                  >
-                    <PricingTier tier={tier} isYearly={isYearly} className="" />
-                  </ScaleInVisible>
-                ))}
+                {Object.values(packages).map((tier, index) =>
+                  renderPricingTier(tier, index)
+                )}
               </>
             )}
           </div>

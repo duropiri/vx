@@ -69,6 +69,7 @@ interface SectionProps {
   transitionColor?: string;
   ref?: RefObject<HTMLDivElement>;
   id?: string;
+  noAnimation?: boolean;
 
   heading?: string;
   subheading?: string;
@@ -103,7 +104,9 @@ const ScrollingLogoColumn = React.memo(
     velocity: number;
     className?: string;
   }) => (
-    <div className={`flex flex-col w-full sm:w-[11.25rem] max-h-[22.5rem] ${className}`}>
+    <div
+      className={`flex flex-col w-full sm:w-[11.25rem] max-h-[22.5rem] ${className}`}
+    >
       <ScrollingBanner
         direction="vertical"
         baseVelocity={velocity}
@@ -157,6 +160,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
       heading,
       subheading,
       body,
+      noAnimation,
     },
     ref
   ) => {
@@ -186,6 +190,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
               subheading={
                 subheading || "A Few Of Our Clients In The Real Estate Industry"
               }
+              noAnimation={noAnimation}
               noBodyAnimation
               body={body}
             />

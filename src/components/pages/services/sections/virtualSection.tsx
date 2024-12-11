@@ -115,7 +115,7 @@ const VirtualSection = ({
     <div
       className={`flex flex-col-reverse ${
         service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
-      } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem]`}
+      } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem] px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow`}
     >
       <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
         <SectionHeader
@@ -148,7 +148,7 @@ const VirtualSection = ({
         subheading="Virtual Enhancements On-Demand"
         className="text-black"
       />
-      <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[10rem] xl:gap-[3.75rem]">
+      <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] xl:gap-[3.75rem]">
         {services.map((service, index) => (
           <ServiceSection key={"services-" + index} service={service} />
         ))}

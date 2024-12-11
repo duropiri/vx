@@ -409,7 +409,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <div
       ref={menuRef}
-      className="fixed left-0 top-[71.23px] w-full bg-ash text-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
+      className="fixed left-0 top-[51.61px] w-full bg-ash text-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
     >
       <div className="p-6 flex flex-col gap-6">
         {navigation.map((nav, index) => (
@@ -691,7 +691,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               <Image
                 src={logo}
                 alt="logo"
-                className="w-[4rem] sm:w-[3rem]"
+                className="w-[2rem] sm:w-[3rem]"
                 placeholder="blur"
                 quality={75}
               />

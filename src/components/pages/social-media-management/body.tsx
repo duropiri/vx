@@ -106,6 +106,7 @@ export default function Body() {
         }}
         className="bg-white z-10"
         pricingPackages={socialMediaPackages}
+        showAllFeatures
       />
 
       <Dynamic.SocialProofSection

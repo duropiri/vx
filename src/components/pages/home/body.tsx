@@ -414,6 +414,7 @@ const Body = () => {
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[2] = el;
         }}
+        noAnimation
         subheading="Trusted By The Best"
         body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
       />
@@ -444,7 +445,7 @@ const Body = () => {
           </div>
         }
       />
-      <Dynamic.TestimonialsSection />
+      <Dynamic.TestimonialsSection noAnimation/>
       <Dynamic.BasicHeroSection
         className="!pb-0"
         heading="Download the App"

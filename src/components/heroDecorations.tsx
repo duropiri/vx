@@ -268,7 +268,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
     return (
       <div
         id="icons"
-        className={`${className} pointer-events-none absolute !bg-transparent top-0 h-[100vh] w-full max-w-[100vw] !p-0 overflow-hidden`}
+        className={`${className} pointer-events-none absolute !bg-transparent h-[100vh] w-full max-w-[100vw] !p-0 overflow-hidden`}
       >
         {/* Light Rays */}
         <div

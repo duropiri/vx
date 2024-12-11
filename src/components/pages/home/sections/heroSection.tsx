@@ -34,20 +34,26 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         data-transition-color={transitionColor}
       >
         {/* Hero Decorations Container */}
-        <HeroDecorations
-          className="xl:!-translate-y-[30vh]"
-          iconsClassName="xl:!translate-y-[30vh]"
+        {/* <HeroDecorations
+          className="2xl:!-translate-y-[30vh]"
+          iconsClassName="2xl:!translate-y-[30vh]"
           originalColor={originalColor}
-        />
+        /> */}
 
         {/* Hero */}
         <div
           id="hero"
-          className={`section-container hero-container !min-h-[60vh] xl:!h-[70vh] !justify-start sm:!justify-center ${className} !pt-[7rem] sm:!pt-[5rem] overflow-hidden z-[400]`}
+          className={`${className} section-container hero-container !min-h-[50vh] max-h-[100vh] !h-fit !justify-start !pt-[6rem] sm:!py-[5rem] overflow-hidden z-[400]`}
         >
-          <div className="relative flex flex-col items-center justify-between sm:my-auto h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
+          <div className="flex flex-col items-center justify-between h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
+            <HeroDecorations
+              className="!w-[100vw] -z-10 -bottom-[3.125rem] sm:-bottom-[5rem]"
+              iconsClassName="size-full sm:scale-75 sm:translate-y-[15rem]"
+              originalColor={originalColor}
+            />
             {/* Main Copy */}
-            <div className="button dark thin pn-regular-16 !gap-[1rem] !border-goldenbrown">
+            {/* Ratings */}
+            <div className="button dark thin pn-regular-16 !gap-[1rem] !border-none pointer-events-none">
               <div className="flex flex-row gap-[0.25rem]">
                 {Array.from({ length: 5 }).map((_, index) => (
                   <Image
@@ -62,9 +68,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               </div>
               <p className="pn-regular-12 text-white">500+ Agents Trust Us</p>
             </div>
+            {/* Heading */}
             <div className="relative flex flex-col items-center justify-center my-auto">
-              <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
-              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] my-[0.625rem] sm:flex flex-col items-center">
+              <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/90 -z-10 pointer-events-none" />
+              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center">
                 <span>
                   Meet the{" "}
                   <span className="text-goldenbrown gold-text font-bold">
@@ -74,7 +81,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </span>
               </h1>
 
-              <h1 className="sm:hidden pn-regular-72 uppercase text-center my-[0.625rem] flex flex-col items-center">
+              <h1 className="sm:hidden pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] flex flex-col items-center">
                 <span>
                   Meet the{" "}
                   <span className="text-goldenbrown gold-text font-bold">
@@ -83,9 +90,15 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   in Real Estate Marketing
                 </span>
               </h1>
-
-              <h2 className="pn-regular-20 text-center sm:max-w-[45vw]">
-                <span>
+              {/* Body */}
+              <h2 className="text-center sm:max-w-[45vw]">
+                <span className="hidden sm:flex pn-regular-20">
+                  Our premium services combine cutting-edge listing media and
+                  tailored social media management to help you attract more
+                  leads, enhance your visibility, and close deals with
+                  confidence.
+                </span>
+                <span className="sm:hidden flex pn-regular-16">
                   Our premium services combine cutting-edge listing media and
                   tailored social media management to help you attract more
                   leads, enhance your visibility, and close deals with
@@ -99,12 +112,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <HoverWrapper className="group/cta cursor-select-hover">
                     <TransitionLink
-                      href="/services/listing-media"
-                      className="button gold pn-regular-16 h-fit !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto"
+                      href="https://listings.virtualxposure.com/order"
+                      className="button gold pn-bold-16 h-fit !bg-transparent shadow-customShadow !border-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto !text-ash"
                       passHref
                     >
-                      <FlipLink className={`flex items-center pn-semibold-16`}>
-                        Showcase Your Listings
+                      <FlipLink className={`flex items-center`}>
+                        Book Now
                       </FlipLink>
 
                       <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
@@ -113,13 +126,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     </TransitionLink>
                   </HoverWrapper>
 
-                  <HoverWrapper className="group/cta cursor-select-hover">
+                  {/* <HoverWrapper className="group/cta cursor-select-hover">
                     <TransitionLink
                       href="/services/social-media-management"
-                      className="button dark pn-regular-16 h-fit cursor-select-hover shadow-customShadow !border-goldenbrown shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto !text-goldenbrown"
+                      className="button dark pn-bold-16 h-fit cursor-select-hover shadow-customShadow !border-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto !text-goldenbrown"
                       passHref
                     >
-                      <FlipLink className={`flex items-center pn-semibold-16`}>
+                      <FlipLink className={`flex items-center`}>
                         Elevate Your Online Presence
                       </FlipLink>
 
@@ -127,9 +140,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                         {ServiceIcons.arrow}
                       </div>
                     </TransitionLink>
-                  </HoverWrapper>
+                  </HoverWrapper> */}
                 </div>
               </div>
+            </div>
+            {/* Guarantees */}
+            <div className="">
+              <ul className="flex flex-row gap-[2rem] custom-bullet-list gold pn-regular-20">
+                <li className="list">24-hour Turnaround</li>
+                <li className="list">2X Money-back Guarantee</li>
+              </ul>
             </div>
             {/* </div> */}
           </div>
