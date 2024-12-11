@@ -10,6 +10,7 @@ import powerUploadImage from "@/../../public/assets/images/power-upload.webp";
 import strategyImage from "@/../../public/assets/images/strategy-surge.webp";
 import machineImage from "@/../../public/assets/images/content-machine.webp";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 interface SectionProps {

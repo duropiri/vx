@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useCallback } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 
 interface AnimationProps {

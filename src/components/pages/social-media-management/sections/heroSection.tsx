@@ -7,6 +7,7 @@ import Image from "next/image";
 
 import logo from "@/../../public/assets/images/logo2.webp";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger);
 import { useViewport } from "@/contexts/ViewportContext";
 
 // Import all the SVG assets

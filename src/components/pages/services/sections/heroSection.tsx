@@ -11,6 +11,7 @@ import React, {
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import { ServiceIcons } from "@/data/serviceIcons";

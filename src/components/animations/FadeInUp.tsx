@@ -1,6 +1,7 @@
 "use client";
 import React, { forwardRef, useEffect, useRef, MutableRefObject } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 interface FadeInUpProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;

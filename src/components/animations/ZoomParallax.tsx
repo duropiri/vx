@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger, CustomEase } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger, CustomEase);
 import { useViewport } from "@/contexts/ViewportContext";
 
 interface AnimationProps {
