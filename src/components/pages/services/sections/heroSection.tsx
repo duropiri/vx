@@ -128,7 +128,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         <ParallaxSection
           isHero
           speed={1 - 0.5}
-          className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !py-[8rem] sm:!py-[10rem]"
+          className="relative z-10 section-container sm:!flex-row min-h-[60vh] overflow-visible !pt-[6rem] !py-[8rem] sm:!py-[10rem]"
         >
           <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
             {/* Header with light text */}
