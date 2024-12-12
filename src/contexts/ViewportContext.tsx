@@ -27,7 +27,7 @@ export function ViewportProvider({ children }: { children: React.ReactNode }) {
       const newWidth = window.innerWidth;
       const isMobileView = newWidth <= MOBILE_BREAKPOINT;
       setIsMobile(isMobileView);
-      const isSMDesktopView = newWidth <= SMDESKTOP_BREAKPOINT;
+      const isSMDesktopView = newWidth < SMDESKTOP_BREAKPOINT;
       setIsSMDesktop(isSMDesktopView);
 
       if (isMobileView) {

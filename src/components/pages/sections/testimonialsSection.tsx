@@ -53,12 +53,10 @@ function TestimonialsSection({
   return (
     <div
       id="testimonials"
-      className={`${className} section-container !flex-col relative bg-white ${
-        !noCarousel && noCards ? "" : "overflow-x-clip"
-      }`}
+      className={`${className} section-container !flex-col bg-white`}
     >
       <div
-        className={`relative flex size-full sm:max-w-[--section-width] flex-col items-center sm:items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]`}
+        className={`flex size-full sm:max-w-[--section-width] flex-col items-center sm:items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]`}
       >
         {/* Header */}
         {!noHeader && (
@@ -117,7 +115,7 @@ function TestimonialsSection({
 
         {!noCarousel && noCards && (
           <div
-            className={`flex flex-col size-full mt-[5rem] !w-[100vw] -mx-[2rem] sm:-mx-[6rem]`}
+            className={`flex flex-col items-start justify-center size-full mt-[5rem] !w-[100vw] -mx-[2rem] md:-mx-[calc(5rem)] min-[1920px]:-mx-[calc(6rem)] overflow-hidden`}
           >
             <Swiper
               slidesPerView={"auto"}
@@ -125,7 +123,7 @@ function TestimonialsSection({
               spaceBetween={30}
               grabCursor={true}
               modules={[Pagination]}
-              className="mySwiper !px-[2rem] sm:!px-[6rem] !w-[100vw] h-[30rem] sm:h-[35rem] !mx-0"
+              className="mySwiper !px-[2rem] sm:!px-[6rem] !w-full h-[30rem] sm:h-[35rem] !mx-0"
             >
               {testimonials.map((item, index) => (
                 <SwiperSlide

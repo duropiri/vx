@@ -462,7 +462,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const renderPricingTier = (tier: any, index: number) => (
       <ScaleInVisible
         key={index}
-        className="group relative size-full max-w-[75vw] xl:w-[30rem] xl:max-w-[33.333333%]"
+        className="group relative size-full max-w-[75vw] size-[1920px]:w-[30rem] min-[1920px]:max-w-[33.333333%]"
       >
         <div className="pricing-tier-wrapper h-full">
           <PricingTier
@@ -484,7 +484,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           }
         }}
         id="pricing"
-        className={`section-container !flex-row ${className}`}
+        className={`section-container !flex-row overflow-hidden ${className}`}
         style={{ backgroundColor: color }}
         data-original-color={originalColor}
         data-transition-color={transitionColor}
@@ -541,38 +541,28 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             ref={pricingRef}
             className="relative flex flex-col xl:flex-row w-full justify-center items-center xl:items-start gap-[2rem]"
-            // style={{ height: containerHeight }}
+            style={{ height: containerHeight }}
           >
-            {packageCount > 4 ? (
-              <>
-                <div className="hidden xl:contents">
-                  <Swiper
-                    effect={"fade"}
-                    slidesPerView={4}
-                    spaceBetween={30}
-                    grabCursor={true}
-                    scrollbar={{ draggable: true }}
-                    modules={[Pagination, Navigation, Scrollbar, A11y]}
-                    className="relative mySwiper w-full xl:max-w-[95rem] !overflow-visible"
-                    style={{ height: containerHeight }}
+            {packageCount > 3 && window.innerWidth < 1700 && window.innerWidth > 1024 ? (
+              <Swiper
+                effect={"fade"}
+                slidesPerView={3}
+                spaceBetween={30}
+                grabCursor={true}
+                scrollbar={{ draggable: true, hide: true }}
+                modules={[Pagination, Navigation, Scrollbar, A11y]}
+                className="relative mySwiper size-full xl:max-w-[95rem] !overflow-visible"
+              >
+                {Object.values(packages).map((tier, index) => (
+                  <SwiperSlide
+                    key={index}
+                    className="cursor-swipe-hover h-full"
                   >
-                    {Object.values(packages).map((tier, index) => (
-                      <SwiperSlide
-                        key={index}
-                        className="!cursor-swipe-hover h-full"
-                      >
-                        {renderPricingTier(tier, index)}
-                      </SwiperSlide>
-                    ))}
-                  </Swiper>
-                </div>
-                <div className="xl:hidden contents">
-                  {Object.values(packages).map((tier, index) =>
-                    renderPricingTier(tier, index)
-                  )}
-                </div>
-              </>
-            ) : packageCount > 2 ? (
+                    {renderPricingTier(tier, index)}
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            ) : packageCount > 3 ? (
               <>
                 {Object.values(packages).map((tier, index) =>
                   renderPricingTier(tier, index)
