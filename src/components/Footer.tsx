@@ -117,6 +117,7 @@ export default function Footer({
                     <div className="flex flex-row items-center gap-[0.75rem] text-charcoal">
                       {/* Twitter */}
                       <TransitionLink
+                        aria-label="Virtual Xposure twitter account"
                         href="https://x.com/virtualxposur3"
                         passHref
                         className="size-[3rem]"
@@ -140,6 +141,7 @@ export default function Footer({
 
                       {/* Facebook */}
                       <TransitionLink
+                        aria-label="Virtual Xposure facebook account"
                         href="https://www.facebook.com/virtualxposureofficial/"
                         passHref
                         className="size-[3rem]"
@@ -163,6 +165,7 @@ export default function Footer({
 
                       {/* Instagram */}
                       <TransitionLink
+                        aria-label="Virtual Xposure Instagram account"
                         href="https://www.instagram.com/virtualxposure/?hl=en"
                         passHref
                         className="size-[3rem]"
@@ -202,7 +205,7 @@ export default function Footer({
                   {/* Company Links */}
                   <div className="flex flex-col w-full xl:w-auto items-start justify-start gap-[1rem] xl:gap-[2rem]">
                     <h2 className="pn-bold-20">Company</h2>
-                    <ul className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
+                    <div className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
                       {FooterCompanyLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
@@ -213,13 +216,13 @@ export default function Footer({
                           </TransitionLink>
                         </HoverWrapper>
                       ))}
-                    </ul>
+                    </div>
                   </div>
 
                   {/* Help Links */}
                   <div className="flex flex-col w-full xl:w-auto items-end text-end xl:text-start xl:items-start xl:justify-start gap-[1rem] xl:gap-[2rem]">
                     <h2 className="pn-bold-20">Help</h2>
-                    <ul className="flex flex-col items-end xl:items-start pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
+                    <div className="flex flex-col items-end xl:items-start pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
                       {FooterHelpLinks.map((nav, index) => (
                         <HoverWrapper
                           key={index}
@@ -230,7 +233,7 @@ export default function Footer({
                           </TransitionLink>
                         </HoverWrapper>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
 
