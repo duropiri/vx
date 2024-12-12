@@ -47,8 +47,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         >
           <div className="flex flex-col items-center justify-between h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             <HeroDecorations
-              className="!w-[100vw] -z-10 -bottom-[3.125rem] sm:-bottom-[5rem]"
-              iconsClassName="size-full sm:scale-75 sm:translate-y-[15rem]"
+              className="!w-[100vw] -z-10 bottom-0"
+              iconsClassName="size-full sm:scale-75 2xl:translate-y-[20rem] opacity-60"
               originalColor={originalColor}
             />
             {/* Main Copy */}
@@ -71,8 +71,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
             {/* Heading */}
             <div className="relative flex flex-col items-center justify-center my-auto">
-              <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/90 -z-10 pointer-events-none" />
-              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center">
+              {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
+              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1.2em] mb-[1rem]">
                 Meet the{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Gold Standard
