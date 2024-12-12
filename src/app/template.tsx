@@ -22,81 +22,91 @@ interface TemplateProps {
 }
 
 export const animatePageIn = () => {
-  const banners = Array.from({ length: 9 }, (_, i) =>
-    document.getElementById(`banner-${i + 1}`)
-  );
+  return new Promise<void>((resolve) => {
+    const banners = Array.from({ length: 9 }, (_, i) =>
+      document.getElementById(`banner-${i + 1}`)
+    );
 
-  if (banners.every((banner) => banner)) {
-    // Kill any existing animations
-    banners.forEach((banner) => {
-      if (banner) gsap.killTweensOf(banner);
-    });
+    if (banners.every((banner) => banner)) {
+      // Kill any existing animations
+      banners.forEach((banner) => {
+        if (banner) gsap.killTweensOf(banner);
+      });
 
-    const tl = gsap.timeline();
+      const tl = gsap.timeline({
+        onComplete: () => resolve(),
+      });
 
-    // Initial state - ensure banners are visible and at the top
-    tl.set(banners, {
-      yPercent: 0,
-      opacity: 1,
-      visibility: "visible",
-    });
+      // Initial state
+      tl.set(banners, {
+        yPercent: 0,
+        opacity: 1,
+        visibility: "visible",
+      });
 
-    // Animate banners up
-    tl.to(banners, {
-      yPercent: 100,
-      duration: 0.8,
-      ease: "power2.inOut",
-      stagger: {
-        each: 0.1,
-        from: "start",
-      },
-      onComplete: () => {
-        // Hide banners after animation
-        gsap.set(banners, {
-          visibility: "hidden",
-        });
-      },
-    });
-  }
+      // Animate banners up
+      tl.to(banners, {
+        yPercent: 100,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: {
+          each: 0.1,
+          from: "start",
+        },
+        onComplete: () => {
+          // Hide banners after animation
+          gsap.set(banners, {
+            visibility: "hidden",
+          });
+        },
+      });
+    } else {
+      resolve();
+    }
+  });
 };
 
 export const animatePageOut = (href: string, router: AppRouterInstance) => {
-  const banners = Array.from({ length: 9 }, (_, i) =>
-    document.getElementById(`banner-${i + 1}`)
-  );
+  return new Promise<void>((resolve) => {
+    const banners = Array.from({ length: 9 }, (_, i) =>
+      document.getElementById(`banner-${i + 1}`)
+    );
 
-  if (banners.every((banner) => banner)) {
-    // Kill any existing animations
-    banners.forEach((banner) => {
-      if (banner) gsap.killTweensOf(banner);
-    });
+    if (banners.every((banner) => banner)) {
+      // Kill any existing animations
+      banners.forEach((banner) => {
+        if (banner) gsap.killTweensOf(banner);
+      });
 
-    const tl = gsap.timeline({
-      onComplete: () => {
-        router.push(href);
-      },
-    });
+      const tl = gsap.timeline({
+        onComplete: () => {
+          router.push(href);
+          resolve();
+        },
+      });
 
-    // Initial state - position banners above viewport
-    tl.set(banners, {
-      yPercent: -100,
-      opacity: 1,
-      visibility: "visible",
-    });
+      // Initial state
+      tl.set(banners, {
+        yPercent: -100,
+        opacity: 1,
+        visibility: "visible",
+      });
 
-    // Animate banners down
-    tl.to(banners, {
-      yPercent: 0,
-      duration: 0.8,
-      ease: "power2.inOut",
-      stagger: {
-        each: 0.1,
-        from: "start",
-      },
-    });
-  } else {
-    router.push(href);
-  }
+      // Animate banners down
+      tl.to(banners, {
+        yPercent: 0,
+        duration: 0.8,
+        ease: "power2.inOut",
+        stagger: {
+          each: 0.1,
+          from: "start",
+        },
+      });
+    } else {
+      router.push(href);
+      resolve();
+    }
+  });
 };
 
 export const NavigationContext = React.createContext<{
@@ -110,16 +120,9 @@ export default function Template({ children }: TemplateProps) {
   const router = useRouter();
   const isAdminPage = pathname.startsWith("/admin");
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isNavigating, setIsNavigating] = useState(false);
 
-  const handleLinkClick = useCallback(
-    (href: string) => {
-      animatePageOut(href, router);
-    },
-    [router]
-  );
-
-  useEffect(() => {
-    // Set initial banner states
+  const resetBanners = useCallback(() => {
     const banners = Array.from({ length: 9 }, (_, i) =>
       document.getElementById(`banner-${i + 1}`)
     );
@@ -129,17 +132,56 @@ export default function Template({ children }: TemplateProps) {
         gsap.set(banner, {
           yPercent: 0,
           opacity: 1,
-          visibility: "visible",
+          visibility: "hidden",
+          clearProps: "all",
         });
       }
     });
-
-    // Short delay to ensure initial states are applied
-    setTimeout(() => {
-      setIsInitialized(true);
-      animatePageIn();
-    }, 100);
   }, []);
+
+  const handleLinkClick = useCallback(
+    async (href: string) => {
+      if (isNavigating) return;
+      setIsNavigating(true);
+      await animatePageOut(href, router);
+      setIsNavigating(false);
+    },
+    [router, isNavigating]
+  );
+
+  useEffect(() => {
+    // Handle initial page load
+    if (!isInitialized) {
+      const initPage = async () => {
+        setIsInitialized(true);
+        await animatePageIn();
+      };
+      initPage();
+    }
+
+    // Handle browser back/forward navigation
+    const handlePopState = async () => {
+      resetBanners();
+      await animatePageIn();
+    };
+
+    window.addEventListener('popstate', handlePopState);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+      // Kill all GSAP animations on unmount
+      gsap.killTweensOf('.banner');
+      resetBanners();
+    };
+  }, [isInitialized, resetBanners]);
+
+  // Reset animation state on route change
+  useEffect(() => {
+    if (isInitialized) {
+      resetBanners();
+    }
+  }, [pathname, isInitialized, resetBanners]);
 
   return (
     <NavigationContext.Provider value={{ handleLinkClick }}>
@@ -156,23 +198,23 @@ export default function Template({ children }: TemplateProps) {
           <>
             <div
               id="banner-1"
-              className="fixed left-0 h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+              className="banner fixed left-0 h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
             />
             <div
               id="banner-2"
-              className="fixed left-[calc((100%/9)*1)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+              className="banner fixed left-[calc((100%/9)*1)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
             />
             <div
               id="banner-3"
-              className="fixed left-[calc((100%/9)*2)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+              className="banner fixed left-[calc((100%/9)*2)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
             />
             <div
               id="banner-4"
-              className="fixed left-[calc((100%/9)*3)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+              className="banner fixed left-[calc((100%/9)*3)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
             />
             <div
               id="banner-5"
-              className="fixed flex items-center justify-center left-[calc((100%/9)*4)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+              className="banner fixed flex items-center justify-center left-[calc((100%/9)*4)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
             >
               <div className="relative size-[10vw] sm:size-[3vw]">
                 <Image
