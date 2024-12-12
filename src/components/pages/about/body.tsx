@@ -214,7 +214,7 @@ function Body() {
           </>
         }
       />
-      <TestimonialsSection className="!bg-white/20 backdrop-blur-sm" />
+      <TestimonialsSection noCards className="!bg-white/20 backdrop-blur-sm" />
       <FAQSection vertical className="bg-white z-10" />
       <ContactSection className="bg-white z-10" />
     </>

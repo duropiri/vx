@@ -12,8 +12,6 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { gsap } from "@/utils/gsap";
 
 import logo from "@/../../public/assets/images/logo2-nospace.webp";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
 import { usePathname } from "next/navigation";
 
 import { ChevronDownIcon } from "@radix-ui/react-icons";

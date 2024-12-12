@@ -44,7 +44,7 @@ import ChatWidget from "@/components/ui/chatWidget";
 import { TransitionLink } from "@/components/TransitionLink";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import {
-  setupScrollAnimation,
+  // setupScrollAnimation,
   setupColorAnimation,
   cleanupGSAPAnimations,
 } from "@/components/pages/sections/animations/Animations";
@@ -59,7 +59,6 @@ import { RealEstateVideographyPackages } from "@/data/pricingPackages";
 
 import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import VirtualSection from "@/components/pages/services/sections/virtualSection";
 import { ServiceIcons } from "@/data/serviceIcons";
 
@@ -445,7 +444,7 @@ const Body = () => {
           </div>
         }
       />
-      <Dynamic.TestimonialsSection noAnimation/>
+      <Dynamic.TestimonialsSection noAnimation noCards/>
       <Dynamic.BasicHeroSection
         className="!pb-0"
         heading="Download the App"

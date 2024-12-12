@@ -274,7 +274,7 @@ function Body({
         />
       )}
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection className="bg-white z-10 relative" />
+      <Dynamic.TestimonialsSection noCards className="bg-white z-10 relative" />
 
       {/* Case Studies? */}
       {photography && (

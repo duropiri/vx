@@ -47,7 +47,7 @@ import ChatWidget from "@/components/ui/chatWidget";
 import WhyUsSection from "@/components/pages/services/sections/whyUsSection";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
-  setupScrollAnimation,
+  // setupScrollAnimation,
   setupColorAnimation,
   cleanupGSAPAnimations,
 } from "@/components/pages/sections/animations/Animations";
@@ -182,7 +182,7 @@ function Body() {
       </ScaleInVisible>
 
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection className="bg-white z-10 relative" />
+      <Dynamic.TestimonialsSection noCards className="bg-white z-10 relative" />
 
       {/* Case Studies? */}
       {/* Contact */}

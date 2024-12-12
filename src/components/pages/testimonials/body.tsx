@@ -1,6 +1,10 @@
 // @/components/pages/testimonials/body.tsx
 "use client";
-import React, { useEffect, useRef, Suspense } from "react";
+import React, {
+  useEffect,
+  useRef,
+  // Suspense
+} from "react";
 import dynamic from "next/dynamic";
 
 // above-thefold static components
@@ -70,7 +74,7 @@ import Image from "next/image";
 import csImage from "@/../../public/assets/svgs/VX-Website-CS-Bar-1.svg";
 import StatsSection from "@/components/pages/sections/statsSection";
 import {
-  setupScrollAnimation,
+  // setupScrollAnimation,
   setupColorAnimation,
   cleanupGSAPAnimations,
 } from "@/components/pages/sections/animations/Animations";
@@ -104,7 +108,7 @@ function Body() {
         subheading="Here's What Real Estate Professionals Are Saying"
         content={
           <>
-            <Image
+            {/* <Image
               src={csImage}
               alt="hero-image"
               fill
@@ -113,9 +117,10 @@ function Body() {
               loading={true ? "eager" : "lazy"}
               className="pointer-events-none"
               quality={75}
-            />
+            /> */}
             <Dynamic.TestimonialsSection
               noHeader
+              noCards
               className="bg-white z-20 !p-0 !w-[100vw] sm:!w-full !-mx-[2rem] sm:!mx-0"
             />
           </>

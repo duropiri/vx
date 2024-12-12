@@ -18,6 +18,7 @@ import 'swiper/css/bundle';
 export { 
   Swiper, 
   SwiperSlide,
+  SwiperClass,
   // Export modules for type definitions only
   Autoplay, 
   Navigation, 
