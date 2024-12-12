@@ -29,8 +29,8 @@ const VirtualSection = ({
       title: "Virtual Renovation",
       description:
         "Transform your space without the mess. Our virtual renovation service helps you visualize potential upgrades and modernizations to your property with stunning before-and-after previews. Perfect for planning bathroom remodels, kitchen updates, or whole-home makeovers. Our advanced digital tools allow you to experiment with different styles, colors, and fixtures to create your ideal look—all without lifting a hammer.",
-      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(1).webp",
-      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(2).webp",
+      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(36).webp",
+      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(35).webp",
       features: commonFeatures,
       reversed: false,
     },
