@@ -3,7 +3,10 @@ import React from "react";
 import dynamic from "next/dynamic";
 
 import PricingSection from "@/components/pages/sections/pricingSection";
-import { socialMediaPackages } from "@/data/pricingPackages";
+import {
+  RealEstateHDRPhotographyPackages,
+  socialMediaPackages,
+} from "@/data/pricingPackages";
 
 const Dynamic = {
   SocialProofSection: dynamic(
@@ -76,8 +79,18 @@ function body() {
     <>
       <PricingSection
         showAllFeatures
+        noSwitch
         noAnimation
         className="bg-white z-10 top"
+        heading="Listing Media"
+        body="Delivering top-tier quality visuals with no limits—crafted to elevate your listings effortlessly."
+        pricingPackages={RealEstateHDRPhotographyPackages}
+      />
+      <PricingSection
+        showAllFeatures
+        noAnimation
+        className="bg-white z-10 top"
+        heading="Social Media"
         pricingPackages={socialMediaPackages}
       />
       <Dynamic.SocialProofSection full className="bg-white z-10" />

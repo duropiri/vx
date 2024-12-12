@@ -68,6 +68,9 @@ interface SectionProps {
   transitionColor?: string;
   noAnimation?: boolean;
   showAllFeatures?: boolean;
+  heading?: string;
+  subheading?: string;
+  body?: string;
 }
 
 const PricingTier = ({
@@ -391,6 +394,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       transitionColor,
       noAnimation = false,
       showAllFeatures = false,
+      heading = "Pricing",
+      subheading = "Find The Right Plan",
+      body = "To ensure we deliver top-tier quality designs on time, we work with a limited number of clients.",
     },
     forwardedRef
   ) => {
@@ -494,10 +500,10 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           <SectionHeader
             noAnimation={noAnimation}
             center
-            heading="Pricing"
-            subheading="Find The Right Plan"
+            heading={heading}
+            subheading={subheading}
             noBodyAnimation
-            body="To ensure we deliver top-tier quality designs on time, we work with a limited number of clients."
+            body={body}
           />
 
           {/* Plan Switch */}
@@ -543,7 +549,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
             className="relative flex flex-col xl:flex-row w-full justify-center items-center xl:items-start gap-[2rem]"
             style={{ height: containerHeight }}
           >
-            {packageCount > 3 && window.innerWidth < 1700 && window.innerWidth > 1024 ? (
+            {packageCount > 3 &&
+            window.innerWidth < 1700 &&
+            window.innerWidth > 1024 ? (
               <Swiper
                 effect={"fade"}
                 slidesPerView={3}
