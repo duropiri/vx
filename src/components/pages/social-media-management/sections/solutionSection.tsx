@@ -8,9 +8,6 @@ import completeDMSImage from "@/../../public/assets/images/complete-dms.webp";
 import highQCCImage from "@/../../public/assets/images/high-quality-cc.webp";
 import stratGrowthImage from "@/../../public/assets/images/strategic-growth.webp";
 
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
-
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { ServiceIcons } from "@/data/serviceIcons";

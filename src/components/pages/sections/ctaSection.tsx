@@ -94,7 +94,7 @@ const CTASection = ({
               key={index}
               href={button.href}
               className={`button pn-regular-16 group/cta cursor-select-hover w-full lg:w-auto shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5 ${
-                button.variant === "gold" ? "gold !border-none text-ash" : "!border-white !bg-transparent"
+                button.variant === "gold" ? "gold !border-none text-ash" : "!border-white !bg-transparent hover/cta:!bg-white hover/cta:!text-ash"
               }`}
             >
               <FlipLink className="font-semibold">{button.text}</FlipLink>

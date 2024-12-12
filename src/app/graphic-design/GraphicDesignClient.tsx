@@ -139,7 +139,7 @@ export const WhatIsItSection2 = () => (
             <div className="flex flex-col sm:flex-row gap-[1rem]">
               <HoverWrapper
                 href="https://listings.virtualxposure.com/order"
-                className="button pn-regular-16 group/cta cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5"
+                className="button pn-regular-16 group/cta cursor-select-hover !bg-transparent !border-white w-full lg:w-auto shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5 hover:!bg-white hover:!text-ash"
               >
                 <FlipLink className="font-semibold">
                   Book a FREE Consultation

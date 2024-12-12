@@ -400,7 +400,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       useRef() as React.MutableRefObject<HTMLDivElement | null>;
     const pricingRef = useRef<HTMLDivElement>(null);
     const [containerHeight, setContainerHeight] = useState<string>("auto");
-    const { isMobile } = useViewport();
+    const { isMobile, isSMDesktop } = useViewport();
 
     const togglePricing = () => {
       setIsYearly(!isYearly);
@@ -412,7 +412,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
 
     useEffect(() => {
       const calculateHeight = () => {
-        if (!pricingRef.current || isMobile) return;
+        if (!pricingRef.current || isMobile || isSMDesktop) return;
 
         // Reset any previously set heights to get true content height
         pricingRef.current.style.height = "auto";
@@ -541,7 +541,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             ref={pricingRef}
             className="relative flex flex-col xl:flex-row w-full justify-center items-center xl:items-start gap-[2rem]"
-            style={{ height: containerHeight }}
+            // style={{ height: containerHeight }}
           >
             {packageCount > 4 ? (
               <>

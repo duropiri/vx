@@ -5,15 +5,21 @@ import { gsap } from "@/utils/gsap";
 // import { ParallaxProvider } from "./ParallaxContext";
 
 const MOBILE_BREAKPOINT = 768;
+const SMDESKTOP_BREAKPOINT = 1280;
 
 interface ViewportContextType {
   isMobile: boolean;
+  isSMDesktop: boolean;
 }
 
-const ViewportContext = createContext<ViewportContextType>({ isMobile: false });
+const ViewportContext = createContext<ViewportContextType>({
+  isMobile: false,
+  isSMDesktop: false,
+});
 
 export function ViewportProvider({ children }: { children: React.ReactNode }) {
   const [isMobile, setIsMobile] = useState(false);
+  const [isSMDesktop, setIsSMDesktop] = useState(false);
   const [previousWidth, setPreviousWidth] = useState(0);
 
   useEffect(() => {
@@ -21,6 +27,8 @@ export function ViewportProvider({ children }: { children: React.ReactNode }) {
       const newWidth = window.innerWidth;
       const isMobileView = newWidth <= MOBILE_BREAKPOINT;
       setIsMobile(isMobileView);
+      const isSMDesktopView = newWidth <= SMDESKTOP_BREAKPOINT;
+      setIsSMDesktop(isSMDesktopView);
 
       if (isMobileView) {
         gsap.globalTimeline.clear();
@@ -49,10 +57,10 @@ export function ViewportProvider({ children }: { children: React.ReactNode }) {
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
-  }, [isMobile, previousWidth]);
+  }, [isMobile, isSMDesktop, previousWidth]);
 
   return (
-    <ViewportContext.Provider value={{ isMobile }}>
+    <ViewportContext.Provider value={{ isMobile, isSMDesktop }}>
       {/* <ParallaxProvider> */}
       {children}
       {/* </ParallaxProvider> */}

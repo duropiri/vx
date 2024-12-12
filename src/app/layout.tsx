@@ -136,9 +136,25 @@ const criticalStyles = `
     align-items: center;
     justify-content: center;
     padding: 6.25rem 5rem;
+    /* margin: 6.25rem 0; */
     width: 100vw;
     box-sizing: border-box;
     max-width: 100vw;
+  }
+
+  .section-container.top {
+    padding-top: 10rem;
+  }
+
+  @media (max-width: 768px) {
+    .section-container {
+      padding: 3.125rem 2rem;
+      /* margin: 3.125rem 0; */
+    }
+
+    .section-container.top {
+      padding-top: 8rem;
+    }
   }
 `;
 
