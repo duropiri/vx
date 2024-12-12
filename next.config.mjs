@@ -108,24 +108,50 @@ const nextConfig = {
   poweredByHeader: false,
   reactStrictMode: true,
   // Improve asset caching
-  generateEtags: true,
+  generateEtags: false,
   poweredByHeader: false,
   headers: async () => [
     {
+      // Dynamic routes
       source: "/:path*",
       headers: [
         {
           key: "Cache-Control",
-          value: "public, max-age=31536000, immutable",
+          // No caching for HTML and dynamic routes
+          value: "no-store, no-cache, must-revalidate, proxy-revalidate",
+        },
+        {
+          key: "Pragma",
+          value: "no-cache",
+        },
+        {
+          key: "Expires",
+          value: "0",
+        },
+        {
+          key: "Surrogate-Control",
+          value: "no-store",
         },
       ],
     },
     {
+      // Static assets with versioning
       source: "/_next/static/:path*",
       headers: [
         {
           key: "Cache-Control",
-          value: "public, max-age=31536000, immutable",
+          // Cache static assets but validate on load
+          value: "public, max-age=0, must-revalidate",
+        },
+      ],
+    },
+    {
+      // Images
+      source: "/images/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=0, must-revalidate",
         },
       ],
     },
