@@ -367,29 +367,23 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
               <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] my-[0.625rem] sm:flex flex-col items-center">
-                <span>
-                  Dominate Social Media With The{" "}
-                  <span className="text-goldenbrown gold-text font-bold">
-                    Gold Standard
-                  </span>
+                Dominate Social Media With The{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Gold Standard
                 </span>
               </h1>
 
               <h1 className="sm:hidden pn-regular-72 uppercase text-center my-[0.625rem] flex flex-col items-center">
-                <span>
-                  Dominate Social Media With The{" "}
-                  <span className="text-goldenbrown gold-text font-bold">
-                    Gold Standard
-                  </span>
+                Dominate Social Media With The{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Gold Standard
                 </span>
               </h1>
 
               <h2 className="pn-regular-20 text-center sm:max-w-[45vw]">
-                <span>
-                  Our expert digital marketing strategies—tailored social media
-                  management and high-impact content—help you generate valuable
-                  leads, boost visibility, and close deals effortlessly.
-                </span>
+                Our expert digital marketing strategies—tailored social media
+                management and high-impact content—help you generate valuable
+                leads, boost visibility, and close deals effortlessly.
               </h2>
             </div>
             {/* Hero CTA */}

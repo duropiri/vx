@@ -73,23 +73,19 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/90 -z-10 pointer-events-none" />
               <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center">
-                <span>
-                  Meet the{" "}
-                  <span className="text-goldenbrown gold-text font-bold">
-                    Gold Standard
-                  </span>{" "}
-                  in Real Estate Marketing
-                </span>
+                Meet the{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Gold Standard
+                </span>{" "}
+                in Real Estate Marketing
               </h1>
 
               <h1 className="sm:hidden pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] flex flex-col items-center">
-                <span>
-                  Meet the{" "}
-                  <span className="text-goldenbrown gold-text font-bold">
-                    Gold Standard
-                  </span>{" "}
-                  in Real Estate Marketing
-                </span>
+                Meet the{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Gold Standard
+                </span>{" "}
+                in Real Estate Marketing
               </h1>
               {/* Body */}
               <h2 className="text-center sm:max-w-[45vw]">
