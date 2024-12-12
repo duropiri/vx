@@ -119,7 +119,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               fill
               className="object-cover"
               quality={75}
-              priority
+              priority={false}
+              loading={false ? "eager" : "lazy"}
             />
             <div className="absolute inset-0 bg-black/40 pointer-events-none" />
           </ParallaxSection>

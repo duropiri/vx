@@ -159,7 +159,8 @@ const Preloader: React.FC<PreloaderProps> = ({
             src={logo}
             alt="Loading"
             className="w-[9.375rem] h-auto mix-blend-difference"
-            priority
+            priority={true}
+            loading={true ? "eager" : "lazy"}
             placeholder="blur"
             quality={75}
           />

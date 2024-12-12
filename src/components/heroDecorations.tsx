@@ -201,7 +201,8 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
             src={icon.src}
             className="size-full shadow-2xl rounded-[1rem]"
             quality={75}
-            priority
+            priority={false}
+            loading={false ? "eager" : "lazy"}
           />
         </div>
       </div>

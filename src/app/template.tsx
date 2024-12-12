@@ -3,7 +3,7 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
-  useRef,
+  // useRef,
   useState,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
@@ -180,8 +180,8 @@ export default function Template({ children }: TemplateProps) {
                   alt="logo"
                   fill
                   sizes="(max-width: 640px) 100vw, 1200px"
-                  priority={true}
-                  loading={true ? "eager" : "lazy"}
+                  priority={false}
+                  loading={false ? "eager" : "lazy"}
                   className="size-full animate-pulse"
                   quality={75}
                 />

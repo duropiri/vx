@@ -107,13 +107,25 @@ const nextConfig = {
   compress: true,
   poweredByHeader: false,
   reactStrictMode: true,
+  // Improve asset caching
+  generateEtags: true,
+  poweredByHeader: false,
   headers: async () => [
     {
       source: "/:path*",
       headers: [
         {
           key: "Cache-Control",
-          value: "public, max-age=31536000, stale-while-revalidate=86400",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    {
+      source: "/_next/static/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
         },
       ],
     },

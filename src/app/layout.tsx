@@ -63,13 +63,95 @@ export const metadata: Metadata = {
   },
 };
 
+// Create a new file: app/fonts.ts
+import localFont from "next/font/local";
+
+export const proximaNova = localFont({
+  src: [
+    {
+      path: "../../public/fonts/ProximaNova/ProximaNova-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    // Add other weights/styles as needed
+  ],
+  variable: "--font-proxima-nova",
+  display: "swap",
+});
+
+export const nunito = localFont({
+  src: [
+    {
+      path: "../../public/fonts/Nunito/Nunito-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    // Add other weights/styles as needed
+  ],
+  variable: "--font-nunito",
+  display: "swap",
+});
+
+// Critical CSS can be moved to a separate file and imported
+const criticalStyles = `
+  :root {
+    /* Color variables */
+    --black: #000000;
+    --goldenrod: #fdd98a; /* Secondary */
+    --goldenbrown: #c5a05e; /* Primary */
+    --ash: #1b1a17; /* Primary */
+    --white: #ffffff;
+    --charcoal-navy: #1a213d; /* Primary */
+    --charcoal: #434345; /* Secondary */
+
+    --section-width: 98vw;
+
+    /* Font sizing variables */
+    --size: 300;
+    font-size: calc(max(((100vw / var(--size)) * 10), 16px));
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --size: 1000;
+      --section-width: 90vw;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    :root {
+      --size: 1200;
+    }
+  }
+
+  body {
+    margin: 0;
+    color: var(--foreground);
+    background: var(--background);
+  }
+
+  .section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 6.25rem 5rem;
+    width: 100vw;
+    box-sizing: border-box;
+    max-width: 100vw;
+  }
+`;
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${proximaNova.variable} ${nunito.variable}`}>
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: criticalStyles }} />
+      </head>
       <body className="antialiased max-w-[100vw]">
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>

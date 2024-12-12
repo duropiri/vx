@@ -359,7 +359,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     src={starImage}
                     className="w-[1rem]"
                     quality={75}
-                    priority
+                    priority={false}
+                    loading={false ? "eager" : "lazy"}
                   />
                 ))}
               </div>

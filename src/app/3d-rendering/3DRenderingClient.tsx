@@ -22,8 +22,8 @@ export const WhatIsItSection = () => (
             alt="what-is-it-image"
             fill
             sizes="(max-width: 640px) 100vw, 1200px"
-            priority={true}
-            loading={true ? "eager" : "lazy"}
+            priority={false}
+            loading={false ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
             quality={75}
           />

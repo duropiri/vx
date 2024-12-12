@@ -18,9 +18,6 @@
   --section-width: 98vw;
 
   /* Font sizing variables */
-  /* // --root-size: 37; */
-  /* // --max-font-size: 14px;  Default max for HD and below */
-  /* // font-size: 14px; */
   --size: 300;
   font-size: calc(max(((100vw / var(--size)) * 10), 16px));
 }
@@ -38,13 +35,6 @@
   }
 }
 
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #1b1a17;
-    --foreground: #ffffff;
-  }
-} */
-
 /* Hide scrollbar */
 html {
   scrollbar-width: none; /* Firefox */
@@ -59,8 +49,6 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Proxima Nova, sans-serif;
-  // perspective: 1px;
-  // transform-style: preserve-3d;
 }
 
 .parallax {
