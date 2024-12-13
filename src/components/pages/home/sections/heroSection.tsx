@@ -72,7 +72,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Heading */}
             <div className="relative flex flex-col items-center justify-center my-auto">
               {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
-              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1.2em] mb-[1rem]">
+              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
                 Meet the{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Gold Standard

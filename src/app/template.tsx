@@ -23,8 +23,12 @@ interface TemplateProps {
 }
 
 export const animatePageIn = (isMobileView: boolean) => {
-  return new Promise<void>((resolve) => {
-    // For mobile, skip animation and just hide banners
+  return new Promise<void>((resolve, reject) => {
+    // Add timeout safety
+    const timeout = setTimeout(() => {
+      resolve(); // Resolve anyway after 2 seconds
+    }, 2000);
+
     if (isMobileView) {
       const banners = document.querySelectorAll(".banner");
       banners.forEach((banner) => {
@@ -34,22 +38,24 @@ export const animatePageIn = (isMobileView: boolean) => {
           yPercent: 0,
         });
       });
+      clearTimeout(timeout);
       resolve();
       return;
     }
 
-    // Desktop animation logic
-    const banners = Array.from({ length: 9 }, (_, i) =>
-      document.getElementById(`banner-${i + 1}`)
-    );
-
-    if (banners.every((banner) => banner)) {
-      banners.forEach((banner) => {
-        if (banner) gsap.killTweensOf(banner);
-      });
+    const banners = document.querySelectorAll(".banner");
+    if (banners.length) {
+      gsap.killTweensOf(banners);
 
       const tl = gsap.timeline({
-        onComplete: resolve,
+        onComplete: () => {
+          clearTimeout(timeout);
+          resolve();
+        },
+        onInterrupt: () => {
+          clearTimeout(timeout);
+          resolve();
+        },
       });
 
       tl.set(banners, {
@@ -74,6 +80,7 @@ export const animatePageIn = (isMobileView: boolean) => {
         },
       });
     } else {
+      clearTimeout(timeout);
       resolve();
     }
   });
@@ -85,7 +92,13 @@ export const animatePageOut = (
   isMobileView: boolean
 ) => {
   return new Promise<void>((resolve) => {
+    const timeout = setTimeout(() => {
+      router.push(href);
+      resolve();
+    }, 2000); // Failsafe timeout
+
     if (isMobileView) {
+      clearTimeout(timeout);
       const banners = document.querySelectorAll(".banner");
       banners.forEach((banner) => {
         gsap.set(banner, {
@@ -99,18 +112,18 @@ export const animatePageOut = (
       return;
     }
 
-    // Desktop animation logic
-    const banners = Array.from({ length: 9 }, (_, i) =>
-      document.getElementById(`banner-${i + 1}`)
-    );
-
-    if (banners.every((banner) => banner)) {
-      banners.forEach((banner) => {
-        if (banner) gsap.killTweensOf(banner);
-      });
+    const banners = document.querySelectorAll(".banner");
+    if (banners.length) {
+      gsap.killTweensOf(banners);
 
       const tl = gsap.timeline({
         onComplete: () => {
+          clearTimeout(timeout);
+          router.push(href);
+          resolve();
+        },
+        onInterrupt: () => {
+          clearTimeout(timeout);
           router.push(href);
           resolve();
         },
@@ -132,6 +145,7 @@ export const animatePageOut = (
         },
       });
     } else {
+      clearTimeout(timeout);
       router.push(href);
       resolve();
     }
@@ -153,30 +167,40 @@ export default function Template({ children }: TemplateProps) {
   const [isNavigating, setIsNavigating] = useState(false);
 
   const resetBanners = useCallback(() => {
-    const banners = Array.from({ length: 9 }, (_, i) =>
-      document.getElementById(`banner-${i + 1}`)
-    );
+    const banners = document.querySelectorAll(".banner");
 
+    // Kill any existing animations
+    gsap.killTweensOf(banners);
+
+    // Reset all banners to initial state
     banners.forEach((banner) => {
-      if (banner) {
-        gsap.set(banner, {
-          clearProps: "all",
-          visibility: "hidden",
-          opacity: 0,
-          yPercent: isMobile ? 0 : -100,
-        });
-      }
+      gsap.set(banner, {
+        clearProps: "all",
+        visibility: "hidden",
+        opacity: 0,
+        yPercent: isMobile ? 0 : -100,
+      });
     });
-  }, []);
+  }, [isMobile]);
 
   const handleLinkClick = useCallback(
     async (href: string) => {
       if (isNavigating) return;
-      setIsNavigating(true);
-      await animatePageOut(href, router, isMobile);
-      setIsNavigating(false);
+      try {
+        setIsNavigating(true);
+        await Promise.race([
+          animatePageOut(href, router, isMobile),
+          new Promise((resolve) => setTimeout(resolve, 2000)), // Timeout after 2s
+        ]);
+      } catch (error) {
+        console.error("Navigation animation error:", error);
+        router.push(href); // Fallback direct navigation
+      } finally {
+        setIsNavigating(false);
+        resetBanners();
+      }
     },
-    [router, isNavigating]
+    [router, isNavigating, isMobile, resetBanners]
   );
 
   useEffect(() => {
@@ -206,12 +230,40 @@ export default function Template({ children }: TemplateProps) {
     };
   }, [isInitialized, resetBanners]);
 
+  useEffect(() => {
+    return () => {
+      setIsNavigating(false);
+      resetBanners();
+    };
+  }, [resetBanners]);
+
   // Reset animation state on route change
   useEffect(() => {
     if (isInitialized) {
       resetBanners();
     }
   }, [pathname, isInitialized, resetBanners]);
+
+  useEffect(() => {
+    const cleanup = () => {
+      const banners = document.querySelectorAll(".banner");
+      banners.forEach((banner) => {
+        if (banner instanceof HTMLElement) {
+          banner.style.visibility = "hidden";
+          banner.style.opacity = "0";
+        }
+      });
+      gsap.killTweensOf(".banner");
+      setIsNavigating(false);
+    };
+
+    // Clean up on route change
+    cleanup();
+
+    return () => {
+      cleanup();
+    };
+  }, [pathname]);
 
   return (
     <NavigationContext.Provider value={{ handleLinkClick }}>
@@ -231,22 +283,27 @@ export default function Template({ children }: TemplateProps) {
                 <div
                   id="banner-1"
                   className="banner fixed left-0 h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-2"
                   className="banner fixed left-[calc((100%/9)*1)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-3"
                   className="banner fixed left-[calc((100%/9)*2)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-4"
                   className="banner fixed left-[calc((100%/9)*3)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-5"
                   className="banner fixed flex items-center justify-center left-[calc((100%/9)*4)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 >
                   <div className="relative size-[10vw] sm:size-[3vw]">
                     <Image
@@ -263,19 +320,23 @@ export default function Template({ children }: TemplateProps) {
                 </div>
                 <div
                   id="banner-6"
-                  className="fixed left-[calc((100%/9)*5)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  className="banner fixed left-[calc((100%/9)*5)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-7"
-                  className="fixed left-[calc((100%/9)*6)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  className="banner fixed left-[calc((100%/9)*6)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-8"
-                  className="fixed left-[calc((100%/9)*7)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  className="banner fixed left-[calc((100%/9)*7)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
                 <div
                   id="banner-9"
-                  className="fixed left-[calc((100%/9)*8)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  className="banner fixed left-[calc((100%/9)*8)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                  style={{ visibility: "hidden", opacity: 0 }}
                 />
               </>
             )}

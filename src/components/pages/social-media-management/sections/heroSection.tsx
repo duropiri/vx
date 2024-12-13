@@ -366,17 +366,23 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
-              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] my-[0.625rem] sm:flex flex-col items-center">
-                Dominate Social Media With The{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Gold Standard
+              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
+                Dominate Social Media With{" "}
+                <span>
+                  The{" "}
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Gold Standard
+                  </span>
                 </span>
               </h1>
 
-              <h1 className="sm:hidden pn-regular-72 uppercase text-center my-[0.625rem] flex flex-col items-center">
-                Dominate Social Media With The{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Gold Standard
+              <h1 className="sm:hidden pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] flex flex-col items-center">
+                Dominate Social Media With{" "}
+                <span>
+                  The{" "}
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Gold Standard
+                  </span>
                 </span>
               </h1>
 
