@@ -86,7 +86,7 @@ const nextConfig = {
     ],
     deviceSizes: [384, 640, 960, 1200, 1920],
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 604800,
+    minimumCacheTTL: 60,
   },
   experimental: {
     optimizeCss: true,
@@ -105,19 +105,57 @@ const nextConfig = {
   productionBrowserSourceMaps: false,
   swcMinify: true,
   compress: true,
-  poweredByHeader: false,
   reactStrictMode: true,
   // Improve asset caching
-  generateEtags: false,
+  generateEtags: true,
   poweredByHeader: false,
   headers: async () => [
     {
-      // Dynamic routes
+      // HTML pages and dynamic routes
       source: "/:path*",
       headers: [
         {
           key: "Cache-Control",
-          // No caching for HTML and dynamic routes
+          value: "public, max-age=0, s-maxage=1, stale-while-revalidate=60",
+        },
+      ],
+    },
+    {
+      // Static assets (JS, CSS) with versioning
+      source: "/_next/static/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    {
+      // Public static assets
+      source: "/static/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=31536000, immutable",
+        },
+      ],
+    },
+    {
+      // Images with controlled caching
+      source: "/images/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, max-age=3600, stale-while-revalidate=86400",
+        },
+      ],
+    },
+    {
+      // API routes
+      source: "/api/:path*",
+      headers: [
+        {
+          key: "Cache-Control",
           value: "no-store, no-cache, must-revalidate, proxy-revalidate",
         },
         {
@@ -127,31 +165,6 @@ const nextConfig = {
         {
           key: "Expires",
           value: "0",
-        },
-        {
-          key: "Surrogate-Control",
-          value: "no-store",
-        },
-      ],
-    },
-    {
-      // Static assets with versioning
-      source: "/_next/static/:path*",
-      headers: [
-        {
-          key: "Cache-Control",
-          // Cache static assets but validate on load
-          value: "public, max-age=0, must-revalidate",
-        },
-      ],
-    },
-    {
-      // Images
-      source: "/images/:path*",
-      headers: [
-        {
-          key: "Cache-Control",
-          value: "public, max-age=0, must-revalidate",
         },
       ],
     },
