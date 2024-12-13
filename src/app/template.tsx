@@ -16,35 +16,48 @@ import SmoothScrolling from "@/components/animations/SmoothScrolling";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
 import Image from "next/image";
 import logo from "@/../../public/assets/images/logo4.webp";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface TemplateProps {
   children: ReactNode;
 }
 
-export const animatePageIn = () => {
+export const animatePageIn = (isMobileView: boolean) => {
   return new Promise<void>((resolve) => {
+    // For mobile, skip animation and just hide banners
+    if (isMobileView) {
+      const banners = document.querySelectorAll(".banner");
+      banners.forEach((banner) => {
+        gsap.set(banner, {
+          visibility: "hidden",
+          opacity: 0,
+          yPercent: 0,
+        });
+      });
+      resolve();
+      return;
+    }
+
+    // Desktop animation logic
     const banners = Array.from({ length: 9 }, (_, i) =>
       document.getElementById(`banner-${i + 1}`)
     );
 
     if (banners.every((banner) => banner)) {
-      // Kill any existing animations
       banners.forEach((banner) => {
         if (banner) gsap.killTweensOf(banner);
       });
 
       const tl = gsap.timeline({
-        onComplete: () => resolve(),
+        onComplete: resolve,
       });
 
-      // Initial state
       tl.set(banners, {
         yPercent: 0,
         opacity: 1,
         visibility: "visible",
       });
 
-      // Animate banners up
       tl.to(banners, {
         yPercent: 100,
         duration: 0.8,
@@ -54,9 +67,9 @@ export const animatePageIn = () => {
           from: "start",
         },
         onComplete: () => {
-          // Hide banners after animation
           gsap.set(banners, {
             visibility: "hidden",
+            opacity: 0,
           });
         },
       });
@@ -66,14 +79,32 @@ export const animatePageIn = () => {
   });
 };
 
-export const animatePageOut = (href: string, router: AppRouterInstance) => {
+export const animatePageOut = (
+  href: string,
+  router: AppRouterInstance,
+  isMobileView: boolean
+) => {
   return new Promise<void>((resolve) => {
+    if (isMobileView) {
+      const banners = document.querySelectorAll(".banner");
+      banners.forEach((banner) => {
+        gsap.set(banner, {
+          visibility: "hidden",
+          opacity: 0,
+          yPercent: 0,
+        });
+      });
+      router.push(href);
+      resolve();
+      return;
+    }
+
+    // Desktop animation logic
     const banners = Array.from({ length: 9 }, (_, i) =>
       document.getElementById(`banner-${i + 1}`)
     );
 
     if (banners.every((banner) => banner)) {
-      // Kill any existing animations
       banners.forEach((banner) => {
         if (banner) gsap.killTweensOf(banner);
       });
@@ -85,14 +116,12 @@ export const animatePageOut = (href: string, router: AppRouterInstance) => {
         },
       });
 
-      // Initial state
       tl.set(banners, {
         yPercent: -100,
         opacity: 1,
         visibility: "visible",
       });
 
-      // Animate banners down
       tl.to(banners, {
         yPercent: 0,
         duration: 0.8,
@@ -119,6 +148,7 @@ export default function Template({ children }: TemplateProps) {
   const pathname = usePathname();
   const router = useRouter();
   const isAdminPage = pathname.startsWith("/admin");
+  const { isMobile } = useViewport();
   const [isInitialized, setIsInitialized] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
 
@@ -130,10 +160,10 @@ export default function Template({ children }: TemplateProps) {
     banners.forEach((banner) => {
       if (banner) {
         gsap.set(banner, {
-          yPercent: 0,
-          opacity: 1,
-          visibility: "hidden",
           clearProps: "all",
+          visibility: "hidden",
+          opacity: 0,
+          yPercent: isMobile ? 0 : -100,
         });
       }
     });
@@ -143,7 +173,7 @@ export default function Template({ children }: TemplateProps) {
     async (href: string) => {
       if (isNavigating) return;
       setIsNavigating(true);
-      await animatePageOut(href, router);
+      await animatePageOut(href, router, isMobile);
       setIsNavigating(false);
     },
     [router, isNavigating]
@@ -154,7 +184,7 @@ export default function Template({ children }: TemplateProps) {
     if (!isInitialized) {
       const initPage = async () => {
         setIsInitialized(true);
-        await animatePageIn();
+        await animatePageIn(isMobile);
       };
       initPage();
     }
@@ -162,16 +192,16 @@ export default function Template({ children }: TemplateProps) {
     // Handle browser back/forward navigation
     const handlePopState = async () => {
       resetBanners();
-      await animatePageIn();
+      await animatePageIn(isMobile);
     };
 
-    window.addEventListener('popstate', handlePopState);
+    window.addEventListener("popstate", handlePopState);
 
     // Cleanup
     return () => {
-      window.removeEventListener('popstate', handlePopState);
+      window.removeEventListener("popstate", handlePopState);
       // Kill all GSAP animations on unmount
-      gsap.killTweensOf('.banner');
+      gsap.killTweensOf(".banner");
       resetBanners();
     };
   }, [isInitialized, resetBanners]);
@@ -196,55 +226,59 @@ export default function Template({ children }: TemplateProps) {
         </div>
         {!isAdminPage ? (
           <>
-            <div
-              id="banner-1"
-              className="banner fixed left-0 h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-2"
-              className="banner fixed left-[calc((100%/9)*1)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-3"
-              className="banner fixed left-[calc((100%/9)*2)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-4"
-              className="banner fixed left-[calc((100%/9)*3)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-5"
-              className="banner fixed flex items-center justify-center left-[calc((100%/9)*4)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            >
-              <div className="relative size-[10vw] sm:size-[3vw]">
-                <Image
-                  src={logo}
-                  alt="logo"
-                  fill
-                  sizes="(max-width: 640px) 100vw, 1200px"
-                  priority={false}
-                  loading={false ? "eager" : "lazy"}
-                  className="size-full animate-pulse"
-                  quality={75}
+            {!isMobile && (
+              <>
+                <div
+                  id="banner-1"
+                  className="banner fixed left-0 h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
                 />
-              </div>
-            </div>
-            <div
-              id="banner-6"
-              className="fixed left-[calc((100%/9)*5)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-7"
-              className="fixed left-[calc((100%/9)*6)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-8"
-              className="fixed left-[calc((100%/9)*7)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
-            <div
-              id="banner-9"
-              className="fixed left-[calc((100%/9)*8)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-            />
+                <div
+                  id="banner-2"
+                  className="banner fixed left-[calc((100%/9)*1)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+                <div
+                  id="banner-3"
+                  className="banner fixed left-[calc((100%/9)*2)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+                <div
+                  id="banner-4"
+                  className="banner fixed left-[calc((100%/9)*3)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+                <div
+                  id="banner-5"
+                  className="banner fixed flex items-center justify-center left-[calc((100%/9)*4)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                >
+                  <div className="relative size-[10vw] sm:size-[3vw]">
+                    <Image
+                      src={logo}
+                      alt="logo"
+                      fill
+                      sizes="(max-width: 640px) 100vw, 1200px"
+                      priority={false}
+                      loading={false ? "eager" : "lazy"}
+                      className="size-full animate-pulse"
+                      quality={75}
+                    />
+                  </div>
+                </div>
+                <div
+                  id="banner-6"
+                  className="fixed left-[calc((100%/9)*5)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+                <div
+                  id="banner-7"
+                  className="fixed left-[calc((100%/9)*6)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+                <div
+                  id="banner-8"
+                  className="fixed left-[calc((100%/9)*7)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+                <div
+                  id="banner-9"
+                  className="fixed left-[calc((100%/9)*8)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
+                />
+              </>
+            )}
             <SmoothScrolling>
               <Header className="absolute" navigation={HeaderLinks} />
               {children}
