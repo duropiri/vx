@@ -17,6 +17,8 @@ const nextConfig = {
           chunks: "all",
           minSize: 10000,
           maxSize: 50000,
+          maxInitialRequests: 25, // Add this
+          maxAsyncRequests: 30, // Add this
           cacheGroups: {
             // Core React dependencies
             framework: {
@@ -65,6 +67,22 @@ const nextConfig = {
               priority: 10,
               reuseExistingChunk: true,
             },
+            // Add Tailwind utilities
+            styles: {
+              name: "styles",
+              test: /[\\/]node_modules[\\/](tailwindcss)[\\/]/,
+              chunks: "all",
+              priority: 45,
+            },
+            // Add utils group for common utilities
+            utils: {
+              name: "utils",
+              test: /[\\/]utils[\\/]/,
+              chunks: "async",
+              minChunks: 2,
+              priority: 15,
+              reuseExistingChunk: true,
+            },
           },
         },
       };
@@ -84,12 +102,14 @@ const nextConfig = {
         hostname: "virtualxposure.com",
       },
     ],
-    deviceSizes: [384, 640, 960, 1200, 1920],
+    deviceSizes: [384, 640, 768, 960, 1080, 1200, 1440, 1920],
     formats: ["image/avif", "image/webp"],
-    minimumCacheTTL: 60,
+    minimumCacheTTL: 3600,
   },
   experimental: {
     optimizeCss: true,
+    optimizeServerReact: true,
+    instrumentationHook: true,
     optimizePackageImports: [
       "react",
       "react-dom",
@@ -117,6 +137,14 @@ const nextConfig = {
         {
           key: "Cache-Control",
           value: "public, max-age=0, s-maxage=1, stale-while-revalidate=60",
+        },
+        {
+          key: "X-DNS-Prefetch-Control",
+          value: "on",
+        },
+        {
+          key: "X-Content-Type-Options",
+          value: "nosniff",
         },
       ],
     },
