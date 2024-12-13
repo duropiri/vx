@@ -97,7 +97,7 @@ export const nunito = localFont({
       style: "normal",
     },
     {
-      path: "../../public/fonts/Nunito/Nunito-Semibold.woff2",
+      path: "../../public/fonts/Nunito/Nunito-SemiBold.woff2",
       weight: "600",
       style: "normal",
     },
