@@ -419,7 +419,7 @@ const Body = () => {
       />
       <Dynamic.BasicSection
         content={
-          <div className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]">
+          <div id="services" className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]">
             {/* <FloorplansSection /> */}
             <VirtualSection />
             {/* CTA */}

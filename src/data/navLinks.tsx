@@ -1,9 +1,9 @@
-import house from "@/../../public/assets/svgs/real-estate.svg";
-import bullhorn from "@/../../public/assets/svgs/bullhorn.svg";
-import skool from "@/../../public/assets/svgs/skool-icon.svg";
-import camera from "@/../../public/assets/svgs/camera-shutter.svg";
-import enhance from "@/../../public/assets/svgs/enhance.svg";
-import virtualrealityimage from "@/../../public/assets/svgs/virtual-reality-image.svg";
+// import house from "@/../../public/assets/svgs/real-estate.svg";
+// import bullhorn from "@/../../public/assets/svgs/bullhorn.svg";
+// import skool from "@/../../public/assets/svgs/skool-icon.svg";
+// import camera from "@/../../public/assets/svgs/camera-shutter.svg";
+// import enhance from "@/../../public/assets/svgs/enhance.svg";
+// import virtualrealityimage from "@/../../public/assets/svgs/virtual-reality-image.svg";
 import { ServiceIcons } from "@/data/serviceIcons";
 
 export const HeaderLinks = [

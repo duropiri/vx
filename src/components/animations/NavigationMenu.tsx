@@ -710,19 +710,34 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                     handleMouseLeave();
                   }
                 }}
+                onMouseDown={() => handleMouseLeave()}
               >
                 <HoverWrapper>
-                  <TransitionLink
-                    href={nav.href}
-                    className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white"
-                  >
-                    <FlipLink>{nav.title}</FlipLink>
-                    {nav.dropdown && (
-                      <span className="ml-1 inline-block transition-transform duration-200">
-                        <ChevronDownIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
-                      </span>
-                    )}
-                  </TransitionLink>
+                  {nav.href === "#services" ? (
+                    <Link
+                      href={nav.href}
+                      className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white"
+                    >
+                      <FlipLink>{nav.title}</FlipLink>
+                      {nav.dropdown && (
+                        <span className="ml-1 inline-block transition-transform duration-200">
+                          <ChevronDownIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
+                        </span>
+                      )}
+                    </Link>
+                  ) : (
+                    <TransitionLink
+                      href={nav.href}
+                      className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white"
+                    >
+                      <FlipLink>{nav.title}</FlipLink>
+                      {nav.dropdown && (
+                        <span className="ml-1 inline-block transition-transform duration-200">
+                          <ChevronDownIcon className="h-5 w-5 shrink-0 text-muted-foreground transition-transform duration-200" />
+                        </span>
+                      )}
+                    </TransitionLink>
+                  )}
                 </HoverWrapper>
               </div>
             ))}
@@ -732,6 +747,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               <Link
                 href="https://listings.virtualxposure.com/order"
                 className="button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 group-hover/cta:!bg-white group-hover/cta:!text-ash transition-all"
+                onMouseDown={() => handleMouseLeave()}
               >
                 <FlipLink>Book Now</FlipLink>
                 <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
