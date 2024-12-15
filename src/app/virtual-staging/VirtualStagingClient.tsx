@@ -8,6 +8,7 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import { TransitionLink } from "@/components/TransitionLink";
+import Link from "next/link";
 
 export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
@@ -137,7 +138,7 @@ export const BenefitsSection = () => (
       <div className="flex justify-center w-full">
         <div className="flex flex-col sm:flex-row gap-[1rem]">
           <HoverWrapper className="group/cta cursor-select-hover">
-            <TransitionLink
+            <Link
               href="https://listings.virtualxposure.com/order"
               className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
               passHref
@@ -149,7 +150,7 @@ export const BenefitsSection = () => (
               <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
                 {ServiceIcons.arrow}
               </div>
-            </TransitionLink>
+            </Link>
           </HoverWrapper>
         </div>
       </div>

@@ -19,6 +19,7 @@ import { FooterHelpLinks } from "@/data/navLinks";
 import { TransitionLink } from "../TransitionLink";
 import { useViewport } from "@/contexts/ViewportContext";
 import { ServiceIcons } from "@/data/serviceIcons";
+import Link from "next/link";
 
 // Custom hook to track scroll direction
 const useScrollDirection = () => {
@@ -476,7 +477,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         ))}
 
         {/* Mobile CTA */}
-        <TransitionLink
+        <Link
           href="https://listings.virtualxposure.com/order"
           className="button pn-regular-16 text-center pn-regular-16 text-black !mt-4"
           onClick={onClose}
@@ -485,7 +486,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
             {ServiceIcons.arrow}
           </div>
-        </TransitionLink>
+        </Link>
       </div>
     </div>
   );
@@ -728,7 +729,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
             {/* CTA button */}
             <HoverWrapper className="group/cta cursor-select-hover">
-              <TransitionLink
+              <Link
                 href="https://listings.virtualxposure.com/order"
                 className="button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 group-hover/cta:!bg-white group-hover/cta:!text-ash transition-all"
               >
@@ -736,7 +737,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
                 <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
                   {ServiceIcons.arrow}
                 </div>
-              </TransitionLink>
+              </Link>
             </HoverWrapper>
           </nav>
 

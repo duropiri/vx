@@ -10,6 +10,7 @@ import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import { TransitionLink } from "@/components/TransitionLink";
 import { ServiceIcons } from "@/data/serviceIcons";
+import Link from "next/link";
 
 export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center sm:items-start justify-center gap-[3rem] sm:gap-[3.75rem]">
@@ -65,7 +66,7 @@ export const WhatIsItSection1 = () => (
           <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
             <div className="flex flex-col sm:flex-row gap-[1rem]">
               <HoverWrapper className="">
-                <TransitionLink
+                <Link
                   href="https://listings.virtualxposure.com/order"
                   className="group/cta button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
                   passHref
@@ -77,7 +78,7 @@ export const WhatIsItSection1 = () => (
                   <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
                     {ServiceIcons.arrow}
                   </div>
-                </TransitionLink>
+                </Link>
               </HoverWrapper>
             </div>
           </div>
@@ -216,7 +217,7 @@ export const WhatIsItSection3 = () => (
           <div className="flex justify-center sm:justify-start w-full mt-[1rem] sm:mt-[2rem]">
             <div className="flex flex-col sm:flex-row gap-[1rem]">
               <HoverWrapper className="">
-                <TransitionLink
+                <Link
                   href="https://listings.virtualxposure.com/order"
                   className="group/cta button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
                   passHref
@@ -228,7 +229,7 @@ export const WhatIsItSection3 = () => (
                   <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
                     {ServiceIcons.arrow}
                   </div>
-                </TransitionLink>
+                </Link>
               </HoverWrapper>
             </div>
           </div>
