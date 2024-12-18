@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 import PricingSection from "@/components/pages/sections/pricingSection";
 import {
-  RealEstateHDRPhotographyPackages,
+  RealEstateVideographyPackages,
   socialMediaPackages,
 } from "@/data/pricingPackages";
 
@@ -84,7 +84,7 @@ function body() {
         className="bg-white z-10 top"
         heading="Listing Media"
         body="Delivering top-tier quality visuals with no limits—crafted to elevate your listings effortlessly."
-        pricingPackages={RealEstateHDRPhotographyPackages}
+        pricingPackages={RealEstateVideographyPackages}
       />
       <PricingSection
         showAllFeatures
