@@ -87,7 +87,7 @@ export default function Footer({
             className={`${className} h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] sticky top-[calc(100vh-var(--footer-height-mobile))] xl:top-[calc(100vh-var(--footer-height-desktop))] bg-ash text-white`}
           >
             <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] xl:gap-[3.125rem]">
-              <div className="flex flex-col xl:flex-row items-start justify-start xl:justify-between size-full max-w-[100dvw] gap-y-[1rem] xl:gap-y-[2rem]">
+              <div className="flex flex-col xl:!flex-row items-start justify-start xl:justify-between size-full max-w-[100dvw] gap-y-[1rem] xl:gap-y-[2rem]">
                 {/* Branding section */}
                 <div className="flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] xl:max-w-[30%]">
                   <nav className="flex flex-row items-center gap-[0.5rem]">
