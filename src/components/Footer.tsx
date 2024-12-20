@@ -255,7 +255,7 @@ export default function Footer({
 
       {/* Footer bottom section */}
       <div
-        className="flex flex-col xl:flex-row w-full !justify-between items-center gap-y-[1rem] xl:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] xl:!py-[2rem] select-none"
+        className="flex flex-col xl:!flex-row w-full !justify-between items-center gap-y-[1rem] xl:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] xl:!py-[2rem] select-none"
         style={{ zIndex: 99999999999999 }}
       >
         <p className="pn-regular-14 text-center xl:text-start">
