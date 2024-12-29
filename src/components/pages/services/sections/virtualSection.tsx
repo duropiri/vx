@@ -1,11 +1,10 @@
 "use client";
+// import { useEffect, useRef } from "react";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-
-import {
-  ReactCompareSlider,
-    ReactCompareSliderImage,
-} from "react-compare-slider";
+import { ReactCompareSlider } from "react-compare-slider";
+// import { gsap, ScrollTrigger } from "@/utils/gsap";
+// gsap.registerPlugin(ScrollTrigger);
 
 const VirtualSection = ({
   renovation = true,
@@ -111,11 +110,11 @@ const VirtualSection = ({
     </ul>
   );
 
-  const ServiceSection = ({ service }) => (
+  const ServiceSection = ({ service, className = "" }) => (
     <div
-      className={`flex flex-col-reverse ${
+      className={`${className} flex flex-col-reverse ${
         service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
-      } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem] px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow`}
+      } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem] p-[1rem] pb-[1.5rem] sm:px-[1.5rem] sm:py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow`}
     >
       <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
         <SectionHeader
@@ -139,18 +138,22 @@ const VirtualSection = ({
   return (
     <div
       id="virtual"
-      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem] xl:gap-y-[6rem]"
+      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-start 1gap-y-[2rem] xl:1gap-y-[6rem]"
     >
       <SectionHeader
         noAnimation
         center
         heading="Virtual Enhancements"
         subheading="Virtual Enhancements On-Demand"
-        className="text-black"
+        className="header text-black sm:sticky top-[1.125rem] 2xl:top-[6.25rem]"
       />
-      <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] xl:gap-[3.75rem]">
+      <div className="relative pt-[2rem] md:pt-[3rem] 2xl:pt-[6rem] flex w-full max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] xl:gap-[3.75rem]">
         {services.map((service, index) => (
-          <ServiceSection key={"services-" + index} service={service} />
+          <ServiceSection
+            key={"services-" + index}
+            service={service}
+            className="cards sm:sticky top-[10rem] 2xl:top-[20rem]" // Adjust `top` to match header height
+          />
         ))}
       </div>
     </div>

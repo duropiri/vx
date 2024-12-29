@@ -12,6 +12,7 @@ import shopPay from "@/../../public/assets/svgs/shop-pay.svg";
 import visa from "@/../../public/assets/svgs/visa.svg";
 import { FooterCompanyLinks, FooterHelpLinks } from "@/data/navLinks";
 import { TransitionLink } from "./TransitionLink";
+import Link from "next/link";
 
 interface ComponentProps {
   className?: string;
@@ -116,7 +117,7 @@ export default function Footer({
                     {/* Social links */}
                     <div className="flex flex-row items-center gap-[0.75rem] text-charcoal">
                       {/* Twitter */}
-                      <TransitionLink
+                      <Link
                         aria-label="Virtual Xposure twitter account"
                         href="https://x.com/virtualxposur3"
                         passHref
@@ -133,14 +134,14 @@ export default function Footer({
                             fill="currentColor"
                           />
                           <path
-                            d="M25.9817 14.1281C25.443 14.3675 24.8743 14.5172 24.2757 14.607C24.8743 14.2478 25.3532 13.6792 25.5627 12.9908C24.994 13.32 24.3655 13.5594 23.6771 13.7091C23.1383 13.1404 22.3602 12.7812 21.5221 12.7812C19.9059 12.7812 18.589 14.0982 18.589 15.7144C18.589 15.9538 18.6189 16.1634 18.6788 16.3729C16.2544 16.2531 14.0695 15.0859 12.6029 13.2901C12.3635 13.739 12.2138 14.2179 12.2138 14.7566C12.2138 15.7743 12.7227 16.6722 13.5308 17.2109C13.0519 17.181 12.6029 17.0613 12.1839 16.8518V16.8817C12.1839 18.3183 13.2015 19.5155 14.5484 19.7849C14.3089 19.8448 14.0396 19.8747 13.7702 19.8747C13.5906 19.8747 13.3811 19.8448 13.2015 19.8148C13.5906 20.9821 14.6681 21.8501 15.9551 21.8501C14.9375 22.6283 13.6804 23.1072 12.3036 23.1072C12.0642 23.1072 11.8247 23.1072 11.6152 23.0772C12.9322 23.9153 14.4586 24.3942 16.1347 24.3942C21.552 24.3942 24.5151 19.9046 24.5151 16.0137C24.5151 15.894 24.5151 15.7443 24.5151 15.6246C25.0838 15.2355 25.5926 14.7267 25.9817 14.1281Z"
+                            d="M22.5997 11H25.0543L19.6932 17.126L26 25.4633H21.063L17.1934 20.4081L12.771 25.4633H10.3129L16.0461 18.9096L10 11H15.0621L18.5563 15.6206L22.5997 11ZM21.7375 23.9961H23.0969L14.3216 12.3907H12.8614L21.7375 23.9961Z"
                             fill="white"
                           />
                         </svg>
-                      </TransitionLink>
+                      </Link>
 
                       {/* Facebook */}
-                      <TransitionLink
+                      <Link
                         aria-label="Virtual Xposure facebook account"
                         href="https://www.facebook.com/virtualxposureofficial/"
                         passHref
@@ -161,10 +162,10 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </TransitionLink>
+                      </Link>
 
                       {/* Instagram */}
-                      <TransitionLink
+                      <Link
                         aria-label="Virtual Xposure Instagram account"
                         href="https://www.instagram.com/virtualxposure/?hl=en"
                         passHref
@@ -193,7 +194,39 @@ export default function Footer({
                             fill="white"
                           />
                         </svg>
-                      </TransitionLink>
+                      </Link>
+
+                      {/* LinkedIn */}
+                      <Link
+                        aria-label="Virtual Xposure LinkedIn account"
+                        href="https://ca.linkedin.com/company/virtualxposure"
+                        passHref
+                        className="size-[3rem]"
+                      >
+                        <svg
+                          viewBox="0 0 36 36"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                          className="cursor-select-hover hover:text-goldenbrown transition-all duration-300"
+                        >
+                          <path
+                            d="M36 18C36 27.9411 27.9411 36 18 36C8.05887 36 0 27.9411 0 18C0 8.05887 8.05887 0 18 0C27.9411 0 36 8.05887 36 18Z"
+                            fill="currentColor"
+                          />
+                          <path
+                            d="M13.7243 15.1297H10.5123C10.3697 15.1297 10.2542 15.2453 10.2542 15.3878V25.7067C10.2542 25.8492 10.3697 25.9647 10.5123 25.9647H13.7243C13.8669 25.9647 13.9824 25.8492 13.9824 25.7067V15.3878C13.9824 15.2453 13.8669 15.1297 13.7243 15.1297Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M12.1195 10C10.9508 10 10 10.9498 10 12.1172C10 13.2852 10.9508 14.2353 12.1195 14.2353C13.2873 14.2353 14.2374 13.2851 14.2374 12.1172C14.2374 10.9498 13.2873 10 12.1195 10Z"
+                            fill="white"
+                          />
+                          <path
+                            d="M21.8944 14.8733C20.6043 14.8733 19.6507 15.4279 19.0722 16.058V15.3878C19.0722 15.2453 18.9567 15.1298 18.8142 15.1298H15.7381C15.5955 15.1298 15.48 15.2453 15.48 15.3878V25.7067C15.48 25.8493 15.5955 25.9648 15.7381 25.9648H18.9431C19.0857 25.9648 19.2012 25.8493 19.2012 25.7067V20.6013C19.2012 18.8808 19.6685 18.2106 20.8678 18.2106C22.1739 18.2106 22.2777 19.2851 22.2777 20.6898V25.7068C22.2777 25.8493 22.3932 25.9648 22.5357 25.9648H25.7419C25.8845 25.9648 26 25.8493 26 25.7068V20.0467C26 17.4885 25.5122 14.8733 21.8944 14.8733Z"
+                            fill="white"
+                          />
+                        </svg>
+                      </Link>
                     </div>
                   </div>
                 </div>

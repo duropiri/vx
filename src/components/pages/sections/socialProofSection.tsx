@@ -166,7 +166,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
   ) => {
     const [color] = useState(originalColor);
 
-    const velocities = [600, -600, 600, -600, 600, -600];
+    const velocities = [200, -200, 200, -200, 200, -200];
 
     const commonProps = {
       id,
