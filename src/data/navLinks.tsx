@@ -96,7 +96,7 @@ export const HeaderLinks = [
     },
   },
   {
-    title: "Plans & Pricing",
+    title: "Pricing",
     href: "/pricing",
   },
   {
