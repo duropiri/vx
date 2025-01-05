@@ -59,11 +59,11 @@ export const HeaderLinks = [
           title: "Listing Media",
           href: "/services/listing-media",
         },
-        {
-          icon: ServiceIcons.share,
-          title: "Social Media Management",
-          href: "/services/social-media-management",
-        },
+        // {
+        //   icon: ServiceIcons.share,
+        //   title: "Social Media Management",
+        //   href: "/services/social-media-management",
+        // },
         {
           icon: ServiceIcons.skool,
           title: "Exclusive Community",
@@ -148,10 +148,10 @@ export const FooterCompanyLinks = [
     title: "Listing Media",
     href: "/services/listing-media",
   },
-  {
-    title: "Social Media Management",
-    href: "/services/social-media-management",
-  },
+  // {
+  //   title: "Social Media Management",
+  //   href: "/services/social-media-management",
+  // },
   {
     title: "Exclusive Community",
     href: "https://www.skool.com/",
