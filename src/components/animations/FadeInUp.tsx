@@ -11,7 +11,7 @@ interface FadeInUpProps extends React.HTMLAttributes<HTMLDivElement> {
   duration?: number;
   margin?: string;
   id?: string;
-  key?: string | number;
+  // key?: string | number;
   once?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   onHover?: gsap.TweenVars;
@@ -28,7 +28,7 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
       duration = 0.5,
       margin = "50px",
       id,
-      key,
+      // key,
       once = true,
       onClick,
       onHover,
@@ -128,7 +128,7 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
             (ref as MutableRefObject<HTMLDivElement | null>).current = node;
           }
         }}
-        key={key}
+        // key={key}
         className={className}
         onClick={onClick}
         {...props}

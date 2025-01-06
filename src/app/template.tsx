@@ -278,7 +278,7 @@ export default function Template({ children }: TemplateProps) {
         </div>
         {!isAdminPage ? (
           <>
-            {!isMobile && (
+            {/* {!isMobile && (
               <>
                 <div
                   id="banner-1"
@@ -339,7 +339,7 @@ export default function Template({ children }: TemplateProps) {
                   style={{ visibility: "hidden", opacity: 0 }}
                 />
               </>
-            )}
+            )} */}
             <SmoothScrolling>
               <Header className="absolute" navigation={HeaderLinks} />
               {children}

@@ -1,8 +1,7 @@
+// ViewportContext.tsx
 "use client";
 import { createContext, useContext, useEffect, useState } from "react";
 import { gsap } from "@/utils/gsap";
-// import { initGSAP } from "@/utils/gsap";
-// import { ParallaxProvider } from "./ParallaxContext";
 
 const MOBILE_BREAKPOINT = 768;
 const SMDESKTOP_BREAKPOINT = 1280;
@@ -10,62 +9,79 @@ const SMDESKTOP_BREAKPOINT = 1280;
 interface ViewportContextType {
   isMobile: boolean;
   isSMDesktop: boolean;
+  windowWidth: number;
+  isClient: boolean;
 }
 
 const ViewportContext = createContext<ViewportContextType>({
   isMobile: false,
   isSMDesktop: false,
+  windowWidth: 0,
+  isClient: false,
 });
 
-export function ViewportProvider({ children }: { children: React.ReactNode }) {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isSMDesktop, setIsSMDesktop] = useState(false);
-  const [previousWidth, setPreviousWidth] = useState(0);
+function ViewportProvider({ children }: { children: React.ReactNode }) {
+  const [state, setState] = useState<ViewportContextType>(() => ({
+    isMobile: false,
+    isSMDesktop: false,
+    windowWidth: 0,
+    isClient: false,
+  }));
 
   useEffect(() => {
-    const handleResize = () => {
-      const newWidth = window.innerWidth;
-      const isMobileView = newWidth <= MOBILE_BREAKPOINT;
-      setIsMobile(isMobileView);
-      const isSMDesktopView = newWidth < SMDESKTOP_BREAKPOINT;
-      setIsSMDesktop(isSMDesktopView);
+    const updateViewport = () => {
+      const width = window.innerWidth;
+      setState({
+        isMobile: width <= MOBILE_BREAKPOINT,
+        isSMDesktop: width < SMDESKTOP_BREAKPOINT,
+        windowWidth: width,
+        isClient: true,
+      });
 
-      if (isMobileView) {
+      if (width <= MOBILE_BREAKPOINT) {
         gsap.globalTimeline.clear();
         document.querySelectorAll<HTMLElement>("[data-gsap]").forEach((el) => {
           el.style.opacity = "1";
           el.style.transform = "none";
         });
-      } else {
-        // initGSAP();
       }
-
-      if (!previousWidth) {
-        setPreviousWidth(newWidth);
-        return;
-      }
-
-      if (
-        (previousWidth < MOBILE_BREAKPOINT && newWidth >= MOBILE_BREAKPOINT) ||
-        (previousWidth >= MOBILE_BREAKPOINT && newWidth < MOBILE_BREAKPOINT)
-      ) {
-        window.location.reload();
-      }
-      setPreviousWidth(newWidth);
     };
 
-    handleResize();
+    // Initial update
+    updateViewport();
+
+    let resizeTimer: NodeJS.Timeout;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        const newWidth = window.innerWidth;
+        const oldWidth = state.windowWidth;
+
+        const crossedMobileBreakpoint =
+          (oldWidth <= MOBILE_BREAKPOINT && newWidth > MOBILE_BREAKPOINT) ||
+          (oldWidth > MOBILE_BREAKPOINT && newWidth <= MOBILE_BREAKPOINT);
+
+        if (crossedMobileBreakpoint) {
+          window.location.reload();
+          return;
+        }
+
+        updateViewport();
+      }, 100);
+    };
+
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, [isMobile, isSMDesktop, previousWidth]);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
+    };
+  }, [state.windowWidth]);
 
   return (
-    <ViewportContext.Provider value={{ isMobile, isSMDesktop }}>
-      {/* <ParallaxProvider> */}
-      {children}
-      {/* </ParallaxProvider> */}
-    </ViewportContext.Provider>
+    <ViewportContext.Provider value={state}>{children}</ViewportContext.Provider>
   );
 }
 
-export const useViewport = () => useContext(ViewportContext);
+const useViewport = () => useContext(ViewportContext);
+
+export { ViewportProvider, useViewport };

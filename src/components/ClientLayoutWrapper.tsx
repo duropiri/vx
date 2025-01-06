@@ -9,25 +9,25 @@ interface ClientLayoutWrapperProps {
   children: React.ReactNode;
 }
 
-// Initialize GSAP once when the app starts
-if (typeof window !== "undefined") {
-  initGSAP();
-}
-
 export default function ClientLayoutWrapper({
   children,
 }: ClientLayoutWrapperProps) {
-  const [hasMounted, setHasMounted] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setHasMounted(true);
+    // Initialize GSAP here instead of at the module level
+    initGSAP();
+    setIsLoaded(true);
   }, []);
 
-  if (!hasMounted) {
+  // During SSR and initial client render, return a stable structure
+  if (!isLoaded) {
     return (
-      <div className="antialiased overflow-hidden">
-        {/* Loading state or nothing */}
-      </div>
+      <PreloaderProvider>
+        <ViewportProvider>
+          <div className="antialiased overflow-hidden">{children}</div>
+        </ViewportProvider>
+      </PreloaderProvider>
     );
   }
 

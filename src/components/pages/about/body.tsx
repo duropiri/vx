@@ -60,7 +60,7 @@ function Body() {
                 <ParallaxSection
                   isHero
                   speed={1 - 1.1}
-                  className="relative w-full sm:!scale-150 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group shadow-customShadow"
+                  className="relative w-full sm:!scale-110 z-10 rounded-[1rem] overflow-hidden aspect-[4/3] cursor-select-hover group shadow-customShadow"
                 >
                   <Image
                     src={heroImage2}
@@ -214,7 +214,7 @@ function Body() {
           </>
         }
       />
-      <TestimonialsSection noCards className="!bg-white/20 backdrop-blur-sm" />
+      <TestimonialsSection noCarousel noAnimation className="!bg-white/20 backdrop-blur-sm" />
       <FAQSection vertical className="bg-white z-10" />
       <ContactSection className="bg-white z-10" />
     </>

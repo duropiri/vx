@@ -44,7 +44,7 @@ const Dynamic = {
 
 // Complex components
 import ChatWidget from "@/components/ui/chatWidget";
-import WhyUsSection from "@/components/pages/services/sections/whyUsSection";
+import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
   // setupScrollAnimation,
@@ -182,7 +182,7 @@ function Body() {
       </ScaleInVisible>
 
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection noCards className="bg-white z-10 relative" />
+      <Dynamic.TestimonialsSection noAnimation noCarousel className="bg-white z-10 relative" />
 
       {/* Case Studies? */}
       {/* Contact */}

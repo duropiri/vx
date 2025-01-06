@@ -8,6 +8,23 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 const nextConfig = {
   webpack: (config, { dev, isServer }) => {
+    // Disable cache in development
+    if (dev) {
+      // Clear cache more aggressively in development
+      config.cache = false;
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+      };
+      config.optimization = {
+        removeAvailableModules: false,
+        removeEmptyChunks: false,
+        splitChunks: false,
+        minimize: false,
+        concatenateModules: false,
+        usedExports: false,
+      };
+    }
     if (!dev && !isServer) {
       config.optimization = {
         ...config.optimization,
@@ -17,10 +34,9 @@ const nextConfig = {
           chunks: "all",
           minSize: 10000,
           maxSize: 50000,
-          maxInitialRequests: 25, // Add this
-          maxAsyncRequests: 30, // Add this
+          maxInitialRequests: 25,
+          maxAsyncRequests: 30,
           cacheGroups: {
-            // Core React dependencies
             framework: {
               name: "framework",
               chunks: "all",
@@ -28,14 +44,12 @@ const nextConfig = {
               priority: 50,
               enforce: true,
             },
-            // GSAP animations
             animations: {
               name: "animations",
               test: /[\\/]node_modules[\\/](gsap|framer-motion)[\\/]/,
               chunks: "async",
               priority: 40,
             },
-            // Swiper animations
             swiper: {
               test: /[\\/]node_modules[\\/]swiper[\\/]/,
               name: "swiper",
@@ -43,14 +57,12 @@ const nextConfig = {
               priority: 10,
               enforce: true,
             },
-            // UI components
             ui: {
               name: "ui",
               test: /[\\/]node_modules[\\/](@radix-ui|@headlessui)[\\/]/,
               chunks: "async",
               priority: 30,
             },
-            // Shared components between pages
             shared: {
               name: "shared",
               test: /[\\/]components[\\/]shared[\\/]/,
@@ -59,7 +71,6 @@ const nextConfig = {
               priority: 20,
               reuseExistingChunk: true,
             },
-            // Default vendor bundle
             vendors: {
               name: "vendors",
               test: /[\\/]node_modules[\\/]/,
@@ -67,14 +78,12 @@ const nextConfig = {
               priority: 10,
               reuseExistingChunk: true,
             },
-            // Add Tailwind utilities
             styles: {
               name: "styles",
               test: /[\\/]node_modules[\\/](tailwindcss)[\\/]/,
               chunks: "all",
               priority: 45,
             },
-            // Add utils group for common utilities
             utils: {
               name: "utils",
               test: /[\\/]utils[\\/]/,
@@ -87,7 +96,6 @@ const nextConfig = {
         },
       };
 
-      // Additional production optimizations
       config.optimization.concatenateModules = true;
       config.optimization.moduleIds = "deterministic";
       config.optimization.runtimeChunk = "single";
@@ -109,7 +117,6 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     optimizeServerReact: true,
-    instrumentationHook: true,
     optimizePackageImports: [
       "react",
       "react-dom",
@@ -121,22 +128,21 @@ const nextConfig = {
       "swiper",
     ],
   },
-  // Additional optimizations
   productionBrowserSourceMaps: false,
-  swcMinify: true,
   compress: true,
   reactStrictMode: true,
-  // Improve asset caching
   generateEtags: true,
   poweredByHeader: false,
   headers: async () => [
     {
-      // HTML pages and dynamic routes
       source: "/:path*",
       headers: [
         {
           key: "Cache-Control",
-          value: "public, max-age=0, s-maxage=1, stale-while-revalidate=60",
+          value:
+            process.env.NODE_ENV === "development"
+              ? "no-store, must-revalidate"
+              : "public, max-age=0, s-maxage=1, stale-while-revalidate=60",
         },
         {
           key: "X-DNS-Prefetch-Control",
@@ -149,7 +155,6 @@ const nextConfig = {
       ],
     },
     {
-      // Static assets (JS, CSS) with versioning
       source: "/_next/static/:path*",
       headers: [
         {
@@ -159,7 +164,6 @@ const nextConfig = {
       ],
     },
     {
-      // Public static assets
       source: "/static/:path*",
       headers: [
         {
@@ -169,7 +173,6 @@ const nextConfig = {
       ],
     },
     {
-      // Images with controlled caching
       source: "/images/:path*",
       headers: [
         {
@@ -179,7 +182,6 @@ const nextConfig = {
       ],
     },
     {
-      // API routes
       source: "/api/:path*",
       headers: [
         {

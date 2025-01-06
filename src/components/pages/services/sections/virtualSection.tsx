@@ -1,7 +1,11 @@
 "use client";
+import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
+import { TransitionLink } from "@/components/TransitionLink";
 // import { useEffect, useRef } from "react";
 import SectionHeader from "@/components/ui/sectionHeader";
+import { ServiceIcons } from "@/data/serviceIcons";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import { ReactCompareSlider } from "react-compare-slider";
 // import { gsap, ScrollTrigger } from "@/utils/gsap";
 // gsap.registerPlugin(ScrollTrigger);
@@ -13,6 +17,9 @@ const VirtualSection = ({
   image1 = null,
   image2 = null,
 }) => {
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
+
   const commonFeatures = [
     { id: 1, text: "Professional editing by experienced designers" },
     { id: 2, text: "Quick 24-hour turnaround time" },
@@ -23,13 +30,13 @@ const VirtualSection = ({
   ];
 
   const services = [
-    renovation && {
-      id: 1,
-      title: "Virtual Renovation",
+    staging && {
+      id: 3,
+      title: "Virtual Staging",
       description:
-        "Transform your space without the mess. Our virtual renovation service helps you visualize potential upgrades and modernizations to your property with stunning before-and-after previews. Perfect for planning bathroom remodels, kitchen updates, or whole-home makeovers. Our advanced digital tools allow you to experiment with different styles, colors, and fixtures to create your ideal look—all without lifting a hammer.",
-      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(36).webp",
-      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(35).webp",
+        "Showcase your property's full potential without the expense of physical staging. Our virtual staging service digitally furnishes empty spaces with designer-curated furniture and décor, helping buyers envision the lifestyle your property offers. From modern minimalist to cozy traditional, we can style your space to appeal to your target market—at a fraction of the cost of traditional staging.",
+      beforeImage: "/assets/portfolio/virtual staging images/DEMO_(19).webp",
+      afterImage: "/assets/portfolio/virtual staging images/DEMO_(20).webp",
       features: commonFeatures,
       reversed: false,
     },
@@ -43,13 +50,13 @@ const VirtualSection = ({
       features: commonFeatures,
       reversed: true,
     },
-    staging && {
-      id: 3,
-      title: "Virtual Staging",
+    renovation && {
+      id: 1,
+      title: "Virtual Renovation",
       description:
-        "Showcase your property's full potential without the expense of physical staging. Our virtual staging service digitally furnishes empty spaces with designer-curated furniture and décor, helping buyers envision the lifestyle your property offers. From modern minimalist to cozy traditional, we can style your space to appeal to your target market—at a fraction of the cost of traditional staging.",
-      beforeImage: "/assets/portfolio/virtual staging images/DEMO_(19).webp",
-      afterImage: "/assets/portfolio/virtual staging images/DEMO_(20).webp",
+        "Transform your space without the mess. Our virtual renovation service helps you visualize potential upgrades and modernizations to your property with stunning before-and-after previews. Perfect for planning bathroom remodels, kitchen updates, or whole-home makeovers. Our advanced digital tools allow you to experiment with different styles, colors, and fixtures to create your ideal look—all without lifting a hammer.",
+      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(36).webp",
+      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(35).webp",
       features: commonFeatures,
       reversed: false,
     },
@@ -116,7 +123,7 @@ const VirtualSection = ({
         service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
       } size-full items-center justify-between gap-[3rem] xl:gap-[3.75rem] p-[1rem] pb-[1.5rem] sm:px-[1.5rem] sm:py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow`}
     >
-      <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
+      <div className="z-10 relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
         <SectionHeader
           noAnimation
           subheading={service.title}
@@ -138,7 +145,7 @@ const VirtualSection = ({
   return (
     <div
       id="virtual"
-      className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-start 1gap-y-[2rem] xl:1gap-y-[6rem]"
+      className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-start 1gap-y-[2rem] xl:1gap-y-[6rem]"
     >
       <SectionHeader
         noAnimation
@@ -156,6 +163,28 @@ const VirtualSection = ({
           />
         ))}
       </div>
+      {/* CTA */}
+      {!isHomePage && (
+        <div className="flex justify-center w-full mt-[2rem] xl:mt-[6rem]">
+          <div className="flex flex-col sm:flex-row gap-[1rem]">
+            <HoverWrapper className="group/cta cursor-select-hover">
+              <TransitionLink
+                href="/case-studies/gallery"
+                className="button gold pn-regular-16 pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-fit"
+                passHref
+              >
+                <FlipLink className={`flex items-center w-fit`}>
+                  See More
+                </FlipLink>
+
+                <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                  {ServiceIcons.arrow}
+                </div>
+              </TransitionLink>
+            </HoverWrapper>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

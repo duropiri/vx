@@ -35,7 +35,7 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`relative group flex size-full xl:h-[40rem] max-w-[--section-width] flex-col xl:flex-row ${
+      className={`relative group flex size-full p-[1rem] pb-[1.5rem] sm:p-0 bg-white rounded-[1.875rem] shadow-customShadow xl:h-[30rem] max-w-[--section-width] flex-col xl:flex-row ${
         isRight ? "justify-start" : "justify-end"
       } items-end gap-[3rem] xl:gap-0`}
     >
@@ -99,11 +99,27 @@ const ServiceCard = ({
           }-[1rem]`}
         >
           {/* Header */}
-          <SectionHeader subheading={title} className={themeClasses.text} />
-          {/* Body */}
-          {/* <LetterRevealOnScroll end="bottom 90%"> */}
-          <p className="pn-regular-16 max-w-[43.75rem]">{description}</p>
-          {/* </LetterRevealOnScroll> */}
+          <div className="relative">
+            <SectionHeader
+              subheading={title}
+              className={themeClasses.text}
+              noAnimation
+            />
+            {/* Body */}
+            <p
+              className={`
+    pn-regular-16 
+    overflow-hidden 
+    transition-all 
+    duration-1000 
+    group-hover:max-h-screen 
+    sm:max-h-0
+  `}
+            >
+              {description}
+            </p>
+            <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-white to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-500" />
+          </div>
           {/* CTA */}
           {darkTheme ? (
             <div className="flex justify-center xl:justify-start w-full">
@@ -126,14 +142,14 @@ const ServiceCard = ({
                 <HoverWrapper className="group/cta cursor-select-hover">
                   <TransitionLink
                     href={href}
-                    className="button pn-regular-16 h-full !bg-transparent shadow-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
+                    className="button pn-regular-16 h-full !bg-transparent shadow-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 group-hover/cta:!bg-ash transition-all duration-300 w-full"
                     passHref
                   >
-                    <FlipLink className={`flex items-center w-fit`}>
+                    <FlipLink className={`flex items-center w-fit group-hover/cta:text-white transition-all duration-300`}>
                       Learn More
                     </FlipLink>
 
-                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                    <div className="size-5 group-hover/cta:rotate-45 transition-all duration-300 group-hover/cta:text-white">
                       {ServiceIcons.arrow}
                     </div>
                   </TransitionLink>

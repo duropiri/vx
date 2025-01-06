@@ -5,51 +5,52 @@
 // @import url("/fonts/ProximaNova/stylesheet.css");
 @import url("/fonts/Nunito/stylesheet.css");
 
-// :root {
-//   /* Color variables */
-//   --black: #000000;
-//   --goldenrod: #fdd98a; /* Secondary */
-//   --goldenbrown: #c5a05e; /* Primary */
-//   --ash: #1b1a17; /* Primary */
-//   --white: #ffffff;
-//   --charcoal-navy: #1a213d; /* Primary */
-//   --charcoal: #434345; /* Secondary */
+:root {
+  /* Color variables */
+  --black: #000000;
+  --goldenrod: #fdd98a; /* Secondary */
+  --goldenbrown: #c5a05e; /* Primary */
+  --ash: #1b1a17; /* Primary */
+  --white: #ffffff;
+  --charcoal-navy: #1a213d; /* Primary */
+  --charcoal: #434345; /* Secondary */
 
-//   --section-width: 98vw;
+  --section-width: 98vw;
 
-//   /* Font sizing variables */
-//   --size: 300;
-//   font-size: calc(max(((100vw / var(--size)) * 10), 16px));
-// }
+  /* Font sizing variables */
+  --size: 300;
+  font-size: calc(max(((100vw / var(--size)) * 10), 16px));
+}
 
-// @media (min-width: 768px) {
-//   :root {
-//     --size: 1000;
-//     --section-width: 90vw;
-//   }
-// }
+@media (min-width: 768px) {
+  :root {
+    --size: 1000;
+    --section-width: 90vw;
+  }
+}
 
-// @media (min-width: 1440px) {
-//   :root {
-//     --size: 1200;
-//   }
-// }
+@media (min-width: 1440px) {
+  :root {
+    --size: 1200;
+  }
+}
 
-// /* Hide scrollbar */
-// html {
-//   scrollbar-width: none; /* Firefox */
-//   -ms-overflow-style: none; /* Internet Explorer 10+ */
-// }
+/* Hide scrollbar */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
 
-// html::-webkit-scrollbar {
-//   display: none; /* Safari and Chrome */
-// }
+html::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
 
-// body {
-//   color: var(--foreground);
-//   background: var(--background);
-//   font-family: Proxima Nova, sans-serif;
-// }
+body {
+  margin: 0;
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Proxima Nova, sans-serif;
+}
 
 .parallax {
   transform: translateZ(-1px) scale(2.2);
@@ -809,3 +810,4 @@
     --radius: 0.5rem;
   }
 }
+

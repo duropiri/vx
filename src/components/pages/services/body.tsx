@@ -75,7 +75,7 @@ const Dynamic = {
 
 // Complex components
 import ChatWidget from "@/components/ui/chatWidget";
-import WhyUsSection from "@/components/pages/services/sections/whyUsSection";
+import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
   setupScrollAnimation,
@@ -236,9 +236,9 @@ function Body({
         <WhyUsSection
           ref={contentRef}
           // scrollProgress={scrollProgress}
-          shrinkSize={0.75}
-          rotationAmount={-20}
-          className="z-0"
+          // shrinkSize={0.75}
+          // rotationAmount={-20}
+          className="z-0 sticky top-0"
         />
         {/* Steps? */}
         {stepsSection && (
@@ -274,7 +274,7 @@ function Body({
         />
       )}
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection noCards className="bg-white z-10 relative" />
+      <Dynamic.TestimonialsSection noCarousel noAnimation className="bg-white z-10 relative" />
 
       {/* Case Studies? */}
       {photography && (

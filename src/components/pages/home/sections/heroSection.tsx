@@ -1,9 +1,14 @@
-import React, { forwardRef, RefObject } from "react";
+"use client";
+
+import React, { forwardRef, RefObject, useEffect, useRef } from "react";
 import Image from "next/image";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+gsap.registerPlugin(ScrollTrigger);
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 // Import all the SVG assets
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import arrowRedirectGold from "@/../../public/assets/svgs/arrow-redirect-cta-gold.svg";
+// import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+// import arrowRedirectGold from "@/../../public/assets/svgs/arrow-redirect-cta-gold.svg";
+import logo from "@/../../public/assets/images/logo2.webp";
 import starImage from "@/../../public/assets/svgs/star.svg";
 import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
@@ -26,7 +31,269 @@ interface SectionProps {
 }
 
 const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
-  ({ className = "", originalColor, transitionColor }, ref) => {
+  ({ className = "", navigation, originalColor, transitionColor }, ref) => {
+    const navdockWidth = "36rem";
+    const navdockHeight = "2.8125rem";
+
+    const heroCTARef = useRef<HTMLDivElement>(null);
+    const navdockRef = useRef<HTMLDivElement>(null);
+
+    // Navdock Animations
+    useEffect(() => {
+      // Hero CTA to Navdock transition
+      if (
+        !(window.innerWidth <= 768) &&
+        heroCTARef.current &&
+        navdockRef.current
+      ) {
+        const heroCTA = heroCTARef.current;
+        const navdock = navdockRef.current;
+
+        // const heroBounds = heroCTA.getBoundingClientRect();
+
+        // START
+        // Set navdock initial state (SIZE AND COLOR)
+        gsap.set(navdock, {
+          display: "none",
+          padding: 0,
+          width: "14rem",
+          height: navdockHeight,
+          background: "#c5a05e",
+          borderRadius: "9999px",
+          opacity: 0,
+        });
+
+        // Hide elements on desktop, visible on mobile
+        gsap.set(["#logo", "#nav"], {
+          display: "none",
+        });
+
+        // Set initial position for the CTA
+        gsap.set("#navdock-cta", {
+          x: 0,
+        });
+        // END START
+
+        // PHASE 1
+        // First ScrollTrigger (heroCTA & Navdock): Handle initial fade transition
+        ScrollTrigger.create({
+          trigger: heroCTA,
+          start: `top 40px`, // When heroCTA reaches navdock position
+          // end: "+=50",
+          // markers: true,
+          onEnter: () => {
+            gsap.set(heroCTA, {
+              opacity: 0,
+            }); // Hide heroCTA
+            gsap.set(navdock, { opacity: 1, display: "flex" }); // Show navdock
+          },
+          onLeaveBack: () => {
+            gsap.set(navdock, { opacity: 0, display: "none" }); // Hide navdock
+            gsap.set(heroCTA, { opacity: 1 }); // Show heroCTA
+          },
+        });
+        // END PHASE 1
+
+        // PHASE 2
+        // Second ScrollTrigger (Navdock): Handle navdock transformation and element animations
+        ScrollTrigger.create({
+          trigger: heroCTA,
+          start: "200px 40px", // Slightly after the first trigger
+          // end: "+=50vh",
+          // markers: true,
+          onEnter: () => {
+            const tl = gsap.timeline();
+
+            gsap.set("#navdock-cta", {
+              opacity: 0,
+              display: "none",
+              x: "12rem",
+              duration: 0,
+            });
+
+            // Animate the navdock (to navdock final style)
+            tl.to(navdock, {
+              background: "#1b1a17",
+              width: navdockWidth,
+              height: navdockHeight,
+              paddingLeft: "1.5rem",
+              paddingRight: "0px",
+              paddingTop: "0px",
+              paddingBottom: "0px",
+              // gap: "1.313rem",
+              border: "0.125rem solid #1b1a17",
+              borderRadius: "9999px",
+
+              duration: 0.5,
+            });
+
+            // Animate the logo (from hidden to expanded)
+            tl.fromTo(
+              "#logo",
+              {
+                y: 0,
+                opacity: 0,
+                display: "none",
+              },
+              {
+                opacity: 1,
+                display: "flex",
+                duration: 0.5,
+              },
+              "-=0.25" // Start slightly before the navdock animation finishes
+            );
+
+            // Animate nav items (from hidden to visible)
+            tl.fromTo(
+              "#nav",
+              { y: 10, opacity: 0, display: "none" }, // Hidden state
+              {
+                y: 0,
+                opacity: 1,
+                display: "flex",
+                duration: 0.3,
+                stagger: 0.1,
+              }, // Visible state
+              "-=0.25" // Start slightly before the navdock animation finishes
+            );
+
+            // Animate the navdock cta (from transparent to goldenbrown)
+            tl.to(
+              "#navdock-cta",
+              {
+                x: 0,
+                display: "flex",
+                opacity: 1,
+                backgroundColor: "#c5a05e",
+                duration: 0.3,
+              },
+              "-=0.5" // Start at the same time as the nav items
+            );
+          },
+          onLeaveBack: () => {
+            // Kill any ongoing animations for these elements
+            gsap.killTweensOf(["#logo", "#nav"]);
+
+            // Immediately hide logo and nav with zero duration
+            gsap.set(["#logo", "#nav"], {
+              display: "none",
+              opacity: 0,
+              y: 0,
+              duration: 0,
+            });
+
+            // Create timeline for navdock transition
+            const tl = gsap.timeline({
+              onStart: () => {
+                // Double-check elements are hidden at start
+                gsap.set(["#logo", "#nav"], {
+                  display: "none",
+                  opacity: 0,
+                  duration: 0,
+                });
+                // Reset navdock
+                tl.to(navdock, {
+                  display: "flex",
+                  padding: 0,
+                  width: "14rem",
+                  height: navdockHeight,
+                  background: "#1b1a17",
+                  duration: 0.3,
+                });
+              },
+              onComplete: () => {
+                // Triple-check elements are hidden after completion
+                gsap.set(["#logo", "#nav"], {
+                  display: "none",
+                  opacity: 0,
+                  duration: 0,
+                });
+              },
+            });
+
+            // Set initial states immediately
+            gsap.set("#navdock-cta", {
+              opacity: 0,
+              display: "none",
+              x: 0,
+              y: "3.5rem",
+              duration: 0,
+            });
+
+            // Reset navdock
+            tl.to(navdock, {
+              display: "flex",
+              padding: 0,
+              width: "14rem",
+              height: navdockHeight,
+              background: "#1b1a17",
+              duration: 0.3,
+            });
+
+            // Reset CTA
+            tl.to(
+              "#navdock-cta",
+              {
+                display: "flex",
+                opacity: 1,
+                y: 0,
+                backgroundColor: "transparent",
+                duration: 0.3,
+              },
+              "-=0.3"
+            );
+
+            // Add safety timeout to force reset if issues persist
+            setTimeout(() => {
+              // Final force reset of all elements
+              gsap.set(["#logo", "#nav"], {
+                display: "none",
+                opacity: 0,
+                duration: 0,
+              });
+              gsap.set(navdock, {
+                width: "14rem",
+                height: navdockHeight,
+                padding: 0,
+                background: "#1b1a17",
+                duration: 0,
+              });
+              gsap.set("#navdock-cta", {
+                display: "flex",
+                opacity: 1,
+                x: 0,
+                y: 0,
+                backgroundColor: "transparent",
+                duration: 0,
+              });
+            }, 500); // 500ms delay
+            // Add safety timeout to force reset if issues persist
+            setTimeout(() => {
+              // Final force reset of all elements
+              gsap.set(["#logo", "#nav"], {
+                display: "none",
+                opacity: 0,
+                duration: 0,
+              });
+              gsap.set("#navdock-cta", {
+                display: "flex",
+                opacity: 1,
+                x: 0,
+                y: 0,
+                backgroundColor: "transparent",
+                duration: 0,
+              });
+            }, 1000); // 500ms delay
+          },
+        });
+        // END PHASE 2
+      }
+
+      return () => {
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+      };
+    }, []);
+
     return (
       <div
         ref={ref}
@@ -73,48 +340,50 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Heading */}
             <div className="relative flex flex-col items-center justify-center my-auto">
               {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
-              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
-                Meet the{" "}
+              <h1 className="hidden sm:inline-block pn-regular-72 uppercase text-center sm:max-w-[20ch] !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
+                <span className="pn-semibold-72">Sell</span> Your Listings in{" "}
                 <span className="text-goldenbrown gold-text font-bold">
-                  Gold Standard
-                </span>{" "}
-                in Real Estate Marketing
+                  Days
+                </span>
+                , Not Weeks
+                <span className="pn-regular-40">
+                  <br/>—For{" "}
+                  <span className="pn-semibold-40">Only $127.99</span>
+                </span>
               </h1>
 
               <h1 className="sm:hidden pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] flex flex-col items-center">
-                Meet the{" "}
+                Maximize Your Sales With The{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Gold Standard
                 </span>{" "}
-                in Real Estate Marketing
+                —From $127.99
               </h1>
               {/* Body */}
-              <h2 className="text-center sm:max-w-[45vw]">
+              <h2 className="text-center sm:max-w-[60ch]">
                 <span className="hidden sm:flex pn-regular-20">
-                  Our premium services combine cutting-edge listing media and
-                  tailored social media management to help you attract more
-                  leads, enhance your visibility, and close deals with
-                  confidence.
+                  Professional media and targeted strategies proven to attract
+                  more buyers, close deals faster, and maximize property
+                  value—delivered within 24 hours.
                 </span>
                 <span className="sm:hidden flex pn-regular-16">
-                  Our premium services combine cutting-edge listing media and
-                  tailored social media management to help you attract more
-                  leads, enhance your visibility, and close deals with
-                  confidence.
+                  Professional media and targeted strategies proven to attract
+                  more buyers, close deals faster, and maximize property
+                  value—delivered within 24 hours.
                 </span>
               </h2>
             </div>
             {/* Hero CTA */}
-            <div className="z-[999]">
+            <div ref={heroCTARef} className="z-[999]">
               <div className="flex my-[0.625rem]">
                 <div className="flex flex-col sm:flex-row gap-[1rem]">
                   <HoverWrapper className="group/cta cursor-select-hover">
                     <Link
                       href="https://listings.virtualxposure.com/order"
-                      className="button gold pn-bold-16 h-fit !bg-transparent shadow-customShadow !border-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto !text-ash"
+                      className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
                       passHref
                     >
-                      <FlipLink className={`flex items-center`}>
+                      <FlipLink className={`flex items-center w-fit`}>
                         Book Now
                       </FlipLink>
 
@@ -123,33 +392,83 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       </div>
                     </Link>
                   </HoverWrapper>
-
-                  {/* <HoverWrapper className="group/cta cursor-select-hover">
-                    <TransitionLink
-                      href="/services/social-media-management"
-                      className="button dark pn-bold-16 h-fit cursor-select-hover shadow-customShadow !border-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-auto !text-goldenbrown"
-                      passHref
-                    >
-                      <FlipLink className={`flex items-center`}>
-                        Elevate Your Online Presence
-                      </FlipLink>
-
-                      <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
-                        {ServiceIcons.arrow}
-                      </div>
-                    </TransitionLink>
-                  </HoverWrapper> */}
                 </div>
               </div>
             </div>
             {/* Guarantees */}
-            <div className="">
-              <ul className="flex flex-row gap-[2rem] custom-bullet-list gold pn-regular-20">
-                <li className="list">24-hour Turnaround</li>
-                <li className="list">2X Money-back Guarantee</li>
+            <div className="border-y-[0.125rem] border-goldenbrown/50 py-[1rem]">
+              <ul className="flex flex-col sm:flex-row gap-[2rem] gold pn-regular-20">
+                <li className="">📸 24-Hour Turnaround Guarantee</li>
+                <li className="">💰 Double Your ROI or Money-Back Guarantee</li>
+                <li className="">🌟 Trusted by 500+ Realtors</li>
               </ul>
             </div>
             {/* </div> */}
+          </div>
+        </div>
+
+        {/* Navdock */}
+        <div
+          id="navdock"
+          className={`fixed hidden sm:flex flex-row items-center justify-center top-[1.25rem] sm:top-[2.5rem] w-[100vw] z-[999] max-w-[100vw]`}
+        >
+          <div
+            ref={navdockRef}
+            id="inner-navdock"
+            className={`flex flex-row items-center justify-between border-[0.125rem] border-ash sm:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
+          >
+            {/* Navdock Final Form */}
+            <div id="logo" className="flex items-center h-full">
+              <TransitionLink
+                href="/"
+                passHref
+                className="cursor-select-hover flex w-[2.25rem] aspect-square overflow-hidden"
+              >
+                <Image
+                  src={logo}
+                  alt="logo"
+                  className="size-full"
+                  placeholder="blur"
+                  quality={75}
+                />
+              </TransitionLink>
+            </div>
+
+            {/* Navigation Links */}
+            <nav
+              id="nav"
+              className="nav flex flex-row gap-[1rem] sm:gap-[2rem] items-center justify-between mx-[2rem] h-full text-white pn-regular-16"
+            >
+              {navigation.map((nav, index) => (
+                <HoverWrapper
+                  key={index}
+                  className="nav-item cursor-select-hover text-nowrap transition-all duration-300"
+                >
+                  <Link key={`l_${index}`} href={nav.href} passHref>
+                    <FlipLink>
+                      {/* <AnimatedText text={nav.title} /> */}
+                      {nav.title}
+                    </FlipLink>
+                  </Link>
+                </HoverWrapper>
+              ))}
+            </nav>
+
+            {/* Initial state content (matches heroCTA exactly) */}
+
+            <HoverWrapper
+              id="navdock-cta"
+              href="https://listings.virtualxposure.com/order"
+              className="button gold pn-regular-16 group/cta !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
+            >
+              <FlipLink className={`flex items-center w-fit`}>
+                Book Now
+              </FlipLink>
+
+              <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                {ServiceIcons.arrow}
+              </div>
+            </HoverWrapper>
           </div>
         </div>
       </div>

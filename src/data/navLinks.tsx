@@ -105,6 +105,21 @@ export const HeaderLinks = [
   },
 ];
 
+export const HomePageNavdockLinks = [
+  {
+    title: "Pricing",
+    href: "/#pricing",
+  },
+  {
+    title: "Why Us",
+    href: "/#why",
+  },
+  {
+    title: "Our Services",
+    href: "/#services",
+  },
+];
+
 export const LMSNavdockLinks = [
   {
     title: "Our Services",
@@ -148,10 +163,10 @@ export const FooterCompanyLinks = [
     title: "Listing Media",
     href: "/services/listing-media",
   },
-  // {
-  //   title: "Social Media Management",
-  //   href: "/services/social-media-management",
-  // },
+  {
+    title: "Social Media Management",
+    href: "/services/social-media-management",
+  },
   {
     title: "Exclusive Community",
     href: "https://www.skool.com/",

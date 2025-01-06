@@ -1,6 +1,8 @@
 "use client";
+import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
+import { TransitionLink } from "@/components/TransitionLink";
 import SectionHeader from "@/components/ui/sectionHeader";
-
+import { ServiceIcons } from "@/data/serviceIcons";
 
 const FloorplansSection = () => {
   // const iGuideUrl = "https://youriguide.com/11408_167a_ave_edmonton_ab";
@@ -20,16 +22,16 @@ const FloorplansSection = () => {
         className="text-black"
       />
       <div className="relative sm:hidden flex size-full aspect-video overflow-hidden shadow-customShadow cursor-none-hover cursor-auto w-[100vw]">
-          <iframe
-            src={iGuideUrl}
-            title="iGuide 3D Tour"
-            className="w-full h-full border-0"
-            allowFullScreen
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin"
-            referrerPolicy="no-referrer-when-downgrade"
-          />
-        </div>
+        <iframe
+          src={iGuideUrl}
+          title="iGuide 3D Tour"
+          className="w-full h-full border-0"
+          allowFullScreen
+          loading="lazy"
+          sandbox="allow-scripts allow-same-origin"
+          referrerPolicy="no-referrer-when-downgrade"
+        />
+      </div>
       <div className="relative flex size-full max-w-[--section-width] flex-col-reverse xl:flex-row items-center justify-center gap-[3rem] xl:gap-[3.75rem] px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow">
         <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
           <SectionHeader
@@ -79,6 +81,26 @@ const FloorplansSection = () => {
           />
         </div>
       </div>
+      {/* CTA */}
+      <div className="flex justify-center w-full">
+          <div className="flex flex-col sm:flex-row gap-[1rem]">
+            <HoverWrapper className="group/cta cursor-select-hover">
+              <TransitionLink
+                href="/case-studies/gallery"
+                className="button gold pn-regular-16 pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-fit"
+                passHref
+              >
+                <FlipLink className={`flex items-center w-fit`}>
+                  See More
+                </FlipLink>
+
+                <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                  {ServiceIcons.arrow}
+                </div>
+              </TransitionLink>
+            </HoverWrapper>
+          </div>
+        </div>
     </div>
   );
 };

@@ -1,11 +1,10 @@
 import SectionHeader from "@/components/ui/sectionHeader";
-import React, { forwardRef, RefObject, useEffect, useRef } from "react";
+import React, { forwardRef, RefObject, useRef } from "react";
 import { WhyUsItems } from "@/data/whyUsItems";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import Image from "next/image";
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import FadeInUp from "@/components/animations/FadeInUp";
-import { gsap } from "@/utils/gsap";
 
 interface SectionProps {
   className?: string;
@@ -20,7 +19,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
     { className, scrollProgress, shrinkSize = 0, rotationAmount = -45 },
     ref
   ) => {
-    const sectionRef = useRef<HTMLDivElement>(null);
+    // const sectionRef = useRef<HTMLDivElement>(null);
     // const contentRef = useRef<HTMLDivElement>(null);
 
     // useEffect(() => {
@@ -39,7 +38,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
       <div
         // ref={ref}
         id="why"
-        className={`sticky top-0 section-container !flex-row ${className} bg-ash relative overflow-hidden`}
+        className={`section-container !flex-row ${className} bg-ash relative overflow-hidden max-h-screen`}
       >
         {/* Background Text Parallax */}
         <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
@@ -80,7 +79,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
               subheading="Why Choose Virtual Xposure?"
               body="We deliver excellence at every level, combining cutting-edge technology with unmatched customer service. Our proven track record and comprehensive solutions ensure your success, backed by industry-leading guarantees and lightning-fast delivery."
             />
-            <div className="hidden xl:grid grid-cols-4 gap-[1rem] xl:gap-[2rem] xl:mt-[5rem]">
+            <div className="hidden xl:grid grid-cols-4 gap-[1rem] xl:gap-[2rem] xl:mt-[2rem]">
               {WhyUsItems.map((item, index) => (
                 <FadeInUp
                   key={index + 4}
@@ -128,5 +127,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
     );
   }
 );
+
+WhyUsSection.displayName = "WhyUsSection";
 
 export default WhyUsSection;

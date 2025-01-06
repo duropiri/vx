@@ -9,7 +9,7 @@ import logo from "@/../../public/assets/images/logo2.webp";
 import { useViewport } from "@/contexts/ViewportContext";
 
 // Import all the SVG assets
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
+// import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import starImage from "@/../../public/assets/svgs/star.svg";
 import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
@@ -368,7 +368,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             </div>
             <div className="relative flex flex-col items-center justify-center my-auto">
               <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[120%] bg-white/80 -z-10 pointer-events-none" />
-              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[60vw] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
+              <h1 className="hidden pn-regular-72 uppercase text-center sm:max-w-[20ch] sm:flex flex-col items-center !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
                 <span>
                   Showcase{" "}
                   <span className="text-goldenbrown gold-text font-bold">

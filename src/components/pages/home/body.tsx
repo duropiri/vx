@@ -50,7 +50,7 @@ import {
 } from "@/components/pages/sections/animations/Animations";
 
 // Data
-import { SMMANavdockLinks } from "@/data/navLinks";
+import { HomePageNavdockLinks } from "@/data/navLinks";
 // import ListingMediaSection from "@/components/pages/home/sections/listingMediaSection";
 // import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
 // import ScrollingBanner from "@/components/animations/ScrollingBanner";
@@ -61,6 +61,7 @@ import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
 import VirtualSection from "@/components/pages/services/sections/virtualSection";
 import { ServiceIcons } from "@/data/serviceIcons";
+import WhyUsSection from "@/components/pages/sections/whyUsSection";
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -388,7 +389,7 @@ const Body = () => {
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         className="max-w-[100vw] overflow-hidden"
-        navigation={SMMANavdockLinks}
+        navigation={HomePageNavdockLinks}
         ref={(el: HTMLDivElement | null) => {
           sectionRefs.current[0] = el;
         }}
@@ -401,6 +402,7 @@ const Body = () => {
         }}
         noSwitch
         noAnimation
+        body={null}
         className="bg-white z-10 !pt-0"
         pricingPackages={RealEstateVideographyPackages}
       />
@@ -417,9 +419,18 @@ const Body = () => {
         subheading="Trusted By The Best"
         // body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
       />
+      <WhyUsSection
+        // scrollProgress={scrollProgress}
+        shrinkSize={0.75}
+        rotationAmount={-20}
+        className="z-0"
+      />
       <Dynamic.BasicSection
         content={
-          <div id="services" className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]">
+          <div
+            id="services"
+            className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]"
+          >
             {/* <FloorplansSection /> */}
             <VirtualSection />
             {/* CTA */}
@@ -444,7 +455,7 @@ const Body = () => {
           </div>
         }
       />
-      <Dynamic.TestimonialsSection noAnimation noCards/>
+      <Dynamic.TestimonialsSection noAnimation noCarousel/>
       <Dynamic.BasicHeroSection
         className="!pb-0"
         heading="Download the App"

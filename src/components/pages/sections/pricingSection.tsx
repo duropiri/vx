@@ -1,14 +1,14 @@
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { Switch } from "@/components/ui/switch";
-import React, { forwardRef, useEffect, useRef, useState } from "react";
+import React, { forwardRef, useEffect, useMemo, useRef, useState } from "react";
 // import { Tilt } from "react-tilt";
 import { gsap } from "@/utils/gsap";
 
 import {
   Swiper,
   SwiperSlide,
-  EffectCards,
+  // EffectCards,
   Pagination,
   Navigation,
   Scrollbar,
@@ -70,7 +70,7 @@ interface SectionProps {
   showAllFeatures?: boolean;
   heading?: string;
   subheading?: string;
-  body?: string;
+  body?: string | null;
 }
 
 const PricingTier = ({
@@ -293,7 +293,7 @@ const PricingTier = ({
           {/* Other features */}
           {tier.features.map((feature, index) => {
             if (feature.inclusion) return null;
-            const isHidden = !showAllFeatures && index >= 8 && !isHovered;
+            // const isHidden = !showAllFeatures && index >= 8 && !isHovered;
 
             return (
               <li
@@ -405,8 +405,9 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const containerRef =
       useRef() as React.MutableRefObject<HTMLDivElement | null>;
     const pricingRef = useRef<HTMLDivElement>(null);
-    const [containerHeight, setContainerHeight] = useState<string>("auto");
-    const { isMobile, isSMDesktop } = useViewport();
+    const [containerHeight] = useState<string>("auto");
+
+    const { isMobile, isSMDesktop, windowWidth, isClient } = useViewport();
 
     const togglePricing = () => {
       setIsYearly(!isYearly);
@@ -416,7 +417,19 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const packages = pricingPackages ?? {};
     const packageCount = Object.keys(packages).length;
 
+    // Replace the shouldUseSwiper logic with this:
+    const shouldUseSwiper = useMemo(() => {
+      // Default to false during server-side rendering
+      if (!isClient) return false;
+
+      return packageCount > 3 && windowWidth < 1700 && windowWidth > 1024;
+    }, [packageCount, windowWidth, isClient]);
+
+    // Update the useEffect that handles height calculations
     useEffect(() => {
+      // Skip during server-side rendering
+      if (!isClient) return;
+
       const calculateHeight = () => {
         if (!pricingRef.current || isMobile || isSMDesktop) return;
 
@@ -463,13 +476,23 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         window.removeEventListener("resize", calculateHeight);
         observer.disconnect();
       };
-    }, [packages, showAllFeatures, isYearly, packageCount]);
+    }, [
+      isClient,
+      isMobile,
+      isSMDesktop,
+      packages,
+      showAllFeatures,
+      isYearly,
+      packageCount,
+    ]);
 
-    const renderPricingTier = (tier: any, index: number) => (
-      <ScaleInVisible
-        key={index}
-        className="group relative size-full max-w-[75vw] size-[1920px]:w-[30rem] min-[1920px]:max-w-[33.333333%]"
-      >
+    const renderPricingTier = (tier: PricingTier, index: number) => {
+      const commonProps = {
+        className:
+          "group relative size-full max-w-[75vw] size-[1920px]:w-[30rem] min-[1920px]:max-w-[33.333333%]",
+      };
+
+      const content = (
         <div className="pricing-tier-wrapper h-full">
           <PricingTier
             showAllFeatures={showAllFeatures}
@@ -478,8 +501,18 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
             className="flex-1 flex flex-col"
           />
         </div>
-      </ScaleInVisible>
-    );
+      );
+
+      return noAnimation ? (
+        <div key={index} {...commonProps}>
+          {content}
+        </div>
+      ) : (
+        <ScaleInVisible key={index} {...commonProps}>
+          {content}
+        </ScaleInVisible>
+      );
+    };
 
     return (
       <div
@@ -549,9 +582,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
             className="relative flex flex-col xl:flex-row w-full justify-center items-center xl:items-start gap-[2rem]"
             style={{ height: containerHeight }}
           >
-            {packageCount > 3 &&
-            window.innerWidth < 1700 &&
-            window.innerWidth > 1024 ? (
+            {shouldUseSwiper ? (
               <Swiper
                 effect={"fade"}
                 slidesPerView={3}

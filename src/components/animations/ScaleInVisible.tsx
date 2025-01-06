@@ -11,7 +11,7 @@ interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
   amount?: number;
   margin?: string;
   id?: string;
-  key?: string | number;
+  // key?: string | number;
   once?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
   hoverScale?: number;
@@ -25,10 +25,10 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
       className = "",
       delay = 0.1,
       duration = 0.2,
-      amount = 0.3,
+      // amount = 0.3,
       margin = "50px",
       id,
-      key,
+      // key,
       once = true,
       onClick,
       hoverScale,
@@ -119,7 +119,7 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
       <div
         id={id}
         ref={actualRef}
-        key={key}
+        // key={key}
         className={className}
         onClick={onClick}
       >
