@@ -182,6 +182,7 @@ function TestimonialsSection({
               loop={true}
               className="mySwiper flex !relative !px-[2rem] sm:!px-[6rem] !w-full h-[30rem] sm:h-[35rem] !mx-0 !overflow-visible
               
+              after:pointer-events-none
               after:bg-gradient-to-l 
               after:from-white/20 
               after:to-transparent 
@@ -192,6 +193,7 @@ function TestimonialsSection({
               after:h-full 
               after:w-1/12
 
+              before:pointer-events-none
               before:bg-gradient-to-r 
               before:from-white/20 
               before:to-transparent 

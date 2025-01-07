@@ -35,8 +35,8 @@ const VirtualSection = ({
       title: "Virtual Staging",
       description:
         "Showcase your property's full potential without the expense of physical staging. Our virtual staging service digitally furnishes empty spaces with designer-curated furniture and décor, helping buyers envision the lifestyle your property offers. From modern minimalist to cozy traditional, we can style your space to appeal to your target market—at a fraction of the cost of traditional staging.",
-      beforeImage: "/assets/portfolio/virtual staging images/DEMO_(19).webp",
-      afterImage: "/assets/portfolio/virtual staging images/DEMO_(20).webp",
+      beforeImage: "/assets/portfolio/virtual-staging-images/DEMO_ (15).webp",
+      afterImage: "/assets/portfolio/virtual-staging-images/DEMO_ (16).webp",
       features: commonFeatures,
       reversed: false,
     },
@@ -45,8 +45,8 @@ const VirtualSection = ({
       title: "Object Removal",
       description:
         "Clean, professional photos start with a clutter-free space. Our advanced digital decluttering service removes distracting items, personal belongings, and temporary fixtures from your listing photos. We help present your property in its best light by digitally clearing spaces to highlight their true potential. Perfect for occupied homes or properties mid-move.",
-      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(5).webp",
-      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(6).webp",
+      beforeImage: "/assets/portfolio/virtual-renovation-images/DEMO_ (5).webp",
+      afterImage: "/assets/portfolio/virtual-renovation-images/DEMO_ (6).webp",
       features: commonFeatures,
       reversed: true,
     },
@@ -55,8 +55,8 @@ const VirtualSection = ({
       title: "Virtual Renovation",
       description:
         "Transform your space without the mess. Our virtual renovation service helps you visualize potential upgrades and modernizations to your property with stunning before-and-after previews. Perfect for planning bathroom remodels, kitchen updates, or whole-home makeovers. Our advanced digital tools allow you to experiment with different styles, colors, and fixtures to create your ideal look—all without lifting a hammer.",
-      beforeImage: "/assets/portfolio/virtual renovation images/DEMO_(36).webp",
-      afterImage: "/assets/portfolio/virtual renovation images/DEMO_(35).webp",
+      beforeImage: "/assets/portfolio/virtual-renovation-images/DEMO_ (12).webp",
+      afterImage: "/assets/portfolio/virtual-renovation-images/DEMO_ (11).webp",
       features: commonFeatures,
       reversed: false,
     },
@@ -164,7 +164,7 @@ const VirtualSection = ({
         ))}
       </div>
       {/* CTA */}
-      {!isHomePage && (
+      {false && (
         <div className="flex justify-center w-full mt-[2rem] xl:mt-[6rem]">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
             <HoverWrapper className="group/cta cursor-select-hover">

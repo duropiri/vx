@@ -109,6 +109,14 @@ const nextConfig = {
         protocol: "https",
         hostname: "virtualxposure.com",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+      },
+      {
+        protocol: "https",
+        hostname: "localhost",
+      },
     ],
     deviceSizes: [384, 640, 768, 960, 1080, 1200, 1440, 1920],
     formats: ["image/avif", "image/webp"],

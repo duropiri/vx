@@ -120,7 +120,7 @@ function Body() {
             /> */}
             <Dynamic.TestimonialsSection
               noHeader
-              noCards
+              
               className="bg-white z-20 !p-0 !w-[100vw] sm:!w-full !-mx-[2rem] sm:!mx-0"
             />
           </>

@@ -14,8 +14,8 @@ import Footer from "@/components/Footer";
 import CustomCursor from "@/components/animations/CustomCursor";
 import SmoothScrolling from "@/components/animations/SmoothScrolling";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import Image from "next/image";
-import logo from "@/../../public/assets/images/logo4.webp";
+// import Image from "next/image";
+// import logo from "@/../../public/assets/images/logo4.webp";
 import { useViewport } from "@/contexts/ViewportContext";
 
 interface TemplateProps {

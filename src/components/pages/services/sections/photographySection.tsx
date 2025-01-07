@@ -13,7 +13,7 @@ import {
   // EffectCards,
   Pagination,
   Navigation,
-  // Scrollbar,
+  Scrollbar,
   A11y,
   Autoplay,
 } from "@/utils/swiper";
@@ -23,6 +23,8 @@ import { useViewport } from "@/contexts/ViewportContext";
 import { ServiceIcons } from "@/data/serviceIcons";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { TransitionLink } from "@/components/TransitionLink";
+
+import { allImagePaths, imageCategories } from "@/data/imageImports";
 
 // Create a mapping of all images using the imported assets
 const PORTFOLIO_IMAGES = {
@@ -166,7 +168,7 @@ const PhotographySection = ({ dark = true }) => {
           center
           dark={dark}
           heading="Photography"
-          subheading="Examples Of Our Work"
+          subheading="Professionally Enhanced Photos"
           noBodyAnimation
           body="From stunning interiors to sweeping aerial views, our professional photography services capture your property in its best light. Every shot is carefully composed and expertly edited to showcase your property's unique features and appeal to potential buyers."
           className="text-black mb-[2rem] xl:mb-[6rem]"
@@ -236,18 +238,30 @@ const PhotographySection = ({ dark = true }) => {
         <Dialog.Portal>
           <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[99999] cursor-none-hover" />
           <Dialog.Content className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]">
+            <Dialog.Title className="hidden">Image Carousel</Dialog.Title>
             <div className="relative w-[90vw] h-[90vh] bg-transparent">
               {selectedImage && (
-                <Image
-                  src={selectedImage}
-                  alt="Full size image"
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                  className="object-contain"
-                  quality={75}
-                />
+                <Swiper
+                  initialSlide={allImagePaths.indexOf(selectedImage)}
+                  scrollbar={{ hide: true }}
+                  modules={[Scrollbar]}
+                  className="mySwiper relative w-full h-full"
+                >
+                  {allImagePaths.map((imagePath, index) => (
+                    <SwiperSlide key={index}>
+                      <Image
+                        src={imagePath}
+                        alt="Full size image"
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                        className="object-contain"
+                        quality={75}
+                      />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
               )}
-              <Dialog.Close className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/75 transition-colors cursor-select-hover">
+              <Dialog.Close className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/75 transition-colors cursor-select-hover z-10">
                 <div className="size-6">{ServiceIcons.close}</div>
               </Dialog.Close>
             </div>
