@@ -121,7 +121,7 @@ const FloorplansSection = () => {
             </li>
           </ul>
         </div>
-        <div className="relative hidden sm:flex size-full aspect-video overflow-hidden cursor-none-hover cursor-auto">
+        <div className="relative flex size-full aspect-video overflow-hidden cursor-none-hover cursor-auto">
           <Image
             // speed={1-0.95}
             src={floorplanImage}
