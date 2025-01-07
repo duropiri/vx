@@ -1,7 +1,7 @@
 import { ServiceIcons } from "@/data/serviceIcons";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
-import whatisitImage from "@/../../public/assets/portfolio/virtual staging images/Virtual_Xposure_-_Virtual_Staging_Image_-_4.webp";
+import whatisitImage from "@/../../public/assets/portfolio/virtual-staging-images/Virtual_Xposure_-_Virtual_Staging_Image_-_4.webp";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
