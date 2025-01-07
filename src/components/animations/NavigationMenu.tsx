@@ -304,14 +304,12 @@ interface MobileMenuProps {
   navigation: LinkDetails[];
   isActive: boolean;
   onClose: () => void;
-  isMobile: boolean; // Add isMobile prop
 }
 
 const MobileMenu: React.FC<MobileMenuProps> = ({
   navigation,
   isActive,
   onClose,
-  isMobile, // Add isMobile prop
 }) => {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const menuRef = useRef<HTMLDivElement>(null);
@@ -321,7 +319,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
 
   // Main menu animation
   useEffect(() => {
-    if (!menuRef.current || isInitialMount.current || !isMobile) {
+    if (!menuRef.current || isInitialMount.current) {
       isInitialMount.current = false;
       return;
     }
@@ -333,12 +331,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           opacity: 1,
           duration: 0.5,
           ease: "power3.inOut",
-          onStart: () => {
-            // Ensure menu is visible at start of animation
-            if (menuRef.current) {
-              menuRef.current.style.display = "block";
-            }
-          },
         });
       } else {
         gsap.to(menuRef.current, {
@@ -346,18 +338,12 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
           opacity: 0,
           duration: 0.5,
           ease: "power3.inOut",
-          onComplete: () => {
-            // Hide menu after animation
-            if (menuRef.current) {
-              menuRef.current.style.display = "none";
-            }
-          },
         });
       }
     }, menuRef);
 
     return () => ctx.revert();
-  }, [isActive, isMobile]);
+  }, [isActive]);
 
   // Initialize menu state
   useEffect(() => {
@@ -419,13 +405,9 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     submenuRefs.current[title] = el;
   };
 
-  // Don't render anything if not mobile
-  if (!isMobile) return null;
-
   return (
     <div
       ref={menuRef}
-      style={{ display: "none" }} // Initially hidden
       className="fixed left-0 top-[51.61px] w-full bg-ash text-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
     >
       <div className="p-6 flex flex-col gap-6">
@@ -552,7 +534,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     pathname === "/" ||
     pathname === "/services/listing-media" ||
     pathname === "/services/social-media-management";
-  const { isMobile, isClient } = useViewport();
+  const { isMobile } = useViewport();
   const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
     null
   );
@@ -567,9 +549,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const headerRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
-
-  // Only show mobile menu button if on mobile
-  const showMobileMenu = isMobile && isClient;
 
   // Handle header slide animation on scroll
   useEffect(() => {
@@ -797,15 +776,12 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             </div>
           </div>
 
-          {/* Mobile Menu with additional checks */}
-          {showMobileMenu && (
-            <MobileMenu
-              navigation={navigation}
-              isActive={isActive && scrollDirection !== "down"}
-              onClose={() => setIsActive(false)}
-              isMobile={isMobile}
-            />
-          )}
+          {/* Mobile Menu */}
+          <MobileMenu
+            navigation={navigation}
+            isActive={isActive && scrollDirection !== "down"}
+            onClose={() => setIsActive(false)}
+          />
         </div>
 
         {/* Dropdown Menu */}
@@ -823,7 +799,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       </div>
 
       {/* Backdrop */}
-      {isActive && showMobileMenu && (
+      {isActive && (
         <div
           ref={backdropRef}
           className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-[1998]"
