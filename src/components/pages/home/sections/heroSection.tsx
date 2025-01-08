@@ -399,7 +399,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="border-y-[0.125rem] border-goldenbrown/50 py-[1rem]">
               <ul className="flex flex-col sm:flex-row gap-[2rem] gold pn-regular-20">
                 <li className="">📸 24-Hour Turnaround Guarantee</li>
-                <li className="">💰 Double Your ROI or Money-Back Guarantee</li>
+                <li className="">💰 2X Money-Back Guarantee</li>
                 <li className="">🌟 Trusted by 500+ Realtors</li>
               </ul>
             </div>
