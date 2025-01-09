@@ -79,14 +79,15 @@ interface DropdownItem {
   href: string;
 }
 
-interface InstantLink {
+interface QuickLink {
   category: string;
+  icon: ReactNode;
   title: string;
   href: string;
 }
 
 interface Dropdown {
-  instantLinks?: InstantLink[];
+  quickLinks?: QuickLink[];
   items: DropdownItem[];
 }
 
@@ -217,13 +218,13 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
   const dropdown = currentDropdown?.dropdown;
   if (!dropdown) return null;
 
-  const groupedLinks = dropdown.instantLinks?.reduce((acc, link) => {
+  const groupedLinks = dropdown.quickLinks?.reduce((acc, link) => {
     if (!acc[link.category]) {
       acc[link.category] = [];
     }
     acc[link.category].push(link);
     return acc;
-  }, {} as Record<string, InstantLink[]>);
+  }, {} as Record<string, QuickLink[]>);
 
   const setItemRef = (index: number) => (el: HTMLDivElement | null) => {
     itemsRef.current[index] = el;
@@ -240,32 +241,34 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
     >
       <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
         {/* Services Grid */}
-        <div className="slide-in-left flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
-          <h3 className="text-sm font-medium text-white/40 mb-5">Services</h3>
-          <div className="grid gap-[1rem]">
-            {dropdown.items.map((item, index) => (
-              <div key={index} ref={setItemRef(index)}>
-                <TransitionLink
-                  href={item.href}
-                  className="cursor-select-hover group inline-block w-fit"
-                >
-                  <div className="flex flex-row items-center justify-center gap-[0.5rem]">
-                    <div className="flex-col items-center p-2 rounded-lg bg-charcoal/20 border-none border group-hover:bg-charcoal/80 transition-all duration-200">
-                      <div className="aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
-                        {item.icon}
+        {dropdown.items && (
+          <div className="slide-in-left flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
+            <h3 className="text-sm font-medium text-white/40 mb-5">Services</h3>
+            <div className="grid gap-[1rem]">
+              {dropdown.items.map((item, index) => (
+                <div key={index} ref={setItemRef(index)}>
+                  <TransitionLink
+                    href={item.href}
+                    className="cursor-select-hover group inline-block w-fit"
+                  >
+                    <div className="flex flex-row items-center justify-center gap-[0.5rem]">
+                      <div className="flex-col items-center p-2 rounded-lg bg-charcoal/20 border-none border group-hover:bg-charcoal/80 transition-all duration-200">
+                        <div className="aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
+                          {item.icon}
+                        </div>
                       </div>
+                      <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white">
+                        <div className="inline-block w-fit text-white/80 group-hover:text-white transition-colors duration-200 pn-regular-16">
+                          <FlipLink>{item.title}</FlipLink>
+                        </div>
+                      </HoverWrapper>
                     </div>
-                    <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white">
-                      <div className="inline-block w-fit text-white/80 group-hover:text-white transition-colors duration-200 pn-regular-16">
-                        <FlipLink>{item.title}</FlipLink>
-                      </div>
-                    </HoverWrapper>
-                  </div>
-                </TransitionLink>
-              </div>
-            ))}
+                  </TransitionLink>
+                </div>
+              ))}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Quick Links Section */}
         {groupedLinks && (
@@ -284,7 +287,16 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                             href={link.href}
                             className="inline-block w-fit cursor-select-hover text-white/80 hover:text-white transition-colors duration-200 pn-regular-16"
                           >
-                            <FlipLink>{link.title}</FlipLink>
+                            <FlipLink>
+                              <div className="inline-flex flex-row items-center justify-center gap-[0.5rem]">
+                                {link.icon && (
+                                  <div className="aspect-square size-4 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
+                                    {link.icon}
+                                  </div>
+                                )}
+                                {link.title}
+                              </div>
+                            </FlipLink>
                           </TransitionLink>
                         </HoverWrapper>
                       </div>
@@ -442,29 +454,43 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                 className="overflow-hidden pl-4"
               >
                 <div className="flex flex-col mt-4 gap-4">
-                  {nav.dropdown.items.map((item, idx) => (
-                    <TransitionLink
-                      key={idx}
-                      href={item.href}
-                      className="flex items-center gap-3 text-white/70 hover:text-white"
-                      onClick={onClose}
-                    >
-                      <span className="pn-regular-16">{item.title}</span>
-                    </TransitionLink>
-                  ))}
+                  {nav.dropdown.items &&
+                    nav.dropdown.items.map((item, idx) => (
+                      <TransitionLink
+                        key={idx}
+                        href={item.href}
+                        className="flex items-center gap-3 text-white/70 hover:text-white"
+                        onClick={onClose}
+                      >
+                        <span className="pn-regular-16">{item.title}</span>
+                      </TransitionLink>
+                    ))}
 
-                  {nav.dropdown.instantLinks && (
+                  {nav.dropdown.quickLinks && (
                     <>
-                      <p className="text-sm font-medium text-white/40 pl-[2rem]">
-                        Quick links
-                      </p>
-                      {nav.dropdown.instantLinks?.map((link, idx) => (
+                      {nav.dropdown?.items && (
+                        <p
+                          className={`text-sm font-medium text-white/40 ${
+                            nav.dropdown?.items && "pl-[2rem]"
+                          }`}
+                        >
+                          Quick links
+                        </p>
+                      )}
+                      {nav.dropdown.quickLinks?.map((link, idx) => (
                         <TransitionLink
                           key={`quick-${idx}`}
                           href={link.href}
-                          className="pl-[2rem] pn-regular-16 text-white/70 hover:text-white"
+                          className={`${
+                            nav.dropdown?.items && "pl-[2rem]"
+                          } gap-[1rem] pn-regular-16 text-white/70 hover:text-white`}
                           onClick={onClose}
                         >
+                          {link.icon && (
+                            <div className="aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
+                              {link.icon}
+                            </div>
+                          )}{" "}
                           {link.title}
                         </TransitionLink>
                       ))}

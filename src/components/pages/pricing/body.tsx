@@ -4,8 +4,8 @@ import dynamic from "next/dynamic";
 
 import PricingSection from "@/components/pages/sections/pricingSection";
 import {
-  RealEstateVideographyPackages,
-  socialMediaPackages,
+  ListingMediaPackages,
+  // socialMediaPackages,
 } from "@/data/pricingPackages";
 
 const Dynamic = {
@@ -84,15 +84,15 @@ function body() {
         className="bg-white z-10 top"
         heading="Listing Media"
         body="Delivering top-tier quality visuals with no limits—crafted to elevate your listings effortlessly."
-        pricingPackages={RealEstateVideographyPackages}
+        pricingPackages={ListingMediaPackages}
       />
-      <PricingSection
+      {/* <PricingSection
         showAllFeatures
         noAnimation
         className="bg-white z-10 top"
         heading="Social Media"
         pricingPackages={socialMediaPackages}
-      />
+      /> */}
       <Dynamic.SocialProofSection full className="bg-white z-10" />
       <Dynamic.CTASection className="bg-white z-10" />
       <Dynamic.FAQSection className="bg-white z-10" />

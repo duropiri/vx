@@ -11,7 +11,7 @@ export const HeaderLinks = [
     title: "Our Solutions",
     href: "#services",
     dropdown: {
-      instantLinks: [
+      quickLinks: [
         {
           category: "Listing Media",
           title: "Real Estate HDR Photography",
@@ -19,6 +19,7 @@ export const HeaderLinks = [
         },
         {
           category: "Listing Media",
+          // icon: ServiceIcons.vr,
           title: "Virtual 3D Tours",
           href: "/virtual-3d-tours",
         },
@@ -53,23 +54,23 @@ export const HeaderLinks = [
           href: "/graphic-design",
         },
       ],
-      items: [
-        {
-          icon: ServiceIcons.house,
-          title: "Listing Media",
-          href: "/services/listing-media",
-        },
-        // {
-        //   icon: ServiceIcons.share,
-        //   title: "Social Media Management",
-        //   href: "/services/social-media-management",
-        // },
-        {
-          icon: ServiceIcons.skool,
-          title: "Exclusive Community",
-          href: "https://www.skool.com",
-        },
-      ],
+      // items: [
+      //   {
+      //     icon: ServiceIcons.house,
+      //     title: "Listing Media",
+      //     href: "/services/listing-media",
+      //   },
+      //   // {
+      //   //   icon: ServiceIcons.share,
+      //   //   title: "Social Media Management",
+      //   //   href: "/services/social-media-management",
+      //   // },
+      //   {
+      //     icon: ServiceIcons.skool,
+      //     title: "Exclusive Community",
+      //     href: "https://www.skool.com",
+      //   },
+      // ],
     },
   },
   {

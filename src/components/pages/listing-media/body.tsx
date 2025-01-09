@@ -54,7 +54,7 @@ import {
 
 import { LMSNavdockLinks } from "@/data/navLinks";
 import { listingMediaFAQ } from "@/data/faq";
-import { RealEstateVideographyPackages } from "@/data/pricingPackages";
+import { ListingMediaPackages } from "@/data/pricingPackages";
 
 
 
@@ -102,7 +102,7 @@ function Body() {
         }}
         noSwitch
         className="bg-white z-10"
-        pricingPackages={RealEstateVideographyPackages}
+        pricingPackages={ListingMediaPackages}
       />
 
       <Dynamic.SocialProofSection

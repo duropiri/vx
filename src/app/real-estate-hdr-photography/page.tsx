@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { baseMetadata } from "@/lib/metadata";
 import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
-import { RealEstateHDRPhotographyPackages } from "@/data/pricingPackages";
+import { ListingMediaPackages } from "@/data/pricingPackages";
 import {
   detailList,
   StepsLeftSection,
@@ -43,7 +43,7 @@ const page = () => {
         ctaSection
         unlimitedSection={[<UnlimitedLeftSection />, <UnlimitedRightSection />]}
         testimonialsSection
-        pricing={RealEstateHDRPhotographyPackages}
+        pricing={ListingMediaPackages}
         photography
       />
     </Page>

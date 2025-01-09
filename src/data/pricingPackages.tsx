@@ -159,22 +159,27 @@ export const socialMediaPackages = {
   },
 };
 
-export const RealEstateHDRPhotographyPackages = {
+export const ListingMediaPackages = {
   starterPackage: {
-    name: "Starter Package",
+    name: "Premium Starter Package",
     price: "127.99",
-    commitment: "Unlimited",
+    commitment: "Maximum Value, Zero Hassle",
     features: [
-      { name: "24 Hour Turnaround or FREE" },
-      { quantity: "Unlimited", name: "Revisions" },
-      { quantity: "Unlimited", name: "SQ FT" },
+      { name: "Guaranteed 24-Hour Delivery—or It's FREE" },
       { quantity: "Unlimited", name: "HDR Images" },
+      { quantity: "Unlimited", name: "Revisions" },
+      { name: "No Hidden Fees" },
+      { name: "Flexible Scheduling" },
       {
         quantity: "FREE",
         name: "Aerial Drone Images",
       },
       {
-        quantity: "FREE BONUS",
+        quantity: "FREE",
+        name: "Blue Sky Enhancements",
+      },
+      {
+        quantity: "FREE",
         name: "Custom Property Website",
       },
       {
@@ -185,22 +190,22 @@ export const RealEstateHDRPhotographyPackages = {
     cta: "Order Now",
   },
   deluxePackage: {
-    name: "Deluxe Package",
+    name: "Premium Deluxe Package",
     price: "247.99",
-    commitment: "Unlimited",
+    commitment: "The Foundation of Excellence",
     features: [
-      { name: "24 Hour Turnaround or FREE" },
       {
-        name: "Everything in",
+        name: "Includes Everything in",
         details: "Starter Package",
         inclusion: true,
       },
-      { name: "iGuide ® Virtual 3D Tour" },
-      { name: "Weekly Analytics Report" },
-      { name: "RMS Measurement Report" },
+      { name: "Guaranteed 24-Hour Delivery—or It's FREE" },
+      { name: "Immersive iGuide® 3D Virtual Tour" },
+      { name: "Detailed Weekly Performance Analytics" },
+      { name: "Accurate RMS Measurement Report" },
       {
         quantity: "FREE",
-        name: "2D Schematic Floor Plan",
+        name: "Professionally Designed 2D Floor Plan",
       },
       {
         name: "2X Money Back Guarantee",
@@ -211,132 +216,25 @@ export const RealEstateHDRPhotographyPackages = {
   },
   socialMediaPackage: {
     isPopular: true,
-    name: "Social Media Package",
+    name: "Social Media Boost Package",
     price: "397.99",
-    commitment: "Unlimited",
+    commitment: "Skyrocket Your Social Influence",
     features: [
-      { name: "48 Hour Turnaround or FREE" },
       {
-        name: "Everything in",
+        name: "Includes Everything in",
         details: "Deluxe Package",
         inclusion: true,
       },
-      { name: "Social Media Video Tour" },
-      {
-        quantity: "FREE",
-        name: "Social Media Carousel",
-      },
-      {
-        quantity: "FREE",
-        name: "Social Media Thumbnail",
-      },
-      {
-        name: "2X Money Back Guarantee",
-      },
-    ],
-    href: "https://listings.virtualxposure.com/order",
-    cta: "Order Now",
-  },
-  cinematicPackage: {
-    isPremium: true,
-    name: "Cinematic Package",
-    price: "497.99",
-    commitment: "Unlimited",
-    features: [
-      { name: "48 Hour Turnaround or FREE" },
-      {
-        name: "Everything in",
-        details: "Social Media Package",
-        inclusion: true,
-      },
-      { name: "Social Media Video Tour" },
-      {
-        quantity: "FREE",
-        name: "Social Media Carousel",
-      },
-      {
-        quantity: "FREE",
-        name: "Social Media Thumbnail",
-      },
-      {
-        name: "2X Money Back Guarantee",
-      },
-    ],
-    href: "https://listings.virtualxposure.com/order",
-    cta: "Order Now",
-  },
-};
+      { name: "Fast 48-Hour Delivery—or It's FREE" },
 
-export const RealEstateVideographyPackages = {
-  starterPackage: {
-    name: "Starter Package",
-    price: "127.99",
-    commitment: "Unlimited",
-    features: [
-      { name: "24 Hour Turnaround or FREE" },
-      { quantity: "Unlimited", name: "Revisions" },
-      { quantity: "Unlimited", name: "SQ FT" },
-      { quantity: "Unlimited", name: "HDR Images" },
+      { name: "Engaging Social Media Video Tour" },
       {
         quantity: "FREE",
-        name: "Aerial Drone Images",
-      },
-      {
-        quantity: "FREE BONUS",
-        name: "Custom Property Website",
-      },
-      {
-        name: "2X Money Back Guarantee",
-      },
-    ],
-    href: "https://listings.virtualxposure.com/order",
-    cta: "Order Now",
-  },
-  deluxePackage: {
-    name: "Deluxe Package",
-    price: "247.99",
-    commitment: "Unlimited",
-    features: [
-      { name: "24 Hour Turnaround or FREE" },
-      {
-        name: "Everything in",
-        details: "Starter Package",
-        inclusion: true,
-      },
-      { name: "iGuide ® Virtual 3D Tour" },
-      { name: "Weekly Analytics Report" },
-      { name: "RMS Measurement Report" },
-      {
-        quantity: "FREE",
-        name: "2D Schematic Floor Plan",
-      },
-      {
-        name: "2X Money Back Guarantee",
-      },
-    ],
-    href: "https://listings.virtualxposure.com/order",
-    cta: "Order Now",
-  },
-  socialMediaPackage: {
-    isPopular: true,
-    name: "Social Media Package",
-    price: "397.99",
-    commitment: "Unlimited",
-    features: [
-      { name: "48 Hour Turnaround or FREE" },
-      {
-        name: "Everything in",
-        details: "Deluxe Package",
-        inclusion: true,
-      },
-      { name: "Social Media Video Tour" },
-      {
-        quantity: "FREE",
-        name: "Social Media Carousel",
+        name: "Eye-Catching Social Media Carousel",
       },
       {
         quantity: "FREE",
-        name: "Social Media Thumbnail",
+        name: "Professionally Crafted Thumbnail",
       },
       {
         name: "2X Money Back Guarantee",
@@ -347,21 +245,22 @@ export const RealEstateVideographyPackages = {
   },
   cinematicPackage: {
     isPremium: true,
-    name: "Cinematic Package",
+    name: "Cinematic Experience Package",
     price: "497.99",
-    commitment: "Unlimited",
+    commitment: "Transform Your Storytelling Vision",
     features: [
-      { name: "48 Hour Turnaround or FREE" },
       {
-        name: "Everything in",
+        name: "Includes Everything in",
         details: "Social Media Package",
         inclusion: true,
       },
-      { name: "Social Media Video Tour" },
-      { name: "Shareable Vimeo URL" },
+      { name: "48-Hour Delivery Guarantee—or It's FREE" },
+
+      { name: "Premium Cinematic Video Tour" },
+      { name: "Easy-to-Share Vimeo URL" },
       {
         quantity: "FREE",
-        name: "Custom YouTube Thumbnail",
+        name: "Custom YouTube-Optimized Thumbnail",
       },
       { name: "2X Money Back Guarantee" },
     ],

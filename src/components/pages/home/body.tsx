@@ -55,7 +55,7 @@ import { HomePageNavdockLinks } from "@/data/navLinks";
 // import SocialMediaManagementSection from "@/components/pages/home/sections/socialmediamanagementSection";
 // import ScrollingBanner from "@/components/animations/ScrollingBanner";
 // import { useViewport } from "@/contexts/ViewportContext";
-import { RealEstateVideographyPackages } from "@/data/pricingPackages";
+import { ListingMediaPackages } from "@/data/pricingPackages";
 
 import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
@@ -404,7 +404,7 @@ const Body = () => {
         noAnimation
         body={null}
         className="bg-white z-10 !pt-0"
-        pricingPackages={RealEstateVideographyPackages}
+        pricingPackages={ListingMediaPackages}
       />
 
       <SocialProofSection

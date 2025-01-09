@@ -347,8 +347,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 </span>
                 , Not Weeks
                 <span className="pn-regular-40">
-                  <br/>—For{" "}
-                  <span className="pn-semibold-40">Only $127.99</span>
+                  <br />
+                  —For <span className="pn-semibold-40">Only $127.99</span>
                 </span>
               </h1>
 
@@ -398,9 +398,24 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Guarantees */}
             <div className="border-y-[0.125rem] border-goldenbrown/50 py-[1rem]">
               <ul className="flex flex-col sm:flex-row gap-[2rem] gold pn-regular-20">
-                <li className="">📸 24-Hour Turnaround Guarantee</li>
-                <li className="">💰 2X Money-Back Guarantee</li>
-                <li className="">🌟 Trusted by 500+ Realtors</li>
+                <li className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+                  <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
+                    {ServiceIcons.timer}
+                  </div>{" "}
+                  24-Hour Turnaround Guarantee
+                </li>
+                <li className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+                  <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
+                    {ServiceIcons.guarantee}
+                  </div>{" "}
+                  2X Money-Back Guarantee
+                </li>
+                <li className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
+                  <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
+                    {ServiceIcons.satisfiedcustomer}
+                  </div>{" "}
+                  Trusted by 500+ Realtors
+                </li>
               </ul>
             </div>
             {/* </div> */}

@@ -3,7 +3,7 @@ import { baseMetadata } from "@/lib/metadata";
 import Page from "@/components/layout/services/page";
 import Body from "@/components/pages/services/body";
 import { ServiceIcons } from "@/data/serviceIcons";
-import { RealEstateVideographyPackages } from "@/data/pricingPackages";
+import { ListingMediaPackages } from "@/data/pricingPackages";
 import {
   StepsLeftSection,
   StepsRightSection,
@@ -60,7 +60,7 @@ const page = () => {
         ctaSection
         unlimitedSection={[<UnlimitedLeftSection />, <UnlimitedRightSection />]}
         testimonialsSection
-        pricing={RealEstateVideographyPackages}
+        pricing={ListingMediaPackages}
       />
     </Page>
   );
