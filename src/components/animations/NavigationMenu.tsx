@@ -81,14 +81,14 @@ interface DropdownItem {
 
 interface QuickLink {
   category: string;
-  icon: ReactNode;
+  icon?: ReactNode;
   title: string;
   href: string;
 }
 
 interface Dropdown {
   quickLinks?: QuickLink[];
-  items: DropdownItem[];
+  items?: DropdownItem[];
 }
 
 interface LinkDetails {
