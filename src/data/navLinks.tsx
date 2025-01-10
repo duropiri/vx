@@ -14,42 +14,49 @@ export const HeaderLinks = [
       quickLinks: [
         {
           category: "Listing Media",
+          icon: ServiceIcons.photos,
           title: "Real Estate HDR Photography",
           href: "/real-estate-hdr-photography",
         },
         {
           category: "Listing Media",
-          // icon: ServiceIcons.vr,
+          icon: ServiceIcons.vr,
           title: "Virtual 3D Tours",
           href: "/virtual-3d-tours",
         },
         {
           category: "Listing Media",
+          icon: ServiceIcons.floorplan,
           title: "RMS Measurements & Schematic Floor Plans",
           href: "/rms-measurements-schematic-floor-plans",
         },
         {
           category: "Listing Media",
+          icon: ServiceIcons.camerashutter,
           title: "Real Estate Videography",
           href: "/real-estate-videography",
         },
         {
           category: "Listing Media",
+          icon: ServiceIcons.furniture,
           title: "Virtual Staging",
           href: "/virtual-staging",
         },
         {
           category: "Listing Media",
+          icon: ServiceIcons.renovation,
           title: "Virtual Renovation",
           href: "/virtual-renovation",
         },
         {
           category: "Listing Media",
+          icon: ServiceIcons.threedimensional,
           title: "3D Rendering",
           href: "/3d-rendering",
         },
         {
           category: "Listing Media",
+          icon: ServiceIcons.graphicdesign,
           title: "Graphic Design",
           href: "/graphic-design",
         },

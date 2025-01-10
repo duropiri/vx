@@ -193,7 +193,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                   <HoverWrapper
                     href={cta.href}
-                    className="button gold pn-regular-16 group/cta cursor-select-hover"
+                    className="button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
                   >
                     <FlipLink className="font-semibold">{cta.label}</FlipLink>
                     <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
