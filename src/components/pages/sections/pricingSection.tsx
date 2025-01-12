@@ -356,7 +356,7 @@ const PricingTier = ({
         <div className="flex self-center items-center justify-center w-full hover:scale-110 transition-all duration-300 mt-[3rem]">
           <HoverWrapper
             href={tier.href || "/"}
-            className={`button gold pn-regular-16 cursor-select-hover size-full xl:w-[18.75rem]`}
+            className={`button !bg-goldenbrown text-white !border-none pn-regular-16 cursor-select-hover size-full xl:w-[18.75rem]`}
           >
             <FlipLink className={`leading-[1rem]`}>
               {tier.cta || "Get Started"}
@@ -373,7 +373,7 @@ const PricingTier = ({
           >
             <FlipLink
               className={`leading-[1rem] ${
-                tier.isPopular ? "text-goldenbrown" : ""
+                tier.isPopular ? "text-white" : ""
               }`}
             >
               {tier.cta || "Get Started"}

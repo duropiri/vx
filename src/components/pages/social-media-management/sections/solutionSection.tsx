@@ -489,7 +489,7 @@ function SolutionSection({ className }: SectionProps) {
 
           <HoverWrapper
             href="https://listings.virtualxposure.com/order"
-            className="button gold pn-regular-16 !w-full lg:!w-auto text-ash group/cta cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5"
+            className="button !bg-goldenbrown text-white !border-none pn-regular-16 !w-full lg:!w-auto text-ash group/cta cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">Book Now</FlipLink>
             <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">

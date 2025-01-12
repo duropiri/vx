@@ -147,7 +147,7 @@ export const BenefitsSection = () => (
           <HoverWrapper className="group/cta cursor-select-hover">
             <Link
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
+              className="button !bg-goldenbrown text-white !border-none pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-full"
               passHref
             >
               <FlipLink className={`flex items-center w-fit`}>

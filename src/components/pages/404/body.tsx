@@ -42,7 +42,7 @@ function Body({}) {
             <HoverWrapper className="group/cta cursor-select-hover">
               <TransitionLink
                 href="/"
-                className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
+                className="button !bg-goldenbrown text-white !border-none pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>

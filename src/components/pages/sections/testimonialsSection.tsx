@@ -209,13 +209,11 @@ function TestimonialsSection({
               [&_.swiper-button-prev]:z-20
               [&_.swiper-button-prev]:translate-y-[22.6rem]
               [&_.swiper-button-prev]:translate-x-[calc(50vw-100%-8.5rem)]
-              [&_.swiper-button-prev]:text-black 
-              [&_.swiper-button-prev]:[background:linear-gradient(90deg,_#c5a05e,_#fdd98a,_#c5a05e)]
-              [&_.swiper-button-prev]:![background-size:_300%_100%] 
+              [&_.swiper-button-prev]:text-white 
+              [&_.swiper-button-prev]:bg-goldenbrown
               [&_.swiper-button-prev]:rounded-full 
-              [&_.swiper-button-prev]:[padding:_0.625rem_1.25rem] 
-              [&_.swiper-button-prev]:border-[0.125rem] 
-              [&_.swiper-button-prev]:border-ash 
+              [&_.swiper-button-prev]:aspect-square
+              [&_.swiper-button-prev]:[padding:_0.625rem_1.25rem]  
               [&_.swiper-button-prev]:after:content-['prev'] 
               [&_.swiper-button-prev]:after:scale-[0.3]
               
@@ -224,13 +222,11 @@ function TestimonialsSection({
               [&_.swiper-button-next]:z-20
               [&_.swiper-button-next]:translate-y-[22.6rem]
               [&_.swiper-button-next]:-translate-x-[calc(50vw-100%-8.5rem)]
-              [&_.swiper-button-next]:text-black 
-              [&_.swiper-button-next]:[background:linear-gradient(90deg,_#c5a05e,_#fdd98a,_#c5a05e)]
-              [&_.swiper-button-next]:![background-size:_300%_100%] 
+              [&_.swiper-button-next]:text-white 
+              [&_.swiper-button-next]:bg-goldenbrown 
               [&_.swiper-button-next]:rounded-full 
-              [&_.swiper-button-next]:[padding:_0.625rem_1.25rem] 
-              [&_.swiper-button-next]:border-[0.125rem] 
-              [&_.swiper-button-next]:border-ash 
+              [&_.swiper-button-next]:aspect-square
+              [&_.swiper-button-next]:[padding:_0.625rem_1.25rem]  
               [&_.swiper-button-next]:after:content-['next'] 
               [&_.swiper-button-next]:after:scale-[0.3]"
             >
@@ -273,7 +269,7 @@ function TestimonialsSection({
             <HoverWrapper className="group/cta cursor-select-hover">
               <TransitionLink
                 href="/testimonials"
-                className="button gold pn-regular-16 pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-fit"
+                className="button !bg-goldenbrown text-white !border-none pn-regular-16 h-full shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-fit"
                 passHref
               >
                 <FlipLink className={`flex items-center w-fit`}>

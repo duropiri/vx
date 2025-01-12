@@ -69,7 +69,7 @@ export const WhatIsItSection1 = () => (
               <HoverWrapper className="">
                 <Link
                   href="https://listings.virtualxposure.com/order"
-                  className="group/cta button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
+                  className="group/cta button !bg-goldenbrown text-white !border-none pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
                   passHref
                 >
                   <FlipLink className={`flex items-center w-fit`}>
@@ -222,7 +222,7 @@ export const WhatIsItSection3 = () => (
               <HoverWrapper className="">
                 <Link
                   href="https://listings.virtualxposure.com/order"
-                  className="group/cta button gold pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
+                  className="group/cta button !bg-goldenbrown text-white !border-none pn-regular-16 flex size-full items-center shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-full  cursor-select-hover"
                   passHref
                 >
                   <FlipLink className={`flex items-center w-fit`}>

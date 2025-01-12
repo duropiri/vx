@@ -33,7 +33,7 @@ interface SectionProps {
 const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ className = "", navigation, originalColor, transitionColor }, ref) => {
     const navdockWidth = "36rem";
-    const navdockHeight = "2.8125rem";
+    const navdockHeight = "2.5rem";
 
     const heroCTARef = useRef<HTMLDivElement>(null);
     const navdockRef = useRef<HTMLDivElement>(null);
@@ -121,7 +121,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               paddingTop: "0px",
               paddingBottom: "0px",
               // gap: "1.313rem",
-              border: "0.125rem solid #1b1a17",
+              // border: "0.125rem solid #1b1a17",
               borderRadius: "9999px",
 
               duration: 0.5,
@@ -393,7 +393,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   <HoverWrapper className="group/cta cursor-select-hover">
                     <Link
                       href="https://listings.virtualxposure.com/order"
-                      className="button gold pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
+                      className="button !bg-goldenbrown !border-none pn-regular-16 h-full shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem] text-white"
                       passHref
                     >
                       <FlipLink className={`flex items-center w-fit`}>
@@ -443,7 +443,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             ref={navdockRef}
             id="inner-navdock"
-            className={`flex flex-row items-center justify-between border-[0.125rem] border-ash sm:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
+            className={`flex flex-row items-center justify-between sm:rounded-full shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 overflow-hidden`}
           >
             {/* Navdock Final Form */}
             <div id="logo" className="flex items-center h-full">
@@ -487,7 +487,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <HoverWrapper
               id="navdock-cta"
               href="https://listings.virtualxposure.com/order"
-              className="button gold pn-regular-16 group/cta !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
+              className="button !bg-goldenbrown text-white pn-regular-16 group/cta !border-none h-fit cursor-select-hover shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
                 Book Now
