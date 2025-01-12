@@ -560,7 +560,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     pathname === "/" ||
     pathname === "/services/listing-media" ||
     pathname === "/services/social-media-management";
-  // const { isMobile } = useViewport();
+  const { isMobile } = useViewport();
   const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
     null
   );
@@ -619,9 +619,11 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     }
   };
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = (isMobile: boolean) => {
     setIsMouseInHeader(false);
-    // setIsActive(false);
+    if (!isMobile) {
+      setIsActive(false);
+    }
   };
 
   // Handle backdrop animation
@@ -679,7 +681,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     >
       <div
         id="header"
-        onMouseLeave={handleMouseLeave}
+        onMouseLeave={() => handleMouseLeave(isMobile)}
         className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
           isActive ? "bg-ash" : "bg-ash/75 hover:bg-ash"
         } 
@@ -833,11 +835,19 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
       {/* Backdrop */}
       {isActive && (
-        <div
-          ref={backdropRef}
-          className="fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
-          onClick={() => setIsActive(false)}
-        />
+        <>
+          <div
+            ref={backdropRef}
+            className="hidden sm:inline-block fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
+            onClick={() => setIsActive(false)}
+            onMouseEnter={() => setIsActive(false)}
+          />
+          <div
+            ref={backdropRef}
+            className="inline-block sm:hidden fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
+            onClick={() => setIsActive(false)}
+          />
+        </>
       )}
     </div>
   );
