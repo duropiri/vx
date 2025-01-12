@@ -615,13 +615,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     } else {
       setPreviousDropdown(activeDropdown);
       setActiveDropdown(null);
-      setIsActive(false);
+      // setIsActive(false);
     }
   };
 
   const handleMouseLeave = () => {
     setIsMouseInHeader(false);
-    setIsActive(false);
+    // setIsActive(false);
   };
 
   // Handle backdrop animation
@@ -675,12 +675,14 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       className={`${
         isHomePage ? "fixed sm:relative" : "fixed"
       } flex z-[99999] w-full max-w-[100vw] border-b border-white border-opacity-10`}
-      onMouseLeave={() => setIsActive(false)}
+      // onMouseLeave={() => setIsActive(false)}
     >
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] bg-ash/75 hover:bg-ash
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
+          isActive ? "bg-ash" : "bg-ash/75 hover:bg-ash"
+        } 
         } [backdrop-filter:_saturate(180%)_blur(20px)] fixed top-0 left-0 right-0`}
       >
         {/* Inverted Border Radius */}
@@ -835,8 +837,6 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           ref={backdropRef}
           className="fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
           onClick={() => setIsActive(false)}
-          onMouseEnter={() => setIsActive(false)}
-          onMouseLeave={() => setIsActive(false)}
         />
       )}
     </div>
