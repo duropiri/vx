@@ -37,32 +37,34 @@ export const WhatIsItSection = () => (
           <div className="absolute top-0 left-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4 " />
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
-          <SectionHeader noAnimation
+          <SectionHeader
+            noCenter
+            noAnimation
             heading="GROW WITH TECHNOLOGY"
             subheading="What is Virtual Renovation and Remodeling?"
             className="text-black"
           />
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              Virtual renovation and remodeling allow you to reimagine the
-              property and renovate it from top to bottom without the time and
-              resource investment of a real-world renovation.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            Virtual renovation and remodeling allow you to reimagine the
+            property and renovate it from top to bottom without the time and
+            resource investment of a real-world renovation.
+          </p>
           {/* </LetterRevealOnScroll> */}
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              Our virtual renovation and remodeling process includes updates to
-              structural elements such as flooring, walls, paint, kitchen
-              remodels, drywall or ceiling updates, backyard improvements, and
-              more.
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            Our virtual renovation and remodeling process includes updates to
+            structural elements such as flooring, walls, paint, kitchen
+            remodels, drywall or ceiling updates, backyard improvements, and
+            more.
+          </p>
           {/* </LetterRevealOnScroll> */}
           {/* <LetterRevealOnScroll end="bottom 90%"> */}
-            <p className={`pn-regular-16 max-w-[43.75rem]`}>
-              We understand that preparing a property to appeal to different
-              generations of buyers with varying tastes and design preferences
-              can be challenging, and we&apos;re here to help!
-            </p>
+          <p className={`pn-regular-16 max-w-[43.75rem]`}>
+            We understand that preparing a property to appeal to different
+            generations of buyers with varying tastes and design preferences can
+            be challenging, and we&apos;re here to help!
+          </p>
           {/* </LetterRevealOnScroll> */}
         </div>
       </div>

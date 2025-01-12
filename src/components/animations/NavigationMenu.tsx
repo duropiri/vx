@@ -22,31 +22,31 @@ import { ServiceIcons } from "@/data/serviceIcons";
 import Link from "next/link";
 
 // Custom hook to track scroll direction
-const useScrollDirection = () => {
-  const [scrollDirection, setScrollDirection] = useState("up");
-  const [lastScrollY, setLastScrollY] = useState(0);
+// const useScrollDirection = () => {
+//   const [scrollDirection, setScrollDirection] = useState("up");
+//   const [lastScrollY, setLastScrollY] = useState(0);
 
-  useEffect(() => {
-    const updateScrollDirection = () => {
-      const scrollY = window.scrollY;
-      if (scrollY === 0) {
-        setScrollDirection("up");
-        return;
-      }
+//   useEffect(() => {
+//     const updateScrollDirection = () => {
+//       const scrollY = window.scrollY;
+//       if (scrollY === 0) {
+//         setScrollDirection("up");
+//         return;
+//       }
 
-      const direction = scrollY > lastScrollY ? "down" : "up";
-      if (Math.abs(scrollY - lastScrollY) > 5) {
-        setScrollDirection(direction);
-      }
-      setLastScrollY(scrollY);
-    };
+//       const direction = scrollY > lastScrollY ? "down" : "up";
+//       if (Math.abs(scrollY - lastScrollY) > 5) {
+//         setScrollDirection(direction);
+//       }
+//       setLastScrollY(scrollY);
+//     };
 
-    window.addEventListener("scroll", updateScrollDirection);
-    return () => window.removeEventListener("scroll", updateScrollDirection);
-  }, [lastScrollY]);
+//     window.addEventListener("scroll", updateScrollDirection);
+//     return () => window.removeEventListener("scroll", updateScrollDirection);
+//   }, [lastScrollY]);
 
-  return scrollDirection;
-};
+//   return scrollDirection;
+// };
 
 // interface ImageProps {
 //   src: string;
@@ -243,7 +243,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
         {/* Services Grid */}
         {dropdown.items && (
           <div className="slide-in-left flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
-            <h3 className="text-sm font-medium text-white/40 mb-5">Services</h3>
+            <p className="text-sm font-medium text-white/40 mb-5">Services</p>
             <div className="grid gap-[1rem]">
               {dropdown.items.map((item, index) => (
                 <div key={index} ref={setItemRef(index)}>
@@ -273,9 +273,9 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
         {/* Quick Links Section */}
         {groupedLinks && (
           <div className="slide-in-left col-span-5 pr-[2rem] py-[2rem]">
-            <h3 className="text-sm font-medium text-white/40 mb-5">
+            <p className="text-sm font-medium text-white/40 mb-5">
               Quick links
-            </h3>
+            </p>
             <div className="grid gap-6">
               {Object.entries(groupedLinks).map(([category, links]) => (
                 <div key={category} className="space-y-4">
@@ -290,7 +290,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
                             <FlipLink>
                               <div className="inline-flex flex-row items-center justify-center gap-[0.5rem]">
                                 {link.icon && (
-                                  <div className="aspect-square size-4 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
+                                  <div className="hidden sm:inline-block aspect-square size-4 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
                                     {link.icon}
                                   </div>
                                 )}
@@ -420,7 +420,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <div
       ref={menuRef}
-      className="fixed left-0 top-[51.61px] w-full bg-ash text-white backdrop-blur-sm z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
+      className="fixed md:hidden left-0 top-[51.61px] w-full bg-ash text-white [backdrop-filter:_saturate(180%)_blur(20px)] z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
     >
       <div className="p-6 flex flex-col gap-6">
         {navigation.map((nav, index) => (
@@ -487,7 +487,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                           onClick={onClose}
                         >
                           {link.icon && (
-                            <div className="aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
+                            <div className="hidden sm:inline-block aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
                               {link.icon}
                             </div>
                           )}{" "}
@@ -560,7 +560,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     pathname === "/" ||
     pathname === "/services/listing-media" ||
     pathname === "/services/social-media-management";
-  const { isMobile } = useViewport();
+  // const { isMobile } = useViewport();
   const [activeDropdown, setActiveDropdown] = useState<LinkDetails | null>(
     null
   );
@@ -570,22 +570,22 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMouseInHeader, setIsMouseInHeader] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const scrollDirection = useScrollDirection();
+  // const scrollDirection = useScrollDirection();
 
   const headerRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
   // Handle header slide animation on scroll
-  useEffect(() => {
-    if (!headerRef.current) return;
+  // useEffect(() => {
+  //   if (!headerRef.current) return;
 
-    gsap.to(headerRef.current, {
-      y: scrollDirection === "down" ? -100 : 0,
-      duration: 0.3,
-      ease: "power2.inOut",
-    });
-  }, [scrollDirection]);
+  //   gsap.to(headerRef.current, {
+  //     y: scrollDirection === "down" ? -100 : 0,
+  //     duration: 0.3,
+  //     ease: "power2.inOut",
+  //   });
+  // }, [scrollDirection]);
 
   useEffect(() => {
     if (!isMouseInHeader) {
@@ -597,6 +597,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const handleMouseEnter = async (nav: LinkDetails) => {
     if (nav.dropdown) {
       setIsMouseInHeader(true);
+      setIsActive(true);
 
       if (activeDropdown && activeDropdown !== nav) {
         setIsAnimating(true);
@@ -614,11 +615,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     } else {
       setPreviousDropdown(activeDropdown);
       setActiveDropdown(null);
+      setIsActive(false);
     }
   };
 
   const handleMouseLeave = () => {
     setIsMouseInHeader(false);
+    setIsActive(false);
   };
 
   // Handle backdrop animation
@@ -671,28 +674,28 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       ref={headerRef}
       className={`${
         isHomePage ? "fixed sm:relative" : "fixed"
-      } flex z-[99999] w-full max-w-[100vw]`}
+      } flex z-[99999] w-full max-w-[100vw] border-b border-white border-opacity-10`}
+      onMouseLeave={() => setIsActive(false)}
     >
       <div
         id="header"
         onMouseLeave={handleMouseLeave}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
-          isHomePage || isMobile ? "bg-ash" : "bg-ash/60 hover:bg-ash"
-        } backdrop-blur-sm fixed top-0 left-0 right-0`}
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] bg-ash/75 hover:bg-ash
+        } [backdrop-filter:_saturate(180%)_blur(20px)] fixed top-0 left-0 right-0`}
       >
         {/* Inverted Border Radius */}
         {isHomePage && (
           <div className="absolute flex flex-row items-start justify-between w-full left-0 -bottom-[1rem]">
             <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
               <div
-                className={`absolute bottom-0 right-0 flex flex-col bg-ash/90 backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-b-r-4 ${
+                className={`absolute bottom-0 right-0 flex flex-col bg-ash [backdrop-filter:_saturate(180%)_blur(20px)] transition-all duration-500 size-[5rem] inv-rad inv-rad-b-r-4 ${
                   isMouseInHeader ? "" : "opacity-0"
                 }`}
               />
             </div>
             <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
               <div
-                className={`absolute bottom-0 left-0 flex flex-col bg-ash/90 backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-b-l-4 ${
+                className={`absolute bottom-0 left-0 flex flex-col bg-ash [backdrop-filter:_saturate(180%)_blur(20px)] transition-all duration-500 size-[5rem] inv-rad inv-rad-b-l-4 ${
                   isMouseInHeader ? "" : "opacity-0"
                 }`}
               />
@@ -702,9 +705,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
         {/* Header Content */}
         <div
-          className={`relative flex items-center justify-between gap-10 z-[9999] ${
-            isHomePage ? "bg-ash" : ""
-          }`}
+          className={`relative flex items-center justify-between gap-10 z-[9999]`}
         >
           {/* Logo */}
           <div className="cursor-select-hover relative lg:max-w-[10vw]">
@@ -805,13 +806,17 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           {/* Mobile Menu */}
           <MobileMenu
             navigation={navigation}
-            isActive={isActive && scrollDirection !== "down"}
+            isActive={
+              isActive
+              //  && scrollDirection !== "down"
+            }
             onClose={() => setIsActive(false)}
           />
         </div>
 
         {/* Dropdown Menu */}
-        {(activeDropdown || previousDropdown) && scrollDirection !== "down" && (
+        {(activeDropdown || previousDropdown) && (
+          // scrollDirection !== "down" &&
           <>
             <Nav
               key={`nav-${activeDropdown?.title || previousDropdown?.title}`}
@@ -828,8 +833,10 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       {isActive && (
         <div
           ref={backdropRef}
-          className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden z-[1998]"
+          className="fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
           onClick={() => setIsActive(false)}
+          onMouseEnter={() => setIsActive(false)}
+          onMouseLeave={() => setIsActive(false)}
         />
       )}
     </div>

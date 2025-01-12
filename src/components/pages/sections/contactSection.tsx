@@ -30,7 +30,7 @@ function ContactSection({ className }: SectionProps): React.JSX.Element {
     <div id="contact" className={`section-container !flex-row ${className}`}>
       <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
         <SectionHeader
-          center
+          noCenter
           heading="Contact"
           subheading={
             <>

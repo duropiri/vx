@@ -108,7 +108,7 @@ function SolutionSection({ className }: SectionProps) {
         {/* Header */}
         <SectionHeader
           dark
-          center
+          noCenter
           heading="Our Solutions"
           subheading={
             <>

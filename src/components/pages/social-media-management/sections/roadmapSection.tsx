@@ -44,7 +44,7 @@ function RoadmapSection({ className }: SectionProps) {
       <div className="relative flex size-full flex-col items-start justify-between sm:gap-0">
         {/* Header */}
         <SectionHeader
-          center
+          noCenter
           heading="Roadmap"
           subheading={
             <>

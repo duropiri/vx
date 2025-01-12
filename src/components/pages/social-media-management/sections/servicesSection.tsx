@@ -73,7 +73,7 @@ function ServicesSection({ className }: SectionProps) {
       <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] lg:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
-          center
+          noCenter
           heading="Our Services"
           subheading="Here's what we do for our clients"
           noBodyAnimation

@@ -19,7 +19,7 @@ const ContentCreationBento = () => {
 
   return (
     <ScaleInVisible className="group relative flex flex-col size-full max-h-[31.25rem]">
-      <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]">
+      <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]">
         {/* Content */}
         <div className="h-full w-full flex-col justify-start items-start gap-2 flex relative">
           {/* Header */}

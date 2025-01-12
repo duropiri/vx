@@ -17,7 +17,7 @@ const DataDrivenBento = () => {
   return (
     <ScaleInVisible className="group relative flex flex-col w-full xl:w-auto h-full max-h-[31.25rem]">
       <div
-        className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center size-full"
+        className="px-[1.5rem] py-[2rem] bg-white rounded-[1rem] shadow-customShadow justify-start items-center size-full"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

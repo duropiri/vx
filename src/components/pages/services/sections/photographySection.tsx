@@ -106,7 +106,7 @@ const PhotographySection = ({ dark = true }) => {
       </div>
       {study.description && (
         <div className="absolute bottom-0 bg-white/75 opacity-0 p-[2rem] pn-regular-16 group-hover:opacity-100 transition-all duration-500">
-          <h3 className="pn-semibold-40 font-bold mb-[1rem]">{study.title}</h3>
+          <p className="pn-semibold-40 font-bold mb-[1rem]">{study.title}</p>
           <p className="mb-[2rem] text-white/80">{study.description}</p>
           {study.challenge && (
             <div className="mb-2">
@@ -165,7 +165,7 @@ const PhotographySection = ({ dark = true }) => {
       >
         <SectionHeader
           noAnimation
-          center
+          noCenter
           dark={dark}
           heading="Photography"
           subheading="Professionally Enhanced Photos"

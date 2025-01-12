@@ -68,7 +68,7 @@ const page = () => {
             </p>
 
             <div className="mb-6">
-              <h3 className="text-xl font-bold mb-2">Refunds</h3>
+              <h2 className="text-xl font-bold mb-2">Refunds</h2>
               <p className="mb-4">
                 We will notify you once we&apos;ve received and inspected your
                 return, and let you know if the refund was approved or not. If

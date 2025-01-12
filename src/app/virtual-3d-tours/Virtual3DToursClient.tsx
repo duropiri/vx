@@ -41,7 +41,9 @@ export const WhatIsItSection = () => (
           <div className="absolute top-0 left-0 flex flex-col bg-white backdrop-blur-lg transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4 " />
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
-          <SectionHeader noAnimation
+          <SectionHeader
+            noCenter
+            noAnimation
             heading="GROW WITH TECHNOLOGY"
             subheading="What is a Virtual 3D Tour?"
             className="text-black"
@@ -74,8 +76,9 @@ export const WhatIsItSection = () => (
 
 export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <SectionHeader noAnimation
-      center
+    <SectionHeader
+      noAnimation
+      noCenter
       heading="Why's & What's"
       subheading="What are the Benefits?"
       className="text-black"
@@ -164,8 +167,9 @@ export const BenefitsSection = () => (
 
 export const AdvantageSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-    <SectionHeader noAnimation
-      center
+    <SectionHeader
+      noAnimation
+      noCenter
       heading="Advantage"
       subheading="The 3D Advantage"
       className="text-black"

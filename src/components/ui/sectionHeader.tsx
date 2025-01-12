@@ -58,7 +58,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         ref={ref}
         className={`section-header ${className} ${
           dark ? "text-white" : "text-ash"
-        } ${center ? "text-center" : "sm:text-start sm:!items-start"} ${
+        } ${center ? "text-center" : "sm:text-start !items-start"} ${
           small ? "sm:max-w-[30vw]" : ""
         } ${medium ? "sm:max-w-[50vw]" : ""}`}
       >
@@ -84,19 +84,19 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                     ref={subheadingRef}
                     className={`${subheadingClassName} hidden -space-y-[10rem] sm:block ${
                       largeText ? "pn-regular-72" : "pn-semibold-40"
-                    } capitalize leading-snug`}
+                    } capitalize leading-snug text-start`}
                   >
                     {subheading}
                   </h2>
                   <h2
                     ref={subheadingMobileRef}
                     className={`${subheadingClassName} ${
-                      noCenter && "text-center sm:text-start"
+                      noCenter && "text-start"
                     } sm:hidden ${
                       largeText ? "pn-semibold-40" : "pn-semibold-24"
                     } ${
                       medium ? "sm:max-w-[24ch]" : ""
-                    } capitalize leading-snug`}
+                    } capitalize leading-snug w-full text-start`}
                   >
                     {subheading}
                   </h2>
@@ -115,10 +115,10 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                 <h2
                   ref={subheadingMobileRef}
                   className={`${subheadingClassName} ${
-                    noCenter && "text-center sm:text-start"
+                    noCenter && "text-start"
                   } sm:hidden ${
                     largeText ? "pn-semibold-72" : "pn-semibold-40"
-                  } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug`}
+                  } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug w-full text-start`}
                 >
                   {subheading}
                 </h2>
@@ -145,7 +145,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                 ref={bodyRef}
                 className={`${bodyClassName} ${noCenter && "text-start"} ${
                   largeText ? "pn-regular-20" : "pn-regular-20"
-                } sm:max-w-[50vw]`}
+                } sm:max-w-[50vw] text-start`}
               >
                 {body}
               </p>

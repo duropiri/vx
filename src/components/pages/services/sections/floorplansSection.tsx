@@ -17,13 +17,14 @@ const FloorplansSection = () => {
       className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem] xl:gap-y-[6rem] "
     >
       <SectionHeader
-        center
+        noCenter
         noAnimation
         heading="3D Virtual Tour (iGuide)"
         subheading="iGUIDE 3D Tours, Measurements & Floor Plans"
         className="text-black"
       />
-      <div className="relative sm:hidden flex size-full aspect-video overflow-hidden shadow-customShadow cursor-none-hover cursor-auto w-[100vw]">
+      {/* Mobile iFrame */}
+      <div className="relative sm:hidden flex size-full aspect-[16/12] overflow-hidden shadow-customShadow cursor-none-hover cursor-auto w-[100vw]">
         <iframe
           src={iGuideUrl}
           title="iGuide 3D Tour"
@@ -34,9 +35,11 @@ const FloorplansSection = () => {
           referrerPolicy="no-referrer-when-downgrade"
         />
       </div>
-      <div className="relative flex size-full max-w-[--section-width] flex-col-reverse xl:flex-row items-center justify-center gap-[3rem] xl:gap-[3.75rem] px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow">
-        <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
+      {/* Content */}
+      <div className="relative flex w-[100vw] md:w-full md:h-[32rem] md:max-w-[--section-width] flex-col-reverse xl:flex-row items-center justify-center bg-white md:rounded-[1rem] shadow-customShadow overflow-hidden">
+        <div className="z-[999] relative flex md:size-full flex-col items-center xl:items-start justify-center gap-y-[2rem] px-[1.5rem] py-[2rem]">
           <SectionHeader
+            noCenter
             noAnimation
             noBodyAnimation
             subheading="Showcase your home layout in detail."
@@ -71,7 +74,7 @@ const FloorplansSection = () => {
             </li>
           </ul>
         </div>
-        <div className="relative hidden sm:flex size-full aspect-video rounded-[1rem] overflow-hidden shadow-customShadow cursor-none-hover cursor-auto">
+        <div className="relative hidden sm:flex size-full h-[32rem] aspect-video overflow-hidden shadow-customShadow cursor-none-hover cursor-auto">
           <iframe
             src={iGuideUrl}
             title="iGuide 3D Tour"
@@ -84,9 +87,25 @@ const FloorplansSection = () => {
         </div>
       </div>
 
-      <div className="relative flex size-full max-w-[--section-width] flex-col-reverse xl:flex-row-reverse items-center justify-center gap-[3rem] xl:gap-[3.75rem] px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow">
-        <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem]">
+      {/* Mobile Image */}
+      <div className="relative sm:hidden flex size-full aspect-[16/12] overflow-hidden shadow-customShadow cursor-none-hover cursor-auto w-[100vw]">
+        <Image
+          // speed={1-0.95}
+          src={floorplanImage}
+          alt="siteplan-image"
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          priority={false}
+          loading={false ? "eager" : "lazy"}
+          className="w-full h-full object-contain pointer-events-none"
+          quality={75}
+        />
+      </div>
+      {/* Content */}
+      <div className="relative flex w-[100vw] md:w-full md:h-[32rem] md:max-w-[--section-width] flex-col-reverse xl:flex-row-reverse items-center justify-center bg-white md:rounded-[1rem] shadow-customShadow">
+        <div className="z-[999] relative flex size-full flex-col items-center xl:items-start justify-center gap-y-[2rem] px-[1.5rem] py-[2rem]">
           <SectionHeader
+            noCenter
             noAnimation
             noBodyAnimation
             subheading="2D Floorplans with Dimensions"
@@ -121,7 +140,7 @@ const FloorplansSection = () => {
             </li>
           </ul>
         </div>
-        <div className="relative flex size-full aspect-video overflow-hidden cursor-none-hover cursor-auto">
+        <div className="relative hidden sm:flex size-full aspect-video overflow-hidden cursor-none-hover cursor-auto">
           <Image
             // speed={1-0.95}
             src={floorplanImage}
@@ -135,6 +154,7 @@ const FloorplansSection = () => {
           />
         </div>
       </div>
+
       {/* CTA */}
       {false && (
         <div className="flex justify-center w-full">

@@ -402,7 +402,9 @@ const Body = () => {
         }}
         noSwitch
         noAnimation
+        showAllFeatures
         body={null}
+        center
         className="bg-white z-10 !pt-0"
         pricingPackages={ListingMediaPackages}
       />
@@ -455,8 +457,9 @@ const Body = () => {
           </div>
         }
       />
-      <Dynamic.TestimonialsSection noAnimation noCarousel/>
+      <Dynamic.TestimonialsSection noAnimation noCarousel />
       <Dynamic.BasicHeroSection
+        center
         className="!pb-0"
         heading="Download the App"
         subheading="Try the New VirtualXposure App!"

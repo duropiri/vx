@@ -19,7 +19,7 @@ const GrowthBento = () => {
   return (
     <ScaleInVisible className="group flex relative size-full max-h-[31.25rem]">
       <div
-        className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]"
+        className="flex flex-col px-[1.5rem] py-[2rem] bg-white rounded-[1rem] shadow-customShadow justify-start items-center overflow-hidden size-full max-h-[31.25rem]"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

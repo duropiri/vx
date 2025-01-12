@@ -5,7 +5,7 @@ import dynamic from "next/dynamic";
 
 // above-thefold static components
 import HeroSection from "@/components/pages/services/sections/heroSection";
-import PricingSection from "@/components/pages/sections/pricingSection";
+// import PricingSection from "@/components/pages/sections/pricingSection";
 
 const Dynamic = {
   SocialProofSection: dynamic(
@@ -39,6 +39,13 @@ const Dynamic = {
 
   BasicSection: dynamic(
     () => import("@/components/pages/sections/basicSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
+
+  PricingSection: dynamic(
+    () => import("@/components/pages/sections/pricingSection"),
     {
       loading: () => <div className="min-h-[220vh]" />,
     }
@@ -132,12 +139,12 @@ function Body({
   whatisitSection,
   benefitsSection,
   advantageSection,
-  whyusSection,
+  // whyusSection,
   stepsSection,
-  socialproofSection,
-  ctaSection,
+  // socialproofSection,
+  // ctaSection,
   unlimitedSection,
-  testimonialsSection,
+  // testimonialsSection,
   pricing,
   faq,
   staging,
@@ -147,15 +154,15 @@ function Body({
 }: SectionProps) {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
-  const contentRef = useRef<HTMLDivElement>(null);
+  // const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!container.current) return;
 
-    const scrollAnimation = setupScrollAnimation(
-      container.current,
-      contentRef.current
-    );
+    // const scrollAnimation = setupScrollAnimation(
+    //   container.current,
+    //   contentRef.current
+    // );
 
     const triggerSection = sectionRefs.current[1];
     if (triggerSection) {
@@ -201,7 +208,9 @@ function Body({
             <Dynamic.BasicSection content={whatisitSection} />
           ))}
 
-        {floorplan && <Dynamic.BasicSection content={<Dynamic.FloorplansSection />} />}
+        {floorplan && (
+          <Dynamic.BasicSection content={<Dynamic.FloorplansSection />} />
+        )}
         {staging && (
           <Dynamic.BasicSection
             content={<VirtualSection renovation={false} objremoval={false} />}
@@ -224,17 +233,17 @@ function Body({
         {/* Specific Pricing? */}
         {/* Pricing? */}
         {pricing && (
-          <PricingSection
+          <Dynamic.PricingSection
             noSwitch
             className="bg-white z-10"
             pricingPackages={pricing}
           />
         )}
       </div>
-      <div ref={container} className="relative h-full bg-white min-w-[100vw]">
+      <div ref={container} className="relative size-full bg-white max-w-[100vw]">
         {/* Why Us? */}
         <WhyUsSection
-          ref={contentRef}
+          // ref={contentRef}
           // scrollProgress={scrollProgress}
           // shrinkSize={0.75}
           // rotationAmount={-20}
@@ -274,11 +283,16 @@ function Body({
         />
       )}
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection noCarousel noAnimation className="bg-white z-10 relative" />
+      <Dynamic.TestimonialsSection
+        noCarousel
+        className="bg-white z-10 relative"
+      />
 
       {/* Case Studies? */}
       {photography && (
-        <Dynamic.BasicSection content={<Dynamic.PhotographySection dark={false} />} />
+        <Dynamic.BasicSection
+          content={<Dynamic.PhotographySection dark={false} />}
+        />
       )}
 
       {/* Contact */}

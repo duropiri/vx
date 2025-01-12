@@ -71,6 +71,7 @@ interface SectionProps {
   heading?: string;
   subheading?: string;
   body?: string | null;
+  center?: boolean;
 }
 
 const PricingTier = ({
@@ -223,9 +224,9 @@ const PricingTier = ({
         }`}
       >
         {/* Heading */}
-        <div className="flex flex-col w-full items-center justify-start gap-[1rem] lg:gap-0">
+        <div className="flex flex-col w-full items-center justify-start gap-[1rem]">
           <h1
-            className={`text-center pn-regular-32 ${
+            className={`text-center pn-regular-32 max-w-[20ch] ${
               tier.isPopular ? "text-goldenbrown" : ""
             }`}
           >
@@ -397,6 +398,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       heading = "Pricing",
       subheading = "Find The Right Plan",
       body = "To ensure we deliver top-tier quality designs on time, we work with a limited number of clients.",
+      center = false,
     },
     forwardedRef
   ) => {
@@ -489,7 +491,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const renderPricingTier = (tier: PricingTier, index: number) => {
       const commonProps = {
         className:
-          "group relative size-full max-w-[75vw] size-[1920px]:w-[30rem] min-[1920px]:max-w-[33.333333%]",
+          "group relative size-full sm:max-w-[75vw] size-[1920px]:w-[30rem] min-[1920px]:max-w-[33.333333%]",
       };
 
       const content = (
@@ -528,11 +530,12 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1rem] lg:gap-[3.75rem] text-ash">
+        <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3.75rem] text-ash">
           {/* Header */}
           <SectionHeader
+            center={center}
+            noCenter={!center}
             noAnimation={noAnimation}
-            center
             heading={heading}
             subheading={subheading}
             noBodyAnimation

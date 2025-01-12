@@ -13,6 +13,7 @@ interface SectionProps {
   subheadingClassName?: string;
   bodyClassName?: string;
   dark?: boolean;
+  center?: boolean;
 }
 
 function BasicHeroSection({
@@ -26,13 +27,15 @@ function BasicHeroSection({
   bodyClassName,
   content,
   dark,
+  center = false,
 }: SectionProps) {
   return (
     <div className={`section-container top !flex-col ${className} bg-white`}>
       <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
         {/* Header */}
         <SectionHeader
-          center
+          center={center}
+          noCenter={!center}
           noAnimation
           dark={dark}
           largeText={largeText}
@@ -44,7 +47,9 @@ function BasicHeroSection({
           bodyClassName={bodyClassName}
         />
         {content && (
-          <div className="relative flex flex-col items-center size-full">{content}</div>
+          <div className="relative flex flex-col items-center size-full">
+            {content}
+          </div>
         )}
       </div>
     </div>

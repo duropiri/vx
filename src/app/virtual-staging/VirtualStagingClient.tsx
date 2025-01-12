@@ -42,6 +42,7 @@ export const WhatIsItSection = () => (
         </div>
         <div className="relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 sm:p-[2rem] bg-white backdrop-blur-lg transition-all duration-500 rounded-tl-[1rem]">
           <SectionHeader
+            noCenter
             noAnimation
             heading="GROW WITH TECHNOLOGY"
             subheading="What is Virtual Staging?"
@@ -82,7 +83,7 @@ export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       noAnimation
-      center
+      noCenter
       heading="Benefits"
       subheading="Why do you need Virtual Staging?"
       className="text-black"

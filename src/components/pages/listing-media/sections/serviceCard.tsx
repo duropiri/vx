@@ -35,7 +35,7 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`relative group flex size-full p-[1rem] pb-[1.5rem] sm:p-0 bg-white rounded-[1.875rem] shadow-customShadow xl:h-[30rem] max-w-[--section-width] flex-col xl:flex-row ${
+      className={`relative group flex size-full p-[1rem] pb-[1.5rem] sm:p-0 bg-white rounded-[1rem] shadow-customShadow xl:h-[30rem] max-w-[--section-width] flex-col xl:flex-row ${
         isRight ? "justify-start" : "justify-end"
       } items-end gap-[3rem] xl:gap-0`}
     >
@@ -101,6 +101,7 @@ const ServiceCard = ({
           {/* Header */}
           <div className="relative">
             <SectionHeader
+              noCenter
               subheading={title}
               className={themeClasses.text}
               noAnimation
@@ -145,7 +146,9 @@ const ServiceCard = ({
                     className="button pn-regular-16 h-full !bg-transparent shadow-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 group-hover/cta:!bg-ash transition-all duration-300 w-full"
                     passHref
                   >
-                    <FlipLink className={`flex items-center w-fit group-hover/cta:text-white transition-all duration-300`}>
+                    <FlipLink
+                      className={`flex items-center w-fit group-hover/cta:text-white transition-all duration-300`}
+                    >
                       Learn More
                     </FlipLink>
 

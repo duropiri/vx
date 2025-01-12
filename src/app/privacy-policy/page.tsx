@@ -18,50 +18,49 @@ export const metadata: Metadata = {
   },
 };
 
+const cookieTable = [
+  { name: "_ab", function: "Used in connection with access to admin." },
+  {
+    name: "_secure_session_id",
+    function: "Used in connection with navigation through a storefront",
+  },
+  { name: "cart", function: "Used in connection with shopping cart." },
+  { name: "cart_sig", function: "Used in connection with checkout." },
+  { name: "cart_ts", function: "Used in connection with checkout." },
+  { name: "checkout_token", function: "Used in connection with checkout." },
+  { name: "secret", function: "Used in connection with checkout." },
+  {
+    name: "secure_customer_sig",
+    function: "Used in connection with customer login.",
+  },
+  {
+    name: "storefront_digest",
+    function: "Used in connection with customer login.",
+  },
+  {
+    name: "_shopify_u",
+    function: "Used to facilitate updating customer account information.",
+  },
+];
+
+const analyticsTable = [
+  { name: "_tracking_consent", function: "Tracking preferences." },
+  { name: "_landing_page", function: "Track landing pages" },
+  { name: "_orig_referrer", function: "Track landing pages" },
+  { name: "_s", function: "Shopify analytics." },
+  { name: "_shopify_s", function: "Shopify analytics." },
+  {
+    name: "_shopify_sa_p",
+    function: "Shopify analytics relating to marketing & referrals.",
+  },
+  {
+    name: "_shopify_sa_t",
+    function: "Shopify analytics relating to marketing & referrals.",
+  },
+  { name: "_shopify_y", function: "Shopify analytics." },
+  { name: "_y", function: "Shopify analytics." },
+];
 const page = () => {
-  const cookieTable = [
-    { name: "_ab", function: "Used in connection with access to admin." },
-    {
-      name: "_secure_session_id",
-      function: "Used in connection with navigation through a storefront",
-    },
-    { name: "cart", function: "Used in connection with shopping cart." },
-    { name: "cart_sig", function: "Used in connection with checkout." },
-    { name: "cart_ts", function: "Used in connection with checkout." },
-    { name: "checkout_token", function: "Used in connection with checkout." },
-    { name: "secret", function: "Used in connection with checkout." },
-    {
-      name: "secure_customer_sig",
-      function: "Used in connection with customer login.",
-    },
-    {
-      name: "storefront_digest",
-      function: "Used in connection with customer login.",
-    },
-    {
-      name: "_shopify_u",
-      function: "Used to facilitate updating customer account information.",
-    },
-  ];
-
-  const analyticsTable = [
-    { name: "_tracking_consent", function: "Tracking preferences." },
-    { name: "_landing_page", function: "Track landing pages" },
-    { name: "_orig_referrer", function: "Track landing pages" },
-    { name: "_s", function: "Shopify analytics." },
-    { name: "_shopify_s", function: "Shopify analytics." },
-    {
-      name: "_shopify_sa_p",
-      function: "Shopify analytics relating to marketing & referrals.",
-    },
-    {
-      name: "_shopify_sa_t",
-      function: "Shopify analytics relating to marketing & referrals.",
-    },
-    { name: "_shopify_y", function: "Shopify analytics." },
-    { name: "_y", function: "Shopify analytics." },
-  ];
-
   const Table = ({ data, title }) => (
     <div className="mb-8">
       {title && <h3 className="text-xl font-bold mb-4">{title}</h3>}
@@ -94,10 +93,7 @@ const page = () => {
 
   return (
     <Page>
-      <div
-        id="privacy-policy"
-        className={`section-container top !flex-row`}
-      >
+      <div id="privacy-policy" className={`section-container top !flex-row`}>
         <div className="relative flex size-full max-w-[--section-width] flex-col items-center justify-between gap-[1.5rem] sm:gap-[3.75rem]">
           <h1 className="pn-bold-40 text-center mb-8">Privacy Policy</h1>
 

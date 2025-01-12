@@ -53,7 +53,7 @@ function FAQSection({
         {/* Header */}
         <SectionHeader
           noAnimation={noAnimation}
-          center={vertical}
+          noCenter
           small={!vertical}
           heading="Got Questions?"
           subheading="Frequently Asked Questions"

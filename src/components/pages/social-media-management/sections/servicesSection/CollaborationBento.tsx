@@ -13,7 +13,7 @@ import ScaleInVisible from "@/components/animations/ScaleInVisible";
 const CollaborationBento = () => {
   return (
     <ScaleInVisible className="group flex relative flex-col w-full xl:w-auto h-full justify-center lg:justify-start items-center lg:max-w-[21.875rem]">
-      <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1.875rem] shadow-customShadow overflow-hidden size-full">
+      <div className="px-[1.5rem] py-[2rem] bg-white rounded-[1rem] shadow-customShadow overflow-hidden size-full">
         <div className="flex-col size-full justify-center items-center lg:items-start gap-[2rem] flex">
           {/* Header */}
           <div className="h-full flex-col justify-center items-center gap-[0.625rem] flex">

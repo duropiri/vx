@@ -10,13 +10,13 @@ export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       noAnimation
-      center
+      noCenter
       heading="Why"
       subheading="Why does the quality of your photos matter?"
       className="text-black"
     />
-    <div className="relative group flex size-full xl:h-fit max-w-[--section-width] flex-col xl:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] pt-[10rem] p-[2rem]">
-      <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash pointer-events-none">
+    <div className="relative group flex size-full xl:h-fit max-w-[--section-width] flex-col xl:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] rounded-[1rem] overflow-hidden">
+      <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center bg-ash pointer-events-none">
         <ParallaxSection
           // speed={1-0.95}
           speed={1 - 0.95}
@@ -34,10 +34,10 @@ export const WhatIsItSection = () => (
           />
         </ParallaxSection>
       </div>
-      <div className="relative flex size-full flex-col xl:flex-row items-end justify-between gap-[1.5rem] h-fit sm:max-w-[40%]">
+      <div className="bg-gradient-to-l from-ash/50 from-[60%] flex size-full flex-col xl:flex-row items-end justify-between h-fit sm:max-w-[50%] pl-[10%] z-10">
         <ul
           // speed={1-1.02}
-          className="flex flex-col grow basis-0 gap-[1.5rem] rounded-[1rem] p-[1.5rem] group bg-ash backdrop-blur-lg opacity-90 scale-100 group-hover:opacity-100 sm:hover:scale-105 sm:hover:-translate-y-[2rem] transition-all duration-500"
+          className="flex flex-col grow basis-0 gap-[1.5rem] p-[1.5rem]"
         >
           {[
             {
@@ -70,12 +70,45 @@ export const WhatIsItSection = () => (
                 </>
               ),
             },
+
+            {
+              icon: ServiceIcons.satisfiedcustomer,
+              text: (
+                <>
+                  Clients feel{" "}
+                  <span className="text-goldenbrown">43% more satisfied</span>{" "}
+                  with their REALTOR with professional photos
+                </>
+              ),
+            },
+            {
+              icon: ServiceIcons.magnifyingglass,
+              text: (
+                <>
+                  <span className="text-goldenbrown">
+                    50% of all new home searches
+                  </span>{" "}
+                  for real estate start online.
+                </>
+              ),
+            },
+            {
+              icon: ServiceIcons.camerashutter,
+              text: (
+                <>
+                  Professional photos result in{" "}
+                  <span className="text-goldenbrown">
+                    1,200% increase in social shares
+                  </span>
+                </>
+              ),
+            },
           ].map((item, index) => (
             <li
               key={index}
               className="group cursor-select-hover hover:-translate-y-[0.5rem] transition-all flex flex-row items-center justify-start w-full gap-x-[1rem] text-white text-start"
             >
-              <div className="flex flex-col p-[1rem] size-[3rem] items-center justify-center rounded-full border-goldenbrown border">
+              <div className="flex flex-col p-[1rem] size-[3rem] items-center justify-center rounded-full bg-ash border-goldenbrown border">
                 <div className="size-[1.5rem] text-goldenbrown/80 group-hover:text-goldenbrown">
                   {item.icon}
                 </div>
@@ -86,9 +119,9 @@ export const WhatIsItSection = () => (
             </li>
           ))}
         </ul>
-        <ul
+        {/* <ul
           // speed={1-1.08}
-          className="flex flex-col grow basis-0 gap-[1.5rem] rounded-[1rem] p-[1.5rem] group bg-ash backdrop-blur-lg opacity-90 scale-100 group-hover:opacity-100 sm:hover:scale-105 sm:hover:-translate-y-[2rem] transition-all duration-500"
+          className="flex flex-col grow basis-0 gap-[1.5rem] p-[1.5rem]"
         >
           {[
             {
@@ -138,7 +171,7 @@ export const WhatIsItSection = () => (
               </div>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
     </div>
   </div>
@@ -147,6 +180,7 @@ export const WhatIsItSection = () => (
 export const StepsLeftSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noCenter
       noAnimation
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"
@@ -237,6 +271,7 @@ export const StepsRightSection = () => (
 export const UnlimitedLeftSection = () => (
   <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noCenter
       noAnimation
       heading="DON'T WORRY ABOUT GOING OVER BUDGET."
       subheading="Simply, unlimited."
@@ -273,7 +308,7 @@ export const UnlimitedLeftSection = () => (
 );
 
 export const UnlimitedRightSection = () => (
-  <div className="relative flex size-full flex-col sm:flex-row items-start justify-center gap-[3rem] sm:gap-[3.75rem] h-[50vh] overflow-hidden rounded-[1.875rem]">
+  <div className="relative flex size-full flex-col sm:flex-row items-start justify-center gap-[3rem] sm:gap-[3.75rem] h-[50vh] overflow-hidden rounded-[1rem]">
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
     <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">

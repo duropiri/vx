@@ -14,7 +14,7 @@ export const WhatIsItSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       noAnimation
-      center
+      noCenter
       heading="Why"
       subheading="Why is Real Estate Video Effective?"
       noBodyAnimation
@@ -87,6 +87,7 @@ export const WhatIsItSection = () => (
 export const StepsLeftSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noCenter
       noAnimation
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
       subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"
@@ -182,6 +183,7 @@ export const StepsRightSection = () => (
 export const UnlimitedLeftSection = () => (
   <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
+      noCenter
       noAnimation
       heading="DON'T WORRY ABOUT GOING OVER BUDGET."
       subheading="Simply, unlimited."
@@ -218,7 +220,7 @@ export const UnlimitedLeftSection = () => (
 );
 
 export const UnlimitedRightSection = () => (
-  <div className="relative flex size-full flex-col sm:flex-row items-start justify-center gap-[3rem] sm:gap-[3.75rem] max-h-[40vh] overflow-hidden rounded-[1.875rem]">
+  <div className="relative flex size-full flex-col sm:flex-row items-start justify-center gap-[3rem] sm:gap-[3.75rem] max-h-[40vh] overflow-hidden rounded-[1rem]">
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
     <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">

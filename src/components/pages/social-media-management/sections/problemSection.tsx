@@ -324,6 +324,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
             className="sticky top-[2.5rem] sm:top-0 left-0 w-full max-w-[--section-width] -mt-[100vh] h-[100vh] flex pt-[7.5rem] pb-[5rem] items-start lg:items-center self-center md:pr-[10rem] xl:pr-[5rem] [@media(min-width:1920px)]:pr-0"
           >
             <SectionHeader
+              noCenter
               ref={textRef}
               medium
               noAnimation

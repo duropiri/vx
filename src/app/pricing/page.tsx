@@ -5,13 +5,16 @@ import Body from "@/components/pages/pricing/body";
 
 export const metadata: Metadata = {
   ...baseMetadata,
-  title: "Real Estate Marketing Services Pricing | Virtual Xposure",
-  description: "Explore Virtual Xposure's transparent pricing for real estate marketing services. From virtual staging at $25 CAD to comprehensive marketing packages. Find affordable, professional solutions with our 2X money-back guarantee.",
-  keywords: "real estate marketing pricing, Virtual Xposure prices, real estate photography rates, virtual staging cost, marketing package prices, real estate marketing packages, affordable real estate marketing, professional marketing rates",
+  title: "Real Estate Media Packages Pricing | Virtual Xposure",
+  description:
+    "Discover Virtual Xposure's premium real estate media packages designed to elevate your property listings. Choose from the Starter, Deluxe, Social Media Boost, or Cinematic Experience packages—all backed by our 2X money-back guarantee and crafted for exceptional results.",
+  keywords:
+    "real estate media pricing, Virtual Xposure packages, real estate photography packages, cinematic video tour cost, social media boost package, real estate marketing plans, premium listing media packages, professional property visuals pricing",
   openGraph: {
     ...baseMetadata.openGraph,
-    title: "Real Estate Marketing Services Pricing | Virtual Xposure",
-    description: "Explore Virtual Xposure's transparent pricing for real estate marketing services. From virtual staging at $25 CAD to comprehensive marketing packages. Find affordable, professional solutions with our 2X money-back guarantee.",
+    title: "Real Estate Media Packages Pricing | Virtual Xposure",
+    description:
+      "Discover Virtual Xposure's premium real estate media packages designed to elevate your property listings. Choose from the Starter, Deluxe, Social Media Boost, or Cinematic Experience packages—all backed by our 2X money-back guarantee and crafted for exceptional results.",
   },
 };
 

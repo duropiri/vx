@@ -185,6 +185,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
           {/* Header */}
           {!full && (
             <SectionHeader
+              noCenter
               small
               heading={heading || "Our Partners"}
               subheading={

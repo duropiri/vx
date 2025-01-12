@@ -18,7 +18,7 @@ export const criticalStyles = `
 
   @media (max-width: 768px) {
     .section-container {
-      padding: 3.125rem 2rem;
+      padding: 3.125rem 1.5rem;
       /* margin: 3.125rem 0; */
     }
 
@@ -47,7 +47,7 @@ export const criticalStyles = `
   /* Mobile Font Utilities (Default) */
   /* Proxima Nova */
   .pn-regular-72, .pn-semibold-72, .pn-bold-72 { font-size: 2.5rem; }  /* 40px */
-  .pn-regular-40, .pn-semibold-40, .pn-bold-40 { font-size: 2rem; }    /* 32px */
+  .pn-regular-40, .pn-semibold-40, .pn-bold-40 { font-size: 1.75rem; }    /* 28px */
   .pn-regular-32, .pn-semibold-32, .pn-bold-32 { font-size: 1.625rem; }/* 26px */
   .pn-regular-24, .pn-semibold-24, .pn-bold-24 { font-size: 1.5rem; }  /* 24px */
   .pn-regular-20, .pn-semibold-20, .pn-bold-20 { font-size: 1.25rem; } /* 20px */

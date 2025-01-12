@@ -70,7 +70,7 @@ function TestimonialsSection({
         {/* Header */}
         {!noHeader && (
           <SectionHeader
-            center
+            noCenter
             noAnimation={noAnimation}
             heading="Testimonials"
             noSubheadingAnimation={noSubheadingAnimation}
@@ -92,7 +92,7 @@ function TestimonialsSection({
               {testimonials.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="border-b cursor-swipe-hover bg-ash text-white border-goldenbrown border rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
+                  className="cursor-swipe-hover bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
                 >
                   <div className="flex flex-col items-center justify-start size-full">
                     <div className="size-[3rem]">
@@ -137,7 +137,7 @@ function TestimonialsSection({
               {testimonials.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="max-w-[80vw] sm:max-w-[50vw] border-b cursor-swipe-hover bg-ash text-white border-goldenbrown border rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
+                  className="max-w-[80vw] sm:max-w-[50vw] cursor-swipe-hover bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
                 >
                   <div className="flex flex-col items-center justify-start size-full">
                     <div className="size-[3rem]">
@@ -174,7 +174,7 @@ function TestimonialsSection({
             <Swiper
               slidesPerView={"auto"}
               centeredSlides={true}
-              spaceBetween={30}
+              spaceBetween={15}
               grabCursor={true}
               modules={[Pagination, Navigation]}
               navigation={true}
@@ -237,7 +237,7 @@ function TestimonialsSection({
               {testimonials.map((item, index) => (
                 <SwiperSlide
                   key={index}
-                  className="max-w-[80vw] sm:max-w-[50vw] border-b bg-ash text-white border-goldenbrown border rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
+                  className="max-w-[80vw] sm:max-w-[50vw] bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
                 >
                   <div className="flex flex-col items-center justify-start size-full">
                     <div className="size-[3rem]">

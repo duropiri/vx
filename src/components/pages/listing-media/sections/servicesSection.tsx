@@ -6,7 +6,7 @@ import { services } from "@/data/services";
 const ServicesSection = () => (
   <div className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-center gap-y-[2rem]">
     <SectionHeader
-      center
+      noCenter
       heading="Our Services"
       subheading="Our Unlimited Services Include"
       className="text-black"

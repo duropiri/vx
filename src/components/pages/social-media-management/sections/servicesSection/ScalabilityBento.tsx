@@ -7,7 +7,7 @@ import ScaleInVisible from "@/components/animations/ScaleInVisible";
 const ScalabilityBento = () => {
   return (
     <ScaleInVisible className="group flex relative size-full h-auto max-h-[31.25rem] lg:h-full">
-      <div className="flex flex-col px-[1.5rem] py-[2rem] bg-transparent rounded-[1.875rem] outline-charcoal/50 outline-dashed justify-center items-center gap-[2.75rem] overflow-hidden hover:outline-goldenrod hover:bg-goldenrod/10 transition-all duration-500 size-full">
+      <div className="flex flex-col px-[1.5rem] py-[2rem] bg-transparent rounded-[1rem] outline-charcoal/50 outline-dashed justify-center items-center gap-[2.75rem] overflow-hidden hover:outline-goldenrod hover:bg-goldenrod/10 transition-all duration-500 size-full">
         {/* Content */}
         <div className="flex flex-col justify-center items-center gap-[2.75rem] text-center text-ash">
           {/* Header */}

@@ -16,7 +16,7 @@ export const BenefitsSection = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
     <SectionHeader
       noAnimation
-      center
+      noCenter
       heading="3D Floor Plans"
       subheading="Why are they worth it?"
       className="text-black"
@@ -93,14 +93,16 @@ export const WhatIsItSection1 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
     <SectionHeader
       noAnimation
-      center
+      noCenter
       largeText
       subheading="2D Schematic Floor Plan"
       className="text-black"
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-        <SectionHeader noAnimation
+        <SectionHeader
+          noCenter
+          noAnimation
           subheading="Showcase your home layout in detail."
           noBodyAnimation
           body="The 3D basic floor plan is the best kind of virtual property tour, which shows the home to a potential buyer in greater detail. From demonstrating the flooring transitions to the door swings directions, a 3D basic floor plan will effectively exhibit a home or property and help attract potential buyers to make a decision easier."
@@ -153,8 +155,9 @@ export const WhatIsItSection1 = () => (
 
 export const WhatIsItSection2 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
-    <SectionHeader noAnimation
-      center
+    <SectionHeader
+      noAnimation
+      noCenter
       subheading="3D Premium Floor Plan"
       className="text-white"
     />
@@ -173,7 +176,9 @@ export const WhatIsItSection2 = () => (
         />
       </div>
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-        <SectionHeader noAnimation
+        <SectionHeader
+          noCenter
+          noAnimation
           subheading="Transform your listing with a custom 3D Rendered Floor Plan, as prospective buyers watch their dream home come to life."
           noBodyAnimation
           body="The 3D Floor Plan enables real estate marketers and architects to present floor plans to clients with remarkable detail. By incorporating elements like cabinets, flooring, bathroom fixtures, paint colors, wall tiles, and various interior finishes, potential buyers gain a comprehensive view of the home or property."
@@ -213,14 +218,17 @@ export const WhatIsItSection2 = () => (
 
 export const WhatIsItSection3 = () => (
   <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem] sm:gap-y-[6rem]">
-    <SectionHeader noAnimation
-      center
+    <SectionHeader
+      noAnimation
+      noCenter
       subheading="Add-on: Exclusive Site plan"
       className="text-black"
     />
     <div className="relative flex size-full max-w-[--section-width] flex-col sm:flex-row items-center justify-center gap-[3rem] sm:gap-[3.75rem]">
       <div className="z-[999] relative flex size-full flex-col items-center sm:items-start justify-center gap-y-[2rem]">
-        <SectionHeader noAnimation
+        <SectionHeader
+          noCenter
+          noAnimation
           subheading="Showcase the landscaping & the exterior elements of your listing."
           noBodyAnimation
           body="A site plan complements your floor plan by providing potential buyers with a comprehensive view of the property and its surroundings. It highlights external features like landscaping, pools, lot sizes, and multiple dwellings, offering a complete picture of the entire property."
