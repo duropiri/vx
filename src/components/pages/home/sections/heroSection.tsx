@@ -341,23 +341,36 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <div className="relative flex flex-col items-center justify-center my-auto">
               {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
               <h1 className="hidden sm:inline-block pn-regular-72 uppercase text-center sm:max-w-[20ch] !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
-                <span className="pn-semibold-72">Sell</span> Your Listings in{" "}
+                <span className="pn-semibold-72">Sell</span> Your{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Listings
+                </span>{" "}
+                in{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Days
                 </span>
-                , Not Weeks
+                , <span className="pn-semibold-72">Not Weeks</span>
                 <span className="pn-regular-40">
                   <br />
                   —For <span className="pn-semibold-40">Only $127.99</span>
                 </span>
               </h1>
 
-              <h1 className="sm:hidden pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] flex flex-col items-center">
-                Maximize Your Sales With The{" "}
+              <h1 className="sm:hidden inline-block pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] items-center">
+                <span className="pn-semibold-72">Sell</span>
+                Your{" "}
                 <span className="text-goldenbrown gold-text font-bold">
-                  Gold Standard
+                  Listings
                 </span>{" "}
-                —From $127.99
+                in{" "}
+                <span className="text-goldenbrown gold-text font-bold">
+                  Days
+                </span>
+                , <span className="pn-semibold-72">Not Weeks</span>
+                <span className="pn-regular-40">
+                  <br />
+                  —For <span className="pn-semibold-40">Only $127.99</span>
+                </span>
               </h1>
               {/* Body */}
               <h2 className="text-center sm:max-w-[60ch]">

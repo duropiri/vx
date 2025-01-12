@@ -619,7 +619,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     }
   };
 
-  const handleMouseLeave = (isMobile: boolean) => {
+  const handleMouseLeave = () => {
     setIsMouseInHeader(false);
     if (!isMobile) {
       setIsActive(false);
@@ -681,7 +681,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     >
       <div
         id="header"
-        onMouseLeave={() => handleMouseLeave(isMobile)}
+        onMouseLeave={() => handleMouseLeave()}
         className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
           isActive ? "bg-ash" : "bg-ash/75 hover:bg-ash"
         } 
