@@ -628,7 +628,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       <div
         id="header"
         onMouseLeave={() => handleMouseLeave()}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] overflow-hidden ${
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
           isActive ? "bg-ash" : "bg-ash/75 hover:bg-ash"
         } [backdrop-filter:_saturate(180%)_blur(20px)] fixed top-0 left-0 right-0`}
       >
@@ -765,7 +765,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
         {/* Dropdown Menu */}
         {/* {(activeDropdown || previousDropdown) && ( */}
-        <div ref={dropdownRef} className="relative flex flex-col">
+        <div ref={dropdownRef} className="relative flex flex-col overflow-hidden">
           <Nav
             key={`nav-${activeDropdown?.title || previousDropdown?.title}`}
             activeDropdown={activeDropdown || previousDropdown}
