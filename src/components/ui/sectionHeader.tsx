@@ -47,7 +47,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
       subheadingRef,
       subheadingMobileRef, // Add the new ref
       bodyRef,
-      noAnimation = false, // New prop to disable animations
+      noAnimation = true, // New prop to disable animations
       noSubheadingAnimation = false, // New prop to disable animations
       noBodyAnimation = false, // New prop to disable animations
     }: SectionProps,
@@ -118,7 +118,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                     noCenter && "text-start"
                   } sm:hidden ${
                     largeText ? "pn-semibold-72" : "pn-semibold-40"
-                  } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug w-full text-start`}
+                  } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug w-full sm:text-start`}
                 >
                   {subheading}
                 </h2>

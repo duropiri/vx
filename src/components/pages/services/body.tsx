@@ -93,6 +93,7 @@ import {
 // Data
 import { listingMediaFAQ } from "@/data/faq";
 import VirtualSection from "@/components/pages/services/sections/virtualSection";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SectionProps {
   title: string;
@@ -155,6 +156,7 @@ function Body({
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
   // const contentRef = useRef<HTMLDivElement>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!container.current) return;
@@ -172,7 +174,7 @@ function Body({
     return () => {
       cleanupGSAPAnimations();
     };
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <>
@@ -296,11 +298,11 @@ function Body({
       )}
 
       {/* Contact */}
-      <div className="bg-white z-10">
+      {/* <div className="bg-white z-10">
         <ScaleInVisible>
           <Dynamic.ContactSection className="bg-white z-10" />
         </ScaleInVisible>
-      </div>
+      </div> */}
       {/* FAQ */}
       <Dynamic.FAQSection
         faq={faq || listingMediaFAQ}

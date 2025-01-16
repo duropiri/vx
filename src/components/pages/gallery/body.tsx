@@ -108,7 +108,7 @@ function Body() {
         className="!bg-white/20 backdrop-blur-sm"
       />
       <FAQSection vertical className="bg-white z-10" />
-      <ContactSection className="bg-white z-10" />
+      {/* <ContactSection className="bg-white z-10" /> */}
       {/* <DynamicGallery images={allImagePaths} /> */}
       {/* <HypnoticGallery images={allImagePaths} /> */}
       {/* <HorizontalScroll images={allImagePaths} /> */}

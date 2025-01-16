@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
+import { useViewport } from '@/contexts/ViewportContext';
 
 interface AnimatedTextProps {
   text: string;
@@ -15,6 +16,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
   delay = 0
 }) => {
   const charsRef = useRef<(HTMLSpanElement | null)[]>([]);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     const elements = charsRef.current.filter(Boolean);
@@ -54,7 +56,7 @@ export const AnimatedText: React.FC<AnimatedTextProps> = ({
     return () => {
       tl.kill();
     };
-  }, [text, onComplete, delay]);
+  }, [text, onComplete, delay, windowWidth]);
 
   return (
     <span className={className}>

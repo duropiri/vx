@@ -216,7 +216,7 @@ function Body() {
       />
       <TestimonialsSection noCarousel noAnimation className="!bg-white/20 backdrop-blur-sm" />
       <FAQSection vertical className="bg-white z-10" />
-      <ContactSection className="bg-white z-10" />
+      {/* <ContactSection className="bg-white z-10" /> */}
     </>
   );
 }

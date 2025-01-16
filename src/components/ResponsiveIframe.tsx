@@ -1,4 +1,5 @@
 "use client";
+import { useViewport } from "@/contexts/ViewportContext";
 import React, { useEffect, useRef, useState } from "react";
 
 interface ResponsiveIframeProps {
@@ -14,6 +15,7 @@ const ResponsiveIframe: React.FC<ResponsiveIframeProps> = ({
 }) => {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState<number>(0);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     const iframe = iframeRef.current;
@@ -86,7 +88,7 @@ const ResponsiveIframe: React.FC<ResponsiveIframeProps> = ({
       resizeObserver.disconnect();
       iframe.removeEventListener("load", injectHeightReporter);
     };
-  }, []);
+  }, [windowWidth]);
 
   return (
     <iframe

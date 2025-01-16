@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "@/utils/gsap";
 import { usePathname } from "next/navigation";
+import { useViewport } from "@/contexts/ViewportContext";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement | null>(null);
@@ -8,6 +9,7 @@ export default function CustomCursor() {
   const followerTextRef = useRef<HTMLSpanElement | null>(null);
   const [isClosed, setIsClosed] = useState(false);
 
+  const { windowWidth } = useViewport();
   const pathname = usePathname();
 
   useEffect(() => {
@@ -285,7 +287,7 @@ export default function CustomCursor() {
           el.removeEventListener("click", handlePlayClick);
         });
     };
-  }, [pathname, isClosed]);
+  }, [pathname, isClosed, windowWidth]);
 
   return (
     <div id="cursor">

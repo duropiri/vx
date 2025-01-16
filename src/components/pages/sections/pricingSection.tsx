@@ -17,6 +17,7 @@ import {
 
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { useViewport } from "@/contexts/ViewportContext";
+import { usePathname } from "next/navigation";
 
 interface Feature {
   name: string;
@@ -83,6 +84,7 @@ const PricingTier = ({
   const [isHovered, setIsHovered] = useState(false);
   const featureRefs = useRef<(HTMLLIElement | null)[]>([]);
   const moreTextRef = useRef<HTMLLIElement | null>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!showAllFeatures) {
@@ -179,7 +181,7 @@ const PricingTier = ({
 
       return () => ctx.revert();
     }
-  }, [isHovered, showAllFeatures]);
+  }, [isHovered, showAllFeatures, windowWidth]);
 
   const hiddenFeatures = tier.features.slice(8);
 
@@ -226,7 +228,7 @@ const PricingTier = ({
         {/* Heading */}
         <div className="flex flex-col w-full items-center justify-start gap-[1rem]">
           <h1
-            className={`text-center pn-regular-32 max-w-[20ch] ${
+            className={`text-center pn-bold-24 max-w-[25ch] ${
               tier.isPopular ? "text-goldenbrown" : ""
             }`}
           >
@@ -254,7 +256,7 @@ const PricingTier = ({
         />
         {/* Price */}
         <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-          <h2 className="text-center pn-semibold-32">
+          <h2 className="text-center pn-bold-40">
             $
             {isYearly
               ? tier.price.yearly || tier.price
@@ -372,9 +374,7 @@ const PricingTier = ({
             } shadow-customShadow shadow-white/5 hover:shadow-goldenrod/5`}
           >
             <FlipLink
-              className={`leading-[1rem] ${
-                tier.isPopular ? "text-white" : ""
-              }`}
+              className={`leading-[1rem] ${tier.isPopular ? "text-white" : ""}`}
             >
               {tier.cta || "Get Started"}
             </FlipLink>
@@ -407,7 +407,8 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
     const containerRef =
       useRef() as React.MutableRefObject<HTMLDivElement | null>;
     const pricingRef = useRef<HTMLDivElement>(null);
-    const [containerHeight] = useState<string>("auto");
+    const [containerHeight, setContainerHeight] = useState<string>("auto");
+    const [isVisible, setIsVisible] = useState(false);
 
     const { isMobile, isSMDesktop, windowWidth, isClient } = useViewport();
 
@@ -427,65 +428,70 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       return packageCount > 3 && windowWidth < 1700 && windowWidth > 1024;
     }, [packageCount, windowWidth, isClient]);
 
-    // Update the useEffect that handles height calculations
-    useEffect(() => {
-      // Skip during server-side rendering
-      if (!isClient) return;
+    const calculateHeight = () => {
+      if (!pricingRef.current || isMobile || isSMDesktop) return;
 
-      const calculateHeight = () => {
-        if (!pricingRef.current || isMobile || isSMDesktop) return;
+      // Reset the container height to "auto" to allow for accurate height calculation
+      setContainerHeight("auto");
 
-        // Reset any previously set heights to get true content height
-        pricingRef.current.style.height = "auto";
+      // Add a small delay to ensure the DOM has fully rendered
+      setTimeout(() => {
+        const children = pricingRef.current
+          ? Array.from(pricingRef.current.children)
+          : [];
 
-        // Get all direct child elements
-        const children = Array.from(pricingRef.current.children);
-
-        // Measure each child's height
         let maxChildHeight = 0;
+
+        // Measure the height of each child and find the maximum
         children.forEach((child) => {
           const height = child.getBoundingClientRect().height;
           maxChildHeight = Math.max(maxChildHeight, height);
         });
 
-        // Set fixed height on parent
+        // Set the parent container's height to the maximum child height
         if (maxChildHeight > 0) {
-          pricingRef.current.style.height = `${maxChildHeight}px`;
+          setContainerHeight(`${maxChildHeight}px`);
+          console.log("Max Child Height Calculated:", maxChildHeight);
         }
-      };
+      }, 500); // Delay in milliseconds (adjust if needed)
+    };
 
-      // Calculate on mount and when dependencies change
-      const timer = setTimeout(calculateHeight, 100);
-
-      // Recalculate on window resize
-      window.addEventListener("resize", calculateHeight);
-
-      // Watch for content changes
-      const observer = new MutationObserver(() => {
-        setTimeout(calculateHeight, 100);
-      });
+    useEffect(() => {
+      // Ensure calculations happen only when the component is visible
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+          }
+        },
+        { threshold: 0.1 } // Adjust the threshold as needed
+      );
 
       if (pricingRef.current) {
-        observer.observe(pricingRef.current, {
-          childList: true,
-          subtree: true,
-          attributes: true,
-        });
+        observer.observe(pricingRef.current);
       }
 
       return () => {
-        clearTimeout(timer);
-        window.removeEventListener("resize", calculateHeight);
-        observer.disconnect();
+        if (pricingRef.current) {
+          observer.unobserve(pricingRef.current);
+        }
       };
+    }, []);
+
+    useEffect(() => {
+      if (isVisible) {
+        calculateHeight();
+      }
     }, [
-      isClient,
+      isVisible,
       isMobile,
       isSMDesktop,
       packages,
       showAllFeatures,
       isYearly,
       packageCount,
+      windowWidth,
+      usePathname(),
     ]);
 
     const renderPricingTier = (tier: PricingTier, index: number) => {
@@ -583,7 +589,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           <div
             ref={pricingRef}
             className="relative flex flex-col xl:flex-row w-full justify-center items-center xl:items-start gap-[2rem]"
-            style={{ height: containerHeight }}
+            style={{ height: isMobile ? "auto" : containerHeight }}
           >
             {shouldUseSwiper ? (
               <Swiper

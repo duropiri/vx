@@ -162,9 +162,10 @@ export default function Template({ children }: TemplateProps) {
   const pathname = usePathname();
   const router = useRouter();
   const isAdminPage = pathname.startsWith("/admin");
-  const { isMobile } = useViewport();
+  const { isMobile, windowWidth } = useViewport();
   const [isInitialized, setIsInitialized] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
+  
 
   const resetBanners = useCallback(() => {
     const banners = document.querySelectorAll(".banner");
@@ -181,7 +182,7 @@ export default function Template({ children }: TemplateProps) {
         yPercent: isMobile ? 0 : -100,
       });
     });
-  }, [isMobile]);
+  }, [isMobile, windowWidth]);
 
   const handleLinkClick = useCallback(
     async (href: string) => {
@@ -228,21 +229,21 @@ export default function Template({ children }: TemplateProps) {
       gsap.killTweensOf(".banner");
       resetBanners();
     };
-  }, [isInitialized, resetBanners]);
+  }, [isInitialized, resetBanners, windowWidth]);
 
   useEffect(() => {
     return () => {
       setIsNavigating(false);
       resetBanners();
     };
-  }, [resetBanners]);
+  }, [resetBanners, windowWidth]);
 
   // Reset animation state on route change
   useEffect(() => {
     if (isInitialized) {
       resetBanners();
     }
-  }, [pathname, isInitialized, resetBanners]);
+  }, [pathname, isInitialized, resetBanners, windowWidth]);
 
   useEffect(() => {
     const cleanup = () => {
@@ -263,7 +264,7 @@ export default function Template({ children }: TemplateProps) {
     return () => {
       cleanup();
     };
-  }, [pathname]);
+  }, [pathname, windowWidth]);
 
   return (
     <NavigationContext.Provider value={{ handleLinkClick }}>

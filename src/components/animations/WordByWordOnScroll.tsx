@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useEffect, useCallback } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 gsap.registerPlugin(ScrollTrigger);
 
 
@@ -98,6 +99,7 @@ export default function WordByWordOnScroll({
   };
 
   const words = processChildren(children);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     const wordElements = wordsRef.current.filter(Boolean);
@@ -128,7 +130,7 @@ export default function WordByWordOnScroll({
     });
 
     return () => ctx.revert();
-  }, [scrollProgress]);
+  }, [scrollProgress, windowWidth]);
 
   return (
     <p

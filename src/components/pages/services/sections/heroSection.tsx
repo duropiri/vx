@@ -15,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import { ServiceIcons } from "@/data/serviceIcons";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SectionProps {
   className?: string;
@@ -56,6 +57,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     },
     ref
   ) => {
+    const { windowWidth } = useViewport();
     // const [color] = useState(originalColor);
     // GSAP Animations
     useEffect(() => {
@@ -83,7 +85,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-    }, []);
+    }, [, windowWidth]);
 
     return (
       <div ref={ref} id={id} className="relative flex w-full overflow-hidden">
@@ -193,7 +195,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                   <HoverWrapper
                     href={cta.href}
-                    className="button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
+                    className="cursor-select-hover button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
                   >
                     <FlipLink className="font-semibold">{cta.label}</FlipLink>
                     <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">

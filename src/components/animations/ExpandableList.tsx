@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 
 // Generic interface for list items - this can be extended based on needs
 export interface ExpandableListProps<T> {
@@ -40,6 +41,7 @@ function ExpandableList<T>({
   const [isExpanded, setIsExpanded] = useState(false);
   const hiddenItemsRef = useRef<HTMLDivElement>(null);
   const showMoreRef = useRef<HTMLDivElement>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     const hiddenItems = hiddenItemsRef.current;
@@ -58,7 +60,7 @@ function ExpandableList<T>({
     if (items.length <= initialVisibleItems) {
       gsap.set(showMoreButton, { display: "none" });
     }
-  }, [items.length, initialVisibleItems]);
+  }, [items.length, initialVisibleItems, windowWidth]);
 
   const toggleList = () => {
     const hiddenItems = hiddenItemsRef.current;

@@ -13,6 +13,7 @@ import linkedinHeroImage from "@/../../public/assets/svgs/hero-svgs/LinkedIn.svg
 import pinterestHeroImage from "@/../../public/assets/svgs/hero-svgs/Pinterest.svg";
 import youtubeHeroImage from "@/../../public/assets/svgs/hero-svgs/Youtube.svg";
 import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg";
+import { useViewport } from "@/contexts/ViewportContext";
 
 // Interface for social media icon positioning
 interface SocialMediaIcon {
@@ -140,6 +141,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
   const iconRef = React.useRef<HTMLDivElement>(null);
   const innerRef = React.useRef<HTMLDivElement>(null);
   const rotateRef = React.useRef<HTMLDivElement>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!iconRef.current || !innerRef.current || !rotateRef.current) return;
@@ -190,7 +192,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [icon]);
+  }, [icon, windowWidth]);
 
   return (
     <div ref={iconRef} className={icon.className}>
@@ -212,12 +214,13 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
 
 // Icons container component
 const IconsContainer: React.FC<SectionProps> = ({ className = "" }) => {
+  const { windowWidth } = useViewport();
   useEffect(() => {
     return () => {
       // Clean up all ScrollTrigger instances
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [windowWidth]);
 
   return (
     <div className={`${className} relative z-10`}>
@@ -246,6 +249,7 @@ interface SectionProps {
 
 const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
   ({ originalColor, className = "", iconsClassName = "" }, ref) => {
+    const { windowWidth } = useViewport();
     // Animate light rays
     const raysRef = useRef<HTMLDivElement>(null);
     useEffect(() => {
@@ -264,7 +268,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
-    }, []);
+    }, [windowWidth]);
 
     return (
       <div

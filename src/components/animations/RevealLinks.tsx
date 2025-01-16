@@ -1,6 +1,7 @@
 "use client";
 import React, { createContext, useContext, useState, useRef, useEffect } from "react";
 import { gsap } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface FlipLinkProps {
   children: React.ReactNode;
@@ -58,6 +59,7 @@ export const FlipLink = ({
   const topTextRef = useRef<HTMLDivElement>(null);
   const bottomTextRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<gsap.Context | null>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     // Clean up previous context if it exists
@@ -100,14 +102,14 @@ export const FlipLink = ({
         animationRef.current.kill();
       }
     };
-  }, [isHovered, outside, inside, duration, ease]);
+  }, [isHovered, outside, inside, duration, ease, windowWidth]);
 
   // Set initial position
   useEffect(() => {
     gsap.set(bottomTextRef.current, {
       y: `${outside}%`,
     });
-  }, [outside]);
+  }, [outside, windowWidth]);
 
   return (
     <div className={`relative block overflow-hidden ${className}`}>

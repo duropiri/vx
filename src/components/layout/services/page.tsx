@@ -4,6 +4,7 @@ import React, { ReactNode, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { PreloaderProvider, usePreloader } from "@/contexts/PreloaderContext";
 import Preloader from "@/components/Preloader";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface PageProps {
   children: ReactNode;
@@ -14,12 +15,13 @@ const Page = ({ children }: PageProps) => {
   const isAdminPage = pathname.startsWith("/admin");
 
   const { isLoaded, finishLoading, isAnimating, finishAnimation } =  usePreloader();
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!isLoaded) {
       finishLoading();
     }
-  }, [isLoaded, finishLoading]);
+  }, [isLoaded, finishLoading, windowWidth]);
 
   return (
     <PreloaderProvider>

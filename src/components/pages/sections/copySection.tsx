@@ -4,6 +4,7 @@ import React, { forwardRef, useRef, useEffect } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 gsap.registerPlugin(ScrollTrigger);
 import WordByWordOnScroll from "@/components/animations/WordByWordOnScroll";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SectionProps {
   className?: string;
@@ -18,6 +19,7 @@ const CopySection = forwardRef<HTMLDivElement, SectionProps>(
     const stickyRef = useRef<HTMLDivElement | null>(null);
     const contentRef = useRef<HTMLDivElement | null>(null);
     const [progress, setProgress] = React.useState(0);
+    const { windowWidth } = useViewport();
 
     useEffect(() => {
       if (!containerRef.current || !stickyRef.current || !contentRef.current)
@@ -60,7 +62,7 @@ const CopySection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         st.kill();
       };
-    }, []);
+    }, [, windowWidth]);
 
     return (
       <div

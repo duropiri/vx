@@ -62,6 +62,7 @@ import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
 import VirtualSection from "@/components/pages/services/sections/virtualSection";
 import { ServiceIcons } from "@/data/serviceIcons";
 import WhyUsSection from "@/components/pages/sections/whyUsSection";
+import { useViewport } from "@/contexts/ViewportContext";
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -244,6 +245,7 @@ const Body = () => {
   // );
 
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!sectionRefs.current) return;
@@ -256,7 +258,7 @@ const Body = () => {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <>

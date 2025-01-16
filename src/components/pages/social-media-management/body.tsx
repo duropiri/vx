@@ -63,11 +63,13 @@ import {
 import { SMMANavdockLinks } from "@/data/navLinks";
 import { socialMediaPackages } from "@/data/pricingPackages";
 import { HomePageStats } from "@/data/stats";
+import { useViewport } from "@/contexts/ViewportContext";
 
 export default function Body() {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
   // const contentRef = useRef<HTMLDivElement>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!container.current) return;
@@ -80,7 +82,7 @@ export default function Body() {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <>
@@ -195,9 +197,9 @@ export default function Body() {
         <Dynamic.CTASection className="bg-white z-10" />
       </ScaleInVisible>
       <Dynamic.FAQSection className="bg-white z-10" />
-      <ScaleInVisible>
+      {/* <ScaleInVisible>
         <Dynamic.ContactSection className="bg-white z-10" />
-      </ScaleInVisible>
+      </ScaleInVisible> */}
     </>
   );
 }

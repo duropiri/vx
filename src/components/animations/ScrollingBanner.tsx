@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface ScrollingBannerProps {
   children: React.ReactNode;
@@ -31,6 +32,7 @@ export default function ScrollingBanner({
   const [maxHeight, setMaxHeight] = useState("auto");
   const animationRef = useRef<gsap.core.Tween>();
   const [isVisible, setIsVisible] = useState(false);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -45,7 +47,7 @@ export default function ScrollingBanner({
     }
 
     return () => observer.disconnect();
-  }, []);
+  }, [windowWidth]);
 
   useEffect(() => {
     if (vertical && childRef.current) {
@@ -54,7 +56,7 @@ export default function ScrollingBanner({
       setMaxWidth(`${height}px`);
       setMaxHeight(`${width}px`);
     }
-  }, [vertical]);
+  }, [vertical, windowWidth]);
 
   useEffect(() => {
     if (!containerRef.current || !isVisible) return;
@@ -92,7 +94,7 @@ export default function ScrollingBanner({
         animationRef.current.kill();
       }
     };
-  }, [baseVelocity, isHovered, slowOnHover, vertical, isVisible]);
+  }, [baseVelocity, isHovered, slowOnHover, vertical, isVisible, windowWidth]);
 
   const styles = {
     banner: vertical

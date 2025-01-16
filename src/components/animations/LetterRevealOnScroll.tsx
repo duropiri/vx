@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef, useState } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 gsap.registerPlugin(ScrollTrigger);
 
 interface AnimationProps {
@@ -25,10 +26,11 @@ const LetterRevealOnScroll: React.FC<AnimationProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [isClient, setIsClient] = useState(false);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     setIsClient(true);
-  }, []);
+  }, [windowWidth]);
 
   useEffect(() => {
     if (!isClient || !containerRef.current) return;
@@ -66,7 +68,7 @@ const LetterRevealOnScroll: React.FC<AnimationProps> = ({
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [isClient, staggerDuration, start, end, duration, markers]);
+  }, [isClient, staggerDuration, start, end, duration, markers, windowWidth]);
 
   const splitText = (node: React.ReactNode): React.ReactNode => {
     if (typeof node === "string") {

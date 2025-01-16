@@ -57,14 +57,14 @@ function ViewportProvider({ children }: { children: React.ReactNode }) {
         const newWidth = window.innerWidth;
         const oldWidth = state.windowWidth;
 
-        const crossedMobileBreakpoint =
-          (oldWidth <= MOBILE_BREAKPOINT && newWidth > MOBILE_BREAKPOINT) ||
-          (oldWidth > MOBILE_BREAKPOINT && newWidth <= MOBILE_BREAKPOINT);
+        // const crossedMobileBreakpoint =
+        //   (oldWidth <= MOBILE_BREAKPOINT && newWidth > MOBILE_BREAKPOINT) ||
+        //   (oldWidth > MOBILE_BREAKPOINT && newWidth <= MOBILE_BREAKPOINT);
 
-        if (crossedMobileBreakpoint) {
-          window.location.reload();
-          return;
-        }
+        // if (crossedMobileBreakpoint) {
+        //   window.location.reload();
+        //   return;
+        // }
 
         updateViewport();
       }, 100);

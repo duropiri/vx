@@ -7,6 +7,7 @@ import React, {
   ReactNode,
   useEffect,
 } from "react";
+import { useViewport } from "./ViewportContext";
 
 interface PreloaderContextProps {
   isLoaded: boolean;
@@ -32,6 +33,7 @@ export const PreloaderProvider: React.FC<{ children: ReactNode }> = ({
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
   const [isAnimating, setIsAnimating] = useState(true);
+  const { windowWidth } = useViewport();
 
   // useEffect(() => {
   //   let scrollPosition = 0;
@@ -63,7 +65,7 @@ export const PreloaderProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     // console.log(`Context - isLoaded: ${isLoaded}, isAnimating: ${isAnimating}`);
-  }, [isLoaded, isAnimating]);
+  }, [isLoaded, isAnimating, windowWidth]);
 
   const finishLoading = () => {
     // console.log("finishLoading called");

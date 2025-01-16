@@ -4,6 +4,7 @@ import React, { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import { gsap } from "@/utils/gsap";
 import logo from "@/../../public/assets/images/logo-black-black.webp";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface PreloaderProps {
   finishLoading: () => void;
@@ -14,6 +15,7 @@ const Preloader: React.FC<PreloaderProps> = ({
   finishLoading,
   finishAnimation,
 }) => {
+  const { windowWidth } = useViewport();
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   // const duration = 5000;
   const textRef = useRef<HTMLDivElement>(null);
@@ -49,7 +51,7 @@ const Preloader: React.FC<PreloaderProps> = ({
       window.removeEventListener("load", handleWindowLoad);
       clearInterval(interval);
     };
-  }, [finishLoading]);
+  }, [finishLoading, windowWidth]);
 
   useEffect(() => {
     if (!textRef.current || !imageRef.current) return;
@@ -59,14 +61,14 @@ const Preloader: React.FC<PreloaderProps> = ({
     if (chars.length === 0) return;
 
     animationCompleted.current = true;
-    
+
     const mainTimeline = gsap.timeline({
       defaults: { ease: "power2.inOut" },
       onComplete: () => {
         const exitTimeline = gsap.timeline({
           onComplete: () => {
             finishAnimation();
-          }
+          },
         });
 
         exitTimeline
@@ -76,11 +78,15 @@ const Preloader: React.FC<PreloaderProps> = ({
             duration: 0.5,
             ease: "power1.inOut",
           })
-          .to(".splash-screen", {
-            clipPath: "inset(0% 0% 100% 0%)",
-            duration: 0.5,
-            ease: "power4.inOut",
-          }, "-=0.25");
+          .to(
+            ".splash-screen",
+            {
+              clipPath: "inset(0% 0% 100% 0%)",
+              duration: 0.5,
+              ease: "power4.inOut",
+            },
+            "-=0.25"
+          );
       },
     });
 
@@ -111,22 +117,22 @@ const Preloader: React.FC<PreloaderProps> = ({
           duration: 1,
           ease: "power4.inOut",
         }
-      )
-      // .to(imageRef.current, {
-      //   clipPath: "inset(0% 0% 100% 0%)",
-      //   duration: 2,
-      //   ease: "power1.inOut",
-      // })
-      // .to(imageRef.current, {
-      //   scale: 1,
-      //   duration: 0.1,
-      //   ease: "power1.inOut",
-      // })
+      );
+    // .to(imageRef.current, {
+    //   clipPath: "inset(0% 0% 100% 0%)",
+    //   duration: 2,
+    //   ease: "power1.inOut",
+    // })
+    // .to(imageRef.current, {
+    //   scale: 1,
+    //   duration: 0.1,
+    //   ease: "power1.inOut",
+    // })
 
     return () => {
       mainTimeline.kill();
     };
-  }, [loadingPercentage, finishAnimation]);
+  }, [loadingPercentage, finishAnimation, windowWidth]);
 
   return (
     <div
@@ -144,7 +150,7 @@ const Preloader: React.FC<PreloaderProps> = ({
               className="char inline-block"
               style={{
                 opacity: 0,
-                transform: "translateY(25px)"
+                transform: "translateY(25px)",
               }}
             >
               {char}

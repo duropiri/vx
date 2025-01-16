@@ -1,6 +1,7 @@
 "use client";
 import React, { forwardRef, useEffect, useRef, MutableRefObject } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 gsap.registerPlugin(ScrollTrigger);
 
 interface FadeInUpProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -38,6 +39,7 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
     ref
   ) => {
     const elementRef = useRef<HTMLDivElement | null>(null);
+    const { windowWidth } = useViewport();
 
     useEffect(() => {
       const element = elementRef.current;
@@ -115,7 +117,7 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
           element.removeEventListener("mouseup", handleMouseUp);
         }
       };
-    }, [delay, duration, index, margin, once, onHover, onTap]);
+    }, [delay, duration, index, margin, once, onHover, onTap, windowWidth]);
 
     return (
       <div

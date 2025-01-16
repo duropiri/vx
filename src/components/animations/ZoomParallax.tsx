@@ -30,7 +30,7 @@ export default function ZoomParallax({
   id,
   onStepChange, // Pass this as a prop
 }: AnimationProps) {
-  const { isMobile } = useViewport();
+  const { isMobile, windowWidth } = useViewport();
 
   const containerRef = useRef(null);
   const elementsRef = useRef<HTMLDivElement[]>([]);
@@ -166,7 +166,8 @@ export default function ZoomParallax({
     initialOpacityFirstImage,
     initialOpacityOtherImages,
     media.length,
-    onStepChange, // Add this dependency to trigger the change
+    onStepChange, 
+    , windowWidth// Add this dependency to trigger the change
   ]);
 
   return (

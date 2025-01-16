@@ -11,6 +11,7 @@ import stratGrowthImage from "@/../../public/assets/images/strategic-growth.webp
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { ServiceIcons } from "@/data/serviceIcons";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SectionProps {
   className?: string;
@@ -19,6 +20,7 @@ interface SectionProps {
 function SolutionSection({ className }: SectionProps) {
   const bentosRef = useRef<HTMLDivElement>(null);
   const bentoRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     const handleOnMouseMove = (e: MouseEvent) => {
@@ -44,7 +46,7 @@ function SolutionSection({ className }: SectionProps) {
         bentosContainer.removeEventListener("mousemove", handleOnMouseMove);
       }
     };
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <div
@@ -489,7 +491,7 @@ function SolutionSection({ className }: SectionProps) {
 
           <HoverWrapper
             href="https://listings.virtualxposure.com/order"
-            className="button !bg-goldenbrown text-white !border-none pn-regular-16 !w-full lg:!w-auto text-ash group/cta cursor-select-hover !bg-goldenbrown !border-none shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5"
+            className="button !bg-goldenbrown text-white !border-none pn-regular-16 !w-full lg:!w-auto group/cta cursor-select-hover shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5"
           >
             <FlipLink className="font-semibold">Book Now</FlipLink>
             <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">

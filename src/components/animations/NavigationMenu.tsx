@@ -99,64 +99,31 @@ interface LinkDetails {
 }
 
 interface NavProps {
-  activeDropdown: LinkDetails | null;
+  activeDropdown?: LinkDetails | null;
+  isVisible?: boolean;
 }
 
-const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
+const Nav: React.FC<NavProps> = ({ activeDropdown, isVisible }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const itemsRef = useRef<(HTMLDivElement | null)[]>([]);
   const linksRef = useRef<(HTMLDivElement | null)[]>([]);
   const heightRef = useRef<number>(0);
-  const [isVisible, setIsVisible] = useState(false);
   const [currentDropdown, setCurrentDropdown] = useState<LinkDetails | null>(
     null
   );
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (activeDropdown?.dropdown) {
       setCurrentDropdown(activeDropdown);
-      setIsVisible(true);
     } else {
       animateOut().then(() => {
         setCurrentDropdown(null);
-        setIsVisible(false);
       });
     }
-  }, [activeDropdown]);
+  }, [activeDropdown, windowWidth]);
 
   const animateOut = async () => {
-    const container = containerRef.current;
-    if (!container) return Promise.resolve();
-
-    const tl = gsap.timeline();
-
-    // Fade out items and links first
-    const elements = [...itemsRef.current, ...linksRef.current].filter(Boolean);
-    tl.to(elements, {
-      opacity: 0,
-      y: -20,
-      duration: 0.1,
-      ease: "power2.in",
-      stagger: 0.01,
-    });
-
-    // Then collapse the container
-    tl.to(
-      container,
-      {
-        height: 0,
-        duration: 0.2,
-        ease: "power2.inOut",
-      },
-      "-=0.2"
-    );
-
-    return new Promise((resolve) => {
-      tl.eventCallback("onComplete", resolve);
-    });
-  };
-
-  useEffect(() => {
     const container = containerRef.current;
     if (!container || !isVisible) return;
 
@@ -211,14 +178,14 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
     return () => {
       gsap.killTweensOf([container, ...itemsRef.current, ...linksRef.current]);
     };
-  }, [isVisible]);
+  };
 
-  if (!isVisible && !currentDropdown?.dropdown) return null;
+  // if (!currentDropdown?.dropdown) return null;
 
   const dropdown = currentDropdown?.dropdown;
-  if (!dropdown) return null;
+  // if (!dropdown) return null;
 
-  const groupedLinks = dropdown.quickLinks?.reduce((acc, link) => {
+  const groupedLinks = dropdown?.quickLinks?.reduce((acc, link) => {
     if (!acc[link.category]) {
       acc[link.category] = [];
     }
@@ -236,12 +203,12 @@ const Nav: React.FC<NavProps> = ({ activeDropdown }) => {
 
   return (
     <div
-      ref={containerRef}
+      // ref={containerRef}
       className="nav-dropdown overflow-hidden flex flex-col items-start justify-center size-full text-white"
     >
       <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
         {/* Services Grid */}
-        {dropdown.items && (
+        {dropdown?.items && (
           <div className="slide-in-left flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
             <p className="text-sm font-medium text-white/40 mb-5">Services</p>
             <div className="grid gap-[1rem]">
@@ -328,6 +295,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   const submenuRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const submenuHeights = useRef<Record<string, number>>({});
   const isInitialMount = useRef(true);
+  const { windowWidth } = useViewport();
 
   // Main menu animation
   useEffect(() => {
@@ -355,7 +323,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     }, menuRef);
 
     return () => ctx.revert();
-  }, [isActive]);
+  }, [isActive, windowWidth]);
 
   // Initialize menu state
   useEffect(() => {
@@ -365,7 +333,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
         opacity: isActive ? 1 : 0,
       });
     }
-  }, []);
+  }, [windowWidth]);
 
   // Submenu animations
   useEffect(() => {
@@ -381,7 +349,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
             gsap.set(submenu, {
               height: "auto",
               opacity: 1,
-              visibility: "hidden",
+              // visibility: "hidden",
             });
             submenuHeights.current[nav.title] = submenu.offsetHeight;
 
@@ -392,7 +360,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
                   ? submenuHeights.current[nav.title]
                   : 0,
               opacity: activeSubmenu === nav.title ? 1 : 0,
-              visibility: "visible",
+              // visibility: "visible",
             });
 
             // Animate to new state
@@ -411,7 +379,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
     }, menuRef);
 
     return () => ctx.revert();
-  }, [activeSubmenu, navigation]);
+  }, [activeSubmenu, navigation, windowWidth]);
 
   const setSubmenuRef = (title: string) => (el: HTMLDivElement | null) => {
     submenuRefs.current[title] = el;
@@ -573,26 +541,17 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   // const scrollDirection = useScrollDirection();
 
   const headerRef = useRef<HTMLDivElement>(null);
-  const backdropRef = useRef<HTMLDivElement>(null);
+  const dropdownRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
 
-  // Handle header slide animation on scroll
-  // useEffect(() => {
-  //   if (!headerRef.current) return;
-
-  //   gsap.to(headerRef.current, {
-  //     y: scrollDirection === "down" ? -100 : 0,
-  //     duration: 0.3,
-  //     ease: "power2.inOut",
-  //   });
-  // }, [scrollDirection]);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!isMouseInHeader) {
       setPreviousDropdown(activeDropdown);
       setActiveDropdown(null);
     }
-  }, [isMouseInHeader, activeDropdown, isAnimating]);
+  }, [isMouseInHeader, activeDropdown, isAnimating, windowWidth]);
 
   const handleMouseEnter = async (nav: LinkDetails) => {
     if (nav.dropdown) {
@@ -626,50 +585,37 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     }
   };
 
-  // Handle backdrop animation
+  // Handle dropdown height animation
   useEffect(() => {
-    if (!backdropRef.current) return;
+    if (!dropdownRef.current) return;
 
     if (isActive) {
+      console.log("Active Dropdown", activeDropdown);
+      console.log("Previous Dropdown", previousDropdown);
+
       gsap.fromTo(
-        backdropRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.3, ease: "power2.out" }
+        dropdownRef.current,
+        { height: dropdownRef.current.offsetHeight },
+        { height: "auto", delay: 0.05, duration: 0.3, ease: "power2.out" }
       );
-    } else {
-      gsap.to(backdropRef.current, {
-        opacity: 0,
-        duration: 0.3,
-        ease: "power2.in",
-      });
-    }
-  }, [isActive]);
-
-  // Handle footer animation
-  useEffect(() => {
-    if (!footerRef.current) return;
-
-    if (activeDropdown || previousDropdown) {
       gsap.fromTo(
         footerRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          delay: 0.1,
-          ease: "power2.out",
-        }
+        { height: 0 },
+        { height: "auto", duration: 0.01, ease: "power2.out" }
       );
     } else {
+      gsap.to(dropdownRef.current, {
+        height: 0,
+        duration: 0.3,
+        ease: "power2.in",
+      });
       gsap.to(footerRef.current, {
-        opacity: 0,
-        y: 20,
+        height: 0,
         duration: 0.3,
         ease: "power2.in",
       });
     }
-  }, [activeDropdown, previousDropdown]);
+  }, [isActive, activeDropdown, previousDropdown]);
 
   return (
     <div
@@ -682,14 +628,13 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       <div
         id="header"
         onMouseLeave={() => handleMouseLeave()}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] overflow-hidden ${
           isActive ? "bg-ash" : "bg-ash/75 hover:bg-ash"
-        } 
         } [backdrop-filter:_saturate(180%)_blur(20px)] fixed top-0 left-0 right-0`}
       >
         {/* Inverted Border Radius */}
         {isHomePage && (
-          <div className="absolute flex flex-row items-start justify-between w-full left-0 -bottom-[1rem]">
+          <div className="absolute flex flex-row items-start justify-between w-full left-0 -bottom-[1rem] pointer-events-none">
             <div className="relative hidden sm:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
               <div
                 className={`absolute bottom-0 right-0 flex flex-col bg-ash [backdrop-filter:_saturate(180%)_blur(20px)] transition-all duration-500 size-[5rem] inv-rad inv-rad-b-r-4 ${
@@ -819,36 +764,40 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
         </div>
 
         {/* Dropdown Menu */}
-        {(activeDropdown || previousDropdown) && (
-          // scrollDirection !== "down" &&
-          <>
-            <Nav
-              key={`nav-${activeDropdown?.title || previousDropdown?.title}`}
-              activeDropdown={activeDropdown || previousDropdown}
-            />
-            <div ref={footerRef}>
-              <Footer />
-            </div>
-          </>
-        )}
+        {/* {(activeDropdown || previousDropdown) && ( */}
+        <div ref={dropdownRef} className="relative flex flex-col">
+          <Nav
+            key={`nav-${activeDropdown?.title || previousDropdown?.title}`}
+            activeDropdown={activeDropdown || previousDropdown}
+            // isVisible={isActive}
+          />
+          <div ref={footerRef} className="hidden sm:inline-block">
+            <Footer />
+          </div>
+        </div>
+        {/* )} */}
       </div>
 
       {/* Backdrop */}
-      {isActive && (
-        <>
-          <div
-            ref={backdropRef}
-            className="hidden sm:inline-block fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
-            onClick={() => setIsActive(false)}
-            onMouseEnter={() => setIsActive(false)}
-          />
-          <div
-            ref={backdropRef}
-            className="inline-block sm:hidden fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998]"
-            onClick={() => setIsActive(false)}
-          />
-        </>
-      )}
+      <>
+        <div
+          className={`hidden sm:inline-block fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998] transition-opacity duration-500 ${
+            isActive
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setIsActive(false)}
+          onMouseEnter={() => setIsActive(false)}
+        />
+        <div
+          className={`inline-block pointer-events-none sm:hidden fixed inset-0 bg-black/50 [backdrop-filter:_saturate(180%)_blur(20px)] z-[1998] transition-opacity duration-500 ${
+            isActive
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+          onClick={() => setIsActive(false)}
+        />
+      </>
     </div>
   );
 };

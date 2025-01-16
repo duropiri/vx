@@ -9,13 +9,19 @@ import PricingSection from "@/components/pages/sections/pricingSection";
 
 // below-the-fold dynamic components
 const Dynamic = {
-  SocialProofSection: dynamic(() => import("@/components/pages/sections/socialProofSection"), {
-    loading: () => <div className="min-h-[60vh]" />,
-  }),
+  SocialProofSection: dynamic(
+    () => import("@/components/pages/sections/socialProofSection"),
+    {
+      loading: () => <div className="min-h-[60vh]" />,
+    }
+  ),
 
-  CopySection: dynamic(() => import("@/components/pages/sections/copySection"), {
-    loading: () => <div className="min-h-[400vh]" />,
-  }),
+  CopySection: dynamic(
+    () => import("@/components/pages/sections/copySection"),
+    {
+      loading: () => <div className="min-h-[400vh]" />,
+    }
+  ),
 
   CTASection: dynamic(() => import("@/components/pages/sections/ctaSection"), {
     loading: () => <div className="min-h-[45vh]" />,
@@ -25,21 +31,33 @@ const Dynamic = {
     loading: () => <div className="min-h-[60vh]" />,
   }),
 
-  ContactSection: dynamic(() => import("@/components/pages/sections/contactSection"), {
-    loading: () => <div className="min-h-[100vh]" />,
-  }),
+  ContactSection: dynamic(
+    () => import("@/components/pages/sections/contactSection"),
+    {
+      loading: () => <div className="min-h-[100vh]" />,
+    }
+  ),
 
-  TestimonialsSection: dynamic(() => import("@/components/pages/sections/testimonialsSection"), {
-    loading: () => <div className="min-h-[110vh]" />,
-  }),
+  TestimonialsSection: dynamic(
+    () => import("@/components/pages/sections/testimonialsSection"),
+    {
+      loading: () => <div className="min-h-[110vh]" />,
+    }
+  ),
 
-  BasicSection: dynamic(() => import("@/components/pages/sections/basicSection"), {
-    loading: () => <div className="min-h-[220vh]" />,
-  }),
+  BasicSection: dynamic(
+    () => import("@/components/pages/sections/basicSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
 
-  ServicesSection: dynamic(() => import("@/components/pages/listing-media/sections/servicesSection"), {
-    loading: () => <div className="min-h-[220vh]" />,
-  }),
+  ServicesSection: dynamic(
+    () => import("@/components/pages/listing-media/sections/servicesSection"),
+    {
+      loading: () => <div className="min-h-[220vh]" />,
+    }
+  ),
 };
 
 // Complex components
@@ -55,15 +73,13 @@ import {
 import { LMSNavdockLinks } from "@/data/navLinks";
 import { listingMediaFAQ } from "@/data/faq";
 import { ListingMediaPackages } from "@/data/pricingPackages";
-
-
-
-
+import { useViewport } from "@/contexts/ViewportContext";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
   // const contentRef = useRef<HTMLDivElement>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     if (!container.current) return;
@@ -76,7 +92,7 @@ function Body() {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <>
@@ -182,15 +198,23 @@ function Body() {
       </ScaleInVisible>
 
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection noAnimation noCarousel className="bg-white z-10 relative" />
+      <Dynamic.TestimonialsSection
+        noAnimation
+        noCarousel
+        className="bg-white z-10 relative"
+      />
 
       {/* Case Studies? */}
       {/* Contact */}
-      <ScaleInVisible className="flex flex-col items-center justify-center">
+      {/* <ScaleInVisible className="flex flex-col items-center justify-center">
         <Dynamic.ContactSection className="bg-white z-10" />
-      </ScaleInVisible>
+      </ScaleInVisible> */}
       {/* FAQ */}
-      <Dynamic.FAQSection faq={listingMediaFAQ} vertical className="bg-white z-10" />
+      <Dynamic.FAQSection
+        faq={listingMediaFAQ}
+        vertical
+        className="bg-white z-10"
+      />
     </>
   );
 }

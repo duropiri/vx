@@ -42,7 +42,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     const heroCTARef = useRef<HTMLDivElement>(null);
     const navdockRef = useRef<HTMLDivElement>(null);
-    const { isMobile } = useViewport();
+    const { isMobile, windowWidth } = useViewport();
 
     // Navdock Animations
     useEffect(() => {
@@ -331,7 +331,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-    }, [isMobile]);
+    }, [isMobile, windowWidth]);
 
     return (
       <div
@@ -402,7 +402,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   <HoverWrapper className="group/cta cursor-select-hover">
                     <Link
                       href="https://listings.virtualxposure.com/order"
-                      className="button !bg-goldenbrown text-white !border-none pn-regular-16 h-full !bg-transparent shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
+                      className="button !bg-goldenbrown text-white !border-none pn-regular-16 h-full shadow-customShadow shadow-ash/5 group-hover/cta:shadow-goldenrod/5 w-[14rem]"
                       passHref
                     >
                       <FlipLink className={`flex items-center w-fit`}>
@@ -473,7 +473,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             <HoverWrapper
               id="navdock-cta"
               href="https://listings.virtualxposure.com/order"
-              className="button !bg-goldenbrown text-white !border-none pn-regular-16 group/cta !border-none h-fit cursor-select-hover !bg-transparent shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
+              className="button !bg-goldenbrown text-white !border-none pn-regular-16 group/cta h-fit cursor-select-hover shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
                 Book Now

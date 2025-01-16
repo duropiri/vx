@@ -1,3 +1,4 @@
+import { useViewport } from "@/contexts/ViewportContext";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 gsap.registerPlugin(ScrollTrigger);
 import React, { useEffect, useRef, ReactElement, RefCallback } from "react";
@@ -10,6 +11,7 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
   const svgRef = useRef<SVGSVGElement | null>(null);
   const pathRef = useRef<SVGPathElement | null>(null);
   const rocketRef = useRef<SVGGElement | null>(null);
+  const { windowWidth } = useViewport();
 
   useEffect(() => {
     // Check if the screen is mobile using window.matchMedia
@@ -25,7 +27,7 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
 
       gElement.setAttribute("transform", transformValue);
     }
-  }, []);
+  }, [windowWidth]);
 
   useEffect(() => {
     if (!svgRef.current || !pathRef.current || !rocketRef.current) return;
@@ -71,7 +73,7 @@ const SVGScroll: React.FC<SVGScrollProps> = ({ children }) => {
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, []);
+  }, [windowWidth]);
 
   const refCallback: RefCallback<SVGSVGElement> = (node) => {
     if (node) {

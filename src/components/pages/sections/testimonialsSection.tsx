@@ -17,6 +17,7 @@ import { renderStars } from "@/components/ui/renderStars";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { TransitionLink } from "@/components/TransitionLink";
 import { ServiceIcons } from "@/data/serviceIcons";
+import { useViewport } from "@/contexts/ViewportContext";
 SwiperClass.use([
   Autoplay,
   Navigation,
@@ -50,6 +51,7 @@ function TestimonialsSection({
   noCarousel = false,
   noCards = false,
 }: SectionProps) {
+  const { windowWidth } = useViewport();
   useEffect(() => {
     const nextButton = document.querySelector(".swiper-button-next");
     const prevButton = document.querySelector(".swiper-button-prev");
@@ -57,7 +59,7 @@ function TestimonialsSection({
       nextButton.classList.add("cursor-select-hover");
       prevButton.classList.add("cursor-select-hover");
     }
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <div
@@ -89,7 +91,7 @@ function TestimonialsSection({
               modules={[EffectCards, Pagination, Navigation]}
               className="mySwiper max-w-[65vw] w-full sm:w-[50rem] h-[30rem] sm:h-[35rem]"
             >
-              {testimonials.map((item, index) => (
+              {testimonials.slice(0,6).map((item, index) => (
                 <SwiperSlide
                   key={index}
                   className="cursor-swipe-hover bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
@@ -134,7 +136,7 @@ function TestimonialsSection({
               modules={[Pagination]}
               className="mySwiper !px-[2rem] sm:!px-[6rem] !w-full h-[30rem] sm:h-[35rem] !mx-0"
             >
-              {testimonials.map((item, index) => (
+              {testimonials.slice(0,6).map((item, index) => (
                 <SwiperSlide
                   key={index}
                   className="max-w-[80vw] sm:max-w-[50vw] cursor-swipe-hover bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
@@ -230,7 +232,7 @@ function TestimonialsSection({
               [&_.swiper-button-next]:after:content-['next'] 
               [&_.swiper-button-next]:after:scale-[0.3]"
             >
-              {testimonials.map((item, index) => (
+              {testimonials.slice(0,6).map((item, index) => (
                 <SwiperSlide
                   key={index}
                   className="max-w-[80vw] sm:max-w-[50vw] bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"

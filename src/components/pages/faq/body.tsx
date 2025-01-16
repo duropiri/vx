@@ -7,7 +7,7 @@ function body() {
   return (
     <>
       <FAQSection noAnimation vertical className="bg-white z-10 top" />
-      <ContactSection className="bg-white z-10" />
+      {/* <ContactSection className="bg-white z-10" /> */}
     </>
   );
 }

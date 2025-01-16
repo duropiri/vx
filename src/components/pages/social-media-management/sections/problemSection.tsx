@@ -4,6 +4,7 @@ import { gsap, ScrollTrigger } from "@/utils/gsap";
 gsap.registerPlugin(ScrollTrigger);
 import { media } from "@/data/media";
 import SectionHeader from "@/components/ui/sectionHeader";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SectionProps {
   className?: string;
@@ -28,6 +29,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
     const subheadingRef = useRef<HTMLHeadingElement>(null);
     const subheadingMobileRef = useRef<HTMLHeadingElement>(null); // Add new ref
     // const bgRef = useRef<HTMLDivElement>(null); // Ref for the background container
+    const { windowWidth } = useViewport();
 
     useEffect(() => {
       if (!svgRef.current || !lineRef.current || !containerRef.current) return;
@@ -62,7 +64,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       };
-    }, [svgRef, lineRef]);
+    }, [svgRef, lineRef, windowWidth]);
 
     useEffect(() => {
       if (!progressBarRef.current || !textRef.current) return;
@@ -176,7 +178,7 @@ const ProblemSection = forwardRef<HTMLDivElement, SectionProps>(
           }
         },
       });
-    }, [activeStep]); // Re-run the effect when activeStep or media length changes
+    }, [activeStep, windowWidth]); // Re-run the effect when activeStep or media length changes
 
     return (
       <div

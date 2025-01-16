@@ -1,6 +1,7 @@
 "use client";
 import React, { forwardRef, useEffect, useRef } from "react";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 gsap.registerPlugin(ScrollTrigger);
 
 interface ScaleInVisibleProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -39,6 +40,7 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
     const elementRef = useRef<HTMLDivElement>(null);
     const actualRef =
       (ref as React.MutableRefObject<HTMLDivElement>) || elementRef;
+    const { windowWidth } = useViewport();
 
     useEffect(() => {
       const element = actualRef.current;
@@ -113,7 +115,16 @@ const ScaleInVisible = forwardRef<HTMLDivElement, ScaleInVisibleProps>(
           element.removeEventListener("mouseup", () => {});
         }
       };
-    }, [actualRef, delay, duration, margin, once, hoverScale, tapScale]);
+    }, [
+      actualRef,
+      delay,
+      duration,
+      margin,
+      once,
+      hoverScale,
+      tapScale,
+      windowWidth,
+    ]);
 
     return (
       <div

@@ -96,7 +96,7 @@ function body() {
       <Dynamic.SocialProofSection full className="bg-white z-10" />
       <Dynamic.CTASection className="bg-white z-10" />
       <Dynamic.FAQSection className="bg-white z-10" />
-      <Dynamic.ContactSection className="bg-white z-10" />
+      {/* <Dynamic.ContactSection className="bg-white z-10" /> */}
     </>
   );
 }

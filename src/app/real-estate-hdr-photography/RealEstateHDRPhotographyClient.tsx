@@ -15,7 +15,7 @@ export const WhatIsItSection = () => (
       subheading="Why does the quality of your photos matter?"
       className="text-black"
     />
-    <div className="relative group flex size-full xl:h-fit max-w-[--section-width] flex-col xl:flex-row items-end justify-end gap-[3rem] sm:gap-[3.75rem] rounded-[1rem] overflow-hidden">
+    <div className="relative group flex size-full xl:h-fit max-w-[--section-width] flex-col xl:flex-row items-end justify-start gap-[3rem] sm:gap-[3.75rem] rounded-[1rem] overflow-hidden">
       <div className="absolute top-0 left-0 flex flex-col size-full items-center justify-center bg-ash pointer-events-none">
         <ParallaxSection
           // speed={1-0.95}
@@ -34,7 +34,7 @@ export const WhatIsItSection = () => (
           />
         </ParallaxSection>
       </div>
-      <div className="bg-gradient-to-l from-ash/50 from-[60%] flex size-full flex-col xl:flex-row items-end justify-between h-fit sm:max-w-[50%] pl-[10%] z-10">
+      <div className="bg-gradient-to-r from-ash/50 from-[60%] flex size-full flex-col xl:flex-row items-end justify-between h-fit sm:max-w-[50%] pr-[10%] z-10">
         <ul
           // speed={1-1.02}
           className="flex flex-col grow basis-0 gap-[1.5rem] p-[1.5rem]"

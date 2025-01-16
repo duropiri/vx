@@ -1,5 +1,6 @@
 import React, { useRef, useEffect } from "react";
 import { gsap } from "@/utils/gsap";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface ScrollingBannerProps {
   children: React.ReactNode;
@@ -30,6 +31,8 @@ export default function ScrollingBanner({
   
   const isVertical = direction === "vertical";
   const isNegative = baseVelocity < 0;
+
+  const { windowWidth } = useViewport();
   
   useEffect(() => {
     let ctx = gsap.context(() => {
@@ -98,7 +101,7 @@ export default function ScrollingBanner({
     }, containerRef);
 
     return () => ctx.revert();
-  }, [baseVelocity, slowOnHover, isVertical, isNegative]);
+  }, [baseVelocity, slowOnHover, isVertical, isNegative, windowWidth]);
 
   return (
     <div 

@@ -12,12 +12,14 @@ import machineImage from "@/../../public/assets/images/content-machine.webp";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SectionProps {
   className?: string;
 }
 
 function RoadmapSection({ className }: SectionProps) {
+  const { windowWidth } = useViewport();
   // GSAP Animations
   useEffect(() => {
     const sections = document.querySelectorAll(".snap-start");
@@ -34,7 +36,7 @@ function RoadmapSection({ className }: SectionProps) {
         inertia: false,
       },
     });
-  }, []);
+  }, [, windowWidth]);
 
   return (
     <div

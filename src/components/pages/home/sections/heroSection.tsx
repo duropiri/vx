@@ -14,6 +14,7 @@ import HeroDecorations from "@/components/heroDecorations";
 import { TransitionLink } from "@/components/TransitionLink";
 import { ServiceIcons } from "@/data/serviceIcons";
 import Link from "next/link";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface LinkDetails {
   title: string;
@@ -37,6 +38,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     const heroCTARef = useRef<HTMLDivElement>(null);
     const navdockRef = useRef<HTMLDivElement>(null);
+    const { windowWidth } = useViewport();
 
     // Navdock Animations
     useEffect(() => {
@@ -292,7 +294,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-    }, []);
+    }, [, windowWidth]);
 
     return (
       <div
