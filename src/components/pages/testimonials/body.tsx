@@ -223,7 +223,7 @@ function Body() {
                   >
                     <div className="relative flex flex-col items-center justify-start size-full">
                       <div className="overflow-hidden flex flex-col items-start justify-center gap-y-[0.5rem] size-full p-[1rem] text-start h-fit bg-gradient-to-t from-white from-[60%]">
-                        <div className="flex flex-col md:flex-row items-center justify-center gap-[1rem] sm:mb-[1rem]">
+                        <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-[1rem] sm:mb-[1rem]">
                           <div className="relative size-[8rem] rounded-full overflow-hidden">
                             <Image
                               src={
