@@ -65,8 +65,6 @@ import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import { useViewport } from "@/contexts/ViewportContext";
 import appStore from "@/../../public/assets/svgs/Store=App Store, Type=Dark, Language=English.svg";
 import googlePlay from "@/../../public/assets/svgs/Store=Google Play, Type=Dark, Language=English.svg";
-import ReviewsPage from "@/components/ui/reviewsPage";
-import Script from "next/script";
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
