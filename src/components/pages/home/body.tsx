@@ -63,6 +63,10 @@ import VirtualSection from "@/components/pages/services/sections/virtualSection"
 import { ServiceIcons } from "@/data/serviceIcons";
 import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import { useViewport } from "@/contexts/ViewportContext";
+import appStore from "@/../../public/assets/svgs/Store=App Store, Type=Dark, Language=English.svg";
+import googlePlay from "@/../../public/assets/svgs/Store=Google Play, Type=Dark, Language=English.svg";
+import ReviewsPage from "@/components/ui/reviewsPage";
+import Script from "next/script";
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -262,9 +266,9 @@ const Body = () => {
 
   return (
     <>
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ChatWidget />
-      </Suspense>
+      </Suspense> */}
 
       {/* <div className="relative flex flex-row min-h-screen overflow-hidden bg-ash">
         
@@ -465,9 +469,38 @@ const Body = () => {
         className="!pb-0"
         heading="Download the App"
         subheading="Try the New VirtualXposure App!"
-        body="Coming soon to the App Store and Google Play Store!"
+        body="Now available to download on the App Store and Google Play Store!"
         content={
           <>
+            <div className="flex flex-col md:flex-row items-center gap-[1rem] xl:pr-[2rem]">
+              {/* App Store and Google Play icons */}
+              <a
+                href="https://apps.apple.com/ca/app/virtual-xposure/id6740730114"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-select-hover hover:scale-110 transition-all duration-300"
+              >
+                <Image
+                  alt="app store"
+                  src={appStore}
+                  className="size-full w-[12rem] max-w-[12rem] pointer-events-none"
+                  quality={75}
+                />
+              </a>
+              <a
+                href="https://play.google.com/store/apps/details?id=com.aryeo.virtualxposure&hl=en_CA"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="cursor-select-hover hover:scale-110 transition-all duration-300"
+              >
+                <Image
+                  alt="google play"
+                  src={googlePlay}
+                  className="size-full w-[12rem] max-w-[12rem] pointer-events-none"
+                  quality={75}
+                />
+              </a>
+            </div>
             <div className="relative h-[20vh] sm:h-[50vh] w-full overflow-hidden">
               <Image
                 src={vxapp}

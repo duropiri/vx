@@ -86,6 +86,9 @@ import { testimonials } from "@/data/testimonials";
 import { renderStars } from "@/components/ui/renderStars";
 import { useViewport } from "@/contexts/ViewportContext";
 import { ServiceIcons } from "@/data/serviceIcons";
+import Script from "next/script";
+import { ReactGoogleReviews } from "react-google-reviews";
+import BasicSection from "@/components/pages/sections/basicSection";
 
 function Body() {
   const container = useRef<HTMLDivElement>(null);
@@ -161,20 +164,21 @@ function Body() {
         subheading="Here's What Real Estate Professionals Are Saying"
         content={
           <div className="relative size-full flex flex-col gap-[2.5rem]">
-            {/* <Image
-              src={csImage}
-              alt="hero-image"
-              fill
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-              priority={true}
-              loading={true ? "eager" : "lazy"}
-              className="pointer-events-none"
-              quality={75}
-            /> */}
-            {/* <Dynamic.TestimonialsSection
-              noHeader
-              
-              className="bg-white z-20 !p-0 !w-[100vw] sm:!w-full !-mx-[2rem] sm:!mx-0"
+            {/* <ReactGoogleReviews
+              layout="custom"
+              featurableId={`7d474d03-83fb-40bc-8b16-a5fb73d658fa`}
+              renderer={(reviews) => {
+                return (
+                  <div>
+                    {reviews.map(({ reviewId, reviewer, comment }) => (
+                      <div key={reviewId}>
+                        <h3>{reviewer.displayName}</h3>
+                        <p>{comment}</p>
+                      </div>
+                    ))}
+                  </div>
+                );
+              }}
             /> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 size-full gap-[1rem]">
               {testimonials.slice(0, 4).map((item, index) => (
@@ -211,9 +215,9 @@ function Body() {
                 </div>
               ))}
             </div>
-            <div className="w-full min-h-[1px] bg-black" />
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 size-full gap-[1rem]">
-              {testimonials
+            {/* <div className="w-full min-h-[1px] bg-black" /> */}
+
+            {/* {testimonials
                 .slice(4)
                 .filter((item) => item.googleReview)
                 .map((item, index) => (
@@ -264,8 +268,7 @@ function Body() {
                       </div>
                     </div>
                   </div>
-                ))}
-            </div>
+                ))} */}
           </div>
         }
       />
@@ -278,6 +281,87 @@ function Body() {
           stats={TestimonialsStats}
           className="z-0"
           // scrollYProgress={scrollYProgress}
+        />
+        <BasicSection
+          className="bg-white relative"
+          content={
+            <>
+              <ReactGoogleReviews
+                layout="custom"
+                featurableId={`7d474d03-83fb-40bc-8b16-a5fb73d658fa`}
+                renderer={(reviews) => {
+                  return (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 size-full gap-[1rem]">
+                      {reviews.map(
+                        ({
+                          reviewId,
+                          reviewer,
+                          comment,
+                          starRating,
+                          createTime,
+                        }) => (
+                          <div
+                            key={reviewId}
+                            className="group bg-white text-black rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between pn-regular-32 text-start hover:no-underline overflow-hidden"
+                          >
+                            <div className="relative flex flex-col items-center justify-start size-full">
+                              <div className="overflow-hidden flex flex-col items-start justify-center gap-y-[2rem] size-full p-[1rem] text-start h-full bg-gradient-to-t from-white from-[60%]">
+                                <div className="flex flex-col gap-y-[0.5rem] items-start">
+                                  <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-[1rem] sm:mb-[1rem]">
+                                    <div className="relative size-[4rem] rounded-full overflow-hidden">
+                                      <Image
+                                        src={reviewer.profilePhotoUrl}
+                                        alt="who-is-it-image"
+                                        fill
+                                        sizes="(max-width: 640px) 100vw, 1200px"
+                                        priority={false}
+                                        loading={false ? "eager" : "lazy"}
+                                        className="w-full object-cover object-top"
+                                        quality={75}
+                                      />
+                                    </div>
+                                    <div className="flex flex-col items-start justify-center gap-y-[0.5rem]">
+                                      <p className="pn-bold-24">
+                                        {reviewer.displayName}
+                                      </p>
+                                      <p className="pn-regular-16 text-ash/60">
+                                        {createTime &&
+                                          new Date(
+                                            createTime
+                                          ).toLocaleDateString("en-US", {
+                                            month: "long", // Full month name
+                                            day: "numeric", // Numeric day
+                                            year: "numeric", // Full year
+                                          })}
+                                      </p>
+                                    </div>
+                                  </div>
+                                  {/* <div className="w-full min-h-[1px] bg-black mb-[1rem]" /> */}
+                                  <Quote white quote={comment} />
+                                </div>
+                                <div
+                                  // href={item.googleReview}
+                                  className="flex items-center justify-between gap-[1rem] cursor-select-hover mt-auto w-full"
+                                >
+                                  <div className="flex flex-row gap-[0.3rem] text-goldenbrown">
+                                    {renderStars(starRating)}
+                                  </div>
+                                  <div className="size-[2rem]">
+                                    {ServiceIcons.google}
+                                  </div>
+                                  {/* <p className="pn-regular-14"> View on Google</p> */}
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )
+                      )}
+                    </div>
+                  );
+                }}
+              />
+            </>
+          }
         />
         <Dynamic.CopySection
           className="bg-white"

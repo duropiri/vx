@@ -96,9 +96,9 @@ function Body() {
 
   return (
     <>
-      <Suspense fallback={null}>
+      {/* <Suspense fallback={null}>
         <ChatWidget />
-      </Suspense>
+      </Suspense> */}
 
       {/* Critical above-the-fold content */}
       <HeroSection

@@ -1,6 +1,7 @@
 "use client";
 import React, {
   ReactNode,
+  Suspense,
   useCallback,
   useEffect,
   // useRef,
@@ -17,6 +18,7 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 // import Image from "next/image";
 // import logo from "@/../../public/assets/images/logo4.webp";
 import { useViewport } from "@/contexts/ViewportContext";
+import ChatWidget from "@/components/ui/chatWidget";
 
 interface TemplateProps {
   children: ReactNode;
@@ -165,7 +167,6 @@ export default function Template({ children }: TemplateProps) {
   const { isMobile, windowWidth } = useViewport();
   const [isInitialized, setIsInitialized] = useState(false);
   const [isNavigating, setIsNavigating] = useState(false);
-  
 
   const resetBanners = useCallback(() => {
     const banners = document.querySelectorAll(".banner");
@@ -344,6 +345,9 @@ export default function Template({ children }: TemplateProps) {
             <SmoothScrolling>
               <Header className="absolute" navigation={HeaderLinks} />
               {children}
+              <Suspense fallback={null}>
+                <ChatWidget />
+              </Suspense>
               <Footer />
             </SmoothScrolling>
           </>

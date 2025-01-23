@@ -178,7 +178,7 @@ function Body({
 
   return (
     <>
-      <ChatWidget />
+      {/* <ChatWidget /> */}
       {/* Hero */}
       <div
         // ref={heroRef}
