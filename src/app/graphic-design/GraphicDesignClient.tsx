@@ -1,14 +1,10 @@
 import Image from "next/image";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import service1 from "@/../../public/assets/images/pexels-romanp-17845.jpg";
 import service2 from "@/../../public/assets/images/pexels-hngstrm-2250136.jpg";
 import service3 from "@/../../public/assets/images/pexels-karolina-grabowska-5904063.jpg";
-import arrowRedirectWhite from "@/../../public/assets/svgs/arrow-redirect-cta-white.svg";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
-import { TransitionLink } from "@/components/TransitionLink";
 import { ServiceIcons } from "@/data/serviceIcons";
 import Link from "next/link";
 

@@ -1,6 +1,6 @@
 // @/components/pages/404/body.tsx
 "use client";
-import React, { useEffect, useRef, Suspense } from "react";
+import React from "react";
 import dynamic from "next/dynamic";
 
 // above-thefold static components
@@ -22,8 +22,6 @@ const Dynamic = {
 
 // Complex compponents
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import Image from "next/image";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { TransitionLink } from "@/components/TransitionLink";
 import { ServiceIcons } from "@/data/serviceIcons";
 

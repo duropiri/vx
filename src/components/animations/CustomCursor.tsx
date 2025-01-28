@@ -226,7 +226,7 @@ export default function CustomCursor() {
         });
 
       document
-        .querySelectorAll<HTMLElement>(".cursor-swipe-hover")
+        .querySelectorAll<HTMLElement>(".cursor-drag-hover")
         .forEach((el) => {
           el.addEventListener("mouseenter", handleDragHover);
           el.addEventListener("mouseleave", handleMouseLeaveReset);

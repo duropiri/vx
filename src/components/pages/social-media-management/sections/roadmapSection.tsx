@@ -23,20 +23,22 @@ function RoadmapSection({ className }: SectionProps) {
   // GSAP Animations
   useEffect(() => {
     const sections = document.querySelectorAll(".snap-start");
-    ScrollTrigger.create({
-      trigger: ".snap-y",
-      start: "top top",
-      end: "bottom bottom",
-      // markers: true,
-      snap: {
-        snapTo: 1 / (sections.length - 1),
-        duration: { min: 2, max: 1.5 },
-        delay: 0,
-        ease: "power2.inOut",
-        inertia: false,
-      },
+    const ctx = gsap.context(() => {
+      ScrollTrigger.create({
+        trigger: ".snap-y",
+        start: "top top",
+        end: "bottom bottom",
+        snap: {
+          snapTo: 1 / (sections.length - 1),
+          duration: { min: 1.5, max: 1.5 },
+          delay: 0,
+          ease: "power2.inOut",
+        }
+      });
     });
-  }, [, windowWidth]);
+    
+    return () => ctx.revert();
+  }, [windowWidth]);
 
   return (
     <div

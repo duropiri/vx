@@ -4,12 +4,10 @@ import SectionHeader from "@/components/ui/sectionHeader";
 
 import { ServiceIcons } from "@/data/serviceIcons";
 import Image from "next/image";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import floorplanImage from "@/../../public/assets/images/5-VX-Metric-Schematic-Floor-Plan-2-1536x970.webp";
 import threedimensionalfloorplanImage from "@/../../public/assets/images/7957402_3d-floor-plan-design-in-exterior-rendering-studio.webp";
 import siteplanImage from "@/../../public/assets/images/RoomSketcher-Site-Plan-Software-3D-Site-Plan.webp";
 import FadeInUp from "@/components/animations/FadeInUp";
-import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
 
 export const BenefitsSection = () => (

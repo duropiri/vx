@@ -3,11 +3,8 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/virtual-staging-images/Virtual_Xposure_-_Virtual_Staging_Image_-_4.webp";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
-import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
 
 export const WhatIsItSection = () => (

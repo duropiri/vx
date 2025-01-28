@@ -122,6 +122,15 @@ export default function RootLayout({
     <html lang="en" className={`${proximaNova.variable} ${nunito.variable}`}>
       <head>
         <style dangerouslySetInnerHTML={{ __html: criticalStyles }} />
+        <link 
+          rel="preconnect" 
+          href="https://virtualxposure.com" 
+          crossOrigin="anonymous" 
+        />
+        <link 
+          rel="dns-prefetch" 
+          href="https://virtualxposure.com" 
+        />
       </head>
       <body className="antialiased max-w-[100vw]">
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>

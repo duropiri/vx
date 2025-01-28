@@ -35,9 +35,9 @@ export default function GraphicDesign() {
         }}
         src="/assets/images/pexels-tranmautritam-326501.jpg"
         whatisitSection={[
-          <WhatIsItSection1 />,
-          <WhatIsItSection2 />,
-          <WhatIsItSection3 />,
+          <WhatIsItSection1 key="section1" />,
+          <WhatIsItSection2 key="section2" />,
+          <WhatIsItSection3 key="section3" />,
         ]}
         whyusSection
         faq={graphicDesignFAQ}

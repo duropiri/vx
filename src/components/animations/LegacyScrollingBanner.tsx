@@ -35,7 +35,7 @@ export default function ScrollingBanner({
   const { windowWidth } = useViewport();
   
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       if (!innerRef.current) return;
   
       // Use viewport dimensions instead of content size

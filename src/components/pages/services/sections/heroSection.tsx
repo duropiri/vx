@@ -9,7 +9,6 @@ import React, {
   // useState
 } from "react";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
@@ -85,7 +84,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-    }, [, windowWidth]);
+    }, [windowWidth]);
 
     return (
       <div ref={ref} id={id} className="relative flex w-full overflow-hidden">

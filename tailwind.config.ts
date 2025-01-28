@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import * as invertedRadius from "@butterfail/tailwindcss-inverted-radius";
 
 const config: Config = {
   // purge: ['./app/**/*.{js,ts,jsx,tsx,html}'],  // Include all relevant files in your app directory
@@ -53,6 +54,6 @@ const config: Config = {
       },
     },
   },
-  plugins: [require("@butterfail/tailwindcss-inverted-radius")],
+  plugins: [invertedRadius],
 };
 export default config;

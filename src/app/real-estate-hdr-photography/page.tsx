@@ -38,10 +38,16 @@ const page = () => {
         src="/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(12).webp"
         whatisitSection={<WhatIsItSection />}
         whyusSection
-        stepsSection={[<StepsLeftSection />, <StepsRightSection />]}
+        stepsSection={[
+          <StepsLeftSection key="steps-left" />,
+          <StepsRightSection key="steps-right" />
+        ]}
         socialproofSection
         ctaSection
-        unlimitedSection={[<UnlimitedLeftSection />, <UnlimitedRightSection />]}
+        unlimitedSection={[
+          <UnlimitedLeftSection key="unlimited-left" />,
+          <UnlimitedRightSection key="unlimited-right" />
+        ]}
         testimonialsSection
         pricing={ListingMediaPackages}
         photography

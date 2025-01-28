@@ -55,10 +55,16 @@ const page = () => {
         src="/assets/videos/real-estate-videography.webm"
         whatisitSection={<WhatIsItSection />}
         whyusSection
-        stepsSection={[<StepsLeftSection />, <StepsRightSection />]}
+        stepsSection={[
+          <StepsLeftSection key="left" />,
+          <StepsRightSection key="right" />
+        ]}
         socialproofSection
         ctaSection
-        unlimitedSection={[<UnlimitedLeftSection />, <UnlimitedRightSection />]}
+        unlimitedSection={[
+          <UnlimitedLeftSection key="left" />,
+          <UnlimitedRightSection key="right" />
+        ]}
         testimonialsSection
         pricing={ListingMediaPackages}
       />

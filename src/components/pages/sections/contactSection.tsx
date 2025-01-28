@@ -1,4 +1,3 @@
-import ResponsiveIframe from "@/components/ResponsiveIframe";
 import SectionHeader from "@/components/ui/sectionHeader";
 import React from "react";
 

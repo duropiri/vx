@@ -107,7 +107,6 @@ export default function WordByWordOnScroll({
     if (!totalWords) return;
 
     // Create one timeline for all words
-    const tl = gsap.timeline();
     const ctx = gsap.context(() => {
       // Set initial state
       gsap.set(wordElements, { opacity: 0 });

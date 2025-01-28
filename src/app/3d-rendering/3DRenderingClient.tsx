@@ -3,11 +3,8 @@ import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(61).webp";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
-import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
 
 export const WhatIsItSection = () => (
@@ -22,11 +19,12 @@ export const WhatIsItSection = () => (
             src={whatisitImage}
             alt="what-is-it-image"
             fill
-            sizes="(max-width: 640px) 100vw, 1200px"
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            placeholder="blur"
+            quality={75}
             priority={false}
             loading={false ? "eager" : "lazy"}
             className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={75}
           />
         </ParallaxSection>
       </div>

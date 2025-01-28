@@ -2,12 +2,10 @@ import { ServiceIcons } from "@/data/serviceIcons";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import Image from "next/image";
 import SectionHeader from "@/components/ui/sectionHeader";
-import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
 import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import unlimitedImage from "@/../../public/assets/images/6685889-copy-1-e1670628501382-584x1024.webp";
 import FadeInUp from "@/components/animations/FadeInUp";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
-import { TransitionLink } from "@/components/TransitionLink";
 import Link from "next/link";
 
 export const WhatIsItSection = () => (

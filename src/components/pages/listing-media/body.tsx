@@ -1,6 +1,6 @@
 // @/components/pages/listing-media/body.tsx
 "use client";
-import React, { useEffect, useRef, Suspense } from "react";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // above-thefold static components
@@ -61,7 +61,6 @@ const Dynamic = {
 };
 
 // Complex components
-import ChatWidget from "@/components/ui/chatWidget";
 import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
@@ -92,7 +91,7 @@ function Body() {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, [, windowWidth]);
+  }, [windowWidth]);
 
   return (
     <>

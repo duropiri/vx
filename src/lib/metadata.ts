@@ -1,5 +1,4 @@
 // lib/metadata.ts
-import { Metadata } from 'next';
 
 // Base metadata shared across all pages
 export const baseMetadata = {

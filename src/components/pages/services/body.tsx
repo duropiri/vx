@@ -1,6 +1,6 @@
 // @/components/pages/services/body.tsx
 "use client";
-import React, { useEffect, useRef, Suspense } from "react";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // above-thefold static components
@@ -12,21 +12,25 @@ const Dynamic = {
     () => import("@/components/pages/sections/socialProofSection"),
     {
       loading: () => <div className="min-h-[60vh]" />,
+      ssr: false
     }
   ),
 
   CTASection: dynamic(() => import("@/components/pages/sections/ctaSection"), {
     loading: () => <div className="min-h-[45vh]" />,
+    ssr: false,
   }),
 
   FAQSection: dynamic(() => import("@/components/pages/sections/faqSection"), {
     loading: () => <div className="min-h-[60vh]" />,
+    ssr: false,
   }),
 
   ContactSection: dynamic(
     () => import("@/components/pages/sections/contactSection"),
     {
       loading: () => <div className="min-h-[100vh]" />,
+      ssr: false,
     }
   ),
 
@@ -34,6 +38,7 @@ const Dynamic = {
     () => import("@/components/pages/sections/testimonialsSection"),
     {
       loading: () => <div className="min-h-[110vh]" />,
+      ssr: false,
     }
   ),
 
@@ -41,6 +46,7 @@ const Dynamic = {
     () => import("@/components/pages/sections/basicSection"),
     {
       loading: () => <div className="min-h-[220vh]" />,
+      ssr: false,
     }
   ),
 
@@ -48,6 +54,7 @@ const Dynamic = {
     () => import("@/components/pages/sections/pricingSection"),
     {
       loading: () => <div className="min-h-[220vh]" />,
+      ssr: false,
     }
   ),
 
@@ -55,6 +62,7 @@ const Dynamic = {
     () => import("@/components/pages/sections/basic2ColumnSection"),
     {
       loading: () => <div className="min-h-[60vh]" />,
+      ssr: false,
     }
   ),
 
@@ -62,6 +70,7 @@ const Dynamic = {
     () => import("@/components/pages/services/sections/floorplansSection"),
     {
       loading: () => <div className="min-h-[80vh]" />,
+      ssr: false,
     }
   ),
 
@@ -69,6 +78,7 @@ const Dynamic = {
     () => import("@/components/pages/services/sections/photographySection"),
     {
       loading: () => <div className="min-h-[100vh]" />,
+      ssr: false, 
     }
   ),
 
@@ -76,16 +86,15 @@ const Dynamic = {
     () => import("@/components/pages/services/sections/virtualSection"),
     {
       loading: () => <div className="min-h-[180vh]" />,
+      ssr: false,
     }
   ),
 };
 
 // Complex components
-import ChatWidget from "@/components/ui/chatWidget";
 import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
-  setupScrollAnimation,
   setupColorAnimation,
   cleanupGSAPAnimations,
 } from "@/components/pages/sections/animations/Animations";
@@ -94,6 +103,8 @@ import {
 import { listingMediaFAQ } from "@/data/faq";
 import VirtualSection from "@/components/pages/services/sections/virtualSection";
 import { useViewport } from "@/contexts/ViewportContext";
+import { FAQProps } from "@/components/pages/sections/faqSection";
+import { PricingPackages } from "@/components/pages/sections/pricingSection";
 
 interface SectionProps {
   title: string;
@@ -106,14 +117,14 @@ interface SectionProps {
   socialproofSection?: boolean;
   ctaSection?: boolean;
   testimonialsSection?: boolean;
-  pricing?: any;
-  faq?: any;
+  pricing?: PricingPackages;
+  faq?: FAQProps[];
 
-  whatisitSection?: any | any[];
-  benefitsSection?: any;
-  stepsSection?: any[];
-  unlimitedSection?: any[];
-  advantageSection?: any;
+  whatisitSection?: React.ReactElement | React.ReactElement[];
+  benefitsSection?: React.ReactElement;
+  stepsSection?: React.ReactElement[];
+  unlimitedSection?: React.ReactElement[];
+  advantageSection?: React.ReactElement;
 
   staging?: boolean;
   renovation?: boolean;
@@ -174,7 +185,7 @@ function Body({
     return () => {
       cleanupGSAPAnimations();
     };
-  }, [, windowWidth]);
+  }, [windowWidth]);
 
   return (
     <>

@@ -48,9 +48,9 @@ const page = () => {
         src="/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(33).webp"
         benefitsSection={<BenefitsSection />}
         whatisitSection={[
-          <WhatIsItSection1 />,
-          <WhatIsItSection2 />,
-          <WhatIsItSection3 />,
+          <WhatIsItSection1 key="section1" />,
+          <WhatIsItSection2 key="section2" />,
+          <WhatIsItSection3 key="section3" />,
         ]}
         whyusSection
         socialproofSection

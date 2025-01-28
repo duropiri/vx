@@ -46,7 +46,7 @@ function SolutionSection({ className }: SectionProps) {
         bentosContainer.removeEventListener("mousemove", handleOnMouseMove);
       }
     };
-  }, [, windowWidth]);
+  }, [windowWidth]);
 
   return (
     <div
@@ -64,7 +64,11 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={75}
+            quality={50}
+            loading="lazy"
+            priority={false}
+            width={300}
+            height={100}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -76,7 +80,11 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={75}
+            quality={50}
+            loading="lazy"
+            priority={false}
+            width={300}
+            height={100}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -88,7 +96,11 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={75}
+            quality={50}
+            loading="lazy"
+            priority={false}
+            width={300}
+            height={100}
           />
         </ScrollingBanner>
         <ScrollingBanner
@@ -100,7 +112,11 @@ function SolutionSection({ className }: SectionProps) {
             alt="virtual xposure"
             src={vxImage}
             className="size-full"
-            quality={75}
+            quality={50}
+            loading="lazy"
+            priority={false}
+            width={300}
+            height={100}
           />
         </ScrollingBanner>
       </div>

@@ -27,7 +27,13 @@ const contactform = () => {
         data-form-id="5BiXeCAT1TEN3Dh90jr2"
         title="Optin Claim"
       ></iframe>
-      <Script src="https://link.msgsndr.com/js/form_embed.js"></Script>
+      <Script
+        src="https://link.msgsndr.com/js/form_embed.js"
+        strategy="lazyOnload"
+        onLoad={() => {
+          console.log("Script loaded correctly");
+        }}
+      ></Script>
     </div>
   );
 };

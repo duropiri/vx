@@ -294,7 +294,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         ScrollTrigger.getAll().forEach((st) => st.kill());
       };
-    }, [, windowWidth]);
+    }, [windowWidth]);
 
     return (
       <div

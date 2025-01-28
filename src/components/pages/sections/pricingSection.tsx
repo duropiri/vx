@@ -57,7 +57,7 @@ interface DualPriceTier extends BasePricingTier {
 type PricingTier = SinglePriceTier | DualPriceTier;
 
 // Instead of defining each package, we use a more generic structure
-interface PricingPackages {
+export interface PricingPackages {
   [key: string]: PricingTier;
 }
 
@@ -604,7 +604,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                 {Object.values(packages).map((tier, index) => (
                   <SwiperSlide
                     key={index}
-                    className="cursor-swipe-hover h-full"
+                    className="cursor-drag-hover h-full"
                   >
                     {renderPricingTier(tier, index)}
                   </SwiperSlide>

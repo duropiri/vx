@@ -1,6 +1,6 @@
 // @/components/pages/social-media-management/body.tsx
 "use client";
-import React, { useEffect, useRef, Suspense } from "react";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // above-thefold static components
@@ -51,10 +51,8 @@ import StatsSection from "@/components/pages/sections/statsSection";
 import SolutionSection from "@/components/pages/social-media-management/sections/solutionSection";
 import ServicesSection from "@/components/pages/social-media-management/sections/servicesSection";
 import RoadmapSection from "@/components/pages/social-media-management/sections/roadmapSection";
-import ChatWidget from "@/components/ui/chatWidget";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import {
-  setupScrollAnimation,
   setupColorAnimation,
   cleanupGSAPAnimations,
 } from "@/components/pages/sections/animations/Animations";
@@ -82,7 +80,7 @@ export default function Body() {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, [, windowWidth]);
+  }, [windowWidth]);
 
   return (
     <>

@@ -71,7 +71,9 @@ const ServiceCard = ({
       <div
         className={`relative flex flex-col items-${
           isRight ? "start" : "end"
-        } size-auto justify-end max-h-full xl:max-h-[80%] xl:max-w-[90%] xl:max-w-auto`}
+        } size-auto justify-end max-h-full xl:max-h-[80%] xl:max-w-[90%] xl:max-w-auto rounded-b${
+            isRight ? "l" : "r"
+          }-[1rem] overflow-hidden`}
       >
         {/* Inverted Border Radius: Inside Left */}
         {isRight ? (

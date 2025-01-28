@@ -1,5 +1,5 @@
 import SectionHeader from "@/components/ui/sectionHeader";
-import React, { forwardRef, RefObject, useRef } from "react";
+import React, { forwardRef, RefObject } from "react";
 import { WhyUsItems } from "@/data/whyUsItems";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import Image from "next/image";
@@ -16,7 +16,12 @@ interface SectionProps {
 
 const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
   (
-    { className, scrollProgress, shrinkSize = 0, rotationAmount = -45 },
+    {
+      className,
+      // scrollProgress,
+      // shrinkSize = 0,
+      // rotationAmount = -45
+    },
     ref
   ) => {
     // const sectionRef = useRef<HTMLDivElement>(null);
@@ -44,28 +49,34 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
         <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
           <ScrollingBanner
             baseVelocity={10}
-            length={2}
-            child="flex flex-row items-center gap-x-[9.375rem]"
+            child="flex flex-row h-full items-center gap-x-[9.375rem]"
             innerChild="size-max"
           >
             <Image
               alt="virtual xposure"
               src={vxImage}
               className="size-full"
-              quality={75}
+              quality={50}
+              loading="lazy"
+              priority={false}
+              width={300}
+              height={100}
             />
           </ScrollingBanner>
           <ScrollingBanner
             baseVelocity={-10}
-            length={2}
-            child="flex flex-row items-center gap-x-[9.375rem]"
+            child="sm:flex flex-row h-full items-center gap-x-[9.375rem] hidden"
             innerChild="size-max"
           >
             <Image
               alt="virtual xposure"
               src={vxImage}
               className="size-full"
-              quality={75}
+              quality={50}
+              loading="lazy"
+              priority={false}
+              width={300}
+              height={100}
             />
           </ScrollingBanner>
         </div>

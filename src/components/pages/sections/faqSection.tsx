@@ -4,7 +4,6 @@ import React, { useRef } from "react";
 import {
   Accordion,
   AccordionContent,
-  AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import SectionHeader from "@/components/ui/sectionHeader";
@@ -17,7 +16,7 @@ interface SectionProps {
   noAnimation?: boolean;
 }
 
-interface FAQProps {
+export interface FAQProps {
   question: string;
   answer: string;
 }

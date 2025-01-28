@@ -3,7 +3,6 @@
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import whatisitImage from "@/../../public/assets/portfolio/virtual-renovation-images/DEMO_ (11).webp";
-import LetterRevealOnScroll from "@/components/animations/LetterRevealOnScroll";
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 export const WhatIsItSection = () => (

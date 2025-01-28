@@ -54,8 +54,8 @@ function ViewportProvider({ children }: { children: React.ReactNode }) {
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(() => {
-        const newWidth = window.innerWidth;
-        const oldWidth = state.windowWidth;
+        // const newWidth = window.innerWidth;
+        // const oldWidth = state.windowWidth;
 
         // const crossedMobileBreakpoint =
         //   (oldWidth <= MOBILE_BREAKPOINT && newWidth > MOBILE_BREAKPOINT) ||

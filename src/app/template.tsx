@@ -23,9 +23,8 @@ import ChatWidget from "@/components/ui/chatWidget";
 interface TemplateProps {
   children: ReactNode;
 }
-
 export const animatePageIn = (isMobileView: boolean) => {
-  return new Promise<void>((resolve, reject) => {
+  return new Promise<void>((resolve) => {
     // Add timeout safety
     const timeout = setTimeout(() => {
       resolve(); // Resolve anyway after 2 seconds

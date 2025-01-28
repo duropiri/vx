@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from "react";
 import FAQSection from "@/components/pages/sections/faqSection";
-import ContactSection from "@/components/pages/sections/contactSection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
 import Image from "next/image";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";

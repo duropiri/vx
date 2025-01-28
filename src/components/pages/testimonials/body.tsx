@@ -72,7 +72,6 @@ const Dynamic = {
 
 // Complex components
 import Image from "next/image";
-import csImage from "@/../../public/assets/svgs/VX-Website-CS-Bar-1.svg";
 import StatsSection from "@/components/pages/sections/statsSection";
 import {
   // setupScrollAnimation,
@@ -86,7 +85,6 @@ import { testimonials } from "@/data/testimonials";
 import { renderStars } from "@/components/ui/renderStars";
 import { useViewport } from "@/contexts/ViewportContext";
 import { ServiceIcons } from "@/data/serviceIcons";
-import Script from "next/script";
 import { ReactGoogleReviews } from "react-google-reviews";
 import BasicSection from "@/components/pages/sections/basicSection";
 
@@ -107,7 +105,7 @@ function Body() {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, [, windowWidth]);
+  }, [windowWidth]);
 
   interface QuoteProps {
     quote: string;

@@ -1,6 +1,6 @@
 // @/components/pages/home/body.tsx
 "use client";
-import React, { useEffect, useRef, Suspense } from "react";
+import React, { useEffect, useRef } from "react";
 import dynamic from "next/dynamic";
 
 // above-thefold static components
@@ -10,12 +10,10 @@ import SocialProofSection from "@/components/pages/sections/socialProofSection";
 
 // below-the-fold dynamic components
 const Dynamic = {
-  TestimonialsSection: dynamic(
-    () => import("@/components/pages/sections/testimonialsSection"),
-    {
-      loading: () => <div className="min-h-[110vh]" />,
-    }
-  ),
+  TestimonialsSection: dynamic(() => import("@/components/pages/sections/testimonialsSection"), {
+    loading: () => <div className="min-h-[110vh]" />,
+    ssr: false
+  }),
 
   BasicHeroSection: dynamic(
     () => import("@/components/pages/sections/basicHeroSection"),
@@ -40,7 +38,6 @@ const Dynamic = {
 };
 
 // Complex components
-import ChatWidget from "@/components/ui/chatWidget";
 import { TransitionLink } from "@/components/TransitionLink";
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import {
@@ -59,7 +56,6 @@ import { ListingMediaPackages } from "@/data/pricingPackages";
 
 import Image from "next/image";
 import vxapp from "@/../../public/assets/images/vxapp-iPhone-12-Mockup.png";
-import VirtualSection from "@/components/pages/services/sections/virtualSection";
 import { ServiceIcons } from "@/data/serviceIcons";
 import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import { useViewport } from "@/contexts/ViewportContext";
@@ -260,7 +256,7 @@ const Body = () => {
     return () => {
       cleanupGSAPAnimations();
     };
-  }, [, windowWidth]);
+  }, [windowWidth]);
 
   return (
     <>
@@ -438,7 +434,7 @@ const Body = () => {
             className="flex flex-col gap-[1.5rem] sm:gap-[3.75rem]"
           >
             {/* <FloorplansSection /> */}
-            <VirtualSection />
+            <Dynamic.VirtualSection />
             {/* CTA */}
             <div className="flex justify-center w-full">
               <div className="flex flex-col sm:flex-row gap-[1rem]">

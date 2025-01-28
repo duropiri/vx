@@ -62,7 +62,7 @@ const CopySection = forwardRef<HTMLDivElement, SectionProps>(
       return () => {
         st.kill();
       };
-    }, [, windowWidth]);
+    }, [windowWidth]);
 
     return (
       <div

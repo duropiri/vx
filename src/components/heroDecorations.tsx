@@ -272,6 +272,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
 
     return (
       <div
+        ref={ref}
         id="icons"
         className={`${className} pointer-events-none absolute !bg-transparent h-[100vh] w-full max-w-[100vw] !p-0 overflow-hidden`}
       >
@@ -325,5 +326,8 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
     );
   }
 );
+
+// Add display name
+HeroDecorations.displayName = 'HeroDecorations';
 
 export default HeroDecorations;

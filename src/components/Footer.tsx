@@ -23,9 +23,12 @@ const NewsletterFormClient: React.FC<{
   email: string;
   setEmail: (value: string) => void;
   onSubmit: (e: React.FormEvent) => void;
-}> = ({ email, setEmail, onSubmit }) => {
+  className?: string;
+}> = ({ email, setEmail, onSubmit, className = "" }) => {
   return (
-    <div className="my-auto xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto">
+    <div
+      className={`${className} xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto`}
+    >
       <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
       <form
         onSubmit={onSubmit}
@@ -60,7 +63,7 @@ export default function Footer({
 
   // Define these as CSS custom properties (variables)
   const footerStyles = {
-    "--footer-height-mobile": "50rem",
+    "--footer-height-mobile": "21rem",
     "--footer-height-desktop": "27rem",
   } as React.CSSProperties;
 
@@ -73,7 +76,7 @@ export default function Footer({
   };
 
   return (
-    <footer style={footerStyles}>
+    <footer style={footerStyles} className="bg-ash">
       <div
         className={`relative h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] select-none`}
         style={{
@@ -87,7 +90,7 @@ export default function Footer({
           <div
             className={`${className} h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] sticky top-[calc(100vh-var(--footer-height-mobile))] xl:top-[calc(100vh-var(--footer-height-desktop))] bg-ash text-white`}
           >
-            <div className="section-container flex flex-col size-full items-center justify-center pt-[9.375rem] !pb-0 gap-[2rem] xl:gap-[3.125rem]">
+            <div className="section-container flex flex-col size-full items-start justify-start pt-[9.375rem] !pb-0 gap-[2rem]">
               <div className="flex flex-col xl:!flex-row items-start justify-start xl:justify-between size-full max-w-[100dvw] gap-y-[1rem] xl:gap-y-[2rem]">
                 {/* Branding section */}
                 <div className="flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] xl:max-w-[30%]">
@@ -234,7 +237,7 @@ export default function Footer({
                 <div className="flex xl:hidden h-[0.055rem] w-full bg-charcoal" />
 
                 {/* Links section */}
-                <div className="flex flex-row w-full items-start justify-between xl:contents">
+                <div className="hidden sm:flex flex-row w-full items-start justify-between xl:contents">
                   {/* Company Links */}
                   <div className="flex flex-col w-full xl:w-auto items-start justify-start gap-[1rem] xl:gap-[2rem]">
                     <h2 className="pn-bold-20">Company</h2>
@@ -270,13 +273,14 @@ export default function Footer({
                   </div>
                 </div>
 
-                <div className="flex xl:hidden h-[0.055rem] w-full bg-charcoal" />
+                <div className="hidden sm:flex xl:hidden h-[0.055rem] w-full bg-charcoal" />
 
                 {/* Newsletter Form - Now client-side only */}
                 <NewsletterFormClient
                   email={email}
                   setEmail={setEmail}
                   onSubmit={handleSubmit}
+                  className="hidden sm:flex"
                 />
               </div>
 
@@ -291,8 +295,54 @@ export default function Footer({
         className="flex flex-col xl:!flex-row w-full !justify-between items-center gap-y-[1rem] xl:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] xl:!py-[2rem] select-none"
         style={{ zIndex: 99999999999999 }}
       >
+        {/* Links section */}
+        <div className="flex sm:hidden flex-row w-full items-start justify-between">
+          {/* Company Links */}
+          <div className="flex flex-col w-full xl:w-auto items-start justify-start gap-[1rem] xl:gap-[2rem]">
+            <h2 className="pn-bold-20">Company</h2>
+            <div className="flex flex-col pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
+              {FooterCompanyLinks.map((nav, index) => (
+                <HoverWrapper
+                  key={index}
+                  className="cursor-select-hover inline-block w-fit"
+                >
+                  <TransitionLink href={nav.href} passHref>
+                    <FlipLink>{nav.title}</FlipLink>
+                  </TransitionLink>
+                </HoverWrapper>
+              ))}
+            </div>
+          </div>
+
+          {/* Help Links */}
+          <div className="flex flex-col w-full xl:w-auto items-end text-end xl:text-start xl:items-start xl:justify-start gap-[1rem] xl:gap-[2rem]">
+            <h2 className="pn-bold-20">Help</h2>
+            <div className="flex flex-col items-end xl:items-start pn-regular-16 text-white/75 gap-[1rem] xl:gap-[1.5rem]">
+              {FooterHelpLinks.map((nav, index) => (
+                <HoverWrapper
+                  key={index}
+                  className="cursor-select-hover inline-block w-fit"
+                >
+                  <TransitionLink href={nav.href} passHref>
+                    <FlipLink>{nav.title}</FlipLink>
+                  </TransitionLink>
+                </HoverWrapper>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="flex sm:hidden h-[0.055rem] w-full bg-charcoal" />
+
+        <NewsletterFormClient
+          email={email}
+          setEmail={setEmail}
+          onSubmit={handleSubmit}
+          className="flex sm:hidden"
+        />
         <p className="pn-regular-14 text-center xl:text-start">
-          © Copyright 2024, All Rights Reserved by VirtualXposure
+          © Copyright {new Date().getFullYear()}, All Rights Reserved by
+          VirtualXposure
         </p>
 
         <div className="flex flex-row items-center gap-[0.375rem] xl:pr-[2rem]">
@@ -346,6 +396,8 @@ export default function Footer({
             quality={75}
           />
         </div>
+
+        {/* <div className="flex sm:hidden h-[15rem] w-full pointer-events-none" /> */}
       </div>
     </footer>
   );

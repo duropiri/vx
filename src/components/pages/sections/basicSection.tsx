@@ -12,7 +12,7 @@ interface SectionProps {
 
 const BasicSection = forwardRef<HTMLDivElement, SectionProps>(
   (
-    { className, content, originalColor, transitionColor, id, ...props },
+    { className, content, originalColor, transitionColor, id },
     forwardedRef
   ) => {
     const containerRef =

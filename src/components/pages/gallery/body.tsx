@@ -2,7 +2,6 @@
 "use client";
 import React, { useState } from "react";
 import FAQSection from "@/components/pages/sections/faqSection";
-import ContactSection from "@/components/pages/sections/contactSection";
 import BasicHeroSection from "@/components/pages/sections/basicHeroSection";
 import TestimonialsSection from "@/components/pages/sections/testimonialsSection";
 
@@ -21,11 +20,7 @@ import { ServiceIcons } from "@/data/serviceIcons";
 import {
   Swiper,
   SwiperSlide,
-  // EffectCards,
-  Pagination,
-  Navigation,
   Scrollbar,
-  A11y,
 } from "@/utils/swiper";
 
 function Body() {
