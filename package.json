@@ -54,13 +54,8 @@
     "typescript": "^5"
   },
   "resolutions": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "@emotion/react": "^11.11.0",
     "@radix-ui/react-accordion": "^1.1.2"
   },
-  "overrides": {
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0"
-  }
+  "overrides": {}
 }
