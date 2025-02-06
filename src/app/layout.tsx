@@ -20,24 +20,24 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  title: "Virtual Xposure | Meet the Gold Standard in Real Estate Marketing",
+  title: "Virtual Xposure | Real Estate Photography Edmonton",
   description:
-    "Virtual Xposure delivers cutting-edge digital marketing solutions tailored for real estate professionals. We help agents build a powerful online presence through social media management, content creation, lead generation, and data-driven strategies. Boost brand visibility, engage your audience, and close more deals with our comprehensive real estate marketing services.",
+    "The #1 All-In-One Solution for your real estate photography and videography needs. Your realtor buddies will stop in awe as you launch your listings, wondering what changed… only you will know.",
   keywords:
     "Virtual Xposure, real estate marketing, digital marketing for realtors, social media management, content creation, real estate branding, realtor growth strategies, social media strategy, video content creation, real estate content marketing, realtor lead generation, brand visibility, online real estate marketing, data-driven marketing, social media automation, media buying, CRM pipeline management, real estate sales support, client engagement, virtual marketing solutions",
   openGraph: {
     type: "website",
     url: "https://virtualxposure.com",
-    title: "Virtual Xposure | Meet the Gold Standard in Real Estate Marketing",
+    title: "Virtual Xposure | Real Estate Photography Edmonton",
     description:
-      "Virtual Xposure delivers cutting-edge digital marketing solutions tailored for real estate professionals...",
+      "The #1 All-In-One Solution for your real estate photography and videography needs....",
     images: "/assets/images/social-media-share-preview.webp",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Virtual Xposure | Meet the Gold Standard in Real Estate Marketing",
+    title: "Virtual Xposure | Real Estate Photography Edmonton",
     description:
-      "Virtual Xposure delivers cutting-edge digital marketing solutions...",
+      "The #1 All-In-One Solution for your real estate photography and videography needs....",
     images: "/assets/images/social-media-share-preview.webp",
   },
   verification: {
