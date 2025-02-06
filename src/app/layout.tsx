@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   title: "Virtual Xposure | Real Estate Photography Edmonton",
   description:
-    "The #1 All-In-One Solution for your real estate photography and videography needs. Your realtor buddies will stop in awe as you launch your listings, wondering what changed… only you will know.",
+    "Sell Your Listings In DAYS, Not WEEKS - For Only $127.99 -- The #1 All-In-One Solution for your real estate photography and videography needs. Your realtor buddies will stop in awe as you launch your listings, wondering what changed… only you will know.",
   keywords:
     "Virtual Xposure, real estate marketing, digital marketing for realtors, social media management, content creation, real estate branding, realtor growth strategies, social media strategy, video content creation, real estate content marketing, realtor lead generation, brand visibility, online real estate marketing, data-driven marketing, social media automation, media buying, CRM pipeline management, real estate sales support, client engagement, virtual marketing solutions",
   openGraph: {
@@ -30,14 +30,14 @@ export const metadata: Metadata = {
     url: "https://virtualxposure.com",
     title: "Virtual Xposure | Real Estate Photography Edmonton",
     description:
-      "The #1 All-In-One Solution for your real estate photography and videography needs....",
+      "Sell Your Listings In DAYS, Not WEEKS - For Only $127.99 -- The #1 All-In-One Solution for your real estate photography and videography needs....",
     images: "/assets/images/social-media-share-preview.webp",
   },
   twitter: {
     card: "summary_large_image",
     title: "Virtual Xposure | Real Estate Photography Edmonton",
     description:
-      "The #1 All-In-One Solution for your real estate photography and videography needs....",
+      "Sell Your Listings In DAYS, Not WEEKS - For Only $127.99 -- The #1 All-In-One Solution for your real estate photography and videography needs....",
     images: "/assets/images/social-media-share-preview.webp",
   },
   verification: {
