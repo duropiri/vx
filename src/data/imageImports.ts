@@ -2,9 +2,9 @@
 
 // Define folder-specific image counts
 const IMAGE_COUNTS = {
-  aerialDrone: 54, // Update with actual count
-  exterior: 19, // Update with actual count
-  interior: 66, // Update with actual count
+  aerialDrone: 17, // Update with actual count
+  exterior: 4, // Update with actual count
+  interior: 36, // Update with actual count
   renovation: 18, // Update with actual count
   staging: 61, // Update with actual count
 };
@@ -13,7 +13,7 @@ const IMAGE_COUNTS = {
 export const aerialDronePaths = Array.from(
   { length: IMAGE_COUNTS.aerialDrone },
   (_, i) =>
-    `/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(${
+    `/assets/portfolio/images/aerial drone/Virtual Xposure - Aerial Drone Image - (${
       i + 1
     }).webp`
 );
@@ -21,17 +21,19 @@ export const aerialDronePaths = Array.from(
 export const exteriorPaths = Array.from(
   { length: IMAGE_COUNTS.exterior },
   (_, i) =>
-    `/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(${
+    `/assets/portfolio/images/exterior/Virtual Xposure - Exterior Image - (${
       i + 1
     }).webp`
+
 );
 
 export const interiorPaths = Array.from(
   { length: IMAGE_COUNTS.interior },
   (_, i) =>
-    `/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(${
+    `/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (${
       i + 1
     }).webp`
+
 );
 
 export const virtualRenovationPaths = Array.from(

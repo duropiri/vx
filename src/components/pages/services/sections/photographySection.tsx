@@ -30,22 +30,24 @@ import { allImagePaths } from "@/data/imageImports";
 const PORTFOLIO_IMAGES = {
   interior: Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
-    src: `/assets/portfolio/images/interior/Virtual_Xposure_-_Interior_Image_-_(${
+    src: `/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (${
       i + 1
     }).webp`,
   })),
-  exterior: Array.from({ length: 12 }, (_, i) => ({
+  exterior: Array.from({ length: 4 }, (_, i) => ({
     id: i + 1,
-    src: `/assets/portfolio/images/exterior/Virtual_Xposure_-_Exterior_Image_-_(${
+    src: `/assets/portfolio/images/exterior/Virtual Xposure - Exterior Image - (${
       i + 1
     }).webp`,
+
   })),
   "aerial drone": Array.from({ length: 12 }, (_, i) => ({
     id: i + 1,
-    src: `/assets/portfolio/images/aerial drone/Virtual_Xposure_-_Aerial_Drone_Image_-_(${
+    src: `/assets/portfolio/images/aerial drone/Virtual Xposure - Aerial Drone Image - (${
       i + 1
     }).webp`,
   })),
+
 };
 
 const PhotographySection = ({ dark = true }) => {

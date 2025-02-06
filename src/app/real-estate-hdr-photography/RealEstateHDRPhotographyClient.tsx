@@ -311,7 +311,7 @@ export const UnlimitedRightSection = () => (
   <div className="relative flex size-full flex-col sm:flex-row items-start justify-center gap-[3rem] sm:gap-[3.75rem] h-[50vh] overflow-hidden rounded-[1rem]">
     {/* Gradient */}
     <div className="absolute left-0 top-0 flex flex-col w-full h-[7.5rem] origin-top-left bg-gradient-to-t from-transparent to-white to-85% pointer-events-none rounded-t-[1.875rem] z-10" />
-    <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem]">
+    <div className="relative flex flex-col size-full aspect-[73/128] items-center justify-center hover:scale-110 mt-[5rem] transition-all cursor-select-hover w-[25rem] scale-150">
       <ParallaxSection
         speed={1 - 1.2}
         className="w-[80vw] sm:w-[30vw] aspect-[73/128]"

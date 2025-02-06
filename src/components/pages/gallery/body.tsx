@@ -17,11 +17,7 @@ import Image from "next/image";
 import * as Dialog from "@radix-ui/react-dialog";
 import { ServiceIcons } from "@/data/serviceIcons";
 
-import {
-  Swiper,
-  SwiperSlide,
-  Scrollbar,
-} from "@/utils/swiper";
+import { Swiper, SwiperSlide, Scrollbar } from "@/utils/swiper";
 
 function Body() {
   const [selectedImage, setSelectedImage] = useState<string>("");
@@ -63,35 +59,47 @@ function Body() {
               onOpenChange={() => setSelectedImage("")}
             >
               <Dialog.Portal>
-                <Dialog.Overlay className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[99999] cursor-none-hover" />
-                <Dialog.Content className="fixed top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] z-[99999]">
-                  <Dialog.Title className="hidden">Image Carousel</Dialog.Title>
-
-                  {selectedImage && (
-                    <Swiper
-                      initialSlide={allImagePaths.indexOf(selectedImage)}
-                      scrollbar={{ hide: true }}
-                      modules={[Scrollbar]}
-                      className="mySwiper relative w-[90vw] h-[90vh] bg-transparent"
+                <Dialog.Overlay
+                  className="fixed inset-0 bg-black/75 [backdrop-filter:_saturate(180%)_blur(20px)] cursor-none-hover pointer-events-none"
+                  style={{ zIndex: 99999999 }}
+                >
+                  <Dialog.Close className="absolute inset-0 cursor-none-hover cursor-none">
+                    <Dialog.Close className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/75 transition-colors cursor-select-hover z-10">
+                      <div className="size-6">{ServiceIcons.close}</div>
+                    </Dialog.Close>
+                    <Dialog.Content
+                      className="fixed size-full top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]"
+                      // style={{ zIndex: 99999999 }}
                     >
-                      {allImagePaths.map((imagePath, index) => (
-                        <SwiperSlide key={index}>
-                          <Image
-                            src={imagePath}
-                            alt="Full size image"
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
-                            className="object-contain"
-                            quality={75}
-                          />
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                  )}
-                  <Dialog.Close className="absolute top-4 right-4 text-white bg-black/50 rounded-full p-2 hover:bg-black/75 transition-colors cursor-select-hover z-10">
-                    <div className="size-6">{ServiceIcons.close}</div>
+                      <Dialog.Title className="hidden">
+                        Image Carousel
+                      </Dialog.Title>
+                      <div className="relative w-[100vw] h-full bg-transparent">
+                        {selectedImage && (
+                          <Swiper
+                            initialSlide={allImagePaths.indexOf(selectedImage)}
+                            scrollbar={{ hide: true }}
+                            modules={[Scrollbar]}
+                            className="mySwiper relative size-full p-[2rem] [&_.swiper-scrollbar]:mb-[2rem] [&_.swiper-scrollbar]:!h-[1rem] [&_.swiper-scrollbar>.swiper-scrollbar-drag]:!bg-goldenbrown"
+                          >
+                            {allImagePaths.map((imagePath, index) => (
+                              <SwiperSlide key={index} className="">
+                                <Image
+                                  src={imagePath}
+                                  alt="Full size image"
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 100vw, 100vw"
+                                  className="object-contain !size-[95%] md:!size-[75%] cursor-drag-hover place-self-center"
+                                  quality={75}
+                                />
+                              </SwiperSlide>
+                            ))}
+                          </Swiper>
+                        )}
+                      </div>
+                    </Dialog.Content>
                   </Dialog.Close>
-                </Dialog.Content>
+                </Dialog.Overlay>
               </Dialog.Portal>
             </Dialog.Root>
           </>

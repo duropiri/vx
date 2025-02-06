@@ -47,11 +47,12 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
       >
         {/* Background Text Parallax */}
         <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
-          <ScrollingBanner
+          {/* <ScrollingBanner
             baseVelocity={10}
             child="flex flex-row h-full items-center gap-x-[9.375rem]"
             innerChild="size-max"
-          >
+          > */}
+          <div className="h-full size-max -translate-x-[100ch]">
             <Image
               alt="virtual xposure"
               src={vxImage}
@@ -62,12 +63,14 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
               width={300}
               height={100}
             />
-          </ScrollingBanner>
-          <ScrollingBanner
+          </div>
+          {/* </ScrollingBanner> */}
+          {/* <ScrollingBanner
             baseVelocity={-10}
             child="sm:flex flex-row h-full items-center gap-x-[9.375rem] hidden"
             innerChild="size-max"
-          >
+          > */}
+          <div className="h-full size-max -translate-x-[300ch]">
             <Image
               alt="virtual xposure"
               src={vxImage}
@@ -78,7 +81,8 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
               width={300}
               height={100}
             />
-          </ScrollingBanner>
+          </div>
+          {/* </ScrollingBanner> */}
         </div>
         <div
           ref={ref}
