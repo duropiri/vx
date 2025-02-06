@@ -141,7 +141,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
   const iconRef = React.useRef<HTMLDivElement>(null);
   const innerRef = React.useRef<HTMLDivElement>(null);
   const rotateRef = React.useRef<HTMLDivElement>(null);
-  const { windowWidth } = useViewport();
+  const { isMobile, windowWidth } = useViewport();
 
   useEffect(() => {
     if (!iconRef.current || !innerRef.current || !rotateRef.current) return;
@@ -182,7 +182,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
 
     // Add animations to the timeline
     scrollTween.to(iconRef.current, {
-      x: icon.scrollAnimation.x[1],
+      x: icon.scrollAnimation.x[1] * (isMobile ? 0.25 : 1),
       y: icon.scrollAnimation.y[1],
       rotation: icon.scrollAnimation.rotate[1],
       opacity: 0,
@@ -192,7 +192,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
-  }, [icon, windowWidth]);
+  }, [icon, isMobile, windowWidth]);
 
   return (
     <div ref={iconRef} className={icon.className}>

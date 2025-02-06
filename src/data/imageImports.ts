@@ -53,8 +53,8 @@ export const allImagePaths = [
   ...aerialDronePaths,
   ...exteriorPaths,
   ...interiorPaths,
-  ...virtualRenovationPaths,
-  ...virtualStagingPaths,
+  // ...virtualRenovationPaths,
+  // ...virtualStagingPaths,
 ];
 
 // Export categories object

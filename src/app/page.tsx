@@ -4,13 +4,13 @@ import { baseMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = {
   ...baseMetadata,
-  title: 'Virtual Xposure | Meet the Gold Standard in Real Estate Marketing',
-  description: 'Virtual Xposure delivers cutting-edge digital marketing solutions...',
+  title: 'Virtual Xposure | Real Estate Photography Edmonton',
+  description: 'Sell Your Listings In DAYS, Not WEEKS - For Only $127.99 -- The #1 All-In-One Solution for your real estate photography and videography needs...',
   keywords: 'Virtual Xposure, real estate marketing...',
   openGraph: {
     ...baseMetadata.openGraph,
-    title: 'Virtual Xposure | Meet the Gold Standard in Real Estate Marketing',
-    description: 'Virtual Xposure delivers cutting-edge digital marketing solutions...',
+    title: 'Virtual Xposure | Real Estate Photography Edmonton',
+    description: 'Sell Your Listings In DAYS, Not WEEKS - For Only $127.99 -- The #1 All-In-One Solution for your real estate photography and videography needs...',
   },
 };
 import Page from "@/components/layout/page";
