@@ -1,6 +1,6 @@
 // ViewportContext.tsx
 "use client";
-import { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { gsap } from "@/utils/gsap";
 
 const MOBILE_BREAKPOINT = 768;
@@ -20,18 +20,18 @@ const ViewportContext = createContext<ViewportContextType>({
   isClient: false,
 });
 
-function ViewportProvider({ children }: { children: React.ReactNode }) {
-  const [state, setState] = useState<ViewportContextType>(() => ({
+export const ViewportProvider = ({ children }: { children: React.ReactNode }) => {
+  const [viewport, setViewport] = useState<ViewportContextType>({
     isMobile: false,
     isSMDesktop: false,
     windowWidth: 0,
     isClient: false,
-  }));
+  });
 
   useEffect(() => {
-    const updateViewport = () => {
+    const handleResize = () => {
       const width = window.innerWidth;
-      setState({
+      setViewport({
         isMobile: width <= MOBILE_BREAKPOINT,
         isSMDesktop: width < SMDESKTOP_BREAKPOINT,
         windowWidth: width,
@@ -47,41 +47,30 @@ function ViewportProvider({ children }: { children: React.ReactNode }) {
       }
     };
 
-    // Initial update
-    updateViewport();
-
-    let resizeTimer: NodeJS.Timeout;
-    const handleResize = () => {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(() => {
-        // const newWidth = window.innerWidth;
-        // const oldWidth = state.windowWidth;
-
-        // const crossedMobileBreakpoint =
-        //   (oldWidth <= MOBILE_BREAKPOINT && newWidth > MOBILE_BREAKPOINT) ||
-        //   (oldWidth > MOBILE_BREAKPOINT && newWidth <= MOBILE_BREAKPOINT);
-
-        // if (crossedMobileBreakpoint) {
-        //   window.location.reload();
-        //   return;
-        // }
-
-        updateViewport();
-      }, 100);
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-      clearTimeout(resizeTimer);
-    };
-  }, [state.windowWidth]);
+    // Initial set
+    handleResize();
+    
+    // Debounce resize handler
+    const debouncedResize = debounce(handleResize, 100);
+    window.addEventListener('resize', debouncedResize);
+    
+    return () => window.removeEventListener('resize', debouncedResize);
+  }, []);
 
   return (
-    <ViewportContext.Provider value={state}>{children}</ViewportContext.Provider>
+    <ViewportContext.Provider value={viewport}>
+      {children}
+    </ViewportContext.Provider>
   );
-}
+};
 
-const useViewport = () => useContext(ViewportContext);
+// Helper debounce function
+const debounce = (func: () => void, wait: number) => {
+  let timeout: NodeJS.Timeout;
+  return () => {
+    clearTimeout(timeout);
+    timeout = setTimeout(func, wait);
+  };
+};
 
-export { ViewportProvider, useViewport };
+export const useViewport = () => useContext(ViewportContext);

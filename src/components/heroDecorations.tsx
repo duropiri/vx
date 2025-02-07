@@ -1,4 +1,4 @@
-import React, { forwardRef, RefObject, useEffect, useRef } from "react";
+import React, { forwardRef, RefObject, useEffect, useRef, useMemo } from "react";
 import Image from "next/image";
 
 import { gsap, ScrollTrigger } from "@/utils/gsap";
@@ -14,6 +14,7 @@ import pinterestHeroImage from "@/../../public/assets/svgs/hero-svgs/Pinterest.s
 import youtubeHeroImage from "@/../../public/assets/svgs/hero-svgs/Youtube.svg";
 import whatsappHeroImage from "@/../../public/assets/svgs/hero-svgs/WhatsApp.svg";
 import { useViewport } from "@/contexts/ViewportContext";
+import { useGSAP } from "@/hooks/useGSAP";
 
 // Interface for social media icon positioning
 interface SocialMediaIcon {
@@ -135,77 +136,67 @@ const socialMediaIcons: SocialMediaIcon[] = [
 ];
 
 // Component for a single social media icon
-const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({
-  icon,
-}) => {
-  const iconRef = React.useRef<HTMLDivElement>(null);
-  const innerRef = React.useRef<HTMLDivElement>(null);
-  const rotateRef = React.useRef<HTMLDivElement>(null);
-  const { isMobile, windowWidth } = useViewport();
-
-  useEffect(() => {
-    if (!iconRef.current || !innerRef.current || !rotateRef.current) return;
-
-    // Set initial rotation
-    gsap.set(iconRef.current, {
-      rotation: icon.initialRotation || 0,
-    });
-
-    // Create the floating animation
-    gsap.to(innerRef.current, {
+const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({ icon }) => {
+  const iconRef = useRef<HTMLDivElement>(null);
+  const { isMobile } = useViewport();
+  
+  // Memoize animation configs
+  const { floatingConfig, rotationConfig, scrollConfig } = useMemo(() => ({
+    floatingConfig: {
       y: -15,
       duration: 3,
       repeat: -1,
       yoyo: true,
       ease: "power1.inOut",
       delay: icon.floatingDelay || 0,
-    });
-
-    // Create the rotation animation
-    gsap.to(rotateRef.current, {
+    },
+    rotationConfig: {
       rotation: 6,
       duration: 4,
       repeat: -1,
       yoyo: true,
       ease: "power1.inOut",
-    });
-
-    // Create scroll-based animations
-    const scrollTween = gsap.timeline({
-      scrollTrigger: {
-        trigger: "body",
-        start: "top top",
-        end: "500 top",
-        scrub: true,
-      },
-    });
-
-    // Add animations to the timeline
-    scrollTween.to(iconRef.current, {
+    },
+    scrollConfig: {
       x: icon.scrollAnimation.x[1] * (isMobile ? 0.25 : 1),
       y: icon.scrollAnimation.y[1],
       rotation: icon.scrollAnimation.rotate[1],
       opacity: 0,
       ease: "none",
-    });
+    }
+  }), [icon, isMobile]);
 
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, [icon, isMobile, windowWidth]);
+  useGSAP(() => {
+    if (!iconRef.current) return;
+
+    // Set initial rotation
+    gsap.set(iconRef.current, { rotation: icon.initialRotation || 0 });
+
+    // Create animations
+    const ctx = gsap.context(() => {
+      gsap.to(iconRef.current!.querySelector('.inner'), floatingConfig);
+      gsap.to(iconRef.current!.querySelector('.rotator'), rotationConfig);
+      
+      const scrollTween = gsap.timeline({
+        scrollTrigger: {
+          trigger: "body",
+          start: "top top",
+          end: "500 top",
+          scrub: true,
+        },
+      });
+      
+      scrollTween.to(iconRef.current, scrollConfig);
+    }, iconRef);
+
+    return () => ctx.revert();
+  }, [floatingConfig, rotationConfig, scrollConfig]);
 
   return (
     <div ref={iconRef} className={icon.className}>
-      <div ref={innerRef} className="size-full">
-        <div ref={rotateRef} className="size-full rounded-[1rem] shadow-inner">
-          <Image
-            alt="social media icon"
-            src={icon.src}
-            className="size-full shadow-2xl rounded-[1rem]"
-            quality={75}
-            priority={false}
-            loading={false ? "eager" : "lazy"}
-          />
+      <div className="inner">
+        <div className="rotator">
+          <Image src={icon.src} alt="" width={80} height={80} />
         </div>
       </div>
     </div>
