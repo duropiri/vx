@@ -451,7 +451,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         // Set the parent container's height to the maximum child height
         if (maxChildHeight > 0) {
           setContainerHeight(`${maxChildHeight}px`);
-          console.log("Max Child Height Calculated:", maxChildHeight);
+          // console.log("Max Child Height Calculated:", maxChildHeight);
         }
       }, 500); // Delay in milliseconds (adjust if needed)
     };
