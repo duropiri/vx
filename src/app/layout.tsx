@@ -1,6 +1,7 @@
 // app/layout.tsx
 import "./globals.scss";
 import { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react"
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 
 // Define base metadata
@@ -120,6 +121,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${proximaNova.variable} ${nunito.variable}`}>
+      <Analytics/>
       <head>
         <style dangerouslySetInnerHTML={{ __html: criticalStyles }} />
         <link
