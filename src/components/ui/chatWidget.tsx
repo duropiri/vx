@@ -20,7 +20,7 @@ function ChatWidget({ className }: SectionProps) {
         data-widget-id="66fab21d2e88521919e2d2f3"
         strategy="lazyOnload"
         onLoad={() => {
-          console.log("Script loaded correctly");
+          // console.log("Script loaded correctly");
         }}
       ></Script>
       <div className="hidden sm:contents">

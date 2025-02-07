@@ -590,8 +590,8 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     if (!dropdownRef.current) return;
 
     if (isActive) {
-      console.log("Active Dropdown", activeDropdown);
-      console.log("Previous Dropdown", previousDropdown);
+      // console.log("Active Dropdown", activeDropdown);
+      // console.log("Previous Dropdown", previousDropdown);
 
       gsap.fromTo(
         dropdownRef.current,

@@ -31,7 +31,7 @@ const contactform = () => {
         src="https://link.msgsndr.com/js/form_embed.js"
         strategy="lazyOnload"
         onLoad={() => {
-          console.log("Script loaded correctly");
+          // console.log("Script loaded correctly");
         }}
       ></Script>
     </div>
