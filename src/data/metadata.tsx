@@ -8,7 +8,7 @@ const baseMetadata = {
   },
   icons: {
     icon: '/assets/images/favicon.ico',
-    apple: '/assets/images/favicon.webp',
+    apple: '/assets/images/favicon_vx.webp',
   },
   openGraph: {
     type: 'website',
