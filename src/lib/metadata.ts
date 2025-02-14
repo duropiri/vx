@@ -1,4 +1,4 @@
-// lib/metadata.ts
+favicon// lib/metadata.ts
 
 // Base metadata shared across all pages
 export const baseMetadata = {

@@ -47,17 +47,17 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: "/assets/images/favicon.ico",
-    apple: [{ url: "/assets/images/favicon_vx.webp", sizes: "180x180" }],
+    apple: [{ url: "/assets/images/favicon.webp", sizes: "180x180" }],
     other: [
       {
         rel: "icon",
-        url: "/assets/images/favicon_vx.webp",
+        url: "/assets/images/favicon.webp",
         sizes: "32x32",
         type: "image/webp",
       },
       {
         rel: "icon",
-        url: "/assets/images/favicon_vx.webp",
+        url: "/assets/images/favicon.webp",
         sizes: "16x16",
         type: "image/webp",
       },

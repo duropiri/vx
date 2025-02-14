@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+faviconimport { Metadata } from "next";
 
 // Base metadata that's common across pages
 const baseMetadata = {
