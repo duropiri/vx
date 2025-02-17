@@ -121,6 +121,11 @@ const nextConfig = {
         protocol: "https",
         hostname: "localhost",
       },
+      {
+        protocol: 'https',
+        hostname: 'imagedelivery.net',
+        pathname: '/L46fAFaaMUbT5UqZ0MTXPg/**',
+      },
     ],
     deviceSizes: [384, 640, 768, 960, 1080, 1200, 1440, 1920],
     formats: ["image/avif", "image/webp"],
