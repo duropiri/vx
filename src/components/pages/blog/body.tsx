@@ -366,12 +366,6 @@ function Body({
         />
       )}
 
-      {/* Contact */}
-      {/* <div className="bg-white z-10">
-        <ScaleInVisible>
-          <Dynamic.ContactSection className="bg-white z-10" />
-        </ScaleInVisible>
-      </div> */}
       {/* FAQ */}
       <Dynamic.FAQSection
         faq={faq || listingMediaFAQ}
