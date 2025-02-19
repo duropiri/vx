@@ -9,6 +9,7 @@ interface SectionProps {
   subheading?: string;
   body?: string;
   content?: React.ReactElement;
+  contentClassName?: string;
   headingClassName?: string;
   subheadingClassName?: string;
   bodyClassName?: string;
@@ -26,12 +27,12 @@ function BasicHeroSection({
   body,
   bodyClassName,
   content,
+  contentClassName,
   dark,
   center = false,
 }: SectionProps) {
   return (
-    <div className={`section-container top !flex-col ${className} bg-white`}>
-      <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]">
+    <div className={`section-container top !flex-col ${className} bg-white relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[1.5rem] sm:gap-[3.75rem]`}>
         {/* Header */}
         <SectionHeader
           center={center}
@@ -47,11 +48,10 @@ function BasicHeroSection({
           bodyClassName={bodyClassName}
         />
         {content && (
-          <div className="relative flex flex-col items-center size-full">
+          <div className={`${contentClassName} relative flex flex-col items-center size-full`}>
             {content}
           </div>
         )}
-      </div>
     </div>
   );
 }

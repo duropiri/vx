@@ -2,7 +2,12 @@
 "use client";
 import React, { useEffect, useRef, useState, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { BlogPost, client, getBlogPosts } from "@/lib/contentful";
+import {
+  BlogPost,
+  client,
+  contentfulLoader,
+  getBlogPosts,
+} from "@/lib/contentful";
 import Link from "next/link";
 import ContentfulImage from "@/components/ui/contentfulImage";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
@@ -110,6 +115,7 @@ import { FAQProps } from "@/components/pages/sections/faqSection";
 import { PricingPackages } from "@/components/pages/sections/pricingSection";
 import BasicSection from "@/components/pages/sections/basicSection";
 import { ServiceIcons } from "@/data/serviceIcons";
+import Image from "next/image";
 
 interface SectionProps {
   title: string;
@@ -242,47 +248,72 @@ function Body({
               {/* Blog Posts Grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1rem]">
                 {currentPosts.map((post) => (
-                  <ScaleInVisible key={post.slug}>
-                    <Link href={`/blog/${post.slug}`} className="block group">
-                      <article className="relative group cursor-select-hover rounded-[1rem] overflow-hidden flex flex-col">
+                  <ScaleInVisible
+                    key={post.slug}
+                    className="relative flex flex-col shadow-customShadow group cursor-select-hover rounded-[1rem] overflow-hidden"
+                  >
+                    <Link
+                      href={`/blog/${post.slug}`}
+                      className="flex flex-col size-full group"
+                    >
+                      <div className="relative flex flex-col size-full">
                         {/* Featured Image */}
-                        <div className="relative aspect-square">
+                        <div className="relative size-full flex flex-col items-center justify-center aspect-[1.2/1] overflow-hidden">
+                          {/* Blur overlay */}
                           <ContentfulImage
                             src={post.featuredImage}
                             alt={post.title}
-                            width={600}
-                            height={400}
-                            className="object-cover"
+                            fill
+                            className="absolute size-full inset-0 blur-md brightness-75 group-hover:brightness-50 transition-all duration-500"
+                            aria-hidden="true"
+                          />
+                          <ContentfulImage
+                            src={post.featuredImage}
+                            alt={post.title}
+                            fill
+                            className="z-10 group-hover:scale-90 transition-transform duration-500 object-contain rounded-[1rem]"
                             priority={false}
                           />
                         </div>
-                        <div className="p-6">
-                          {/* Title */}
-                          <h2 className="pn-semibold-24 mb-2 group-hover:text-goldenbrown transition-colors">
-                            {post.title}
-                          </h2>
-                          {/* Excerpt */}
-                          <p className="pn-regular-16 line-clamp-3">
-                            {post.excerpt}
-                          </p>
-                          {/* Publish Date */}
-                          <div className="mt-4 flex gap-[1rem] items-center pn-regular-14 text-ash/60">
-                            <div className="aspect-square w-[1rem]">
-                              {ServiceIcons.calendar}
+                        {/* Card Details */}
+                        <div className="p-6 bg-white flex flex-col min-h-[40%] justify-between">
+                          <div className="flex flex-col items-start justify-start">
+                            {/* Title */}
+                            <h2 className="pn-semibold-24 mb-2 group-hover:text-goldenbrown transition-colors">
+                              {post.title}
+                            </h2>
+                            {/* Publish Date */}
+                            <div className="flex gap-[1rem] items-center pn-regular-14 text-ash/60">
+                              <div className="aspect-square w-[1rem]">
+                                {ServiceIcons.calendar}
+                              </div>
+                              <time dateTime={post.publishDate}>
+                                {new Date(post.publishDate).toLocaleDateString(
+                                  "en-US",
+                                  {
+                                    year: "numeric",
+                                    month: "long",
+                                    day: "numeric",
+                                  }
+                                )}
+                              </time>
                             </div>
-                            <time dateTime={post.publishDate}>
-                              {new Date(post.publishDate).toLocaleDateString(
-                                "en-US",
-                                {
-                                  year: "numeric",
-                                  month: "long",
-                                  day: "numeric",
-                                }
-                              )}
-                            </time>
+                            {/* Excerpt */}
+                            <p className="pn-regular-16 line-clamp-3 mt-4">
+                              {post.excerpt}
+                            </p>
                           </div>
+                          <a
+                            href={`/blog/${post.slug}`}
+                            className="flex gap-[1rem] items-center pn-regular-20 text-goldenbrown mt-4"
+                          >
+                            Read More{" "}
+                            <div className="aspect-square w-[1.5rem] group-hover:rotate-45 transition-transform">
+                              {ServiceIcons.arrow}
+                            </div>
+                          </a>
                         </div>
-                      </article>
+                      </div>
                     </Link>
                   </ScaleInVisible>
                 ))}

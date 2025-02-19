@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // import OpacityOnScroll from "@/components/animations/OpacityOnScroll";
+"use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React, {
   forwardRef,
+  ReactElement,
   RefObject,
   useEffect,
   // useState
@@ -24,10 +26,10 @@ interface SectionProps {
   ref?: RefObject<HTMLDivElement>;
   id?: string;
   title: string;
-  copy: string;
-  cta: CTA;
+  copy?: string | ReactElement;
+  cta?: CTA;
   detailList?: DetailItem[];
-  src: string;
+  src: string | ReactElement;
 }
 
 interface CTA {
@@ -89,42 +91,46 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
     return (
       <div ref={ref} id={id} className="relative flex w-full overflow-hidden">
         {/* Video Background */}
-        {src.endsWith(".webm") || src.endsWith(".webm") ? (
-          <ParallaxSection
-            isHero
-            speed={1 - 0.3}
-            data-media-wrapper
-            className="absolute inset-0 size-full h-[120%]"
-          >
-            <video
-              src={src}
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="absolute top-0 left-0 w-full h-full object-cover"
-            />
-            {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/10" />
-          </ParallaxSection>
+        {typeof src === "string" ? (
+          src.endsWith(".webm") || src.endsWith(".mp4") ? (
+            <ParallaxSection
+              isHero
+              speed={0.7} // equivalent to 1 - 0.3
+              data-media-wrapper
+              className="absolute inset-0 size-full h-[120%] pointer-events-none"
+            >
+              <video
+                src={src}
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="absolute top-0 left-0 w-full h-full object-cover"
+              />
+              {/* Dark overlay for better text readability */}
+              <div className="absolute inset-0 bg-black/10 pointer-events-none" />
+            </ParallaxSection>
+          ) : (
+            <ParallaxSection
+              isHero
+              speed={0.7}
+              data-media-wrapper
+              className="absolute flex size-full h-[120%] pointer-events-none"
+            >
+              <Image
+                src={src}
+                alt={title}
+                fill
+                className="object-cover"
+                quality={75}
+                priority={false}
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+            </ParallaxSection>
+          )
         ) : (
-          <ParallaxSection
-            isHero
-            speed={1 - 0.3}
-            data-media-wrapper
-            className="absolute flex size-full h-[120%] pointer-events-none"
-          >
-            <Image
-              src={src}
-              alt={title}
-              fill
-              className="object-cover"
-              quality={75}
-              priority={false}
-              loading={false ? "eager" : "lazy"}
-            />
-            <div className="absolute inset-0 bg-black/40 pointer-events-none" />
-          </ParallaxSection>
+          src
         )}
 
         {/* Content */}
@@ -193,10 +199,10 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <div className="flex sm:mt-[2rem] w-full">
                 <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
                   <HoverWrapper
-                    href={cta.href}
+                    href={cta?.href}
                     className="cursor-select-hover button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
                   >
-                    <FlipLink className="font-semibold">{cta.label}</FlipLink>
+                    <FlipLink className="font-semibold">{cta?.label}</FlipLink>
                     <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
                       {ServiceIcons.arrow}
                     </div>

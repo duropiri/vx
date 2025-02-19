@@ -270,14 +270,14 @@ function TestimonialsSection({
                     loop={true}
                     className="mySwiper flex !relative !px-[2rem] sm:!px-[6rem] !w-full h-[30rem] sm:h-[35rem] !mx-0 !overflow-visible
               
-              [&::before,&::after]:pointer-events-none
-              [&::before,&::after]:from-white/20 
-              [&::before,&::after]:to-transparent 
-              [&::before,&::after]:absolute 
-              [&::before,&::after]:top-0 
-              [&::before,&::after]:z-10 
-              [&::before,&::after]:h-full 
-              [&::before,&::after]:w-1/12
+              [&:is(::before,::after)]:pointer-events-none
+              [&:is(::before,::after)]:from-white/20 
+              [&:is(::before,::after)]:to-transparent 
+              [&:is(::before,::after)]:absolute 
+              [&:is(::before,::after)]:top-0 
+              [&:is(::before,::after)]:z-10 
+              [&:is(::before,::after)]:h-full 
+              [&:is(::before,::after)]:w-1/12
               
               after:bg-gradient-to-l 
               after:right-0 

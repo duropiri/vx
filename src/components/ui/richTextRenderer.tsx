@@ -43,7 +43,7 @@ interface RichTextRendererProps {
 
 export default function RichTextRenderer({ content, className }: RichTextRendererProps) {
   return (
-    <div className={`prose max-w-none ${className}`}>
+    <div className={`prose ${className}`}>
       {documentToReactComponents(content, renderOptions)}
     </div>
   );

@@ -17,8 +17,8 @@ export interface BlogPost {
 }
 
 export const client = createClient({
-  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
-  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+  space: process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ?? "",
+  accessToken: process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN ?? "",
 });
 
 interface GetBlogPostsOptions {
@@ -26,13 +26,13 @@ interface GetBlogPostsOptions {
   skip?: number;
 }
 
-export async function getBlogPosts({ 
-  limit = 6, 
-  skip = 0 
+export async function getBlogPosts({
+  limit = 6,
+  skip = 0,
 }: GetBlogPostsOptions = {}): Promise<BlogPost[]> {
   const entries = await client.getEntries({
     content_type: "blogPost",
-    order: "-fields.publishDate",
+    order: ["-fields.publishDate"],
     limit,
     skip,
   });
@@ -60,26 +60,26 @@ function transformContentfulPost(item: any): BlogPost {
     slug: item.fields.slug,
     excerpt: item.fields.excerpt,
     content: item.fields.content,
-    featuredImage: item.fields.featuredImage?.fields.file.url || '',
+    featuredImage: item.fields.featuredImage?.fields.file.url || "",
     author: {
       name: item.fields.author.fields.name,
       bio: item.fields.author.fields.bio,
-      photo: item.fields.author.fields.photo.fields.file.url
+      photo: item.fields.author.fields.photo.fields.file.url,
     },
     publishDate: item.fields.publishDate,
-    tags: item.fields.tags || []
+    tags: item.fields.tags || [],
   };
 }
 
 // Add this utility function
-export const contentfulLoader = ({ 
-  src, 
-  width, 
-  quality 
-}: { 
-  src: string; 
-  width: number; 
-  quality?: number 
+export const contentfulLoader = ({
+  src,
+  width,
+  quality,
+}: {
+  src: string;
+  width?: number;
+  quality?: number;
 }) => {
   return `${src}?w=${width}&q=${quality || 75}&fm=webp&fit=fill`;
 };
@@ -87,8 +87,8 @@ export const contentfulLoader = ({
 // Add URL generator for static images
 export const contentfulImageUrl = (
   src: string,
-  width: number,
+  width?: number,
   quality = 75
 ) => {
-  return `${src}?w=${width}&q=${quality}&fm=webp&fit=fill`;
+  return `${src}?w=${width || 1920}&q=${quality}&fm=webp&fit=fill`;
 };
