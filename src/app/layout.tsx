@@ -58,6 +58,7 @@ export const metadata: Metadata = {
 // Create a new file: app/fonts.ts
 import localFont from "next/font/local";
 import { criticalStyles } from "@/styles/critical";
+import React from "react";
 
 export const proximaNova = localFont({
   src: [
@@ -147,25 +148,28 @@ export default function RootLayout({
             src="https://www.facebook.com/tr?id=2013640412380588&ev=PageView&noscript=1"
           />
         </noscript>
-        {GTM_IDS.map((id) => (
-          <div key={id}>
-            <Script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
-            />
-            <Script
-              strategy="afterInteractive"
-              dangerouslySetInnerHTML={{
-                __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', '${id}');
-              `,
-              }}
-            />
-          </div>
-        ))}
+        {/* Google Tag Manager Scripts */}
+        {GTM_IDS.length > 0 &&
+          GTM_IDS.map((id) => (
+            <React.Fragment key={id}>
+              <Script
+                async
+                src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+              />
+              <Script
+                id={`gtm-${id}`}
+                strategy="afterInteractive"
+                dangerouslySetInnerHTML={{
+                  __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${id}');
+                  `,
+                }}
+              />
+            </React.Fragment>
+          ))}
       </head>
       <body className="antialiased max-w-[100vw]">
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>

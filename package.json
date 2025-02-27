@@ -5,6 +5,7 @@
   "scripts": {
     "analyze": "ANALYZE=true next build",
     "dev": "next dev",
+    "dev:turbo": "next dev --turbopack",
     "dev:clean": "npm run clean && next dev",
     "clean": "rimraf .next && echo 'Cleaned successfully'",
     "build": "next build",
@@ -28,7 +29,7 @@
     "critters": "^0.0.23",
     "gsap": "^3.12.5",
     "lenis": "^1.1.13",
-    "next": "^15.1.6",
+    "next": "^15.2.0",
     "next-pwa": "^5.6.0",
     "react": "^19.0.0",
     "react-compare-slider": "^3.1.0",
