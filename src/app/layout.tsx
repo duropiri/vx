@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
 
 // Define base metadata
 export const metadata: Metadata = {
@@ -148,7 +149,7 @@ export default function RootLayout({
         </noscript>
         <Script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=AW-10849305021"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
         ></Script>
         <Script
           strategy="afterInteractive"
@@ -157,7 +158,8 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'AW-10849305021');`,
+            
+            gtag('config', '${GTM_ID}');`,
           }}
         />
       </head>
