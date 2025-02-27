@@ -4,7 +4,7 @@ import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
-const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID;
+const GTM_IDS = process.env.NEXT_PUBLIC_GTM_ID?.split(",") || [];
 
 // Define base metadata
 export const metadata: Metadata = {
@@ -147,21 +147,25 @@ export default function RootLayout({
             src="https://www.facebook.com/tr?id=2013640412380588&ev=PageView&noscript=1"
           />
         </noscript>
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${GTM_ID}`}
-        ></Script>
-        <Script
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            
-            gtag('config', '${GTM_ID}');`,
-          }}
-        />
+        {GTM_IDS.map((id) => (
+          <div key={id}>
+            <Script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${id}`}
+            />
+            <Script
+              strategy="afterInteractive"
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${id}');
+              `,
+              }}
+            />
+          </div>
+        ))}
       </head>
       <body className="antialiased max-w-[100vw]">
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
