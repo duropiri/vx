@@ -56,7 +56,7 @@ function Body({}) {
         }
       />
       {/* <Dynamic.ContactSection className="bg-white z-10" /> */}
-      <Dynamic.FAQSection vertical className="bg-white z-10" />
+      <Dynamic.FAQSection vertical noAnimation className="bg-white z-10" />
     </>
   );
 }
