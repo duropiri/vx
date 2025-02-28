@@ -149,7 +149,7 @@ export default function RootLayout({
           />
         </noscript>
         {/* Google Tag Manager Scripts */}
-        {GTM_IDS.length > 0 &&
+        {/* {GTM_IDS.length > 0 &&
           GTM_IDS.map((id) => (
             <React.Fragment key={id}>
               <Script
@@ -169,7 +169,41 @@ export default function RootLayout({
                 }}
               />
             </React.Fragment>
-          ))}
+          ))} */}
+
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID1}`}
+        />
+        <Script
+          id={`gtm-${process.env.NEXT_PUBLIC_GTM_ID1}`}
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID1}');
+                  `,
+          }}
+        />
+        
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID2}`}
+        />
+        <Script
+          id={`gtm-${process.env.NEXT_PUBLIC_GTM_ID2}`}
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
+                    gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID2}');
+                  `,
+          }}
+        />
 
         <Script
           id="delayed-navigation"
