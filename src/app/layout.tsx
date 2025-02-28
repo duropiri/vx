@@ -149,7 +149,7 @@ export default function RootLayout({
           />
         </noscript>
         {/* Google Tag Manager Scripts */}
-        {/* {GTM_IDS.length > 0 &&
+        {GTM_IDS.length > 0 &&
           GTM_IDS.map((id) => (
             <React.Fragment key={id}>
               <Script
@@ -169,9 +169,9 @@ export default function RootLayout({
                 }}
               />
             </React.Fragment>
-          ))} */}
+          ))}
 
-        <Script
+        {/* <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID1}`}
         />
@@ -187,7 +187,7 @@ export default function RootLayout({
                   `,
           }}
         />
-        
+
         <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID2}`}
@@ -203,7 +203,7 @@ export default function RootLayout({
                     gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID2}');
                   `,
           }}
-        />
+        /> */}
 
         <Script
           id="delayed-navigation"
