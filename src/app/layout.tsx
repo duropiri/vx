@@ -170,6 +170,27 @@ export default function RootLayout({
               />
             </React.Fragment>
           ))}
+
+        <Script
+          id="delayed-navigation"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function gtagSendEvent(url, eventData) {
+                var callback = function () {
+                  if (typeof url === 'string') {
+                    window.location = url;
+                  }
+                };
+                var eventParams = Object.assign({
+                  'event_callback': callback,
+                  'event_timeout': 2000
+                }, eventData);
+                gtag('event', 'ads_conversion_Book_appointment_1', eventParams);
+                return false;
+              }
+            `,
+          }}
+        />
       </head>
       <body className="antialiased max-w-[100vw]">
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>

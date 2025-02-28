@@ -1,9 +1,15 @@
 "use client";
-import React, { createContext, useContext, useState, useRef, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useRef,
+  useEffect,
+} from "react";
 import { gsap } from "@/utils/gsap";
 import { useViewport } from "@/contexts/ViewportContext";
 
-interface FlipLinkProps {
+interface FlipLinkProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
   className?: string;
   href?: string;
@@ -23,6 +29,7 @@ export const HoverWrapper = ({
   className,
   href,
   id,
+  ...rest
 }: FlipLinkProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -30,15 +37,29 @@ export const HoverWrapper = ({
     <HoverContext.Provider value={isHovered}>{children}</HoverContext.Provider>
   );
 
+  const handleMouseEnter = (event: React.MouseEvent<HTMLElement>) => setIsHovered(true);
+  const handleMouseLeave = (event: React.MouseEvent<HTMLElement>) => setIsHovered(false);
+
   const commonProps = {
     className,
     id,
-    onMouseEnter: () => setIsHovered(true),
-    onMouseLeave: () => setIsHovered(false),
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    ...rest, // <-- Pass all other props through
+  };
+
+  const { onToggle, ...restProps } = commonProps;
+
+  const anchorProps = {
+    className: commonProps.className,
+    id: commonProps.id,
+    onMouseEnter: handleMouseEnter,
+    onMouseLeave: handleMouseLeave,
+    // Add any other valid anchor attributes here
   };
 
   return href ? (
-    <a href={href} {...commonProps}>
+    <a href={href} {...anchorProps}>
       {content}
     </a>
   ) : (
@@ -54,6 +75,7 @@ export const FlipLink = ({
   inside = "0",
   duration = 0.4,
   ease = "power2.inOut",
+  ...rest
 }: FlipLinkProps) => {
   const isHovered = useContext(HoverContext);
   const topTextRef = useRef<HTMLDivElement>(null);
@@ -70,29 +92,35 @@ export const FlipLink = ({
     // Create a new GSAP context
     animationRef.current = gsap.context(() => {
       const tl = gsap.timeline();
-      
+
       if (isHovered) {
         tl.to(topTextRef.current, {
           y: `-${outside}%`,
           duration,
           ease,
-        })
-        .to(bottomTextRef.current, {
-          y: `${inside}%`,
-          duration,
-          ease,
-        }, "<"); // Start at the same time as the first animation
+        }).to(
+          bottomTextRef.current,
+          {
+            y: `${inside}%`,
+            duration,
+            ease,
+          },
+          "<"
+        ); // Start at the same time as the first animation
       } else {
         tl.to(topTextRef.current, {
           y: "0%",
           duration,
           ease,
-        })
-        .to(bottomTextRef.current, {
-          y: `${outside}%`,
-          duration,
-          ease,
-        }, "<");
+        }).to(
+          bottomTextRef.current,
+          {
+            y: `${outside}%`,
+            duration,
+            ease,
+          },
+          "<"
+        );
       }
     });
 
@@ -112,14 +140,9 @@ export const FlipLink = ({
   }, [outside, windowWidth]);
 
   return (
-    <div className={`relative block overflow-hidden ${className}`}>
-      <div ref={topTextRef}>
-        {children}
-      </div>
-      <div 
-        ref={bottomTextRef}
-        className="absolute inset-0"
-      >
+    <div className={`relative block overflow-hidden ${className}`} {...rest}>
+      <div ref={topTextRef}>{children}</div>
+      <div ref={bottomTextRef} className="absolute inset-0">
         {children}
       </div>
     </div>

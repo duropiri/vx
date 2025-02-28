@@ -47,3 +47,7 @@ declare module '*.webp' {
     const content: string;
     export default content;
   }
+
+// interface Window {
+//   gtagSendEvent?: (url: string) => void;
+// }

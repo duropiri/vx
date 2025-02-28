@@ -359,6 +359,31 @@ const PricingTier = ({
           <HoverWrapper
             href={tier.href || "/"}
             className={`button !bg-goldenbrown text-white !border-none pn-regular-16 cursor-select-hover size-full xl:w-[18.75rem]`}
+            onClick={() => {
+              if (
+                typeof window !== "undefined" &&
+                typeof (window as any).gtagSendEvent === "function"
+              ) {
+                (window as any).gtagSendEvent(
+                  "https://listings.virtualxposure.com/order",
+                  {
+                    package_name: tier.name,
+                    // Including the price
+                    package_price: tier.price
+                      ? typeof tier.price === "string"
+                        ? tier.price
+                        : isYearly
+                        ? tier.price.yearly || tier.price.monthly
+                        : tier.price.monthly || tier.price.yearly
+                      : undefined,
+                    // Any additional dynamic parameters can be added here.
+                  }
+                );
+              } else {
+                window.location.href =
+                  "https://listings.virtualxposure.com/order";
+              }
+            }}
           >
             <FlipLink className={`leading-[1rem]`}>
               {tier.cta || "Get Started"}
@@ -602,10 +627,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                 className="relative mySwiper size-full xl:max-w-[95rem] !overflow-visible"
               >
                 {Object.values(packages).map((tier, index) => (
-                  <SwiperSlide
-                    key={index}
-                    className="cursor-drag-hover h-full"
-                  >
+                  <SwiperSlide key={index} className="cursor-drag-hover h-full">
                     {renderPricingTier(tier, index)}
                   </SwiperSlide>
                 ))}
