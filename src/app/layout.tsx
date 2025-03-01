@@ -5,7 +5,6 @@ import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 const GTM_IDS = process.env.NEXT_PUBLIC_GTM_ID?.split(",") || [];
-import { injectContentsquareScript } from '@contentsquare/tag-sdk';
 
 // Define base metadata
 export const metadata: Metadata = {
@@ -112,11 +111,6 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  injectContentsquareScript({
-    siteId: "5322614",
-    async: true, // Optional: Set to false to wait for script execution until after document parsing.
-    defer: false // Optional: Set to true to defer script execution after document parsing.
-  });
   return (
     <html lang="en" className={`${proximaNova.variable} ${nunito.variable}`}>
       <Analytics />
@@ -228,6 +222,23 @@ export default function RootLayout({
                 gtag('event', 'ads_conversion_Book_appointment_1', eventParams);
                 return false;
               }
+            `,
+          }}
+        />
+        <Script
+          id="contentsquare-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function (c, s, q, u, a, r, e) {
+                  c.hj=c.hj||function(){(c.hj.q=c.hj.q||[]).push(arguments)};
+                  c._hjSettings = { hjid: a };
+                  r = s.getElementsByTagName('head')[0];
+                  e = s.createElement('script');
+                  e.async = true;
+                  e.src = q + c._hjSettings.hjid + u;
+                  r.appendChild(e);
+              })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 5322614);
             `,
           }}
         />
