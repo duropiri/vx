@@ -9,7 +9,7 @@ import floorplanImage from "@/../../public/assets/images/5-VX-Metric-Schematic-F
 const FloorplansSection = () => {
   // const iGuideUrl = "https://youriguide.com/11408_167a_ave_edmonton_ab";
   const iGuideUrl =
-    "https://youriguide.com/6609_knox_pl_sw_edmonton_ab?unbranded=1&nomenu=1&autostart=1&bgcolor=FFFFFF";
+    "https://youriguide.com/6609_knox_pl_sw_edmonton_ab?nomenu=1&autostart=1&bgcolor=FFFFFF";
 
   return (
     <div
