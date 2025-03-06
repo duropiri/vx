@@ -30,7 +30,7 @@ const Page = ({ children }: PageProps) => {
       // If the preloader is still active, force its removal
       if (!isLoaded || isAnimating) {
         finishAnimation();
-        console.log("Preloader removed due to window resize");
+        // console.log("Preloader removed due to window resize");
       }
     };
 

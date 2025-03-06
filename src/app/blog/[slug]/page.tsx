@@ -31,11 +31,11 @@ export async function generateMetadata({
 
   return {
     ...baseMetadata,
-    title: `${post.title} | Virtual Xposure Blog`,
+    title: `Virtual Xposure Blog | ${post.title}`,
     description: post.excerpt,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${post.title} | Virtual Xposure Blog`,
+      title: `Virtual Xposure Blog | ${post.title}`,
       description: post.excerpt,
       images: post.featuredImage
         ? [
@@ -51,10 +51,43 @@ export async function generateMetadata({
   };
 }
 
+function transformContent(node: any): any {
+  if (Array.isArray(node)) {
+    return node.map(transformContent);
+  }
+  if (node && typeof node === 'object') {
+    if (node.nodeType === 'text' && typeof node.value === 'string') {
+      const trimmed = node.value.trim();
+      if (trimmed.startsWith("https://zapier.com/engine/hydrate/")) {
+        // Return a node indicating an embedded asset
+        return {
+          nodeType: 'embedded-asset-block',
+          data: {
+            target: {
+              fields: {
+                file: { url: trimmed },
+                title: 'Hydrated Image'
+              },
+            },
+          },
+          content: [],
+        };
+      }
+    }
+    if (node.content) {
+      return { ...node, content: transformContent(node.content) };
+    }
+  }
+  return node;
+}
+
 export default async function BlogPostPage({ params }: PageProps) {
   const resolvedParams = await params;
   const post = await getBlogPostBySlug(resolvedParams.slug);
   const relatedPosts = await getBlogPosts({ limit: 3 });
+
+   // Apply the transformation to post.content
+   const transformedContent = transformContent(post.content);
 
   return (
     <Page>
@@ -65,6 +98,8 @@ export default async function BlogPostPage({ params }: PageProps) {
       >
         <HeroSection
           title={post.title}
+          titleClassName="text-white"
+          medium={false}
           copy={
             <>
               {/* Publish Date */}
@@ -95,7 +130,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 src={post.featuredImage}
                 alt={post.title}
                 fill
-                className="object-cover blur-md"
+                className="object-cover blur-md opacity-20 sm:opacity-60"
                 quality={75}
                 priority={false}
               />
@@ -164,7 +199,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               [&_img]:sm:max-w-[50%]
               [&_img]:pointer-events-none
               "
-                content={post.content}
+                content={transformedContent}
               />
             </div>
           }

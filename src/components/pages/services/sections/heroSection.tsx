@@ -26,6 +26,8 @@ interface SectionProps {
   ref?: RefObject<HTMLDivElement>;
   id?: string;
   title: string;
+  titleClassName?: string;
+  medium?: boolean;
   copy?: string | ReactElement;
   cta?: CTA;
   detailList?: DetailItem[];
@@ -51,6 +53,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
       // transitionColor = "#FFFFFF",
       id,
       title,
+      titleClassName = "text-white",
+      medium = true,
       copy,
       detailList,
       cta,
@@ -90,7 +94,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
 
     return (
       <div ref={ref} id={id} className="relative flex w-full overflow-hidden">
-        {/* Video Background */}
+        {/* Media Background */}
         {typeof src === "string" ? (
           src.endsWith(".webm") || src.endsWith(".mp4") ? (
             <ParallaxSection
@@ -142,14 +146,14 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="z-[999] relative flex size-full max-w-[--section-width] flex-col items-center sm:items-start justify-center gap-y-[2rem]">
             {/* Header with light text */}
             <SectionHeader
-              medium
+              medium={medium}
               noAnimation
               noCenter
               largeText
               subheading={title}
               body={<>{copy}</>}
               bodyClassName="sm:mt-[1rem] !leading-[1.6em]"
-              className="text-white" // Add light text color
+              className={`${titleClassName}`} // Add light text color
             />
             <div className="sm:contents flex flex-col-reverse size-full gap-y-[2rem]">
               {/* Detail List */}

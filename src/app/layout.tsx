@@ -4,6 +4,10 @@ import { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
+// Create a new file: app/fonts.ts
+import localFont from "next/font/local";
+import { criticalStyles } from "@/styles/critical";
+import React from "react";
 const GTM_IDS = process.env.NEXT_PUBLIC_GTM_ID?.split(",") || [];
 
 // Define base metadata
@@ -53,12 +57,20 @@ export const metadata: Metadata = {
       },
     ],
   },
+  other: {
+    link: [
+      {
+        rel: "preconnect",
+        href: "https://virtualxposure.com",
+        crossOrigin: "anonymous",
+      } as unknown as string,
+      {
+        rel: "dns-prefetch",
+        href: "https://virtualxposure.com",
+      } as unknown as string,
+    ],
+  },
 };
-
-// Create a new file: app/fonts.ts
-import localFont from "next/font/local";
-import { criticalStyles } from "@/styles/critical";
-import React from "react";
 
 export const proximaNova = localFont({
   src: [
@@ -115,13 +127,17 @@ export default function RootLayout({
     <html lang="en" className={`${proximaNova.variable} ${nunito.variable}`}>
       <Analytics />
       <head>
-        <style dangerouslySetInnerHTML={{ __html: criticalStyles }} />
-        <link
-          rel="preconnect"
-          href="https://virtualxposure.com"
-          crossOrigin="anonymous"
+        <style
+          dangerouslySetInnerHTML={{ __html: criticalStyles }}
+          href="critical-styles"
         />
-        <link rel="dns-prefetch" href="https://virtualxposure.com" />
+
+        {/* <link
+        rel="preconnect"
+        href="https://virtualxposure.com"
+        crossOrigin="anonymous"
+      />
+      <link rel="dns-prefetch" href="https://virtualxposure.com" /> */}
         <Script
           id="fb-pixel-script"
           strategy="afterInteractive"
@@ -171,40 +187,6 @@ export default function RootLayout({
             </React.Fragment>
           ))}
 
-        {/* <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID1}`}
-        />
-        <Script
-          id={`gtm-${process.env.NEXT_PUBLIC_GTM_ID1}`}
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID1}');
-                  `,
-          }}
-        />
-
-        <Script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTM_ID2}`}
-        />
-        <Script
-          id={`gtm-${process.env.NEXT_PUBLIC_GTM_ID2}`}
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
-                    gtag('config', '${process.env.NEXT_PUBLIC_GTM_ID2}');
-                  `,
-          }}
-        /> */}
-
         <Script
           id="delayed-navigation"
           dangerouslySetInnerHTML={{
@@ -225,6 +207,7 @@ export default function RootLayout({
             `,
           }}
         />
+        {/* Hotjar Script */}
         <Script
           id="contentsquare-script"
           strategy="afterInteractive"

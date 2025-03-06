@@ -3,7 +3,7 @@ import Image from "next/image";
 import { contentfulLoader } from "@/lib/contentful";
 
 interface ContentfulImageProps {
-  src: string;
+  src: string | null;
   width?: number;
   height?: number;
   quality?: number;
@@ -14,7 +14,12 @@ interface ContentfulImageProps {
 }
 
 const ContentfulImage = (props: ContentfulImageProps) => {
-  return <Image loader={contentfulLoader} {...props} />;
+  // If src is null, don't render the image
+  if (!props.src) {
+    return null;
+  }
+  
+  return <Image loader={contentfulLoader} {...props} src={props.src} />;
 };
 
 export default ContentfulImage;

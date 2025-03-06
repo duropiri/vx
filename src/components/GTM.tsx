@@ -1,13 +1,13 @@
 "use client";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 import Script from "next/script";
 
 const GTM_IDS = process.env.NEXT_PUBLIC_GTM_ID?.split(",") || [];
 
 export default function GTM() {
-  useEffect(() => {
-    console.log("GTM Scripts Loaded:", GTM_IDS);
-  }, []);
+  // useEffect(() => {
+  //   console.log("GTM Scripts Loaded:", GTM_IDS);
+  // }, []);
 
   if (GTM_IDS.length === 0) return null; // No GTM IDs, don't render anything
 

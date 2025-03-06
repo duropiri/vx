@@ -6,11 +6,11 @@ export interface BlogPost {
   slug: string;
   excerpt: string;
   content: any; // Rich text content from Contentful
-  featuredImage: string;
+  featuredImage: string | null;
   author: {
     name: string;
     bio: string;
-    photo: string;
+    photo: string | null;
   };
   publishDate: string;
   tags: string[];
@@ -60,11 +60,11 @@ function transformContentfulPost(item: any): BlogPost {
     slug: item.fields.slug,
     excerpt: item.fields.excerpt,
     content: item.fields.content,
-    featuredImage: item.fields.featuredImage?.fields.file.url || "",
+    featuredImage: item.fields.featuredImage?.fields?.file?.url || null,
     author: {
-      name: item.fields.author.fields.name,
-      bio: item.fields.author.fields.bio,
-      photo: item.fields.author.fields.photo.fields.file.url,
+      name: item.fields.author?.fields?.name || "",
+      bio: item.fields.author?.fields?.bio || "",
+      photo: item.fields.author?.fields?.photo?.fields?.file?.url || null,
     },
     publishDate: item.fields.publishDate,
     tags: item.fields.tags || [],
@@ -77,18 +77,20 @@ export const contentfulLoader = ({
   width,
   quality,
 }: {
-  src: string;
+  src: string | null;
   width?: number;
   quality?: number;
 }) => {
+  if (!src) return '';
   return `${src}?w=${width}&q=${quality || 75}&fm=webp&fit=fill`;
 };
 
 // Add URL generator for static images
 export const contentfulImageUrl = (
-  src: string,
+  src: string | null,
   width?: number,
   quality = 75
 ) => {
+  if (!src) return '';
   return `${src}?w=${width || 1920}&q=${quality}&fm=webp&fit=fill`;
 };

@@ -246,17 +246,21 @@ function Body({
           content={
             <>
               {/* Blog Posts Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[1rem]">
-                {currentPosts.map((post) => (
+              <div className="grid grid-cols-1 gap-[1rem]">
+                {currentPosts.map((post, index) => (
                   <ScaleInVisible
                     key={post.slug}
-                    className="relative flex flex-col shadow-customShadow group cursor-select-hover rounded-[1rem] overflow-hidden"
+                    className="relative flex flex-col bg-ash shadow-customShadow group cursor-select-hover rounded-[1rem] overflow-hidden"
                   >
                     <Link
                       href={`/blog/${post.slug}`}
                       className="flex flex-col size-full group"
                     >
-                      <div className="relative flex flex-col size-full">
+                      <div
+                        className={`relative flex ${
+                          index % 2 == 0 ? "flex-row" : "flex-row-reverse"
+                        } size-full max-h-[17.5rem]`}
+                      >
                         {/* Featured Image */}
                         <div className="relative size-full flex flex-col items-center justify-center aspect-[1.2/1] overflow-hidden">
                           {/* Blur overlay */}
@@ -276,14 +280,14 @@ function Body({
                           />
                         </div>
                         {/* Card Details */}
-                        <div className="p-6 bg-white flex flex-col min-h-[40%] justify-between">
+                        <div className="p-6 flex flex-col size-full justify-between text-white">
                           <div className="flex flex-col items-start justify-start">
                             {/* Title */}
                             <h2 className="pn-semibold-24 mb-2 group-hover:text-goldenbrown transition-colors">
                               {post.title}
                             </h2>
                             {/* Publish Date */}
-                            <div className="flex gap-[1rem] items-center pn-regular-14 text-ash/60">
+                            <div className="flex gap-[1rem] items-center pn-regular-14 text-white/60">
                               <div className="aspect-square w-[1rem]">
                                 {ServiceIcons.calendar}
                               </div>
