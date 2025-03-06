@@ -116,6 +116,7 @@ import { PricingPackages } from "@/components/pages/sections/pricingSection";
 import BasicSection from "@/components/pages/sections/basicSection";
 import { ServiceIcons } from "@/data/serviceIcons";
 import Image from "next/image";
+import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 
 interface SectionProps {
   title: string;
@@ -207,19 +208,43 @@ function Body({
     };
   }, [windowWidth]);
 
+  // Add a state variable for the total number of posts
+  const [totalCount, setTotalCount] = useState<number | null>(null);
+
+  // On mount, fetch the total number of blog posts from Contentful
+  useEffect(() => {
+    async function fetchTotalCount() {
+      const entries = await client.getEntries({
+        content_type: "blogPost",
+        limit: 1, // only need one item, the response includes a "total" property
+      });
+      setTotalCount(entries.total);
+    }
+    fetchTotalCount();
+  }, []);
+
+  // Updated handleLoadMore that checks against the totalCount
   const handleLoadMore = useCallback(async () => {
     if (!loadMorePosts || !hasMore) return;
 
     setIsLoading(true);
     try {
       const newPosts = await loadMorePosts();
-      setCurrentPosts((prev) => [...prev, ...newPosts]);
+      const updatedPosts = [...currentPosts, ...newPosts];
+      setCurrentPosts(updatedPosts);
       setCurrentPage((prev) => prev + 1);
-      setHasMore(newPosts.length > 0);
+
+      // Use the totalCount from Contentful to determine if more posts can be loaded
+      if (totalCount !== null) {
+        setHasMore(updatedPosts.length < totalCount);
+      } else {
+        // Fallback in case totalCount is not available
+        setHasMore(newPosts.length > 0);
+      }
     } finally {
       setIsLoading(false);
     }
-  }, [loadMorePosts, hasMore]);
+  }, [loadMorePosts, hasMore, currentPosts, totalCount]);
 
   return (
     <>
@@ -325,14 +350,20 @@ function Body({
 
               {/* Load More Button */}
               {hasMore && (
-                <div className="text-center">
-                  <button
+                <div className="text-center mt-[2rem] flex flex-col items-center justify-center">
+                  <HoverWrapper
                     onClick={handleLoadMore}
-                    disabled={isLoading}
-                    className="bg-primary text-white px-6 py-3 rounded-lg hover:bg-primary-dark transition-colors disabled:opacity-50"
+                    className={`button pn-regular-16 group/cta cursor-select-hover w-full lg:w-auto shadow-customShadow shadow-white/5 hover/cta:shadow-goldenrod/5 !bg-goldenbrown !border-none text-white ${
+                      isLoading && "cursor-not-allowed pointer-events-none"
+                    }`}
                   >
-                    {isLoading ? "Loading..." : "Load More Posts"}
-                  </button>
+                    <FlipLink className="font-semibold">
+                      {isLoading ? "Loading..." : "Load More Posts"}
+                    </FlipLink>
+                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                      {ServiceIcons.arrow}
+                    </div>
+                  </HoverWrapper>
                 </div>
               )}
             </>
