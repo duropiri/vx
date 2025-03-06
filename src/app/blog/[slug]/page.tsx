@@ -58,7 +58,7 @@ function transformContent(node: any): any {
   if (node && typeof node === 'object') {
     if (node.nodeType === 'text' && typeof node.value === 'string') {
       const trimmed = node.value.trim();
-      if (trimmed.startsWith("https://zapier.com/engine/hydrate/")) {
+      if (trimmed.startsWith("https://zapier-dev-files.s3.amazonaws.com/")) {
         // Return a node indicating an embedded asset
         return {
           nodeType: 'embedded-asset-block',
