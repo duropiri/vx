@@ -27,7 +27,7 @@ const renderOptions = {
     // Updated hyperlink renderer:
     [INLINES.HYPERLINK]: (node: any, children: any) => {
       // If the hyperlink's URL is a Zapier hydrate URL, simply return its children unwrapped.
-      if (node.data.uri && node.data.uri.startsWith("https://zapier.com/engine/hydrate/")) {
+      if (node.data.uri && node.data.uri.startsWith("https://zapier-dev-files.s3.amazonaws.com/")) {
         return children;
       }
       return (
