@@ -162,7 +162,7 @@ export const socialMediaPackages = {
 export const ListingMediaPackages = {
   starterPackage: {
     name: "Premium Starter Package",
-    price: "127.99",
+    price: "149.99",
     commitment: "Maximum Value, Zero Hassle",
     features: [
       { name: "Guaranteed 24-Hour Delivery—or It's FREE" },
@@ -191,7 +191,7 @@ export const ListingMediaPackages = {
   },
   deluxePackage: {
     name: "Premium Deluxe Package",
-    price: "247.99",
+    price: "299.99",
     commitment: "The Foundation of Excellence",
     features: [
       {
@@ -217,7 +217,7 @@ export const ListingMediaPackages = {
   socialMediaPackage: {
     isPopular: true,
     name: "Social Media Boost Package",
-    price: "397.99",
+    price: "499.99",
     commitment: "Skyrocket Your Social Influence",
     features: [
       {
@@ -246,7 +246,7 @@ export const ListingMediaPackages = {
   cinematicPackage: {
     isPremium: true,
     name: "Cinematic Experience Package",
-    price: "497.99",
+    price: "699.99",
     commitment: "Transform Your Storytelling Vision",
     features: [
       {
