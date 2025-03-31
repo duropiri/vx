@@ -354,7 +354,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 , <span className="pn-semibold-72">Not Weeks</span>
                 <span className="pn-regular-40">
                   <br />
-                  —For <span className="pn-semibold-40">Only $127.99</span>
+                  —For <span className="pn-semibold-40">Only $149.99</span>
                 </span>
               </h1>
 
@@ -371,7 +371,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                 , <span className="pn-semibold-72">Not Weeks</span>
                 <span className="pn-regular-40">
                   <br />
-                  —For <span className="pn-semibold-40">Only $127.99</span>
+                  —For <span className="pn-semibold-40">Only $149.99</span>
                 </span>
               </h1>
               {/* Body */}
