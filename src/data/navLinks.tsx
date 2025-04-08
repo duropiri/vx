@@ -81,7 +81,7 @@ export const HeaderLinks = [
     },
   },
   {
-    title: "Case Studies",
+    title: "Portfolio",
     href: "/case-studies",
     dropdown: {
       items: [
