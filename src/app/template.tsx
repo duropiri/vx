@@ -271,7 +271,7 @@ export default function Template({ children }: TemplateProps) {
       <div
         id="template"
         className={`${
-          !isAdminPage && "cursor-none"
+          !isAdminPage && "cursor-default"
         } relative size-full bg-white`}
       >
         <div className="hidden md:block z-[99999]">
