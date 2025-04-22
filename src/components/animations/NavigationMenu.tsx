@@ -20,6 +20,7 @@ import { TransitionLink } from "../TransitionLink";
 import { useViewport } from "@/contexts/ViewportContext";
 import { ServiceIcons } from "@/data/serviceIcons";
 import Link from "next/link";
+import * as Dialog from "@radix-ui/react-dialog";
 
 // Custom hook to track scroll direction
 // const useScrollDirection = () => {
@@ -538,6 +539,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMouseInHeader, setIsMouseInHeader] = useState(false);
   const [isActive, setIsActive] = useState(false);
+  const [showAnnouncement, setShowAnnouncement] = useState(true);
   // const scrollDirection = useScrollDirection();
 
   const headerRef = useRef<HTMLDivElement>(null);
@@ -622,9 +624,32 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       ref={headerRef}
       className={`${
         isHomePage ? "fixed sm:relative" : "fixed"
-      } flex z-[99999] w-full max-w-[100vw] border-b border-white border-opacity-10`}
+      } flex flex-col z-[99999] w-full max-w-[100vw]`}
       // onMouseLeave={() => setIsActive(false)}
     >
+      {/* Announcement Bar */}
+      {showAnnouncement && (
+        <div className="bg-goldenbrown flex flex-row items-center justify-end px-[1rem] py-[0.5rem] pn-regular-12 text-white select-none relative z-[2001]">
+          <p className="md:mr-[2rem] space-x-[0.5rem]">
+            <a
+              href="tel:+1 888-300-5068"
+              className="underline cursor-select-hover"
+            >
+              Call: +1 888-300-5068
+            </a>
+            <span className="font-bold">OR</span>
+            <span>Chat with our LIVE Agent!</span>
+            <span>|</span>
+            <span>Support Hours: 8:00AM - 8:00PM MST</span>
+          </p>
+          <button 
+            className="size-[2rem] md:size-[0.75rem] cursor-select-hover"
+            onClick={() => setShowAnnouncement(false)}
+          >
+            {ServiceIcons.close}
+          </button>
+        </div>
+      )}
       <div
         id="header"
         onMouseLeave={() => handleMouseLeave()}
@@ -765,7 +790,10 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
 
         {/* Dropdown Menu */}
         {/* {(activeDropdown || previousDropdown) && ( */}
-        <div ref={dropdownRef} className="relative flex flex-col overflow-hidden">
+        <div
+          ref={dropdownRef}
+          className="relative flex flex-col overflow-hidden"
+        >
           <Nav
             key={`nav-${activeDropdown?.title || previousDropdown?.title}`}
             activeDropdown={activeDropdown || previousDropdown}
