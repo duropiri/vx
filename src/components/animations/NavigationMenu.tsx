@@ -539,8 +539,24 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [isMouseInHeader, setIsMouseInHeader] = useState(false);
   const [isActive, setIsActive] = useState(false);
-  const [showAnnouncement, setShowAnnouncement] = useState(true);
-  // const scrollDirection = useScrollDirection();
+  const [showAnnouncement, setShowAnnouncement] = useState(() => {
+    if (typeof window !== 'undefined') {
+      // Check if this is a page refresh
+      const isPageRefresh = window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
+      if (isPageRefresh) {
+        sessionStorage.removeItem('announcementDismissed');
+        return true;
+      }
+      return sessionStorage.getItem('announcementDismissed') !== 'true';
+    }
+    return true;
+  });
+
+  useEffect(() => {
+    if (!showAnnouncement) {
+      sessionStorage.setItem('announcementDismissed', 'true');
+    }
+  }, [showAnnouncement]);
 
   const headerRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);

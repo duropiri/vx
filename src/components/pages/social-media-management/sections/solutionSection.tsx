@@ -9,6 +9,8 @@ import highQCCImage from "@/../../public/assets/images/high-quality-cc.webp";
 import stratGrowthImage from "@/../../public/assets/images/strategic-growth.webp";
 
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
+import vxImage2 from "@/../../public/assets/svgs/virtual-xposure-text-charcoal.svg";
+
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { ServiceIcons } from "@/data/serviceIcons";
 import { useViewport } from "@/contexts/ViewportContext";
@@ -54,7 +56,7 @@ function SolutionSection({ className }: SectionProps) {
       className={`section-container !flex-row ${className} bg-ash relative`}
     >
       {/* Background Text Parallax */}
-      <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
+      <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-charcoal gap-y-[10.625rem] max-w-[100vw] overflow-hidden opacity-15">
         <ScrollingBanner
           baseVelocity={10}
           child="flex flex-row h-full items-center gap-x-[9.375rem]"
@@ -62,7 +64,7 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src={vxImage}
+            src={vxImage2}
             className="size-full"
             quality={50}
             loading="lazy"
@@ -78,7 +80,7 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src={vxImage}
+            src={vxImage2}
             className="size-full"
             quality={50}
             loading="lazy"
@@ -94,7 +96,7 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src={vxImage}
+            src={vxImage2}
             className="size-full"
             quality={50}
             loading="lazy"
@@ -110,7 +112,7 @@ function SolutionSection({ className }: SectionProps) {
         >
           <Image
             alt="virtual xposure"
-            src={vxImage}
+            src={vxImage2}
             className="size-full"
             quality={50}
             loading="lazy"
@@ -158,7 +160,7 @@ function SolutionSection({ className }: SectionProps) {
             >
               <div className="bento-border pointer-events-none"></div>
               <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[40%] right-0 translate-x-[10%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                <div className="hidden lg:block absolute h-[300%] w-[40%] right-0 translate-x-[10%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
                 <div className="flex flex-col justify-center lg:justify-start items-start gap-[1.5rem] text-white lg:max-w-[42%]">
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
                     Your Complete Digital Marketing Solution
@@ -237,7 +239,7 @@ function SolutionSection({ className }: SectionProps) {
             >
               <div className="bento-border"></div>
               <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
                 <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     High-Quality Content Creation
@@ -315,7 +317,7 @@ function SolutionSection({ className }: SectionProps) {
               >
                 <div className="bento-border"></div>
                 <div className="bento-content overflow-hidden">
-                  <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                  <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
                   <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       High-Quality Content Creation
@@ -363,7 +365,7 @@ function SolutionSection({ className }: SectionProps) {
             >
               <div className="bento-border"></div>
               <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
                 <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     Strategic Growth for Realtors{" "}
@@ -434,7 +436,7 @@ function SolutionSection({ className }: SectionProps) {
               >
                 <div className="bento-border"></div>
                 <div className="bento-content overflow-hidden">
-                  <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-goldenbrown bg-ash/75 rotate-12 pointer-events-none" />
+                  <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
                   <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       Strategic Growth for Realtors{" "}

@@ -273,7 +273,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
           className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden"
         >
           <div
-            className="pointer-events-none absolute flex h-[100vh] w-full max-w-[100vw] bg-gradient-to-t from-10% to-transparent to-30% transition-all z-30"
+            className="pointer-events-none absolute flex h-[100vh] w-full max-w-[100vw] bg-gradient-to-t from-10% to-transparent to-60% transition-all z-30"
             style={
               {
                 "--tw-gradient-from": `${originalColor} var(--tw-gradient-from-position)`,
@@ -285,7 +285,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
             }
           />
           {/* Light Rays */}
-          {[
+          {/* {[
             { left: "15%", rotation: -25 },
             { left: "30%", rotation: -15 },
             { left: "45%", rotation: 0 },
@@ -308,7 +308,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
               }
               data-rotation={ray.rotation}
             />
-          ))}
+          ))} */}
         </div>
 
         {/* Icons */}

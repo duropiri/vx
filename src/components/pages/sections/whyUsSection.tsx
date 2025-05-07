@@ -4,6 +4,8 @@ import { WhyUsItems } from "@/data/whyUsItems";
 import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
 import Image from "next/image";
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
+import vxImage2 from "@/../../public/assets/svgs/virtual-xposure-text-charcoal.svg";
+
 import FadeInUp from "@/components/animations/FadeInUp";
 
 interface SectionProps {
@@ -46,7 +48,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
         className={`section-container !flex-row ${className} bg-ash relative overflow-hidden max-h-screen`}
       >
         {/* Background Text Parallax */}
-        <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-goldenbrown gap-y-[10.625rem] max-w-[100vw] overflow-hidden">
+        <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-charcoal gap-y-[10.625rem] max-w-[100vw] overflow-hidden opacity-15">
           {/* <ScrollingBanner
             baseVelocity={10}
             child="flex flex-row h-full items-center gap-x-[9.375rem]"
@@ -55,7 +57,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="h-full size-max -translate-x-[100ch]">
             <Image
               alt="virtual xposure"
-              src={vxImage}
+              src={vxImage2}
               className="size-full"
               quality={50}
               loading="lazy"
@@ -73,7 +75,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="h-full size-max -translate-x-[300ch]">
             <Image
               alt="virtual xposure"
-              src={vxImage}
+              src={vxImage2}
               className="size-full"
               quality={50}
               loading="lazy"
@@ -117,7 +119,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
               </div>
             ))}
           </div>
-          <ScrollingBanner
+          {/* <ScrollingBanner
             baseVelocity={-25}
             className="xl:hidden flex flex-row"
             innerChild="flex flex-row gap-[3rem]"
@@ -139,7 +141,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
                 </div>
               </FadeInUp>
             ))}
-          </ScrollingBanner>
+          </ScrollingBanner> */}
         </div>
       </div>
     );

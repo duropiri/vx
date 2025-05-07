@@ -313,7 +313,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         {/* Hero */}
         <div
           id="hero"
-          className={`${className} section-container hero-container !min-h-[50vh] max-h-[100vh] !h-fit !justify-start !pt-[6rem] sm:!py-[5rem] overflow-hidden z-[400]`}
+          className={`${className} section-container hero-container !min-h-[50vh]  !h-fit !justify-start !mt-[2rem] sm:!mt-0 !pt-[6rem] sm:!py-[5rem] overflow-hidden z-[400]`}
         >
           <div className="flex flex-col items-center justify-between h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             <HeroDecorations
@@ -342,49 +342,44 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Heading */}
             <div className="relative flex flex-col items-center justify-center my-auto">
               {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
-              <h1 className="hidden sm:inline-block pn-regular-72 uppercase text-center sm:max-w-[20ch] !leading-[0.9em] 2xl:!leading-[1em] mb-[1rem]">
-                <span className="pn-semibold-72">Sell</span> Your{" "}
+              <h1 className="hidden sm:inline-block pn-regular-72 uppercase text-center sm:max-w-[20ch]  mb-[1rem]">
+                <span className="pn-semibold-72">Sell Your</span>{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Listings
                 </span>{" "}
-                in{" "}
+                <span className="pn-semibold-72">in</span>{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Days
                 </span>
                 , <span className="pn-semibold-72">Not Weeks</span>
-                <span className="pn-regular-40">
-                  <br />
-                  —For <span className="pn-semibold-40">Only $149.99</span>
-                </span>
+                <br />
+                <span className="pn-semibold-40">For Only $149.99</span>
               </h1>
 
               <h1 className="sm:hidden inline-block pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] items-center">
-                <span className="pn-semibold-72">Sell</span>
-                Your{" "}
+                <span className="pn-semibold-72">Sell Your</span>{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Listings
                 </span>{" "}
-                in{" "}
+                <span className="pn-semibold-72">in</span>{" "}
                 <span className="text-goldenbrown gold-text font-bold">
                   Days
                 </span>
                 , <span className="pn-semibold-72">Not Weeks</span>
                 <span className="pn-regular-40">
-                  <br />
-                  —For <span className="pn-semibold-40">Only $149.99</span>
+                  {/* <br /> */}
+                  {/* <span className="pn-semibold-40">For Only $149.99</span> */}
                 </span>
               </h1>
               {/* Body */}
               <h2 className="text-center sm:max-w-[60ch]">
-                <span className="hidden sm:flex pn-regular-20">
-                  Professional media and targeted strategies proven to attract
-                  more buyers, close deals faster, and maximize property
-                  value—delivered within 24 hours.
+                <span className="hidden sm:flex pn-regular-24">
+                  High-impact listing media delivered in 24 hours—built to
+                  attract buyers fast and close deals faster.
                 </span>
                 <span className="sm:hidden flex pn-regular-16">
-                  Professional media and targeted strategies proven to attract
-                  more buyers, close deals faster, and maximize property
-                  value—delivered within 24 hours.
+                  High-impact listing media delivered in 24 hours—built to
+                  attract buyers fast and close deals faster.
                 </span>
               </h2>
             </div>
@@ -417,7 +412,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
                     {ServiceIcons.timer}
                   </div>{" "}
-                  24-Hour Turnaround Guarantee
+                  24-Hour Turnaround
                 </li>
                 <li className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
                   <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
