@@ -382,11 +382,11 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {/* Body */}
               <h2 className="text-center sm:max-w-[60ch]">
                 <span className="hidden sm:flex pn-regular-24">
-                  HDR photos, drone shots and 3-D tours delivered in 24 hrs.
+                  HDR photos, drone shots and 3D tours delivered in 24 hrs.
                   Faster views, faster offers.
                 </span>
                 <span className="sm:hidden flex pn-regular-16">
-                  HDR photos, drone shots and 3-D tours delivered in 24 hrs.
+                  HDR photos, drone shots and 3D tours delivered in 24 hrs.
                   Faster views, faster offers.
                 </span>
               </h2>
@@ -394,7 +394,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Hero CTA */}
             <div ref={heroCTARef} className="z-[999]">
               <div className="flex my-[0.625rem]">
-                <div className="flex flex-col sm:flex-row gap-[1rem]">
+                <div className="flex flex-col items-center justify-center gap-[0.5em]">
                   <HoverWrapper className="group/cta cursor-select-hover">
                     <Link
                       href="https://listings.virtualxposure.com/order"
@@ -410,6 +410,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       </div>
                     </Link>
                   </HoverWrapper>
+                  <small>No credit card required—pay after the shoot.</small>
+
                 </div>
               </div>
             </div>
