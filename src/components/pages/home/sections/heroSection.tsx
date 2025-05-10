@@ -303,6 +303,14 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
+        <Image
+          src="/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp"
+          alt="Interior image view of kitchen in an Edmonton home"
+          fill
+          priority
+          className="object-cover object-center fixed opacity-15 pointer-events-none"
+          quality={100}
+        />
         {/* Hero Decorations Container */}
         {/* <HeroDecorations
           className="2xl:!-translate-y-[30vh]"
@@ -318,7 +326,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="flex flex-col items-center justify-between h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             <HeroDecorations
               className="!w-[100vw] -z-10 bottom-0"
-              iconsClassName="size-full sm:scale-75 2xl:translate-y-[20rem] opacity-60"
+              iconsClassName="size-full hidden sm:block scale-75 2xl:translate-y-[20rem] opacity-75"
               originalColor={originalColor}
             />
             {/* Main Copy */}
@@ -374,12 +382,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {/* Body */}
               <h2 className="text-center sm:max-w-[60ch]">
                 <span className="hidden sm:flex pn-regular-24">
-                  High-impact listing media delivered in 24 hours—built to
-                  attract buyers fast and close deals faster.
+                  HDR photos, drone shots and 3-D tours delivered in 24 hrs.
+                  Faster views, faster offers.
                 </span>
                 <span className="sm:hidden flex pn-regular-16">
-                  High-impact listing media delivered in 24 hours—built to
-                  attract buyers fast and close deals faster.
+                  HDR photos, drone shots and 3-D tours delivered in 24 hrs.
+                  Faster views, faster offers.
                 </span>
               </h2>
             </div>
@@ -394,7 +402,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       passHref
                     >
                       <FlipLink className={`flex items-center w-fit`}>
-                        Book Now
+                        Book Your Shoot
                       </FlipLink>
 
                       <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
@@ -487,7 +495,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               className="button !bg-goldenbrown text-white pn-regular-16 group/cta !border-none h-fit cursor-select-hover shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
-                Book Now
+                Book Your Shoot
               </FlipLink>
 
               <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">

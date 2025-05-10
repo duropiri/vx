@@ -267,20 +267,19 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
         id="icons"
         className={`${className} pointer-events-none absolute !bg-transparent h-[100vh] w-full max-w-[100vw] !p-0 overflow-hidden`}
       >
-        {/* Light Rays */}
+        {/* Gradient */}
         <div
           ref={raysRef}
           className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden"
         >
           <div
-            className="pointer-events-none absolute flex h-[100vh] w-full max-w-[100vw] bg-gradient-to-t from-10% to-transparent to-60% transition-all z-30"
+            className="pointer-events-none absolute flex h-[100vh] w-full max-w-[100vw] bg-gradient-to-t from-0% to-transparent transition-all z-30"
             style={
               {
                 "--tw-gradient-from": `${originalColor} var(--tw-gradient-from-position)`,
-                "--tw-gradient-to":
-                  "rgb(255 255 255 / 0) var(--tw-gradient-to-position)",
-                "--tw-gradient-stops":
-                  "var(--tw-gradient-from), var(--tw-gradient-to)",
+                "--tw-gradient-to": "rgb(255 255 255 / 0) var(--tw-gradient-to-position)",
+                "--tw-gradient-stops": "var(--tw-gradient-from), var(--tw-gradient-to)",
+                "--tw-gradient-to-position": "10%",
               } as React.CSSProperties
             }
           />
