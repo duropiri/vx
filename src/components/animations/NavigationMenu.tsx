@@ -662,6 +662,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           <button 
             className=" size-[2em] md:size-[1em] cursor-select-hover"
             onClick={() => setShowAnnouncement(false)}
+            aria-label="Close announcement"
           >
             {ServiceIcons.close}
           </button>
