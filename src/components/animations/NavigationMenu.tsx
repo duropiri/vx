@@ -656,7 +656,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             <span className="font-bold">OR</span>
             <span>Chat with our LIVE Agent!</span>
             <span className="hidden sm:inline-block">|</span>
-
+            <span className="inline-block sm:hidden"><br/></span>
             <span>Support Hours: 8:00AM - 8:00PM MST</span>
           </p>
           <button 
