@@ -645,7 +645,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     >
       {/* Announcement Bar */}
       {showAnnouncement && (
-        <div className="bg-goldenbrown flex flex-row items-center justify-end px-[1rem] py-[0.5rem] pn-regular-12 text-white select-none relative z-[2001]">
+        <div className="bg-goldenbrown flex flex-row items-center justify-between sm:justify-end px-[1rem] py-[0.5rem] pn-regular-12 text-white select-none relative z-[2001]">
           <p className="md:mr-[2rem] space-x-[0.5rem]">
             <a
               href="tel:+1 888-300-5068"
@@ -656,11 +656,11 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             <span className="font-bold">OR</span>
             <span>Chat with our LIVE Agent!</span>
             <span className="hidden sm:inline-block">|</span>
-            <span className="inline-block sm:hidden"><br/></span>
-            <span>Support Hours: 8:00AM - 8:00PM MST</span>
+            {/* <span className="block sm:hidden"><br/></span> */}
+            <span><br className="block sm:hidden"/>Support Hours: 8:00AM - 8:00PM MST</span>
           </p>
           <button 
-            className="size-[2rem] md:size-[0.75rem] cursor-select-hover"
+            className=" size-[2em] md:size-[1em] cursor-select-hover"
             onClick={() => setShowAnnouncement(false)}
           >
             {ServiceIcons.close}
