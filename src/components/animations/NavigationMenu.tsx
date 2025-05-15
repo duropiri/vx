@@ -540,21 +540,23 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
   const [isMouseInHeader, setIsMouseInHeader] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [showAnnouncement, setShowAnnouncement] = useState(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== "undefined") {
       // Check if this is a page refresh
-      const isPageRefresh = window.performance.navigation.type === window.performance.navigation.TYPE_RELOAD;
+      const isPageRefresh =
+        window.performance.navigation.type ===
+        window.performance.navigation.TYPE_RELOAD;
       if (isPageRefresh) {
-        sessionStorage.removeItem('announcementDismissed');
+        sessionStorage.removeItem("announcementDismissed");
         return true;
       }
-      return sessionStorage.getItem('announcementDismissed') !== 'true';
+      return sessionStorage.getItem("announcementDismissed") !== "true";
     }
     return true;
   });
 
   useEffect(() => {
     if (!showAnnouncement) {
-      sessionStorage.setItem('announcementDismissed', 'true');
+      sessionStorage.setItem("announcementDismissed", "true");
     }
   }, [showAnnouncement]);
 
@@ -657,9 +659,12 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
             <span>Chat with our LIVE Agent!</span>
             <span className="hidden sm:inline-block">|</span>
             {/* <span className="block sm:hidden"><br/></span> */}
-            <span><br className="block sm:hidden"/>Support Hours: 8:00AM - 8:00PM MST</span>
+            <span>
+              <br className="block sm:hidden" />
+              Support Hours: 8:00AM - 8:00PM MST
+            </span>
           </p>
-          <button 
+          <button
             className=" size-[2em] md:size-[1em] cursor-select-hover"
             onClick={() => setShowAnnouncement(false)}
             aria-label="Close announcement"

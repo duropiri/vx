@@ -274,7 +274,7 @@ export default function Template({ children }: TemplateProps) {
           !isAdminPage && "cursor-default"
         } relative size-full bg-white`}
       >
-        <div className="hidden md:block z-[99999]">
+        <div className="hidden lg:block z-[99999]">
           <CustomCursor />
         </div>
         {!isAdminPage ? (
