@@ -154,14 +154,14 @@ const StatsSection = forwardRef<HTMLDivElement, SectionProps>(
                             className="flex flex-col self-stretch w-full items-start justify-start pb-[0.75rem] gap-[0.75rem] border-b border-white"
                           >
                             <div className="flex flex-col size-full items-start justify-start gap-[0.75rem]">
-                              <h1 className="pn-regular-40">
+                              <p className="pn-regular-40">
                                 {inView ? (
                                   <CountUp end={stat.value} duration={2} />
                                 ) : (
                                   0
                                 )}
                                 {stat.unit}
-                              </h1>
+                              </p>
                               <p className="pn-regular-16">
                                 {stat.description}
                               </p>
@@ -180,14 +180,14 @@ const StatsSection = forwardRef<HTMLDivElement, SectionProps>(
                         className="flex flex-col self-stretch items-start justify-start pb-3 gap-3 border-b border-white"
                       >
                         <div className="flex flex-col w-full items-start justify-start gap-3">
-                          <h1 className="pn-regular-40">
+                          <p className="pn-regular-40">
                             {inView ? (
                               <CountUp end={stat.value} duration={2} />
                             ) : (
                               0
                             )}
                             {stat.unit}
-                          </h1>
+                          </p>
                           <p className="pn-regular-16">{stat.description}</p>
                         </div>
                         {stat.source && (

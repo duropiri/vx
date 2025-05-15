@@ -165,9 +165,9 @@ function SolutionSection({ className }: SectionProps) {
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
                     Your Complete Digital Marketing Solution
                   </span>
-                  <h1 className="pn-regular-24">
+                  <p className="pn-regular-24">
                     Everything You Need to Succeed Online.
-                  </h1>
+                  </p>
                   <p className="pn-regular-16">
                     Virtual Xposure provides a full-service digital marketing
                     solution for real estate professionals, from social media
@@ -214,9 +214,9 @@ function SolutionSection({ className }: SectionProps) {
                     Social Media Managed by Experts
                   </span>
                   <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                    <h1 className="pn-bold-20 !leading-[1.5rem]">
+                    <p className="pn-bold-20 !leading-[1.5rem]">
                       Stop Managing Social Media—Start Seeing Results.
-                    </h1>
+                    </p>
                     <p className="pn-regular-16">
                       Forget the hassle of managing your own social media. Our
                       team of experts takes care of everything—from posting and
@@ -244,9 +244,9 @@ function SolutionSection({ className }: SectionProps) {
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     High-Quality Content Creation
                   </span>
-                  <h1 className="pn-regular-24">
+                  <p className="pn-regular-24">
                     Professional Content Designed to Convert.
-                  </h1>
+                  </p>
                   <p className="pn-regular-16">
                     In today&apos;s market, content is everything. Our in-house
                     team produces high-quality videos, photos, and social media
@@ -293,9 +293,9 @@ function SolutionSection({ className }: SectionProps) {
                       Social Media Managed by Experts
                     </span>
                     <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                      <h1 className="pn-bold-20 !leading-[1.5rem]">
+                      <p className="pn-bold-20 !leading-[1.5rem]">
                         Stop Managing Social Media—Start Seeing Results.
-                      </h1>
+                      </p>
                       <p className="pn-regular-16">
                         Forget the hassle of managing your own social media. Our
                         team of experts takes care of everything—from posting
@@ -322,9 +322,9 @@ function SolutionSection({ className }: SectionProps) {
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       High-Quality Content Creation
                     </span>
-                    <h1 className="pn-regular-24">
+                    <p className="pn-regular-24">
                       Professional Content Designed to Convert.
-                    </h1>
+                    </p>
                     <p className="pn-regular-16">
                       In today&apos;s market, content is everything. Our
                       in-house team produces high-quality videos, photos, and
@@ -370,9 +370,9 @@ function SolutionSection({ className }: SectionProps) {
                   <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                     Strategic Growth for Realtors{" "}
                   </span>
-                  <h1 className="pn-regular-24">
+                  <p className="pn-regular-24">
                     Grow Your Business with Proven Strategies.{" "}
-                  </h1>
+                  </p>
                   <p className="pn-regular-16">
                     At VX, we don&apos;t just post content—we help your business
                     grow. Our custom social media strategies are designed
@@ -408,9 +408,9 @@ function SolutionSection({ className }: SectionProps) {
                     Data-Driven Results & Reporting
                   </span>
                   <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                    <h1 className="pn-bold-20 !leading-[1.5rem]">
+                    <p className="pn-bold-20 !leading-[1.5rem]">
                       Measure What Matters with Comprehensive Reporting.
-                    </h1>
+                    </p>
                     <p className="pn-regular-16">
                       See the direct impact of your digital marketing efforts
                       with data-driven reports that track growth, engagement,
@@ -441,9 +441,9 @@ function SolutionSection({ className }: SectionProps) {
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
                       Strategic Growth for Realtors{" "}
                     </span>
-                    <h1 className="pn-regular-24">
+                    <p className="pn-regular-24">
                       Grow Your Business with Proven Strategies.{" "}
-                    </h1>
+                    </p>
                     <p className="pn-regular-16">
                       At VX, we don&apos;t just post content—we help your
                       business grow. Our custom social media strategies are
@@ -477,9 +477,9 @@ function SolutionSection({ className }: SectionProps) {
                       Data-Driven Results & Reporting
                     </span>
                     <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                      <h1 className="pn-bold-20 !leading-[1.5rem]">
+                      <p className="pn-bold-20 !leading-[1.5rem]">
                         Measure What Matters with Comprehensive Reporting.
-                      </h1>
+                      </p>
                       <p className="pn-regular-16">
                         See the direct impact of your digital marketing efforts
                         with data-driven reports that track growth, engagement,
