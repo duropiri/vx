@@ -199,7 +199,7 @@ export default function CustomCursor() {
 
     // Setup event listeners
     window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mouseleave", handleNoneHover);
     window.addEventListener("mouseenter", handleMouseEnter);
 
     // Function to set up element-specific listeners
@@ -268,7 +268,7 @@ export default function CustomCursor() {
     // Cleanup function
     return () => {
       window.removeEventListener("mousemove", moveCursor);
-      window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("mouseleave", handleNoneHover);
       window.removeEventListener("mouseenter", handleMouseEnter);
       observer.disconnect();
 

@@ -304,7 +304,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         data-transition-color={transitionColor}
       >
         <div
-          className="fixed inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+          className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
           style={{ backgroundImage: "url('/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp')" }}
         />
         {/* Hero Decorations Container */}

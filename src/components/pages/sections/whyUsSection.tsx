@@ -45,7 +45,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
       <div
         // ref={ref}
         id="why"
-        className={`section-container !flex-row ${className} bg-ash relative overflow-hidden max-h-screen`}
+        className={`section-container !flex-row ${className} bg-ash relative overflow-hidden`}
       >
         {/* Background Text Parallax */}
         <div className="select-none absolute pointer-events-none top-0 flex flex-col h-full w-[100vw] text-charcoal gap-y-[10.625rem] max-w-[100vw] overflow-hidden opacity-15">

@@ -78,7 +78,7 @@ export default function Footer({
   return (
     <footer style={footerStyles} className="bg-ash">
       <div
-        className={`relative h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] select-none`}
+        className={`bg-ash relative h-[var(--footer-height-mobile)] xl:h-[var(--footer-height-desktop)] select-none`}
         style={{
           clipPath: "polygon(0% 0, 100% 0%, 100% 100%, 0 100%)",
           // zIndex: 99999999999999,
@@ -292,7 +292,7 @@ export default function Footer({
 
       {/* Footer bottom section */}
       <div
-        className="flex flex-col xl:!flex-row w-full !justify-between items-center gap-y-[1rem] xl:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] xl:!py-[2rem] select-none"
+        className="flex flex-col xl:!flex-row w-full !justify-between items-center gap-y-[1rem] xl:gap-y-[2rem] section-container bg-ash text-white !py-[1rem] xl:!py-[2rem] select-none z-20"
         style={{ zIndex: 99999999999999 }}
       >
         {/* Links section */}
