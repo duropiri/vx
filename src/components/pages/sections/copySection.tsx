@@ -88,7 +88,7 @@ const CopySection = forwardRef<HTMLDivElement, SectionProps>(
               className="relative max-w-[28ch]"
               scrollProgress={progress}
             >
-              <h2 className="text-center text-ash">{copy}</h2>
+              <p className="text-center text-ash">{copy}</p>
             </WordByWordOnScroll>
           </div>
         </div>

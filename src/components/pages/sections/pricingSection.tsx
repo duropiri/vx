@@ -256,12 +256,12 @@ const PricingTier = ({
         />
         {/* Price */}
         <div className="flex flex-row w-full items-end justify-center py-[1.25rem]">
-          <h2 className="text-center pn-bold-40">
+          <p className="text-center pn-bold-40">
             $
             {isYearly
               ? tier.price.yearly || tier.price
               : tier.price.monthly || tier.price}
-          </h2>
+          </p>
           {tier.billingCycle && (
             <p className="text-center text-goldenbrown pn-semibold-16">
               /{tier.billingCycle}
