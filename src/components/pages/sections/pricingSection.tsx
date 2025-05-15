@@ -227,7 +227,7 @@ const PricingTier = ({
       >
         {/* Heading */}
         <div className="flex flex-col w-full items-center justify-start gap-[1rem]">
-          <h1
+          <p
             className={`text-center pn-bold-24 max-w-[25ch] ${
               tier.isPopular ? "text-goldenbrown" : ""
             }`}
@@ -239,7 +239,7 @@ const PricingTier = ({
             ) : (
               <span>{tier.name}</span>
             )}
-          </h1>
+          </p>
           {tier.commitment && (
             <p className="text-center pn-regular-16">
               {isYearly
