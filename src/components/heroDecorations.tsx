@@ -196,7 +196,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({ icon })
     <div ref={iconRef} className={icon.className}>
       <div className="inner">
         <div className="rotator">
-          <Image src={icon.src} alt="" width={80} height={80} />
+          <Image src={icon.src} alt={icon.id + " logo"} width={80} height={80} />
         </div>
       </div>
     </div>
