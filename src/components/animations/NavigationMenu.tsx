@@ -647,7 +647,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
     >
       {/* Announcement Bar */}
       {showAnnouncement && (
-        <div className="bg-goldenbrown flex flex-row items-center justify-between sm:justify-end px-[1rem] py-[0.5rem] pn-regular-12 text-white select-none relative z-[2001]">
+        <div className=" bg-goldenbrown flex flex-row items-center justify-between sm:justify-end px-[1rem] py-[0.5rem] pn-regular-12 text-black select-none relative z-[2001]">
           <p className="md:mr-[2rem] space-x-[0.5rem]">
             <a
               href="tel:+1 888-300-5068"
