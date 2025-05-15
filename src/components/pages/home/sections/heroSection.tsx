@@ -350,35 +350,27 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Heading */}
             <div className="relative flex flex-col items-center justify-center my-auto">
               {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
-              <h1 className="hidden sm:inline-block pn-regular-72 uppercase text-center sm:max-w-[20ch]  mb-[1rem]">
-                <span className="pn-semibold-72">Sell Your</span>{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Listings
-                </span>{" "}
-                <span className="pn-semibold-72">in</span>{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Days
-                </span>
-                , <span className="pn-semibold-72">Not Weeks</span>
-                <br />
-                <span className="pn-semibold-40">For Only $149.99</span>
-              </h1>
-
-              <h1 className="sm:hidden inline-block pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] items-center">
-                <span className="pn-semibold-72">Sell Your</span>{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Listings
-                </span>{" "}
-                <span className="pn-semibold-72">in</span>{" "}
-                <span className="text-goldenbrown gold-text font-bold">
-                  Days
-                </span>
-                , <span className="pn-semibold-72">Not Weeks</span>
-                <span className="pn-regular-40">
-                  {/* <br /> */}
-                  {/* <span className="pn-semibold-40">For Only $149.99</span> */}
-                </span>
-              </h1>
+              {windowWidth >= 640 ? (
+                <h1 className="pn-regular-72 uppercase text-center sm:max-w-[20ch] mb-[1rem]">
+                  <span className="pn-semibold-72">Sell Your</span>{" "}
+                  <span className="text-goldenbrown gold-text font-bold">Listings</span>{" "}
+                  <span className="pn-semibold-72">in</span>{" "}
+                  <span className="text-goldenbrown gold-text font-bold">Days</span>
+                  , <span className="pn-semibold-72">Not Weeks</span>
+                  <br />
+                  <span className="pn-semibold-40">For Only $149.99</span>
+                </h1>
+              ) : (
+                <h1 className="inline-block pn-regular-72 !leading-[1em] uppercase text-center mb-[1rem] items-center">
+                  <span className="pn-semibold-72">Sell Your</span>{" "}
+                  <span className="text-goldenbrown gold-text font-bold">Listings</span>{" "}
+                  <span className="pn-semibold-72">in</span>{" "}
+                  <span className="text-goldenbrown gold-text font-bold">Days</span>
+                  , <span className="pn-semibold-72">Not Weeks</span>
+                  <br />
+                  <span className="pn-regular-40">For Only $149.99</span>
+                </h1>
+              )}
               {/* Body */}
               <h2 className="text-center sm:max-w-[60ch]">
                 <span className="hidden sm:flex pn-regular-24">

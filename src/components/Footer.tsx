@@ -102,7 +102,7 @@ export default function Footer({
                       placeholder="blur"
                       quality={75}
                     />
-                    <h1 className="pn-semibold-24">Virtual Xposure</h1>
+                    <p className="pn-semibold-24">Virtual Xposure</p>
                   </nav>
                   <div className="flex flex-col items-start justify-start gap-[1rem] xl:gap-[1.5rem]">
                     <div>
