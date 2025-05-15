@@ -303,13 +303,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <Image
-          src="/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp"
-          alt="Interior image view of kitchen in an Edmonton home"
-          fill
-          priority
-          className="object-cover object-center fixed opacity-15 pointer-events-none"
-          quality={100}
+        <div
+          className="fixed inset-0 bg-cover bg-center opacity-15 pointer-events-none"
+          style={{ backgroundImage: "url('/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp')" }}
         />
         {/* Hero Decorations Container */}
         {/* <HeroDecorations
