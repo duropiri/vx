@@ -47,7 +47,7 @@ const socialMediaIcons: SocialMediaIcon[] = [
   {
     id: "twitter",
     className:
-      "size-[5rem] absolute flex right-[10%] top-[10vh] sm:right-[30%] sm:top-[10vh]",
+      "size-[5rem] absolute flex right-[10%] top-[10vh] sm:right-[30%] sm:top-[6rem]",
     src: twitterHeroImage,
     scrollAnimation: {
       x: [0, -300],
@@ -60,7 +60,7 @@ const socialMediaIcons: SocialMediaIcon[] = [
   {
     id: "facebook",
     className:
-      "size-[5rem] absolute flex left-[10%] top-[50vh] sm:left-[20%] sm:top-[30vh]",
+      "size-[5rem] absolute flex left-[10%] top-[50vh] sm:left-[20%] sm:top-[17rem]",
     src: facebookHeroImage,
     scrollAnimation: {
       x: [0, 400],
@@ -99,7 +99,7 @@ const socialMediaIcons: SocialMediaIcon[] = [
   {
     id: "pinterest",
     className:
-      "size-[5rem] absolute flex right-[5%] top-[70vh] sm:right-[5rem] sm:top-[40vh]",
+      "size-[5rem] absolute flex right-[5%] top-[70vh] sm:right-[5rem] sm:top-[22rem]",
     src: pinterestHeroImage,
     scrollAnimation: {
       x: [0, -400],
@@ -111,7 +111,7 @@ const socialMediaIcons: SocialMediaIcon[] = [
   },
   {
     id: "youtube",
-    className: "size-[5rem] absolute hidden sm:flex left-[20rem] top-[55vh]",
+    className: "size-[5rem] absolute hidden sm:flex left-[20rem] top-[28rem]",
     src: youtubeHeroImage,
     scrollAnimation: {
       x: [0, 300],
@@ -123,7 +123,7 @@ const socialMediaIcons: SocialMediaIcon[] = [
   },
   {
     id: "whatsapp",
-    className: "size-[5rem] absolute hidden sm:flex right-[20rem] top-[60vh]",
+    className: "size-[5rem] absolute hidden sm:flex right-[20rem] top-[32rem]",
     src: whatsappHeroImage,
     scrollAnimation: {
       x: [0, -300],
@@ -182,7 +182,7 @@ const SocialMediaIconComponent: React.FC<{ icon: SocialMediaIcon }> = ({ icon })
           trigger: "body",
           start: "top top",
           end: "500 top",
-          scrub: true,
+          scrub: 0.5,
         },
       });
       
@@ -265,7 +265,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
       <div
         ref={ref}
         id="icons"
-        className={`${className} pointer-events-none absolute !bg-transparent h-[100vh] w-full max-w-[100vw] !p-0 overflow-hidden`}
+        className={`${className} pointer-events-none absolute !bg-transparent h-full w-full max-w-[100vw] !p-0 overflow-hidden`}
       >
         {/* Gradient */}
         <div
@@ -273,7 +273,7 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
           className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden"
         >
           <div
-            className="pointer-events-none absolute flex h-[100vh] w-full max-w-[100vw] bg-gradient-to-t from-0% to-transparent transition-all z-30"
+            className="pointer-events-none flex size-full max-w-[100vw] bg-gradient-to-t from-0% to-transparent transition-all z-30"
             style={
               {
                 "--tw-gradient-from": `${originalColor} var(--tw-gradient-from-position)`,

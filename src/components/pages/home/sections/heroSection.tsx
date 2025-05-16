@@ -321,7 +321,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         >
           <div className="flex flex-col items-center justify-between h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             <HeroDecorations
-              className="!w-[100vw] -z-10 bottom-0"
+              className="!w-[100vw] -z-10 top-0"
               iconsClassName="size-full hidden sm:block scale-75 2xl:translate-y-[20rem] opacity-75"
               originalColor={originalColor}
             />

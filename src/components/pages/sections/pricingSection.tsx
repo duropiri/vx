@@ -556,12 +556,13 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
           }
         }}
         id="pricing"
-        className={`section-container !flex-row overflow-hidden ${className}`}
+        className={`section-container !flex-row overflow-x-hidden ${className}`}
         style={{ backgroundColor: color }}
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
         <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3.75rem] text-ash">
+          
           {/* Header */}
           <SectionHeader
             center={center}
