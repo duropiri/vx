@@ -237,14 +237,16 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased max-w-[100vw]">
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-MPRFLBLK"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+      <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPRFLBLK"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+      </noscript>
+    `,
+          }}
+        />
         <ClientLayoutWrapper>{children}</ClientLayoutWrapper>
       </body>
     </html>
