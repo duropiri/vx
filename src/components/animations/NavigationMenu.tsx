@@ -89,7 +89,10 @@ interface QuickLink {
 
 interface Dropdown {
   quickLinks?: QuickLink[];
-  items?: DropdownItem[];
+  items?: {
+    title: string;
+    items: DropdownItem[];
+  };
 }
 
 interface LinkDetails {
@@ -209,16 +212,19 @@ const Nav: React.FC<NavProps> = ({ activeDropdown, isVisible }) => {
     >
       <div className="overflow-hidden flex flex-row items-start justify-center size-full text-white">
         {/* Services Grid */}
-        {dropdown?.items && (
+        {dropdown?.items?.items && (
           <div className="slide-in-left flex flex-col col-span-3 pr-[4rem] py-[2rem] h-full self-stretch">
-            <p className="text-sm font-medium text-white/40 mb-5">Services</p>
-            <div className="grid gap-[1rem]">
-              {dropdown.items.map((item, index) => (
-                <div key={index} ref={setItemRef(index)}>
-                  <TransitionLink
-                    href={item.href}
-                    className="cursor-select-hover group inline-block w-fit"
-                  >
+            <p className="text-sm font-medium text-white/40 mb-5">
+              {dropdown.items.title}
+            </p>
+            <div className="grid grid-cols-2 auto-rows-auto gap-y-[1rem] gap-x-[2rem]">
+              {dropdown.items.items.map((item, index) => (
+                <TransitionLink
+                  href={item.href}
+                  key={index}
+                  ref={setItemRef(index)}
+                >
+                  <div className="cursor-select-hover group inline-block w-fit">
                     <div className="flex flex-row items-center justify-center gap-[0.5rem]">
                       <div className="flex-col items-center p-2 rounded-lg bg-charcoal/20 border-none border group-hover:bg-charcoal/80 transition-all duration-200">
                         <div className="aspect-square size-6 transition-all duration-200 group-hover:scale-110 filter grayscale group-hover:filter-none group-hover:grayscale-0 text-white">
@@ -231,8 +237,8 @@ const Nav: React.FC<NavProps> = ({ activeDropdown, isVisible }) => {
                         </div>
                       </HoverWrapper>
                     </div>
-                  </TransitionLink>
-                </div>
+                  </div>
+                </TransitionLink>
               ))}
             </div>
           </div>
@@ -424,7 +430,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               >
                 <div className="flex flex-col mt-4 gap-4">
                   {nav.dropdown.items &&
-                    nav.dropdown.items.map((item, idx) => (
+                    nav.dropdown.items.items.map((item, idx) => (
                       <TransitionLink
                         key={idx}
                         href={item.href}

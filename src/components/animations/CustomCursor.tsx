@@ -17,8 +17,11 @@ export default function CustomCursor() {
       return;
 
     // Initialize cursor hidden and centered
-    gsap.set(cursorRef.current, { xPercent: -50, yPercent: -45 });
-    gsap.set(innerDotRef.current, { xPercent: -50, yPercent: 1 });
+    gsap.set(cursorRef.current, { xPercent: -50, yPercent: -50 });
+    gsap.set(innerDotRef.current, { xPercent: -50, yPercent: -50 });
+    // Ensure cursor starts at default scale
+    gsap.set(cursorRef.current, { scale: 1 });
+    gsap.set(innerDotRef.current, { scale: 1 });
 
     // Smoothly follow the mouse
     const xTo = gsap.quickTo(cursorRef.current, "x", {
@@ -42,8 +45,20 @@ export default function CustomCursor() {
     };
 
     const handleMouseEnter = () => {
-      gsap.to(cursorRef.current, { autoAlpha: 1 });
-      gsap.to(innerDotRef.current, { autoAlpha: 1 });
+      gsap.to(cursorRef.current, {
+        scale: 1,
+        backgroundColor: "transparent",
+        ease: "power3.out",
+        autoAlpha: 1,
+        duration: 0.4,
+        overwrite: "auto",
+      });
+      gsap.to(innerDotRef.current, {
+        ease: "power3.out",
+        autoAlpha: 1,
+        duration: 0.4,
+        overwrite: "auto",
+      });
     };
 
     const handleSelectHover = (e: MouseEvent) => {
@@ -85,11 +100,9 @@ export default function CustomCursor() {
       });
     };
 
-    const handleNoneHover = (e: MouseEvent) => {
-      const target = e.currentTarget as HTMLElement;
-      const scale = target.getAttribute("data-scale") || "0";
+    const handleNoneHover = () => {
       gsap.to(cursorRef.current, {
-        scale: parseFloat(scale),
+        scale: 0,
         backgroundColor: "white",
         ease: "power3.out",
         autoAlpha: 0,
@@ -202,6 +215,22 @@ export default function CustomCursor() {
     window.addEventListener("mouseleave", handleNoneHover);
     window.addEventListener("mouseenter", handleMouseEnter);
 
+    // Hide custom cursor when mouse leaves window entirely
+    const handleWindowMouseOut = (e: MouseEvent) => {
+      if (!e.relatedTarget && !(e as any).toElement) {
+        handleNoneHover();
+      }
+    };
+    window.addEventListener("mouseout", handleWindowMouseOut);
+
+    // Show custom cursor only when mouse truly re-enters the viewport
+    const handleWindowMouseIn = (e: MouseEvent) => {
+      if (!e.relatedTarget && !(e as any).fromElement) {
+        handleMouseEnter();
+      }
+    };
+    window.addEventListener("mouseover", handleWindowMouseIn);
+
     // Function to set up element-specific listeners
     const setupElementListeners = () => {
       document
@@ -270,6 +299,8 @@ export default function CustomCursor() {
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("mouseleave", handleNoneHover);
       window.removeEventListener("mouseenter", handleMouseEnter);
+      window.removeEventListener("mouseout", handleWindowMouseOut);
+      window.removeEventListener("mouseover", handleWindowMouseIn);
       observer.disconnect();
 
       document

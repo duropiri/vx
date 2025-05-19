@@ -71,9 +71,9 @@ export const HoverWrapper = ({
 export const FlipLink = ({
   children,
   className = "",
-  outside = "200",
+  outside = "100",
   inside = "0",
-  duration = 0.4,
+  duration = 0.2,
   ease = "power2.inOut",
   ...rest
 }: FlipLinkProps) => {

@@ -165,14 +165,14 @@ const VirtualSection = ({
         noCenter
         heading="Virtual Enhancements"
         subheading="Virtual Enhancements On-Demand"
-        className="header text-black sm:sticky top-[1.125rem] 2xl:top-[6.25rem]"
+        className="header text-black sm:sticky top-[1.125rem] 2xl:top-[6.25rem] h-[7rem] mb-[2rem] md:mb-[3rem]"
       />
-      <div className="relative pt-[2rem] md:pt-[3rem] 2xl:pt-[6rem] flex w-[100vw] md:w-full md:max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] xl:gap-[3.75rem]">
+      <div className="relative flex w-[100vw] md:w-full md:max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] xl:gap-[3.75rem]">
         {services.map((service, index) => (
           <ServiceSection
             key={"services-" + index}
             service={service}
-            className="cards sm:sticky top-[10rem] 2xl:top-[20rem] md:h-[32rem]" // Adjust `top` to match header height
+            className="cards sm:sticky top-[10rem] 2xl:top-[15rem] md:h-[32rem]" // Adjust `top` to match header height
           />
         ))}
       </div>

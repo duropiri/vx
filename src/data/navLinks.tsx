@@ -11,56 +11,101 @@ export const HeaderLinks = [
     title: "Our Solutions",
     href: "#services",
     dropdown: {
-      quickLinks: [
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.photos,
-          title: "Real Estate HDR Photography",
-          href: "/real-estate-hdr-photography",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.vr,
-          title: "Virtual 3D Tours",
-          href: "/virtual-3d-tours",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.floorplan,
-          title: "RMS Measurements & Schematic Floor Plans",
-          href: "/rms-measurements-schematic-floor-plans",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.camerashutter,
-          title: "Real Estate Videography",
-          href: "/real-estate-videography",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.furniture,
-          title: "Virtual Staging",
-          href: "/virtual-staging",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.renovation,
-          title: "Virtual Renovation",
-          href: "/virtual-renovation",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.threedimensional,
-          title: "3D Rendering",
-          href: "/3d-rendering",
-        },
-        {
-          category: "Listing Media",
-          icon: ServiceIcons.graphicdesign,
-          title: "Graphic Design",
-          href: "/graphic-design",
-        },
-      ],
+      items: {
+        title: "Services",
+        items: [
+          {
+            icon: ServiceIcons.photos,
+            title: "Real Estate HDR Photography",
+            href: "/real-estate-hdr-photography",
+          },
+          {
+            icon: ServiceIcons.vr,
+            title: "Virtual 3D Tours",
+            href: "/virtual-3d-tours",
+          },
+          {
+            icon: ServiceIcons.floorplan,
+            title: "RMS Measurements & Schematic Floor Plans",
+            href: "/rms-measurements-schematic-floor-plans",
+          },
+          {
+            icon: ServiceIcons.camerashutter,
+            title: "Real Estate Videography",
+            href: "/real-estate-videography",
+          },
+          {
+            icon: ServiceIcons.furniture,
+            title: "Virtual Staging",
+            href: "/virtual-staging",
+          },
+          {
+            icon: ServiceIcons.renovation,
+            title: "Virtual Renovation",
+            href: "/virtual-renovation",
+          },
+          {
+            icon: ServiceIcons.threedimensional,
+            title: "3D Rendering",
+            href: "/3d-rendering",
+          },
+          {
+            icon: ServiceIcons.graphicdesign,
+            title: "Graphic Design",
+            href: "/graphic-design",
+          },
+        ],
+      },
+      // quickLinks: [
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.photos,
+      //     title: "Real Estate HDR Photography",
+      //     href: "/real-estate-hdr-photography",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.vr,
+      //     title: "Virtual 3D Tours",
+      //     href: "/virtual-3d-tours",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.floorplan,
+      //     title: "RMS Measurements & Schematic Floor Plans",
+      //     href: "/rms-measurements-schematic-floor-plans",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.camerashutter,
+      //     title: "Real Estate Videography",
+      //     href: "/real-estate-videography",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.furniture,
+      //     title: "Virtual Staging",
+      //     href: "/virtual-staging",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.renovation,
+      //     title: "Virtual Renovation",
+      //     href: "/virtual-renovation",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.threedimensional,
+      //     title: "3D Rendering",
+      //     href: "/3d-rendering",
+      //   },
+      //   {
+      //     category: "Listing Media",
+      //     icon: ServiceIcons.graphicdesign,
+      //     title: "Graphic Design",
+      //     href: "/graphic-design",
+      //   },
+      // ],
       // items: [
       //   {
       //     icon: ServiceIcons.house,
@@ -84,23 +129,26 @@ export const HeaderLinks = [
     title: "Portfolio",
     href: "/case-studies",
     dropdown: {
-      items: [
-        {
-          icon: ServiceIcons.vr,
-          title: "Floor Plans & iGUIDE 3D Tours",
-          href: "/case-studies#floorplans",
-        },
-        {
-          icon: ServiceIcons.camerashutter,
-          title: "Photography",
-          href: "/case-studies#photography",
-        },
-        {
-          icon: ServiceIcons.enhance,
-          title: "Virtual Enhancements",
-          href: "/case-studies#virtual",
-        },
-      ],
+      items: {
+        title: "Success Stories",
+        items: [
+          {
+            icon: ServiceIcons.vr,
+            title: "Floor Plans & iGUIDE 3D Tours",
+            href: "/case-studies#floorplans",
+          },
+          {
+            icon: ServiceIcons.camerashutter,
+            title: "Photography",
+            href: "/case-studies#photography",
+          },
+          {
+            icon: ServiceIcons.enhance,
+            title: "Virtual Enhancements",
+            href: "/case-studies#virtual",
+          },
+        ],
+      },
     },
   },
   {
