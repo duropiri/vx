@@ -1,8 +1,25 @@
 "use client";
-import React, { forwardRef, useEffect, useRef, MutableRefObject } from "react";
-import { gsap, ScrollTrigger } from "@/utils/gsap";
-import { useViewport } from "@/contexts/ViewportContext";
-gsap.registerPlugin(ScrollTrigger);
+import React, { forwardRef, useEffect, useRef, useState, MutableRefObject } from "react";
+
+function useOnScreen<T extends Element>(options?: IntersectionObserverInit) {
+  const ref = useRef<T | null>(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    if (!ref.current) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          obs.unobserve(entry.target);
+        }
+      },
+      options
+    );
+    obs.observe(ref.current);
+    return () => obs.disconnect();
+  }, [ref, options]);
+  return { ref, visible };
+}
 
 interface FadeInUpProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
@@ -15,8 +32,8 @@ interface FadeInUpProps extends React.HTMLAttributes<HTMLDivElement> {
   // key?: string | number;
   once?: boolean;
   onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  onHover?: gsap.TweenVars;
-  onTap?: gsap.TweenVars;
+  onHover?: any;
+  onTap?: any;
 }
 
 const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
@@ -38,105 +55,41 @@ const FadeInUp = forwardRef<HTMLDivElement, FadeInUpProps>(
     },
     ref
   ) => {
-    const elementRef = useRef<HTMLDivElement | null>(null);
-    const { windowWidth } = useViewport();
+    const { ref: innerRef, visible } = useOnScreen<HTMLDivElement>({ rootMargin: `0px 0px -${margin} 0px` });
 
-    useEffect(() => {
-      const element = elementRef.current;
-      if (!element) return;
-
-      gsap.set(element, { opacity: 0, y: 20 });
-
-      const scrollTrigger = ScrollTrigger.create({
-        trigger: element,
-        start: `top bottom-=${margin}`,
-        end: "bottom top",
-        onEnter: () => {
-          gsap.to(element, {
-            opacity: 1,
-            y: 0,
-            duration: duration,
-            delay: (index + 2) * delay,
-            ease: "power2.out",
-          });
-        },
-        onLeave: () => {
-          if (!once) {
-            gsap.to(element, {
-              opacity: 0,
-              y: 20,
-              duration: duration,
-            });
-          }
-        },
-        onEnterBack: () => {
-          if (!once) {
-            gsap.to(element, {
-              opacity: 1,
-              y: 0,
-              duration: duration,
-            });
-          }
-        },
-        onLeaveBack: () => {
-          if (!once) {
-            gsap.to(element, {
-              opacity: 0,
-              y: 20,
-              duration: duration,
-            });
-          }
-        },
-      });
-
-      const handleMouseEnter = () => onHover && gsap.to(element, onHover);
-      const handleMouseLeave = () =>
-        onHover && gsap.to(element, { ...onHover, reverse: true });
-      const handleMouseDown = () => onTap && gsap.to(element, onTap);
-      const handleMouseUp = () =>
-        onTap && gsap.to(element, { ...onTap, reverse: true });
-
-      if (onHover) {
-        element.addEventListener("mouseenter", handleMouseEnter);
-        element.addEventListener("mouseleave", handleMouseLeave);
+    const setRefs = (node: HTMLDivElement | null) => {
+      innerRef.current = node;
+      if (typeof ref === "function") {
+        ref(node);
+      } else if (ref) {
+        (ref as MutableRefObject<HTMLDivElement | null>).current = node;
       }
+    };
 
-      if (onTap) {
-        element.addEventListener("mousedown", handleMouseDown);
-        element.addEventListener("mouseup", handleMouseUp);
-      }
-
-      return () => {
-        scrollTrigger.kill();
-        if (onHover) {
-          element.removeEventListener("mouseenter", handleMouseEnter);
-          element.removeEventListener("mouseleave", handleMouseLeave);
-        }
-        if (onTap) {
-          element.removeEventListener("mousedown", handleMouseDown);
-          element.removeEventListener("mouseup", handleMouseUp);
-        }
-      };
-    }, [delay, duration, index, margin, once, onHover, onTap, windowWidth]);
+    const classes = [
+      className,
+      "fadeInUp",
+      visible ? "visible" : ""
+    ].filter(Boolean).join(" ");
 
     return (
-      <div
-        id={id}
-        ref={(node) => {
-          elementRef.current = node;
-          if (typeof ref === "function") {
-            ref(node);
-          } else if (ref) {
-            (ref as MutableRefObject<HTMLDivElement | null>).current = node;
+      <>
+        <style>{`
+          .fadeInUp {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity ${duration}s ease-out ${delay * (index + 2)}s,
+                        transform ${duration}s ease-out ${delay * (index + 2)}s;
           }
-        }}
-        // key={key}
-        className={className}
-        onClick={onClick}
-        {...props}
-      >
-        {children}
-      </div>
+          .visible {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        `}</style>
+        <div id={id} ref={setRefs} className={classes} onClick={onClick} {...props}>
+          {children}
+        </div>
+      </>
     );
   }
 );

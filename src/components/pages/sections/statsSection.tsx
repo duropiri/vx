@@ -1,4 +1,4 @@
-import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
+import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import React, { forwardRef, RefObject } from "react";
 import CountUp from "react-countup";
 import { useInView } from "react-intersection-observer";

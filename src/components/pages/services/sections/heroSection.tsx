@@ -14,7 +14,7 @@ import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import { gsap, ScrollTrigger } from "@/utils/gsap";
 gsap.registerPlugin(ScrollTrigger);
 import { ParallaxSection } from "@/components/animations/SmoothScrolling";
-import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
+import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import { ServiceIcons } from "@/data/serviceIcons";
 import { useViewport } from "@/contexts/ViewportContext";
 

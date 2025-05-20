@@ -1,7 +1,19 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "@/utils/gsap";
-import { useViewport } from "@/contexts/ViewportContext";
+import React, { useRef, useEffect, useState } from "react";
+
+function useOnScrollDirection() {
+  const [isDown, setIsDown] = useState(true);
+  const lastY = useRef(0);
+  useEffect(() => {
+    const handle = () => {
+      const y = window.pageYOffset;
+      setIsDown(y >= lastY.current);
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", handle);
+    return () => window.removeEventListener("scroll", handle);
+  }, []);
+  return isDown;
+}
 
 interface ScrollingBannerProps {
   children: React.ReactNode;
@@ -11,130 +23,103 @@ interface ScrollingBannerProps {
   child?: string;
   innerChild?: string;
   slowOnHover?: boolean;
-  vertical?: boolean;
+  direction?: "horizontal" | "vertical";
+  toggleOnScroll?: boolean;
 }
 
 export default function ScrollingBanner({
   children,
-  baseVelocity = 300,
-  length = 180,
+  baseVelocity = 600,
+  length = 6,
   className = "",
   child = "",
   innerChild = "",
   slowOnHover = false,
-  vertical = false,
+  direction = "horizontal",
+  toggleOnScroll = false,
 }: ScrollingBannerProps) {
-  const bannerRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const childRef = useRef<HTMLSpanElement>(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const [maxWidth, setMaxWidth] = useState("auto");
-  const [maxHeight, setMaxHeight] = useState("auto");
-  const animationRef = useRef<gsap.core.Tween>();
-  const [isVisible, setIsVisible] = useState(false);
-  const { windowWidth } = useViewport();
+  const innerRef = useRef<HTMLDivElement>(null);
+
+  const isVertical = direction === "vertical";
+  const isNegative = baseVelocity < 0;
+
+  const isDown = useOnScrollDirection();
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
-      { threshold: 0.1 }
+    const inner = innerRef.current;
+    if (!inner) return;
+    const distance = isVertical ? window.innerHeight : window.innerWidth;
+    const duration = (distance / Math.abs(baseVelocity)) * 2;
+    inner.style.setProperty("--scroll-duration", `${duration}s`);
+    const staticDir = isNegative ? "reverse" : "normal";
+    const dynamicDir = isNegative
+      ? isDown
+        ? "reverse"
+        : "normal"
+      : isDown
+      ? "normal"
+      : "reverse";
+    inner.style.setProperty(
+      "--scroll-direction",
+      toggleOnScroll ? dynamicDir : staticDir
     );
-
-    if (bannerRef.current) {
-      observer.observe(bannerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [windowWidth]);
+  }, [baseVelocity, isVertical, isNegative, isDown, length, toggleOnScroll]);
 
   useEffect(() => {
-    if (vertical && childRef.current) {
-      const height = childRef.current.offsetHeight;
-      const width = childRef.current.offsetWidth;
-      setMaxWidth(`${height}px`);
-      setMaxHeight(`${width}px`);
-    }
-  }, [vertical, windowWidth]);
-
-  useEffect(() => {
-    if (!containerRef.current || !isVisible) return;
-
     const container = containerRef.current;
-    const adjustedVelocity = baseVelocity;
-    
-    // Convert velocity to duration (higher velocity = lower duration)
-    const duration = Math.abs(100000 / adjustedVelocity);
-    
-    // Determine direction based on velocity sign
-    const direction = Math.sign(baseVelocity);
-    
-    // Kill any existing animation
-    if (animationRef.current) {
-      animationRef.current.kill();
-    }
-
-    // Set initial position based on direction
-    gsap.set(container, {
-      [vertical ? 'y' : 'x']: direction > 0 ? 0 : '-100%',
-    });
-
-    // Create the infinite scroll animation
-    animationRef.current = gsap.to(container, {
-      [vertical ? 'y' : 'x']: direction > 0 ? '-100%' : '0%',
-      duration: duration,
-      ease: "none",
-      repeat: -1,
-      paused: !isVisible,
-    });
-
+    const inner = innerRef.current;
+    if (!slowOnHover || !container || !inner) return;
+    const enter = () => (inner.style.animationPlayState = "paused");
+    const leave = () => (inner.style.animationPlayState = "running");
+    container.addEventListener("mouseenter", enter);
+    container.addEventListener("mouseleave", leave);
     return () => {
-      if (animationRef.current) {
-        animationRef.current.kill();
-      }
+      container.removeEventListener("mouseenter", enter);
+      container.removeEventListener("mouseleave", leave);
     };
-  }, [baseVelocity, isHovered, slowOnHover, vertical, isVisible, windowWidth]);
-
-  const styles = {
-    banner: vertical
-      ? `relative m-0 flex flex-col flex-nowrap items-center whitespace-nowrap overflow-hidden min-h-[100vh]`
-      : "relative m-0 flex flex-nowrap items-center whitespace-nowrap overflow-hidden",
-    child: vertical
-      ? "flex flex-col flex-nowrap items-center whitespace-nowrap"
-      : "flex flex-row flex-nowrap items-center whitespace-nowrap",
-    innerChild: vertical ? "my-4 transform -rotate-90 origin-center" : "mx-4",
-  };
+  }, [slowOnHover]);
 
   return (
-    <div
-      ref={bannerRef}
-      className={`${className} ${styles.banner}`}
-      style={{
-        maxWidth: vertical ? maxWidth : "100%",
-      }}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div
+    <>
+      <style>{`
+        @keyframes scroll-x { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        @keyframes scroll-y { from { transform: translateY(0); } to { transform: translateY(-50%); } }
+        .scroll-banner-inner {
+          display: flex;
+          animation: var(--scroll-animation);
+          animation-iteration-count: infinite;
+          animation-timing-function: linear;
+          animation-duration: var(--scroll-duration);
+          animation-direction: var(--scroll-direction);
+        }
+        .scroll-banner-inner.horizontal { animation-name: scroll-x; }
+        .scroll-banner-inner.vertical { animation-name: scroll-y; flex-direction: column; }
+      `}</style>
+      <div 
         ref={containerRef}
-        className={`${child} ${styles.child}`}
-        style={{
-          width: vertical ? maxWidth : "100%",
-          height: vertical ? maxHeight : "100%",
-          gap: vertical ? maxHeight : "",
-        }}
+        className={`relative ${className}`}
       >
-        {Array.from({ length }).map((_, index) => (
-          <span
-            className={`${innerChild} ${styles.innerChild}`}
-            key={index}
-            ref={index === 0 ? childRef : null}
-          >
-            {children}
-          </span>
-        ))}
+        <div
+          ref={innerRef}
+          className={`scroll-banner-inner ${direction} ${child}`}
+          aria-hidden="true"
+          style={{ "--scroll-animation": "none" } as React.CSSProperties}
+        >
+          {Array.from({ length: 2 }).flatMap((_, seriesIndex) =>
+            Array.from({ length }).map((_, index) => (
+              <div
+                key={`${seriesIndex}-${index}`}
+                className={`scroll-banner-part flex-shrink-0 ${
+                  isVertical ? 'py-1' : 'px-1'
+                } ${innerChild}`}
+              >
+                {children}
+              </div>
+            ))
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

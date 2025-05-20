@@ -1,7 +1,7 @@
 import SectionHeader from "@/components/ui/sectionHeader";
 import React, { forwardRef, RefObject } from "react";
 import { WhyUsItems } from "@/data/whyUsItems";
-import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
+import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import Image from "next/image";
 import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import vxImage2 from "@/../../public/assets/svgs/virtual-xposure-text-charcoal.svg";

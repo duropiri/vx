@@ -1,5 +1,5 @@
 "use client";
-import ScrollingBanner from "@/components/animations/LegacyScrollingBanner";
+import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
 import Image from "next/image";
 import React, { forwardRef, RefObject, useState } from "react";
