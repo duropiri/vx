@@ -8,7 +8,7 @@ import React, {
   useState,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import { gsap } from "@/utils/gsap";
+// import { gsap } from "@/utils/gsap";
 import Header from "@/components/animations/NavigationMenu";
 import { HeaderLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";
@@ -23,134 +23,17 @@ import ChatWidget from "@/components/ui/chatWidget";
 interface TemplateProps {
   children: ReactNode;
 }
-export const animatePageIn = (isMobileView: boolean) => {
-  return new Promise<void>((resolve) => {
-    // Add timeout safety
-    const timeout = setTimeout(() => {
-      resolve(); // Resolve anyway after 2 seconds
-    }, 2000);
-
-    if (isMobileView) {
-      const banners = document.querySelectorAll(".banner");
-      banners.forEach((banner) => {
-        gsap.set(banner, {
-          visibility: "hidden",
-          opacity: 0,
-          yPercent: 0,
-        });
-      });
-      clearTimeout(timeout);
-      resolve();
-      return;
-    }
-
-    const banners = document.querySelectorAll(".banner");
-    if (banners.length) {
-      gsap.killTweensOf(banners);
-
-      const tl = gsap.timeline({
-        onComplete: () => {
-          clearTimeout(timeout);
-          resolve();
-        },
-        onInterrupt: () => {
-          clearTimeout(timeout);
-          resolve();
-        },
-      });
-
-      tl.set(banners, {
-        yPercent: 0,
-        opacity: 1,
-        visibility: "visible",
-      });
-
-      tl.to(banners, {
-        yPercent: 100,
-        duration: 0.8,
-        ease: "power2.inOut",
-        stagger: {
-          each: 0.1,
-          from: "start",
-        },
-        onComplete: () => {
-          gsap.set(banners, {
-            visibility: "hidden",
-            opacity: 0,
-          });
-        },
-      });
-    } else {
-      clearTimeout(timeout);
-      resolve();
-    }
-  });
+export const animatePageIn = async (isMobileView: boolean): Promise<void> => {
+  // No-op without GSAP animations
 };
 
-export const animatePageOut = (
+export const animatePageOut = async (
   href: string,
   router: AppRouterInstance,
   isMobileView: boolean
-) => {
-  return new Promise<void>((resolve) => {
-    const timeout = setTimeout(() => {
-      router.push(href);
-      resolve();
-    }, 2000); // Failsafe timeout
-
-    if (isMobileView) {
-      clearTimeout(timeout);
-      const banners = document.querySelectorAll(".banner");
-      banners.forEach((banner) => {
-        gsap.set(banner, {
-          visibility: "hidden",
-          opacity: 0,
-          yPercent: 0,
-        });
-      });
-      router.push(href);
-      resolve();
-      return;
-    }
-
-    const banners = document.querySelectorAll(".banner");
-    if (banners.length) {
-      gsap.killTweensOf(banners);
-
-      const tl = gsap.timeline({
-        onComplete: () => {
-          clearTimeout(timeout);
-          router.push(href);
-          resolve();
-        },
-        onInterrupt: () => {
-          clearTimeout(timeout);
-          router.push(href);
-          resolve();
-        },
-      });
-
-      tl.set(banners, {
-        yPercent: -100,
-        opacity: 1,
-        visibility: "visible",
-      });
-
-      tl.to(banners, {
-        yPercent: 0,
-        duration: 0.8,
-        ease: "power2.inOut",
-        stagger: {
-          each: 0.1,
-          from: "start",
-        },
-      });
-    } else {
-      clearTimeout(timeout);
-      router.push(href);
-      resolve();
-    }
-  });
+): Promise<void> => {
+  // Direct navigation without animations
+  router.push(href);
 };
 
 export const NavigationContext = React.createContext<{
@@ -168,21 +51,8 @@ export default function Template({ children }: TemplateProps) {
   const [isNavigating, setIsNavigating] = useState(false);
 
   const resetBanners = useCallback(() => {
-    const banners = document.querySelectorAll(".banner");
-
-    // Kill any existing animations
-    gsap.killTweensOf(banners);
-
-    // Reset all banners to initial state
-    banners.forEach((banner) => {
-      gsap.set(banner, {
-        clearProps: "all",
-        visibility: "hidden",
-        opacity: 0,
-        yPercent: isMobile ? 0 : -100,
-      });
-    });
-  }, [isMobile, windowWidth]);
+    // No-op without GSAP
+  }, []);
 
   const handleLinkClick = useCallback(
     async (href: string) => {
@@ -226,7 +96,6 @@ export default function Template({ children }: TemplateProps) {
     return () => {
       window.removeEventListener("popstate", handlePopState);
       // Kill all GSAP animations on unmount
-      gsap.killTweensOf(".banner");
       resetBanners();
     };
   }, [isInitialized, resetBanners, windowWidth]);
@@ -254,7 +123,6 @@ export default function Template({ children }: TemplateProps) {
           banner.style.opacity = "0";
         }
       });
-      gsap.killTweensOf(".banner");
       setIsNavigating(false);
     };
 
