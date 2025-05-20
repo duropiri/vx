@@ -2,6 +2,7 @@
 import {
   ReactNode,
   useEffect,
+  useLayoutEffect,
   useRef,
   // useEffect,
   useState,
@@ -13,8 +14,13 @@ import { gsap } from "@/utils/gsap";
 
 import logo from "@/../../public/assets/images/logo2-nospace.webp";
 import { usePathname } from "next/navigation";
+import { useRouter } from "next/navigation";
 
-import { ChevronDownIcon } from "@radix-ui/react-icons";
+import {
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "@radix-ui/react-icons";
 import { FooterHelpLinks } from "@/data/navLinks";
 import { TransitionLink } from "../TransitionLink";
 import { useViewport } from "@/contexts/ViewportContext";
@@ -286,6 +292,104 @@ const Nav: React.FC<NavProps> = ({ activeDropdown, isVisible }) => {
   );
 };
 
+interface TwoPanelMenuProps {
+  navigation: LinkDetails[];
+  isActive: boolean;
+  onClose?: () => void;
+}
+
+const TwoPanelMenu: React.FC<TwoPanelMenuProps> = ({
+  navigation,
+  isActive,
+  onClose,
+}) => {
+  const [panel, setPanel] = useState<string | null>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const mainRef = useRef<HTMLDivElement>(null);
+  const subRef = useRef<HTMLDivElement>(null);
+  const router = useRouter();
+
+  // Reset panel on close
+  useEffect(() => {
+    if (!isActive) setPanel(null);
+  }, [isActive]);
+
+  // Adjust height to active panel
+  const adjustHeight = () => {
+    const wrapper = wrapperRef.current;
+    const activePanel = panel ? subRef.current : mainRef.current;
+    if (wrapper && activePanel) {
+      wrapper.style.height = `${activePanel.scrollHeight}px`;
+    }
+  };
+
+  // Run on mount and whenever panel changes
+  useLayoutEffect(adjustHeight, [panel]);
+  useLayoutEffect(() => {
+    if (isActive) adjustHeight();
+  }, [isActive]);
+
+  if (!isActive) return null;
+
+  return (
+    <div
+      ref={wrapperRef}
+      className="relative w-full bg-ash text-white overflow-hidden transition-[height] duration-500"
+    >
+      <div
+        className={`flex transform transition-transform duration-700 ${
+          panel ? "-translate-x-full" : "translate-x-0"
+        }`}
+      >
+        {/* Main */}
+        <div ref={mainRef} className={`pn-regular-24 flex-shrink-0 w-full px-4 py-2 flex flex-col gap-2 transition-opacity duration-300 ${
+          panel ? "opacity-0" : "opacity-100"
+        }`}>
+          {navigation.map((nav, idx) => (
+            <button
+              key={idx}
+              className="flex justify-between items-center w-full py-2 text-left"
+              onClick={() => {
+                if (nav.dropdown) setPanel(nav.title);
+                else {
+                  router.push(nav.href);
+                  onClose?.();
+                }
+              }}
+            >
+              <span>{nav.title}</span>
+              {nav.dropdown && <ChevronRightIcon />}
+            </button>
+          ))}
+        </div>
+
+        {/* Sub */}
+        <div ref={subRef} className={`flex-shrink-0 w-full px-4 py-2 flex flex-col gap-2 transition-opacity duration-1000 ${
+          panel ? "opacity-100" : "opacity-0"
+        }`}>
+          <button
+            className="flex items-center py-2 text-left"
+            onClick={() => setPanel(null)}
+          >
+            <ChevronLeftIcon />
+            <span className="ml-2">Back</span>
+          </button>
+          {/* <h2 className="text-lg pn-semibold-12 mb-2">{panel}</h2> */}
+          <div className="pn-regular-20 flex flex-col gap-2">
+            {navigation
+              .find((nav) => nav.title === panel)
+              ?.dropdown?.items?.items.map((item, i) => (
+                <Link key={i} href={item.href}>
+                  <p className="block py-2">{item.title}</p>
+                </Link>
+              ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 interface MobileMenuProps {
   navigation: LinkDetails[];
   isActive: boolean;
@@ -395,10 +499,10 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <div
       ref={menuRef}
-      className="fixed md:hidden left-0 top-[51.61px] w-full bg-ash text-white [backdrop-filter:_saturate(180%)_blur(20px)] z-[1999] overflow-y-scroll max-h-[calc(100vh-3.85rem)]"
+      className="fixed md:hidden left-0 top-[51.61px] w-full bg-ash text-white [backdrop-filter:_saturate(180%)_blur(20px)] z-[99999999] overflow-y-scroll max-h-[calc(100vh-6rem)]"
     >
-      <div className="p-6 flex flex-col gap-6">
-        {navigation.map((nav, index) => (
+      <div className="p-[1rem] sm:p-[0.5rem] flex flex-col gap-6">
+        {/* {navigation.map((nav, index) => (
           <div key={index} className="flex flex-col">
             <div className="flex justify-between items-center">
               <TransitionLink
@@ -422,7 +526,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               )}
             </div>
 
-            {/* Dropdown Content */}
+
             {nav.dropdown && (
               <div
                 ref={setSubmenuRef(nav.title)}
@@ -475,12 +579,18 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               </div>
             )}
           </div>
-        ))}
+        ))} */}
+
+        <TwoPanelMenu
+          navigation={navigation} // your array of { title, href, dropdown? }
+          isActive={isActive} // boolean toggle
+          onClose={onClose}
+        />
 
         {/* Mobile CTA */}
         <Link
           href="https://listings.virtualxposure.com/order"
-          className="button pn-regular-16 text-center pn-regular-16 text-black !mt-4"
+          className="button pn-regular-16 text-center pn-regular-16 text-black"
           onClick={onClose}
         >
           Book Now
@@ -682,7 +792,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       <div
         id="header"
         onMouseLeave={() => handleMouseLeave()}
-        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1.5rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
+        className={`relative group/header transition-all duration-500 ${className} z-[2000] flex flex-col size-full h-auto pl-[1rem] p-[1rem] sm:p-[0.5rem] sm:pl-[1rem] ${
           isActive ? "bg-ash" : "bg-ash/75 hover:bg-ash"
         } [backdrop-filter:_saturate(180%)_blur(20px)] fixed top-0 left-0 right-0`}
       >
@@ -790,7 +900,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           {/* Mobile Menu button */}
           <div
             onClick={() => setIsActive(!isActive)}
-            className="flex md:hidden items-center justify-end gap-2 cursor-pointer"
+            className="flex md:hidden items-center justify-end gap-2 cursor-pointer h-auto"
           >
             <div className="relative flex flex-col items-center justify-center gap-1">
               <div
