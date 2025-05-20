@@ -183,7 +183,7 @@ export const StepsLeftSection = () => (
       noCenter
       noAnimation
       heading="MORE EFFECTIVE MARKETING. LARGER COMMISSIONS."
-      subheading="3 reasons why Drone Photography is CRUCIAL For Your Success in 2023…"
+      subheading={`3 reasons why Drone Photography is CRUCIAL For Your Success in ${new Date().getFullYear()}…`}
       noBodyAnimation
       body="The good news is… we include it at no additional cost in all of our packages, so rest assured your listing will get in front of the right eyes regardless of your budget."
       className="text-black"

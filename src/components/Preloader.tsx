@@ -135,50 +135,55 @@ const Preloader: React.FC<PreloaderProps> = ({
   }, [loadingPercentage, finishAnimation, windowWidth]);
 
   return (
-    <div
-      className="fixed inset-0 overflow-hidden z-[99999999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]"
-      style={{ zIndex: 99999999999999 }}
-    >
-      <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
-        <div
-          className="pn-regular-24 relative text-lg sm:text-2xl uppercase overflow-hidden"
-          ref={textRef}
-        >
-          {"Virtual Xposure".split("").map((char, index) => (
-            <span
-              key={`char-${index}`}
-              className="char inline-block"
-              style={{
-                opacity: 0,
-                transform: "translateY(25px)",
-              }}
-            >
-              {char}
-            </span>
-          ))}
-        </div>
-        <div
-          className="absolute inset-0 flex items-center justify-center opacity-0 mix-blend-difference z-10"
-          ref={imageRef}
-        >
-          <Image
-            src={logo}
-            alt="Loading"
-            className="w-[9.375rem] h-auto mix-blend-difference"
-            priority={true}
-            loading={true ? "eager" : "lazy"}
-            placeholder="blur"
-            quality={75}
-          />
-        </div>
+    <>
+      <noscript>
+        <style>{`.splash-screen { display: none !important; }`}</style>
+      </noscript>
+      <div
+        className="fixed inset-0 overflow-hidden z-[99999999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]"
+        style={{ zIndex: 99999999999999 }}
+      >
+        <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
+          <div
+            className="pn-regular-24 relative text-lg sm:text-2xl uppercase overflow-hidden"
+            ref={textRef}
+          >
+            {"Virtual Xposure".split("").map((char, index) => (
+              <span
+                key={`char-${index}`}
+                className="char inline-block"
+                style={{
+                  opacity: 0,
+                  transform: "translateY(25px)",
+                }}
+              >
+                {char}
+              </span>
+            ))}
+          </div>
+          <div
+            className="absolute inset-0 flex items-center justify-center opacity-0 mix-blend-difference z-10"
+            ref={imageRef}
+          >
+            <Image
+              src={logo}
+              alt="Loading"
+              className="w-[9.375rem] h-auto mix-blend-difference"
+              priority={true}
+              loading={true ? "eager" : "lazy"}
+              placeholder="blur"
+              quality={75}
+            />
+          </div>
 
-        <div className="absolute bottom-0 left-[1.5rem] text-start">
-          <div className="pn-regular-24 mr-[1rem] mb-[1.5rem] mix-blend-difference">
-            {loadingPercentage}%
+          <div className="absolute bottom-0 left-[1.5rem] text-start">
+            <div className="pn-regular-24 mr-[1rem] mb-[1.5rem] mix-blend-difference">
+              {loadingPercentage}%
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

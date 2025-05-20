@@ -54,7 +54,7 @@ const VirtualSection = ({
       id: 1,
       title: "Virtual Renovation",
       description:
-        "Transform your space without the mess. Our virtual renovation service helps you visualize potential upgrades and modernizations to your property with stunning before-and-after previews. Perfect for planning bathroom remodels, kitchen updates, or whole-home makeovers. Our advanced digital tools allow you to experiment with different styles, colors, and fixtures to create your ideal look—all without lifting a hammer.",
+        "Transform your space without the mess. Our virtual renovation previews bathroom remodels, kitchen updates, and whole-home makeovers through realistic before-and-after renderings. Experiment with designs, finishes, and fixtures to plan your ideal look - all without lifting a hammer.",
       beforeImage:
         "/assets/portfolio/virtual-renovation-images/DEMO_ (12).webp",
       afterImage: "/assets/portfolio/virtual-renovation-images/DEMO_ (11).webp",
@@ -64,65 +64,72 @@ const VirtualSection = ({
   ].filter(Boolean); // Remove falsy values
 
   const CompareSlider = ({ service }) => (
-    <ReactCompareSlider
-      className="cursor-none-hover cursor-default overflow-hidden size-full"
-      itemOne={
-        <div
-          className={`relative flex size-full before:absolute ${
-            service.reversed
-              ? "before:bottom-0 md:before:right-0 before:bg-gradient-to-t md:before:bg-gradient-to-l before:h-[2rem] before:w-full md:before:h-full md:before:w-[4rem]"
-              : "before:bottom-0 md:before:left-0 before:bg-gradient-to-t md:before:bg-gradient-to-r before:h-[2rem] before:w-full md:before:h-full md:before:w-[4rem]"
-          } before:from-white before:to-transparent before:pointer-events-none before:z-10`}
-        >
-          <Image
-            src={image1 || service.beforeImage}
-            alt="before-image"
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            priority={false}
-            loading={false ? "eager" : "lazy"}
-            className="size-full object-cover pointer-events-none aspect-[3/2]"
-            quality={75}
-          />
-          <span
-            className={`absolute bottom-[1rem] ${
-              !service.reversed ? "left-[1rem] md:left-[3rem]" : "left-[1rem]"
-            } subheading pn-semibold-16 bg-charcoal text-white opacity-80`}
-          >
-            Before
-          </span>
-        </div>
-      }
-      itemTwo={
-        <div className="relative flex size-full">
-          <Image
-            src={image2 || service.afterImage}
-            alt="after-image"
-            fill
-            sizes="(max-width: 640px) 100vw, 50vw"
-            priority={false}
-            loading={false ? "eager" : "lazy"}
-            className="size-full object-cover pointer-events-none aspect-[3/2]"
-            quality={75}
-          />
-          <span
-            className={`absolute bottom-[1rem] ${
-              service.reversed ? "right-[1rem] md:right-[3rem]" : "right-[1rem]"
-            } subheading pn-semibold-16 bg-ash text-goldenrod opacity-80`}
-          >
-            <span className="gold-text">After</span>
-          </span>
-        </div>
-      }
-    />
+    <div className="relative w-full">
+      {/* Ghost image to establish height */}
+      <Image
+        src={image1 || service.beforeImage}
+        alt=""
+        width={800}
+        height={533}
+        className="w-full h-auto opacity-0 pointer-events-none"
+        quality={0}
+      />
+      <div className="absolute inset-0">
+        <ReactCompareSlider
+          className="cursor-none-hover cursor-default overflow-hidden w-full h-full"
+          itemOne={
+            <div
+              className={`relative w-full h-full before:absolute ${
+                service.reversed
+                  ? "before:bottom-0 md:before:right-0 before:bg-gradient-to-t md:before:bg-gradient-to-l before:h-[2rem] before:w-full md:before:h-full md:before:w-[4rem]"
+                  : "before:bottom-0 md:before:left-0 before:bg-gradient-to-t md:before:bg-gradient-to-r before:h-[2rem] before:w-full md:before:h-full md:before:w-[4rem]"
+              } [@media(min-width:1281px)]:before:from-white before:to-transparent before:pointer-events-none before:z-10`}
+            >
+              <Image
+                src={image1 || service.beforeImage}
+                alt="before-image"
+                fill
+                className="object-cover w-full h-full pointer-events-none"
+                quality={75}
+              />
+              <span
+                className={`absolute bottom-[1rem] ${
+                  !service.reversed ? "left-[1rem] md:left-[3rem]" : "left-[1rem]"
+                } subheading pn-semibold-16 bg-charcoal text-white opacity-80`}
+              >
+                Before
+              </span>
+            </div>
+          }
+          itemTwo={
+            <div className="relative w-full h-full">
+              <Image
+                src={image2 || service.afterImage}
+                alt="after-image"
+                fill
+                className="object-cover w-full h-full pointer-events-none"
+                quality={75}
+              />
+              <span
+                className={`absolute bottom-[1rem] ${
+                  service.reversed ? "right-[1rem] md:right-[3rem]" : "right-[1rem]"
+                } subheading pn-semibold-16 bg-ash text-goldenrod opacity-80`}
+              >
+                <span className="gold-text">After</span>
+              </span>
+            </div>
+          }
+        />
+      </div>
+    </div>
   );
 
   const ServiceFeatures = ({ features }) => (
-    <ul className="custom-bullet-list gold flex flex-col items-start space-y-[1rem] w-full overflow-y-auto">
+    <ul className="custom-bullet-list gold grid grid-cols-2 grid-rows-3 items-start gap-x-[1rem] gap-y-[0.3rem] w-full overflow-y-auto">
       {features.map((feature, index) => (
         <li
           key={"service-" + index}
-          className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]"
+          className="list group flex flex-row items-center text-start gap-[1rem] [@media(min-width:1281px)]:gap-[0.5rem]"
         >
           <p className="pn-regular-16 text-black/80 group-hover:text-black">
             {feature.text}
@@ -135,10 +142,10 @@ const VirtualSection = ({
   const ServiceSection = ({ service, className = "" }) => (
     <div
       className={`${className} flex flex-col-reverse ${
-        service.reversed ? "xl:flex-row-reverse" : "xl:flex-row"
-      } size-full items-center justify-between bg-white md:rounded-[1rem] shadow-customShadow overflow-hidden`}
+        service.reversed ? "[@media(min-width:1281px)]:flex-row-reverse" : "[@media(min-width:1281px)]:flex-row"
+      } size-full items-stretch justify-between bg-white md:rounded-[1rem] shadow-customShadow overflow-hidden`}
     >
-      <div className="z-10 relative size-full h-full flex flex-col items-center xl:items-start justify-center gap-y-[2rem] p-[1rem] pb-[1.5rem] sm:px-[1.5rem] sm:py-[2rem]">
+      <div className="z-10 relative size-full h-full [@media(min-width:1281px)]:max-w-[50%] flex flex-col items-center [@media(min-width:1281px)]:items-start justify-center gap-y-[2rem] p-[1rem] pb-[1.5rem] sm:px-[1.5rem] sm:py-[2rem]">
         <SectionHeader
           noCenter
           noAnimation
@@ -149,7 +156,7 @@ const VirtualSection = ({
         />
         <ServiceFeatures features={service.features} />
       </div>
-      <div className="relative flex flex-col size-full aspect-[16/12] md:h-full">
+      <div className="relative flex flex-col flex-1 w-full h-full min-h-0">
         <CompareSlider service={service} />
       </div>
     </div>
@@ -158,27 +165,27 @@ const VirtualSection = ({
   return (
     <div
       id="virtual"
-      className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center xl:items-start justify-start 1gap-y-[2rem] xl:1gap-y-[6rem]"
+      className="z-10 relative flex size-full max-w-[--section-width] flex-col items-center [@media(min-width:1281px)]:items-start justify-start 1gap-y-[2rem] [@media(min-width:1281px)]:1gap-y-[6rem]"
     >
       <SectionHeader
         noAnimation
         noCenter
         heading="Virtual Enhancements"
         subheading="Virtual Enhancements On-Demand"
-        className="header text-black sm:sticky top-[1.125rem] 2xl:top-[6.25rem] h-[7rem] mb-[2rem] md:mb-[3rem]"
+        className="header text-black [@media(min-width:1281px)]:sticky top-[1.125rem] 2[@media(min-width:1281px)]:top-[6.25rem] h-[7rem] mb-[2rem] md:mb-[3rem]"
       />
-      <div className="relative flex w-[100vw] md:w-full md:max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] xl:gap-[3.75rem]">
+      <div className="relative flex w-[100vw] md:w-full md:max-w-[--section-width] flex-col items-center justify-center gap-[1.5rem] [@media(min-width:1281px)]:gap-[3.75rem]">
         {services.map((service, index) => (
           <ServiceSection
             key={"services-" + index}
             service={service}
-            className="cards sm:sticky top-[10rem] 2xl:top-[15rem] md:h-[32rem]" // Adjust `top` to match header height
+            className="cards [@media(min-width:1281px)]:sticky top-[10rem] 2[@media(min-width:1281px)]:top-[15rem] " // Adjust `top` to match header height
           />
         ))}
       </div>
       {/* CTA */}
       {false && (
-        <div className="flex justify-center w-full mt-[2rem] xl:mt-[6rem]">
+        <div className="flex justify-center w-full mt-[2rem] [@media(min-width:1281px)]:mt-[6rem]">
           <div className="flex flex-col sm:flex-row gap-[1rem]">
             <HoverWrapper className="group/cta cursor-select-hover">
               <TransitionLink

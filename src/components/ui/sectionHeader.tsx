@@ -59,8 +59,8 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         className={`section-header ${className} ${
           dark ? "text-white" : "text-ash"
         } ${center ? "text-center" : "sm:text-start !items-start"} ${
-          small ? "sm:max-w-[30vw]" : ""
-        } ${medium ? "sm:max-w-[50vw]" : ""}`}
+          small ? "[@media(min-width:1281px)]:max-w-[30vw]" : ""
+        } ${medium ? "[@media(min-width:1281px)]:max-w-[50vw]" : ""}`}
       >
         {heading && (
           <span
@@ -95,7 +95,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                     } sm:hidden ${
                       largeText ? "pn-semibold-40" : "pn-semibold-24"
                     } ${
-                      medium ? "sm:max-w-[24ch]" : ""
+                      medium ? "[@media(min-width:1281px)]:max-w-[24ch]" : ""
                     } capitalize leading-snug w-full text-start`}
                   >
                     {subheading}
@@ -118,7 +118,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                     noCenter && "text-start"
                   } sm:hidden ${
                     largeText ? "pn-semibold-72" : "pn-semibold-40"
-                  } ${medium ? "sm:max-w-[24ch]" : ""} capitalize leading-snug w-full sm:text-start`}
+                  } ${medium ? "[@media(min-width:1281px)]:max-w-[24ch]" : ""} capitalize leading-snug w-full sm:text-start`}
                 >
                   {subheading}
                 </h2>
@@ -135,7 +135,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                   ref={bodyRef}
                   className={`${bodyClassName} ${noCenter && "text-start"} ${
                     largeText ? "pn-regular-20" : "pn-regular-20"
-                  } sm:max-w-[50vw]`}
+                  } [@media(min-width:1281px)]:max-w-[50vw]`}
                 >
                   {body}
                 </p>
@@ -145,7 +145,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                 ref={bodyRef}
                 className={`${bodyClassName} ${noCenter && "text-start"} ${
                   largeText ? "pn-regular-20" : "pn-regular-20"
-                } sm:max-w-[50vw] text-start`}
+                } [@media(min-width:1281px)]:max-w-[50vw] text-start`}
               >
                 {body}
               </p>
