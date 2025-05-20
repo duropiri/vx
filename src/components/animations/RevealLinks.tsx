@@ -19,7 +19,7 @@ export const HoverWrapper = ({
   return (
     <Tag href={href} id={id} className={`hover-wrapper ${className}`} {...rest}>
       {children}
-      <style>{`
+      <style jsx>{`
         :global(.hover-wrapper:hover .flip-link .flip-text.top) {
           transform: translateY(-100%);
         }
