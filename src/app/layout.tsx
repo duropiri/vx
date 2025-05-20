@@ -1,7 +1,6 @@
 // app/layout.tsx
 import "./globals.scss";
 import { Metadata } from "next";
-import { Analytics } from "@vercel/analytics/react";
 import Script from "next/script";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
 // Create a new file: app/fonts.ts
@@ -125,19 +124,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${proximaNova.variable} ${nunito.variable}`}>
-      <Analytics />
       <head>
         <style
           dangerouslySetInnerHTML={{ __html: criticalStyles }}
           href="critical-styles"
         />
 
-        {/* <link
-        rel="preconnect"
-        href="https://virtualxposure.com"
-        crossOrigin="anonymous"
-      />
-      <link rel="dns-prefetch" href="https://virtualxposure.com" /> */}
+        <link rel="preconnect" href="https://virtualxposure.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://virtualxposure.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://static.hj.contentsquare.net" crossOrigin="anonymous" />
+
         <Script
           id="fb-pixel-script"
           strategy="afterInteractive"
@@ -156,14 +154,6 @@ export default function RootLayout({
             `,
           }}
         />
-        <noscript>
-          <img
-            height="1"
-            width="1"
-            style={{ display: "none" }}
-            src="https://www.facebook.com/tr?id=2013640412380588&ev=PageView&noscript=1"
-          />
-        </noscript>
         {/* Google Tag Manager Scripts */}
         {GTM_IDS.length > 0 &&
           GTM_IDS.map((id) => (
@@ -174,7 +164,7 @@ export default function RootLayout({
               />
               <Script
                 id={`gtm-${id}`}
-                strategy="afterInteractive"
+                strategy="lazyOnload"
                 dangerouslySetInnerHTML={{
                   __html: `
                     window.dataLayer = window.dataLayer || [];
@@ -187,7 +177,7 @@ export default function RootLayout({
             </React.Fragment>
           ))}
 
-        <Script id="google-tag-manager" strategy="afterInteractive">
+        <Script id="google-tag-manager" strategy="lazyOnload">
           {`
             (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
             new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -220,7 +210,7 @@ export default function RootLayout({
         {/* Hotjar Script */}
         <Script
           id="contentsquare-script"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
           dangerouslySetInnerHTML={{
             __html: `
               (function (c, s, q, u, a, r, e) {
@@ -237,12 +227,23 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased max-w-[100vw]">
+        {/* Google Tag */}
         <div
           dangerouslySetInnerHTML={{
             __html: `
               <noscript>
                 <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MPRFLBLK"
                         height="0" width="0" style="display:none;visibility:hidden"></iframe>
+              </noscript>
+            `,
+          }}
+        />
+        {/* Facebook Pixel */}
+        <div
+          dangerouslySetInnerHTML={{
+            __html: `
+              <noscript>
+                <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=2013640412380588&ev=PageView&noscript=1" />
               </noscript>
             `,
           }}
