@@ -334,7 +334,7 @@ const TwoPanelMenu: React.FC<TwoPanelMenuProps> = ({
   return (
     <div
       ref={wrapperRef}
-      className="relative w-full bg-ash text-white overflow-hidden transition-[height] duration-500"
+      className="relative w-full bg-ash text-white transition-[height] duration-500"
     >
       <div
         className={`flex transform transition-transform duration-700 ${
@@ -342,7 +342,7 @@ const TwoPanelMenu: React.FC<TwoPanelMenuProps> = ({
         }`}
       >
         {/* Main */}
-        <div ref={mainRef} className={`pn-regular-24 flex-shrink-0 w-full px-4 py-2 flex flex-col gap-2 transition-opacity duration-300 ${
+        <div ref={mainRef} className={`pn-regular-24 flex-shrink-0 w-full flex flex-col gap-2 transition-opacity duration-300 ${
           panel ? "opacity-0" : "opacity-100"
         }`}>
           {navigation.map((nav, idx) => (
@@ -364,7 +364,7 @@ const TwoPanelMenu: React.FC<TwoPanelMenuProps> = ({
         </div>
 
         {/* Sub */}
-        <div ref={subRef} className={`flex-shrink-0 w-full px-4 py-2 flex flex-col gap-2 transition-opacity duration-1000 ${
+        <div ref={subRef} className={`flex-shrink-0 w-full flex flex-col gap-2 transition-opacity duration-1000 ${
           panel ? "opacity-100" : "opacity-0"
         }`}>
           <button
@@ -499,7 +499,7 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   return (
     <div
       ref={menuRef}
-      className="fixed md:hidden left-0 top-[51.61px] w-full bg-ash text-white [backdrop-filter:_saturate(180%)_blur(20px)] z-[99999999] overflow-y-scroll max-h-[calc(100vh-6rem)]"
+      className="fixed md:hidden left-0 top-[51.61px] w-full bg-ash text-white [backdrop-filter:_saturate(180%)_blur(20px)] z-[99999999] overflow-y-scroll max-h-[calc(100vh-6rem)] overflow-x-hidden"
     >
       <div className="p-[1rem] sm:p-[0.5rem] flex flex-col gap-6">
         {/* {navigation.map((nav, index) => (

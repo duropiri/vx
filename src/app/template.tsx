@@ -4,19 +4,15 @@ import React, {
   Suspense,
   useCallback,
   useEffect,
-  // useRef,
   useState,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-// import { gsap } from "@/utils/gsap";
 import Header from "@/components/animations/NavigationMenu";
 import { HeaderLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/animations/CustomCursor";
 import SmoothScrolling from "@/components/animations/SmoothScrolling";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
-// import Image from "next/image";
-// import logo from "@/../../public/assets/images/logo4.webp";
 import { useViewport } from "@/contexts/ViewportContext";
 import ChatWidget from "@/components/ui/chatWidget";
 
@@ -24,7 +20,6 @@ interface TemplateProps {
   children: ReactNode;
 }
 export const animatePageIn = async (isMobileView: boolean): Promise<void> => {
-  // No-op without GSAP animations
 };
 
 export const animatePageOut = async (
@@ -32,7 +27,6 @@ export const animatePageOut = async (
   router: AppRouterInstance,
   isMobileView: boolean
 ): Promise<void> => {
-  // Direct navigation without animations
   router.push(href);
 };
 
@@ -51,7 +45,6 @@ export default function Template({ children }: TemplateProps) {
   const [isNavigating, setIsNavigating] = useState(false);
 
   const resetBanners = useCallback(() => {
-    // No-op without GSAP
   }, []);
 
   const handleLinkClick = useCallback(
@@ -95,7 +88,6 @@ export default function Template({ children }: TemplateProps) {
     // Cleanup
     return () => {
       window.removeEventListener("popstate", handlePopState);
-      // Kill all GSAP animations on unmount
       resetBanners();
     };
   }, [isInitialized, resetBanners, windowWidth]);
@@ -147,68 +139,6 @@ export default function Template({ children }: TemplateProps) {
         </div>
         {!isAdminPage ? (
           <>
-            {/* {!isMobile && (
-              <>
-                <div
-                  id="banner-1"
-                  className="banner fixed left-0 h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-2"
-                  className="banner fixed left-[calc((100%/9)*1)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-3"
-                  className="banner fixed left-[calc((100%/9)*2)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-4"
-                  className="banner fixed left-[calc((100%/9)*3)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-5"
-                  className="banner fixed flex items-center justify-center left-[calc((100%/9)*4)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                >
-                  <div className="relative size-[10vw] sm:size-[3vw]">
-                    <Image
-                      src={logo}
-                      alt="logo"
-                      fill
-                      sizes="(max-width: 640px) 100vw, 1200px"
-                      priority={false}
-                      loading={false ? "eager" : "lazy"}
-                      className="size-full animate-pulse"
-                      quality={75}
-                    />
-                  </div>
-                </div>
-                <div
-                  id="banner-6"
-                  className="banner fixed left-[calc((100%/9)*5)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-7"
-                  className="banner fixed left-[calc((100%/9)*6)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-8"
-                  className="banner fixed left-[calc((100%/9)*7)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-                <div
-                  id="banner-9"
-                  className="banner fixed left-[calc((100%/9)*8)] h-[100dvh] bg-ash/[92] backdrop-blur-lg z-[999999999999] w-[calc(110%/9)] transform-gpu will-change-transform"
-                  style={{ visibility: "hidden", opacity: 0 }}
-                />
-              </>
-            )} */}
             <SmoothScrolling>
               <Header className="absolute" navigation={HeaderLinks} />
               {children}

@@ -1,6 +1,7 @@
 "use client";
 import { useLenis, ReactLenis } from "lenis/react";
 import { HTMLAttributes, useEffect, useRef, useState } from "react";
+import { useViewport } from "@/contexts/ViewportContext";
 
 interface SmoothScrollingProps {
   children: React.ReactNode;
@@ -11,6 +12,12 @@ export default function SmoothScrolling({
   children,
   className = "",
 }: SmoothScrollingProps) {
+  const { isMobile } = useViewport();
+  if (isMobile) {
+    // Disable Lenis on mobile for performance
+    return <div className={className}>{children}</div>;
+  }
+
   const lenis = useLenis();
   // Add mounting state to prevent hydration mismatch
   const [isMounted, setIsMounted] = useState(false);

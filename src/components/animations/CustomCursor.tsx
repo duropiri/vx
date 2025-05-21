@@ -25,18 +25,29 @@ export default function CustomCursor() {
 
     // Smoothly follow the mouse
     const xTo = gsap.quickTo(cursorRef.current, "x", {
-      duration: 0.25,
+      duration: 0.3,
       ease: "power3.out",
     });
     const yTo = gsap.quickTo(cursorRef.current, "y", {
-      duration: 0.25,
+      duration: 0.3,
+      ease: "power3.out",
+    });
+
+    const xToI = gsap.quickTo(innerDotRef.current, "x", {
+      duration: 0.15,
+      ease: "power3.out",
+    });
+    const yToI = gsap.quickTo(innerDotRef.current, "y", {
+      duration: 0.15,
       ease: "power3.out",
     });
 
     const moveCursor = (e: MouseEvent) => {
       xTo(e.clientX);
       yTo(e.clientY);
-      gsap.set(innerDotRef.current, { x: e.clientX, y: e.clientY });
+      xToI(e.clientX);
+      yToI(e.clientY);
+      // gsap.set(innerDotRef.current, { x: e.clientX, y: e.clientY });
     };
 
     const handleMouseLeave = () => {
