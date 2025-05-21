@@ -105,7 +105,7 @@ export default function Footer({
                     <p className="pn-semibold-24">Virtual Xposure</p>
                   </nav>
                   <div className="flex flex-col items-start justify-start gap-[1rem] xl:gap-[1.5rem]">
-                    <div>
+                    <div className="select-text">
                       <p className="pn-regular-20 text-white/75 pb-[1rem]">
                         The Gold Standard in Real Estate Marketing
                       </p>
@@ -340,12 +340,12 @@ export default function Footer({
           onSubmit={handleSubmit}
           className="flex sm:hidden"
         />
-        <p className="pn-regular-14 text-center xl:text-start">
+        <p className="pn-regular-14 text-center xl:text-start select-text">
           © Copyright {new Date().getFullYear()}, All Rights Reserved by
           VirtualXposure
         </p>
 
-        <div className="flex flex-row items-center gap-[0.375rem] xl:pr-[2rem]">
+        <div className="flex flex-row items-center gap-[0.375rem] xl:pr-[2rem] select-none pointer-events-none">
           {/* Payment method icons */}
           <Image
             alt="amex"

@@ -76,7 +76,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {subheading && (
-          <div className="contents">
+          <div className="contents select-text">
             {!noAnimation && !noSubheadingAnimation ? (
               <LetterRevealOnScroll end="bottom 60%">
                 <div className="contents">
@@ -103,7 +103,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
                 </div>
               </LetterRevealOnScroll>
             ) : (
-              <div className="contents">
+              <div className="contents select-text">
                 <h2
                   ref={subheadingRef}
                   className={`${subheadingClassName} hidden -space-y-[10rem] sm:block ${
@@ -128,7 +128,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         )}
 
         {body && (
-          <div className="contents">
+          <div className="contents select-text">
             {!noAnimation && !noBodyAnimation ? (
               <LetterRevealOnScroll end="bottom 60%">
                 <p

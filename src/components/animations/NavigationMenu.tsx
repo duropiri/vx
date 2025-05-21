@@ -764,7 +764,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
       {/* Announcement Bar */}
       {showAnnouncement && (
         <div className=" bg-goldenbrown flex flex-row items-center justify-between sm:justify-end px-[1rem] py-[0.5rem] pn-regular-12 text-black select-none relative z-[2001]">
-          <p className="md:mr-[2rem] space-x-[0.5rem]">
+          <p className="md:mr-[2rem] space-x-[0.5rem] select-text">
             <a
               href="tel:+1 888-300-5068"
               className="underline cursor-select-hover"
@@ -821,7 +821,7 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
           className={`relative flex items-center justify-between gap-10 z-[9999]`}
         >
           {/* Logo */}
-          <div className="cursor-select-hover relative lg:max-w-[10vw]">
+          <div className="cursor-select-hover relative lg:max-w-[10vw] select-none">
             <TransitionLink
               href={"/"}
               className="flex size-full aspect-[1748/1072] overflow-hidden"

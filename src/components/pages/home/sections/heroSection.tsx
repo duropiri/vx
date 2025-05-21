@@ -344,7 +344,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <p className="pn-regular-12 text-white">500+ Agents Trust Us</p>
             </div>
             {/* Heading */}
-            <div className="relative flex flex-col items-center justify-center my-auto">
+            <div className="relative flex flex-col items-center justify-center my-auto select-text">
               {/* <div className="rounded-[5rem] blur-lg animate-pulse absolute top-0 size-[130%] bg-white/50 -z-10 pointer-events-none" /> */}
               <h1 className="pn-regular-72 uppercase text-center mb-[1rem]">
                 <span className="block sm:hidden !leading-[1em]">
@@ -397,13 +397,13 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       </div>
                     </Link>
                   </HoverWrapper>
-                  <small>No credit card required—pay after the shoot.</small>
+                  <small className="select-text">No credit card required—pay after the shoot.</small>
 
                 </div>
               </div>
             </div>
             {/* Guarantees */}
-            <div className="border-y-[0.125rem] border-goldenbrown/50 py-[1rem]">
+            <div className="border-y-[0.125rem] border-goldenbrown/50 py-[1rem] select-text">
               <ul className="flex flex-col sm:flex-row gap-[2rem] gold pn-regular-20">
                 <li className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
                   <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">

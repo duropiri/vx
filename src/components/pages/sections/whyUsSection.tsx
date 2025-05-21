@@ -100,7 +100,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
             subheading="Why Choose Virtual Xposure?"
             body="We deliver excellence at every level, combining cutting-edge technology with unmatched customer service. Our proven track record and comprehensive solutions ensure your success, backed by industry-leading guarantees and lightning-fast delivery."
           />
-          <div className="hidden xl:grid grid-cols-4 gap-[1rem] xl:gap-[2rem] xl:mt-[2rem]">
+          <div className="hidden xl:grid grid-cols-4 gap-[1rem] xl:gap-[2rem] xl:mt-[2rem] select-text">
             {WhyUsItems.map((item, index) => (
               <div
                 key={index + 4}
