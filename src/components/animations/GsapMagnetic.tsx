@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useRef } from "react";
-import gsap from "gsap";
+import gsap from "gsap/gsap-core";
 
 interface GsapMagneticProps {
   children: ReactNode;

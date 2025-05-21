@@ -1,11 +1,6 @@
 // utils/gsap.ts
 import gsap from "gsap";
-import { CustomEase } from "gsap/dist/CustomEase";
-import MotionPathPlugin from "gsap/dist/MotionPathPlugin";
 import ScrollTrigger from "gsap/dist/ScrollTrigger";
-import ScrollToPlugin from "gsap/ScrollToPlugin";
-import Flip from "gsap/dist/Flip";
-import Draggable from "gsap/Draggable";
 
 let isInitialized = false;
 
@@ -14,14 +9,7 @@ export const initGSAP = () => {
   if (isInitialized) return;
 
   if (typeof window !== "undefined") {
-    gsap.registerPlugin(
-      ScrollTrigger,
-      MotionPathPlugin,
-      CustomEase,
-      ScrollToPlugin,
-      Flip,
-      Draggable
-    );
+    gsap.registerPlugin(ScrollTrigger);
     isInitialized = true;
   }
 };
@@ -30,6 +18,8 @@ export const initGSAP = () => {
 export const createGSAPAnimation = (
   animation: () => gsap.core.Timeline | gsap.core.Tween
 ) => {
+  initGSAP();
+
   if (typeof window === "undefined") return null;
 
   try {
@@ -44,6 +34,8 @@ export const createGSAPAnimation = (
 export const killGSAPAnimation = (
   animation: gsap.core.Timeline | gsap.core.Tween | null
 ) => {
+  initGSAP();
+
   if (!animation) return;
 
   try {
@@ -60,6 +52,8 @@ export const killGSAPAnimation = (
 
 // Clean up all ScrollTriggers for a specific component
 export const cleanupScrollTriggers = (componentId?: string) => {
+  initGSAP();
+
   if (typeof window === "undefined") return;
 
   try {
@@ -74,16 +68,5 @@ export const cleanupScrollTriggers = (componentId?: string) => {
   }
 };
 
-// Initialize GSAP by default
-initGSAP();
-
 // Export everything needed for GSAP
-export {
-  gsap,
-  ScrollTrigger,
-  CustomEase,
-  MotionPathPlugin,
-  ScrollToPlugin,
-  Flip,
-  Draggable,
-};
+export { gsap, ScrollTrigger };

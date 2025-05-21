@@ -1,7 +1,8 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
-import { gsap, ScrollTrigger, CustomEase } from "@/utils/gsap";
+import { gsap, ScrollTrigger } from "@/utils/gsap";
+import CustomEase from "gsap/CustomEase";
 gsap.registerPlugin(ScrollTrigger, CustomEase);
 import { useViewport } from "@/contexts/ViewportContext";
 
