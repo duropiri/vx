@@ -7,7 +7,7 @@ import React, {
   useState,
 } from "react";
 import { usePathname, useRouter } from "next/navigation";
-import Header from "@/components/animations/NavigationMenu";
+import Header, { LinkDetails } from "@/components/animations/NavigationMenu";
 import { HeaderLinks } from "@/data/navLinks";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/animations/CustomCursor";
@@ -140,7 +140,7 @@ export default function Template({ children }: TemplateProps) {
         {!isAdminPage ? (
           <>
             <SmoothScrolling>
-              <Header className="absolute" navigation={HeaderLinks} />
+              <Header className="absolute" navigation={HeaderLinks as LinkDetails[]} />
               {children}
               <Suspense fallback={null}>
                 <ChatWidget />

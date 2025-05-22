@@ -103,7 +103,7 @@ interface Dropdown {
   };
 }
 
-interface LinkDetails {
+export interface LinkDetails {
   title: string;
   href: string;
   src?: string;

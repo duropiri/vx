@@ -1,9 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
-import { useContext } from "react";
+import React, { useContext, ReactNode } from "react";
 import { NavigationContext } from "@/app/template";
 import Link from "next/link";
 
-export const TransitionLink = ({ href, children, target = "", rel = "", ...props }) => {
+interface TransitionLinkProps {
+  href: string;
+  children: ReactNode;
+  className?: string;
+  target?: string;
+  rel?: string;
+  [key: string]: any; // allow other anchor props
+}
+
+export const TransitionLink: React.FC<TransitionLinkProps> = ({
+  href,
+  children,
+  className,
+  target,
+  rel,
+  ...props
+}) => {
   const { handleLinkClick } = useContext(NavigationContext);
 
   return (
@@ -19,6 +36,7 @@ export const TransitionLink = ({ href, children, target = "", rel = "", ...props
       }}
       target={target || undefined}
       rel={rel || undefined}
+      className={className}
       {...props}
     >
       {children}
