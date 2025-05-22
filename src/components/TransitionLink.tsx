@@ -17,8 +17,8 @@ export const TransitionLink = ({ href, children, target = "", rel = "", ...props
         e.preventDefault();
         handleLinkClick(href);
       }}
-      target={target}
-      rel={rel}
+      target={target || undefined}
+      rel={rel || undefined}
       {...props}
     >
       {children}
