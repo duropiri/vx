@@ -8,7 +8,6 @@ import {
 } from "@/components/ui/accordion";
 import SectionHeader from "@/components/ui/sectionHeader";
 
-
 interface SectionProps {
   className?: string;
   vertical?: boolean;
@@ -43,7 +42,10 @@ function FAQSection({
   // }, [isInView, controls]);
 
   return (
-    <div id="faqs" className={`${className} section-container !flex-row !min-h-[60vh]`}>
+    <div
+      id="faqs"
+      className={`${className} section-container !flex-row !min-h-[60vh]`}
+    >
       <div
         className={`relative flex flex-col ${
           vertical ? "items-center" : "lg:flex-row items-start"
@@ -51,6 +53,7 @@ function FAQSection({
       >
         {/* Header */}
         <SectionHeader
+          className={`${!vertical && "sticky top-[8rem]"}`}
           noAnimation={noAnimation}
           noCenter
           small={!vertical}

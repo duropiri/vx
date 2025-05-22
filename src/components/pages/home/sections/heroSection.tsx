@@ -33,7 +33,7 @@ interface SectionProps {
 
 const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
   ({ className = "", navigation, originalColor, transitionColor }, ref) => {
-    const navdockWidth = "36rem";
+    const navdockWidth = "43rem";
     const navdockHeight = "2.5rem";
 
     const heroCTARef = useRef<HTMLDivElement>(null);
@@ -322,7 +322,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
           <div className="flex flex-col items-center justify-between h-auto w-full sm:max-w-[100vw] gap-[2rem] z-[100]">
             <HeroDecorations
               className="!w-[100vw] -z-10 top-0"
-              iconsClassName="size-full hidden sm:block scale-75 2xl:translate-y-[20rem] opacity-75"
+              iconsClassName="size-full hidden sm:block scale-75 2xl:translate-y-[20rem]"
               originalColor={originalColor}
             />
             {/* Main Copy */}
@@ -442,7 +442,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
             {/* Navdock Final Form */}
             <div id="logo" className="flex items-center h-full">
               <TransitionLink
-                href="/"
+                href="#"
                 passHref
                 className="cursor-select-hover flex w-[2.25rem] aspect-square overflow-hidden"
               >

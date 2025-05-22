@@ -174,6 +174,10 @@ export const HomePageNavdockLinks = [
     title: "Our Services",
     href: "/#services",
   },
+  {
+    title: "FAQs",
+    href: "/#faqs",
+  },
 ];
 
 export const LMSNavdockLinks = [

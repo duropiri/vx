@@ -214,7 +214,7 @@ const IconsContainer: React.FC<SectionProps> = ({ className = "" }) => {
   }, [windowWidth]);
 
   return (
-    <div className={`${className} relative z-10`}>
+    <div className={`${className} relative z-10 opacity-75`}>
       {socialMediaIcons.map((icon) => (
         <SocialMediaIconComponent key={icon.id} icon={icon} />
       ))}
@@ -270,16 +270,16 @@ const HeroDecorations = forwardRef<HTMLDivElement, SectionProps>(
         {/* Gradient */}
         <div
           ref={raysRef}
-          className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden"
+          className="pointer-events-none absolute inset-0 w-full h-full overflow-hidden z-50"
         >
           <div
-            className="pointer-events-none flex size-full max-w-[100vw] bg-gradient-to-t from-0% to-transparent transition-all z-30"
+            className="pointer-events-none flex size-full max-w-[100vw] bg-gradient-to-t from-0% to-transparent transition-all z-50"
             style={
               {
                 "--tw-gradient-from": `${originalColor} var(--tw-gradient-from-position)`,
                 "--tw-gradient-to": "rgb(255 255 255 / 0) var(--tw-gradient-to-position)",
                 "--tw-gradient-stops": "var(--tw-gradient-from), var(--tw-gradient-to)",
-                "--tw-gradient-to-position": "10%",
+                "--tw-gradient-to-position": "25%",
               } as React.CSSProperties
             }
           />

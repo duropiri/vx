@@ -35,12 +35,12 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`relative group flex size-full p-[1rem] pb-[1.5rem] sm:p-0 bg-white rounded-[1rem] shadow-customShadow xl:h-[30rem] max-w-[--section-width] flex-col xl:flex-row ${
+      className={`relative group flex size-full p-[1rem] pb-[1.5rem] sm:p-0 bg-white rounded-[1rem] xl:h-[30rem] max-w-[--section-width] flex-col xl:flex-row ${
         isRight ? "justify-start" : "justify-end"
       } items-end gap-[3rem] xl:gap-0`}
     >
       {/* Background Image */}
-      <div className="relative aspect-video xl:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash">
+      <div className="relative aspect-video xl:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash shadow-[inset_0_0_25px_10px_rgba(0,0,0,0.05)] ring-2 ring-white">
         <ParallaxSection
           speed={1 - 0.95}
           data-media-wrapper
@@ -71,7 +71,7 @@ const ServiceCard = ({
       <div
         className={`relative flex flex-col items-${
           isRight ? "start" : "end"
-        } size-auto justify-end max-h-full xl:max-h-[80%] xl:max-w-[90%] xl:max-w-auto rounded-b${
+        } size-auto justify-end max-h-full xl:max-h-[90%] xl:max-w-[90%] xl:max-w-auto rounded-b${
             isRight ? "l" : "r"
           }-[1rem] overflow-hidden`}
       >
@@ -117,6 +117,7 @@ const ServiceCard = ({
     duration-1000 
     group-hover:max-h-screen 
     sm:max-h-0
+    select-text
   `}
             >
               {description}

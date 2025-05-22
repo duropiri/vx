@@ -10,10 +10,13 @@ import SocialProofSection from "@/components/pages/sections/socialProofSection";
 
 // below-the-fold dynamic components
 const Dynamic = {
-  TestimonialsSection: dynamic(() => import("@/components/pages/sections/testimonialsSection"), {
-    loading: () => <div className="min-h-[110vh]" />,
-    ssr: false
-  }),
+  TestimonialsSection: dynamic(
+    () => import("@/components/pages/sections/testimonialsSection"),
+    {
+      loading: () => <div className="min-h-[110vh]" />,
+      ssr: false,
+    }
+  ),
 
   BasicHeroSection: dynamic(
     () => import("@/components/pages/sections/basicHeroSection"),
@@ -35,6 +38,10 @@ const Dynamic = {
       loading: () => <div className="min-h-[180vh]" />,
     }
   ),
+
+  FAQSection: dynamic(() => import("@/components/pages/sections/faqSection"), {
+    loading: () => <div className="min-h-[60vh]" />,
+  }),
 };
 
 // Complex components
@@ -61,6 +68,7 @@ import WhyUsSection from "@/components/pages/sections/whyUsSection";
 import { useViewport } from "@/contexts/ViewportContext";
 import appStore from "@/../../public/assets/svgs/Store=App Store, Type=Dark, Language=English.svg";
 import googlePlay from "@/../../public/assets/svgs/Store=Google Play, Type=Dark, Language=English.svg";
+import { listingMediaFAQ } from "@/data/faq";
 
 // const TRANSITION_TIMING = "0.6s";
 // const TRANSITION_EASING = "cubic-bezier(0.4, 0, 0.2, 1)"; // Smooth easing
@@ -458,6 +466,12 @@ const Body = () => {
         }
       />
       <Dynamic.TestimonialsSection noAnimation noCarousel />
+      {/* FAQ */}
+      <Dynamic.FAQSection
+        faq={listingMediaFAQ}
+        // vertical 
+        className="bg-white z-10"
+      />
       <Dynamic.BasicHeroSection
         center
         className="!pb-0"
