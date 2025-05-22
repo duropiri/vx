@@ -91,6 +91,8 @@ interface QuickLink {
   icon?: ReactNode;
   title: string;
   href: string;
+  target?: string;
+  rel?: string;
 }
 
 interface Dropdown {
@@ -265,6 +267,8 @@ const Nav: React.FC<NavProps> = ({ activeDropdown, isVisible }) => {
                         <HoverWrapper className="cursor-select-hover text-nowrap transition-all duration-300 flex items-center justify-center h-full text-white">
                           <TransitionLink
                             href={link.href}
+                            target={link.target}
+                            rel={link.rel}
                             className="inline-block w-fit cursor-select-hover text-white/80 hover:text-white transition-colors duration-200 pn-regular-16"
                           >
                             <FlipLink>
@@ -342,9 +346,12 @@ const TwoPanelMenu: React.FC<TwoPanelMenuProps> = ({
         }`}
       >
         {/* Main */}
-        <div ref={mainRef} className={`pn-regular-24 flex-shrink-0 w-full flex flex-col gap-2 transition-opacity duration-300 ${
-          panel ? "opacity-0" : "opacity-100"
-        }`}>
+        <div
+          ref={mainRef}
+          className={`pn-regular-24 flex-shrink-0 w-full flex flex-col gap-2 transition-opacity duration-300 ${
+            panel ? "opacity-0" : "opacity-100"
+          }`}
+        >
           {navigation.map((nav, idx) => (
             <button
               key={idx}
@@ -364,9 +371,12 @@ const TwoPanelMenu: React.FC<TwoPanelMenuProps> = ({
         </div>
 
         {/* Sub */}
-        <div ref={subRef} className={`flex-shrink-0 w-full flex flex-col gap-2 transition-opacity duration-1000 ${
-          panel ? "opacity-100" : "opacity-0"
-        }`}>
+        <div
+          ref={subRef}
+          className={`flex-shrink-0 w-full flex flex-col gap-2 transition-opacity duration-1000 ${
+            panel ? "opacity-100" : "opacity-0"
+          }`}
+        >
           <button
             className="flex items-center py-2 text-left"
             onClick={() => setPanel(null)}

@@ -82,7 +82,7 @@ const Preloader: React.FC<PreloaderProps> = ({
             imageRef.current,
             {
               opacity: 0,
-              duration: 0.5,
+              duration: 0.3333,
               ease: "power1.inOut",
             },
             "<" // ensure alignment with next tween
@@ -92,7 +92,7 @@ const Preloader: React.FC<PreloaderProps> = ({
             sloganRef.current,
             {
               opacity: 0,
-              duration: 0.5,
+              duration: 0.3333,
               ease: "power1.inOut",
             },
             "<"
@@ -103,17 +103,17 @@ const Preloader: React.FC<PreloaderProps> = ({
             {
               height: 0,
               opacity: 0,          // fade out alongside shrink
-              duration: 0.5,
+              duration: 0.3333,
               ease: "power2.in",
             },
-            "-=0.5"
+            "-=0.3333"
           )
           // fade out the loader counter
           .to(
             counterRef.current,
             {
               opacity: 0,
-              duration: 0.5,
+              duration: 0.3333,
               ease: "power1.inOut",
             },
             "<"
@@ -122,17 +122,17 @@ const Preloader: React.FC<PreloaderProps> = ({
             ".splash-screen",
             {
               clipPath: "inset(0% 0% 100% 0%)",
-              duration: 0.5,
+              duration: 0.3333,
               ease: "power4.inOut",
             },
-            "-=0.25"
+            "-=0.167"
           );
       },
     });
 
     mainTimeline.from(counterRef.current, {
       opacity: 0,
-      duration: 0.5,
+      duration: 0.3333,
       ease: "power1.out",
     });
 
@@ -148,9 +148,9 @@ const Preloader: React.FC<PreloaderProps> = ({
         {
           // y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.6667,
           ease: "power4.out",
-          stagger: 0.02,
+          stagger: 0.0067,
         }
       )
       // then animate slogan characters
@@ -160,17 +160,17 @@ const Preloader: React.FC<PreloaderProps> = ({
         {
           y: 0,
           opacity: 1,
-          duration: 1,
+          duration: 0.6667,
           ease: "power4.out",
-          stagger: 0.02,
+          stagger: 0.0067,
         },
-        "-=0.5" // overlap the last half-second of the left animation
+        "-=0.3333" // overlap the last half-second of the left animation
       )
       // grow divider from 0 to full height
       .fromTo(
         dividerRef.current,
         { height: 0 },
-        { height: 96, duration: 2, ease: "power2.out" },
+        { height: 96, duration: 1.3334, ease: "power2.out" },
         "<"
       )
       // left text leaves before logo enters
@@ -179,11 +179,11 @@ const Preloader: React.FC<PreloaderProps> = ({
         {
           // y: -25,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.3333,
           ease: "power1.inOut",
-          stagger: 0.02,
+          stagger: 0.0067,
         },
-        "+=0.2"
+        "+=0.1334"
       ) // small delay after divider grow
       .fromTo(
         imageRef.current,
@@ -195,7 +195,7 @@ const Preloader: React.FC<PreloaderProps> = ({
         {
           scale: 1,
           opacity: 1,
-          duration: 1,
+          duration: 0.6667,
           ease: "power4.inOut",
         }
       );
