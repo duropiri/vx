@@ -19,7 +19,10 @@ const Preloader: React.FC<PreloaderProps> = ({
   const [loadingPercentage, setLoadingPercentage] = useState(0);
   // const duration = 5000;
   const textRef = useRef<HTMLDivElement>(null);
+  const sloganRef = useRef<HTMLDivElement>(null);
   const imageRef = useRef<HTMLDivElement>(null);
+  const dividerRef = useRef<HTMLDivElement>(null);
+  const counterRef = useRef<HTMLDivElement>(null);
   const animationCompleted = useRef(false);
 
   useEffect(() => {
@@ -57,8 +60,11 @@ const Preloader: React.FC<PreloaderProps> = ({
     if (!textRef.current || !imageRef.current) return;
     if (loadingPercentage !== 100 || animationCompleted.current) return;
 
-    const chars = Array.from(textRef.current.querySelectorAll(".char"));
-    if (chars.length === 0) return;
+    const leftChars = Array.from(textRef.current.querySelectorAll(".char"));
+    const rightChars = sloganRef.current
+      ? Array.from(sloganRef.current.querySelectorAll(".char"))
+      : [];
+    if (leftChars.length === 0 && rightChars.length === 0) return;
 
     animationCompleted.current = true;
 
@@ -72,12 +78,46 @@ const Preloader: React.FC<PreloaderProps> = ({
         });
 
         exitTimeline
-          .to(imageRef.current, {
-            scale: 0,
-            opacity: 0,
-            duration: 0.5,
-            ease: "power1.inOut",
-          })
+          .to(
+            imageRef.current,
+            {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power1.inOut",
+            },
+            "<" // ensure alignment with next tween
+          )
+          // fade out the slogan container
+          .to(
+            sloganRef.current,
+            {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power1.inOut",
+            },
+            "<"
+          )
+          // hide slogan characters in sync with logo
+          .to(
+            dividerRef.current,
+            {
+              height: 0,
+              opacity: 0,          // fade out alongside shrink
+              duration: 0.5,
+              ease: "power2.in",
+            },
+            "-=0.5"
+          )
+          // fade out the loader counter
+          .to(
+            counterRef.current,
+            {
+              opacity: 0,
+              duration: 0.5,
+              ease: "power1.inOut",
+            },
+            "<"
+          )
           .to(
             ".splash-screen",
             {
@@ -90,27 +130,68 @@ const Preloader: React.FC<PreloaderProps> = ({
       },
     });
 
+    mainTimeline.from(counterRef.current, {
+      opacity: 0,
+      duration: 0.5,
+      ease: "power1.out",
+    });
+
     mainTimeline
+      // animate left text first
       .fromTo(
-        chars,
-        { y: 25, opacity: 0, immediateRender: true },
+        leftChars,
+        {
+          // y: 25,
+          opacity: 0,
+          immediateRender: true,
+        },
+        {
+          // y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power4.out",
+          stagger: 0.02,
+        }
+      )
+      // then animate slogan characters
+      .fromTo(
+        rightChars,
+        { y: 25, opacity: 0 },
         {
           y: 0,
           opacity: 1,
-          duration: 0.2,
+          duration: 1,
           ease: "power4.out",
-          stagger: 0.05,
-        }
+          stagger: 0.02,
+        },
+        "-=0.5" // overlap the last half-second of the left animation
       )
-      .to(chars, {
-        y: -25,
-        opacity: 0,
-        duration: 0.375,
-        ease: "power4.in",
-      })
+      // grow divider from 0 to full height
+      .fromTo(
+        dividerRef.current,
+        { height: 0 },
+        { height: 96, duration: 2, ease: "power2.out" },
+        "<"
+      )
+      // left text leaves before logo enters
+      .to(
+        leftChars,
+        {
+          // y: -25,
+          opacity: 0,
+          duration: 0.5,
+          ease: "power1.inOut",
+          stagger: 0.02,
+        },
+        "+=0.2"
+      ) // small delay after divider grow
       .fromTo(
         imageRef.current,
-        { scale: 0, opacity: 0, immediateRender: true },
+        {
+          // scale: 0,
+          opacity: 0,
+          immediateRender: true,
+        },
         {
           scale: 1,
           opacity: 1,
@@ -118,16 +199,6 @@ const Preloader: React.FC<PreloaderProps> = ({
           ease: "power4.inOut",
         }
       );
-    // .to(imageRef.current, {
-    //   clipPath: "inset(0% 0% 100% 0%)",
-    //   duration: 2,
-    //   ease: "power1.inOut",
-    // })
-    // .to(imageRef.current, {
-    //   scale: 1,
-    //   duration: 0.1,
-    //   ease: "power1.inOut",
-    // })
 
     return () => {
       mainTimeline.kill();
@@ -140,46 +211,105 @@ const Preloader: React.FC<PreloaderProps> = ({
         <style>{`.splash-screen { display: none !important; }`}</style>
       </noscript>
       <div
-        className="fixed inset-0 overflow-hidden z-[99999999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]"
+        className="cursor-none-hover fixed inset-0 overflow-hidden z-[99999999] flex flex-col items-center justify-center h-[100dvh] bg-white cursor-wait splash-screen text-ash max-w-[100vw]"
         style={{ zIndex: 99999999999999 }}
       >
-        <div className="relative z-10 select-none pointer-events-none flex flex-col items-center justify-center size-full splash-content">
-          <div
-            className="pn-regular-24 relative text-lg sm:text-2xl uppercase overflow-hidden"
-            ref={textRef}
-          >
-            {"Virtual Xposure".split("").map((char, index) => (
-              <span
-                key={`char-${index}`}
-                className="char inline-block"
-                style={{
-                  opacity: 0,
-                  transform: "translateY(25px)",
-                }}
-              >
-                {char}
-              </span>
-            ))}
-          </div>
-          <div
-            className="absolute inset-0 flex items-center justify-center opacity-0 mix-blend-difference z-10"
-            ref={imageRef}
-          >
-            <Image
-              src={logo}
-              alt="Loading"
-              className="w-[9.375rem] h-auto mix-blend-difference"
-              priority={true}
-              loading={true ? "eager" : "lazy"}
-              placeholder="blur"
-              quality={75}
-            />
+        <div className="scale-75 sm:scale-100 relative z-10 select-none pointer-events-none flex flex-row items-center justify-center w-full splash-content">
+          {/* LEFT: existing text + logo */}
+          <div className="relative flex flex-col items-center justify-center h-full">
+            <div
+              className="pn-semibold-24 gold-text flex flex-col relative uppercase overflow-hidden"
+              ref={textRef}
+            >
+              <div className="flex flex-row items-start justify-end">
+                {"Virtual".split("").map((char, index) => (
+                  <span
+                    key={`char-${index}`}
+                    className="char inline-block"
+                    style={{
+                      opacity: 0,
+                      // transform: "translateY(25px)"
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </div>
+              <div className="flex flex-row items-start justify-end">
+                {"Xposure".split("").map((char, index) => (
+                  <span
+                    key={`char-${index}`}
+                    className="char inline-block text-goldenbrown"
+                    style={{
+                      opacity: 0,
+                      // transform: "translateY(25px)"
+                    }}
+                  >
+                    {char === " " ? "\u00A0" : char}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div
+              className="absolute inset-0 flex items-center justify-end opacity-0 z-10 overflow-hidden"
+              ref={imageRef}
+            >
+              <Image
+                src={logo}
+                alt="Loading"
+                className="w-[7rem]"
+                priority
+                loading="eager"
+                placeholder="blur"
+                quality={80}
+              />
+            </div>
           </div>
 
-          <div className="absolute bottom-0 left-[1.5rem] text-start">
-            <div className="pn-regular-24 mr-[1rem] mb-[1.5rem] mix-blend-difference">
-              {loadingPercentage}%
+          {/* DIVIDER */}
+          <div
+            className="mx-4 sm:mx-8 w-[2px] rounded-full bg-ash"
+            style={{ height: 0 }}
+            ref={dividerRef}
+          />
+
+          {/* RIGHT: slogan */}
+          <div
+            className="flex flex-col items-start justify-start pn-regular-32 relative uppercase overflow-hidden"
+            ref={sloganRef}
+          >
+            <div className="flex flex-row items-start justify-start">
+              {"Sell Your Listings".split("").map((char, index) => (
+                <span
+                  key={`slogan-${index}`}
+                  className="char inline-block"
+                  style={{ opacity: 0, transform: "translateY(25px)" }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
             </div>
+            <div className="flex flex-row items-start justify-start">
+              {"in Days, Not Weeks".split("").map((char, index) => (
+                <span
+                  key={`slogan-${index}`}
+                  className="char inline-block"
+                  style={{ opacity: 0, transform: "translateY(25px)" }}
+                >
+                  {char === " " ? "\u00A0" : char}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Loader counter remains unchanged below as-is */}
+        <div
+          className="absolute flex flex-col items-center justify-center bottom-0 w-full text-start"
+          ref={counterRef}
+        >
+          <div className="pn-regular-24 mr-[1rem] mb-[1.5rem] text-black">
+            {loadingPercentage}%
           </div>
         </div>
       </div>
