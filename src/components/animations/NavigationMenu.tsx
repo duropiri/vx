@@ -223,7 +223,7 @@ const Nav: React.FC<NavProps> = ({ activeDropdown, isVisible }) => {
             <p className="text-sm font-medium text-white/40 mb-5">
               {dropdown.items.title}
             </p>
-            <div className="grid grid-cols-2 auto-rows-auto gap-y-[1rem] gap-x-[2rem]">
+            <div className="grid [grid-template-columns:auto_auto] auto-rows-auto gap-y-[1rem] gap-x-[2rem] w-auto">
               {dropdown.items.items.map((item, index) => (
                 <TransitionLink
                   href={item.href}
