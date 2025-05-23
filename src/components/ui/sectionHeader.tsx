@@ -78,13 +78,13 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         {subheading && (
           <div className="contents select-text">
             {!noAnimation && !noSubheadingAnimation ? (
-              <LetterRevealOnScroll end="bottom 60%">
+              <LetterRevealOnScroll end="bottom 90%">
                 <div className="contents">
                   <h2
                     ref={subheadingRef}
                     className={`${subheadingClassName} hidden -space-y-[10rem] sm:block ${
                       largeText ? "pn-regular-72" : "pn-semibold-40"
-                    } capitalize leading-snug text-start`}
+                    } leading-snug text-start`}
                   >
                     {subheading}
                   </h2>
@@ -130,7 +130,7 @@ const SectionHeader = forwardRef<HTMLDivElement, SectionProps>(
         {body && (
           <div className="contents select-text">
             {!noAnimation && !noBodyAnimation ? (
-              <LetterRevealOnScroll end="bottom 60%">
+              <LetterRevealOnScroll end="bottom 90%">
                 <p
                   ref={bodyRef}
                   className={`${bodyClassName} ${noCenter && "text-start"} ${

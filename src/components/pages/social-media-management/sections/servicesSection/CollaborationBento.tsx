@@ -35,7 +35,7 @@ const CollaborationBento = () => {
             <div className="h-full aspect-square left-[1.125rem] bg-ash/5 rounded-full justify-center items-center flex">
               <div className="flex flex-col items-center justify-center h-full aspect-square rounded-full border border-ash/10">
                 <div className="size-[10rem] bg-goldenrod/25 rounded-full justify-center items-center flex">
-                  <span className="group-hover:animate-ping absolute flex size-[10rem] lg:size-full rounded-full group-hover:bg-indigo-300/25 bg-transparent" />
+                  <span className="group-hover:animate-ping absolute flex aspect-square rounded-full h-full group-hover:bg-indigo-300/25 bg-transparent" />
                   <div className="relative flex flex-col items-center justify-center size-[10rem] rounded-full border border-ash/10">
                     <div className="justify-center items-center flex flex-row space-x-[-1.5rem]">
                       <Image

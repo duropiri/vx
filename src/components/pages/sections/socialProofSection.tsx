@@ -160,7 +160,7 @@ const SocialProofSection = forwardRef<HTMLDivElement, SectionProps>(
       heading,
       subheading,
       body,
-      noAnimation,
+      noAnimation = false,
     },
     ref
   ) => {

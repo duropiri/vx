@@ -14,6 +14,7 @@ import vxImage2 from "@/../../public/assets/svgs/virtual-xposure-text-charcoal.s
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { ServiceIcons } from "@/data/serviceIcons";
 import { useViewport } from "@/contexts/ViewportContext";
+import { ParallaxSection } from "@/components/animations/SmoothScrolling";
 
 interface SectionProps {
   className?: string;
@@ -23,6 +24,62 @@ function SolutionSection({ className }: SectionProps) {
   const bentosRef = useRef<HTMLDivElement>(null);
   const bentoRefs = useRef<(HTMLDivElement | null)[]>([]);
   const { windowWidth } = useViewport();
+
+  const bentoItems = [
+    {
+      key: "complete",
+      subheading: "Your Complete Digital Marketing Solution",
+      title: "Everything You Need to Succeed Online.",
+      description:
+        "Virtual Xposure provides a full-service digital marketing solution for real estate professionals, from social media management to high-quality content creation. We handle every aspect of your online presence, freeing you to focus on selling homes while we build your brand.",
+      bullets: [
+        "Comprehensive digital marketing strategy",
+        "Social media management and content creation",
+        "Build a strong, consistent online presence",
+      ],
+      image: completeDMSImage,
+    },
+    {
+      key: "social",
+      subheading: "Social Media Managed by Experts",
+      title: "Stop Managing Social Media—Start Seeing Results.",
+      description:
+        "Forget the hassle of managing your own social media. Our team of experts takes care of everything—from posting and scheduling to audience engagement. With a strategy tailored to your brand, you'll see a measurable impact without the stress.",
+      bullets: [], // no bullets for this item
+      image: null,
+    },
+    {
+      key: "content",
+      subheading: "High-Quality Content Creation",
+      title: "Professional Content Designed to Convert.",
+      description:
+        "In today's market, content is everything. Our in-house team produces high-quality videos, photos, and social media assets that resonate with your audience and help you close more deals. From scripting to production, we ensure every piece of content aligns with your brand.",
+      bullets: [
+        "Scriptwriting and topic research",
+        "Professional video and photo shoots",
+        "Unlimited revisions until perfection",
+      ],
+      image: highQCCImage,
+    },
+    {
+      key: "growth",
+      subheading: "Strategic Growth for Realtors",
+      title: "Grow Your Business with Proven Strategies.",
+      description:
+        "At VX, we don't just post content—we help your business grow. Our custom social media strategies are designed specifically for real estate professionals, ensuring you're reaching the right audience and driving real engagement that leads to sales.",
+      bullets: [],
+      image: stratGrowthImage,
+    },
+    {
+      key: "reporting",
+      subheading: "Data-Driven Results & Reporting",
+      title: "Measure What Matters with Comprehensive Reporting.",
+      description:
+        "See the direct impact of your digital marketing efforts with data-driven reports that track growth, engagement, and return on investment. Our reporting tools give you the clarity you need to make informed decisions and continuously improve.",
+      bullets: [],
+      image: null,
+    },
+  ];
 
   useEffect(() => {
     const handleOnMouseMove = (e: MouseEvent) => {
@@ -150,349 +207,62 @@ function SolutionSection({ className }: SectionProps) {
           ref={bentosRef}
           className="flex flex-col size-full items-start justify-center gap-y-[1rem] lg:gap-y-[0.5rem]"
         >
-          {/* Top Row (1) */}
-          <ScaleInVisible className="bento-row !gap-y-[1rem]">
-            <div
-              className="solution-bento"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[0] = el;
-              }}
-            >
-              <div className="bento-border pointer-events-none"></div>
-              <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[40%] right-0 translate-x-[10%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
-                <div className="flex flex-col justify-center lg:justify-start items-start gap-[1.5rem] text-white lg:max-w-[42%]">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown text-center lg:text-start">
-                    Your Complete Digital Marketing Solution
-                  </span>
-                  <p className="pn-regular-24">
-                    Everything You Need to Succeed Online.
-                  </p>
-                  <p className="pn-regular-16">
-                    Virtual Xposure provides a full-service digital marketing
-                    solution for real estate professionals, from social media
-                    management to high-quality content creation. We handle every
-                    aspect of your online presence, freeing you to focus on
-                    selling homes while we build your brand.
-                  </p>
-                  <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
-                    <li className="list">
-                      Comprehensive digital marketing strategy
-                    </li>
-                    <li className="list">
-                      Social media management and content creation
-                    </li>
-                    <li className="list">
-                      Build a strong, consistent online presence
-                    </li>
-                  </ul>
-                </div>
-                <div className="hidden lg:flex items-center justify-end relative size-full max-w-[50%] opacity-75 pointer-events-none translate-x-[10%]">
-                  <Image
-                    alt="icon"
-                    src={completeDMSImage}
-                    className="size-[80%] h-full object-cover"
-                    placeholder="blur"
-                    quality={75}
-                  />
-                </div>
-              </div>
-            </div>
-          </ScaleInVisible>
-
-          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
-            <div
-              className="solution-bento bento-center lg:max-w-[29%]"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[1] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content h-full">
-                <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    Social Media Managed by Experts
-                  </span>
-                  <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                    <p className="pn-bold-20 !leading-[1.5rem]">
-                      Stop Managing Social Media—Start Seeing Results.
-                    </p>
-                    <p className="pn-regular-16">
-                      Forget the hassle of managing your own social media. Our
-                      team of experts takes care of everything—from posting and
-                      scheduling to audience engagement. With a strategy
-                      tailored to your brand, you&apos;ll see a measurable
-                      impact without the stress.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScaleInVisible>
-
-          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
-            <div
-              className="solution-bento"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[2] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
-                <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    High-Quality Content Creation
-                  </span>
-                  <p className="pn-regular-24">
-                    Professional Content Designed to Convert.
-                  </p>
-                  <p className="pn-regular-16">
-                    In today&apos;s market, content is everything. Our in-house
-                    team produces high-quality videos, photos, and social media
-                    assets that resonate with your audience and help you close
-                    more deals. From scripting to production, we ensure every
-                    piece of content aligns with your brand.
-                  </p>
-                  <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
-                    <li className="list">Scriptwriting and topic research</li>
-                    <li className="list">
-                      Professional video and photo shoots
-                    </li>
-                    <li className="list">
-                      Unlimited revisions until perfection
-                    </li>
-                  </ul>
-                </div>
-                <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none translate-x-[10%]">
-                  <Image
-                    alt="icon"
-                    src={highQCCImage}
-                    className="size-[80%] h-full object-cover"
-                    placeholder="blur"
-                    quality={75}
-                  />
-                </div>
-              </div>
-            </div>
-          </ScaleInVisible>
-          {/* sm: Middle Row (2)*/}
-          <ScaleInVisible className="!hidden sm:!flex bento-row !gap-y-[1rem]">
-            <div className="bento-row !gap-y-[1rem]">
-              {/* First Bento */}
+          {bentoItems.map((item, index) => (
+            <ScaleInVisible key={item.key} className="bento-row !gap-y-[1rem]">
               <div
-                className="solution-bento bento-center lg:max-w-[29%]"
+                className={`solution-bento relative items-start overflow-visible ${
+                  item.bullets.length === 0 ? "bento-center" : ""
+                }`}
                 ref={(el: HTMLDivElement | null) => {
-                  bentoRefs.current[1] = el;
-                }}
-              >
-                <div className="bento-border"></div>
-                <div className="bento-content h-full">
-                  <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                      Social Media Managed by Experts
-                    </span>
-                    <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                      <p className="pn-bold-20 !leading-[1.5rem]">
-                        Stop Managing Social Media—Start Seeing Results.
-                      </p>
-                      <p className="pn-regular-16">
-                        Forget the hassle of managing your own social media. Our
-                        team of experts takes care of everything—from posting
-                        and scheduling to audience engagement. With a strategy
-                        tailored to your brand, you&apos;ll see a measurable
-                        impact without the stress.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Second Bento */}
-              <div
-                className="solution-bento"
-                ref={(el: HTMLDivElement | null) => {
-                  bentoRefs.current[2] = el;
+                  bentoRefs.current[index] = el;
                 }}
               >
                 <div className="bento-border"></div>
                 <div className="bento-content overflow-hidden">
-                  <div className="hidden lg:block absolute h-[300%] w-[45%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
-                  <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[51%]">
+                  <div
+                    className={`z-10 flex flex-col ${
+                      item.bullets.length
+                        ? "justify-start items-start"
+                        : "justify-center items-center"
+                    } gap-[1.5rem] ${
+                      item.bullets.length
+                        ? "text-white lg:max-w-[51%]"
+                        : "text-white text-center h-full"
+                    }`}
+                  >
                     <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                      High-Quality Content Creation
+                      {item.subheading}
                     </span>
-                    <p className="pn-regular-24">
-                      Professional Content Designed to Convert.
-                    </p>
-                    <p className="pn-regular-16">
-                      In today&apos;s market, content is everything. Our
-                      in-house team produces high-quality videos, photos, and
-                      social media assets that resonate with your audience and
-                      help you close more deals. From scripting to production,
-                      we ensure every piece of content aligns with your brand.
-                    </p>
-                    <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
-                      <li className="list">Scriptwriting and topic research</li>
-                      <li className="list">
-                        Professional video and photo shoots
-                      </li>
-                      <li className="list">
-                        Unlimited revisions until perfection
-                      </li>
-                    </ul>
+                    <p className="pn-regular-24">{item.title}</p>
+                    <p className="pn-regular-16">{item.description}</p>
+                    {item.bullets.length > 0 && (
+                      <ul className="custom-bullet-list gold pn-regular-16 flex flex-col gap-[0.25rem]">
+                        {item.bullets.map((bullet) => (
+                          <li key={bullet} className="list">
+                            {bullet}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
-                  <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none translate-x-[10%]">
-                    <Image
-                      alt="icon"
-                      src={highQCCImage}
-                      className="size-[80%] h-full object-cover"
-                      placeholder="blur"
-                      quality={75}
-                    />
-                  </div>
+                  {item.image && (
+                    <ParallaxSection
+                      speed={1 - 0.95}
+                      className="absolute -top-[0.5rem] right-0 hidden lg:flex h-[calc(100%+2rem)] opacity-75 pointer-events-none overflow-visible translate-x-[10%]"
+                    >
+                      <Image
+                        alt="icon"
+                        src={item.image}
+                        className="h-[150%] object-contain opacity-35 blur-sm -translate-y-[25%]"
+                        placeholder="blur"
+                        quality={75}
+                      />
+                    </ParallaxSection>
+                  )}
                 </div>
               </div>
-            </div>
-          </ScaleInVisible>
-
-          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
-            <div
-              className="solution-bento"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[3] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content overflow-hidden">
-                <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
-                <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    Strategic Growth for Realtors{" "}
-                  </span>
-                  <p className="pn-regular-24">
-                    Grow Your Business with Proven Strategies.{" "}
-                  </p>
-                  <p className="pn-regular-16">
-                    At VX, we don&apos;t just post content—we help your business
-                    grow. Our custom social media strategies are designed
-                    specifically for real estate professionals, ensuring
-                    you&apos;re reaching the right audience and driving real
-                    engagement that leads to sales.
-                  </p>
-                </div>
-                <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none">
-                  <Image
-                    alt="icon"
-                    src={stratGrowthImage}
-                    className="size-[70%] h-full object-cover"
-                    placeholder="blur"
-                    quality={75}
-                  />
-                </div>
-              </div>
-            </div>
-          </ScaleInVisible>
-
-          <ScaleInVisible className="sm:!hidden !flex bento-row !gap-y-[1rem]">
-            <div
-              className="solution-bento bento-center lg:max-w-[28%]"
-              ref={(el: HTMLDivElement | null) => {
-                bentoRefs.current[4] = el;
-              }}
-            >
-              <div className="bento-border"></div>
-              <div className="bento-content h-full">
-                <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                  <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                    Data-Driven Results & Reporting
-                  </span>
-                  <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                    <p className="pn-bold-20 !leading-[1.5rem]">
-                      Measure What Matters with Comprehensive Reporting.
-                    </p>
-                    <p className="pn-regular-16">
-                      See the direct impact of your digital marketing efforts
-                      with data-driven reports that track growth, engagement,
-                      and return on investment. Our reporting tools give you the
-                      clarity you need to make informed decisions and
-                      continuously improve.
-                    </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScaleInVisible>
-
-          {/* sm: Bottom Row (2)*/}
-          <ScaleInVisible className="!hidden sm:!flex bento-row !gap-y-[1rem]">
-            <div className="bento-row !gap-y-[1rem]">
-              {/* First Bento */}
-              <div
-                className="solution-bento"
-                ref={(el: HTMLDivElement | null) => {
-                  bentoRefs.current[3] = el;
-                }}
-              >
-                <div className="bento-border"></div>
-                <div className="bento-content overflow-hidden">
-                  <div className="hidden lg:block absolute h-[300%] w-[55%] right-0 translate-x-[15%] border-l-[2rem] border-ash bg-ash/75 rotate-12 pointer-events-none" />
-                  <div className="flex flex-col justify-start items-start gap-[1.5rem] text-white lg:max-w-[37%]">
-                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                      Strategic Growth for Realtors{" "}
-                    </span>
-                    <p className="pn-regular-24">
-                      Grow Your Business with Proven Strategies.{" "}
-                    </p>
-                    <p className="pn-regular-16">
-                      At VX, we don&apos;t just post content—we help your
-                      business grow. Our custom social media strategies are
-                      designed specifically for real estate professionals,
-                      ensuring you&apos;re reaching the right audience and
-                      driving real engagement that leads to sales.
-                    </p>
-                  </div>
-                  <div className="hidden lg:flex items-center justify-end relative size-full opacity-75 pointer-events-none">
-                    <Image
-                      alt="icon"
-                      src={stratGrowthImage}
-                      className="size-[70%] h-full object-cover"
-                      placeholder="blur"
-                      quality={75}
-                    />
-                  </div>
-                </div>
-              </div>
-              {/* Second Bento */}
-              <div
-                className="solution-bento bento-center lg:max-w-[28%]"
-                ref={(el: HTMLDivElement | null) => {
-                  bentoRefs.current[4] = el;
-                }}
-              >
-                <div className="bento-border"></div>
-                <div className="bento-content h-full">
-                  <div className="flex flex-col justify-start items-center gap-[1.5rem] text-white text-center h-full">
-                    <span className="subheading pn-semibold-16 bg-ash text-goldenbrown">
-                      Data-Driven Results & Reporting
-                    </span>
-                    <div className="flex flex-col justify-center items-center gap-[1.5rem] my-auto">
-                      <p className="pn-bold-20 !leading-[1.5rem]">
-                        Measure What Matters with Comprehensive Reporting.
-                      </p>
-                      <p className="pn-regular-16">
-                        See the direct impact of your digital marketing efforts
-                        with data-driven reports that track growth, engagement,
-                        and return on investment. Our reporting tools give you
-                        the clarity you need to make informed decisions and
-                        continuously improve.
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScaleInVisible>
+            </ScaleInVisible>
+          ))}
         </div>
 
         {/* CTA */}

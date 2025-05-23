@@ -110,6 +110,7 @@ function Body() {
         }}
       />
       <PricingSection
+        noAnimation
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         ref={(el: HTMLDivElement | null) => {
@@ -198,7 +199,7 @@ function Body() {
 
       {/* Testimonials */}
       <Dynamic.TestimonialsSection
-        noAnimation
+        noAnimation={false}
         noCarousel
         className="bg-white z-10 relative"
       />

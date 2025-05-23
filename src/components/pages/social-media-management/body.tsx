@@ -99,6 +99,7 @@ export default function Body() {
         }}
       />
       <PricingSection
+        noAnimation
         originalColor="#EFE6CF"
         transitionColor="#FFFFFF"
         ref={(el) => {

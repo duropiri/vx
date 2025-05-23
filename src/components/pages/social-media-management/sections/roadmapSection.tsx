@@ -21,25 +21,36 @@ interface SectionProps {
 
 function RoadmapSection({ className }: SectionProps) {
   const { windowWidth } = useViewport();
-  // GSAP Animations
-  useEffect(() => {
-    const sections = document.querySelectorAll(".snap-start");
-    const ctx = gsap.context(() => {
-      ScrollTrigger.create({
-        trigger: ".snap-y",
-        start: "top top",
-        end: "bottom bottom",
-        snap: {
-          snapTo: 1 / (sections.length - 1),
-          duration: { min: 1.5, max: 1.5 },
-          delay: 0,
-          ease: "power2.inOut",
-        }
-      });
-    });
-    
-    return () => ctx.revert();
-  }, [windowWidth]);
+  const steps = [
+    {
+      id: 1,
+      title: "The Instant Launch",
+      description: "We kick things off immediately. Your invoice is sent, and you'll get a streamlined welcome email laying out your next moves, so you can hit the ground running with a clear plan in place.",
+      image: launchImage,
+      imageAlt: "vx launch",
+    },
+    {
+      id: 2,
+      title: "The Power Upload",
+      description: "Provide your business insights and marketing materials, and you're one step closer to success. Once payment is secured, we'll schedule your onboarding call, setting the stage for a strategy that's built to deliver results.",
+      image: powerUploadImage,
+      imageAlt: "vx power upload",
+    },
+    {
+      id: 3,
+      title: "The Strategy Surge",
+      description: "This is where your brand takes off. We audit and optimize your social media accounts, then create a customized strategy designed to drive engagement, boost visibility, and get you real growth fast.",
+      image: strategyImage,
+      imageAlt: "vx strategy surge",
+    },
+    {
+      id: 4,
+      title: "The Content Machine",
+      description: "Our team produces premium content tailored to your brand's voice. Once you approve, we start posting and get your content live—billing only begins once your brand's online presence is in action!",
+      image: machineImage,
+      imageAlt: "vx content machine",
+    },
+  ];
 
   return (
     <div
@@ -107,254 +118,59 @@ function RoadmapSection({ className }: SectionProps) {
 
           {/* Steps Copy */}
           <div className="flex flex-col size-full sm:min-h-[400vh] max-w-[--section-width] items-start justify-between z-10 snap-y">
-            {/* Step 1 */}
-            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] sm:pt-[7.5rem] py-[1.875rem]">
-              <ParallaxSection
-                speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
+            {steps.map((step, index) => (
+              <div
+                key={step.id}
+                className={`sm:min-h-[100vh] flex flex-col sm:flex-row ${
+                  index % 2 === 1 ? "sm:flex-row-reverse" : ""
+                } size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] ${
+                  index % 2 === 0 ? "sm:pl-[2.5rem]" : "sm:pr-[2.5rem]"
+                } sm:gap-[6.25rem] py-[1.875rem] ${
+                  index === steps.length - 1 ? "sm:pb-[7.5rem]" : ""
+                }`}
               >
-                <LetterRevealOnScroll
-                  end="bottom 60%"
-                  className="text-ash pn-regular-16 uppercase leading-normal"
+                {/* Text Section */}
+                <ParallaxSection
+                  speed={1 - 1.1}
+                  className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
                 >
-                  Step 1
-                </LetterRevealOnScroll>
-                <div className="flex self-stretch justify-start items-start gap-2.5">
-                  <LetterRevealOnScroll className="relative" end="bottom 60%">
-                    <h2 className="text-ash pn-bold-24">The Instant Launch</h2>
+                  <LetterRevealOnScroll
+                    end="bottom 95%"
+                    className="text-ash pn-regular-16 uppercase leading-normal"
+                  >
+                    <p className="flex flex-row items-center gap-[0.3em]">{"Step " + step.id}</p>
                   </LetterRevealOnScroll>
-                  <LetterRevealOnScroll className="relative" end="bottom 60%">
-                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
-                      <svg
-                        width="23"
-                        height="23"
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="flex size-full"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M22.5812 0H1.26717V3.60553H16.5168L0.53125 19.8303L3.04317 22.3798L19.0289 6.15482V21.6331H22.5812V0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
+                  <div className="flex self-stretch justify-start items-start gap-2.5">
+                    <LetterRevealOnScroll className="relative" end="bottom 95%">
+                      <h2 className="text-ash pn-bold-24">{step.title}</h2>
+                    </LetterRevealOnScroll>
+                  </div>
+                  <LetterRevealOnScroll className="relative" end="bottom 95%">
+                    <p className="text-ash pn-regular-20">{step.description}</p>
                   </LetterRevealOnScroll>
-                </div>
-                <LetterRevealOnScroll className="relative" end="bottom 60%">
-                  <p className="text-ash pn-regular-20">
-                    We kick things off immediately. Your invoice is sent, and
-                    you&apos;ll get a streamlined welcome email laying out your
-                    next moves, so you can hit the ground running with a clear
-                    plan in place.
-                  </p>
-                </LetterRevealOnScroll>
-              </ParallaxSection>
-              <ParallaxSection
-                speed={1 - 1.25}
-                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] -translate-x-[2rem] sm:translate-x-0 rounded-r-[2.5rem]"
-              >
-                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
-                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
                 </ParallaxSection>
-                <Image
-                  src={launchImage}
-                  alt="vx"
-                  className="pointer-events-none size-full object-cover z-10"
-                  placeholder="blur"
-                  quality={75}
-                />
-              </ParallaxSection>
-            </div>
-
-            {/* Step 2 */}
-            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem]">
-              <ParallaxSection
-                speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
-              >
-                <LetterRevealOnScroll
-                  end="bottom 60%"
-                  className="text-ash pn-regular-16 uppercase leading-normal"
+                {/* Image Section */}
+                <ParallaxSection
+                  speed={1 - 1.25}
+                  className={`select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] ${
+                    index % 2 === 1 ? "translate-x-[2rem]" : "-translate-x-[2rem]"
+                  } sm:translate-x-0 ${
+                    index % 2 === 1 ? "rounded-l-[2.5rem]" : "rounded-r-[2.5rem]"
+                  }`}
                 >
-                  Step 2
-                </LetterRevealOnScroll>
-                <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
-                  <LetterRevealOnScroll className="relative" end="bottom 60%">
-                    <h2 className="text-ash pn-bold-24">The Power Upload</h2>
-                  </LetterRevealOnScroll>
-                  <LetterRevealOnScroll className="relative" end="bottom 60%">
-                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
-                      <svg
-                        width="23"
-                        height="23"
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="flex size-full"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M22.5812 0H1.26717V3.60553H16.5168L0.53125 19.8303L3.04317 22.3798L19.0289 6.15482V21.6331H22.5812V0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                  </LetterRevealOnScroll>
-                </div>
-                <LetterRevealOnScroll className="relative" end="bottom 60%">
-                  <p className="text-ash pn-regular-20">
-                    Provide your business insights and marketing materials, and
-                    you&apos;re one step closer to success. Once payment is
-                    secured, we&apos;ll schedule your onboarding call, setting
-                    the stage for a strategy that&apos;s built to deliver
-                    results.
-                  </p>
-                </LetterRevealOnScroll>
-              </ParallaxSection>
-              <ParallaxSection
-                speed={1 - 1.25}
-                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] translate-x-[2rem] sm:translate-x-0 rounded-l-[2.5rem]"
-              >
-                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
-                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
+                  <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
+                    <div className="aspect-square bg-goldenrod/60 rounded-full" />
+                  </ParallaxSection>
+                  <Image
+                    src={step.image}
+                    alt={step.imageAlt}
+                    className="pointer-events-none size-full object-cover z-10"
+                    placeholder="blur"
+                    quality={75}
+                  />
                 </ParallaxSection>
-                <Image
-                  src={powerUploadImage}
-                  alt="vx"
-                  className="pointer-events-none size-full object-cover z-10"
-                  placeholder="blur"
-                  quality={75}
-                />
-              </ParallaxSection>
-            </div>
-
-            {/* Step 3 */}
-            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row size-full sm:h-[100vh] items-center justify-between sm:pl-[2.5rem] gap-y-[8rem] sm:gap-[6.25rem] py-[1.875rem]">
-              <ParallaxSection
-                speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
-              >
-                <LetterRevealOnScroll
-                  end="bottom 60%"
-                  className="text-ash pn-regular-16 uppercase leading-normal"
-                >
-                  Step 3
-                </LetterRevealOnScroll>
-                <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
-                  <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-24">The Strategy Surge</h2>
-                  </LetterRevealOnScroll>
-                  <LetterRevealOnScroll end="bottom 60%">
-                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
-                      <svg
-                        width="23"
-                        height="23"
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="flex size-full"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M22.5812 0H1.26717V3.60553H16.5168L0.53125 19.8303L3.04317 22.3798L19.0289 6.15482V21.6331H22.5812V0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                  </LetterRevealOnScroll>
-                </div>
-                <LetterRevealOnScroll end="bottom 60%">
-                  <p className="text-ash pn-regular-20">
-                    This is where your brand takes off. We audit and optimize
-                    your social media accounts, then create a customized
-                    strategy designed to drive engagement, boost visibility, and
-                    get you real growth fast.
-                  </p>
-                </LetterRevealOnScroll>
-              </ParallaxSection>
-              <ParallaxSection
-                speed={1 - 1.25}
-                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] -translate-x-[2rem] sm:translate-x-0 rounded-r-[2.5rem]"
-              >
-                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
-                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
-                </ParallaxSection>
-                <Image
-                  src={strategyImage}
-                  alt="vx"
-                  className="pointer-events-none size-full object-cover z-10"
-                  placeholder="blur"
-                  quality={75}
-                />
-              </ParallaxSection>
-            </div>
-
-            {/* Step 4 */}
-            <div className="snap-start sm:min-h-[100vh] flex flex-col sm:flex-row-reverse size-full sm:h-[100vh] items-center justify-between gap-y-[8rem] sm:pr-[2.5rem] sm:gap-[6.25rem] py-[1.875rem] sm:pb-[7.5rem]">
-              <ParallaxSection
-                speed={1 - 1.1}
-                className="flex flex-col justify-start items-start gap-[0.438rem] sm:max-w-[50rem]"
-              >
-                <LetterRevealOnScroll
-                  end="bottom 60%"
-                  className="text-ash pn-regular-16 uppercase leading-normal"
-                >
-                  Step 4
-                </LetterRevealOnScroll>
-                <div className="self-stretch justify-start items-start gap-2.5 inline-flex">
-                  <LetterRevealOnScroll end="bottom 60%">
-                    <h2 className="text-ash pn-bold-24">The Content Machine</h2>
-                  </LetterRevealOnScroll>
-                  <LetterRevealOnScroll end="bottom 60%">
-                    <div className="flex sm:p-[0.625rem] w-[1rem] sm:w-auto justify-start items-center">
-                      <svg
-                        width="23"
-                        height="23"
-                        viewBox="0 0 23 23"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="flex size-full"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          d="M22.5812 0H1.26717V3.60553H16.5168L0.53125 19.8303L3.04317 22.3798L19.0289 6.15482V21.6331H22.5812V0Z"
-                          fill="currentColor"
-                        />
-                      </svg>
-                    </div>
-                  </LetterRevealOnScroll>
-                </div>
-                <LetterRevealOnScroll end="bottom 60%">
-                  <p className="text-ash pn-regular-20">
-                    Our team produces premium content tailored to your
-                    brand&apos;s voice. Once you approve, we start posting and
-                    get your content live—billing only begins once your
-                    brand&apos;s online presence is in action!
-                  </p>
-                </LetterRevealOnScroll>
-              </ParallaxSection>
-              <ParallaxSection
-                speed={1 - 1.25}
-                className="select-none flex flex-col items-center justify-center w-full sm:w-[31.25rem] translate-x-[2rem] sm:translate-x-0 rounded-l-[2.5rem]"
-              >
-                <ParallaxSection speed={1 - 0.9} className="absolute w-[60%]">
-                  <div className="aspect-square bg-goldenrod/60 rounded-full" />
-                </ParallaxSection>
-                <Image
-                  src={machineImage}
-                  alt="vx"
-                  className="pointer-events-none size-full object-cover z-10"
-                  placeholder="blur"
-                  quality={75}
-                />
-              </ParallaxSection>
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
