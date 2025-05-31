@@ -341,7 +341,7 @@ const PricingTier = ({
                     <span className="pn-bold-16"> {feature.details}</span>
                   )}
                   {feature.tooltip && (
-                    <div className="absolute right-[-1em] top-0 cursor-none-hover cursor-default">
+                    <div className="md:hidden block absolute right-[-1em] top-0 cursor-none-hover cursor-default">
                       <Tooltip content={feature.tooltip}>
                         <span className="ml-1 inline-block text-goldenbrown">
                           ℹ
