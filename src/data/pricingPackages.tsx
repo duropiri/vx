@@ -231,10 +231,12 @@ export const ListingMediaPackages = {
       {
         quantity: "FREE",
         name: "Eye-Catching Social Media Carousel",
+        tooltip: "Opt in at checkout",
       },
       {
         quantity: "FREE",
         name: "Professionally Crafted Thumbnail",
+        tooltip: "Opt in at checkout",
       },
       {
         name: "2X Money Back Guarantee",
@@ -260,7 +262,8 @@ export const ListingMediaPackages = {
       { name: "Easy-to-Share Vimeo URL" },
       {
         quantity: "FREE",
-        name: "Custom YouTube-Optimized Thumbnail",
+        name: "YouTube-Optimized Thumbnail",
+        tooltip: "Opt in at checkout",
       },
       { name: "2X Money Back Guarantee" },
     ],

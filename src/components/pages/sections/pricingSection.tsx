@@ -18,6 +18,7 @@ import {
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { useViewport } from "@/contexts/ViewportContext";
 import { usePathname } from "next/navigation";
+import { Tooltip } from "@/components/ui/tooltip";
 
 interface Feature {
   name: string;
@@ -26,6 +27,7 @@ interface Feature {
   details?: string;
   inclusion?: boolean;
   free?: boolean;
+  tooltip?: string;
 }
 
 interface BasePricingTier {
@@ -69,6 +71,7 @@ interface SectionProps {
   transitionColor?: string;
   noAnimation?: boolean;
   showAllFeatures?: boolean;
+  showCurrency?: boolean;
   heading?: string;
   subheading?: string;
   body?: string | null;
@@ -80,6 +83,7 @@ const PricingTier = ({
   isYearly,
   className = "",
   showAllFeatures = false,
+  showCurrency = false,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const featureRefs = useRef<(HTMLLIElement | null)[]>([]);
@@ -261,6 +265,7 @@ const PricingTier = ({
             {isYearly
               ? tier.price.yearly || tier.price
               : tier.price.monthly || tier.price}
+            <span className="pn-bold-14">{`${showCurrency ? "CAD" : ""}`}</span>
           </p>
           {tier.billingCycle && (
             <p className="text-center text-goldenbrown pn-semibold-16">
@@ -319,10 +324,12 @@ const PricingTier = ({
                     ? 0
                     : 1,
                   willChange: "height, opacity", // Optimize for animations
-                  overflow: "hidden", // Ensure smooth height transitions
+                  // overflow: "hidden", // Ensure smooth height transitions
                 }}
               >
-                <p>
+                <p
+                  className="relative inline-block"
+                >
                   {feature.quantity && (
                     <span className="pn-bold-16">{feature.quantity}</span>
                   )}{" "}
@@ -332,6 +339,15 @@ const PricingTier = ({
                   {feature.name}
                   {feature.details && (
                     <span className="pn-bold-16"> {feature.details}</span>
+                  )}
+                  {feature.tooltip && (
+                    <div className="absolute right-[-1em] top-0 cursor-none-hover cursor-default">
+                      <Tooltip content={feature.tooltip}>
+                        <span className="ml-1 inline-block text-goldenbrown">
+                          ℹ
+                        </span>
+                      </Tooltip>
+                    </div>
                   )}
                 </p>
                 {feature.value && (
@@ -420,6 +436,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       transitionColor,
       noAnimation = false,
       showAllFeatures = false,
+      showCurrency = false,
       heading = "Pricing",
       subheading = "Find The Right Plan",
       body = "To ensure we deliver top-tier quality designs on time, we work with a limited number of clients.",
@@ -513,6 +530,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       isSMDesktop,
       packages,
       showAllFeatures,
+      showCurrency,
       isYearly,
       packageCount,
       windowWidth,
@@ -529,6 +547,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         <div className="pricing-tier-wrapper h-full">
           <PricingTier
             showAllFeatures={showAllFeatures}
+            showCurrency={showCurrency}
             tier={tier}
             isYearly={isYearly}
             className="flex-1 flex flex-col"
@@ -562,7 +581,6 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
         data-transition-color={transitionColor}
       >
         <div className="relative flex size-full max-w-[--section-width] flex-col items-start justify-between gap-[3.75rem] text-ash">
-          
           {/* Header */}
           <SectionHeader
             center={center}
@@ -623,12 +641,20 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                 slidesPerView={3}
                 spaceBetween={30}
                 grabCursor={true}
-                scrollbar={{ draggable: true, hide: true }}
-                modules={[Pagination, Navigation, Scrollbar, A11y]}
-                className="relative mySwiper size-full xl:max-w-[95rem] !overflow-visible"
+                // scrollbar={{ draggable: true, hide: true }}
+                modules={[
+                  Pagination,
+                  Navigation,
+                  // Scrollbar,
+                  A11y,
+                ]}
+                className="relative mySwiper h-full size-full xl:max-w-[95rem] !overflow-visible"
               >
                 {Object.values(packages).map((tier, index) => (
-                  <SwiperSlide key={index} className="cursor-drag-hover h-full">
+                  <SwiperSlide
+                    key={index}
+                    className="cursor-drag-hover h-full flex"
+                  >
                     {renderPricingTier(tier, index)}
                   </SwiperSlide>
                 ))}

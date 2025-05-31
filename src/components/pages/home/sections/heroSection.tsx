@@ -303,10 +303,16 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
         data-original-color={originalColor}
         data-transition-color={transitionColor}
       >
-        <div
-          className="absolute inset-0 bg-cover bg-center opacity-15 pointer-events-none"
-          style={{ backgroundImage: "url('/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp')" }}
-        />
+        <div className="absolute inset-0 min-h-[60vh] opacity-15 pointer-events-none">
+          <Image
+            src="/assets/portfolio/images/interior/Virtual Xposure - Interior Image - (8).webp"
+            alt="Hero background"
+            fill
+            style={{ objectFit: "cover", objectPosition: "center" }}
+            priority
+            sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 100vw"
+          />
+        </div>
         {/* Hero Decorations Container */}
         {/* <HeroDecorations
           className="2xl:!-translate-y-[30vh]"
@@ -349,18 +355,26 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               <h1 className="pn-regular-72 uppercase text-center mb-[1rem]">
                 <span className="block sm:hidden !leading-[1em]">
                   <span className="pn-semibold-72">Sell Your</span>{" "}
-                  <span className="text-goldenbrown gold-text font-bold">Listings</span>{" "}
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Listings
+                  </span>{" "}
                   <span className="pn-semibold-72">in</span>{" "}
-                  <span className="text-goldenbrown gold-text font-bold">Days</span>
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Days
+                  </span>
                   , <span className="pn-semibold-72">Not Weeks</span>
                   <br />
                   <span className="pn-regular-40">For Only $149.99</span>
                 </span>
                 <span className="hidden sm:block sm:max-w-[20ch] !leading-[0.9em]">
                   <span className="pn-semibold-72">Sell Your</span>{" "}
-                  <span className="text-goldenbrown gold-text font-bold">Listings</span>{" "}
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Listings
+                  </span>{" "}
                   <span className="pn-semibold-72">in</span>{" "}
-                  <span className="text-goldenbrown gold-text font-bold">Days</span>
+                  <span className="text-goldenbrown gold-text font-bold">
+                    Days
+                  </span>
                   , <span className="pn-semibold-72">Not Weeks</span>
                   <br />
                   <span className="pn-semibold-40">For Only $149.99</span>
@@ -397,8 +411,9 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       </div>
                     </Link>
                   </HoverWrapper>
-                  <small className="select-text">No credit card required—pay after the shoot.</small>
-
+                  <small className="select-text">
+                    No credit card required—pay after the shoot.
+                  </small>
                 </div>
               </div>
             </div>

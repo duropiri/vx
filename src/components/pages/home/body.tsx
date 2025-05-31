@@ -411,6 +411,7 @@ const Body = () => {
         noSwitch
         noAnimation
         showAllFeatures
+        showCurrency
         body={null}
         center
         className="bg-white z-10 !pt-0"

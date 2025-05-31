@@ -1,5 +1,6 @@
 // app/layout.tsx
 import "./globals.scss";
+
 import { Metadata } from "next";
 import Script from "next/script";
 import ClientLayoutWrapper from "@/components/ClientLayoutWrapper";
