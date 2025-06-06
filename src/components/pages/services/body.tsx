@@ -127,7 +127,7 @@ interface SectionProps {
   whyusSection?: boolean;
   socialproofSection?: boolean;
   ctaSection?: boolean;
-  testimonials?: boolean;
+  testimonialsSection?: boolean;
   pricing?: PricingPackages;
   faq?: FAQProps[];
   faqSection?: boolean;
@@ -159,7 +159,7 @@ function Body({
   socialproofSection = true,
   ctaSection = true,
   unlimitedSection,
-  testimonials = true,
+  testimonialsSection = true,
   pricing,
   faq,
   faqSection = true,
@@ -313,7 +313,7 @@ function Body({
         />
       )}
       {/* Testimonials */}
-      {testimonials && (
+      {testimonialsSection && (
         <Dynamic.TestimonialsSection
           noCarousel
           className="bg-white z-10 relative"

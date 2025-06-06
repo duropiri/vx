@@ -41,7 +41,7 @@ const page = () => {
           },
         ]}
         src="/assets/images/vx_support_page_collage.png"
-        testimonials={false}
+        testimonialsSection={false}
         ctaSection={false}
         socialproofSection={false}
         whyusSection={false}

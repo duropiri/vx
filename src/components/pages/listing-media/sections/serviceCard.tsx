@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 import { FlipLink, HoverWrapper } from "@/components/animations/RevealLinks";
 import arrowRedirect from "@/../../public/assets/svgs/arrow-redirect-cta.svg";
@@ -12,7 +12,7 @@ import { ServiceIcons } from "@/data/serviceIcons";
 interface ServiceCardProps {
   title: string;
   description: string;
-  image?: string;
+  image?: string | StaticImageData;
   href: string;
   darkTheme?: boolean;
   isRight?: boolean;
