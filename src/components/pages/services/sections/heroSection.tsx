@@ -29,7 +29,7 @@ interface SectionProps {
   titleClassName?: string;
   medium?: boolean;
   copy?: string | ReactElement;
-  cta?: CTA;
+  cta?: CTA | CTA[];  // Allow single CTA or array of CTAs
   detailList?: DetailItem[];
   src: string | ReactElement;
 }
@@ -202,15 +202,30 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {/* CTA */}
               <div className="flex sm:mt-[2rem] w-full">
                 <div className="flex flex-col sm:flex-row gap-[1rem] w-full">
-                  <HoverWrapper
-                    href={cta?.href}
-                    className="cursor-select-hover button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
-                  >
-                    <FlipLink className="font-semibold">{cta?.label}</FlipLink>
-                    <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
-                      {ServiceIcons.arrow}
-                    </div>
-                  </HoverWrapper>
+                  {Array.isArray(cta) ? (
+                    cta.map((button, index) => (
+                      <HoverWrapper
+                        key={index}
+                        href={button.href}
+                        className="cursor-select-hover button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
+                      >
+                        <FlipLink className="font-semibold">{button.label}</FlipLink>
+                        <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                          {ServiceIcons.arrow}
+                        </div>
+                      </HoverWrapper>
+                    ))
+                  ) : cta ? (
+                    <HoverWrapper
+                      href={cta.href}
+                      className="cursor-select-hover button !bg-transparent !text-white pn-regular-16 relative hidden md:flex !border-white shadow-customShadow shadow-ash/5 group/cta hover/cta:shadow-goldenrod/5 hover/cta:!bg-white hover/cta:!text-ash transition-all"
+                    >
+                      <FlipLink className="font-semibold">{cta.label}</FlipLink>
+                      <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
+                        {ServiceIcons.arrow}
+                      </div>
+                    </HoverWrapper>
+                  ) : null}
                 </div>
               </div>
             </div>

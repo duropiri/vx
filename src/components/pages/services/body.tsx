@@ -12,7 +12,7 @@ const Dynamic = {
     () => import("@/components/pages/sections/socialProofSection"),
     {
       loading: () => <div className="min-h-[60vh]" />,
-      ssr: false
+      ssr: false,
     }
   ),
 
@@ -78,7 +78,7 @@ const Dynamic = {
     () => import("@/components/pages/services/sections/photographySection"),
     {
       loading: () => <div className="min-h-[100vh]" />,
-      ssr: false, 
+      ssr: false,
     }
   ),
 
@@ -105,32 +105,7 @@ import VirtualSection from "@/components/pages/services/sections/virtualSection"
 import { useViewport } from "@/contexts/ViewportContext";
 import { FAQProps } from "@/components/pages/sections/faqSection";
 import { PricingPackages } from "@/components/pages/sections/pricingSection";
-
-interface SectionProps {
-  title: string;
-  copy: string;
-  detailList?: DetailItem[];
-  cta: CTA;
-  src: string;
-
-  whyusSection?: boolean;
-  socialproofSection?: boolean;
-  ctaSection?: boolean;
-  testimonialsSection?: boolean;
-  pricing?: PricingPackages;
-  faq?: FAQProps[];
-
-  whatisitSection?: React.ReactElement | React.ReactElement[];
-  benefitsSection?: React.ReactElement;
-  stepsSection?: React.ReactElement[];
-  unlimitedSection?: React.ReactElement[];
-  advantageSection?: React.ReactElement;
-
-  staging?: boolean;
-  renovation?: boolean;
-  photography?: boolean;
-  floorplan?: boolean;
-}
+import SocialProofSection from "@/components/pages/sections/socialProofSection";
 
 interface CTA {
   label: string;
@@ -142,6 +117,34 @@ interface DetailItem {
   text: string;
 }
 
+interface SectionProps {
+  title: string;
+  copy: string;
+  detailList?: DetailItem[];
+  cta: CTA | CTA[];  // Allow single CTA or array of CTAs
+  src: string;
+
+  whyusSection?: boolean;
+  socialproofSection?: boolean;
+  ctaSection?: boolean;
+  testimonials?: boolean;
+  pricing?: PricingPackages;
+  faq?: FAQProps[];
+  faqSection?: boolean;
+
+  whatisitSection?: React.ReactElement | React.ReactElement[];
+  benefitsSection?: React.ReactElement;
+  stepsSection?: React.ReactElement[];
+  unlimitedSection?: React.ReactElement[];
+  advantageSection?: React.ReactElement;
+
+  staging?: boolean;
+  renovation?: boolean;
+  photography?: boolean;
+  floorplan?: boolean;
+  regularSection?: React.ReactElement;
+}
+
 function Body({
   title,
   copy,
@@ -151,18 +154,20 @@ function Body({
   whatisitSection,
   benefitsSection,
   advantageSection,
-  // whyusSection,
+  whyusSection = true,
   stepsSection,
-  // socialproofSection,
-  // ctaSection,
+  socialproofSection = true,
+  ctaSection = true,
   unlimitedSection,
-  // testimonialsSection,
+  testimonials = true,
   pricing,
   faq,
+  faqSection = true,
   staging,
   renovation,
   photography,
   floorplan,
+  regularSection,
 }: SectionProps) {
   const container = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<Array<HTMLDivElement | null>>([]);
@@ -199,7 +204,7 @@ function Body({
           title={title}
           copy={copy}
           detailList={detailList}
-          cta={{ label: cta.label, href: cta.href }}
+          cta={cta}
           src={src}
           // className="fixed inset-0 w-full"
         />
@@ -207,6 +212,9 @@ function Body({
       {/* Spacer div that matches hero height */}
       {/* <div style={{ height: 0 }} /> */}
       <div className="relative -mt-[4rem] z-[99] rounded-t-3xl overflow-hidden bg-white">
+        {regularSection && (
+          <Dynamic.BasicSection content={regularSection} />
+        )}
         {/* What is it? */}
         {whatisitSection &&
           (Array.isArray(whatisitSection) ? (
@@ -253,15 +261,20 @@ function Body({
           />
         )}
       </div>
-      <div ref={container} className="relative size-full bg-white max-w-[100vw]">
+      <div
+        ref={container}
+        className="relative size-full bg-white max-w-[100vw]"
+      >
         {/* Why Us? */}
-        <WhyUsSection
-          // ref={contentRef}
-          // scrollProgress={scrollProgress}
-          // shrinkSize={0.75}
-          // rotationAmount={-20}
-          className="z-0 sticky top-0"
-        />
+        {whyusSection && (
+          <WhyUsSection
+            // ref={contentRef}
+            // scrollProgress={scrollProgress}
+            // shrinkSize={0.75}
+            // rotationAmount={-20}
+            className="z-0 sticky top-0"
+          />
+        )}
         {/* Steps? */}
         {stepsSection && (
           <Dynamic.Basic2ColumnSection
@@ -275,18 +288,22 @@ function Body({
         {/* Styles? */}
 
         {/* Social Proof */}
-        <Dynamic.SocialProofSection
-          subheading="Trusted By The Best"
-          body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
-          className="bg-white z-10 relative"
-        />
+        {socialproofSection && (
+          <Dynamic.SocialProofSection
+            subheading="Trusted By The Best"
+            body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
+            className="bg-white z-10 relative"
+          />
+        )}
       </div>
       {/* CTA */}
-      <div className="bg-white z-10">
-        <ScaleInVisible>
-          <Dynamic.CTASection className="bg-white z-10" />
-        </ScaleInVisible>
-      </div>
+      {ctaSection && (
+        <div className="bg-white z-10">
+          <ScaleInVisible>
+            <Dynamic.CTASection className="bg-white z-10" />
+          </ScaleInVisible>
+        </div>
+      )}
       {/* Unlimited? */}
       {unlimitedSection && (
         <Dynamic.Basic2ColumnSection
@@ -296,10 +313,12 @@ function Body({
         />
       )}
       {/* Testimonials */}
-      <Dynamic.TestimonialsSection
-        noCarousel
-        className="bg-white z-10 relative"
-      />
+      {testimonials && (
+        <Dynamic.TestimonialsSection
+          noCarousel
+          className="bg-white z-10 relative"
+        />
+      )}
 
       {/* Case Studies? */}
       {photography && (
@@ -315,11 +334,13 @@ function Body({
         </ScaleInVisible>
       </div> */}
       {/* FAQ */}
-      <Dynamic.FAQSection
-        faq={faq || listingMediaFAQ}
-        vertical
-        className="bg-white z-10"
-      />
+      {faqSection && (
+        <Dynamic.FAQSection
+          faq={faq || listingMediaFAQ}
+          vertical
+          className="bg-white z-10"
+        />
+      )}
     </>
   );
 }

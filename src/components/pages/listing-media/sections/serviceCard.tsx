@@ -9,6 +9,17 @@ import { TransitionLink } from "@/components/TransitionLink";
 import SectionHeader from "@/components/ui/sectionHeader";
 import { ServiceIcons } from "@/data/serviceIcons";
 
+interface ServiceCardProps {
+  title: string;
+  description: string;
+  image?: string;
+  href: string;
+  darkTheme?: boolean;
+  isRight?: boolean;
+  hoverRevealDescription?: boolean;
+  backgroundColor?: string;
+}
+
 const ServiceCard = ({
   title,
   description,
@@ -16,7 +27,9 @@ const ServiceCard = ({
   href,
   darkTheme,
   isRight,
-}) => {
+  hoverRevealDescription = true,
+  backgroundColor,
+}: ServiceCardProps) => {
   const themeClasses = darkTheme
     ? {
         bg: "bg-ash/50 group-hover:bg-ash",
@@ -35,31 +48,37 @@ const ServiceCard = ({
 
   return (
     <div
-      className={`relative group flex size-full p-[1rem] pb-[1.5rem] sm:p-0 bg-white rounded-[1rem] xl:h-[30rem] max-w-[--section-width] flex-col xl:flex-row ${
+      className={`relative group flex size-full ${backgroundColor ? "" : "p-[1rem] pb-[1.5rem]"} sm:p-0 bg-white rounded-[1rem] ${
+        backgroundColor && !image ? "xl:h-[15rem]" : "xl:h-[30rem]"
+      } max-w-[--section-width] flex-col xl:flex-row ${
         isRight ? "justify-start" : "justify-end"
       } items-end gap-[3rem] xl:gap-0`}
     >
-      {/* Background Image */}
-      <div className="relative aspect-video xl:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash shadow-[inset_0_0_25px_10px_rgba(0,0,0,0.05)] ring-2 ring-white">
-        <ParallaxSection
-          speed={1 - 0.95}
-          data-media-wrapper
-          className="size-full pointer-events-none"
-        >
-          <Image
-            src={image}
-            alt={title}
-            fill
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            priority={false}
-            loading={false ? "eager" : "lazy"}
-            className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
-            quality={75}
-          />
-        </ParallaxSection>
-      </div>
+      {/* Background Image or Color */}
+      {image ? (
+        <div className="relative aspect-video xl:absolute top-0 left-0 flex flex-col size-full items-center justify-center rounded-[1rem] overflow-hidden bg-ash shadow-[inset_0_0_25px_10px_rgba(0,0,0,0.05)] ring-2 ring-white">
+          <ParallaxSection
+            speed={1 - 0.95}
+            data-media-wrapper
+            className="size-full pointer-events-none"
+          >
+            <Image
+              src={image}
+              alt={title}
+              fill
+              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+              priority={false}
+              loading={false ? "eager" : "lazy"}
+              className="w-full h-[125%] scale-125 -translate-y-[10%] sm:group-hover:scale-110 opacity-100 sm:group-hover:opacity-50 transition-all duration-500 object-cover"
+              quality={75}
+            />
+          </ParallaxSection>
+        </div>
+      ) : backgroundColor ? (
+        <div className={`absolute top-0 left-0 flex size-full rounded-[1rem] overflow-hidden`} style={{ backgroundColor }} />
+      ) : null}
       {/* Inverted Border Radius: Outside */}
-      {!isRight && (
+      {!backgroundColor && !isRight && (
         <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
           <div
             className={`absolute top-0 left-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4`}
@@ -71,18 +90,18 @@ const ServiceCard = ({
       <div
         className={`relative flex flex-col items-${
           isRight ? "start" : "end"
-        } size-auto justify-end max-h-full xl:max-h-[90%] xl:max-w-[90%] xl:max-w-auto rounded-b${
+        } size-auto justify-end max-h-full ${backgroundColor ? "h-[98%]" : "xl:max-h-[90%]"} ${backgroundColor ? "w-[99%]" : "xl:max-w-[90%]"} xl:max-w-auto rounded-b${
             isRight ? "l" : "r"
           }-[1rem] overflow-hidden`}
       >
         {/* Inverted Border Radius: Inside Left */}
-        {isRight ? (
+        {!backgroundColor && isRight ? (
           <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
             <div
               className={`absolute top-0 right-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-r-4`}
             />
           </div>
-        ) : (
+        ) : !backgroundColor && (
           <div className="relative hidden xl:flex flex-col items-start justify-start w-[1rem] h-[1rem] overflow-hidden pointer-events-none">
             <div
               className={`absolute top-0 left-0 flex flex-col ${themeClasses.bg} backdrop-blur-sm transition-all duration-500 size-[5rem] inv-rad inv-rad-t-l-4`}
@@ -94,7 +113,7 @@ const ServiceCard = ({
         <div
           className={`${
             themeClasses.text
-          } relative flex size-full flex-col items-start justify-start gap-[1.5rem] p-0 xl:p-[2rem] ${
+          } relative flex size-full flex-col items-start justify-start gap-[1.5rem] ${backgroundColor ? "p-[1rem]" : "p-0"} xl:p-[2rem] ${
             themeClasses.bg
           } backdrop-blur-sm transition-all duration-500 rounded-t${
             isRight ? "r" : "l"
@@ -111,18 +130,19 @@ const ServiceCard = ({
             {/* Body */}
             <p
               className={`
-    pn-regular-16 
-    overflow-hidden 
-    transition-all 
-    duration-1000 
-    group-hover:max-h-screen 
-    sm:max-h-0
-    select-text
-  `}
+                pn-regular-16 
+                overflow-hidden 
+                transition-all 
+                duration-1000 
+                ${hoverRevealDescription ? "group-hover:max-h-screen sm:max-h-0" : "max-h-screen"}
+                select-text
+              `}
             >
               {description}
             </p>
-            <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-white to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-500" />
+            {hoverRevealDescription && (
+              <div className="absolute bottom-0 left-0 right-0 h-2 bg-gradient-to-t from-white to-transparent pointer-events-none group-hover:opacity-0 transition-opacity duration-500" />
+            )}
           </div>
           {/* CTA */}
           {darkTheme ? (
@@ -143,7 +163,7 @@ const ServiceCard = ({
           ) : (
             <div className="flex justify-center xl:justify-start w-full">
               <div className="flex flex-col xl:flex-row gap-[1rem]">
-                <HoverWrapper className="group/cta cursor-select-hover">
+                <HoverWrapper className={`group/cta cursor-select-hover`}>
                   <TransitionLink
                     href={href}
                     className="button pn-regular-16 h-full !bg-transparent shadow-none shadow-ash/5 group-hover/cta:shadow-goldenrod/5 group-hover/cta:!bg-ash transition-all duration-300 w-full"
