@@ -233,7 +233,7 @@ const PricingTier = ({
         {/* Heading */}
         <div className="flex flex-col w-full items-center justify-start gap-[1rem]">
           <p
-            className={`text-center pn-bold-24 max-w-[25ch] ${
+            className={`text-center pn-bold-24 max-w-[25ch] !leading-none ${
               tier.isPopular ? "text-goldenbrown" : ""
             }`}
           >
@@ -243,6 +243,12 @@ const PricingTier = ({
               </span>
             ) : (
               <span>{tier.name}</span>
+            )}
+            {tier.duration && (
+              <>
+                <br />
+                <span className={`pn-regular-14 ${tier.isPremium ? "text-white/80" : "text-ash/80"}`}>{tier.duration}</span>
+              </>
             )}
           </p>
           {tier.commitment && (
@@ -342,16 +348,16 @@ const PricingTier = ({
                   {feature.tooltip && (
                     <Tooltip
                       content={feature.tooltip}
-                      className="block absolute left-[-2rem] top-0 cursor-none-hover cursor-default bg-white"
+                      className="block absolute right-[-1.25rem] top-1/2 -translate-y-1/2 cursor-none-hover cursor-default opacity-80 hover:opacity-100 transition duration-300"
                     >
-                      <span className="ml-1 size-[1.25rem] inline-block text-goldenbrown">
+                      <span className="ml-1 size-[1rem] inline-block text-goldenbrown">
                         {ServiceIcons.info}
                       </span>
                     </Tooltip>
                   )}
                 </p>
                 {feature.value && (
-                  <span className="li-subtext">({feature.value} value)</span>
+                  <span className="li-subtext">({feature.value})</span>
                 )}
               </li>
             );
@@ -437,8 +443,8 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       noAnimation = false,
       showAllFeatures = false,
       showCurrency = false,
-      heading = "Pricing",
-      subheading = "All-inclusive pricing — never a penny extra for bigger spaces.",
+      heading = "All-inclusive pricing",
+      subheading = "Never a penny extra for bigger spaces",
       body = "To ensure we deliver top-tier quality designs on time, we work with a limited number of clients.",
       center = false,
     },

@@ -23,7 +23,7 @@ export function Tooltip({ content, children, className }: TooltipProps) {
           <RadixTooltip.Content
             side="top"
             align="center"
-            className="z-50 bg-goldenbrown text-white rounded px-2 py-1 text-sm leading-none select-none pointer-events-none mix-blend-difference"
+            className="z-50 bg-goldenbrown text-white max-w-[25ch] rounded px-2 py-1 text-sm leading-none select-none pointer-events-none mix-blend-difference"
           >
             {content}
             <RadixTooltip.Arrow className="fill-goldenbrown" />
