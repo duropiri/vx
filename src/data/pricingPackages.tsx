@@ -286,7 +286,7 @@ export const ListingMediaPackages = {
     isPremium: true,
     name: "Cinematic Experience Package",
     // duration: "3 Hours",
-    price: "699.99",
+    price: "1099.99",
     commitment: "Transform Your Storytelling Vision",
     features: [
       {
