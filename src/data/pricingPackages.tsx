@@ -162,7 +162,7 @@ export const socialMediaPackages = {
 export const ListingMediaPackages = {
   starterPackage: {
     name: "Premium Starter Package",
-    duration: "1 hour",
+    // duration: "1 hour",
     price: "149.99",
     commitment: "Maximum Value, Zero Hassle",
     features: [
@@ -212,7 +212,7 @@ export const ListingMediaPackages = {
   },
   deluxePackage: {
     name: "Premium Deluxe Package",
-    duration: "1.5 Hours",
+    // duration: "1.5 Hours",
     price: "299.99",
     commitment: "The Foundation of Excellence",
     features: [
@@ -222,6 +222,7 @@ export const ListingMediaPackages = {
         inclusion: true,
       },
       { name: "Immersive iGuide® Virtual 3D Tour" },
+      { name: "Basement and Garage Measurements Included" },
       {
         name: "Detailed Weekly Performance Analytics",
         tooltip:
@@ -243,7 +244,7 @@ export const ListingMediaPackages = {
   socialMediaPackage: {
     isPopular: true,
     name: "Social Media Boost Package",
-    duration: "2.5 Hours",
+    // duration: "2.5 Hours",
     price: "499.99",
     commitment: "Skyrocket Your Social Influence",
     features: [
@@ -284,7 +285,7 @@ export const ListingMediaPackages = {
   cinematicPackage: {
     isPremium: true,
     name: "Cinematic Experience Package",
-    duration: "3 Hours",
+    // duration: "3 Hours",
     price: "699.99",
     commitment: "Transform Your Storytelling Vision",
     features: [
