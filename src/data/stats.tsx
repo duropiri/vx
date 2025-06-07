@@ -33,16 +33,16 @@ export const TestimonialsStats = [
   {
     value: 500,
     unit: "+",
-    description: "Happy Customers",
+    description: "Agents",
   },
   {
     value: 10000,
     unit: "+",
-    description: "Deliverables Completed",
+    description: "Listings Sold",
   },
   {
-    value: 100,
-    unit: "%",
+    value: 50,
+    unit: "+",
     description: "Five Star Reviews",
   },
 ];

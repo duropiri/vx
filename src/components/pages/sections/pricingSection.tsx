@@ -19,6 +19,7 @@ import ScaleInVisible from "@/components/animations/ScaleInVisible";
 import { useViewport } from "@/contexts/ViewportContext";
 import { usePathname } from "next/navigation";
 import { Tooltip } from "@/components/ui/tooltip";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface Feature {
   name: string;
@@ -327,9 +328,7 @@ const PricingTier = ({
                   // overflow: "hidden", // Ensure smooth height transitions
                 }}
               >
-                <p
-                  className="relative inline-block"
-                >
+                <p className="relative inline-block">
                   {feature.quantity && (
                     <span className="pn-bold-16">{feature.quantity}</span>
                   )}{" "}
@@ -340,14 +339,15 @@ const PricingTier = ({
                   {feature.details && (
                     <span className="pn-bold-16"> {feature.details}</span>
                   )}
-                  {false && feature.tooltip && (
-                    <span className="hidden md:block absolute right-[-1em] top-0 cursor-none-hover cursor-default">
-                      <Tooltip content={feature.tooltip}>
-                        <span className="ml-1 inline-block text-goldenbrown">
-                          ℹ
-                        </span>
-                      </Tooltip>
-                    </span>
+                  {feature.tooltip && (
+                    <Tooltip
+                      content={feature.tooltip}
+                      className="block absolute left-[-2rem] top-0 cursor-none-hover cursor-default bg-white"
+                    >
+                      <span className="ml-1 size-[1.25rem] inline-block text-goldenbrown">
+                        {ServiceIcons.info}
+                      </span>
+                    </Tooltip>
                   )}
                 </p>
                 {feature.value && (
@@ -438,7 +438,7 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
       showAllFeatures = false,
       showCurrency = false,
       heading = "Pricing",
-      subheading = "Find The Right Plan",
+      subheading = "All-inclusive pricing — never a penny extra for bigger spaces.",
       body = "To ensure we deliver top-tier quality designs on time, we work with a limited number of clients.",
       center = false,
     },

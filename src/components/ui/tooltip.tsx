@@ -5,9 +5,10 @@ import * as RadixTooltip from "@radix-ui/react-tooltip";
 interface TooltipProps {
   content: React.ReactNode;
   children: React.ReactNode;
+  className: string;
 }
 
-export function Tooltip({ content, children }: TooltipProps) {
+export function Tooltip({ content, children, className }: TooltipProps) {
   return (
     <RadixTooltip.Provider>
       <RadixTooltip.Root>
@@ -16,7 +17,7 @@ export function Tooltip({ content, children }: TooltipProps) {
           you pass into <Tooltip> as “children.” If children is just a string,
           it won’t work—children must be a real DOM element (e.g. <span> or <button>).
         */}
-        <RadixTooltip.Trigger asChild>{children}</RadixTooltip.Trigger>
+        <RadixTooltip.Trigger asChild className={`${className}`}>{children}</RadixTooltip.Trigger>
 
         <RadixTooltip.Portal>
           <RadixTooltip.Content

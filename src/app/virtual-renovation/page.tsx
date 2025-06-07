@@ -10,12 +10,12 @@ import { WhatIsItSection } from "./VirtualRenovationClient";
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "Virtual Renovation Services | Real Estate Visualization | Virtual Xposure",
-  description: "Help buyers visualize their dream home with photo-realistic virtual renovation services. Starting at $47.99 per image with unlimited revisions, 24-48 hour turnaround, and 2X money-back guarantee.",
+  description: "Help buyers visualize their dream home with photo-realistic virtual renovation services. Starting at $47.99 per image with unlimited revisions, 24-48 hour turnaround, and Fast‑Track MLS Guarantee.",
   keywords: "virtual renovation, real estate renovation preview, property visualization, virtual remodeling, digital renovation, real estate marketing, virtual property updates, renovation visualization",
   openGraph: {
     ...baseMetadata.openGraph,
     title: "Virtual Renovation Services | Real Estate Visualization | Virtual Xposure",
-    description: "Help buyers visualize their dream home with photo-realistic virtual renovation services. Starting at $47.99 per image with unlimited revisions, 24-48 hour turnaround, and 2X money-back guarantee.",
+    description: "Help buyers visualize their dream home with photo-realistic virtual renovation services. Starting at $47.99 per image with unlimited revisions, 24-48 hour turnaround, and Fast‑Track MLS Guarantee.",
   },
 };
 
@@ -39,7 +39,7 @@ const page = () => {
             icon: ServiceIcons.timer,
             text: "24-48 Hour Turnaround Time",
           },
-          { icon: ServiceIcons.guarantee, text: "2X Money Back Guarantee" },
+          { icon: ServiceIcons.guarantee, text: "Fast‑Track MLS Guarantee" },
         ]}
         cta={{
           label: "Place an order",

@@ -178,7 +178,7 @@ export const WhyUsItems = [
         </g>
       </svg>
     ),
-    title: "2X MONEY BACK GUARANTEE",
+    title: "Fast‑Track MLS Guarantee",
   },
   {
     icon: (

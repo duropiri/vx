@@ -348,6 +348,6 @@ export const detailList = [
   },
   {
     icon: ServiceIcons.guarantee,
-    text: "2X Money Back Guarantee - If you're not completely blown away, we'll double your investment in our services.",
+    text: "Fast‑Track MLS Guarantee - If you're not completely blown away, we'll double your investment in our services.",
   },
 ];

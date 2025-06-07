@@ -69,7 +69,7 @@ const FloorplansSection = () => {
             </li>
             <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
-                2X Money Back Guarantee
+                Fast‑Track MLS Guarantee
               </p>
             </li>
           </ul>
@@ -135,7 +135,7 @@ const FloorplansSection = () => {
             </li>
             <li className="list group flex flex-row items-center text-start gap-[1rem] xl:gap-[0.5rem]">
               <p className="pn-regular-16 text-black/80 group-hover:text-black">
-                2X Money Back Guarantee
+                Fast‑Track MLS Guarantee
               </p>
             </li>
           </ul>

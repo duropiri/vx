@@ -383,12 +383,12 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               {/* Body */}
               <h2 className="text-center sm:max-w-[60ch]">
                 <span className="hidden sm:flex pn-regular-24">
-                  HDR photos, drone shots and 3D tours delivered in 24 hrs.
-                  Faster views, faster offers.
+                  Market-ready media in one day; listings that fly off the shelf
+                  at premium prices.
                 </span>
                 <span className="sm:hidden flex pn-regular-16">
-                  HDR photos, drone shots and 3D tours delivered in 24 hrs.
-                  Faster views, faster offers.
+                  Market-ready media in one day; listings that fly off the shelf
+                  at premium prices.
                 </span>
               </h2>
             </div>
@@ -403,7 +403,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       passHref
                     >
                       <FlipLink className={`flex items-center w-fit`}>
-                        Book Your Shoot
+                        Book My Shoot
                       </FlipLink>
 
                       <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
@@ -430,7 +430,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                   <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
                     {ServiceIcons.guarantee}
                   </div>{" "}
-                  2X Money-Back Guarantee
+                  Fast‑Track MLS Guarantee
                 </li>
                 <li className="group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
                   <div className="size-[2rem] sm:size-[1.375rem] min-w-[2rem] sm:min-w-[1rem] max-w-[2rem] sm:max-w-[1.375rem] text-goldenbrown">
@@ -499,7 +499,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               className="button !bg-goldenbrown text-white pn-regular-16 group/cta !border-none h-fit cursor-select-hover shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
-                Book Your Shoot
+                Book My Shoot
               </FlipLink>
 
               <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">

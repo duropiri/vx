@@ -6,6 +6,7 @@ import dynamic from "next/dynamic";
 // above-thefold static components
 import HeroSection from "@/components/pages/home/sections/heroSection";
 import PricingSection from "@/components/pages/sections/pricingSection";
+import CTASection from "@/components/pages/sections/ctaSection";
 import SocialProofSection from "@/components/pages/sections/socialProofSection";
 
 // below-the-fold dynamic components
@@ -430,6 +431,20 @@ const Body = () => {
         subheading="Trusted By The Best"
         // body="The VX team have built a strong reputation in the real estate industry and earned the trust of many respected names in the business. From major developers to high-end boutique brokers, we have a wide range of clients who rely on us to get the job done right every time."
       />
+
+      <CTASection
+        className=""
+        heading="Fast-Track MLS Guarantee"
+        description="Launch scroll-stopping media in a day, slice your DOM, and close at a higher price — or we keep working for free until you and your clients are ecstatic.
+Your realtor buddy's jaws will hit the floor when your listing sells in days for over asking price. Don't miss out — book today."
+        ctaButtons={[
+          {
+            text: "Claim My Guarantee",
+            href: "https://listings.virtualxposure.com/order",
+            variant: "gold",
+          },
+        ]}
+      />
       <WhyUsSection
         // scrollProgress={scrollProgress}
         shrinkSize={0.75}
@@ -470,15 +485,15 @@ const Body = () => {
       {/* FAQ */}
       <Dynamic.FAQSection
         faq={listingMediaFAQ}
-        // vertical 
+        // vertical
         className="bg-white z-10"
       />
       <Dynamic.BasicHeroSection
         center
         className="!pb-0"
         heading="Download the App"
-        subheading="Try the New VirtualXposure App!"
-        body="Now available to download on the App Store and Google Play Store!"
+        subheading="Try the New Virtual Xposure App!"
+        body="Schedule, track, and download media from anywhere."
         content={
           <>
             <div className="flex flex-col md:flex-row items-center gap-[1rem] xl:pr-[2rem]">

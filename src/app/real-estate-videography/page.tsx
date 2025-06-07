@@ -15,12 +15,12 @@ import {
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "Professional Real Estate Videography Services | Virtual Xposure",
-  description: "Premium real estate videography with 48-hour turnaround, unlimited content, and a 2X money-back guarantee. Capture your property's best features with cinematic quality videos that sell.",
+  description: "Premium real estate videography with 48-hour turnaround, unlimited content, and a Fast‑Track MLS Guarantee. Capture your property's best features with cinematic quality videos that sell.",
   keywords: "real estate videography, property videos, real estate marketing videos, real estate promotional videos, Edmonton real estate videos, luxury property videos, drone videography, real estate video marketing",
   openGraph: {
     ...baseMetadata.openGraph,
     title: "Professional Real Estate Videography Services | Virtual Xposure",
-    description: "Premium real estate videography with 48-hour turnaround, unlimited content, and a 2X money-back guarantee. Capture your property's best features with cinematic quality videos that sell.",
+    description: "Premium real estate videography with 48-hour turnaround, unlimited content, and a Fast‑Track MLS Guarantee. Capture your property's best features with cinematic quality videos that sell.",
   },
 };
 
@@ -45,7 +45,7 @@ const page = () => {
           },
           {
             icon: ServiceIcons.guarantee,
-            text: "2X Money Back Guarantee - If you're not completely blown away, we'll double your investment in our services.",
+            text: "Fast‑Track MLS Guarantee - If you're not completely blown away, we'll double your investment in our services.",
           },
         ]}
         cta={{

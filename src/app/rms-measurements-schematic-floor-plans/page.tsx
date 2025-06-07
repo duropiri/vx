@@ -14,12 +14,12 @@ import {
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "RMS Measurements & Schematic Floor Plans | Virtual Xposure",
-  description: "Professional RMS measurements and schematic floor plans with 24-hour turnaround time. Unlimited revisions, top-tier quality, and 2X money-back guarantee. Accurate property measurements and detailed floor plans for real estate listings.",
+  description: "Professional RMS measurements and schematic floor plans with 24-hour turnaround time. Unlimited revisions, top-tier quality, and Fast‑Track MLS Guarantee. Accurate property measurements and detailed floor plans for real estate listings.",
   keywords: "RMS measurements, schematic floor plans, property measurements, real estate floor plans, architectural measurements, property layout, residential measurement standard, professional floor plans",
   openGraph: {
     ...baseMetadata.openGraph,
     title: "RMS Measurements & Schematic Floor Plans | Virtual Xposure",
-    description: "Professional RMS measurements and schematic floor plans with 24-hour turnaround time. Unlimited revisions, top-tier quality, and 2X money-back guarantee. Accurate property measurements and detailed floor plans for real estate listings.",
+    description: "Professional RMS measurements and schematic floor plans with 24-hour turnaround time. Unlimited revisions, top-tier quality, and Fast‑Track MLS Guarantee. Accurate property measurements and detailed floor plans for real estate listings.",
   },
 };
 
@@ -39,7 +39,7 @@ const page = () => {
             text: "Top Tier Quality",
           },
           { icon: ServiceIcons.infinity, text: "Unlimited Revisions" },
-          { icon: ServiceIcons.guarantee, text: "2X Money Back Guarantee" },
+          { icon: ServiceIcons.guarantee, text: "Fast‑Track MLS Guarantee" },
         ]}
         cta={{
           label: "Book Now",

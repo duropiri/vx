@@ -129,7 +129,7 @@ export const WhatIsItSection1 = () => (
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
             <p className="pn-regular-16 text-black/80 group-hover:text-black">
-              2X Money Back Guarantee
+              Fast‑Track MLS Guarantee
             </p>
           </li>
         </ul>
@@ -205,7 +205,7 @@ export const WhatIsItSection2 = () => (
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
             <p className="pn-regular-20 text-white/80 group-hover:text-white">
-              2X Money Back Guarantee
+              Fast‑Track MLS Guarantee
             </p>
           </li>
         </ul>
@@ -250,7 +250,7 @@ export const WhatIsItSection3 = () => (
           </li>
           <li className="list group flex flex-row items-center text-start gap-[1rem] sm:gap-[0.5rem]">
             <p className="pn-regular-16 text-black/80 group-hover:text-black">
-              2X Money Back Guarantee
+              Fast‑Track MLS Guarantee
             </p>
           </li>
         </ul>

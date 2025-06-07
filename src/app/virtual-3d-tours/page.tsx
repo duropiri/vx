@@ -12,12 +12,12 @@ import {
 export const metadata: Metadata = {
   ...baseMetadata,
   title: "Virtual 3D Property Tours | Immersive Real Estate Tours | Virtual Xposure",
-  description: "Create immersive virtual 3D tours that showcase every aspect of your property. Easy social media sharing, unlimited revisions, and a 2X money-back guarantee. Give buyers an accurate virtual walkthrough experience.",
+  description: "Create immersive virtual 3D tours that showcase every aspect of your property. Easy social media sharing, unlimited revisions, and a Fast‑Track MLS Guarantee. Give buyers an accurate virtual walkthrough experience.",
   keywords: "virtual 3D tours, real estate virtual tours, property virtual walkthrough, 3D property showcase, immersive real estate tours, virtual home tours, 360 property tours, interactive property viewing",
   openGraph: {
     ...baseMetadata.openGraph,
     title: "Virtual 3D Property Tours | Immersive Real Estate Tours | Virtual Xposure",
-    description: "Create immersive virtual 3D tours that showcase every aspect of your property. Easy social media sharing, unlimited revisions, and a 2X money-back guarantee. Give buyers an accurate virtual walkthrough experience.",
+    description: "Create immersive virtual 3D tours that showcase every aspect of your property. Easy social media sharing, unlimited revisions, and a Fast‑Track MLS Guarantee. Give buyers an accurate virtual walkthrough experience.",
   },
 };
 
@@ -37,7 +37,7 @@ const page = () => {
             text: "Easily Share Over Social Media",
           },
           { icon: ServiceIcons.infinity, text: "Unlimited Revisions" },
-          { icon: ServiceIcons.guarantee, text: "2X Money Back Guarantee" },
+          { icon: ServiceIcons.guarantee, text: "Fast‑Track MLS Guarantee" },
         ]}
         cta={{
           label: "Book Now",

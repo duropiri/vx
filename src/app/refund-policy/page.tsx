@@ -7,14 +7,14 @@ export const metadata: Metadata = {
   ...baseMetadata,
   title: "Refund Policy | Virtual Xposure",
   description:
-    "Understanding Virtual Xposure's refund policy and our 2X money-back guarantee. Learn about our commitment to customer satisfaction, refund eligibility, and the process for requesting refunds on our real estate marketing services.",
+    "Understanding Virtual Xposure's refund policy and our Fast‑Track MLS Guarantee. Learn about our commitment to customer satisfaction, refund eligibility, and the process for requesting refunds on our real estate marketing services.",
   keywords:
-    "refund policy, money-back guarantee, Virtual Xposure refunds, service guarantee, satisfaction guarantee, refund terms, 2X money-back guarantee, real estate marketing refunds, customer satisfaction policy",
+    "refund policy, money-back guarantee, Virtual Xposure refunds, service guarantee, satisfaction guarantee, refund terms, Fast‑Track MLS Guarantee, real estate marketing refunds, customer satisfaction policy",
   openGraph: {
     ...baseMetadata.openGraph,
     title: "Refund Policy | Virtual Xposure",
     description:
-      "Understanding Virtual Xposure's refund policy and our 2X money-back guarantee. Learn about our commitment to customer satisfaction, refund eligibility, and the process for requesting refunds on our real estate marketing services.",
+      "Understanding Virtual Xposure's refund policy and our Fast‑Track MLS Guarantee. Learn about our commitment to customer satisfaction, refund eligibility, and the process for requesting refunds on our real estate marketing services.",
   },
 };
 

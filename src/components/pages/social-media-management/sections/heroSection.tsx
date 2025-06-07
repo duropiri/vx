@@ -390,7 +390,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                       passHref
                     >
                       <FlipLink className={`flex items-center w-fit`}>
-                        Book Your Shoot
+                        Book My Shoot
                       </FlipLink>
 
                       <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">
@@ -463,7 +463,7 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
               className="button !bg-goldenbrown text-white pn-regular-16 group/cta !border-none h-fit cursor-select-hover shadow-customShadow shadow-ash/5 hover:shadow-goldenrod/5 w-[14rem]"
             >
               <FlipLink className={`flex items-center w-fit`}>
-                Book Your Shoot
+                Book My Shoot
               </FlipLink>
 
               <div className="size-5 group-hover/cta:rotate-45 transition-transform duration-300">

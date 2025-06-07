@@ -39,7 +39,7 @@ const page = () => {
           { icon: ServiceIcons.infinity, text: "Unlimited Revisions" },
           {
             icon: ServiceIcons.guarantee,
-            text: "2X Money Back Guarantee",
+            text: "Fast‑Track MLS Guarantee",
           },
         ]}
         cta={{

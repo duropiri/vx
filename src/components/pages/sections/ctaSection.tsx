@@ -53,7 +53,7 @@ ArrowImage.displayName = "ArrowImage";
 
 const CTASection = ({
   className = "",
-  heading = "2X Money Back Guarantee",
+  heading = "Fast‑Track MLS Guarantee",
   description = "To take it one step further, we also believe in what we do, and we back that up with a 2X Money Back Satisfaction Guarantee. Yes, that means if you try us out and you're not willing to swim through shark-infested waters just to continue using our services, we'll double your money. We even give you 90 days to think about it. I know right, finally… a service that puts their money where their mouth is.",
   ctaButtons = [
     {
