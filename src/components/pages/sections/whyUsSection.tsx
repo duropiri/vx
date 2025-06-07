@@ -111,7 +111,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
                     <div className="transition-all duration-300 group-hover:scale-110 group-hover:text-goldenbrown group-hover:grayscale-0 text-white/90 size-[3rem] xl:size-[4rem]">
                       {item.icon}
                     </div>
-                    <div className="w-full text-center pn-semibold-16 text-white/90 group-hover:text-white transition-all duration-300 !leading-[1.3rem] max-w-[20ch] text-wrap">
+                    <div className="w-full text-center pn-semibold-16 text-white/90 group-hover:text-white transition-all duration-300 !leading-[1.3rem] max-w-[20ch] text-wrap uppercase">
                       {item.title}
                     </div>
                   </div>
