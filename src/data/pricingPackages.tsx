@@ -222,13 +222,14 @@ export const ListingMediaPackages = {
         inclusion: true,
       },
       { name: "Immersive iGuide® Virtual 3D Tour" },
-      { name: "Basement and Garage Measurements Included" },
+
       {
         name: "Detailed Weekly Performance Analytics",
         tooltip:
           "Every Monday, iGuide drops a slick one-pager in your inbox that dissects your 3D tour’s performance—views, dwell-time, hotspot clicks, traffic sources, and lead conversions. Instantly spot what’s grabbing buyers, share the data with sellers, and tweak your marketing on the fly—no log-ins, no spreadsheets, just actionable intel.",
       },
       { name: "RMS Measurement Report" },
+      { name: "Basement and Garage Measurements Included" },
       { quantity: "FREE", name: "2D Schematic Floor Plans" },
       {
         quantity: "FREE",
