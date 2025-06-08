@@ -72,7 +72,7 @@ const StatsSection = forwardRef<HTMLDivElement, SectionProps>(
     return (
       <div
         // ref={ref}
-        className={`sticky top-0 section-container !flex-row ${className} bg-ash relative overflow-hidden`}
+        className={`sticky top-[5rem] section-container !flex-row ${className} bg-ash relative overflow-hidden`}
       >
         <div>
           {/* Background SVGs */}

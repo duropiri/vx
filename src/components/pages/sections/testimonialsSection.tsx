@@ -302,16 +302,15 @@ function TestimonialsSection({
               "
                   >
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 size-full gap-[1rem]">
-                      {reviews
-                        .slice(0, 6)
-                        .map(
-                          ({
-                            reviewId,
-                            reviewer,
-                            comment,
-                            starRating,
-                            createTime,
-                          }) => (
+                      {reviews.slice(0, 6).map(
+                        ({
+                          reviewId,
+                          reviewer,
+                          comment,
+                          starRating,
+                          createTime,
+                        }) =>
+                          starRating === 5 && (
                             <SwiperSlide
                               key={reviewId}
                               className="max-w-[80vw] sm:max-w-[50vw] bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between text-sm font-medium pn-regular-32 text-start hover:no-underline py-[2.5rem] px-[2rem]"
@@ -355,7 +354,7 @@ function TestimonialsSection({
                               </div>
                             </SwiperSlide>
                           )
-                        )}
+                      )}
                     </div>
                   </Swiper>
                 );

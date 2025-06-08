@@ -179,39 +179,42 @@ function Body() {
               }}
             /> */}
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 size-full gap-[1rem]">
-              {testimonials.slice(0, 4).map((item, index) => (
-                <div
-                  key={index}
-                  className="group bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between pn-regular-32 text-start hover:no-underline overflow-hidden"
-                >
-                  <div className="relative flex flex-col items-center justify-start size-full h-[32rem]">
-                    {/* Headshot */}
-                    <div className="relative size-full">
-                      <Image
-                        src={item.headshot || ""}
-                        alt="who-is-it-image"
-                        fill
-                        sizes="(max-width: 640px) 100vw, 1200px"
-                        priority={false}
-                        loading={false ? "eager" : "lazy"}
-                        className="w-full object-cover object-top"
-                        quality={75}
-                      />
-                    </div>
+              {testimonials.slice(0, 4).map(
+                (item, index) =>
+                  item.rating === 5 && (
+                    <div
+                      key={index}
+                      className="group bg-ash text-white rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between pn-regular-32 text-start hover:no-underline overflow-hidden"
+                    >
+                      <div className="relative flex flex-col items-center justify-start size-full h-[32rem]">
+                        {/* Headshot */}
+                        <div className="relative size-full">
+                          <Image
+                            src={item.headshot || ""}
+                            alt="who-is-it-image"
+                            fill
+                            sizes="(max-width: 640px) 100vw, 1200px"
+                            priority={false}
+                            loading={false ? "eager" : "lazy"}
+                            className="w-full object-cover object-top"
+                            quality={75}
+                          />
+                        </div>
 
-                    {/* Content */}
-                    <div className="absolute bottom-0 overflow-hidden flex flex-col items-start justify-center gap-y-[0.5rem] size-full p-[1rem] text-start h-fit sm:max-h-[40%] bg-gradient-to-t from-ash from-[60%]">
-                      <div className="flex flex-row gap-[0.3rem] text-goldenbrown">
-                        {renderStars(item.rating)}
+                        {/* Content */}
+                        <div className="absolute bottom-0 overflow-hidden flex flex-col items-start justify-center gap-y-[0.5rem] size-full p-[1rem] text-start h-fit sm:max-h-[40%] bg-gradient-to-t from-ash from-[60%]">
+                          <div className="flex flex-row gap-[0.3rem] text-goldenbrown">
+                            {renderStars(item.rating)}
+                          </div>
+                          <p className="pn-bold-24">{item.author}</p>
+                          <p className="pn-regular-14">{item.company}</p>
+                          <div className="w-full min-h-[1px] bg-white mb-[1rem]" />
+                          <Quote quote={item.quote} />
+                        </div>
                       </div>
-                      <p className="pn-bold-24">{item.author}</p>
-                      <p className="pn-regular-14">{item.company}</p>
-                      <div className="w-full min-h-[1px] bg-white mb-[1rem]" />
-                      <Quote quote={item.quote} />
                     </div>
-                  </div>
-                </div>
-              ))}
+                  )
+              )}
             </div>
             {/* <div className="w-full min-h-[1px] bg-black" /> */}
 
@@ -297,62 +300,63 @@ function Body() {
                           comment,
                           starRating,
                           createTime,
-                        }) => (
-                          <div
-                            key={reviewId}
-                            className="group bg-white text-black rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between pn-regular-32 text-start hover:no-underline overflow-hidden"
-                          >
-                            <div className="relative flex flex-col items-center justify-start size-full">
-                              <div className="overflow-hidden flex flex-col items-start justify-center gap-y-[2rem] size-full p-[1rem] text-start h-full bg-gradient-to-t from-white from-[60%]">
-                                <div className="flex flex-col gap-y-[0.5rem] items-start">
-                                  <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-[1rem] sm:mb-[1rem]">
-                                    <div className="relative size-[4rem] rounded-full overflow-hidden">
-                                      <Image
-                                        src={reviewer.profilePhotoUrl}
-                                        alt="who-is-it-image"
-                                        fill
-                                        sizes="(max-width: 640px) 100vw, 1200px"
-                                        priority={false}
-                                        loading={false ? "eager" : "lazy"}
-                                        className="w-full object-cover object-top"
-                                        quality={75}
-                                      />
+                        }) =>
+                          starRating === 5 && (
+                            <div
+                              key={reviewId}
+                              className="group bg-white text-black rounded-[1rem] shadow-customShadow transition-all duration-300 hover:shadow-goldenbrown/25 hover:scale-[1.0125] flex items-center justify-between pn-regular-32 text-start hover:no-underline overflow-hidden"
+                            >
+                              <div className="relative flex flex-col items-center justify-start size-full">
+                                <div className="overflow-hidden flex flex-col items-start justify-center gap-y-[2rem] size-full p-[1rem] text-start h-full bg-gradient-to-t from-white from-[60%]">
+                                  <div className="flex flex-col gap-y-[0.5rem] items-start">
+                                    <div className="flex flex-col md:flex-row items-start md:items-center justify-center gap-[1rem] sm:mb-[1rem]">
+                                      <div className="relative size-[4rem] rounded-full overflow-hidden">
+                                        <Image
+                                          src={reviewer.profilePhotoUrl}
+                                          alt="who-is-it-image"
+                                          fill
+                                          sizes="(max-width: 640px) 100vw, 1200px"
+                                          priority={false}
+                                          loading={false ? "eager" : "lazy"}
+                                          className="w-full object-cover object-top"
+                                          quality={75}
+                                        />
+                                      </div>
+                                      <div className="flex flex-col items-start justify-center gap-y-[0.5rem]">
+                                        <p className="pn-bold-24">
+                                          {reviewer.displayName}
+                                        </p>
+                                        <p className="pn-regular-16 text-ash/60">
+                                          {createTime &&
+                                            new Date(
+                                              createTime
+                                            ).toLocaleDateString("en-US", {
+                                              month: "long", // Full month name
+                                              day: "numeric", // Numeric day
+                                              year: "numeric", // Full year
+                                            })}
+                                        </p>
+                                      </div>
                                     </div>
-                                    <div className="flex flex-col items-start justify-center gap-y-[0.5rem]">
-                                      <p className="pn-bold-24">
-                                        {reviewer.displayName}
-                                      </p>
-                                      <p className="pn-regular-16 text-ash/60">
-                                        {createTime &&
-                                          new Date(
-                                            createTime
-                                          ).toLocaleDateString("en-US", {
-                                            month: "long", // Full month name
-                                            day: "numeric", // Numeric day
-                                            year: "numeric", // Full year
-                                          })}
-                                      </p>
+                                    {/* <div className="w-full min-h-[1px] bg-black mb-[1rem]" /> */}
+                                    <Quote white quote={comment} />
+                                  </div>
+                                  <div
+                                    // href={item.googleReview}
+                                    className="flex items-center justify-between gap-[1rem] mt-auto w-full"
+                                  >
+                                    <div className="flex flex-row gap-[0.3rem] text-goldenbrown">
+                                      {renderStars(starRating)}
                                     </div>
+                                    <div className="size-[2rem] cursor-select-hover">
+                                      {ServiceIcons.google}
+                                    </div>
+                                    {/* <p className="pn-regular-14"> View on Google</p> */}
                                   </div>
-                                  {/* <div className="w-full min-h-[1px] bg-black mb-[1rem]" /> */}
-                                  <Quote white quote={comment} />
-                                </div>
-                                <div
-                                  // href={item.googleReview}
-                                  className="flex items-center justify-between gap-[1rem] cursor-select-hover mt-auto w-full"
-                                >
-                                  <div className="flex flex-row gap-[0.3rem] text-goldenbrown">
-                                    {renderStars(starRating)}
-                                  </div>
-                                  <div className="size-[2rem]">
-                                    {ServiceIcons.google}
-                                  </div>
-                                  {/* <p className="pn-regular-14"> View on Google</p> */}
                                 </div>
                               </div>
                             </div>
-                          </div>
-                        )
+                          )
                       )}
                     </div>
                   );
