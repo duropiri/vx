@@ -39,15 +39,31 @@ export const FlipLink = ({
   ...rest
 }: FlipLinkProps) => {
   const Tag = href ? "a" : "div";
+
+  // Capture the plain string so we can expose it once for accessibility
+  const rawText = React.Children.toArray(children)
+    .filter((child) => typeof child === "string")
+    .join("") as string;
+
   return (
     <Tag
       href={href}
       id={id}
       className={`flip-link ${className}`}
+      role="text"
+      aria-label={rawText}
       {...rest}
     >
-      <div className="flip-text top">{children}</div>
-      <div className="flip-text bottom">{children}</div>
+      {/* Hide animated clones from screen readers and common scrapers */}
+      <span className="flip-text top" aria-hidden="true">
+        {children}
+      </span>
+      <span
+        className="flip-text bottom pointer-events-none"
+        aria-hidden="true"
+      >
+        {children}
+      </span>
       <style>{`
         .flip-link {
           position: relative;

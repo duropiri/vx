@@ -28,6 +28,11 @@ const LetterRevealOnScroll: React.FC<AnimationProps> = ({
   const [isClient, setIsClient] = useState(false);
   const { windowWidth } = useViewport();
 
+  // Gather plain text for accessibility and avoid duplicate content for scrapers
+  const rawText = React.Children.toArray(children)
+    .filter((child) => typeof child === "string")
+    .join("") as string;
+
   useEffect(() => {
     setIsClient(true);
   }, [windowWidth]);
@@ -78,6 +83,7 @@ const LetterRevealOnScroll: React.FC<AnimationProps> = ({
             <span
               key={index}
               className="word"
+              aria-hidden="true"
               style={{ display: "inline-block", overflow: "hidden" }}
             >
               {part.split("").map((char, charIndex) => (
@@ -111,6 +117,8 @@ const LetterRevealOnScroll: React.FC<AnimationProps> = ({
     <div
       ref={containerRef}
       className={className}
+      role="text"
+      aria-label={rawText}
       style={{ position: "relative" }}
     >
       {processedChildren}
