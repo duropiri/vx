@@ -53,7 +53,7 @@ function FAQSection({
       >
         {/* Header */}
         <SectionHeader
-          className={`${!vertical && "md:sticky top-[8rem]"}`}
+          className={`${!vertical && "lg:sticky top-[8rem]"}`}
           noAnimation={noAnimation}
           noCenter
           small={!vertical}

@@ -74,6 +74,13 @@ function TestimonialsSection({
     return () => observer.disconnect();
   }, []);
 
+  const pagination = {
+    clickable: true,
+    renderBullet: function (index, className) {
+      return '<span class="' + className + '">' + (index + 1) + '</span>';
+    },
+  };
+
   return (
     <div
       id="testimonials"
@@ -260,46 +267,60 @@ function TestimonialsSection({
               renderer={(reviews) => {
                 return (
                   <Swiper
+                    pagination={{
+                      clickable: true,
+                      renderBullet: function (index, className) {
+                        return '<span class="' + className + '">' + (index + 1) + '</span>';
+                      },
+                    }}
                     slidesPerView={"auto"}
                     centeredSlides={true}
                     spaceBetween={15}
                     grabCursor={true}
-                    modules={[Pagination, Navigation]}
-                    navigation={true}
+                    modules={[
+                      Pagination,
+                      // Navigation
+                    ]}
+                    // navigation={true}
                     slideToClickedSlide={false} // Ensure smooth navigation
                     loop={true}
-                    className="mySwiper flex !relative !px-[2rem] sm:!px-[6rem] !w-full h-[30rem] sm:h-[35rem] !mx-0 !overflow-visible
-              
-              [&:is(::before,::after)]:pointer-events-none
-              [&:is(::before,::after)]:from-white/20 
-              [&:is(::before,::after)]:to-transparent 
-              [&:is(::before,::after)]:absolute 
-              [&:is(::before,::after)]:top-0 
-              [&:is(::before,::after)]:z-10 
-              [&:is(::before,::after)]:h-full 
-              [&:is(::before,::after)]:w-1/12
-              
-              after:bg-gradient-to-l 
-              after:right-0 
-              before:bg-gradient-to-r 
-              before:left-0 
+                    className="mySwiper flex !relative !px-[2rem] sm:!px-[6rem] !w-full h-[30rem] sm:h-[35rem] !mx-0 !overflow-visible 
+                    [&_.swiper-pagination-bullet]:!w-[1.5rem] 
+                    [&_.swiper-pagination-bullet]:!h-[1.5rem] 
+                    [&_.swiper-pagination-bullet]:bg-ash/50 
+                    [&_.swiper-pagination]:!translate-y-[175%] 
+                    [&_.swiper-pagination-bullet-active]:!bg-goldenbrown 
 
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:hidden
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:md:flex
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:z-20
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:translate-y-[22.6rem]
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:text-white 
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:bg-goldenbrown
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:rounded-full 
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:aspect-square
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:[padding:_0.625rem_1.25rem]  
-              [&_:is(.swiper-button-prev,_.swiper-button-next)]:after:scale-[0.3]
+                    "
+                    // [&:is(::before,::after)]:pointer-events-none
+                    // [&:is(::before,::after)]:from-white/20
+                    // [&:is(::before,::after)]:to-transparent
+                    // [&:is(::before,::after)]:absolute
+                    // [&:is(::before,::after)]:top-0
+                    // [&:is(::before,::after)]:z-10
+                    // [&:is(::before,::after)]:h-full
+                    // [&:is(::before,::after)]:w-1/12
 
-              [&_.swiper-button-prev]:translate-x-[calc(50vw-100%-8.5rem)]
-              [&_.swiper-button-next]:-translate-x-[calc(50vw-100%-8.5rem)]
-              [&_.swiper-button-prev]:after:content-['prev']
-              [&_.swiper-button-next]:after:content-['next'] 
-              "
+                    // after:bg-gradient-to-l
+                    // after:right-0
+                    // before:bg-gradient-to-r
+                    // before:left-0
+
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:hidden
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:md:flex
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:z-20
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:translate-y-[22.6rem]
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:text-white
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:bg-goldenbrown
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:rounded-full
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:aspect-square
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:[padding:_0.625rem_1.25rem]
+                    // [&_:is(.swiper-button-prev,_.swiper-button-next)]:after:scale-[0.3]
+
+                    // [&_.swiper-button-prev]:translate-x-[calc(50vw-100%-8.5rem)]
+                    // [&_.swiper-button-next]:-translate-x-[calc(50vw-100%-8.5rem)]
+                    // [&_.swiper-button-prev]:after:content-['prev']
+                    // [&_.swiper-button-next]:after:content-['next']
                   >
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 size-full gap-[1rem]">
                       {reviews.slice(0, 6).map(

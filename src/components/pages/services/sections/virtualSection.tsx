@@ -125,13 +125,13 @@ const VirtualSection = ({
   );
 
   const ServiceFeatures = ({ features }) => (
-    <ul className="custom-bullet-list gold grid grid-cols-2 grid-rows-3 items-start gap-x-[1rem] gap-y-[0.3rem] w-full overflow-y-auto">
+    <ul className="custom-bullet-list gold grid grid-cols-2 md:grid-cols-1 grid-rows-3 items-start gap-[1rem] w-full overflow-y-auto">
       {features.map((feature, index) => (
         <li
           key={"service-" + index}
-          className="list group flex flex-row items-center text-start gap-[1rem] [@media(min-width:1281px)]:gap-[0.5rem]"
+          className="list group flex items-center text-start gap-[1rem] [@media(min-width:1281px)]:gap-[0.5rem]"
         >
-          <p className="pn-regular-16 text-black/80 group-hover:text-black">
+          <p className="inline-block !text-[1rem] md:!text-[1.25rem] pn-regular-20 text-black/80 group-hover:text-black">
             {feature.text}
           </p>
         </li>
@@ -145,7 +145,7 @@ const VirtualSection = ({
         service.reversed ? "[@media(min-width:1281px)]:flex-row-reverse" : "[@media(min-width:1281px)]:flex-row"
       } size-full items-stretch justify-between bg-white md:rounded-[1rem] shadow-customShadow overflow-hidden`}
     >
-      <div className="z-10 relative size-full h-full [@media(min-width:1281px)]:max-w-[50%] flex flex-col items-center [@media(min-width:1281px)]:items-start justify-center gap-y-[2rem] p-[1rem] pb-[1.5rem] sm:px-[1.5rem] sm:py-[2rem]">
+      <div className="z-10 relative size-full h-auto [@media(min-width:1281px)]:max-w-[50%] flex flex-col items-center [@media(min-width:1281px)]:items-start justify-start gap-y-[2rem] p-[1rem] pb-[1.5rem] sm:px-[1.5rem] sm:py-[2rem]">
         <SectionHeader
           noCenter
           noAnimation
