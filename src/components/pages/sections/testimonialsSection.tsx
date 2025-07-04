@@ -78,11 +78,13 @@ function TestimonialsSection({
 
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
+    // @ts-expect-error: Swiper instance is attached at runtime
     sliderRef.current.swiper.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
+    // @ts-expect-error: Swiper instance is attached at runtime
     sliderRef.current.swiper.slideNext();
   }, []);
 
