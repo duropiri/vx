@@ -352,7 +352,7 @@ const PricingTier = ({
                     <span className="pn-bold-16"> {feature.details}</span>
                   )}
                   {feature.tooltip && (
-                    <div className="inline-block ml-1">
+                    <span className="inline-block ml-1">
                       {/* <Tooltip
                         content={feature.tooltip}
                         className="inline-block translate-y-[0.15rem] cursor-none-hover cursor-default opacity-80 hover:opacity-100 transition duration-300"
@@ -364,7 +364,7 @@ const PricingTier = ({
                       <span className="translate-y-[0.15rem] size-[1rem] inline-block text-goldenbrown/50">
                         {ServiceIcons.info}
                       </span>
-                    </div>
+                    </span>
                   )}
                 </p>
                 {feature.tooltip && (

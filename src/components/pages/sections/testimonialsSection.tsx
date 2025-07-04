@@ -1,6 +1,7 @@
 "use client";
 import SectionHeader from "@/components/ui/sectionHeader";
 import React, { useCallback, useEffect, useRef } from "react";
+import type { Swiper as SwiperType } from "swiper"; // adjust import if needed
 import {
   Swiper,
   SwiperSlide,
@@ -74,17 +75,15 @@ function TestimonialsSection({
     return () => observer.disconnect();
   }, []);
 
-  const sliderRef = useRef(null);
-
+  const sliderRef = useRef<{ swiper: SwiperType } | null>(null);
+  
   const handlePrev = useCallback(() => {
     if (!sliderRef.current) return;
-    // @ts-expect-error: Swiper instance is attached at runtime
     sliderRef.current.swiper.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
     if (!sliderRef.current) return;
-    // @ts-expect-error: Swiper instance is attached at runtime
     sliderRef.current.swiper.slideNext();
   }, []);
 
