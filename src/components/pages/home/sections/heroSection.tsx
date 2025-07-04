@@ -363,8 +363,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     Days
                   </span>
                   , <span className="pn-semibold-72">Not Weeks</span>
-                  <br />
-                  <span className="pn-regular-40">For Only $149.99</span>
+                  {/* <br />
+                  <span className="pn-regular-40">For Only $149.99</span> */}
                 </span>
                 <span className="hidden sm:block sm:max-w-[20ch] !leading-[0.9em]">
                   <span className="pn-semibold-72">Sell Your</span>{" "}
@@ -376,8 +376,8 @@ const HeroSection = forwardRef<HTMLDivElement, SectionProps>(
                     Days
                   </span>
                   , <span className="pn-semibold-72">Not Weeks</span>
-                  <br />
-                  <span className="pn-semibold-40">For Only $149.99</span>
+                  {/* <br />
+                  <span className="pn-semibold-40">For Only $149.99</span> */}
                 </span>
               </h1>
               {/* Body */}
