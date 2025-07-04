@@ -7,6 +7,8 @@ import vxImage from "@/../../public/assets/svgs/virtual-xposure-text.svg";
 import vxImage2 from "@/../../public/assets/svgs/virtual-xposure-text-charcoal.svg";
 
 import FadeInUp from "@/components/animations/FadeInUp";
+import { Tooltip } from "@/components/ui/tooltip";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 interface SectionProps {
   className?: string;
@@ -97,22 +99,32 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
             noAnimation
             noBodyAnimation
             heading="Why Us?"
-            subheading="Why Choose Virtual Xposure?"
+            subheading="Why Virtual Xposure Beats “Just Another Media Company”"
             body="We deliver excellence at every level, combining cutting-edge technology with unmatched customer service. Our proven track record and comprehensive solutions ensure your success, backed by industry-leading guarantees and lightning-fast delivery."
           />
-          <div className="hidden xl:grid grid-cols-4 gap-[1rem] xl:gap-[2rem] xl:mt-[2rem] select-text">
+          <div className="grid grid-cols-2 xl:grid-cols-4 gap-[1rem] xl:gap-[2rem] xl:mt-[2rem] select-text">
             {WhyUsItems.map((item, index) => (
               <div
                 key={index + 4}
                 className="flex flex-col items-center justify-center gap-[0.625rem] mb-[0.625rem] z-10"
               >
                 <div className="cursor-select-hover group flex flex-grow flex-col items-center xl:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch">
-                  <div className="flex flex-col items-center justify-center gap-[1rem] xl:gap-[2rem]">
+                  <div className="relative flex flex-col items-center justify-center gap-[1rem] xl:gap-[2rem]">
                     <div className="transition-all duration-300 group-hover:scale-110 group-hover:text-goldenbrown group-hover:grayscale-0 text-white/90 size-[3rem] xl:size-[4rem]">
                       {item.icon}
                     </div>
                     <div className="w-full text-center pn-semibold-16 text-white/90 group-hover:text-white transition-all duration-300 !leading-[1.3rem] max-w-[20ch] text-wrap uppercase">
                       {item.title}
+                      {item.tooltip && (
+                        <Tooltip
+                          content={item.tooltip}
+                          className="inline-block translate-y-[0.15rem] cursor-none-hover cursor-default opacity-80 hover:opacity-100 transition duration-300"
+                        >
+                          <span className="ml-1 size-[1rem] inline-block text-goldenbrown">
+                            {ServiceIcons.info}
+                          </span>
+                        </Tooltip>
+                      )}
                     </div>
                   </div>
                 </div>
