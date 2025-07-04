@@ -247,7 +247,13 @@ const PricingTier = ({
             {tier.duration && (
               <>
                 <br />
-                <span className={`pn-regular-14 ${tier.isPremium ? "text-white/80" : "text-ash/80"}`}>{tier.duration}</span>
+                <span
+                  className={`pn-regular-14 ${
+                    tier.isPremium ? "text-white/80" : "text-ash/80"
+                  }`}
+                >
+                  {tier.duration}
+                </span>
               </>
             )}
           </p>
@@ -334,7 +340,7 @@ const PricingTier = ({
                   // overflow: "hidden", // Ensure smooth height transitions
                 }}
               >
-                <p className="relative inline-block">
+                <p tabIndex={0} className="relative inline-block peer">
                   {feature.quantity && (
                     <span className="pn-bold-16">{feature.quantity}</span>
                   )}{" "}
@@ -346,16 +352,26 @@ const PricingTier = ({
                     <span className="pn-bold-16"> {feature.details}</span>
                   )}
                   {feature.tooltip && (
-                    <Tooltip
-                      content={feature.tooltip}
-                      className="block absolute right-[-1.25rem] top-1/2 -translate-y-1/2 cursor-none-hover cursor-default opacity-80 hover:opacity-100 transition duration-300"
-                    >
-                      <span className="ml-1 size-[1rem] inline-block text-goldenbrown">
+                    <div className="inline-block ml-1">
+                      {/* <Tooltip
+                        content={feature.tooltip}
+                        className="inline-block translate-y-[0.15rem] cursor-none-hover cursor-default opacity-80 hover:opacity-100 transition duration-300"
+                      >
+                        <span className="size-[1rem] inline-block text-goldenbrown">
+                          {ServiceIcons.info}
+                        </span>
+                      </Tooltip> */}
+                      <span className="translate-y-[0.15rem] size-[1rem] inline-block text-goldenbrown/50">
                         {ServiceIcons.info}
                       </span>
-                    </Tooltip>
+                    </div>
                   )}
                 </p>
+                {feature.tooltip && (
+                  <div className="absolute bottom-full mb-2 hidden peer-hover:flex peer-focus:flex md:hidden bg-charcoal text-white pn-regular-12 p-2 rounded whitespace-pre-wrap z-20">
+                    {feature.tooltip}
+                  </div>
+                )}
                 {feature.value && (
                   <span className="li-subtext">({feature.value})</span>
                 )}
