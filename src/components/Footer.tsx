@@ -33,7 +33,7 @@ const NewsletterFormClient: React.FC<{
       <div className="flex-1 flex size-full relative overflow-hidden overflow-y-scroll cursor-none-hover">
         <iframe
           src="https://api.leadconnectorhq.com/widget/form/YPFW7FZRKPkKraPvqyhY"
-          className="overflow-y-scroll -mt-[30px] -mx-[12px] w-full  !h-[38rem] sm:!h-[30rem] xl:w-[30.469rem]"
+          className="overflow-y-scroll -mt-[30px] w-full  !h-[38rem] sm:!h-[30rem] xl:w-[30.469rem]"
           id="inline-YPFW7FZRKPkKraPvqyhY"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
