@@ -263,6 +263,7 @@ function TestimonialsSection({
           </div>
         )}
 
+        {/* Infinite Carousel With Navigation Buttons */}
         {noCarousel && !noCards && (
           <div
             className={`flex flex-col items-start justify-center size-full mt-[5rem] !w-[100vw] -mx-[2rem] md:-mx-[calc(5rem)] min-[1920px]:-mx-[calc(6rem)] overflow-visible [&_.css-1uyvnff]:contents`}

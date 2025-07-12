@@ -125,13 +125,13 @@ const VirtualSection = ({
   );
 
   const ServiceFeatures = ({ features }) => (
-    <ul className="custom-bullet-list gold grid grid-cols-2 md:grid-cols-1 grid-rows-3 items-start gap-[1rem] w-full overflow-y-auto">
+    <ul className="custom-bullet-list gold grid grid-cols-2 2xl:grid-cols-1 grid-rows-3 items-start gap-[1rem] w-full overflow-y-auto">
       {features.map((feature, index) => (
         <li
           key={"service-" + index}
           className="list group flex items-center text-start gap-[1rem] [@media(min-width:1281px)]:gap-[0.5rem]"
         >
-          <p className="inline-block !text-[1rem] md:!text-[1.25rem] pn-regular-20 text-black/80 group-hover:text-black">
+          <p className="inline-block !text-[1rem] 2xl:!text-[1.25rem] pn-regular-20 text-black/80 group-hover:text-goldenbrown select-text">
             {feature.text}
           </p>
         </li>

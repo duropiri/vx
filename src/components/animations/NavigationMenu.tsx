@@ -789,6 +789,23 @@ const Header: React.FC<HeaderProps> = ({ className, navigation }) => {
               <br className="block sm:hidden" />
               Support Hours: 8:00AM - 8:00PM MST
             </span>
+            {/* Opt-in compliance tooltip */}
+            <span className="relative group ml-2 cursor-tooltip-hover">
+              <span className="pn-regular-12 underline">SMS Terms</span>
+              <div className="absolute top-full mb-2 hidden group-hover:flex group-focus:flex bg-charcoal text-white p-2 rounded whitespace-pre-wrap z-20 text-center">
+                <p className="">
+                  BY TEXTING THE NUMBER ABOVE, YOU AGREE TO RECEIVE MARKETING
+                  MESSAGES FROM <span className="italic">VIRTUAL XPOSURE</span>.
+                  <br />
+                  <span className="text-center text-[0.7rem] flex flex-col items-center justify-center">
+                    <span>MESSAGE & DATA RATES MAY APPLY || TEXT &apos;HELP&apos; FOR
+                    ASSISTANCE</span>
+                    <span>MESSAGE FREQUENCY MAY VARY || TEXT &apos;STOP&apos; TO
+                    UNSUBSCRIBE</span>
+                  </span>
+                </p>
+              </div>
+            </span>
           </p>
           <button
             className=" size-[2em] md:size-[1em] cursor-select-hover"

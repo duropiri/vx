@@ -20,6 +20,7 @@ import { useViewport } from "@/contexts/ViewportContext";
 import { usePathname } from "next/navigation";
 import { Tooltip } from "@/components/ui/tooltip";
 import { ServiceIcons } from "@/data/serviceIcons";
+import { Mousewheel } from "swiper/modules";
 
 interface Feature {
   name: string;
@@ -340,7 +341,12 @@ const PricingTier = ({
                   // overflow: "hidden", // Ensure smooth height transitions
                 }}
               >
-                <p tabIndex={0} className="relative inline-block peer">
+                <p
+                  tabIndex={0}
+                  className={`relative inline-block peer${
+                    feature.tooltip && " cursor-tooltip-hover"
+                  }`}
+                >
                   {feature.quantity && (
                     <span className="pn-bold-16">{feature.quantity}</span>
                   )}{" "}
@@ -663,20 +669,28 @@ const PricingSection = forwardRef<HTMLDivElement, SectionProps>(
                 slidesPerView={3}
                 spaceBetween={30}
                 grabCursor={true}
+                slideToClickedSlide={true}
+                mousewheel={{
+                  enabled: true,
+                  forceToAxis: true,
+                  // thresholdDelta: 0
+                }}
+                // pagination={{
+                //   clickable: true,
+                //   // bulletActiveClass:"bg-goldenbrown"
+                // }}
                 // scrollbar={{ draggable: true, hide: true }}
                 modules={[
                   Pagination,
                   Navigation,
+                  Mousewheel,
                   // Scrollbar,
                   A11y,
                 ]}
-                className="relative mySwiper h-full size-full xl:max-w-[95rem] !overflow-visible"
+                className="relative mySwiper h-full size-full xl:max-w-[95rem] !overflow-visible [&_.swiper-scrollbar]:!translate-y-[800%]"
               >
                 {Object.values(packages).map((tier, index) => (
-                  <SwiperSlide
-                    key={index}
-                    className="cursor-drag-hover h-full flex"
-                  >
+                  <SwiperSlide key={index} className="h-full flex">
                     {renderPricingTier(tier, index)}
                   </SwiperSlide>
                 ))}

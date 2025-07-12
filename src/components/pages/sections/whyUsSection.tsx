@@ -110,7 +110,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
               >
                 <div
                   tabIndex={0}
-                  className="cursor-select-hover group relative flex flex-grow flex-col items-center xl:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch"
+                  className={`cursor-select-hover group relative flex flex-grow flex-col items-center xl:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch${item.tooltip && " cursor-tooltip-hover"}`}
                 >
                   {item.tooltip && (
                     <div className="absolute bottom-full mb-2 hidden group-hover:flex group-focus:flex md:hidden bg-charcoal text-white pn-regular-12 p-2 rounded whitespace-pre-wrap z-20">
@@ -154,7 +154,7 @@ const WhyUsSection = forwardRef<HTMLDivElement, SectionProps>(
                 >
                   <div
                     tabIndex={0}
-                    className="cursor-select-hover group relative flex flex-grow flex-col items-center xl:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch"
+                    className={`group relative flex flex-grow flex-col items-center xl:p-[1rem] hover:-translate-y-1 transition-all duration-200 w-full self-stretch${item.tooltip && " cursor-tooltip-hover"}`}
                   >
                     {item.tooltip && (
                       <div className="absolute bottom-full mb-2 hidden group-hover:flex group-focus:flex md:hidden bg-charcoal text-white pn-regular-12 p-2 rounded whitespace-pre-wrap z-20">

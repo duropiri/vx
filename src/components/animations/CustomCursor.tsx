@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "@/utils/gsap";
 import { usePathname } from "next/navigation";
 import { useViewport } from "@/contexts/ViewportContext";
+import { ServiceIcons } from "@/data/serviceIcons";
 
 export default function CustomCursor() {
   const cursorRef = useRef<HTMLDivElement | null>(null);
@@ -88,6 +89,30 @@ export default function CustomCursor() {
       });
     };
 
+    const handleTooltipHover = (e: MouseEvent) => {
+      const target = e.currentTarget as HTMLElement;
+      const text = target.getAttribute("data-follower-text") || "&#8505;";
+      const scale = target.getAttribute("data-scale") || "0.4";
+      if (followerTextRef.current) {
+        followerTextRef.current.innerHTML = text;
+        followerTextRef.current.className = "absolute text-[3rem] text-white mix-blend-difference";
+      }
+      gsap.to(cursorRef.current, {
+        scale: parseFloat(scale),
+        backgroundColor: "white",
+        ease: "power3.out",
+        autoAlpha: 1,
+        duration: 0.4,
+        overwrite: "auto",
+      });
+      gsap.to(innerDotRef.current, {
+        ease: "power3.out",
+        autoAlpha: 0,
+        duration: 0.4,
+        overwrite: "auto",
+      });
+    };
+
     const handleTextHover = (e: MouseEvent) => {
       const target = e.currentTarget as HTMLElement;
       const text = target.getAttribute("data-follower-text") || "Explore";
@@ -157,6 +182,7 @@ export default function CustomCursor() {
       const scale = target.getAttribute("data-scale") || "1.7";
       if (followerTextRef.current) {
         followerTextRef.current.innerHTML = text;
+        followerTextRef.current.className = "absolute text-lg text-white mix-blend-difference";
       }
       gsap.to(cursorRef.current, {
         scale: parseFloat(scale),
@@ -286,6 +312,13 @@ export default function CustomCursor() {
           el.addEventListener("mouseleave", handleMouseLeaveReset);
           el.addEventListener("click", handlePlayClick);
         });
+
+      document
+        .querySelectorAll<HTMLElement>(".cursor-tooltip-hover")
+        .forEach((el) => {
+          el.addEventListener("mouseenter", handleTooltipHover);
+          el.addEventListener("mouseleave", handleMouseLeaveReset);
+        });
     };
 
     // Initial setup
@@ -316,7 +349,7 @@ export default function CustomCursor() {
 
       document
         .querySelectorAll<HTMLElement>(
-          ".cursor-select-hover, .cursor-none-hover, .cursor-view-hover, .cursor-play-hover, .cursor-text-hover"
+          ".cursor-select-hover, .cursor-none-hover, .cursor-view-hover, .cursor-play-hover, .cursor-text-hover, .cursor-tooltip-hover"
         )
         .forEach((el) => {
           el.removeEventListener("mouseenter", handleSelectHover);
@@ -325,6 +358,7 @@ export default function CustomCursor() {
           el.removeEventListener("mouseenter", handleViewHover);
           el.removeEventListener("mouseenter", handleDragHover);
           el.removeEventListener("mouseenter", handlePlayHover);
+          el.removeEventListener("mouseenter", handleTooltipHover);
           el.removeEventListener("mouseleave", handleMouseLeaveReset);
           el.removeEventListener("click", handlePlayClick);
         });
@@ -340,7 +374,7 @@ export default function CustomCursor() {
       >
         <span
           ref={followerTextRef}
-          className="absolute champagne-limos text-lg text-white mix-blend-difference"
+          className="absolute text-lg text-white mix-blend-difference"
         ></span>
       </div>
       <div

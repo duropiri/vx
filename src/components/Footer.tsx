@@ -27,10 +27,30 @@ const NewsletterFormClient: React.FC<{
 }> = ({ email, setEmail, onSubmit, className = "" }) => {
   return (
     <div
-      className={`${className} xl:my-0 flex flex-col items-start justify-start gap-[1rem] xl:gap-[2rem] w-full xl:w-auto`}
+      className={`${className} xl:my-0 flex min-h-0 flex-col items-start justify-start gap-[0.25rem] xl:gap-[0.5rem] w-full h-full xl:w-auto`}
     >
       <h2 className="pn-bold-20">Subscribe to Our Newsletter</h2>
-      <form
+      <div className="flex-1 flex size-full relative overflow-hidden overflow-y-scroll cursor-none-hover">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/form/YPFW7FZRKPkKraPvqyhY"
+          className="overflow-y-scroll -mt-[30px] -mx-[12px] w-full  !h-[38rem] sm:!h-[30rem] xl:w-[30.469rem]"
+          id="inline-YPFW7FZRKPkKraPvqyhY"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Newsletter Form"
+          data-height="400"
+          data-layout-iframe-id="inline-YPFW7FZRKPkKraPvqyhY"
+          data-form-id="YPFW7FZRKPkKraPvqyhY"
+          title="Newsletter Form"
+        ></iframe>
+      </div>
+      <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+      {/* <form
         onSubmit={onSubmit}
         className="flex w-full xl:w-[30.469rem] rounded-[0.5rem] overflow-hidden"
       >
@@ -51,7 +71,7 @@ const NewsletterFormClient: React.FC<{
             <FlipLink>Join</FlipLink>
           </HoverWrapper>
         </button>
-      </form>
+      </form> */}
     </div>
   );
 };
