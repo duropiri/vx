@@ -225,7 +225,7 @@ export default function RootLayout({
           }}
         />
         {/* Hotjar Script */}
-        <Script
+        {/* <Script
           id="contentsquare-script"
           strategy="lazyOnload"
           dangerouslySetInnerHTML={{
@@ -241,8 +241,9 @@ export default function RootLayout({
               })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 5322614);
             `,
           }}
-        />
+        /> */}
 
+        {/* Microsoft Clarity Script */}
         <Script
           type="text/javascript"
           id="ms-clarity-script"
