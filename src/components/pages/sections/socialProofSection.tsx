@@ -1,64 +1,33 @@
 "use client";
 import ScrollingBanner from "@/components/animations/ScrollingBanner";
 import SectionHeader from "@/components/ui/sectionHeader";
-import Image from "next/image";
+const MarcusAndMillichap = "/assets/svgs/partner-logos/marcus-and-millichap.svg";
+const Remax = "/assets/svgs/partner-logos/REMAX.svg";
+const CirRealty = "/assets/svgs/partner-logos/CIR Realty.svg";
+const Century21 = "/assets/svgs/partner-logos/Century-21.svg";
+const RoyalLePage = "/assets/svgs/partner-logos/Royal_LePage.svg";
+const ExpRealty = "/assets/svgs/partner-logos/EXP-Realty.svg";
+const QualicoProperties = "/assets/svgs/partner-logos/Qualico Properties.svg";
+const RealBroker = "/assets/svgs/partner-logos/real-broker.svg";
+const MaxwellLogo = "/assets/svgs/partner-logos/maxwell.svg";
 import React, { forwardRef, RefObject, useState } from "react";
 
-const LOGO_DIMENSIONS = {
-  height: 48,
-} as const;
 
-const logos = [
+const logos: { src: string; alt: string }[][] = [
   [
-    {
-      src: "/assets/images/partner-logos/marcus-and-millichap.webp",
-      alt: "marcus-and-millichap",
-      ...LOGO_DIMENSIONS,
-    },
-    {
-      src: "/assets/images/partner-logos/REMAX.webp",
-      alt: "REMAX",
-      ...LOGO_DIMENSIONS,
-    },
-    {
-      src: "/assets/images/partner-logos/CIR Realty.webp",
-      alt: "CIR Realty",
-      ...LOGO_DIMENSIONS,
-    },
+    { src: MarcusAndMillichap, alt: "Marcus & Millichap" },
+    { src: Remax, alt: "RE/MAX" },
+    { src: CirRealty, alt: "CIR Realty" },
   ],
   [
-    {
-      src: "/assets/images/partner-logos/Century-21.webp",
-      alt: "Century-21",
-      ...LOGO_DIMENSIONS,
-    },
-    {
-      src: "/assets/images/partner-logos/Royal_LePage.webp",
-      alt: "Royal_LePage",
-      ...LOGO_DIMENSIONS,
-    },
-    {
-      src: "/assets/images/partner-logos/EXP-Realty.webp",
-      alt: "EXP-Realty",
-      ...LOGO_DIMENSIONS,
-    },
+    { src: Century21, alt: "Century 21" },
+    { src: RoyalLePage, alt: "Royal LePage" },
+    { src: ExpRealty, alt: "EXP Realty" },
   ],
   [
-    {
-      src: "/assets/images/partner-logos/Qualico Properties.webp",
-      alt: "Qualico Properties",
-      ...LOGO_DIMENSIONS,
-    },
-    {
-      src: "/assets/images/partner-logos/real-broker.webp",
-      alt: "real-broker",
-      ...LOGO_DIMENSIONS,
-    },
-    {
-      src: "/assets/images/partner-logos/maxwell.webp",
-      alt: "maxwell",
-      ...LOGO_DIMENSIONS,
-    },
+    { src: QualicoProperties, alt: "Qualico Properties" },
+    { src: RealBroker, alt: "Real Broker" },
+    { src: MaxwellLogo, alt: "Maxwell" },
   ],
 ];
 
@@ -77,19 +46,18 @@ interface SectionProps {
 }
 
 // Extracted Logo component for better reusability and optimization
-const LogoImage = React.memo(({ src, alt }: { src: string; alt: string }) => (
-  <div className="relative flex justify-center w-full h-12 mb-12">
-    <Image
-      src={src}
-      alt={alt}
-      height={LOGO_DIMENSIONS.height}
-      width={500}
-      className="pointer-events-none object-contain grayscale saturate-0 h-full w-auto"
-      loading="lazy"
-      quality={75}
-    />
-  </div>
-));
+const LogoImage = React.memo(
+  ({ src, alt }: { src: string; alt: string }) => (
+    <div className="relative flex justify-center w-full h-12 mb-12">
+      <img
+        src={src}
+        alt={alt}
+        className="pointer-events-none object-contain grayscale saturate-0 w-full h-full"
+        draggable={false}
+      />
+    </div>
+  )
+);
 
 LogoImage.displayName = "LogoImage";
 
@@ -100,7 +68,7 @@ const ScrollingLogoColumn = React.memo(
     velocity,
     className = "",
   }: {
-    logo: (typeof logos)[0];
+    logo: { src: string; alt: string }[];
     velocity: number;
     className?: string;
   }) => (
@@ -113,12 +81,8 @@ const ScrollingLogoColumn = React.memo(
         className="relative flex w-full sm:w-[11.25rem] max-h-[22.5rem]"
         innerChild="flex flex-col"
       >
-        {logo.map((logo, index) => (
-          <LogoImage
-            key={`${logo.alt}-${index}`}
-            src={logo.src}
-            alt={logo.alt}
-          />
+        {logo.map((logoObj, index) => (
+          <LogoImage key={`logo-${index}`} src={logoObj.src} alt={logoObj.alt} />
         ))}
       </ScrollingBanner>
     </div>
@@ -133,7 +97,7 @@ const GradientOverlay = React.memo(
     <div
       className={`absolute z-10 ${position}-0 w-full h-[7.5rem] bg-gradient-to-${
         position === "top" ? "b" : "t"
-      } to-transparent transition-all duration-500`}
+      } to-transparent transition-all duration-500 pointer-events-none`}
       style={
         {
           "--tw-gradient-from": `${color} var(--tw-gradient-from-position)`,
