@@ -131,11 +131,27 @@ export default function RootLayout({
           href="critical-styles"
         />
 
-        <link rel="preconnect" href="https://virtualxposure.com" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://virtualxposure.com"
+          crossOrigin="anonymous"
+        />
         <link rel="dns-prefetch" href="https://virtualxposure.com" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://connect.facebook.net" crossOrigin="anonymous" />
-        <link rel="preconnect" href="https://static.hj.contentsquare.net" crossOrigin="anonymous" />
+        <link
+          rel="preconnect"
+          href="https://www.googletagmanager.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://connect.facebook.net"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://static.hj.contentsquare.net"
+          crossOrigin="anonymous"
+        />
 
         <Script
           id="fb-pixel-script"
@@ -223,6 +239,21 @@ export default function RootLayout({
                   e.src = q + c._hjSettings.hjid + u;
                   r.appendChild(e);
               })(window, document, 'https://static.hj.contentsquare.net/c/csq-', '.js', 5322614);
+            `,
+          }}
+        />
+
+        <Script
+          type="text/javascript"
+          id="ms-clarity-script"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(c,l,a,r,i,t,y){
+                  c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+                  t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+                  y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+              })(window, document, "clarity", "script", "se3asxy8sk");
             `,
           }}
         />
