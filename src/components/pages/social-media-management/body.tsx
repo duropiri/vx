@@ -62,6 +62,7 @@ import { SMMANavdockLinks } from "@/data/navLinks";
 import { socialMediaPackages } from "@/data/pricingPackages";
 import { HomePageStats } from "@/data/stats";
 import { useViewport } from "@/contexts/ViewportContext";
+import { socialMediaFAQ } from "@/data/faq";
 
 export default function Body() {
   const container = useRef<HTMLDivElement>(null);
@@ -195,7 +196,7 @@ export default function Body() {
       <ScaleInVisible>
         <Dynamic.CTASection className="bg-white z-10" />
       </ScaleInVisible>
-      <Dynamic.FAQSection className="bg-white z-10" />
+      <Dynamic.FAQSection faq={socialMediaFAQ} className="bg-white z-10" />
       {/* <ScaleInVisible>
         <Dynamic.ContactSection className="bg-white z-10" />
       </ScaleInVisible> */}

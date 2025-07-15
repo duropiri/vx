@@ -1,4 +1,4 @@
-export const FAQ = [
+export const socialMediaFAQ = [
   {
     question: "What does Virtual Xposure do for real estate agents?",
     answer:
@@ -70,11 +70,6 @@ As for logo design and animation, custom graphic design, and everything else, ou
     question: "How are your services possible at such a low rate?",
     answer:
       "Our services are built on efficiency, talent, and our team’s collective creativity. It can take an experienced individual 20 minutes to create something that would take someone with less experience 10 hours. Within our team of specialists, we put the right jobs in the right hands immediately, to avoid any costly delays and allowing us to focus on what's most important: serving your real estate business.",
-  },
-  {
-    question: "Why must I pay before the appointment and not after?",
-    answer:
-      "Our service thrives on efficiency. The less time we spend on acquiring payment, the more time we have to market your real estate properties as effectively as possible. This way, everything is taken care of up-front, your files are delivered to you ASAP, and there's no need for any awkward, uncomfortable phone calls.",
   },
 ];
 

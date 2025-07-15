@@ -20,13 +20,13 @@ export interface FAQProps {
   answer: string;
 }
 
-import { FAQ } from "@/data/faq";
+import { socialMediaFAQ, listingMediaFAQ } from "@/data/faq";
 import ScaleInVisible from "@/components/animations/ScaleInVisible";
 
 function FAQSection({
   className,
   vertical = false,
-  faq = FAQ,
+  faq = listingMediaFAQ,
   noAnimation = false,
 }: SectionProps) {
   const ref = useRef(null);
