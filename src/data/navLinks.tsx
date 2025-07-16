@@ -71,7 +71,7 @@ export const HeaderLinks = [
           icon: ServiceIcons.skool,
           title: "Exclusive Community",
           href: "https://portal.virtualxposure.com/communities/groups/the-vx-collective/",
-          target: "_blank",
+          // target: "_blank",
           rel: "noopener noreferrer",
         },
       ],
