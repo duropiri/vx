@@ -13,15 +13,10 @@ export default function SmoothScrolling({
   className = "",
 }: SmoothScrollingProps) {
   const { isMobile } = useViewport();
-  if (isMobile) {
-    // Disable Lenis on mobile for performance
-    return <div className={className}>{children}</div>;
-  }
-
   const lenis = useLenis();
   // Add mounting state to prevent hydration mismatch
   const [isMounted, setIsMounted] = useState(false);
-
+  
   // Handle mounting state
   useEffect(() => {
     setIsMounted(true);
@@ -29,7 +24,7 @@ export default function SmoothScrolling({
 
   // Handle hash links on page load
   useEffect(() => {
-    if (!isMounted) return;
+    if (!isMounted || isMobile) return;
 
     const hash = window.location.hash;
 
@@ -70,14 +65,14 @@ export default function SmoothScrolling({
 
   // Add click listener for anchor links only after mounting
   useEffect(() => {
-    if (!isMounted) return;
+    if (!isMounted || isMobile) return;
 
     document.addEventListener("click", handleAnchorClick);
     return () => document.removeEventListener("click", handleAnchorClick);
-  }, [lenis, isMounted]);
+  }, [lenis, isMounted, isMobile]);
 
-  // Return null or loading state before mounting
-  if (!isMounted) {
+  // Return basic markup on mobile or before mounting
+  if (!isMounted || isMobile) {
     return <div className={className}>{children}</div>;
   }
 
