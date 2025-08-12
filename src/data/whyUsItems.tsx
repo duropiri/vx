@@ -59,7 +59,7 @@ export const WhyUsItems = [
     ),
     title: "One-Day Listing Launch",
     tooltip:
-      "Full photo, 4K video, reels + property website delivered in 24 hours or it’s 100 % free—speed that sells.",
+      "Full photo, 4K video, reels + property website delivered in 24 hours or it's 100% free - speed that sells. Revisions are not covered by the 24-hour guarantee.",
   },
   {
     icon: (
@@ -189,7 +189,7 @@ export const WhyUsItems = [
         </g>
       </svg>
     ),
-    title: "< 1 % RMS Laser Precision",
+    title: "< 1% RMS Laser Precision",
     tooltip:
       "LIDAR-level measurements you can take to the bank (and the appraiser).",
   },
